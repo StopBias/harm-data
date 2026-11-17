@@ -1,0 +1,30 @@
+{
+  "source": "FBI Child Victimization, 2019–2023 (NIBRS)",
+  "source_url": "https://cde.ucr.cjis.gov/LATEST/resources/reports/Child%20Victimization%202019-2023.pdf",
+  "notes": [
+    "Covers three offenses only: murder and nonnegligent manslaughter, kidnapping/abduction, and aggravated assault.",
+    "Juveniles defined as ages 0–17.",
+    "NIBRS coverage averaged roughly 61–65% of the U.S. population during this period.",
+    "Unknown / not reported rates are higher for offender demographics than for victims."
+  ],
+  "juvenile_victims": {
+    "total_known": 411350,
+    "race": [
+      { "group": "White", "percent": 49.8 },
+      { "group": "Black or African American", "percent": 47.5 },
+      { "group": "American Indian or Alaska Native", "percent": 1.4 },
+      { "group": "Asian", "percent": 1.1 },
+      { "group": "Native Hawaiian or Other Pacific Islander", "percent": 0.3 }
+    ]
+  },
+  "offenders": {
+    "race": [
+      { "group": "White", "percent": 51.2 },
+      { "group": "Black or African American", "percent": 45.8 },
+      { "group": "American Indian or Alaska Native", "percent": 1.5 },
+      { "group": "Asian", "percent": 1.1 },
+      { "group": "Native Hawaiian or Other Pacific Islander", "percent": 0.4 }
+    ],
+    "age_note": "30.4% of known offenders were ages 9–17. Most common single age was 17."
+  }
+}
