@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StopBias – Harm Data Explorer (Beta)</title>
 
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -18,51 +18,108 @@
 
     header {
       background: #1e293b;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem;
       border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: 600;
     }
 
-    header p {
-      margin: 0.3rem 0 0 0;
-      font-size: 0.95rem;
-      color: #94a3b8;
+    .badge {
+      background: #0ea5e9;
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
     }
 
     #map {
-      height: 70vh;
+      height: calc(100vh - 60px);
       width: 100%;
+    }
+
+    /* Side panel */
+    #data-panel {
+      position: fixed;
+      top: 60px;
+      right: -420px;
+      width: 400px;
+      height: calc(100vh - 60px);
       background: #1e293b;
+      border-left: 1px solid #334155;
+      padding: 1.5rem;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 1000;
     }
 
-    .info-panel {
-      max-width: 900px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem 2rem 1.5rem;
+    #data-panel.open {
+      right: 0;
     }
 
-    .info-panel h2 {
-      font-size: 1.2rem;
+    #data-panel h2 {
       margin-top: 0;
+      font-size: 1.3rem;
     }
 
-    .badge {
-      display: inline-block;
-      background: #0ea5e9;
+    #data-panel h3 {
+      font-size: 1rem;
+      margin: 1.5rem 0 0.5rem 0;
+      color: #94a3b8;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
       color: white;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      margin-left: 0.5rem;
-      vertical-align: middle;
     }
 
-    .coming-soon {
+    .source-note {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 2rem;
+      line-height: 1.4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.5rem 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+    }
+
+    th {
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .placeholder {
+      background: #0f172a;
+      border: 1px dashed #475569;
+      padding: 1rem;
+      border-radius: 6px;
       color: #94a3b8;
       font-size: 0.9rem;
     }
@@ -72,61 +129,107 @@
 
   <header>
     <h1>StopBias – Harm Data Explorer <span class="badge">Beta</span></h1>
-    <p>Starting with United States data. Global coverage coming next.</p>
   </header>
 
   <div id="map"></div>
 
-  <div class="info-panel">
-    <h2>About this beta</h2>
-    <p>
-      This is an early demonstration of the data platform.  
-      At the moment only the <strong>United States</strong> is active.
-    </p>
-    <p class="coming-soon">
-      Other countries are shown on the map but are not yet clickable.  
-      They will be activated as reliable public data becomes available.
-    </p>
-    <p>
-      Click the highlighted United States area on the map to begin exploring the first dataset.
-    </p>
+  <!-- Data Panel -->
+  <div id="data-panel">
+    <button class="close-btn" onclick="closePanel()">×</button>
+    
+    <h2>United States</h2>
+    <p style="color:#94a3b8; margin-top:0.3rem;">Child-related violent crime data (Beta)</p>
+
+    <h3>Current Status</h3>
+    <div class="placeholder">
+      Detailed, age-specific and ethnicity-specific statistics are being prepared from official sources.<br><br>
+      This panel will display sortable tables and rates in the next update.
+    </div>
+
+    <h3>Planned Data Views</h3>
+    <ul style="padding-left:1.2rem; color:#cbd5e1; font-size:0.95rem;">
+      <li>Violent crimes against children (assault, homicide, etc.)</li>
+      <li>Breakdowns by age group</li>
+      <li>Rates per population</li>
+      <li>Trends over time</li>
+      <li>Ethnicity / demographic patterns (where available)</li>
+    </ul>
+
+    <h3>Primary Sources (in progress)</h3>
+    <ul style="padding-left:1.2rem; color:#cbd5e1; font-size:0.9rem;">
+      <li>FBI National Incident-Based Reporting System (NIBRS)</li>
+      <li>National Crime Victimization Survey (NCVS) – Bureau of Justice Statistics</li>
+      <li>Office of Juvenile Justice and Delinquency Prevention (OJJDP)</li>
+    </ul>
+
+    <div class="source-note">
+      All data will be clearly sourced and documented.  
+      This is an early public beta focused on building a transparent, expandable platform.
+    </div>
   </div>
 
-  <!-- Leaflet JavaScript -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <script>
-    // Create the map centered on the US
-    const map = L.map('map').setView([39.8, -98.5], 4);
+    // Map setup
+    const map = L.map('map', {
+      zoomControl: true,
+      attributionControl: true
+    }).setView([39.8, -98.5], 4);
 
-    // Free OpenStreetMap tiles (no API key required)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 18
     }).addTo(map);
 
-    // Simple rectangle approximating the contiguous United States
-    // (We will replace this with a proper country outline later)
-    const usaBounds = [
-      [24.5, -125.0], // Southwest
-      [49.5, -66.0]   // Northeast
-    ];
+    // Simplified but recognizable outline of the contiguous United States
+    // (Public domain style simplified geometry)
+    const usaGeoJSON = {
+      "type": "Feature",
+      "properties": { "name": "United States" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-124.7, 48.4], [-123.0, 46.0], [-124.2, 43.0], [-124.4, 40.4],
+          [-122.0, 37.0], [-120.5, 34.5], [-117.2, 32.5], [-114.7, 32.7],
+          [-111.0, 31.3], [-108.2, 31.8], [-106.5, 31.8], [-103.0, 29.0],
+          [-100.0, 28.0], [-97.5, 26.0], [-97.0, 25.8], [-93.0, 29.5],
+          [-89.5, 30.2], [-87.5, 30.2], [-85.0, 29.7], [-82.5, 27.5],
+          [-81.5, 25.2], [-80.5, 25.2], [-80.0, 26.5], [-81.5, 30.5],
+          [-81.0, 32.0], [-80.5, 33.5], [-76.0, 35.0], [-75.5, 37.0],
+          [-76.0, 39.0], [-75.0, 39.5], [-74.0, 40.5], [-71.0, 41.5],
+          [-70.0, 42.0], [-70.5, 43.0], [-69.0, 44.0], [-67.0, 45.0],
+          [-66.9, 44.8], [-68.0, 47.0], [-69.0, 47.5], [-70.0, 47.3],
+          [-71.5, 45.3], [-74.0, 45.0], [-76.5, 44.0], [-79.0, 43.5],
+          [-82.0, 43.0], [-83.5, 42.0], [-84.5, 41.7], [-87.0, 42.5],
+          [-90.0, 43.0], [-92.0, 43.5], [-95.0, 44.0], [-97.0, 46.0],
+          [-98.0, 48.0], [-102.0, 49.0], [-110.0, 49.0], [-116.0, 49.0],
+          [-122.0, 49.0], [-124.7, 48.4]
+        ]]
+      }
+    };
 
-    const usaRectangle = L.rectangle(usaBounds, {
-      color: "#0ea5e9",
-      weight: 3,
-      fillColor: "#0ea5e9",
-      fillOpacity: 0.25
+    const usaLayer = L.geoJSON(usaGeoJSON, {
+      style: {
+        color: "#0ea5e9",
+        weight: 2.5,
+        fillColor: "#0ea5e9",
+        fillOpacity: 0.25
+      }
     }).addTo(map);
 
-    // Make it clickable
-    usaRectangle.on('click', function() {
-      alert("United States selected.\n\nNext version will open the detailed U.S. data view here.\n\nThis is the first beta demonstration.");
+    // Click handler
+    usaLayer.on('click', function() {
+      document.getElementById('data-panel').classList.add('open');
     });
 
-    // Optional: fit the map nicely to the US
-    map.fitBounds(usaBounds, { padding: [30, 30] });
-  </script>
+    function closePanel() {
+      document.getElementById('data-panel').classList.remove('open');
+    }
 
+    // Close panel when clicking the map background
+    map.on('click', function() {
+      closePanel();
+    });
+  </script>
 </body>
 </html>
