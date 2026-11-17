@@ -121,7 +121,7 @@
 
     <h3>Current Status</h3>
     <div class="placeholder">
-      We are preparing the first official summary tables (age, race/ethnicity of victims and offenders, crime type, and sex where available) from FBI NIBRS, NCVS, and OJJDP sources.<br><br>
+      We are preparing the first official summary tables from FBI NIBRS, NCVS, and OJJDP sources.<br><br>
       Detailed tables will be added in stages.
     </div>
 
@@ -158,16 +158,21 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Load the external GeoJSON file
+      // Load the GeoJSON file with better error handling
       fetch('us.geojson')
-        .then(response => response.json())
-        .then(data => {
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Could not load us.geojson (status ' + response.status + ')');
+          }
+          return response.json();
+        })
+        .then(function(data) {
           const usaLayer = L.geoJSON(data, {
             style: {
               color: "#0cc0df",
               weight: 2.5,
               fillColor: "#0cc0df",
-              fillOpacity: 0.25
+              fillOpacity: 0.28
             }
           }).addTo(map);
 
@@ -176,8 +181,9 @@
             document.getElementById('data-panel').classList.add('open');
           });
         })
-        .catch(err => {
-          console.error("Could not load us.geojson", err);
+        .catch(function(err) {
+          console.error(err);
+          alert("Map outline failed to load. Please check the us.geojson file.");
         });
 
       map.on('click', function() {
