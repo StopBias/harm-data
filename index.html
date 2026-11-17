@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Child-Harm Data Explorer (Beta)</title>
+  <title>Child-Harm Data Explorer</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -22,7 +22,6 @@
     .main-title { font-size: 2.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
     .main-title .black { color: #000; }
     .main-title .blue { color: #0cc0df; }
-    .badge { background: #0cc0df; color: white; font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 999px; margin-left: 0.5rem; vertical-align: middle; }
     .country-select { font-size: 0.82rem; padding: 0.3rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; background: white; max-width: 200px; flex-shrink: 0; }
     #map { height: calc(100vh - 66px); width: 100%; background: #f1f5f9; }
     #data-panel { position: fixed; top: 66px; right: -460px; width: 440px; height: calc(100vh - 66px); background: #fff; border-left: 1px solid #e5e7eb; box-shadow: -4px 0 24px rgba(0,0,0,0.10); padding: 1.75rem; overflow-y: auto; transition: right 0.3s ease; z-index: 3000; }
@@ -46,6 +45,21 @@
     .red-x { color: #dc2626; font-weight: bold; }
     .availability { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 0.7rem; font-size: 0.85rem; margin-top: 1rem; }
     .no-data-message { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 1rem; color: #dc2626; font-weight: 600; margin-bottom: 1rem; }
+    .map-legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.78rem;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .map-legend strong { display: block; margin-bottom: 0.4rem; }
+    .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
+    .swatch { width: 16px; height: 16px; border-radius: 2px; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
@@ -53,8 +67,7 @@
     <img src="Stop%20Bias%20Logo%20no%20tag%20980%20X%20200.png" alt="StopBias" class="logo-img">
     <div class="title-block">
       <div class="main-title">
-        <span class="black">Child-</span><span class="blue">Harm Data</span><span class="black"> Explorer</span>
-        <span class="badge">Beta</span>
+        <span class="black">Child Harm </span><span class="blue">Data Explorer</span>
       </div>
     </div>
     <select id="country-select" class="country-select">
@@ -73,37 +86,68 @@
   </header>
 
   <div id="map"></div>
+  <div class="map-legend">
+    <strong>Data completeness</strong>
+    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> 0–20%</div>
+    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> 20–40%</div>
+    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> 40–60%</div>
+    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> 60–80%</div>
+    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> 80–100%</div>
+  </div>
 
   <div id="data-panel">
     <button class="close-btn" onclick="closePanel()">×</button>
     <h2 id="panel-title">United States</h2>
     <div class="subtitle" id="panel-subtitle">Child-related harm data</div>
-    <div id="panel-content">Click a state to load data…</div>
+    <div id="panel-content">Click a country or state to load data…</div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const map = L.map('map').setView([39.5, -98], 4);
+      const map = L.map('map').setView([20, 0], 2);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 18 }).addTo(map);
 
-      const hoverNote = "United States: Limited published data on child harm. Victim-race × offender-race cross-tabs for serious child offenses are not published. The absence of this data makes it harder to understand patterns of harm to children and to hold systems accountable. More complete official data is needed.";
+      const hoverNote = "United States: Highest data completeness among tracked countries (still limited). Victim-race × offender-race cross-tabs for serious child offenses are not published. The absence of this data makes it harder to understand and reduce harms to children.";
 
-      fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+      // World countries GeoJSON (simplified public source)
+      fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
         .then(r => r.json())
-        .then(data => {
-          const usaLayer = L.geoJSON(data, {
-            style: { color: "#0cc0df", weight: 1.5, fillColor: "#0cc0df", fillOpacity: 0.25 }
+        .then(world => {
+          const worldLayer = L.geoJSON(world, {
+            style: function(feature) {
+              const name = feature.properties.name;
+              if (name === "United States of America") {
+                return { color: "#ca8a04", weight: 1.2, fillColor: "#eab308", fillOpacity: 0.55 }; // yellow
+              }
+              return { color: "#b91c1c", weight: 0.6, fillColor: "#dc2626", fillOpacity: 0.35 }; // red
+            },
+            onEachFeature: function(feature, layer) {
+              const name = feature.properties.name;
+              if (name === "United States of America") {
+                layer.bindTooltip(hoverNote, { sticky: true, opacity: 0.95 });
+                layer.on('click', function() {
+                  document.getElementById('country-select').value = 'us';
+                  openPanel('us');
+                });
+              } else {
+                layer.on('click', function() {
+                  // Map country names to codes where possible; default to no-data
+                  const codeMap = {
+                    "Australia": "au", "Canada": "ca", "France": "fr", "Germany": "de",
+                    "Italy": "it", "New Zealand": "nz", "South Africa": "za", "Spain": "es", "United Kingdom": "uk"
+                  };
+                  const code = codeMap[name] || "other";
+                  if (code !== "other") {
+                    document.getElementById('country-select').value = code;
+                    openPanel(code);
+                  }
+                });
+              }
+            }
           }).addTo(map);
-
-          usaLayer.on('click', function(e) {
-            L.DomEvent.stopPropagation(e);
-            document.getElementById('country-select').value = 'us';
-            openPanel('us');
-          });
-
-          usaLayer.bindTooltip(hoverNote, { sticky: true, opacity: 0.95 });
-        });
+        })
+        .catch(err => console.error("World GeoJSON failed to load:", err));
 
       let usData = null;
       function loadData() {
@@ -114,16 +158,8 @@
       loadData();
 
       const countryNames = {
-        us: "United States",
-        au: "Australia",
-        ca: "Canada",
-        fr: "France",
-        de: "Germany",
-        it: "Italy",
-        nz: "New Zealand",
-        za: "South Africa",
-        es: "Spain",
-        uk: "United Kingdom",
+        us: "United States", au: "Australia", ca: "Canada", fr: "France", de: "Germany",
+        it: "Italy", nz: "New Zealand", za: "South Africa", es: "Spain", uk: "United Kingdom",
         all: "All available countries"
       };
 
@@ -138,10 +174,10 @@
           document.getElementById('panel-subtitle').textContent = "No official child-harm data published";
           document.getElementById('panel-content').innerHTML = `
             <div class="no-data-message">
-              ✕ No official data published for child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
+              ✕ No official data published for the tracked child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
             </div>
             <div class="availability">
-              <strong>Data availability (beta):</strong> This country currently has no comparable published data in the categories tracked here. Provisional overall indicator: <span class="missing">Red</span>. The absence of this information limits the ability to understand and reduce harms to children.
+              <strong>Data completeness:</strong> 0–20% (red). The absence of this information limits the ability to understand and reduce harms to children.
             </div>
             <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           `;
@@ -168,7 +204,7 @@
           </select>
           <div id="results"></div>
           <div class="availability">
-            <strong>Data availability (beta):</strong> United States currently scores low (mostly 0–1 on a 0–4 scale) for child-harm data, especially on perpetrator demographics and victim × perpetrator cross-tabs. Provisional overall indicator: <span class="missing">Red</span>.
+            <strong>Data completeness (beta):</strong> United States is the highest among tracked countries but still limited (provisionally yellow / 40–60% range). Especially weak on perpetrator demographics and victim × perpetrator cross-tabs for child cases.
           </div>
           <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           <div class="notes" id="notes-area"></div>
@@ -248,9 +284,8 @@
       document.getElementById('country-select').addEventListener('change', function() {
         const code = this.value;
         if (code === 'all') {
-          alert('World view with country coloring is planned for a later update. Selecting individual countries shows their data status.');
-          this.value = 'us';
-          openPanel('us');
+          map.setView([20, 0], 2);
+          closePanel();
         } else {
           openPanel(code);
         }
