@@ -98,7 +98,7 @@
       border-top: 1px solid #e5e7eb;
     }
     .notes a { color: #0cc0df; }
-    .accent { color: #0cc0df; font-weight: 600; }
+    .error { color: #dc2626; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -116,7 +116,7 @@
     <button class="close-btn" onclick="closePanel()">×</button>
     <h2>United States</h2>
     <div class="subtitle">Juvenile victims of selected violent crimes, 2019–2023</div>
-    <div id="panel-content">Loading data…</div>
+    <div id="panel-content">Click a state to load data…</div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -129,7 +129,7 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Load improved state outlines
+      // Load state outlines
       fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
         .then(r => r.json())
         .then(data => {
@@ -148,15 +148,37 @@
           });
         });
 
-      // Load data file once
       let usData = null;
-      fetch('us-data.json')
-        .then(r => r.json())
-        .then(data => { usData = data; });
+
+      function loadData() {
+        return fetch('us-data.json')
+          .then(r => {
+            if (!r.ok) throw new Error('us-data.json not found (status ' + r.status + ')');
+            return r.json();
+          })
+          .then(data => {
+            usData = data;
+            return data;
+          })
+          .catch(err => {
+            console.error(err);
+            document.getElementById('panel-content').innerHTML =
+              '<p class="error">Could not load us-data.json<br>' + err.message + '</p>';
+            throw err;
+          });
+      }
+
+      // Start loading data immediately
+      loadData();
 
       function openPanel() {
         document.getElementById('data-panel').classList.add('open');
-        if (usData) renderPanel(usData);
+        if (usData) {
+          renderPanel(usData);
+        } else {
+          document.getElementById('panel-content').innerHTML = 'Loading data…';
+          loadData().then(data => renderPanel(data));
+        }
       }
 
       function renderPanel(data) {
@@ -190,7 +212,7 @@
           </p>
 
           <div class="notes">
-            <strong>Source:</strong> <a href="${data.source_url}" target="_blank">${data.source}</a><br><br>
+            <strong>Source:</strong> <a href="${data.source_url}" target="_blank" rel="noopener">${data.source}</a><br><br>
             ${notes}
           </div>
         `;
@@ -202,8 +224,3 @@
     });
 
     function closePanel() {
-      document.getElementById('data-panel').classList.remove('open');
-    }
-  </script>
-</body>
-</html>
