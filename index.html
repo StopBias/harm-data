@@ -122,7 +122,7 @@
     <h3>Current Status</h3>
     <div class="placeholder">
       We are preparing the first official summary tables (age, race/ethnicity of victims and offenders, crime type, and sex where available) from FBI NIBRS, NCVS, and OJJDP sources.<br><br>
-      Detailed crosstabs will be added in stages.
+      Detailed tables will be added in stages.
     </div>
 
     <h3>Data We Are Targeting</h3>
@@ -130,9 +130,8 @@
       <li>Victim age</li>
       <li>Victim race / ethnicity</li>
       <li>Offender race / ethnicity</li>
-      <li>Crime type (homicide, aggravated assault, etc.)</li>
+      <li>Crime type</li>
       <li>Sex of victim and offender (when reported)</li>
-      <li>Location granularity where reliable</li>
     </ul>
 
     <h3>Primary Sources</h3>
@@ -159,55 +158,37 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Improved contiguous US outline (better Great Lakes inclusion)
-      const usCoords = [[
-        [-124.7,48.4],[-123.2,46.0],[-124.3,42.8],[-124.4,40.0],
-        [-122.5,37.0],[-120.5,34.5],[-117.2,32.5],[-114.6,32.7],
-        [-111.0,31.3],[-108.2,31.8],[-106.5,31.8],[-103.0,29.0],
-        [-100.0,28.5],[-97.5,26.0],[-97.0,25.9],[-94.5,29.3],
-        [-91.5,30.0],[-88.5,30.2],[-85.5,29.8],[-83.0,28.0],
-        [-81.8,25.5],[-80.5,25.2],[-80.0,26.8],[-81.4,30.4],
-        [-81.5,31.5],[-81.0,32.5],[-80.5,34.0],[-76.5,35.5],
-        [-75.8,37.0],[-76.0,38.5],[-75.5,39.2],[-74.5,40.2],
-        [-73.5,41.0],[-71.5,41.7],[-70.0,42.0],[-70.5,43.2],
-        [-68.8,44.2],[-67.0,44.8],[-66.9,44.8],[-67.8,46.5],
-        [-69.0,47.4],[-70.5,46.0],[-72.5,45.3],[-75.0,44.5],
-        [-78.0,43.5],[-82.0,42.5],[-84.0,41.8],[-86.5,43.0],
-        [-89.5,44.5],[-92.5,45.5],[-95.5,47.0],[-98.0,49.0],
-        [-110.0,49.0],[-122.0,49.0],[-124.7,48.4]
-      ]];
-
-      // Alaska
-      const akCoords = [[
-        [-168,54],[-160,55],[-152,58],[-146,61],[-141,60],
-        [-141,64],[-148,66],[-156,65],[-163,63],[-168,58],[-168,54]
-      ]];
-
-      const style = {
+      // Contiguous United States
+      const usLayer = L.rectangle([[24.5, -125], [49.5, -66]], {
         color: "#0cc0df",
-        weight: 2.5,
+        weight: 3,
         fillColor: "#0cc0df",
         fillOpacity: 0.25
-      };
+      }).addTo(map);
 
-      const usLayer = L.polygon(usCoords, style).addTo(map);
-      const akLayer = L.polygon(akCoords, style).addTo(map);
+      // Alaska
+      const akLayer = L.rectangle([[51, -170], [72, -130]], {
+        color: "#0cc0df",
+        weight: 3,
+        fillColor: "#0cc0df",
+        fillOpacity: 0.25
+      }).addTo(map);
 
       function openPanel() {
         document.getElementById('data-panel').classList.add('open');
       }
 
-      usLayer.on('click', function(e) {
+      usLayer.on('click', function (e) {
         L.DomEvent.stopPropagation(e);
         openPanel();
       });
 
-      akLayer.on('click', function(e) {
+      akLayer.on('click', function (e) {
         L.DomEvent.stopPropagation(e);
         openPanel();
       });
 
-      map.on('click', function() {
+      map.on('click', function () {
         closePanel();
       });
     });
