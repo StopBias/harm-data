@@ -61,11 +61,11 @@
     .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
     .swatch { width: 16px; height: 16px; border-radius: 2px; border: 1px solid #ccc; }
     .leaflet-tooltip {
-      max-width: 280px;
-      white-space: normal;
+      max-width: 420px !important;
+      white-space: normal !important;
       font-size: 0.85rem;
-      line-height: 1.35;
-      padding: 0.6rem 0.75rem;
+      line-height: 1.4;
+      padding: 0.7rem 0.85rem;
     }
   </style>
 </head>
@@ -161,7 +161,14 @@
         "Switzerland": "ch"
       };
 
-      const hoverNote = "United States: Highest data completeness among tracked countries, but still limited (orange / 20–40%). Victim-race × offender-race cross-tabs for serious child offenses are not published. The absence of this data makes it harder to understand and reduce harms to children.";
+      const tooltips = {
+        us: "United States: Highest data completeness among tracked countries (yellow / 40–60% range). Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race (FBI/OJJDP). Still missing detailed child-specific victim × offender race cross-tabs for homicide. The gaps limit understanding of harms to children.",
+        uk: "United Kingdom (England & Wales): Partial data (orange / 20–40%). Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other; principal suspects ~65% White, 20% Black, 9% Asian (recent years). Strong intraracial pattern. Black victimization rate ~4× White. No equivalent child-focused victim × offender cross-tabs published."
+      };
+
+      function missingTooltip(countryName) {
+        return countryName + ": No official published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims). Data completeness: 0–20% (red). The absence of this information limits the ability to understand and reduce harms to children.";
+      }
 
       fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
         .then(r => r.json())
@@ -170,6 +177,9 @@
             style: function(feature) {
               const name = feature.properties.name;
               if (name === "United States of America") {
+                return { color: "#ca8a04", weight: 1.2, fillColor: "#eab308", fillOpacity: 0.55 }; // yellow
+              }
+              if (name === "United Kingdom") {
                 return { color: "#c2410c", weight: 1.2, fillColor: "#f97316", fillOpacity: 0.55 }; // orange
               }
               if (tracked[name]) {
@@ -181,9 +191,8 @@
               const name = feature.properties.name;
               const code = tracked[name];
               if (code) {
-                if (code === "us") {
-                  layer.bindTooltip(hoverNote, { sticky: true, className: "leaflet-tooltip" });
-                }
+                let tip = tooltips[code] || missingTooltip(name);
+                layer.bindTooltip(tip, { sticky: true, className: "leaflet-tooltip" });
                 layer.on('click', function() {
                   document.getElementById('country-select').value = code;
                   openPanel(code);
@@ -217,6 +226,21 @@
           document.getElementById('panel-subtitle').textContent = "Child-related harm data";
           if (usData) renderUSPanel(usData);
           else { document.getElementById('panel-content').innerHTML = 'Loading data…'; loadData().then(data => renderUSPanel(data)); }
+        } else if (countryCode === 'uk') {
+          document.getElementById('panel-subtitle').textContent = "Partial overall homicide data (not child-specific)";
+          document.getElementById('panel-content').innerHTML = `
+            <div class="availability">
+              <strong>Published figures (England & Wales, recent years, overall homicide):</strong><br>
+              Victims: ~67% White, 17% Black, 16% Other.<br>
+              Principal suspects: ~65% White, 20% Black, 9% Asian.<br>
+              Strong same-ethnicity pattern (White victims ~89% same; Black ~60%).<br>
+              Black victimization rate roughly 4× White rate.
+            </div>
+            <div class="no-data-message">
+              ✕ No equivalent published child-specific victim-race × offender-race cross-tabs of the kind available in the US NCVS.
+            </div>
+            <div class="legend"><span class="red-x">✕</span> No official data published / not provided for the child-focused categories</div>
+          `;
         } else {
           document.getElementById('panel-subtitle').textContent = "No official child-harm data published";
           document.getElementById('panel-content').innerHTML = `
@@ -251,7 +275,7 @@
           </select>
           <div id="results"></div>
           <div class="availability">
-            <strong>Data completeness:</strong> United States is the highest among tracked countries but still limited (orange / 20–40%). Especially weak on perpetrator demographics and victim × perpetrator cross-tabs for child cases.
+            <strong>Data completeness:</strong> United States is the highest among tracked countries (yellow / 40–60%). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.
           </div>
           <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           <div class="notes" id="notes-area"></div>
