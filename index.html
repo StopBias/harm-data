@@ -158,21 +158,21 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Load the GeoJSON file with better error handling
-      fetch('us.geojson')
+      // Load a higher-quality simplified US outline from a public source
+      // This is a commonly used, clean GeoJSON of the United States
+      fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
         .then(function(response) {
-          if (!response.ok) {
-            throw new Error('Could not load us.geojson (status ' + response.status + ')');
-          }
+          if (!response.ok) throw new Error('Failed to load outline');
           return response.json();
         })
         .then(function(data) {
+          // Combine all states into one layer so the whole country is clickable
           const usaLayer = L.geoJSON(data, {
             style: {
               color: "#0cc0df",
-              weight: 2.5,
+              weight: 1.5,
               fillColor: "#0cc0df",
-              fillOpacity: 0.28
+              fillOpacity: 0.25
             }
           }).addTo(map);
 
@@ -183,7 +183,7 @@
         })
         .catch(function(err) {
           console.error(err);
-          alert("Map outline failed to load. Please check the us.geojson file.");
+          alert("Could not load the improved outline. Falling back...");
         });
 
       map.on('click', function() {
