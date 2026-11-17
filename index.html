@@ -158,37 +158,29 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Contiguous United States
-      const usLayer = L.rectangle([[24.5, -125], [49.5, -66]], {
-        color: "#0cc0df",
-        weight: 3,
-        fillColor: "#0cc0df",
-        fillOpacity: 0.25
-      }).addTo(map);
+      // Load the external GeoJSON file
+      fetch('us.geojson')
+        .then(response => response.json())
+        .then(data => {
+          const usaLayer = L.geoJSON(data, {
+            style: {
+              color: "#0cc0df",
+              weight: 2.5,
+              fillColor: "#0cc0df",
+              fillOpacity: 0.25
+            }
+          }).addTo(map);
 
-      // Alaska
-      const akLayer = L.rectangle([[51, -170], [72, -130]], {
-        color: "#0cc0df",
-        weight: 3,
-        fillColor: "#0cc0df",
-        fillOpacity: 0.25
-      }).addTo(map);
+          usaLayer.on('click', function(e) {
+            L.DomEvent.stopPropagation(e);
+            document.getElementById('data-panel').classList.add('open');
+          });
+        })
+        .catch(err => {
+          console.error("Could not load us.geojson", err);
+        });
 
-      function openPanel() {
-        document.getElementById('data-panel').classList.add('open');
-      }
-
-      usLayer.on('click', function (e) {
-        L.DomEvent.stopPropagation(e);
-        openPanel();
-      });
-
-      akLayer.on('click', function (e) {
-        L.DomEvent.stopPropagation(e);
-        openPanel();
-      });
-
-      map.on('click', function () {
+      map.on('click', function() {
         closePanel();
       });
     });
