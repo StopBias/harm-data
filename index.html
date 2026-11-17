@@ -19,10 +19,16 @@
     header {
       background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-      padding: 0.9rem 1.5rem;
+      padding: 0.85rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
     }
 
     .logo {
@@ -31,29 +37,29 @@
       letter-spacing: -0.02em;
     }
 
-    .logo .stop {
-      color: #000000;
-    }
+    .logo .stop { color: #000000; }
+    .logo .bias { color: #0cc0df; }
 
-    .logo .bias {
-      color: #0cc0df;
+    .tagline {
+      font-size: 0.95rem;
+      color: #6b7280;
+      font-weight: 500;
     }
 
     .badge {
       background: #0cc0df;
       color: white;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      padding: 0.2rem 0.55rem;
+      padding: 0.18rem 0.5rem;
       border-radius: 999px;
-      margin-left: 0.6rem;
-      vertical-align: middle;
+      margin-left: 0.4rem;
     }
 
     #map {
       height: calc(100vh - 57px);
       width: 100%;
-      background: #f8fafc;
+      background: #f1f5f9;
     }
 
     /* Side panel */
@@ -65,7 +71,7 @@
       height: calc(100vh - 57px);
       background: #ffffff;
       border-left: 1px solid #e5e7eb;
-      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.08);
       padding: 1.75rem;
       overflow-y: auto;
       transition: right 0.3s ease;
@@ -100,12 +106,10 @@
       line-height: 1;
     }
 
-    .close-btn:hover {
-      color: #111;
-    }
+    .close-btn:hover { color: #111; }
 
     h3 {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: #6b7280;
@@ -149,9 +153,12 @@
 <body>
 
   <header>
-    <div class="logo">
-      <span class="stop">Stop</span><span class="bias">Bias</span>
-      <span class="badge">Beta</span>
+    <div class="brand">
+      <div class="logo">
+        <span class="stop">Stop</span><span class="bias">Bias</span>
+        <span class="badge">Beta</span>
+      </div>
+      <div class="tagline">Harm Data Explorer</div>
     </div>
   </header>
 
@@ -194,35 +201,79 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map', {
-      zoomControl: true
-    }).setView([39.5, -98], 4);
+    // Wait until the page is fully ready
+    document.addEventListener("DOMContentLoaded", function() {
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-      maxZoom: 18
-    }).addTo(map);
+      const map = L.map('map').setView([39.5, -98], 4);
 
-    // Better simplified outline of contiguous US (includes Great Lakes region more accurately)
-    const contiguousUSA = {
-      "type": "Feature",
-      "properties": { "name": "Contiguous United States" },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[
-          [-124.7,48.4],[-123.1,46.2],[-124.2,42.8],[-124.4,40.0],
-          [-122.4,37.2],[-120.5,34.5],[-117.1,32.5],[-114.6,32.7],
-          [-111.0,31.3],[-108.2,31.8],[-106.6,31.8],[-103.0,29.1],
-          [-100.5,28.5],[-97.4,25.9],[-97.2,25.9],[-94.8,29.3],
-          [-93.5,29.8],[-91.0,30.0],[-88.9,30.3],[-87.5,30.2],
-          [-85.5,29.9],[-84.9,29.7],[-83.5,28.0],[-82.5,26.5],
-          [-81.7,24.5],[-80.3,25.2],[-80.1,26.8],[-81.3,30.3],
-          [-81.5,31.0],[-81.0,32.0],[-80.8,33.9],[-79.0,35.2],
-          [-76.5,36.5],[-75.7,37.2],[-76.0,38.2],[-75.5,39.2],
-          [-74.9,39.3],[-74.2,40.5],[-73.9,40.9],[-72.0,41.3],
-          [-70.5,41.7],[-70.0,42.0],[-70.6,43.1],[-68.8,44.2],
-          [-67.1,44.8],[-66.9,44.8],[-67.5,46.0],[-68.0,47.3],
-          [-69.2,47.5],[-70.5,46.5],[-71.5,45.3],[-73.5,45.0],
-          [-74.5,44.7],[-76.5,44.0],[-79.0,43.3],[-82.0,42.5],
-          [-83.0,42.0],[-84.5,41.7],[-86.5,42.5],[-87.5,43.5],
-          [-89.0,44.0],[-90.5,44.5],[-92.0,45.0],[-93.5,46.0],
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      // Simplified but improved contiguous US outline
+      const usaCoords = [[
+        [-124.7,48.4],[-123.0,46.0],[-124.2,42.5],[-124.4,40.0],
+        [-122.0,37.0],[-120.0,34.5],[-117.0,32.5],[-114.5,32.7],
+        [-111.0,31.3],[-108.0,31.8],[-106.5,31.8],[-103.0,29.0],
+        [-100.0,28.5],[-97.5,26.0],[-97.0,25.9],[-94.0,29.5],
+        [-90.0,30.0],[-87.5,30.2],[-85.0,29.7],[-82.5,27.0],
+        [-81.5,25.0],[-80.5,25.2],[-80.0,26.5],[-81.5,30.5],
+        [-81.0,32.0],[-80.5,34.0],[-76.0,35.5],[-75.5,37.5],
+        [-76.0,39.0],[-75.0,39.5],[-74.0,40.5],[-71.0,41.5],
+        [-70.0,42.0],[-70.5,43.0],[-68.5,44.0],[-67.0,44.8],
+        [-66.9,44.8],[-68.0,47.0],[-69.5,47.5],[-71.0,45.5],
+        [-73.5,45.0],[-76.0,44.0],[-79.0,43.2],[-82.5,42.3],
+        [-84.5,41.7],[-87.0,43.0],[-90.0,44.0],[-93.0,45.5],
+        [-96.0,47.0],[-98.0,49.0],[-110.0,49.0],[-122.0,49.0],
+        [-124.7,48.4]
+      ]];
+
+      // Simple Alaska
+      const alaskaCoords = [[
+        [-168,54],[-160,55],[-152,58],[-146,61],[-141,60],
+        [-141,63],[-145,66],[-155,65],[-162,63],[-168,58],[-168,54]
+      ]];
+
+      const usaLayer = L.polygon(usaCoords, {
+        color: "#0cc0df",
+        weight: 2.5,
+        fillColor: "#0cc0df",
+        fillOpacity: 0.22
+      }).addTo(map);
+
+      const alaskaLayer = L.polygon(alaskaCoords, {
+        color: "#0cc0df",
+        weight: 2.5,
+        fillColor: "#0cc0df",
+        fillOpacity: 0.22
+      }).addTo(map);
+
+      // Click handlers
+      function openPanel() {
+        document.getElementById('data-panel').classList.add('open');
+      }
+
+      usaLayer.on('click', function(e) {
+        L.DomEvent.stopPropagation(e);
+        openPanel();
+      });
+
+      alaskaLayer.on('click', function(e) {
+        L.DomEvent.stopPropagation(e);
+        openPanel();
+      });
+
+      // Close panel when clicking the map
+      map.on('click', function() {
+        document.getElementById('data-panel').classList.remove('open');
+      });
+
+    });
+
+    function closePanel() {
+      document.getElementById('data-panel').classList.remove('open');
+    }
+  </script>
+</body>
+</html>
