@@ -18,7 +18,9 @@
       padding: 0.85rem 1.5rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
+    .brand { display: flex; align-items: center; }
     .logo { font-size: 1.35rem; font-weight: 700; }
     .logo .stop { color: #000000; }
     .logo .bias { color: #0cc0df; }
@@ -36,6 +38,16 @@
       padding: 0.18rem 0.5rem;
       border-radius: 999px;
       margin-left: 0.5rem;
+    }
+    .country-select {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: white;
+    }
+    .country-select option:disabled {
+      color: #9ca3af;
     }
     #map {
       height: calc(100vh - 57px);
@@ -103,11 +115,24 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <span class="stop">Stop</span><span class="bias">Bias</span>
-      <span class="badge">Beta</span>
+    <div class="brand">
+      <div class="logo">
+        <span class="stop">Stop</span><span class="bias">Bias</span>
+        <span class="badge">Beta</span>
+      </div>
+      <div class="tagline">Harm Data Explorer</div>
     </div>
-    <div class="tagline">Harm Data Explorer</div>
+    <select id="country-select" class="country-select">
+      <option value="world" disabled>World (coming)</option>
+      <option value="us" selected>United States</option>
+      <option value="ca" disabled>Canada (coming)</option>
+      <option value="uk" disabled>United Kingdom (coming)</option>
+      <option value="de" disabled>Germany (coming)</option>
+      <option value="fr" disabled>France (coming)</option>
+      <option value="au" disabled>Australia (coming)</option>
+      <option value="nz" disabled>New Zealand (coming)</option>
+      <option value="za" disabled>South Africa (coming)</option>
+    </select>
   </header>
 
   <div id="map"></div>
@@ -115,7 +140,7 @@
   <div id="data-panel">
     <button class="close-btn" onclick="closePanel()">×</button>
     <h2>United States</h2>
-    <div class="subtitle">Juvenile victims of selected violent crimes, 2019–2023</div>
+    <div class="subtitle">Juvenile victims (ages 0–17) of selected violent crimes, 2019–2023</div>
     <div id="panel-content">Click a state to load data…</div>
   </div>
 
@@ -129,7 +154,6 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Load state outlines
       fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
         .then(r => r.json())
         .then(data => {
@@ -168,7 +192,6 @@
           });
       }
 
-      // Start loading data immediately
       loadData();
 
       function openPanel() {
@@ -193,7 +216,7 @@
         const notes = data.notes.map(n => `• ${n}`).join('<br>');
 
         document.getElementById('panel-content').innerHTML = `
-          <h3>Juvenile Victims – Race</h3>
+          <h3>Juvenile Victims (ages ${data.juvenile_victims.age_range}) – Race</h3>
           <table>
             <thead><tr><th>Group</th><th>Percent</th></tr></thead>
             <tbody>${victimsRows}</tbody>
@@ -221,6 +244,19 @@
       map.on('click', function() {
         closePanel();
       });
+
+      // Country selector (placeholder for future)
+      document.getElementById('country-select').addEventListener('change', function() {
+        if (this.value !== 'us') {
+          alert('Data for this country is not yet available.');
+          this.value = 'us';
+        }
+      });
     });
 
     function closePanel() {
+      document.getElementById('data-panel').classList.remove('open');
+    }
+  </script>
+</body>
+</html>
