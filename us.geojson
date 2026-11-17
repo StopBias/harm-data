@@ -1,199 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StopBias – Harm Data Explorer (Beta)</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "United States"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [-124.7, 48.4],
+              [-123.0, 46.2],
+              [-124.2, 42.8],
+              [-124.4, 40.0],
+              [-122.5, 37.0],
+              [-120.5, 34.5],
+              [-117.2, 32.5],
+              [-114.6, 32.7],
+              [-111.0, 31.3],
+              [-108.2, 31.8],
+              [-106.5, 31.8],
+              [-103.0, 29.0],
+              [-100.0, 28.5],
+              [-97.5, 26.0],
+              [-97.0, 25.9],
+              [-94.5, 29.3],
+              [-91.0, 30.0],
+              [-88.0, 30.2],
+              [-85.0, 29.7],
+              [-82.5, 27.5],
+              [-81.5, 25.0],
+              [-80.5, 25.2],
+              [-80.0, 26.5],
+              [-81.5, 30.5],
+              [-81.0, 32.0],
+              [-80.5, 34.0],
+              [-76.5, 35.5],
+              [-75.5, 37.5],
+              [-76.0, 39.0],
+              [-75.0, 39.5],
+              [-74.0, 40.5],
+              [-71.0, 41.5],
+              [-70.0, 42.0],
+              [-70.5, 43.0],
+              [-68.5, 44.0],
+              [-67.0, 44.8],
+              [-66.9, 44.8],
+              [-68.0, 47.0],
+              [-69.5, 47.5],
+              [-71.0, 45.5],
+              [-73.5, 45.0],
+              [-76.0, 44.0],
+              [-79.0, 43.2],
+              [-82.5, 42.3],
+              [-84.5, 41.7],
+              [-87.0, 43.0],
+              [-90.0, 44.0],
+              [-93.0, 45.5],
+              [-96.0, 47.0],
+              [-98.0, 49.0],
+              [-110.0, 49.0],
+              [-122.0, 49.0],
+              [-124.7, 48.4]
+            ]
+          ],
+          [
+            [
+              [-168.0, 54.0],
+              [-160.0, 55.0],
+              [-152.0, 58.0],
+              [-146.0, 61.0],
+              [-141.0, 60.0],
+              [-141.0, 64.0],
+              [-148.0, 66.0],
+              [-156.0, 65.0],
+              [-163.0, 63.0],
+              [-168.0, 58.0],
+              [-168.0, 54.0]
+            ]
+          ]
+        ]
+      }
     }
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0.85rem 1.5rem;
-      display: flex;
-      align-items: center;
-    }
-    .logo { font-size: 1.35rem; font-weight: 700; }
-    .logo .stop { color: #000000; }
-    .logo .bias { color: #0cc0df; }
-    .tagline {
-      font-size: 0.95rem;
-      color: #6b7280;
-      margin-left: 0.85rem;
-      font-weight: 500;
-    }
-    .badge {
-      background: #0cc0df;
-      color: white;
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 0.18rem 0.5rem;
-      border-radius: 999px;
-      margin-left: 0.5rem;
-    }
-    #map {
-      height: calc(100vh - 57px);
-      width: 100%;
-      background: #f1f5f9;
-    }
-    #data-panel {
-      position: fixed;
-      top: 57px;
-      right: -440px;
-      width: 420px;
-      height: calc(100vh - 57px);
-      background: #ffffff;
-      border-left: 1px solid #e5e7eb;
-      box-shadow: -4px 0 24px rgba(0,0,0,0.10);
-      padding: 1.75rem;
-      overflow-y: auto;
-      transition: right 0.3s ease;
-      z-index: 3000;
-    }
-    #data-panel.open { right: 0; }
-    #data-panel h2 { font-size: 1.4rem; margin-bottom: 0.2rem; }
-    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1.5rem; }
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.6rem;
-      color: #9ca3af;
-      cursor: pointer;
-    }
-    .close-btn:hover { color: #111; }
-    h3 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #6b7280;
-      margin: 1.6rem 0 0.5rem 0;
-    }
-    .placeholder {
-      background: #f8fafc;
-      border: 1px dashed #d1d5db;
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 0.95rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-    ul {
-      padding-left: 1.2rem;
-      color: #374151;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-    .source-note {
-      margin-top: 2rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid #e5e7eb;
-      font-size: 0.8rem;
-      color: #6b7280;
-      line-height: 1.45;
-    }
-    .accent { color: #0cc0df; font-weight: 600; }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <span class="stop">Stop</span><span class="bias">Bias</span>
-      <span class="badge">Beta</span>
-    </div>
-    <div class="tagline">Harm Data Explorer</div>
-  </header>
-
-  <div id="map"></div>
-
-  <div id="data-panel">
-    <button class="close-btn" onclick="closePanel()">×</button>
-    <h2>United States</h2>
-    <div class="subtitle">Child-related violent crime data</div>
-
-    <h3>Current Status</h3>
-    <div class="placeholder">
-      We are preparing the first official summary tables from FBI NIBRS, NCVS, and OJJDP sources.<br><br>
-      Detailed tables will be added in stages.
-    </div>
-
-    <h3>Data We Are Targeting</h3>
-    <ul>
-      <li>Victim age</li>
-      <li>Victim race / ethnicity</li>
-      <li>Offender race / ethnicity</li>
-      <li>Crime type</li>
-      <li>Sex of victim and offender (when reported)</li>
-    </ul>
-
-    <h3>Primary Sources</h3>
-    <ul>
-      <li>FBI National Incident-Based Reporting System (NIBRS)</li>
-      <li>FBI Child Victimization reports</li>
-      <li>National Crime Victimization Survey (NCVS)</li>
-      <li>OJJDP Statistical Briefing Book</li>
-    </ul>
-
-    <div class="source-note">
-      All numbers will be clearly sourced and documented.<br>
-      Early public beta of the <span class="accent">StopBias</span> platform.
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const map = L.map('map').setView([39.5, -98], 4);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap',
-        maxZoom: 18
-      }).addTo(map);
-
-      // Load a higher-quality simplified US outline from a public source
-      // This is a commonly used, clean GeoJSON of the United States
-      fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
-        .then(function(response) {
-          if (!response.ok) throw new Error('Failed to load outline');
-          return response.json();
-        })
-        .then(function(data) {
-          // Combine all states into one layer so the whole country is clickable
-          const usaLayer = L.geoJSON(data, {
-            style: {
-              color: "#0cc0df",
-              weight: 1.5,
-              fillColor: "#0cc0df",
-              fillOpacity: 0.25
-            }
-          }).addTo(map);
-
-          usaLayer.on('click', function(e) {
-            L.DomEvent.stopPropagation(e);
-            document.getElementById('data-panel').classList.add('open');
-          });
-        })
-        .catch(function(err) {
-          console.error(err);
-          alert("Could not load the improved outline. Falling back...");
-        });
-
-      map.on('click', function() {
-        closePanel();
-      });
-    });
-
-    function closePanel() {
-      document.getElementById('data-panel').classList.remove('open');
-    }
-  </script>
-</body>
-</html>
+  ]
+}
