@@ -46,9 +46,7 @@
       border-radius: 6px;
       background: white;
     }
-    .country-select option:disabled {
-      color: #9ca3af;
-    }
+    .country-select option:disabled { color: #9ca3af; }
     #map {
       height: calc(100vh - 57px);
       width: 100%;
@@ -57,8 +55,8 @@
     #data-panel {
       position: fixed;
       top: 57px;
-      right: -440px;
-      width: 420px;
+      right: -460px;
+      width: 440px;
       height: calc(100vh - 57px);
       background: #ffffff;
       border-left: 1px solid #e5e7eb;
@@ -70,7 +68,7 @@
     }
     #data-panel.open { right: 0; }
     #data-panel h2 { font-size: 1.4rem; margin-bottom: 0.2rem; }
-    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1.25rem; }
+    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1rem; }
     .close-btn {
       position: absolute;
       top: 1rem;
@@ -82,12 +80,21 @@
       cursor: pointer;
     }
     .close-btn:hover { color: #111; }
+    label { font-size: 0.85rem; color: #374151; display: block; margin-bottom: 0.3rem; }
+    select {
+      width: 100%;
+      padding: 0.45rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+    }
     h3 {
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: #6b7280;
-      margin: 1.5rem 0 0.6rem 0;
+      margin: 1.2rem 0 0.6rem 0;
     }
     table {
       width: 100%;
@@ -125,13 +132,15 @@
     <select id="country-select" class="country-select">
       <option value="world" disabled>World (coming)</option>
       <option value="us" selected>United States</option>
-      <option value="ca" disabled>Canada (coming)</option>
-      <option value="uk" disabled>United Kingdom (coming)</option>
-      <option value="de" disabled>Germany (coming)</option>
-      <option value="fr" disabled>France (coming)</option>
       <option value="au" disabled>Australia (coming)</option>
+      <option value="ca" disabled>Canada (coming)</option>
+      <option value="fr" disabled>France (coming)</option>
+      <option value="de" disabled>Germany (coming)</option>
+      <option value="it" disabled>Italy (coming)</option>
       <option value="nz" disabled>New Zealand (coming)</option>
       <option value="za" disabled>South Africa (coming)</option>
+      <option value="es" disabled>Spain (coming)</option>
+      <option value="uk" disabled>United Kingdom (coming)</option>
     </select>
   </header>
 
@@ -140,7 +149,7 @@
   <div id="data-panel">
     <button class="close-btn" onclick="closePanel()">×</button>
     <h2>United States</h2>
-    <div class="subtitle">Juvenile victims (ages 0–17) of selected violent crimes, 2019–2023</div>
+    <div class="subtitle">Victim race and perceived offender race (ages 12–17)</div>
     <div id="panel-content">Click a state to load data…</div>
   </div>
 
@@ -177,17 +186,13 @@
       function loadData() {
         return fetch('us-data.json')
           .then(r => {
-            if (!r.ok) throw new Error('us-data.json not found (status ' + r.status + ')');
+            if (!r.ok) throw new Error('us-data.json not found');
             return r.json();
           })
-          .then(data => {
-            usData = data;
-            return data;
-          })
+          .then(data => { usData = data; return data; })
           .catch(err => {
-            console.error(err);
             document.getElementById('panel-content').innerHTML =
-              '<p class="error">Could not load us-data.json<br>' + err.message + '</p>';
+              '<p class="error">Could not load data: ' + err.message + '</p>';
             throw err;
           });
       }
@@ -205,39 +210,43 @@
       }
 
       function renderPanel(data) {
-        const victimsRows = data.juvenile_victims.race
-          .map(r => `<tr><td>${r.group}</td><td>${r.percent}%</td></tr>`)
+        const options = data.victim_race_options
+          .map(r => `<option value="${r}">${r}</option>`)
           .join('');
-
-        const offenderRows = data.offenders.race
-          .map(r => `<tr><td>${r.group}</td><td>${r.percent}%</td></tr>`)
-          .join('');
-
-        const notes = data.notes.map(n => `• ${n}`).join('<br>');
 
         document.getElementById('panel-content').innerHTML = `
-          <h3>Juvenile Victims (ages ${data.juvenile_victims.age_range}) – Race</h3>
-          <table>
-            <thead><tr><th>Group</th><th>Percent</th></tr></thead>
-            <tbody>${victimsRows}</tbody>
-          </table>
-          <p style="font-size:0.85rem;color:#6b7280;margin:0.4rem 0 1rem 0;">
-            Total known juvenile victims: ${data.juvenile_victims.total_known.toLocaleString()}
-          </p>
+          <label for="victim-race">Select victim race/ethnicity (ages 12–17):</label>
+          <select id="victim-race">${options}</select>
+          <div id="offender-table"></div>
+          <div class="notes" id="notes-area"></div>
+        `;
 
-          <h3>Offenders – Race</h3>
-          <table>
-            <thead><tr><th>Group</th><th>Percent</th></tr></thead>
-            <tbody>${offenderRows}</tbody>
-          </table>
-          <p style="font-size:0.85rem;color:#6b7280;margin:0.4rem 0 1rem 0;">
-            ${data.offenders.age_note}
-          </p>
+        const select = document.getElementById('victim-race');
+        const updateTable = () => {
+          const selected = select.value;
+          const row = data.cross_tab_12_17[selected];
+          if (!row) return;
 
-          <div class="notes">
-            <strong>Source:</strong> <a href="${data.source_url}" target="_blank" rel="noopener">${data.source}</a><br><br>
-            ${notes}
-          </div>
+          const rows = Object.entries(row)
+            .map(([offRace, pct]) => `<tr><td>${offRace}</td><td>${pct}%</td></tr>`)
+            .join('');
+
+          document.getElementById('offender-table').innerHTML = `
+            <h3>Perceived offender race (for ${selected} victims, ages 12–17)</h3>
+            <table>
+              <thead><tr><th>Offender race/ethnicity</th><th>Percent</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          `;
+        };
+
+        select.addEventListener('change', updateTable);
+        updateTable();
+
+        const notes = data.notes.map(n => `• ${n}`).join('<br>');
+        document.getElementById('notes-area').innerHTML = `
+          <strong>Source:</strong> <a href="${data.source_url}" target="_blank" rel="noopener">${data.source}</a><br><br>
+          ${notes}
         `;
       }
 
@@ -245,7 +254,6 @@
         closePanel();
       });
 
-      // Country selector (placeholder for future)
       document.getElementById('country-select').addEventListener('change', function() {
         if (this.value !== 'us') {
           alert('Data for this country is not yet available.');
