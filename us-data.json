@@ -1,32 +1,30 @@
 {
-  "source": "FBI Child Victimization, 2019–2023 (NIBRS)",
-  "source_url": "https://cde.ucr.cjis.gov/LATEST/resources/reports/Child%20Victimization%202019-2023.pdf",
+  "source": "National Crime Victimization Survey (NCVS), Race and Hispanic Origin of Victims and Offenders, 2012–15 (BJS)",
+  "source_url": "https://bjs.ojp.gov/library/publications/race-and-hispanic-origin-victims-and-offenders-2012-15",
   "notes": [
-    "Covers three offenses only: murder and nonnegligent manslaughter, kidnapping/abduction, and aggravated assault.",
-    "Juveniles defined as ages 0–17 (aggregated).",
-    "NIBRS coverage averaged roughly 61–65% of the U.S. population during this period.",
-    "Unknown / not reported rates are higher for offender demographics than for victims.",
-    "Full age-group × race cross-tabs are not available in the published summary report."
+    "Data are for victims ages 12–17 (not ages 0–11).",
+    "Offender race is based on the victim’s perception, not verified identification by law enforcement.",
+    "Covers nonfatal violent crime: rape/sexual assault, robbery, aggravated assault, and simple assault.",
+    "Not limited to the three serious offenses in the FBI Child Victimization report.",
+    "The published FBI NIBRS Child Victimization summary does not contain a victim-race × offender-race cross-tab for under-18 victims.",
+    "Percentages are approximate from the published tables and may not sum to 100% due to other/unknown categories."
   ],
-  "juvenile_victims": {
-    "age_range": "0–17",
-    "total_known": 411350,
-    "race": [
-      { "group": "White", "percent": 49.8 },
-      { "group": "Black or African American", "percent": 47.5 },
-      { "group": "American Indian or Alaska Native", "percent": 1.4 },
-      { "group": "Asian", "percent": 1.1 },
-      { "group": "Native Hawaiian or Other Pacific Islander", "percent": 0.3 }
-    ]
-  },
-  "offenders": {
-    "race": [
-      { "group": "White", "percent": 51.2 },
-      { "group": "Black or African American", "percent": 45.8 },
-      { "group": "American Indian or Alaska Native", "percent": 1.5 },
-      { "group": "Asian", "percent": 1.1 },
-      { "group": "Native Hawaiian or Other Pacific Islander", "percent": 0.4 }
-    ],
-    "age_note": "30.4% of known offenders were ages 9–17. Most common single age was 17."
+  "victim_race_options": ["White", "Black", "Hispanic"],
+  "cross_tab_12_17": {
+    "White": {
+      "White": 76.6,
+      "Black": 9.8,
+      "Hispanic": 13.7
+    },
+    "Black": {
+      "White": 13.0,
+      "Black": 74.3,
+      "Hispanic": 12.8
+    },
+    "Hispanic": {
+      "White": 19.5,
+      "Black": 26.6,
+      "Hispanic": 53.9
+    }
   }
 }
