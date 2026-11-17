@@ -3,11 +3,13 @@
   "source_url": "https://cde.ucr.cjis.gov/LATEST/resources/reports/Child%20Victimization%202019-2023.pdf",
   "notes": [
     "Covers three offenses only: murder and nonnegligent manslaughter, kidnapping/abduction, and aggravated assault.",
-    "Juveniles defined as ages 0–17.",
+    "Juveniles defined as ages 0–17 (aggregated).",
     "NIBRS coverage averaged roughly 61–65% of the U.S. population during this period.",
-    "Unknown / not reported rates are higher for offender demographics than for victims."
+    "Unknown / not reported rates are higher for offender demographics than for victims.",
+    "Full age-group × race cross-tabs are not available in the published summary report."
   ],
   "juvenile_victims": {
+    "age_range": "0–17",
     "total_known": 411350,
     "race": [
       { "group": "White", "percent": 49.8 },
