@@ -1,30 +1,23 @@
 {
-  "source": "National Crime Victimization Survey (NCVS), Race and Hispanic Origin of Victims and Offenders, 2012–15 (BJS)",
-  "source_url": "https://bjs.ojp.gov/library/publications/race-and-hispanic-origin-victims-and-offenders-2012-15",
+  "source_ncvs": "National Crime Victimization Survey (NCVS), Race and Hispanic Origin of Victims and Offenders, 2012–15 (BJS)",
+  "source_ncvs_url": "https://bjs.ojp.gov/library/publications/race-and-hispanic-origin-victims-and-offenders-2012-15",
+  "source_homicide": "FBI Supplementary Homicide Reports via OJJDP Statistical Briefing Book / 2022 National Report",
+  "source_homicide_url": "https://www.ojjdp.gov/ojstatbb/victims/",
   "notes": [
-    "Data are for victims ages 12–17 (not ages 0–11).",
-    "Offender race is based on the victim’s perception, not verified identification by law enforcement.",
-    "Covers nonfatal violent crime: rape/sexual assault, robbery, aggravated assault, and simple assault.",
-    "Not limited to the three serious offenses in the FBI Child Victimization report.",
-    "The published FBI NIBRS Child Victimization summary does not contain a victim-race × offender-race cross-tab for under-18 victims.",
-    "Percentages are approximate from the published tables and may not sum to 100% due to other/unknown categories."
+    "NCVS data: nonfatal violent crime (rape/sexual assault, robbery, aggravated assault, simple assault) for ages 12–17. Offender race is the victim’s perception.",
+    "Homicide rates: published youth (under 18) victimization rates by race from FBI SHR/OJJDP. These are rates of being killed, not the race of the offender.",
+    "No published national summary provides the victim-race × offender-race cross-tab for child homicide victims.",
+    "Red ✕ indicates data that is not published in available official summaries."
   ],
   "victim_race_options": ["White", "Black", "Hispanic"],
-  "cross_tab_12_17": {
-    "White": {
-      "White": 76.6,
-      "Black": 9.8,
-      "Hispanic": 13.7
-    },
-    "Black": {
-      "White": 13.0,
-      "Black": 74.3,
-      "Hispanic": 12.8
-    },
-    "Hispanic": {
-      "White": 19.5,
-      "Black": 26.6,
-      "Hispanic": 53.9
-    }
+  "ncvs_cross_tab_12_17": {
+    "White": { "White": 76.6, "Black": 9.8, "Hispanic": 13.7 },
+    "Black": { "White": 13.0, "Black": 74.3, "Hispanic": 12.8 },
+    "Hispanic": { "White": 19.5, "Black": 26.6, "Hispanic": 53.9 }
+  },
+  "homicide_rates_per_100k": {
+    "note": "Approximate rates for youth ages 0–17, around 2019 (OJJDP/FBI SHR). Exact year and definition vary slightly by table.",
+    "White": 1.0,
+    "Black": 5.9
   }
 }
