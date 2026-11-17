@@ -9,23 +9,63 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Josefin Sans', system-ui, sans-serif; background: #fff; color: #1a1a1a; }
-    header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 1.2rem; }
-    .logo-img { height: 48px; width: auto; }
-    .title-block { text-align: center; }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-img { height: 46px; width: auto; flex-shrink: 0; }
+    .title-block {
+      flex: 1;
+      text-align: center;
+      margin: 0 1rem;
+    }
     .main-title {
-      font-size: 2rem;
+      font-size: 2.15rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.05;
     }
     .main-title .black { color: #000; }
     .main-title .blue { color: #0cc0df; }
-    .badge { background: #0cc0df; color: white; font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 999px; margin-left: 0.5rem; vertical-align: middle; }
-    .country-select { font-size: 0.82rem; padding: 0.3rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; background: white; max-width: 200px; }
+    .badge {
+      background: #0cc0df;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .country-select {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: white;
+      max-width: 200px;
+      flex-shrink: 0;
+    }
     .country-select option:disabled { color: #9ca3af; }
-    #map { height: calc(100vh - 68px); width: 100%; background: #f1f5f9; }
-    #data-panel { position: fixed; top: 68px; right: -460px; width: 440px; height: calc(100vh - 68px); background: #fff; border-left: 1px solid #e5e7eb; box-shadow: -4px 0 24px rgba(0,0,0,0.10); padding: 1.75rem; overflow-y: auto; transition: right 0.3s ease; z-index: 3000; }
+    #map { height: calc(100vh - 66px); width: 100%; background: #f1f5f9; }
+    #data-panel {
+      position: fixed;
+      top: 66px;
+      right: -460px;
+      width: 440px;
+      height: calc(100vh - 66px);
+      background: #fff;
+      border-left: 1px solid #e5e7eb;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.10);
+      padding: 1.75rem;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 3000;
+    }
     #data-panel.open { right: 0; }
     #data-panel h2 { font-size: 1.35rem; margin-bottom: 0.2rem; font-weight: 700; }
     #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1rem; }
@@ -49,13 +89,11 @@
 </head>
 <body>
   <header>
-    <div class="brand">
-      <img src="Stop%20Bias%20Logo%20no%20tag%20980%20X%20200.png" alt="StopBias" class="logo-img">
-      <div class="title-block">
-        <div class="main-title">
-          <span class="black">Child-</span><span class="blue">Harm Data</span><span class="black"> Explorer</span>
-          <span class="badge">Beta</span>
-        </div>
+    <img src="Stop%20Bias%20Logo%20no%20tag%20980%20X%20200.png" alt="StopBias" class="logo-img">
+    <div class="title-block">
+      <div class="main-title">
+        <span class="black">Child-</span><span class="blue">Harm Data</span><span class="black"> Explorer</span>
+        <span class="badge">Beta</span>
       </div>
     </div>
     <select id="country-select" class="country-select">
