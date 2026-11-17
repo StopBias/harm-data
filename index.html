@@ -58,7 +58,7 @@
     }
     #data-panel.open { right: 0; }
     #data-panel h2 { font-size: 1.4rem; margin-bottom: 0.2rem; }
-    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1.25rem; }
     .close-btn {
       position: absolute;
       top: 1rem;
@@ -75,31 +75,29 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: #6b7280;
-      margin: 1.6rem 0 0.5rem 0;
+      margin: 1.5rem 0 0.6rem 0;
     }
-    .placeholder {
-      background: #f8fafc;
-      border: 1px dashed #d1d5db;
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 0.95rem;
-      color: #4b5563;
-      line-height: 1.5;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
     }
-    ul {
-      padding-left: 1.2rem;
-      color: #374151;
-      font-size: 0.95rem;
-      line-height: 1.55;
+    th, td {
+      text-align: left;
+      padding: 0.45rem 0.3rem;
+      border-bottom: 1px solid #e5e7eb;
     }
-    .source-note {
-      margin-top: 2rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid #e5e7eb;
+    th { color: #6b7280; font-weight: 500; }
+    .notes {
       font-size: 0.8rem;
       color: #6b7280;
       line-height: 1.45;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
     }
+    .notes a { color: #0cc0df; }
     .accent { color: #0cc0df; font-weight: 600; }
   </style>
 </head>
@@ -117,35 +115,8 @@
   <div id="data-panel">
     <button class="close-btn" onclick="closePanel()">×</button>
     <h2>United States</h2>
-    <div class="subtitle">Child-related violent crime data</div>
-
-    <h3>Current Status</h3>
-    <div class="placeholder">
-      We are preparing the first official summary tables from FBI NIBRS, NCVS, and OJJDP sources.<br><br>
-      Detailed tables will be added in stages.
-    </div>
-
-    <h3>Data We Are Targeting</h3>
-    <ul>
-      <li>Victim age</li>
-      <li>Victim race / ethnicity</li>
-      <li>Offender race / ethnicity</li>
-      <li>Crime type</li>
-      <li>Sex of victim and offender (when reported)</li>
-    </ul>
-
-    <h3>Primary Sources</h3>
-    <ul>
-      <li>FBI National Incident-Based Reporting System (NIBRS)</li>
-      <li>FBI Child Victimization reports</li>
-      <li>National Crime Victimization Survey (NCVS)</li>
-      <li>OJJDP Statistical Briefing Book</li>
-    </ul>
-
-    <div class="source-note">
-      All numbers will be clearly sourced and documented.<br>
-      Early public beta of the <span class="accent">StopBias</span> platform.
-    </div>
+    <div class="subtitle">Juvenile victims of selected violent crimes, 2019–2023</div>
+    <div id="panel-content">Loading data…</div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -158,15 +129,10 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Load a higher-quality simplified US outline from a public source
-      // This is a commonly used, clean GeoJSON of the United States
+      // Load improved state outlines
       fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
-        .then(function(response) {
-          if (!response.ok) throw new Error('Failed to load outline');
-          return response.json();
-        })
-        .then(function(data) {
-          // Combine all states into one layer so the whole country is clickable
+        .then(r => r.json())
+        .then(data => {
           const usaLayer = L.geoJSON(data, {
             style: {
               color: "#0cc0df",
@@ -178,13 +144,57 @@
 
           usaLayer.on('click', function(e) {
             L.DomEvent.stopPropagation(e);
-            document.getElementById('data-panel').classList.add('open');
+            openPanel();
           });
-        })
-        .catch(function(err) {
-          console.error(err);
-          alert("Could not load the improved outline. Falling back...");
         });
+
+      // Load data file once
+      let usData = null;
+      fetch('us-data.json')
+        .then(r => r.json())
+        .then(data => { usData = data; });
+
+      function openPanel() {
+        document.getElementById('data-panel').classList.add('open');
+        if (usData) renderPanel(usData);
+      }
+
+      function renderPanel(data) {
+        const victimsRows = data.juvenile_victims.race
+          .map(r => `<tr><td>${r.group}</td><td>${r.percent}%</td></tr>`)
+          .join('');
+
+        const offenderRows = data.offenders.race
+          .map(r => `<tr><td>${r.group}</td><td>${r.percent}%</td></tr>`)
+          .join('');
+
+        const notes = data.notes.map(n => `• ${n}`).join('<br>');
+
+        document.getElementById('panel-content').innerHTML = `
+          <h3>Juvenile Victims – Race</h3>
+          <table>
+            <thead><tr><th>Group</th><th>Percent</th></tr></thead>
+            <tbody>${victimsRows}</tbody>
+          </table>
+          <p style="font-size:0.85rem;color:#6b7280;margin:0.4rem 0 1rem 0;">
+            Total known juvenile victims: ${data.juvenile_victims.total_known.toLocaleString()}
+          </p>
+
+          <h3>Offenders – Race</h3>
+          <table>
+            <thead><tr><th>Group</th><th>Percent</th></tr></thead>
+            <tbody>${offenderRows}</tbody>
+          </table>
+          <p style="font-size:0.85rem;color:#6b7280;margin:0.4rem 0 1rem 0;">
+            ${data.offenders.age_note}
+          </p>
+
+          <div class="notes">
+            <strong>Source:</strong> <a href="${data.source_url}" target="_blank">${data.source}</a><br><br>
+            ${notes}
+          </div>
+        `;
+      }
 
       map.on('click', function() {
         closePanel();
