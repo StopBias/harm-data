@@ -160,12 +160,11 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const map = L.map('map', {
-        maxBounds: [[-85, -180], [85, 180]],
-        maxBoundsViscosity: 1.0,
         minZoom: 2,
         boxZoom: false,
         zoomControl: true,
-        doubleClickZoom: false
+        doubleClickZoom: false,
+        keyboard: false
       }).setView([48, 15], 4);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
