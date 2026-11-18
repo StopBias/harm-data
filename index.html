@@ -61,15 +61,16 @@
     .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
     .swatch { width: 16px; height: 16px; border-radius: 2px; border: 1px solid #ccc; }
     .leaflet-tooltip.custom-tooltip {
-      max-width: 480px !important;
+      max-width: 520px !important;
+      width: 480px !important;
       white-space: normal !important;
-      font-size: 0.88rem;
-      line-height: 1.45;
-      padding: 0.75rem 0.9rem;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-size: 0.9rem !important;
+      line-height: 1.45 !important;
+      padding: 0.8rem 1rem !important;
+      background: #ffffff !important;
+      border: 1px solid #e5e7eb !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
     }
   </style>
 </head>
@@ -111,11 +112,12 @@
   <div id="map"></div>
   <div class="map-legend">
     <strong>Data completeness</strong>
-    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> Total failure (0–20%)</div>
-    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> Very bad (20–40%)</div>
-    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> Acceptable (40–60%)</div>
-    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> Very good (60–80%)</div>
-    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> Excellent (80–100%)</div>
+    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> No published data</div>
+    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> Very limited</div>
+    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> Limited</div>
+    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> Moderate</div>
+    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> High completeness</div>
+    <div style="font-size:0.72rem;color:#6b7280;margin-top:0.5rem;line-height:1.3;">Absence of these data is not neutral. Without published victim and perpetrator demographics, patterns of harm to children remain invisible and unaddressed.</div>
   </div>
 
   <div id="data-panel">
@@ -165,13 +167,15 @@
         "Switzerland": "ch"
       };
 
+      const harmNote = "Absence of these data is not neutral. Without published victim and perpetrator demographics, patterns of harm to children remain invisible and unaddressed.";
+
       const tooltips = {
-        us: "<b>United States</b><br>Highest data completeness among tracked countries (Acceptable / 40–60%). Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race (FBI/OJJDP). Still missing detailed child-specific victim × offender race cross-tabs for homicide. The gaps limit understanding of harms to children.",
-        uk: "<b>United Kingdom</b> (England & Wales)<br>Partial data (Very bad / 20–40%). Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other; principal suspects ~65% White, 20% Black, 9% Asian (recent years). Strong same-ethnicity pattern. Black victimization rate ~4× White. No equivalent child-focused victim × offender cross-tabs published."
+        us: "<b>United States</b><br>Limited completeness. Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race. Still missing detailed child-specific victim × offender race cross-tabs for homicide.<br><br>" + harmNote,
+        uk: "<b>United Kingdom</b> (England & Wales)<br>Very limited. Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other; principal suspects ~65% White, 20% Black, 9% Asian. Strong same-ethnicity pattern. Black victimization rate ~4× White. No equivalent child-focused cross-tabs.<br><br>" + harmNote
       };
 
       function missingTooltip(countryName) {
-        return "<b>" + countryName + "</b><br>No official published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims). Data completeness: Total failure (0–20%). The absence of this information limits the ability to understand and reduce harms to children.";
+        return "<b>" + countryName + "</b><br>No published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims).<br><br>" + harmNote;
       }
 
       fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
@@ -199,10 +203,11 @@
                 layer.bindTooltip(tip, {
                   sticky: true,
                   className: "custom-tooltip",
-                  direction: "auto",
-                  offset: [0, -10]
+                  direction: "bottom",
+                  offset: [0, 10]
                 });
-                layer.on('click', function() {
+                layer.on('click', function(e) {
+                  L.DomEvent.stopPropagation(e);
                   document.getElementById('country-select').value = code;
                   openPanel(code);
                 });
@@ -213,12 +218,14 @@
         .catch(err => console.error("World GeoJSON failed:", err));
 
       let usData = null;
-      function loadData() {
-        return fetch('us-data.json').then(r => { if (!r.ok) throw new Error('us-data.json not found'); return r.json(); })
-          .then(data => { usData = data; return data; })
-          .catch(err => { console.error(err); return null; });
-      }
       loadData();
+
+      function loadData() {
+        fetch('us-data.json')
+          .then(r => r.ok ? r.json() : null)
+          .then(data => { usData = data; })
+          .catch(() => { usData = null; });
+      }
 
       const countryNames = {
         us: "United States", ca: "Canada", au: "Australia", nz: "New Zealand", za: "South Africa",
@@ -228,7 +235,7 @@
         at: "Austria", ch: "Switzerland", all: "All available countries"
       };
 
-      function openPanel(countryCode) {
+      window.openPanel = function(countryCode) {
         const panel = document.getElementById('data-panel');
         panel.classList.add('open');
         document.getElementById('panel-title').textContent = countryNames[countryCode] || countryCode;
@@ -238,11 +245,10 @@
           document.getElementById('panel-content').innerHTML = `
             <div class="availability">
               <strong>Data completeness across tracked countries:</strong><br>
-              Of the 22 countries currently tracked, only 2 (United States and United Kingdom) have any published data in the categories examined. The remaining 20 countries show Total failure (0–20%).<br><br>
-              Approximate combined population of the tracked set is over 900 million. Detailed child-harm demographic data of the kind sought is available for only a small fraction of that population (primarily the United States, with partial overall homicide figures for the United Kingdom).<br><br>
-              This widespread absence of data on victim and perpetrator demographics for child harm is itself a significant finding.
+              Of the 22 countries currently tracked, only 2 (United States and United Kingdom) have any published data in the categories examined. The remaining 20 countries have No published data.<br><br>
+              Approximate combined population of the tracked set exceeds 900 million. Detailed child-harm demographic data of the kind sought is available for only a small fraction of that population.<br><br>
+              ${harmNote}
             </div>
-            <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           `;
           return;
         }
@@ -253,7 +259,7 @@
             renderUSPanel(usData);
           } else {
             document.getElementById('panel-content').innerHTML = 'Loading data…';
-            loadData().then(data => { if (data) renderUSPanel(data); });
+            setTimeout(() => { if (usData) renderUSPanel(usData); else document.getElementById('panel-content').innerHTML = '<p class="missing">Data file could not be loaded.</p>'; }, 600);
           }
         } else if (countryCode === 'uk') {
           document.getElementById('panel-subtitle').textContent = "Partial overall homicide data (not child-specific)";
@@ -262,27 +268,26 @@
               <strong>Published figures (England & Wales, recent years, overall homicide):</strong><br>
               Victims: ~67% White, 17% Black, 16% Other.<br>
               Principal suspects: ~65% White, 20% Black, 9% Asian.<br>
-              Strong same-ethnicity pattern (White victims ~89% same; Black ~60%).<br>
-              Black victimization rate roughly 4× White rate.
+              Strong same-ethnicity pattern. Black victimization rate roughly 4× White rate.
             </div>
             <div class="no-data-message">
-              ✕ No equivalent published child-specific victim-race × offender-race cross-tabs of the kind available in the US NCVS.
+              ✕ No equivalent published child-specific victim-race × offender-race cross-tabs.
             </div>
-            <div class="legend"><span class="red-x">✕</span> No official data published / not provided for the child-focused categories</div>
+            <p style="font-size:0.85rem;color:#6b7280;margin-top:0.8rem;">${harmNote}</p>
           `;
         } else {
-          document.getElementById('panel-subtitle').textContent = "No official child-harm data published";
+          document.getElementById('panel-subtitle').textContent = "No published data";
           document.getElementById('panel-content').innerHTML = `
             <div class="no-data-message">
-              ✕ No official data published for the tracked child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
+              ✕ No published data for the tracked child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
             </div>
             <div class="availability">
-              <strong>Data completeness:</strong> Total failure (0–20%). The absence of this information limits the ability to understand and reduce harms to children.
+              <strong>Data completeness:</strong> No published data.<br>
+              ${harmNote}
             </div>
-            <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           `;
         }
-      }
+      };
 
       function renderUSPanel(data) {
         const crimeOptions = data.crime_types.map(c => `<option value="${c}">${c}</option>`).join('');
@@ -304,9 +309,10 @@
           </select>
           <div id="results"></div>
           <div class="availability">
-            <strong>Data completeness:</strong> United States is the highest among tracked countries (Acceptable / 40–60%). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.
+            <strong>Data completeness:</strong> Limited (highest among tracked countries). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.<br><br>
+            ${harmNote}
           </div>
-          <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
+          <div class="legend"><span class="red-x">✕</span> No published data for this combination</div>
           <div class="notes" id="notes-area"></div>
         `;
 
@@ -356,10 +362,10 @@
             resultsDiv.innerHTML = `
               <h3>Victimization rate (${race} youth)</h3>
               <p style="font-size:1.1rem;font-weight:600;">${entry.rates[race]} per 100,000</p>
-              <p class="missing" style="margin-top:0.6rem;">✕ Perpetrator race: No official data published</p>
+              <p class="missing" style="margin-top:0.6rem;">✕ Perpetrator race: No published data</p>
             `;
           } else {
-            resultsDiv.innerHTML = `<p class="missing">✕ No official ${view} data published for this combination</p>`;
+            resultsDiv.innerHTML = `<p class="missing">✕ No published ${view} data for this combination</p>`;
           }
         }
 
