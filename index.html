@@ -69,7 +69,7 @@
       white-space: normal;
     }
     .leaflet-tooltip.custom-tooltip {
-      max-width: 460px !important;
+      max-width: 420px !important;
       white-space: normal !important;
       font-size: 0.88rem !important;
       line-height: 1.45 !important;
@@ -159,10 +159,10 @@
       const map = L.map('map', {
         maxBounds: [[-85, -180], [85, 180]],
         maxBoundsViscosity: 1.0,
-        minZoom: 2
+        minZoom: 2,
+        boxZoom: false
       }).setView([48, 15], 4);
 
-      // Reliable free tiles (no API key)
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap',
         maxZoom: 18,
@@ -212,7 +212,9 @@
         "Switzerland": "ch"
       };
 
-      const harmNote = "Absence of these data is not neutral. Without published victim and perpetrator demographics, patterns of harm to children remain invisible and unaddressed.";
+      const harmNote = "Absence of these data is not neutral. Without published victim and perpetrator demographics for homicide, assault, and sexual assault, patterns of harm to children remain invisible and unaddressed.";
+
+      const missingMsg = "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator.";
 
       const tooltips = {
         us: "<b>United States</b><br>Limited completeness. Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race. Still missing detailed child-specific victim × offender race cross-tabs for homicide.<br><br>" + harmNote,
@@ -220,7 +222,7 @@
       };
 
       function missingTooltip(countryName) {
-        return "<b>" + countryName + "</b><br>No published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims).<br><br>" + harmNote;
+        return "<b>" + countryName + "</b><br>" + missingMsg + "<br><br>" + harmNote;
       }
 
       let selectedLayer = null;
@@ -249,7 +251,6 @@
         };
       }
 
-      // Higher-resolution free GeoJSON
       fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
         .then(r => r.json())
         .then(world => {
@@ -269,11 +270,22 @@
                   sticky: true,
                   className: "custom-tooltip",
                   direction: "auto",
-                  offset: [15, 0]
+                  offset: [0, 0]
+                });
+
+                // Better positioning near edges
+                layer.on('mousemove', function(e) {
+                  const mapHeight = map.getSize().y;
+                  const y = e.containerPoint.y;
+                  let dir = "auto";
+                  if (y < 120) dir = "bottom";
+                  else if (y > mapHeight - 180) dir = "top";
+                  layer.getTooltip().options.direction = dir;
                 });
 
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
+                  L.DomEvent.preventDefault(e);
                   if (selectedLayer && selectedLayer !== layer) {
                     const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
                     selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
@@ -346,7 +358,7 @@
               Strong same-ethnicity pattern. Black victimization rate roughly 4× White rate.
             </div>
             <div class="no-data-message">
-              ✕ No equivalent published child-specific victim-race × offender-race cross-tabs.
+              ✕ ${missingMsg}
             </div>
             <p style="font-size:0.85rem;color:#6b7280;margin-top:0.8rem;">${harmNote}</p>
           `;
@@ -354,7 +366,7 @@
           document.getElementById('panel-subtitle').textContent = "No published data";
           document.getElementById('panel-content').innerHTML = `
             <div class="no-data-message">
-              ✕ No published data for the tracked child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
+              ✕ ${missingMsg}
             </div>
             <div class="availability">
               <strong>Data completeness:</strong> No published data.<br>
