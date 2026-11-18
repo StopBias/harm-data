@@ -162,7 +162,8 @@
         maxBoundsViscosity: 1.0,
         minZoom: 2,
         boxZoom: false,
-        zoomControl: true
+        zoomControl: true,
+        doubleClickZoom: false
       }).setView([48, 15], 4);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -228,6 +229,7 @@
       }
 
       let baseStyles = {};
+      let currentHover = null;
 
       function getBaseStyle(name) {
         if (name === "United States of America") {
@@ -291,17 +293,26 @@
                 });
 
                 layer.on('mouseover', function() {
+                  if (currentHover && currentHover !== layer) {
+                    const prevName = currentHover.feature.properties.ADMIN || currentHover.feature.properties.name || currentHover.feature.properties.NAME;
+                    currentHover.setStyle(baseStyles[prevName]);
+                  }
                   layer.setStyle(getHoverStyle(name));
+                  currentHover = layer;
                 });
 
                 layer.on('mouseout', function() {
                   layer.setStyle(baseStyles[name]);
+                  if (currentHover === layer) currentHover = null;
                 });
 
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
                   L.DomEvent.preventDefault(e);
-                  if (e.originalEvent) e.originalEvent.preventDefault();
+                  if (e.originalEvent) {
+                    e.originalEvent.preventDefault();
+                    e.originalEvent.stopPropagation();
+                  }
                   document.getElementById('country-select').value = code;
                   openPanel(code);
                 });
@@ -483,6 +494,7 @@
 
       map.on('click', function(e) {
         L.DomEvent.stopPropagation(e);
+        if (e.originalEvent) e.originalEvent.preventDefault();
         closePanel();
       });
 
