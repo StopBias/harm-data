@@ -54,9 +54,9 @@
       border-radius: 6px;
       padding: 0.7rem 0.9rem;
       font-size: 0.78rem;
-      z-index: 1000;
+      z-index: 900;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-width: 220px;
+      max-width: 210px;
     }
     .map-legend strong { display: block; margin-bottom: 0.4rem; }
     .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
@@ -69,7 +69,7 @@
       white-space: normal;
     }
     .leaflet-tooltip.custom-tooltip {
-      max-width: 480px !important;
+      max-width: 460px !important;
       white-space: normal !important;
       font-size: 0.88rem !important;
       line-height: 1.45 !important;
@@ -78,6 +78,7 @@
       border: 1px solid #e5e7eb !important;
       border-radius: 6px !important;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+      z-index: 2000 !important;
     }
   </style>
 </head>
@@ -115,6 +116,14 @@
       <option value="hu">Hungary</option>
       <option value="ro">Romania</option>
       <option value="bg">Bulgaria</option>
+      <option value="gr">Greece</option>
+      <option value="hr">Croatia</option>
+      <option value="si">Slovenia</option>
+      <option value="rs">Serbia</option>
+      <option value="ba">Bosnia and Herzegovina</option>
+      <option value="me">Montenegro</option>
+      <option value="mk">North Macedonia</option>
+      <option value="al">Albania</option>
       <option value="ee">Estonia</option>
       <option value="lv">Latvia</option>
       <option value="lt">Lithuania</option>
@@ -151,10 +160,11 @@
         maxBounds: [[-85, -180], [85, 180]],
         maxBoundsViscosity: 1.0,
         minZoom: 2
-      }).setView([45, 20], 3);
+      }).setView([48, 15], 4);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap',
+      // Cleaner basemap (reduces mixed-script labels)
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO',
         maxZoom: 18,
         noWrap: true
       }).addTo(map);
@@ -184,6 +194,14 @@
         "Hungary": "hu",
         "Romania": "ro",
         "Bulgaria": "bg",
+        "Greece": "gr",
+        "Croatia": "hr",
+        "Slovenia": "si",
+        "Serbia": "rs",
+        "Bosnia and Herzegovina": "ba",
+        "Montenegro": "me",
+        "North Macedonia": "mk",
+        "Albania": "al",
         "Estonia": "ee",
         "Latvia": "lv",
         "Lithuania": "lt",
@@ -210,31 +228,31 @@
 
       function getBaseStyle(name) {
         if (name === "United States of America") {
-          return { color: "#ca8a04", weight: 1.2, fillColor: "#eab308", fillOpacity: 0.55 };
+          return { color: "#ca8a04", weight: 1.5, fillColor: "#eab308", fillOpacity: 0.5 };
         }
         if (name === "United Kingdom") {
-          return { color: "#c2410c", weight: 1.2, fillColor: "#f97316", fillOpacity: 0.55 };
+          return { color: "#c2410c", weight: 1.5, fillColor: "#f97316", fillOpacity: 0.5 };
         }
         if (tracked[name]) {
-          return { color: "#b91c1c", weight: 1, fillColor: "#dc2626", fillOpacity: 0.45 };
+          return { color: "#b91c1c", weight: 1.2, fillColor: "#dc2626", fillOpacity: 0.4 };
         }
-        return { color: "#9ca3af", weight: 0.4, fillColor: "#d1d5db", fillOpacity: 0.25 };
+        return { color: "#9ca3af", weight: 0.5, fillColor: "#d1d5db", fillOpacity: 0.2 };
       }
 
       function getSelectedStyle(name) {
         const base = getBaseStyle(name);
         return {
-          color: "#000000",
-          weight: 2.5,
+          color: "#111827",
+          weight: 3,
           fillColor: base.fillColor,
-          fillOpacity: Math.min(base.fillOpacity + 0.15, 0.75)
+          fillOpacity: Math.min((base.fillOpacity || 0.4) + 0.12, 0.7)
         };
       }
 
       fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
         .then(r => r.json())
         .then(world => {
-          const layer = L.geoJSON(world, {
+          L.geoJSON(world, {
             style: function(feature) {
               return getBaseStyle(feature.properties.name);
             },
@@ -248,17 +266,16 @@
                 layer.bindTooltip(tip, {
                   sticky: true,
                   className: "custom-tooltip",
-                  direction: "bottom",
-                  offset: [0, 8]
+                  direction: "auto",
+                  offset: [15, 0]
                 });
 
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
-                  // Clear previous selection
-                  if (selectedLayer) {
-                    selectedLayer.setStyle(baseStyles[selectedLayer.feature.properties.name]);
+                  if (selectedLayer && selectedLayer !== layer) {
+                    const prevName = selectedLayer.feature.properties.name;
+                    selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
                   }
-                  // Apply selected style
                   layer.setStyle(getSelectedStyle(name));
                   selectedLayer = layer;
 
@@ -285,7 +302,9 @@
         uk: "United Kingdom", ie: "Ireland", fr: "France", de: "Germany", it: "Italy",
         es: "Spain", pt: "Portugal", nl: "Netherlands", be: "Belgium", se: "Sweden",
         no: "Norway", dk: "Denmark", fi: "Finland", pl: "Poland", cz: "Czechia",
-        sk: "Slovakia", hu: "Hungary", ro: "Romania", bg: "Bulgaria",
+        sk: "Slovakia", hu: "Hungary", ro: "Romania", bg: "Bulgaria", gr: "Greece",
+        hr: "Croatia", si: "Slovenia", rs: "Serbia", ba: "Bosnia and Herzegovina",
+        me: "Montenegro", mk: "North Macedonia", al: "Albania",
         ee: "Estonia", lv: "Latvia", lt: "Lithuania", ru: "Russia", ua: "Ukraine", by: "Belarus",
         at: "Austria", ch: "Switzerland", all: "All available countries"
       };
@@ -441,7 +460,8 @@
 
       map.on('click', function() {
         if (selectedLayer) {
-          selectedLayer.setStyle(baseStyles[selectedLayer.feature.properties.name]);
+          const prevName = selectedLayer.feature.properties.name;
+          selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
           selectedLayer = null;
         }
         closePanel();
@@ -450,9 +470,10 @@
       document.getElementById('country-select').addEventListener('change', function() {
         const code = this.value;
         if (code === 'all') {
-          map.setView([45, 20], 3);
+          map.setView([48, 15], 4);
           if (selectedLayer) {
-            selectedLayer.setStyle(baseStyles[selectedLayer.feature.properties.name]);
+            const prevName = selectedLayer.feature.properties.name;
+            selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
             selectedLayer = null;
           }
           openPanel('all');
