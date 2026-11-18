@@ -60,12 +60,16 @@
     .map-legend strong { display: block; margin-bottom: 0.4rem; }
     .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
     .swatch { width: 16px; height: 16px; border-radius: 2px; border: 1px solid #ccc; }
-    .leaflet-tooltip {
-      max-width: 420px !important;
+    .leaflet-tooltip.custom-tooltip {
+      max-width: 480px !important;
       white-space: normal !important;
-      font-size: 0.85rem;
-      line-height: 1.4;
-      padding: 0.7rem 0.85rem;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      padding: 0.75rem 0.9rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -107,11 +111,11 @@
   <div id="map"></div>
   <div class="map-legend">
     <strong>Data completeness</strong>
-    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> 0–20%</div>
-    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> 20–40%</div>
-    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> 40–60%</div>
-    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> 60–80%</div>
-    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> 80–100%</div>
+    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> Total failure (0–20%)</div>
+    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> Very bad (20–40%)</div>
+    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> Acceptable (40–60%)</div>
+    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> Very good (60–80%)</div>
+    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> Excellent (80–100%)</div>
   </div>
 
   <div id="data-panel">
@@ -162,12 +166,12 @@
       };
 
       const tooltips = {
-        us: "United States: Highest data completeness among tracked countries (yellow / 40–60% range). Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race (FBI/OJJDP). Still missing detailed child-specific victim × offender race cross-tabs for homicide. The gaps limit understanding of harms to children.",
-        uk: "United Kingdom (England & Wales): Partial data (orange / 20–40%). Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other; principal suspects ~65% White, 20% Black, 9% Asian (recent years). Strong intraracial pattern. Black victimization rate ~4× White. No equivalent child-focused victim × offender cross-tabs published."
+        us: "<b>United States</b><br>Highest data completeness among tracked countries (Acceptable / 40–60%). Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race (FBI/OJJDP). Still missing detailed child-specific victim × offender race cross-tabs for homicide. The gaps limit understanding of harms to children.",
+        uk: "<b>United Kingdom</b> (England & Wales)<br>Partial data (Very bad / 20–40%). Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other; principal suspects ~65% White, 20% Black, 9% Asian (recent years). Strong same-ethnicity pattern. Black victimization rate ~4× White. No equivalent child-focused victim × offender cross-tabs published."
       };
 
       function missingTooltip(countryName) {
-        return countryName + ": No official published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims). Data completeness: 0–20% (red). The absence of this information limits the ability to understand and reduce harms to children.";
+        return "<b>" + countryName + "</b><br>No official published data on the tracked child-harm categories (victim/perpetrator race or ethnicity, cross-tabs, rates by demographics for child victims). Data completeness: Total failure (0–20%). The absence of this information limits the ability to understand and reduce harms to children.";
       }
 
       fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
@@ -177,22 +181,27 @@
             style: function(feature) {
               const name = feature.properties.name;
               if (name === "United States of America") {
-                return { color: "#ca8a04", weight: 1.2, fillColor: "#eab308", fillOpacity: 0.55 }; // yellow
+                return { color: "#ca8a04", weight: 1.2, fillColor: "#eab308", fillOpacity: 0.55 };
               }
               if (name === "United Kingdom") {
-                return { color: "#c2410c", weight: 1.2, fillColor: "#f97316", fillOpacity: 0.55 }; // orange
+                return { color: "#c2410c", weight: 1.2, fillColor: "#f97316", fillOpacity: 0.55 };
               }
               if (tracked[name]) {
-                return { color: "#b91c1c", weight: 1, fillColor: "#dc2626", fillOpacity: 0.45 }; // red
+                return { color: "#b91c1c", weight: 1, fillColor: "#dc2626", fillOpacity: 0.45 };
               }
-              return { color: "#9ca3af", weight: 0.4, fillColor: "#d1d5db", fillOpacity: 0.25 }; // gray
+              return { color: "#9ca3af", weight: 0.4, fillColor: "#d1d5db", fillOpacity: 0.25 };
             },
             onEachFeature: function(feature, layer) {
               const name = feature.properties.name;
               const code = tracked[name];
               if (code) {
                 let tip = tooltips[code] || missingTooltip(name);
-                layer.bindTooltip(tip, { sticky: true, className: "leaflet-tooltip" });
+                layer.bindTooltip(tip, {
+                  sticky: true,
+                  className: "custom-tooltip",
+                  direction: "auto",
+                  offset: [0, -10]
+                });
                 layer.on('click', function() {
                   document.getElementById('country-select').value = code;
                   openPanel(code);
@@ -207,7 +216,7 @@
       function loadData() {
         return fetch('us-data.json').then(r => { if (!r.ok) throw new Error('us-data.json not found'); return r.json(); })
           .then(data => { usData = data; return data; })
-          .catch(err => { document.getElementById('panel-content').innerHTML = '<p class="missing">Could not load data: ' + err.message + '</p>'; throw err; });
+          .catch(err => { console.error(err); return null; });
       }
       loadData();
 
@@ -220,12 +229,32 @@
       };
 
       function openPanel(countryCode) {
-        document.getElementById('data-panel').classList.add('open');
+        const panel = document.getElementById('data-panel');
+        panel.classList.add('open');
         document.getElementById('panel-title').textContent = countryNames[countryCode] || countryCode;
+
+        if (countryCode === 'all') {
+          document.getElementById('panel-subtitle').textContent = "Summary of data completeness";
+          document.getElementById('panel-content').innerHTML = `
+            <div class="availability">
+              <strong>Data completeness across tracked countries:</strong><br>
+              Of the 22 countries currently tracked, only 2 (United States and United Kingdom) have any published data in the categories examined. The remaining 20 countries show Total failure (0–20%).<br><br>
+              Approximate combined population of the tracked set is over 900 million. Detailed child-harm demographic data of the kind sought is available for only a small fraction of that population (primarily the United States, with partial overall homicide figures for the United Kingdom).<br><br>
+              This widespread absence of data on victim and perpetrator demographics for child harm is itself a significant finding.
+            </div>
+            <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
+          `;
+          return;
+        }
+
         if (countryCode === 'us') {
           document.getElementById('panel-subtitle').textContent = "Child-related harm data";
-          if (usData) renderUSPanel(usData);
-          else { document.getElementById('panel-content').innerHTML = 'Loading data…'; loadData().then(data => renderUSPanel(data)); }
+          if (usData) {
+            renderUSPanel(usData);
+          } else {
+            document.getElementById('panel-content').innerHTML = 'Loading data…';
+            loadData().then(data => { if (data) renderUSPanel(data); });
+          }
         } else if (countryCode === 'uk') {
           document.getElementById('panel-subtitle').textContent = "Partial overall homicide data (not child-specific)";
           document.getElementById('panel-content').innerHTML = `
@@ -248,7 +277,7 @@
               ✕ No official data published for the tracked child-harm categories (victim/perpetrator demographics, cross-tabs, rates by race/ethnicity, etc.).
             </div>
             <div class="availability">
-              <strong>Data completeness:</strong> 0–20% (red). The absence of this information limits the ability to understand and reduce harms to children.
+              <strong>Data completeness:</strong> Total failure (0–20%). The absence of this information limits the ability to understand and reduce harms to children.
             </div>
             <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           `;
@@ -275,7 +304,7 @@
           </select>
           <div id="results"></div>
           <div class="availability">
-            <strong>Data completeness:</strong> United States is the highest among tracked countries (yellow / 40–60%). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.
+            <strong>Data completeness:</strong> United States is the highest among tracked countries (Acceptable / 40–60%). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.
           </div>
           <div class="legend"><span class="red-x">✕</span> No official data published / not provided</div>
           <div class="notes" id="notes-area"></div>
@@ -356,7 +385,7 @@
         const code = this.value;
         if (code === 'all') {
           map.setView([30, 10], 2);
-          closePanel();
+          openPanel('all');
         } else {
           openPanel(code);
         }
