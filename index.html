@@ -69,7 +69,8 @@
       white-space: normal;
     }
     .leaflet-tooltip.custom-tooltip {
-      max-width: 420px !important;
+      max-width: 380px !important;
+      min-width: 280px !important;
       white-space: normal !important;
       font-size: 0.88rem !important;
       line-height: 1.45 !important;
@@ -143,7 +144,7 @@
     <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> Limited</div>
     <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> Moderate</div>
     <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> High completeness</div>
-    <div class="legend-note">Absence of these data is not neutral. Without published victim and perpetrator demographics, patterns of harm to children remain invisible and unaddressed.</div>
+    <div class="legend-note">Missing data on the ethnic heritage of both victim and perpetrator in violent and other crimes harms children who are not being protected from hidden bias crimes.</div>
   </div>
 
   <div id="data-panel">
@@ -212,7 +213,7 @@
         "Switzerland": "ch"
       };
 
-      const harmNote = "Absence of these data is not neutral. Without published victim and perpetrator demographics for homicide, assault, and sexual assault, patterns of harm to children remain invisible and unaddressed.";
+      const harmNote = "Missing data on the ethnic heritage of both victim and perpetrator in violent and other crimes harms children who are not being protected from hidden bias crimes.";
 
       const missingMsg = "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator.";
 
@@ -270,17 +271,23 @@
                   sticky: true,
                   className: "custom-tooltip",
                   direction: "auto",
-                  offset: [0, 0]
+                  offset: [0, 10]
                 });
 
-                // Better positioning near edges
                 layer.on('mousemove', function(e) {
-                  const mapHeight = map.getSize().y;
+                  const mapSize = map.getSize();
                   const y = e.containerPoint.y;
-                  let dir = "auto";
-                  if (y < 120) dir = "bottom";
-                  else if (y > mapHeight - 180) dir = "top";
-                  layer.getTooltip().options.direction = dir;
+                  const tooltip = layer.getTooltip();
+                  if (y < 140) {
+                    tooltip.options.direction = "bottom";
+                    tooltip.options.offset = [0, 15];
+                  } else if (y > mapSize.y - 200) {
+                    tooltip.options.direction = "top";
+                    tooltip.options.offset = [0, -15];
+                  } else {
+                    tooltip.options.direction = "auto";
+                    tooltip.options.offset = [15, 0];
+                  }
                 });
 
                 layer.on('click', function(e) {
