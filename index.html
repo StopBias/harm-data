@@ -2,96 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Antiwhite Bias Child-Harm Data Explorer</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.js"></script>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Josefin Sans", system-ui, -apple-system, sans-serif;
-      background: #fff;
-      color: #111;
+    :root {
+      --ink: #1d2a36;
+      --muted: #5b6770;
+      --line: #e3e6e8;
+      --bg: #ffffff;
+      --map-bg: #ffffff;
+      --accent: #0cc0df;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Header (small, discreet) ---------- */
     header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 8px 16px;
-      border-bottom: 1px solid #eee;
-      background: #fff;
+      gap: 14px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--line);
+      flex: 0 0 auto;
     }
-    header img {
-      height: 36px;
-      width: auto;
-    }
-    h1 {
+    header a { display: flex; }
+    header img { height: 26px; width: auto; }
+    header h1 {
       margin: 0;
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-align: center;
-      flex: 1;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.25;
     }
-    h1 span.blue { color: #0cc0df; }
-    .container {
+    header h1 span { color: var(--accent); }
+    header .sub {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Layout ---------- */
+    .layout {
+      flex: 1 1 auto;
       display: flex;
-      height: calc(100vh - 60px);
+      min-height: 0;
     }
-    #map {
-      flex: 1;
-      min-height: 400px;
-      background: #f5f5f5;
+    .map-wrap {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 0;
     }
-    #panel {
-      width: 380px;
-      border-left: 1px solid #eee;
-      overflow-y: auto;
-      padding: 16px;
-      background: #fff;
-    }
-    #panel h2 { margin-top: 0; font-size: 1.2rem; }
-    .note { font-size: 0.85rem; color: #555; margin-top: 12px; }
+    #map { position: absolute; inset: 0; background: var(--map-bg); }
+
+    /* ---------- Legend (OWID-style swatch bar) ---------- */
     .legend {
       position: absolute;
-      bottom: 20px;
-      left: 12px;
-      background: rgba(255,255,255,0.95);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      z-index: 1000;
-      max-width: 280px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      left: 16px;
+      bottom: 16px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 4px;
+      padding: 8px 10px 6px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      box-shadow: 0 0 0 1px var(--line);
+      z-index: 2;
     }
-    .leaflet-tooltip {
-      max-width: 340px;
-      white-space: normal;
-      font-size: 0.85rem;
-      padding: 8px 10px;
+    .legend-title { font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .legend-items { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+    .legend-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    /* ---------- View buttons ---------- */
+    .views {
+      position: absolute; top: 12px; left: 12px; z-index: 3;
+      display: flex; gap: 0; background: #fff; border-radius: 4px;
+      box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(0,0,0,0.06); overflow: hidden;
     }
+    .views button {
+      font: inherit; font-size: 0.78rem; color: var(--ink);
+      background: #fff; border: 0; border-right: 1px solid var(--line);
+      padding: 6px 10px; cursor: pointer; white-space: nowrap;
+    }
+    .views button:last-child { border-right: 0; }
+    .views button:hover { background: #f3f5f6; }
+    .views button[aria-pressed="true"] { background: var(--ink); color: #fff; }
     @media (max-width: 768px) {
-      header { padding: 6px 10px; }
-      header img { height: 28px; }
-      h1 { font-size: 1.05rem; }
-      .container { flex-direction: column; height: auto; }
-      #map { height: 58vh; min-height: 300px; }
+      .views { top: 8px; left: 8px; right: 8px; justify-content: stretch; }
+      .views button { flex: 1 1 0; padding: 7px 4px; font-size: 0.74rem; }
+    }
+    .legend-item.subtle { opacity: 0.75; }
+    .swatch { width: 14px; height: 10px; border-radius: 1px; display: inline-block; }
+
+    /* ---------- Data panel ---------- */
+    #panel {
+      flex: 0 0 360px;
+      border-left: 1px solid var(--line);
+      overflow-y: auto;
+      padding: 20px 22px;
+      background: var(--bg);
+    }
+    .panel-handle { display: none; }
+    #panel h2 { margin: 0 0 8px; font-size: 1.25rem; font-weight: 600; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 3px 8px; border-radius: 3px;
+      background: #f1f3f4; margin-bottom: 12px;
+    }
+    #panel p { font-size: 0.92rem; line-height: 1.5; margin: 0 0 12px; }
+    .note { font-size: 0.82rem !important; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+    .hint { color: var(--muted); }
+
+    /* ---------- Tooltip ---------- */
+    .country-tooltip .maplibregl-popup-content {
+      font-family: var(--font);
+      font-size: 0.82rem;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+    .country-tooltip .maplibregl-popup-tip { display: none; }
+    .tt-title { font-weight: 600; margin-bottom: 2px; }
+    .tt-status { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+
+    .maplibregl-ctrl-attrib { font-size: 0.65rem; }
+
+    /* ---------- Mobile: map first, bottom sheet ---------- */
+    @media (max-width: 768px) {
+      header { padding: 8px 12px; gap: 10px; }
+      header img { height: 20px; }
+      header h1 { font-size: 0.9rem; }
+      header .sub { display: none; }
+      /* Map box sized to the world's shape (a flat world is wider than tall),
+         legend sits under it, details slide up from the bottom. */
+      .layout { display: block; }
+      .map-wrap { height: auto; }
+      #map { position: relative; height: min(62vh, 80vw); }
+      .legend {
+        position: static; margin: 10px 12px 90px; box-shadow: none; padding: 0;
+        font-size: 0.72rem; background: none;
+      }
+      .legend-items { gap: 3px 9px; }
       #panel {
-        width: 100%;
-        border-left: none;
-        border-top: 1px solid #eee;
-        max-height: 42vh;
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1100;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-        box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+        left: 0; right: 0; bottom: 0;
+        max-height: 60vh;
+        border-left: none;
+        border-radius: 14px 14px 0 0;
+        box-shadow: 0 -4px 18px rgba(0,0,0,0.14);
+        padding: 6px 18px calc(18px + env(safe-area-inset-bottom));
+        z-index: 5;
+        /* collapsed: only the peek row (handle + title) shows */
+        transform: translateY(calc(100% - 64px));
+        transition: transform 0.28s ease;
       }
       #panel.open { transform: translateY(0); }
-      .legend { bottom: 10px; left: 8px; font-size: 0.75rem; max-width: 200px; }
+      .panel-handle {
+        display: block;
+        width: 100%;
+        background: none; border: 0; padding: 6px 0 10px; cursor: pointer;
+      }
+      .panel-handle::before {
+        content: ""; display: block; margin: 0 auto;
+        width: 38px; height: 4px; border-radius: 2px; background: #c9cfd3;
+      }
+      #panel h2 { font-size: 1.05rem; }
     }
   </style>
 </head>
@@ -100,128 +186,278 @@
     <a href="https://www.stopbias.org/" target="_blank" rel="noopener">
       <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias">
     </a>
-    <h1>Antiwhite Bias <span class="blue">Child-Harm Data Explorer</span></h1>
-    <div style="width: 70px;"></div>
+    <div>
+      <h1>Antiwhite Bias <span>Child-Harm Data Explorer</span></h1>
+      <p class="sub">How completely each country publishes victim and perpetrator ethnicity in crimes against children</p>
+    </div>
   </header>
 
-  <div class="container">
-    <div id="map"></div>
-    <div id="panel">
+  <div class="layout">
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="views" id="views" role="group" aria-label="Map view"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <aside id="panel" aria-live="polite">
+      <button class="panel-handle" id="panel-handle" aria-label="Show or hide details"></button>
       <h2 id="panel-title">Select a country</h2>
       <div id="panel-content">
-        <p>Click a highlighted country to view available data and gaps.</p>
+        <p class="hint">Click a highlighted country to view available data and gaps.</p>
         <p class="note">Missing data on the ethnic heritage of both victim and perpetrator in violent and other crimes harms children who are not being protected from hidden bias crimes.</p>
       </div>
-    </div>
-  </div>
-
-  <div class="legend">
-    <strong>Data completeness</strong><br>
-    High · Moderate · Limited · Very limited · No published data
+    </aside>
   </div>
 
   <script>
-    const map = L.map('map', { boxZoom: false, minZoom: 2 }).setView([48, 10], 4);
+    // ==================================================================
+    // DATA
+    // 1) SCALE: 5 bands of data completeness (0-100 %). A country's colour is the band its score falls in.
+    // 2) IN_SCOPE: every country that is part of the project (ISO 3166-1 alpha-3).
+    //    In scope but not in `tracked` = darker grey, "Not yet analyzed".
+    // 3) tracked: analysed countries keyed by ISO code, with a numeric score `completeness` (0-100).
+    // Countries in neither list are very light grey (outside the project).
+    // ==================================================================
+    const SCALE = [            // [from %, to %, colour]; "to" is exclusive except for the last band
+      { from: 0,  to: 20,  color: "#e74c3c" },   // red
+      { from: 20, to: 40,  color: "#f39c12" },   // orange
+      { from: 40, to: 60,  color: "#f4d03f" },   // yellow
+      { from: 60, to: 80,  color: "#8bc34a" },   // light green
+      { from: 80, to: 100, color: "#1e8449" }    // dark green
+    ];
+    const bandFor = score => SCALE.find((b, i) => score >= b.from && (score < b.to || (i === SCALE.length - 1 && score <= b.to)));
+    const bandLabel = b => `${b.from}–${b.to}%`;
+    const NOT_ANALYZED_COLOR = "#b9bfc4";  // in scope, not yet analyzed
+    const OUT_OF_SCOPE_COLOR = "#eceeef";  // not part of the project
 
-    // Free English-preferring tiles (no API key required)
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-      maxZoom: 20
-    }).addTo(map);
+    const IN_SCOPE = [
+      // Analysed so far
+      "USA", "CAN", "GBR", "DEU", "AUS", "NZL", "ZAF",
+      // Western Europe
+      "IRL", "FRA", "BEL", "NLD", "LUX", "MCO", "AND", "PRT", "ESP", "ITA", "SMR", "VAT", "MLT",
+      "CHE", "LIE", "AUT", "GRC",
+      // Nordics
+      "DNK", "NOR", "SWE", "FIN", "ISL",
+      // Central & Eastern Europe, Baltics
+      "POL", "CZE", "SVK", "HUN", "SVN", "ROU", "BGR", "EST", "LVA", "LTU",
+      "BLR", "UKR", "MDA", "RUS",
+      // Balkans
+      "HRV", "BIH", "SRB", "MNE", "XKX", "MKD", "ALB"
+    ];
 
     const tracked = {
-      "United States of America": {
-        color: "#f4d03f",
-        completeness: "Limited",
+      USA: {
+        completeness: 50,   // band midpoint placeholder (40–60%)
         note: "Some NIBRS / NCVS juvenile data exist. Full victim × perpetrator race cross-tabs for children are incomplete or unpublished."
       },
-      "United Kingdom": {
-        color: "#f39c12",
-        completeness: "Limited",
+      GBR: {
+        completeness: 30,   // provisional, band midpoint placeholder (20–40%)
+        provisional: true,
         note: "Published England & Wales homicide figures (recent years, overall): Victims ~67% White, 17% Black, 16% Other. The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes."
       },
-      "Germany": {
-        color: "#e67e22",
-        completeness: "Very limited",
+      DEU: {
+        completeness: 30,   // provisional, band midpoint placeholder (20–40%)
+        provisional: true,
         note: "PKS 2025 / Bundestag 21/8856 (serious sexual offenses, key 111000): Cases with at least one adult non-German suspect had 800 minor victims, of which 585 (73.1%) were German. Full victim × perpetrator demographic cross-tabs for children are not published in standard tables. Nationality is the available proxy."
       },
-      "Canada": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
-      "Australia": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
-      "New Zealand": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
-      "South Africa": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." }
+      CAN: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      AUS: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      NZL: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      ZAF: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." }
     };
 
-    function style(feature) {
-      const name = feature.properties.name;
-      const info = tracked[name];
-      if (info) {
-        return {
-          fillColor: info.color,
-          weight: 1,
-          opacity: 1,
-          color: "#555",
-          fillOpacity: 0.65
-        };
-      }
-      return {
-        fillColor: "#e0e0e0",
-        weight: 0.5,
-        opacity: 0.5,
-        color: "#aaa",
-        fillOpacity: 0.25
-      };
+    const PANEL_NOTE = "The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.";
+    const COUNTRIES_URL = "data/countries-ne50m.geojson";   // Natural Earth 1:50m, public domain
+
+    // ------------------------------------------------------------------
+    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+    const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
+    const colorFor = iso => tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
+                          : inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
+
+    const statusText = info => `${bandLabel(bandFor(info.completeness))} complete${info.provisional ? " (provisional)" : ""}`;
+
+    // Legend
+    document.getElementById("legend").innerHTML =
+      '<div class="legend-title">Child protection by data completeness</div><div class="legend-items">' +
+      SCALE.map(b =>
+        `<span class="legend-item"><span class="swatch" style="background:${b.color}"></span>${bandLabel(b)}</span>`).join("") +
+      `<span class="legend-item"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</span>` +
+      `<span class="legend-item subtle"><span class="swatch" style="background:${OUT_OF_SCOPE_COLOR}; box-shadow: inset 0 0 0 1px #d5d8da"></span>Outside current scope</span>` +
+      '</div>';
+
+    // Fill colour expression built from the data object
+    const fillColor = ["match", ["get", "iso_a3"]];
+    [...inScope].forEach(iso => fillColor.push(iso, colorFor(iso)));
+    fillColor.push(OUT_OF_SCOPE_COLOR);
+
+    const hover = ["boolean", ["feature-state", "hover"], false];
+    const selected = ["boolean", ["feature-state", "selected"], false];
+
+    // No basemap: an empty style with just a background colour
+    const map = new maplibregl.Map({
+      container: "map",
+      style: {
+        version: 8,
+        sources: {},
+        layers: [{ id: "background", type: "background", paint: { "background-color": "#ffffff" } }]
+      },
+      center: [10, 20],
+      zoom: 1,
+      renderWorldCopies: false,
+      dragRotate: false,
+      pitchWithRotate: false,
+      touchPitch: false,
+      boxZoom: false,
+      attributionControl: { compact: true, customAttribution: "Boundaries: Natural Earth" }
+    });
+    map.touchZoomRotate.disableRotation();
+    map.keyboard.disableRotation();
+
+    // Fitted world view (Antarctica hidden); allow only modest zoom (~3 levels in) and panning near the world
+    const WORLD_BOUNDS = [[-168, -56], [180, 80]];
+    function fitWorld() {
+      map.setMaxBounds(null); map.setMinZoom(-2); map.setMaxZoom(22);
+      map.fitBounds(WORLD_BOUNDS, { padding: 12, animate: false });
+      const z = map.getZoom();
+      map.setMinZoom(z);                 // can't zoom out past the fitted world
+      map.setMaxZoom(z + 3);             // modest zoom-in only
+      map.setMaxBounds(map.getBounds()); // panning stays inside the fitted world
     }
 
-    function onEachFeature(feature, layer) {
-      const name = feature.properties.name;
-      const info = tracked[name];
-      if (!info) return;
-
-      layer.bindTooltip(`<strong>${name}</strong><br>${info.note}`, {
-        sticky: true,
-        className: "custom-tooltip"
-      });
-
-      layer.on({
-        mouseover: function(e) {
-          e.target.setStyle({ weight: 2, fillOpacity: 0.85 });
-        },
-        mouseout: function(e) {
-          geojson.resetStyle(e.target);
-        },
-        click: function() {
-          document.getElementById("panel-title").textContent = name;
-          document.getElementById("panel-content").innerHTML = `
-            <p><strong>Completeness:</strong> ${info.completeness}</p>
-            <p>${info.note}</p>
-            <p class="note">The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.</p>
-          `;
-          if (window.innerWidth <= 768) {
-            document.getElementById("panel").classList.add("open");
-          }
-        }
-      });
+    // ---------- View buttons ----------
+    const VIEWS = {
+      "World":         WORLD_BOUNDS,
+      "Europe":        [[-25, 34], [45, 71.5]],
+      "North America": [[-168, 14], [-52, 72]],
+      "Oceania":       [[110, -48], [180, -9]]
+    };
+    let currentView = "World";
+    const viewsEl = document.getElementById("views");
+    Object.keys(VIEWS).forEach(name => {
+      const btn = document.createElement("button");
+      btn.type = "button"; btn.textContent = name;
+      btn.setAttribute("aria-pressed", String(name === currentView));
+      btn.addEventListener("click", () => goToView(name));
+      viewsEl.appendChild(btn);
+    });
+    function goToView(name) {
+      currentView = name;
+      [...viewsEl.children].forEach(b => b.setAttribute("aria-pressed", String(b.textContent === name)));
+      const top = isMobile() ? 44 : 48;
+      map.fitBounds(VIEWS[name], { padding: { top, bottom: 12, left: 12, right: 12 }, duration: 900, essential: true });
     }
 
-    let geojson;
-    fetch("https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson")
-      .then(r => r.json())
-      .then(data => {
-        geojson = L.geoJSON(data, {
-          style: style,
-          onEachFeature: onEachFeature
-        }).addTo(map);
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById("panel-content").innerHTML = "<p>Map data failed to load. Please refresh.</p>";
-      });
+    map.on("load", () => {
+      fitWorld();
+      // start with the small (i) attribution button collapsed
+      document.querySelectorAll(".maplibregl-compact-show").forEach(el => el.classList.remove("maplibregl-compact-show"));
+      fetch(COUNTRIES_URL)
+        .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(data => {
+          map.addSource("countries", { type: "geojson", data, promoteId: "iso_a3" });
+          map.addLayer({
+            id: "countries-fill", type: "fill", source: "countries",
+            filter: ["!=", ["get", "iso_a3"], "ATA"],     // hide Antarctica, as OWID does
+            paint: {
+              "fill-color": fillColor,
+              "fill-opacity": ["case", hover, 0.8, 1]
+            }
+          });
+          map.addLayer({
+            id: "countries-line", type: "line", source: "countries",
+            filter: ["!=", ["get", "iso_a3"], "ATA"],
+            paint: { "line-color": "#ffffff", "line-width": 0.6 }
+          });
+          map.addLayer({
+            id: "countries-highlight", type: "line", source: "countries",
+            paint: {
+              "line-color": "#1d2a36",
+              "line-width": ["case", selected, 2, hover, 1.4, 0],
+              "line-opacity": ["case", ["any", selected, hover], 1, 0]
+            }
+          });
+          /* FUTURE: sub-national layer (Natural Earth admin-1), see README.
+          map.addSource("admin1", { type: "geojson", data: "data/admin1-<country>.geojson", promoteId: "iso_3166_2" });
+          map.addLayer({ id: "admin1-fill", type: "fill", source: "admin1", minzoom: 2.5,
+                         paint: { "fill-color": admin1Color } }, "countries-line");
+          */
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("panel-content").innerHTML = "<p>Map data failed to load. Please refresh.</p>";
+        });
+    });
 
-    map.on("click", function() {
-      if (window.innerWidth <= 768) {
-        document.getElementById("panel").classList.remove("open");
+    // ---------- Hover + tooltip ----------
+    const tooltip = new maplibregl.Popup({
+      closeButton: false, closeOnClick: false, className: "country-tooltip", offset: 14, maxWidth: "320px"
+    });
+    let hoveredId = null, selectedId = null;
+
+    function setState(id, state) { if (id) map.setFeatureState({ source: "countries", id }, state); }
+
+    function clearHover() {
+      setState(hoveredId, { hover: false });
+      hoveredId = null;
+      tooltip.remove();
+      map.getCanvas().style.cursor = "";
+    }
+
+    map.on("mousemove", "countries-fill", (e) => {
+      if (isMobile()) return;
+      const f = e.features[0];
+      const iso = f.properties.iso_a3;
+      if (hoveredId !== iso) { clearHover(); hoveredId = iso; setState(iso, { hover: true }); }
+      const info = tracked[iso];
+      map.getCanvas().style.cursor = inScope.has(iso) ? "pointer" : "";
+      const status = info
+        ? `<span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}`
+        : inScope.has(iso)
+          ? `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed`
+          : "Outside current scope";
+      tooltip.setLngLat(e.lngLat)
+        .setHTML(`<div class="tt-title">${f.properties.name}</div><div class="tt-status">${status}</div>` +
+                 (info ? `<div style="margin-top:4px">${info.note}</div>` : ""))
+        .addTo(map);
+    });
+    map.on("mouseleave", "countries-fill", clearHover);
+
+    // ---------- Click: data panel ----------
+    const panel = document.getElementById("panel");
+    document.getElementById("panel-handle").addEventListener("click", () => panel.classList.toggle("open"));
+
+    function showCountry(iso, name) {
+      const info = tracked[iso];
+      setState(selectedId, { selected: false });
+      selectedId = iso;
+      setState(iso, { selected: true });
+      document.getElementById("panel-title").textContent = name;
+      document.getElementById("panel-content").innerHTML = info ? `
+        <div class="badge"><span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}</div>
+        <p>${info.note}</p>
+        ${info.provisional ? '<p class="hint"><em>Provisional rating — data collection for this country is still in progress.</em></p>' : ""}
+        <p class="note">${PANEL_NOTE}</p>
+      ` : `
+        <div class="badge"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</div>
+        <p class="hint">This country is part of the project. Its published crime data has not been reviewed yet.</p>
+      `;
+      if (isMobile()) panel.classList.add("open");
+    }
+
+    map.on("click", (e) => {
+      const hit = map.getLayer("countries-fill")
+        ? map.queryRenderedFeatures(e.point, { layers: ["countries-fill"] })[0]
+        : null;
+      if (hit && inScope.has(hit.properties.iso_a3)) {
+        showCountry(hit.properties.iso_a3, hit.properties.name);
+      } else if (isMobile()) {
+        panel.classList.remove("open");
       }
     });
+
+    let resizeTimer;
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView); }, 200); });
   </script>
 </body>
 </html>
