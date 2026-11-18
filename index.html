@@ -123,10 +123,10 @@
   <script>
     const map = L.map('map', { boxZoom: false, minZoom: 2 }).setView([48, 10], 4);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 19
+    // Free English-preferring tiles (no API key required)
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      maxZoom: 20
     }).addTo(map);
 
     const tracked = {
@@ -159,16 +159,16 @@
           fillColor: info.color,
           weight: 1,
           opacity: 1,
-          color: "#666",
+          color: "#555",
           fillOpacity: 0.65
         };
       }
       return {
-        fillColor: "#d5d5d5",
+        fillColor: "#e0e0e0",
         weight: 0.5,
-        opacity: 0.6,
+        opacity: 0.5,
         color: "#aaa",
-        fillOpacity: 0.3
+        fillOpacity: 0.25
       };
     }
 
