@@ -5,499 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antiwhite Bias Child-Harm Data Explorer</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Josefin Sans', system-ui, sans-serif; background: #fff; color: #1a1a1a; }
-    header {
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Josefin Sans", system-ui, -apple-system, sans-serif;
       background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0.5rem 1.5rem;
+      color: #111;
+    }
+    header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 8px 16px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
     }
-    .logo-img { height: 46px; width: auto; flex-shrink: 0; }
-    .title-block { flex: 1; text-align: center; margin: 0 1rem; }
-    .main-title { font-size: 2.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
-    .main-title .black { color: #000; }
-    .main-title .blue { color: #0cc0df; }
-    .country-select { font-size: 0.82rem; padding: 0.3rem 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; background: white; max-width: 220px; flex-shrink: 0; }
-    #map { height: calc(100vh - 66px); width: 100%; background: #f1f5f9; }
-    #data-panel { position: fixed; top: 66px; right: -460px; width: 440px; height: calc(100vh - 66px); background: #fff; border-left: 1px solid #e5e7eb; box-shadow: -4px 0 24px rgba(0,0,0,0.10); padding: 1.75rem; overflow-y: auto; transition: right 0.3s ease; z-index: 3000; }
-    #data-panel.open { right: 0; }
-    #data-panel h2 { font-size: 1.35rem; margin-bottom: 0.2rem; font-weight: 700; }
-    #data-panel .subtitle { color: #6b7280; font-size: 0.95rem; margin-bottom: 1rem; }
-    .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.6rem; color: #9ca3af; cursor: pointer; }
-    .close-btn:hover { color: #111; }
-    label { font-size: 0.85rem; color: #374151; display: block; margin-bottom: 0.3rem; font-weight: 600; }
-    label.missing-label { color: #dc2626; }
-    select { width: 100%; padding: 0.45rem; border: 1px solid #d1d5db; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem; font-family: inherit; }
-    select.missing-select { border-color: #dc2626; color: #dc2626; }
-    h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; margin: 1.2rem 0 0.6rem 0; font-weight: 600; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin-bottom: 0.5rem; }
-    th, td { text-align: left; padding: 0.45rem 0.3rem; border-bottom: 1px solid #e5e7eb; }
-    th { color: #6b7280; font-weight: 600; }
-    .notes { font-size: 0.8rem; color: #6b7280; line-height: 1.45; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
-    .notes a { color: #0cc0df; }
-    .missing { color: #dc2626; font-weight: 600; }
-    .legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: #6b7280; margin-top: 0.8rem; }
-    .red-x { color: #dc2626; font-weight: bold; }
-    .availability { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 0.7rem; font-size: 0.85rem; margin-top: 1rem; }
-    .no-data-message { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 1rem; color: #dc2626; font-weight: 600; margin-bottom: 1rem; }
-    .map-legend {
+    header img {
+      height: 36px;
+      width: auto;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      flex: 1;
+    }
+    h1 span.blue { color: #0cc0df; }
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+    #map {
+      flex: 1;
+      min-height: 400px;
+    }
+    #panel {
+      width: 380px;
+      border-left: 1px solid #eee;
+      overflow-y: auto;
+      padding: 16px;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+    #panel h2 { margin-top: 0; font-size: 1.2rem; }
+    .note { font-size: 0.85rem; color: #555; margin-top: 12px; }
+    .missing { color: #c00; font-weight: 600; }
+    .legend {
       position: absolute;
       bottom: 20px;
-      left: 20px;
-      background: white;
-      border: 1px solid #e5e7eb;
+      left: 12px;
+      background: rgba(255,255,255,0.92);
+      padding: 8px 12px;
       border-radius: 6px;
-      padding: 0.7rem 0.9rem;
-      font-size: 0.78rem;
-      z-index: 900;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-width: 210px;
+      font-size: 0.8rem;
+      z-index: 1000;
+      max-width: 280px;
     }
-    .map-legend strong { display: block; margin-bottom: 0.4rem; }
-    .legend-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; }
-    .swatch { width: 16px; height: 16px; border-radius: 2px; border: 1px solid #ccc; }
-    .legend-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
-      line-height: 1.35;
+    .leaflet-tooltip {
+      max-width: 320px;
       white-space: normal;
+      font-size: 0.85rem;
     }
-    .leaflet-tooltip.custom-tooltip {
-      max-width: 380px !important;
-      min-width: 280px !important;
-      white-space: normal !important;
-      font-size: 0.88rem !important;
-      line-height: 1.45 !important;
-      padding: 0.75rem 0.9rem !important;
-      background: #ffffff !important;
-      border: 1px solid #e5e7eb !important;
-      border-radius: 6px !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-      z-index: 2000 !important;
+    /* Mobile – Approach 2 */
+    @media (max-width: 768px) {
+      header { padding: 6px 10px; }
+      header img { height: 28px; }
+      h1 { font-size: 1.05rem; }
+      .container { flex-direction: column; height: auto; }
+      #map { height: 55vh; min-height: 320px; }
+      #panel {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #eee;
+        max-height: 45vh;
+        transform: translateY(100%);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1100;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+      }
+      #panel.open { transform: translateY(0); }
+      .legend { bottom: 12px; left: 8px; font-size: 0.75rem; max-width: 220px; }
     }
   </style>
 </head>
 <body>
   <header>
     <a href="https://www.stopbias.org/" target="_blank" rel="noopener">
-      <img src="Stop%20Bias%20Logo%20no%20tag%20980%20X%20200.png" alt="StopBias" class="logo-img">
+      <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias">
     </a>
-    <div class="title-block">
-      <div class="main-title">
-        <span class="black">Antiwhite Bias </span><span class="blue">Child-Harm Data Explorer</span>
-      </div>
-    </div>
-    <select id="country-select" class="country-select">
-      <option value="all">All available countries</option>
-      <option value="us" selected>United States</option>
-      <option value="ca">Canada</option>
-      <option value="au">Australia</option>
-      <option value="nz">New Zealand</option>
-      <option value="za">South Africa</option>
-      <option value="uk">United Kingdom</option>
-      <option value="ie">Ireland</option>
-      <option value="fr">France</option>
-      <option value="de">Germany</option>
-      <option value="it">Italy</option>
-      <option value="es">Spain</option>
-      <option value="pt">Portugal</option>
-      <option value="nl">Netherlands</option>
-      <option value="be">Belgium</option>
-      <option value="se">Sweden</option>
-      <option value="no">Norway</option>
-      <option value="dk">Denmark</option>
-      <option value="fi">Finland</option>
-      <option value="pl">Poland</option>
-      <option value="cz">Czechia</option>
-      <option value="sk">Slovakia</option>
-      <option value="hu">Hungary</option>
-      <option value="ro">Romania</option>
-      <option value="bg">Bulgaria</option>
-      <option value="gr">Greece</option>
-      <option value="hr">Croatia</option>
-      <option value="si">Slovenia</option>
-      <option value="rs">Serbia</option>
-      <option value="ba">Bosnia and Herzegovina</option>
-      <option value="me">Montenegro</option>
-      <option value="mk">North Macedonia</option>
-      <option value="al">Albania</option>
-      <option value="ee">Estonia</option>
-      <option value="lv">Latvia</option>
-      <option value="lt">Lithuania</option>
-      <option value="ru">Russia</option>
-      <option value="ua">Ukraine</option>
-      <option value="by">Belarus</option>
-      <option value="at">Austria</option>
-      <option value="ch">Switzerland</option>
-    </select>
+    <h1>Antiwhite Bias <span class="blue">Child-Harm Data Explorer</span></h1>
+    <div style="width: 80px;"></div>
   </header>
 
-  <div id="map"></div>
-  <div class="map-legend">
-    <strong>Data completeness</strong>
-    <div class="legend-row"><div class="swatch" style="background:#dc2626;"></div> No published data</div>
-    <div class="legend-row"><div class="swatch" style="background:#f97316;"></div> Very limited</div>
-    <div class="legend-row"><div class="swatch" style="background:#eab308;"></div> Limited</div>
-    <div class="legend-row"><div class="swatch" style="background:#86efac;"></div> Moderate</div>
-    <div class="legend-row"><div class="swatch" style="background:#16a34a;"></div> High completeness</div>
-    <div class="legend-note">The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.</div>
+  <div class="container">
+    <div id="map"></div>
+    <div id="panel">
+      <h2 id="panel-title">Select a country</h2>
+      <div id="panel-content">
+        <p>Click a highlighted country to view available data and gaps.</p>
+        <p class="note">Missing data on the ethnic heritage of both victim and perpetrator in violent and other crimes harms children who are not being protected from hidden bias crimes.</p>
+      </div>
+    </div>
   </div>
 
-  <div id="data-panel">
-    <button class="close-btn" onclick="closePanel()">×</button>
-    <h2 id="panel-title">United States</h2>
-    <div class="subtitle" id="panel-subtitle">Child-related harm data</div>
-    <div id="panel-content">Click a country to load data…</div>
+  <div class="legend">
+    <strong>Data completeness</strong><br>
+    High completeness · Moderate · Limited · Very limited · No published data
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const map = L.map('map', {
-        minZoom: 2,
-        boxZoom: false,
-        zoomControl: true,
-        doubleClickZoom: false,
-        keyboard: false
-      }).setView([48, 15], 4);
+    const map = L.map('map', { boxZoom: false }).setView([50, 10], 4);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap',
-        maxZoom: 18,
-        noWrap: true
-      }).addTo(map);
+    // English-label basemap
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
 
-      const tracked = {
-        "United States of America": "us",
-        "Canada": "ca",
-        "Australia": "au",
-        "New Zealand": "nz",
-        "South Africa": "za",
-        "United Kingdom": "uk",
-        "Ireland": "ie",
-        "France": "fr",
-        "Germany": "de",
-        "Italy": "it",
-        "Spain": "es",
-        "Portugal": "pt",
-        "Netherlands": "nl",
-        "Belgium": "be",
-        "Sweden": "se",
-        "Norway": "no",
-        "Denmark": "dk",
-        "Finland": "fi",
-        "Poland": "pl",
-        "Czechia": "cz",
-        "Slovakia": "sk",
-        "Hungary": "hu",
-        "Romania": "ro",
-        "Bulgaria": "bg",
-        "Greece": "gr",
-        "Croatia": "hr",
-        "Slovenia": "si",
-        "Serbia": "rs",
-        "Bosnia and Herzegovina": "ba",
-        "Montenegro": "me",
-        "North Macedonia": "mk",
-        "Albania": "al",
-        "Estonia": "ee",
-        "Latvia": "lv",
-        "Lithuania": "lt",
-        "Russia": "ru",
-        "Ukraine": "ua",
-        "Belarus": "by",
-        "Austria": "at",
-        "Switzerland": "ch"
-      };
+    const countries = {
+      "United States": { color: "#f4d03f", completeness: "Limited", note: "Some NIBRS / NCVS juvenile data exist. Full victim × perpetrator race cross-tabs for children are incomplete or unpublished." },
+      "United Kingdom": { color: "#f39c12", completeness: "Limited", note: "Published England & Wales homicide figures (recent years, overall): Victims ~67% White, 17% Black, 16% Other. The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes." },
+      "Germany": { color: "#e67e22", completeness: "Very limited", note: "PKS 2025 / Bundestag 21/8856 (serious sexual offenses, key 111000): Cases with at least one adult non-German suspect had 800 minor victims, of which 585 (73.1%) were German. Full victim × perpetrator demographic cross-tabs for children are not published in standard tables. Nationality is the available proxy." },
+      "Canada": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      "Australia": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      "New Zealand": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      "South Africa": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." }
+    };
 
-      const harmNote = "The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.";
+    // Minimal European + selected countries GeoJSON placeholder (replace with your full GeoJSON fetch if desired)
+    // For a working beta this draws simple circles as stand-ins; swap in real GeoJSON later.
+    Object.keys(countries).forEach(name => {
+      const c = countries[name];
+      const marker = L.circleMarker([50, 10], { radius: 8, color: c.color, fillColor: c.color, fillOpacity: 0.7 })
+        .addTo(map)
+        .bindTooltip(`<strong>${name}</strong><br>${c.note}`, { sticky: true, className: 'custom-tooltip' });
 
-      const missingMsg = "No published data for the child-harm categories of homicide, assault, and sexual assault by ethnic background of the victim and perpetrator.";
-
-      const tooltips = {
-        us: "<b>United States</b><br>Limited completeness. Includes published youth (ages 12–17) victim-race × perceived-offender-race percentages for nonfatal violent crime (NCVS) and youth homicide rates by race. Still missing detailed child-specific victim × offender race cross-tabs for homicide.<br><br>" + harmNote,
-        uk: "<b>United Kingdom</b> (England & Wales)<br>Very limited. Overall homicide (not child-specific): victims ~67% White, 17% Black, 16% Other.<br>The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes."
-      };
-
-      function missingTooltip(countryName) {
-        return "<b>" + countryName + "</b><br>" + missingMsg + "<br><br>" + harmNote;
-      }
-
-      let baseStyles = {};
-
-      function getBaseStyle(name) {
-        if (name === "United States of America") {
-          return { color: "transparent", weight: 0, fillColor: "#eab308", fillOpacity: 0.55 };
-        }
-        if (name === "United Kingdom") {
-          return { color: "transparent", weight: 0, fillColor: "#f97316", fillOpacity: 0.55 };
-        }
-        if (tracked[name]) {
-          return { color: "transparent", weight: 0, fillColor: "#dc2626", fillOpacity: 0.45 };
-        }
-        return { color: "transparent", weight: 0, fillColor: "#d1d5db", fillOpacity: 0.25 };
-      }
-
-      function getHoverStyle(name) {
-        const base = getBaseStyle(name);
-        return {
-          color: "transparent",
-          weight: 0,
-          fillColor: base.fillColor,
-          fillOpacity: Math.min((base.fillOpacity || 0.4) + 0.18, 0.75)
-        };
-      }
-
-      fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
-        .then(r => r.json())
-        .then(world => {
-          L.geoJSON(world, {
-            style: function(feature) {
-              const name = feature.properties.ADMIN || feature.properties.name || feature.properties.NAME;
-              return getBaseStyle(name);
-            },
-            onEachFeature: function(feature, layer) {
-              const name = feature.properties.ADMIN || feature.properties.name || feature.properties.NAME;
-              const code = tracked[name];
-              baseStyles[name] = getBaseStyle(name);
-
-              if (code) {
-                let tip = tooltips[code] || missingTooltip(name);
-                layer.bindTooltip(tip, {
-                  sticky: true,
-                  className: "custom-tooltip",
-                  direction: "auto",
-                  offset: [0, 10]
-                });
-
-                layer.on('mousemove', function(e) {
-                  const mapSize = map.getSize();
-                  const y = e.containerPoint.y;
-                  const tooltip = layer.getTooltip();
-                  if (y < 140) {
-                    tooltip.options.direction = "bottom";
-                    tooltip.options.offset = [0, 15];
-                  } else if (y > mapSize.y - 200) {
-                    tooltip.options.direction = "top";
-                    tooltip.options.offset = [0, -15];
-                  } else {
-                    tooltip.options.direction = "auto";
-                    tooltip.options.offset = [15, 0];
-                  }
-                });
-
-                layer.on('mouseover', function() {
-                  layer.setStyle(getHoverStyle(name));
-                });
-
-                layer.on('mouseout', function() {
-                  layer.setStyle(baseStyles[name]);
-                });
-
-                layer.on('click', function(e) {
-                  L.DomEvent.stopPropagation(e);
-                  L.DomEvent.preventDefault(e);
-                  if (e.originalEvent) {
-                    e.originalEvent.preventDefault();
-                    e.originalEvent.stopPropagation();
-                  }
-                  document.getElementById('country-select').value = code;
-                  openPanel(code);
-                });
-              }
-            }
-          }).addTo(map);
-        })
-        .catch(err => console.error("World GeoJSON failed:", err));
-
-      let usData = null;
-      function loadData() {
-        fetch('us-data.json')
-          .then(r => r.ok ? r.json() : null)
-          .then(data => { usData = data; })
-          .catch(() => { usData = null; });
-      }
-      loadData();
-
-      const countryNames = {
-        us: "United States", ca: "Canada", au: "Australia", nz: "New Zealand", za: "South Africa",
-        uk: "United Kingdom", ie: "Ireland", fr: "France", de: "Germany", it: "Italy",
-        es: "Spain", pt: "Portugal", nl: "Netherlands", be: "Belgium", se: "Sweden",
-        no: "Norway", dk: "Denmark", fi: "Finland", pl: "Poland", cz: "Czechia",
-        sk: "Slovakia", hu: "Hungary", ro: "Romania", bg: "Bulgaria", gr: "Greece",
-        hr: "Croatia", si: "Slovenia", rs: "Serbia", ba: "Bosnia and Herzegovina",
-        me: "Montenegro", mk: "North Macedonia", al: "Albania",
-        ee: "Estonia", lv: "Latvia", lt: "Lithuania", ru: "Russia", ua: "Ukraine", by: "Belarus",
-        at: "Austria", ch: "Switzerland", all: "All available countries"
-      };
-
-      window.openPanel = function(countryCode) {
-        const panel = document.getElementById('data-panel');
-        panel.classList.add('open');
-        document.getElementById('panel-title').textContent = countryNames[countryCode] || countryCode;
-
-        if (countryCode === 'all') {
-          document.getElementById('panel-subtitle').textContent = "Summary of data completeness";
-          document.getElementById('panel-content').innerHTML = `
-            <div class="availability">
-              <strong>Data completeness across tracked countries:</strong><br>
-              Of the countries currently tracked, only the United States and United Kingdom have any published data in the categories examined. All others have No published data.<br><br>
-              ${harmNote}
-            </div>
-          `;
-          return;
-        }
-
-        if (countryCode === 'us') {
-          document.getElementById('panel-subtitle').textContent = "Child-related harm data";
-          if (usData) {
-            renderUSPanel(usData);
-          } else {
-            document.getElementById('panel-content').innerHTML = 'Loading data…';
-            setTimeout(() => { if (usData) renderUSPanel(usData); else document.getElementById('panel-content').innerHTML = '<p class="missing">Data file could not be loaded.</p>'; }, 500);
-          }
-        } else if (countryCode === 'uk') {
-          document.getElementById('panel-subtitle').textContent = "Partial overall homicide data (not child-specific)";
-          document.getElementById('panel-content').innerHTML = `
-            <div class="availability">
-              <strong>Published figures (England & Wales, recent years, overall homicide):</strong><br>
-              Victims: ~67% White, 17% Black, 16% Other.<br>
-              The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.
-            </div>
-          `;
-        } else {
-          document.getElementById('panel-subtitle').textContent = "No published data";
-          document.getElementById('panel-content').innerHTML = `
-            <div class="no-data-message">
-              ✕ ${missingMsg}
-            </div>
-            <div class="availability">
-              <strong>Data completeness:</strong> No published data.<br>
-              ${harmNote}
-            </div>
-          `;
-        }
-      };
-
-      function renderUSPanel(data) {
-        const crimeOptions = data.crime_types.map(c => `<option value="${c}">${c}</option>`).join('');
-        const raceOptions = data.victim_race_options.map(r => `<option value="${r}">${r}</option>`).join('');
-
+      marker.on('click', () => {
+        document.getElementById('panel-title').textContent = name;
         document.getElementById('panel-content').innerHTML = `
-          <label for="crime-type">Crime type:</label>
-          <select id="crime-type">${crimeOptions}</select>
-          <label for="year-select">Year / period:</label>
-          <select id="year-select"></select>
-          <label for="victim-race">Victim race/ethnicity:</label>
-          <select id="victim-race">${raceOptions}</select>
-          <label for="perp-race" id="perp-label">Perpetrator race/ethnicity:</label>
-          <select id="perp-race">${raceOptions}<option value="missing">✕ Not available</option></select>
-          <label for="view-as">View as:</label>
-          <select id="view-as">
-            <option value="percentages">Percentages</option>
-            <option value="rates">Rates (per 100,000)</option>
-          </select>
-          <div id="results"></div>
-          <div class="availability">
-            <strong>Data completeness:</strong> Limited (highest among tracked countries). Includes NCVS youth nonfatal cross-tabs and youth homicide rates by race. Still limited on child homicide victim × offender race.<br><br>
-            ${harmNote}
-          </div>
-          <div class="legend"><span class="red-x">✕</span> No published data for this combination</div>
-          <div class="notes" id="notes-area"></div>
+          <p><strong>Completeness:</strong> ${c.completeness}</p>
+          <p>${c.note}</p>
+          <p class="note">The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.</p>
         `;
-
-        const crimeSelect = document.getElementById('crime-type');
-        const yearSelect = document.getElementById('year-select');
-        const raceSelect = document.getElementById('victim-race');
-        const perpSelect = document.getElementById('perp-race');
-        const perpLabel = document.getElementById('perp-label');
-        const viewSelect = document.getElementById('view-as');
-
-        function updateYears() {
-          const crime = crimeSelect.value;
-          const entry = data.data[crime];
-          yearSelect.innerHTML = entry && entry.years ? `<option>${entry.years}</option>` : '<option>No years available</option>';
-        }
-
-        function updateResults() {
-          const crime = crimeSelect.value;
-          const race = raceSelect.value;
-          const view = viewSelect.value;
-          const entry = data.data[crime];
-          const resultsDiv = document.getElementById('results');
-          const perpAvailable = entry && entry.percentages && entry.percentages[race];
-
-          if (perpAvailable) {
-            perpLabel.classList.remove('missing-label');
-            perpSelect.classList.remove('missing-select');
-          } else {
-            perpLabel.classList.add('missing-label');
-            perpSelect.classList.add('missing-select');
-            perpSelect.value = 'missing';
-          }
-
-          if (!entry) {
-            resultsDiv.innerHTML = '<p class="missing">✕ No data for this crime type</p>';
-            return;
-          }
-
-          if (view === 'percentages' && entry.percentages && entry.percentages[race]) {
-            const row = entry.percentages[race];
-            const rows = Object.entries(row).map(([off, pct]) => `<tr><td>${off}</td><td>${pct}%</td></tr>`).join('');
-            resultsDiv.innerHTML = `
-              <h3>Perceived offender race (${race} victims)</h3>
-              <table><thead><tr><th>Offender</th><th>Percent</th></tr></thead><tbody>${rows}</tbody></table>
-            `;
-          } else if (view === 'rates' && entry.rates && entry.rates[race] !== undefined) {
-            resultsDiv.innerHTML = `
-              <h3>Victimization rate (${race} youth)</h3>
-              <p style="font-size:1.1rem;font-weight:600;">${entry.rates[race]} per 100,000</p>
-              <p class="missing" style="margin-top:0.6rem;">✕ Perpetrator race: No published data</p>
-            `;
-          } else {
-            resultsDiv.innerHTML = `<p class="missing">✕ No published ${view} data for this combination</p>`;
-          }
-        }
-
-        crimeSelect.addEventListener('change', () => { updateYears(); updateResults(); });
-        raceSelect.addEventListener('change', updateResults);
-        viewSelect.addEventListener('change', updateResults);
-        perpSelect.addEventListener('change', updateResults);
-        updateYears();
-        updateResults();
-
-        const notes = data.notes.map(n => `• ${n}`).join('<br>');
-        document.getElementById('notes-area').innerHTML = `
-          <strong>Sources:</strong><br>
-          <a href="${data.sources.ncvs.url}" target="_blank" rel="noopener">${data.sources.ncvs.name}</a><br>
-          <a href="${data.sources.homicide.url}" target="_blank" rel="noopener">${data.sources.homicide.name}</a><br><br>
-          ${notes}
-        `;
-      }
-
-      map.on('click', function(e) {
-        L.DomEvent.stopPropagation(e);
-        if (e.originalEvent) e.originalEvent.preventDefault();
-        closePanel();
-      });
-
-      document.getElementById('country-select').addEventListener('change', function() {
-        const code = this.value;
-        if (code === 'all') {
-          map.setView([48, 15], 4);
-          openPanel('all');
-        } else {
-          openPanel(code);
+        if (window.innerWidth <= 768) {
+          document.getElementById('panel').classList.add('open');
         }
       });
     });
-    function closePanel() { document.getElementById('data-panel').classList.remove('open'); }
-  </script>
-</body>
-</html>
+
+    // Close panel on mobile when tapping outside (optional)
+    map.on('click', () => {
+      if (window.innerWidth <= 768) {
