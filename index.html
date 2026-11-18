@@ -88,7 +88,7 @@
     <img src="Stop%20Bias%20Logo%20no%20tag%20980%20X%20200.png" alt="StopBias" class="logo-img">
     <div class="title-block">
       <div class="main-title">
-        <span class="black">Child Harm </span><span class="blue">Data Explorer</span>
+        <span class="black">Antiwhite Bias </span><span class="blue">Child-Harm Data Explorer</span>
       </div>
     </div>
     <select id="country-select" class="country-select">
@@ -161,7 +161,8 @@
         maxBounds: [[-85, -180], [85, 180]],
         maxBoundsViscosity: 1.0,
         minZoom: 2,
-        boxZoom: false
+        boxZoom: false,
+        zoomControl: true
       }).setView([48, 15], 4);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -300,6 +301,7 @@
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
                   L.DomEvent.preventDefault(e);
+                  if (e.originalEvent) e.originalEvent.preventDefault();
                   document.getElementById('country-select').value = code;
                   openPanel(code);
                 });
@@ -479,7 +481,8 @@
         `;
       }
 
-      map.on('click', function() {
+      map.on('click', function(e) {
+        L.DomEvent.stopPropagation(e);
         closePanel();
       });
 
