@@ -226,7 +226,6 @@
         return "<b>" + countryName + "</b><br>" + missingMsg + "<br><br>" + harmNote;
       }
 
-      let selectedLayer = null;
       let baseStyles = {};
 
       function getBaseStyle(name) {
@@ -242,13 +241,13 @@
         return { color: "#9ca3af", weight: 0.5, fillColor: "#d1d5db", fillOpacity: 0.2 };
       }
 
-      function getSelectedStyle(name) {
+      function getHoverStyle(name) {
         const base = getBaseStyle(name);
         return {
           color: "#111827",
-          weight: 3,
+          weight: 2.8,
           fillColor: base.fillColor,
-          fillOpacity: Math.min((base.fillOpacity || 0.4) + 0.12, 0.7)
+          fillOpacity: Math.min((base.fillOpacity || 0.4) + 0.15, 0.72)
         };
       }
 
@@ -290,16 +289,17 @@
                   }
                 });
 
+                layer.on('mouseover', function() {
+                  layer.setStyle(getHoverStyle(name));
+                });
+
+                layer.on('mouseout', function() {
+                  layer.setStyle(baseStyles[name]);
+                });
+
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
                   L.DomEvent.preventDefault(e);
-                  if (selectedLayer && selectedLayer !== layer) {
-                    const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
-                    selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
-                  }
-                  layer.setStyle(getSelectedStyle(name));
-                  selectedLayer = layer;
-
                   document.getElementById('country-select').value = code;
                   openPanel(code);
                 });
@@ -480,11 +480,6 @@
       }
 
       map.on('click', function() {
-        if (selectedLayer) {
-          const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
-          selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
-          selectedLayer = null;
-        }
         closePanel();
       });
 
@@ -492,11 +487,6 @@
         const code = this.value;
         if (code === 'all') {
           map.setView([48, 15], 4);
-          if (selectedLayer) {
-            const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
-            selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
-            selectedLayer = null;
-          }
           openPanel('all');
         } else {
           openPanel(code);
