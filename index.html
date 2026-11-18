@@ -41,6 +41,7 @@
     #map {
       flex: 1;
       min-height: 400px;
+      background: #f5f5f5;
     }
     #panel {
       width: 380px;
@@ -48,49 +49,49 @@
       overflow-y: auto;
       padding: 16px;
       background: #fff;
-      transition: transform 0.3s ease;
     }
     #panel h2 { margin-top: 0; font-size: 1.2rem; }
     .note { font-size: 0.85rem; color: #555; margin-top: 12px; }
-    .missing { color: #c00; font-weight: 600; }
     .legend {
       position: absolute;
       bottom: 20px;
       left: 12px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.95);
       padding: 8px 12px;
       border-radius: 6px;
       font-size: 0.8rem;
       z-index: 1000;
       max-width: 280px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     }
     .leaflet-tooltip {
-      max-width: 320px;
+      max-width: 340px;
       white-space: normal;
       font-size: 0.85rem;
+      padding: 8px 10px;
     }
-    /* Mobile – Approach 2 */
     @media (max-width: 768px) {
       header { padding: 6px 10px; }
       header img { height: 28px; }
       h1 { font-size: 1.05rem; }
       .container { flex-direction: column; height: auto; }
-      #map { height: 55vh; min-height: 320px; }
+      #map { height: 58vh; min-height: 300px; }
       #panel {
         width: 100%;
         border-left: none;
         border-top: 1px solid #eee;
-        max-height: 45vh;
-        transform: translateY(100%);
+        max-height: 42vh;
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
         z-index: 1100;
-        box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
       }
       #panel.open { transform: translateY(0); }
-      .legend { bottom: 12px; left: 8px; font-size: 0.75rem; max-width: 220px; }
+      .legend { bottom: 10px; left: 8px; font-size: 0.75rem; max-width: 200px; }
     }
   </style>
 </head>
@@ -100,7 +101,7 @@
       <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias">
     </a>
     <h1>Antiwhite Bias <span class="blue">Child-Harm Data Explorer</span></h1>
-    <div style="width: 80px;"></div>
+    <div style="width: 70px;"></div>
   </header>
 
   <div class="container">
@@ -116,50 +117,111 @@
 
   <div class="legend">
     <strong>Data completeness</strong><br>
-    High completeness · Moderate · Limited · Very limited · No published data
+    High · Moderate · Limited · Very limited · No published data
   </div>
 
   <script>
-    const map = L.map('map', { boxZoom: false }).setView([50, 10], 4);
+    const map = L.map('map', { boxZoom: false, minZoom: 2 }).setView([48, 10], 4);
 
-    // English-label basemap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map);
 
-    const countries = {
-      "United States": { color: "#f4d03f", completeness: "Limited", note: "Some NIBRS / NCVS juvenile data exist. Full victim × perpetrator race cross-tabs for children are incomplete or unpublished." },
-      "United Kingdom": { color: "#f39c12", completeness: "Limited", note: "Published England & Wales homicide figures (recent years, overall): Victims ~67% White, 17% Black, 16% Other. The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes." },
-      "Germany": { color: "#e67e22", completeness: "Very limited", note: "PKS 2025 / Bundestag 21/8856 (serious sexual offenses, key 111000): Cases with at least one adult non-German suspect had 800 minor victims, of which 585 (73.1%) were German. Full victim × perpetrator demographic cross-tabs for children are not published in standard tables. Nationality is the available proxy." },
+    const tracked = {
+      "United States of America": {
+        color: "#f4d03f",
+        completeness: "Limited",
+        note: "Some NIBRS / NCVS juvenile data exist. Full victim × perpetrator race cross-tabs for children are incomplete or unpublished."
+      },
+      "United Kingdom": {
+        color: "#f39c12",
+        completeness: "Limited",
+        note: "Published England & Wales homicide figures (recent years, overall): Victims ~67% White, 17% Black, 16% Other. The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes."
+      },
+      "Germany": {
+        color: "#e67e22",
+        completeness: "Very limited",
+        note: "PKS 2025 / Bundestag 21/8856 (serious sexual offenses, key 111000): Cases with at least one adult non-German suspect had 800 minor victims, of which 585 (73.1%) were German. Full victim × perpetrator demographic cross-tabs for children are not published in standard tables. Nationality is the available proxy."
+      },
       "Canada": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       "Australia": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       "New Zealand": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       "South Africa": { color: "#e74c3c", completeness: "No published data", note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." }
     };
 
-    // Minimal European + selected countries GeoJSON placeholder (replace with your full GeoJSON fetch if desired)
-    // For a working beta this draws simple circles as stand-ins; swap in real GeoJSON later.
-    Object.keys(countries).forEach(name => {
-      const c = countries[name];
-      const marker = L.circleMarker([50, 10], { radius: 8, color: c.color, fillColor: c.color, fillOpacity: 0.7 })
-        .addTo(map)
-        .bindTooltip(`<strong>${name}</strong><br>${c.note}`, { sticky: true, className: 'custom-tooltip' });
+    function style(feature) {
+      const name = feature.properties.name;
+      const info = tracked[name];
+      if (info) {
+        return {
+          fillColor: info.color,
+          weight: 1,
+          opacity: 1,
+          color: "#666",
+          fillOpacity: 0.65
+        };
+      }
+      return {
+        fillColor: "#d5d5d5",
+        weight: 0.5,
+        opacity: 0.6,
+        color: "#aaa",
+        fillOpacity: 0.3
+      };
+    }
 
-      marker.on('click', () => {
-        document.getElementById('panel-title').textContent = name;
-        document.getElementById('panel-content').innerHTML = `
-          <p><strong>Completeness:</strong> ${c.completeness}</p>
-          <p>${c.note}</p>
-          <p class="note">The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.</p>
-        `;
-        if (window.innerWidth <= 768) {
-          document.getElementById('panel').classList.add('open');
+    function onEachFeature(feature, layer) {
+      const name = feature.properties.name;
+      const info = tracked[name];
+      if (!info) return;
+
+      layer.bindTooltip(`<strong>${name}</strong><br>${info.note}`, {
+        sticky: true,
+        className: "custom-tooltip"
+      });
+
+      layer.on({
+        mouseover: function(e) {
+          e.target.setStyle({ weight: 2, fillOpacity: 0.85 });
+        },
+        mouseout: function(e) {
+          geojson.resetStyle(e.target);
+        },
+        click: function() {
+          document.getElementById("panel-title").textContent = name;
+          document.getElementById("panel-content").innerHTML = `
+            <p><strong>Completeness:</strong> ${info.completeness}</p>
+            <p>${info.note}</p>
+            <p class="note">The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.</p>
+          `;
+          if (window.innerWidth <= 768) {
+            document.getElementById("panel").classList.add("open");
+          }
         }
       });
-    });
+    }
 
-    // Close panel on mobile when tapping outside (optional)
-    map.on('click', () => {
+    let geojson;
+    fetch("https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson")
+      .then(r => r.json())
+      .then(data => {
+        geojson = L.geoJSON(data, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("panel-content").innerHTML = "<p>Map data failed to load. Please refresh.</p>";
+      });
+
+    map.on("click", function() {
       if (window.innerWidth <= 768) {
+        document.getElementById("panel").classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>
