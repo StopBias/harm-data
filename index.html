@@ -162,9 +162,9 @@
         minZoom: 2
       }).setView([48, 15], 4);
 
-      // Cleaner basemap (reduces mixed-script labels)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap &copy; CARTO',
+      // Reliable free tiles (no API key)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
         maxZoom: 18,
         noWrap: true
       }).addTo(map);
@@ -249,15 +249,17 @@
         };
       }
 
-      fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
+      // Higher-resolution free GeoJSON
+      fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
         .then(r => r.json())
         .then(world => {
           L.geoJSON(world, {
             style: function(feature) {
-              return getBaseStyle(feature.properties.name);
+              const name = feature.properties.ADMIN || feature.properties.name || feature.properties.NAME;
+              return getBaseStyle(name);
             },
             onEachFeature: function(feature, layer) {
-              const name = feature.properties.name;
+              const name = feature.properties.ADMIN || feature.properties.name || feature.properties.NAME;
               const code = tracked[name];
               baseStyles[name] = getBaseStyle(name);
 
@@ -273,7 +275,7 @@
                 layer.on('click', function(e) {
                   L.DomEvent.stopPropagation(e);
                   if (selectedLayer && selectedLayer !== layer) {
-                    const prevName = selectedLayer.feature.properties.name;
+                    const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
                     selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
                   }
                   layer.setStyle(getSelectedStyle(name));
@@ -460,7 +462,7 @@
 
       map.on('click', function() {
         if (selectedLayer) {
-          const prevName = selectedLayer.feature.properties.name;
+          const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
           selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
           selectedLayer = null;
         }
@@ -472,7 +474,7 @@
         if (code === 'all') {
           map.setView([48, 15], 4);
           if (selectedLayer) {
-            const prevName = selectedLayer.feature.properties.name;
+            const prevName = selectedLayer.feature.properties.ADMIN || selectedLayer.feature.properties.name || selectedLayer.feature.properties.NAME;
             selectedLayer.setStyle(baseStyles[prevName] || getBaseStyle(prevName));
             selectedLayer = null;
           }
