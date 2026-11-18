@@ -81,10 +81,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
       z-index: 2000 !important;
     }
-    .country-hover {
-      stroke: #111827 !important;
-      stroke-width: 2.8 !important;
-    }
   </style>
 </head>
 <body>
@@ -235,19 +231,28 @@
       }
 
       let baseStyles = {};
-      let currentHover = null;
 
       function getBaseStyle(name) {
         if (name === "United States of America") {
-          return { color: "#ca8a04", weight: 1.5, fillColor: "#eab308", fillOpacity: 0.5 };
+          return { color: "transparent", weight: 0, fillColor: "#eab308", fillOpacity: 0.55 };
         }
         if (name === "United Kingdom") {
-          return { color: "#c2410c", weight: 1.5, fillColor: "#f97316", fillOpacity: 0.5 };
+          return { color: "transparent", weight: 0, fillColor: "#f97316", fillOpacity: 0.55 };
         }
         if (tracked[name]) {
-          return { color: "#b91c1c", weight: 1.2, fillColor: "#dc2626", fillOpacity: 0.4 };
+          return { color: "transparent", weight: 0, fillColor: "#dc2626", fillOpacity: 0.45 };
         }
-        return { color: "#9ca3af", weight: 0.5, fillColor: "#d1d5db", fillOpacity: 0.2 };
+        return { color: "transparent", weight: 0, fillColor: "#d1d5db", fillOpacity: 0.25 };
+      }
+
+      function getHoverStyle(name) {
+        const base = getBaseStyle(name);
+        return {
+          color: "transparent",
+          weight: 0,
+          fillColor: base.fillColor,
+          fillOpacity: Math.min((base.fillOpacity || 0.4) + 0.18, 0.75)
+        };
       }
 
       fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
@@ -289,20 +294,11 @@
                 });
 
                 layer.on('mouseover', function() {
-                  if (currentHover && currentHover !== layer) {
-                    currentHover.getElement().classList.remove('country-hover');
-                  }
-                  if (layer.getElement()) {
-                    layer.getElement().classList.add('country-hover');
-                  }
-                  currentHover = layer;
+                  layer.setStyle(getHoverStyle(name));
                 });
 
                 layer.on('mouseout', function() {
-                  if (layer.getElement()) {
-                    layer.getElement().classList.remove('country-hover');
-                  }
-                  if (currentHover === layer) currentHover = null;
+                  layer.setStyle(baseStyles[name]);
                 });
 
                 layer.on('click', function(e) {
