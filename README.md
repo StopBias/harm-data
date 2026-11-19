@@ -160,6 +160,22 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   police statistics file (site firewall), Hungary's BSR report files (no response) and data.gov.ua / data.gov.ro
   (maintenance / connection closed; the same files were taken from the publishers' own sites where they offer them).
 
+### Europe batch 5: Croatia, Serbia, Slovakia, Greece, Bulgaria
+- `data/hrv.json`, `srb.json`, `svk.json`, `grc.json` and `bgr.json` are built by `build_<iso>.py` (kept with each
+  country's research, outside this repo) and scored by `score_v2_batch8.py` on the stricter scale with the 19 Nov 2026
+  harm weights. Croatia 16%, Serbia 13%, Slovakia 11%, Greece 11%, Bulgaria 11%, all red.
+- Serbia is the only one with real ethnicity data: the Statistical Office's bulletin tabulates convicted adults by
+  self-declared national affiliation (Serb, Montenegrin, Albanian, Hungarian, Muslim, Roma, Romanian, other) for each
+  Criminal Code chapter, so the 25% cap does not apply. It covers perpetrators only, by chapter rather than child-specific
+  offence, with 47% not declared or not known, and victims have no nationality, so the points are low. Serbia's
+  child-marriage report also records Roma children, but child marriage is not one of the six harms.
+- Croatia, Slovakia, Greece and Bulgaria record citizenship only (Croatian/foreign victims and perpetrators per article;
+  Slovak/foreign offenders per crime group; Greek/foreign known offenders per offence; Bulgarian/other convicted persons
+  per offence), so all their heritage points are proxies and the cap rule applies (none reaches it).
+- Blocked or unreachable sources, recorded and not worked around: astynomia.gr (Access Denied to the box). The Hellenic
+  Police yearbook was taken from the Ministry of Citizen Protection's own dataset on data.gov.gr, the government's
+  official open-data portal, not from a mirror or archive.
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
