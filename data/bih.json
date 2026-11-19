@@ -1,0 +1,534 @@
+{
+ "country": "Bosnia and Herzegovina",
+ "iso_a3": "BIH",
+ "completeness": 9,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Bosnia and Herzegovina's only group data on child harm are for trafficking: the Ministry of Security's bulletin reports the ethnicity (Bosniak, Serb, other) and citizenship of victims in court cases monitored by the OSCE Mission, all ages together. The two entity statistics offices publish offenders by offence, sex and age only.",
+ "short_name": "Bosnia and Herzegovina",
+ "name_in_sentence": "Bosnia and Herzegovina",
+ "nations": {
+  "State (Ministry of Security)": "Trafficking bulletin.",
+  "Federation of BiH and Republika Srpska": "Entity justice statistics (no ethnicity)."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "bosniak",
+   "label": "Bosniaks"
+  },
+  {
+   "id": "serb",
+   "label": "Serbs"
+  },
+  {
+   "id": "other_eth",
+   "label": "Other ethnic groups (incl. Croats)",
+   "lumped": true
+  },
+  {
+   "id": "bih_cit",
+   "label": "BiH citizens (trafficking victims)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens (trafficking victims)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Ethnicity unknown",
+ "european_title": "Bosniaks and Serbs are identified for trafficking victims; European descent as a whole is not a category",
+ "european_note": "The trafficking bulletin names Bosniaks and Serbs and groups everyone else (including Croats) as 'other', with a quarter unknown. No source defines a European-descent category.",
+ "select_labels": {
+  "victim": "Victim's group",
+  "perpetrator": "Offender's group"
+ },
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children",
+   "years": "2025",
+   "intro": "The Federation and Republika Srpska statistics offices publish reported, accused and convicted adults by offence group, sex and age (FBiH 2025 bulletin), with no ethnicity or citizenship. No child victims are published by group.",
+   "victims": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse and domestic violence",
+   "years": "2025",
+   "intro": "No ethnicity or citizenship in entity justice statistics.",
+   "victims": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect and maltreatment of a child",
+   "years": "2025",
+   "intro": "No ethnicity or citizenship in entity justice or social-protection statistics.",
+   "victims": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "No ethnicity or citizenship in entity justice statistics.",
+   "victims": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025-2026",
+   "intro": "The Ministry of Security registered 65 potential trafficking victims in 2025, 50 of them children, and 19 in January-June 2026 (13 minors; 17 BiH citizens and 2 foreign). Its bulletin also reports the OSCE Mission's monitoring of 31 trafficking-related court cases: 157 victims, of whom 85 were Bosniaks, 15 Serbs, 19 other and 38 of unknown ethnicity, with 59 defendants (no ethnicity given). Victims are not split by age.",
+   "victims": {
+    "status": "published",
+    "source": "msb",
+    "scope": "Bosnia and Herzegovina, victims in trafficking-related court cases monitored by the OSCE Mission (all ages), January-June 2026",
+    "n": 119,
+    "n_label": "victims with a known ethnicity (of 157)",
+    "unknown_share": 24.2,
+    "unknown_label": "Ethnicity unknown",
+    "share": {
+     "bosniak": 71.4,
+     "serb": 12.6,
+     "other_eth": 16.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Ministry of Security, Biannual Bulletin January-June 2026, OSCE trial-monitoring section: 157 victims (29 men, 128 women) in 31 monitored cases; 85 Bosniaks, 15 Serbs, 19 other ethnic groups (Croats are not named separately), 38 unknown. This is real ethnicity data, recorded in the case files the OSCE monitors, not citizenship. The cases cover trafficking, enticement to prostitution, child pornography and child neglect charges; victims are not split by age."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "msb",
+    "text": "The 59 defendants in monitored cases are given by sex only."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "msb",
+    "text": "Not linked."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Same victims by citizenship",
+     "data": {
+      "status": "published",
+      "source": "msb",
+      "scope": "Same victims, by citizenship",
+      "n": 142,
+      "n_label": "victims with a known citizenship (of 157)",
+      "unknown_share": null,
+      "share": {
+       "bih_cit": 90.8,
+       "foreign_cit": 9.2
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Citizenship: 129 Bosnia and Herzegovina, 12 Serbia, 1 Afghanistan, 15 unknown. Citizenship is a proxy, not ethnicity."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "bosniak",
+     "serb",
+     "other_eth",
+     "bih_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "bosniak",
+       "serb",
+       "other_eth",
+       "bih_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation",
+   "years": "2025",
+   "intro": "No ethnicity or citizenship in entity justice statistics.",
+   "victims": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "Entity justice statistics give offenders by offence group, sex and age only; no ethnicity or citizenship, and no victims by group."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "fzs",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 9,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 8.7,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The Federation (FZS) and Republika Srpska (RZS) statistics offices publish reported, accused and convicted adults by offence group, sex and age, with no ethnicity or citizenship. No child victims by group.",
+    "score": 8.0
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No ethnicity or citizenship in entity justice statistics.",
+    "score": 8.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No ethnicity or citizenship in entity justice or child-protection statistics.",
+    "score": 7.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No ethnicity or citizenship in entity justice statistics.",
+    "score": 8.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "The Ministry of Security's bulletin (January-June 2026) reports 157 victims in trafficking-related court cases monitored by the OSCE Mission by ethnicity (85 Bosniaks, 15 Serbs, 19 other, 38 unknown) and citizenship (129 BiH, 12 Serbia, 1 Afghanistan, 15 unknown), all ages. The ministry registered 65 potential victims in 2025 (50 children) and 19 in the first half of 2026 (13 minors; 17 BiH citizens, 2 foreign). Traffickers have no ethnicity.",
+    "score": 12
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No ethnicity or citizenship in entity justice statistics.",
+    "score": 7.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Bosnia and Herzegovina scores 9% on the stricter scale (0-20%). The only group data are for trafficking: the Ministry of Security's bulletin gives the ethnicity (Bosniak, Serb, other) and citizenship of victims in OSCE-monitored trafficking cases, so the cap does not apply. The entity statistics offices publish no ethnicity or citizenship for any other harm.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "msb": {
+   "name": "Biannual Bulletin on trafficking in human beings, January-June 2026",
+   "publisher": "Ministry of Security of Bosnia and Herzegovina (State Coordinator for Combating Trafficking)",
+   "years": "2025-2026",
+   "records": "Potential and identified victims by age, sex and citizenship; OSCE Mission trial-monitoring data with victims by sex, ethnicity and citizenship.",
+   "limitations": "Six months only; the monitored-case victims are not split by age; defendants have no ethnicity. The detailed statistics portal requires a login.",
+   "url": "https://elearningapi-thb.msb.gov.ba/api/Documents/download/117",
+   "tier": "Official government statistics"
+  },
+  "msbn": {
+   "name": "News item on World Day against Trafficking 2026 (2024-2025 figures)",
+   "publisher": "Ministry of Security of Bosnia and Herzegovina, anti-trafficking resource centre",
+   "years": "2024-2025",
+   "records": "37 potential victims in 2024 (25 minors); 65 in 2025 (50 children).",
+   "limitations": "Totals only; no citizenship or ethnicity.",
+   "url": "https://elearning-thb.msb.gov.ba/news/56",
+   "tier": "Official government statistics"
+  },
+  "fzs": {
+   "name": "Statistika pravosuđa 2025 (statistical bulletin 423)",
+   "publisher": "Federalni zavod za statistiku (Institute for Statistics of FBiH)",
+   "years": "2025",
+   "records": "Reported, accused and convicted adults and juveniles by offence group, sex and age.",
+   "limitations": "No ethnicity or citizenship; Federation only. Republika Srpska publishes the same variables.",
+   "url": "https://fzs.ba/index.php/2026/06/30/statistika-pravosudja-2025-sb-423/",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

@@ -1,0 +1,455 @@
+{
+ "country": "Albania",
+ "iso_a3": "ALB",
+ "completeness": 8,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Albania's official child statistics count child victims of crime (1,447 in 2024) and child victims of trafficking (96) by sex only. No citizenship or ethnicity of victims or offenders is published.",
+ "short_name": "Albania",
+ "name_in_sentence": "Albania",
+ "nations": {
+  "National (INSTAT, State Police, Anti-Trafficking Coordinator)": "Child victim counts by sex."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not available",
+ "european_note": "No Albanian official source found records the ethnicity or citizenship of child victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's group",
+  "perpetrator": "Perpetrator's group"
+ },
+ "proxy_note": "No Albanian data by citizenship or ethnicity for child harm were found.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children",
+   "years": "2024",
+   "intro": "INSTAT's official child statistics (from State Police data) count 1,447 children aged 0-17 as victims of criminal offences in 2024 (1,046 boys, 401 girls), not split by offence, citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse",
+   "years": "2024",
+   "intro": "INSTAT's official child statistics (from State Police data) count 1,447 children aged 0-17 as victims of criminal offences in 2024 (1,046 boys, 401 girls), not split by offence, citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "2024",
+   "intro": "No neglect statistics by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2024",
+   "intro": "INSTAT publishes the rate of children who were victims of intentional homicide, by sex only.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "INSTAT, from the National Anti-Trafficking Coordinator, counts 96 children as victims or potential victims of trafficking in 2024 (48 boys, 48 girls), with no citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat_t",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat_t",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat_t",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation",
+   "years": "2024",
+   "intro": "No statistics by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "Published by sex only; no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No offenders by citizenship or ethnicity were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "instat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 8,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.5,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "INSTAT's official child statistics give child victims of criminal offences (1,447 in 2024) by sex, from State Police data, with no citizenship or ethnicity.",
+    "score": 7.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Only the child-victim total by sex; no citizenship or ethnicity.",
+    "score": 7.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No neglect statistics by citizenship or ethnicity were found.",
+    "score": 7.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "INSTAT publishes a rate of child victims of intentional homicide, by sex only.",
+    "score": 7.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "INSTAT (from the National Anti-Trafficking Coordinator) gives 96 child victims and potential victims of trafficking in 2024 (48 boys, 48 girls), with no citizenship or ethnicity.",
+    "score": 8.0
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No statistics by citizenship or ethnicity were found.",
+    "score": 7.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Albania scores 8% on the stricter scale (0-20%). Official child statistics give child victims of crime and of trafficking by sex only; no citizenship or ethnicity is recorded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "instat": {
+   "name": "Statistika zyrtare për fëmijë dhe të rinj: Drejtësia (child victims of criminal offences)",
+   "publisher": "INSTAT (Instituti i Statistikave), from the State Police (Drejtoria e Përgjithshme e Policisë)",
+   "years": "2024",
+   "records": "Children aged 0-17 who were victims of criminal offences, by sex; share of all victims; rate per 100,000; child homicide victim rate.",
+   "limitations": "Sex only; not split by offence, citizenship or ethnicity.",
+   "url": "https://www.instat.gov.al/sq/statistika-zyrtare-femije-dhe-te-rinj/drejtesia/femije-0-17-vjec-viktima-te-demtuar-te-veprave-penale-gjate-vitit-numer/",
+   "tier": "Official government statistics"
+  },
+  "instat_t": {
+   "name": "Fëmijë 0-17 vjeç viktima dhe viktima të mundshme të trafikimit (child victims and potential victims of trafficking)",
+   "publisher": "INSTAT, from the Ministry of Interior / National Anti-Trafficking Coordinator",
+   "years": "2024",
+   "records": "Child victims and potential victims of trafficking by sex.",
+   "limitations": "Sex only; no citizenship or ethnicity.",
+   "url": "https://www.instat.gov.al/sq/statistika-zyrtare-femije-dhe-te-rinj/drejtesia/femije-0-17-vjec-viktima-dhe-viktima-te-mundshme-te-trafikimit-te-qenieve-njerezore-gjate-vitit-numer/",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

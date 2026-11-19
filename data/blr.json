@@ -1,0 +1,473 @@
+{
+ "country": "Belarus",
+ "iso_a3": "BLR",
+ "completeness": 2,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "No official Belarusian child-harm data could be reached. The statistics committee, Interior Ministry, Prosecutor General and court sites did not respond from our server, so nothing about citizenship or ethnicity could be checked.",
+ "short_name": "Belarus",
+ "name_in_sentence": "Belarus",
+ "nations": {
+  "National (Belstat, MVD, Prosecutor General: not reachable)": "No accessible source."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not available",
+ "european_note": "No accessible Belarusian official source records the ethnicity of child victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's group",
+  "perpetrator": "Perpetrator's group"
+ },
+ "proxy_note": "No accessible Belarusian data by citizenship or ethnicity for child harm.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. ",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. ",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. ",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. ",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. The US State Department's 2025 report says the government reported identifying no trafficking victims and convicting no traffickers.",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation",
+   "years": "-",
+   "intro": "Belstat, the Interior Ministry, the Prosecutor General and the courts could not be reached from our server (connection timeouts), and were not worked around. ",
+   "victims": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No accessible official data by citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "belstat",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 2,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 1.5,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Belstat, the Interior Ministry, the Prosecutor General and the court system could not be reached from our server (connection timeouts) and were not worked around.",
+    "score": 1.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No accessible official statistics.",
+    "score": 1.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No accessible official statistics.",
+    "score": 1.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No accessible official statistics.",
+    "score": 1.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No accessible official statistics. The US State Department's 2025 report says the government reported identifying no trafficking victims.",
+    "score": 1.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No accessible official statistics.",
+    "score": 1.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Belarus scores 2% on the stricter scale (0-20%). No official Belarusian statistics site could be reached from our server, so nothing could be checked.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "belstat": {
+   "name": "Правонарушения в Республике Беларусь (offences, annual data)",
+   "publisher": "Национальный статистический комитет (Belstat)",
+   "years": "-",
+   "records": "Registered crimes, victims (including minors) and offenders.",
+   "limitations": "Blocked: connection timeout from our server on 19 Nov 2026 (site and data portal). Not used.",
+   "url": "https://www.belstat.gov.by/ofitsialnaya-statistika/solialnaya-sfera/pravonarusheniya/anual_data/",
+   "tier": "Official government statistics"
+  },
+  "mvd": {
+   "name": "Interior Ministry statistics",
+   "publisher": "МВД Республики Беларусь",
+   "years": "-",
+   "records": "Crime situation reports.",
+   "limitations": "Blocked: connection timeout from our server on 19 Nov 2026. Not used.",
+   "url": "https://www.mvd.gov.by/ru",
+   "tier": "Official government statistics"
+  },
+  "gp": {
+   "name": "Prosecutor General",
+   "publisher": "Генеральная прокуратура Республики Беларусь",
+   "years": "-",
+   "records": "Crime and prosecution figures.",
+   "limitations": "Blocked: connection timeout from our server on 19 Nov 2026. Not used.",
+   "url": "https://www.genproc.gov.by/",
+   "tier": "Official government statistics"
+  },
+  "tip": {
+   "name": "2025 Trafficking in Persons Report: Belarus",
+   "publisher": "US Department of State",
+   "years": "2024",
+   "records": "Narrative assessment of trafficking efforts.",
+   "limitations": "Not an official Belarusian statistic; the government reported no identified victims.",
+   "url": "https://www.state.gov/reports/2025-trafficking-in-persons-report/belarus/",
+   "tier": "Foreign government report"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

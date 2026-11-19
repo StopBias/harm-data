@@ -1,0 +1,524 @@
+{
+ "country": "Latvia",
+ "iso_a3": "LVA",
+ "completeness": 10,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Latvia's Interior Ministry reports child victims by offence and sex, and says 4% of identified suspects of sexual offences against minors were foreign citizens; trafficking victims are split into Latvian and third-country nationals. That is a citizenship proxy only. Ethnicity (tautība), including the large Russian minority, is not recorded in crime data.",
+ "short_name": "Latvia",
+ "name_in_sentence": "Latvia",
+ "nations": {
+  "National (Interior Ministry, IDC)": "Annual report on juvenile crime and child victims; crime-register tables."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "lva_cit",
+   "label": "Latvian nationals",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Latvian crime source",
+ "european_note": "Latvian crime records hold citizenship (valstiskā piederība), not ethnicity. Russians and other minorities are counted in the population register and census but not in any crime, victim or child-protection statistic, so neither European descent nor any ethnic group can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Suspect's citizenship"
+ },
+ "proxy_note": "Latvia records citizenship only in crime data, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against minors",
+   "years": "2025",
+   "intro": "In 2025, 40 children were victims of rape and 118 of sexual violence (Interior Ministry). 4% of identified suspects of sexual offences against minors were citizens of other countries (Uzbekistan, Russia, Lithuania, Ukraine); 21% of suspects were themselves minors. Victims have no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "Child victims are counted by sex, age and municipality; no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "iem",
+    "scope": "Latvia, identified suspects of sexual offences against minors (State Police), 2025",
+    "n": null,
+    "n_label": "identified suspects",
+    "unknown_share": null,
+    "share": {
+     "lva_cit": 96.0,
+     "foreign_cit": 4.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry 2025 report: '4% of identified suspects were citizens of other countries (Uzbekistan, Russia, Lithuania and Ukraine)'. The number of suspects is not given. Citizenship, a proxy, not ethnicity: Latvian nationals include citizens and non-citizens (mostly ethnic Russians and other Soviet-era residents); ethnicity (tautība) is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "lva_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "lva_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Cruelty and violence against a minor (Art. 174)",
+   "years": "2025",
+   "intro": "184 children were victims of cruelty and violence against a minor (Art. 174) in 2025, and 663 children were victims of any offence (395 girls, 268 boys). No citizenship is published for child victims or offenders.",
+   "victims": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "Child victims are counted by sex, age and municipality; no citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No citizenship."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Violations of children's rights",
+   "years": "2025",
+   "intro": "Police opened 2,994 administrative cases for violations of children's rights in 2025. No citizenship or ethnicity is published.",
+   "victims": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No citizenship."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Murder of children",
+   "years": "2025",
+   "intro": "2 children were victims of murder and 8 of aggravated murder in 2025 (Interior Ministry child-victim table, by sex). No citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "Child victims are counted by sex, age and municipality; no citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No citizenship."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "22 trafficking victims were identified in 2025: 11 Latvian nationals and 11 third-country nationals (all ages). The child-victim table records no child victims of trafficking (Art. 154.1) in 2025.",
+   "victims": {
+    "status": "published",
+    "source": "ct",
+    "scope": "Latvia, identified trafficking victims, all ages, 2025",
+    "n": 22,
+    "n_label": "victims (all ages)",
+    "unknown_share": null,
+    "share": {
+     "lva_cit": 50.0,
+     "foreign_cit": 50.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry, 18 Oct 2026. Very small numbers. Citizenship, a proxy, not ethnicity: Latvian nationals include citizens and non-citizens (mostly ethnic Russians and other Soviet-era residents); ethnicity (tautība) is not recorded in crime data. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ct",
+    "text": "No trafficker citizenship is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "lva_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "lva_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child sexual abuse material (Art. 166)",
+   "years": "2025",
+   "intro": "47 children were victims of pornography offences (Art. 166) in 2025. These offences are part of the sexual offences against minors for which 4% of identified suspects were foreign citizens.",
+   "victims": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "Child victims are counted by sex, age and municipality; no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "iem",
+    "scope": "Latvia, identified suspects of sexual offences against minors (State Police), 2025",
+    "n": null,
+    "n_label": "identified suspects",
+    "unknown_share": null,
+    "share": {
+     "lva_cit": 96.0,
+     "foreign_cit": 4.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry 2025 report: '4% of identified suspects were citizens of other countries (Uzbekistan, Russia, Lithuania and Ukraine)'. The number of suspects is not given. Citizenship, a proxy, not ethnicity: Latvian nationals include citizens and non-citizens (mostly ethnic Russians and other Soviet-era residents); ethnicity (tautība) is not recorded in crime data. This share covers all sexual offences against minors, not pornography alone. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "iem",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "lva_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "lva_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 10,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 9.5,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's 2025 report on juvenile crime and child victims says 4% of identified suspects of sexual offences against minors were citizens of other countries (Uzbekistan, Russia, Lithuania, Ukraine); the number of suspects is not given. Child victims (40 of rape, 118 of sexual violence) have sex but no citizenship.",
+    "score": 12.0
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The same report counts 184 child victims of cruelty and violence against a minor (Art. 174) and 663 child victims of all offences in 2025, by sex and municipality only. The Interior Ministry's digital centre (IDC) tables of victims and accused give sex and age, no citizenship.",
+    "score": 9.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Children's-rights violations (2,994 administrative cases in 2025) are counted without citizenship or ethnicity.",
+    "score": 7.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Child victims of murder (2) and aggravated murder (8) in 2025 have sex only; no citizenship.",
+    "score": 9.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The Interior Ministry identified 22 trafficking victims in 2025: 11 Latvian nationals and 11 third-country nationals (all ages). The child-victim table records no child victims of trafficking (Art. 154.1) in 2025. No trafficker citizenship.",
+    "score": 8.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 2.5,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Child pornography offences (Art. 166) are inside the sexual offences against minors for which 4% of identified suspects were foreign citizens. No victims by citizenship.",
+    "score": 10.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Latvia scores 10% on the stricter scale (0-20%). The Interior Ministry gives the share of foreign citizens among suspects of sexual offences against minors (4%) and trafficking victims as Latvian or third-country nationals. Child victims have no citizenship, and no ethnicity is recorded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "iem": {
+   "name": "Pārskats par nepilngadīgo noziedzības stāvokli un noziedzīgos nodarījumos cietušajiem bērniem 2025. gadā",
+   "publisher": "Iekšlietu ministrija (Interior Ministry)",
+   "years": "2023-2025",
+   "records": "Child victims by offence, sex and municipality; analysis of suspects of sexual offences against minors (age, sex, share of foreign citizens).",
+   "limitations": "Only a share of foreign suspects for one offence group; no victim citizenship; no ethnicity.",
+   "url": "https://www.iem.gov.lv/lv/media/14318/download",
+   "tier": "Official government statistics"
+  },
+  "ct": {
+   "name": "ES dienā cīņai pret cilvēku tirdzniecību (EU anti-trafficking day release)",
+   "publisher": "Iekšlietu ministrija (Interior Ministry)",
+   "years": "2025",
+   "records": "Identified trafficking victims: Latvian nationals and third-country nationals.",
+   "limitations": "All ages; no trafficker citizenship.",
+   "url": "https://www.iem.gov.lv/lv/ES_CT26",
+   "tier": "Official government statistics"
+  },
+  "idc": {
+   "name": "Statistika par personām, kurām ir tiesības uz aizstāvību, un cietušajiem (2025)",
+   "publisher": "Iekšlietu digitālais centrs (Interior Ministry digital centre)",
+   "years": "2025",
+   "records": "Persons with the right to defence (14,910) and victims (9,106) by sex and age group.",
+   "limitations": "No citizenship or ethnicity.",
+   "url": "https://www.idc.gov.lv/lv/statistika-par-personam-kuram-ir-tiesibas-uz-aizstavibu-un-cietusajiem",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

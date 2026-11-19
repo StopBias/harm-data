@@ -1,0 +1,528 @@
+{
+ "country": "Moldova",
+ "iso_a3": "MDA",
+ "completeness": 9,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Moldova's statistics bureau gives offenders by citizenship only as an all-offence count, and child victims, domestic-violence victims and trafficking victims by sex and age without citizenship. That is a weak citizenship proxy; ethnicity is recorded in the census but not in crime data.",
+ "short_name": "Moldova",
+ "name_in_sentence": "Moldova",
+ "nations": {
+  "National (BNS, court administration, anti-trafficking committee)": "Annual crime release; minor-victim court report; national trafficking report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "mda_cit",
+   "label": "Moldovan citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Citizens of other states",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Moldovan crime source",
+ "european_note": "Moldovan crime statistics count only citizens of other states among offenders. Ethnic groups are counted in the census but not in any crime, victim or child-protection statistic, so neither European descent nor any ethnic group can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Moldova records citizenship only in crime data, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children",
+   "years": "2025",
+   "intro": "Courts recorded 56 child victims of rape in 2025 (court administration report on minor victims), by age and sex. Offenders are split by citizenship only for all offences together (307 citizens of other states among 10,470 offenders).",
+   "victims": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "Victims are counted by sex and age only."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bns",
+    "scope": "Moldova, persons who committed offences (all offences), 2025",
+    "n": 10470,
+    "n_label": "offenders (all offences)",
+    "unknown_share": null,
+    "share": {
+     "mda_cit": 97.1,
+     "foreign_cit": 2.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "BNS from Interior Ministry data: 843 women and 9,627 men, of whom 307 were citizens of other states. Not split by offence. Citizenship, a proxy, not ethnicity: Moldovan citizens include Moldovans/Romanians, Ukrainians, Russians, Gagauz, Bulgarians, Roma and others; ethnicity is recorded in the census but not in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "mda_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "mda_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Domestic violence",
+   "years": "2025",
+   "intro": "843 people suffered from recorded domestic violence in 2025, 69.4% of them women; boys aged 0-17 were 19.8% of male victims and girls 7.4% of female victims. No citizenship of victims; offenders by citizenship only for all offences.",
+   "victims": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "Victims are counted by sex and age only."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bns",
+    "scope": "Moldova, persons who committed offences (all offences), 2025",
+    "n": 10470,
+    "n_label": "offenders (all offences)",
+    "unknown_share": null,
+    "share": {
+     "mda_cit": 97.1,
+     "foreign_cit": 2.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "BNS from Interior Ministry data: 843 women and 9,627 men, of whom 307 were citizens of other states. Not split by offence. Citizenship, a proxy, not ethnicity: Moldovan citizens include Moldovans/Romanians, Ukrainians, Russians, Gagauz, Bulgarians, Roma and others; ethnicity is recorded in the census but not in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "mda_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "mda_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "No neglect statistics by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "Not published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "Not published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Intentional homicide (all victims)",
+   "years": "2025",
+   "intro": "113 people were victims of intentional homicide in 2025 (4.7 per 100,000), by sex only. Offenders by citizenship only for all offences.",
+   "victims": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "Victims are counted by sex and age only."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bns",
+    "scope": "Moldova, persons who committed offences (all offences), 2025",
+    "n": 10470,
+    "n_label": "offenders (all offences)",
+    "unknown_share": null,
+    "share": {
+     "mda_cit": 97.1,
+     "foreign_cit": 2.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "BNS from Interior Ministry data: 843 women and 9,627 men, of whom 307 were citizens of other states. Not split by offence. Citizenship, a proxy, not ethnicity: Moldovan citizens include Moldovans/Romanians, Ukrainians, Russians, Gagauz, Bulgarians, Roma and others; ethnicity is recorded in the census but not in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "mda_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "mda_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings and children",
+   "years": "2025",
+   "intro": "108 trafficking victims were identified in 2025: 35 women, 48 men and 25 children (20 girls, 5 boys), by exploitation and destination country; 52 adults were exploited inside Moldova. The only citizenship mentioned is 1 Turkish surrogate-mother victim. Traffickers' citizenship is not given.",
+   "victims": {
+    "status": "not_published",
+    "source": "ant",
+    "text": "Victims are given by sex, age, exploitation and destination country, not citizenship (one Turkish victim is named)."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ant",
+    "text": "No trafficker citizenship."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography",
+   "years": "-",
+   "intro": "Child pornography cases are counted without citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "adjaj",
+    "text": "Not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "adjaj",
+    "text": "Not published by citizenship."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bns",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 9,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 8.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The National Bureau of Statistics (BNS) gives only an all-offence count of offenders who were citizens of other states (307 of about 10,470 in 2025). The court administration's report on minor victims (56 child victims of rape in 2025) has age and sex, no citizenship.",
+    "score": 8.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Domestic violence victims (843 in 2025; boys aged 0-17 were 19.8% of male victims) by sex and age only; offenders by citizenship only for all offences.",
+    "score": 8.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No neglect statistics by citizenship or ethnicity.",
+    "score": 7.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "113 victims of intentional homicide in 2025 by sex; offenders by citizenship only for all offences.",
+    "score": 8.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The 2025 national anti-trafficking report gives 108 identified victims (25 children: 20 girls, 5 boys) by sex, age, exploitation and destination country (52 adults exploited inside Moldova); the only citizenship given is 1 Turkish surrogate-mother victim. No trafficker citizenship.",
+    "score": 10
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Child pornography cases are counted without citizenship.",
+    "score": 7.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Moldova scores 9% on the stricter scale (0-20%). Official statistics give offenders by citizenship only for all offences, and child victims and trafficking victims by sex and age without citizenship. No ethnicity is recorded in crime data.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "bns": {
+   "name": "Nivelul infracționalității în Republica Moldova în anul 2025",
+   "publisher": "Biroul Național de Statistică (National Bureau of Statistics)",
+   "years": "2023-2025",
+   "records": "Registered offences, victims of domestic violence and homicide by sex and age; offenders by sex, minors and citizens of other states (all offences).",
+   "limitations": "Citizenship only as an all-offence count; no ethnicity.",
+   "url": "https://statistica.gov.md/ro/nivelul-infractionalitatii-in-republica-moldova-in-anul-2025-9478_62334.html",
+   "tier": "Official government statistics"
+  },
+  "adjaj": {
+   "name": "Raport privind victimele minore ale infracțiunii (12 luni 2025)",
+   "publisher": "Agenția de Administrare a Instanțelor Judecătorești (Agency for Court Administration)",
+   "years": "2025",
+   "records": "Minor victims in court cases by Criminal Code article, age and sex.",
+   "limitations": "No citizenship or ethnicity.",
+   "url": "https://adjaj.justice.md/wp-content/uploads/2026/02/Raport-privind-victimele-minore-ale-infractiunii-12-luni.pdf",
+   "tier": "Official government statistics"
+  },
+  "ant": {
+   "name": "Raportul Național de realizare a politicii de prevenire și combatere a traficului de ființe umane în anul 2025",
+   "publisher": "Comitetul Național pentru Combaterea Traficului de Ființe Umane (Permanent Secretariat)",
+   "years": "2025",
+   "records": "Identified trafficking victims by sex, age, exploitation and destination country.",
+   "limitations": "No victim or trafficker citizenship except one named case.",
+   "url": "https://antitrafic.gov.md/lib.php?idc=30&l=ro",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
