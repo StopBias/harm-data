@@ -1,0 +1,591 @@
+{
+ "country": "Czechia",
+ "iso_a3": "CZE",
+ "completeness": 11,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Czech police publish every year, for each offence, how many cleared offences were committed by foreigners, including sexual abuse of a child, child pornography, grooming and endangering a child's upbringing. That is a two-way citizenship proxy for perpetrators only; no victims are published by citizenship and ethnicity is never recorded.",
+ "short_name": "Czechia",
+ "name_in_sentence": "Czechia",
+ "nations": {
+  "National (Police, MPSV, Interior Ministry, ČSÚ)": "Police crime tables by Criminal Code paragraph; child-protection and trafficking reports."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "not_foreign",
+   "label": "Not by foreigners (Czech citizens)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "By foreigners (non-Czech citizens)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Czech source",
+ "european_note": "Czech crime statistics separate only offences committed by foreigners (people without Czech citizenship) from the rest. Foreigners are mostly Europeans (Slovaks and Ukrainians are the largest groups) and Czech citizens include naturalised immigrants, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offence committed by a foreigner?"
+ },
+ "proxy_note": "Czechia records citizenship only, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of a child (§187, cleared offences)",
+   "years": "2025",
+   "intro": "From 2025 the Czech Criminal Code has a separate offence of sexual abuse of a child (§187): police registered 645 and cleared 376 in 2025, 13 of them committed by foreigners. Rape (§185: 764 cleared, 109 by foreigners) and sexual assault (§185a: 186 / 24) are not split by victim age. No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "Police statistics publish no victim citizenship; the MPSV child-protection report records no nationality."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, sexual abuse of a child (§187), offences cleared in 2025",
+    "n": 376,
+    "n_label": "cleared offences",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 96.5,
+     "foreign_cit": 3.5
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Maltreatment of a person in care or in a shared home (§198, §199)",
+   "years": "2025",
+   "intro": "Maltreatment of a person in one's care (§198: 162 cleared, 23 by foreigners) and in a shared home (§199: 394 / 55) cover children and adults. MPSV recorded physical abuse in its child-protection caseload with no nationality.",
+   "victims": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "Police statistics publish no victim citizenship; the MPSV child-protection report records no nationality."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, maltreatment of a person in care or in a shared home (§198 + §199), offences cleared in 2025",
+    "n": 556,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 86.0,
+     "foreign_cit": 14.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Endangering a child's upbringing (§201)",
+   "years": "2025",
+   "intro": "Endangering a child's upbringing (§201), which includes neglect: 1,116 offences cleared in 2025, 138 committed by foreigners. The MPSV child-protection report (V20-01) counts neglected children but only flags foreign children with registered residence and unaccompanied foreign minors.",
+   "victims": {
+    "status": "not_published",
+    "source": "mpsv",
+    "text": "MPSV child-protection statistics give no nationality of neglected children."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, endangering a child's upbringing (§201), offences cleared in 2025",
+    "n": 1116,
+    "n_label": "cleared offences",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 87.6,
+     "foreign_cit": 12.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Murder (§140, all victims)",
+   "years": "2025",
+   "intro": "Police cleared 148 murders in 2025 (all categories of §140), 28 of them committed by foreigners. Victims are not split by age or citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "Police statistics publish no victim citizenship; the MPSV child-protection report records no nationality."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, murder (§140, all victim ages), offences cleared in 2025",
+    "n": 148,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 81.1,
+     "foreign_cit": 18.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (§168)",
+   "years": "2024-2025",
+   "intro": "Police cleared 22 trafficking offences in 2025 (26 registered), 2 by foreigners. The Interior Ministry's support programme took in 31 new probable victims in 2025 (27 Czech, 2 Slovak, 1 Ukrainian, 1 Colombian), but it admits adults only, so no child victims by citizenship are published. The ministry's 2024 report gives 28 people prosecuted (26 Czech citizens, 2 foreigners).",
+   "victims": {
+    "status": "not_published",
+    "source": "mv",
+    "text": "The support programme is for adults; no child trafficking victims by citizenship are published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, trafficking (§168), offences cleared in 2025",
+    "n": 22,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 90.9,
+     "foreign_cit": 9.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography and grooming (§192, §193, §193b)",
+   "years": "2025",
+   "intro": "Producing or possessing child pornography and abusing a child to produce it (§192, §193): 705 cleared in 2025 (925 registered), 32 by foreigners. Grooming (§193b): 45 cleared, 4 by foreigners. No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "Police statistics publish no victim citizenship; the MPSV child-protection report records no nationality."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pcr",
+    "scope": "Czechia, child pornography and grooming (§192, §193, §193b), offences cleared in 2025",
+    "n": 750,
+    "n_label": "cleared offences",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 95.2,
+     "foreign_cit": 4.8
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Police TSK table 2025: offences cleared in the year (objasněno) and, of those, offences committed by foreigners (spácháno cizinci); counts are offences, not persons, and include all victim ages unless the offence is child-specific. Citizenship, a proxy, not ethnicity: 'foreigners' (cizinci) are people without Czech citizenship, including Slovaks and Ukrainians; Czech citizens include naturalised immigrants. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pcr",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 11,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 10.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 3,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The Police of the Czech Republic's annual crime table (TSK, 2025) gives, for sexual abuse of a child (§187: 645 registered, 376 cleared), the number of cleared offences committed by foreigners (13). Czech/foreign only, offences not persons, no nationality, no victims by citizenship.",
+    "score": 12
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "TSK gives cleared offences and those by foreigners for maltreatment of a person in care (§198: 162 / 23) and in a shared home (§199: 394 / 55), all victim ages. The MPSV child-protection report (V20-01) counts physical abuse cases with no citizenship.",
+    "score": 11
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "TSK gives endangering a child's upbringing (§201: 1,116 cleared, 138 by foreigners). The MPSV child-protection report records neglect cases but only flags foreign children with registered residence and unaccompanied foreign minors, not the nationality of neglected children.",
+    "score": 11
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "TSK gives all murders (§140: 148 cleared, 28 by foreigners), all victim ages; no child homicide breakdown and no victims by citizenship.",
+    "score": 10.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "TSK gives trafficking (§168: 22 cleared, 2 by foreigners). The Interior Ministry's support programme lists its 31 new victims in 2025 by citizenship (27 Czech), but it admits adults only; its 2024 report gives 28 people prosecuted (26 Czech citizens).",
+    "score": 9.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 3,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "TSK gives child pornography (§192/193: 705 cleared, 32 by foreigners) and grooming (§193b: 45 cleared, 4 by foreigners). No victims by citizenship.",
+    "score": 12
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Czechia scores 11% on the stricter scale (0-20%). The police publish an annual table of every offence with the number of cleared offences committed by foreigners, including sexual abuse of a child, child pornography, grooming and endangering a child's upbringing. That is a two-way Czech/foreign citizenship proxy for perpetrators only, counted in offences, with no nationality detail and no victims by citizenship.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "pcr": {
+   "name": "Statistické přehledy kriminality za rok 2025 (Kriminalita dle TSK, 1.1.-31.12.2025)",
+   "publisher": "Policie České republiky",
+   "years": "2025",
+   "records": "Registered and cleared offences by paragraph of the Criminal Code, with offences committed by foreigners, juveniles and recidivists.",
+   "limitations": "Czech/foreign only; offences not persons; no victim citizenship.",
+   "url": "https://policie.gov.cz/clanek/statisticke-prehledy-kriminality-za-rok-2025.aspx",
+   "tier": "Official government statistics"
+  },
+  "mpsv": {
+   "name": "Výkaz V20-01 o výkonu sociálně-právní ochrany dětí za rok 2025",
+   "publisher": "Ministerstvo práce a sociálních věcí (MPSV)",
+   "years": "2025",
+   "records": "Child-protection caseload, including abuse and neglect cases by type.",
+   "limitations": "No nationality; only foreign children with registered residence and unaccompanied foreign minors are counted.",
+   "url": "https://mpsv.gov.cz/cms/documents/a09ad5da-46f9-30a7-35bf-3069b0666b1f/SUM%20%C4%8Cesk%C3%A1%20republika.xls",
+   "tier": "Official government statistics"
+  },
+  "mv": {
+   "name": "Zpráva o stavu obchodování s lidmi v České republice za rok 2024; press release on the 2025 report",
+   "publisher": "Ministerstvo vnitra České republiky",
+   "years": "2024-2025",
+   "records": "Trafficking cases, prosecuted persons by citizenship, support-programme victims by citizenship.",
+   "limitations": "Support programme for adults only.",
+   "url": "https://mv.gov.cz/soubor/zprava-o-stavu-obchodovani-s-lidmi-v-ceske-republice-za-rok-2024.aspx",
+   "tier": "Official government statistics"
+  },
+  "csu": {
+   "name": "Kriminalita cizinců",
+   "publisher": "Český statistický úřad (ČSÚ)",
+   "years": "2025",
+   "records": "Foreigners prosecuted, indicted and convicted, with convicted foreigners by paragraph.",
+   "limitations": "Not child-specific; no victims.",
+   "url": "https://csu.gov.cz/kriminalita-cizincu",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
