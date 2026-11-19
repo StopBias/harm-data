@@ -1,0 +1,510 @@
+{
+ "country": "Romania",
+ "iso_a3": "ROU",
+ "completeness": 8,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Romania's only origin data on child harm are ANITP's open records of trafficking victims, which give each child's citizenship (285 of 287 child victims in 2025 were Romanian). Police, prosecution and child-protection statistics publish no citizenship or ethnicity, and the census's Roma ethnicity is never linked to crime or victim records.",
+ "short_name": "Romania",
+ "name_in_sentence": "Romania",
+ "nations": {
+  "National (ANITP, Public Ministry, Police)": "Trafficking victim open data; prosecution activity report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "rou_cit",
+   "label": "Romanian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Romanian child-harm source",
+ "european_note": "Romanian child-harm statistics record citizenship at most. The census records ethnicity, including Roma, but no crime, victim or child-protection statistic does, so neither European descent nor Roma identity can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Romania records citizenship only in child-harm data, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children",
+   "years": "-",
+   "intro": "No official statistics give child sexual abuse victims or offenders by citizenship or ethnicity. The police's 2025 annual statistics file could not be downloaded (blocked by the site's firewall), and the Public Ministry's 2025 activity report has no such breakdown.",
+   "victims": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse and family violence",
+   "years": "-",
+   "intro": "No official statistics on violence against children by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (child protection)",
+   "years": "-",
+   "intro": "No child-protection statistics by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Not published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Not published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "-",
+   "intro": "No homicide victims or perpetrators by citizenship or ethnicity were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mp",
+    "text": "Police and prosecution statistics publish no citizenship or ethnicity; the police annual statistics file was blocked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Child victims of trafficking (ANITP open data)",
+   "years": "2025",
+   "intro": "ANITP identified 707 trafficking victims in 2025, 287 of them children (235 girls). Of the 287 children, 285 were Romanian citizens, 1 Norwegian and 1 Ukrainian. Of all 707 victims, 691 were Romanian and 16 foreign (5 Moldovan, 3 Ukrainian, 3 Sri Lankan, 2 Togolese, 1 Russian, 1 Norwegian, 1 Peruvian). No trafficker data by citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "anitp",
+    "scope": "Romania, child trafficking victims (under 18 at the time of trafficking) identified in 2025",
+    "n": 287,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "rou_cit": 99.3,
+     "foreign_cit": 0.7
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Computed from ANITP's open dataset 'Set date deschise VTP 2025' (one row per victim; age at trafficking under 18). Citizenship, a proxy, not ethnicity: Romanian citizens include Roma, Hungarians and every other ethnic group, and ANITP records no ethnicity. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "anitp",
+    "text": "No trafficker citizenship is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "anitp",
+    "text": "No perpetrator data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "rou_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "rou_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography exploitation of trafficking victims",
+   "years": "2025",
+   "intro": "Of the 287 child trafficking victims, 119 were exploited through child pornography (Art. 374 of the Criminal Code); 118 of them were Romanian citizens. This covers only cases handled as trafficking, not all child sexual abuse material offences.",
+   "victims": {
+    "status": "published",
+    "source": "anitp",
+    "scope": "Romania, child trafficking victims exploited through child pornography (Art. 374), 2025",
+    "n": 119,
+    "n_label": "child victims (trafficking cases only)",
+    "unknown_share": null,
+    "share": {
+     "rou_cit": 99.2,
+     "foreign_cit": 0.8
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Computed from ANITP's 2025 open dataset (exploitation type 'pornografie infantila (art. 374)'). Citizenship, a proxy, not ethnicity: Romanian citizens include Roma, Hungarians and every other ethnic group, and ANITP records no ethnicity. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "anitp",
+    "text": "No offender citizenship is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "anitp",
+    "text": "No perpetrator data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "rou_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "rou_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 8,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police and prosecution statistics (Public Ministry report 2025) give no citizenship or ethnicity for child sexual abuse victims or offenders; the police annual statistics file was blocked.",
+    "score": 4.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The Public Ministry's 2025 activity report and the police's published summaries give no citizenship or ethnicity for victims or offenders of violence against children; the police annual statistics file was blocked.",
+    "score": 4.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No child-protection statistics by citizenship or ethnicity were found.",
+    "score": 4
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No homicide victims or perpetrators by citizenship or ethnicity were found.",
+    "score": 4
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 6.5,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "ANITP publishes open microdata for every trafficking victim identified in 2025 (707, age, sex, citizenship, exploitation): 287 were children, 285 of them Romanian citizens (1 Norwegian, 1 Ukrainian). Citizenship only; no ethnicity, no trafficker data.",
+    "score": 18.0
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 2,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Only child victims of child-pornography exploitation recorded as trafficking victims (119 of the 287 children in ANITP's 2025 microdata) carry citizenship.",
+    "score": 10
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Romania scores 8% on the stricter scale (0-20%). Its only origin data are ANITP's open microdata on trafficking victims (age and citizenship for every identified victim). Police, prosecution and child-protection statistics publish no citizenship or ethnicity, the police statistics file was blocked, and the census's Roma ethnicity question is never linked to crime or victim records.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "anitp": {
+   "name": "Set date deschise VTP 2025; Analiză succintă a victimelor traficului de persoane identificate în anul 2025",
+   "publisher": "Agenția Națională împotriva Traficului de Persoane (ANITP), Ministry of Internal Affairs",
+   "years": "2019-2025",
+   "records": "One row per identified trafficking victim: age, sex, citizenship, county, education, recruitment and exploitation.",
+   "limitations": "Victims only; citizenship, not ethnicity.",
+   "url": "https://anitp.mai.gov.ro/date-deschise/",
+   "tier": "Official government statistics"
+  },
+  "mp": {
+   "name": "Raport privind activitatea desfășurată de Ministerul Public în anul 2025",
+   "publisher": "Ministerul Public (Public Ministry of Romania)",
+   "years": "2025",
+   "records": "Prosecution activity, including offences against minors and family violence.",
+   "limitations": "No citizenship or ethnicity breakdowns.",
+   "url": "https://www.mpublic.ro/index.php/ro/activitate/raport-de-activitate",
+   "tier": "Official government statistics"
+  },
+  "igpr": {
+   "name": "Statistica principalelor activități desfășurate de Poliția Română în anul 2025",
+   "publisher": "Inspectoratul General al Poliției Române",
+   "years": "2025",
+   "records": "Annual police activity statistics.",
+   "limitations": "The .xls file was blocked by the site's firewall ('Web Page Blocked', 19 Nov 2026); not used.",
+   "url": "https://politiaromana.ro/ro/utile/statistici-evaluari/statistici",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

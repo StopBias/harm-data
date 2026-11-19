@@ -1,0 +1,673 @@
+{
+ "country": "Ukraine",
+ "iso_a3": "UKR",
+ "completeness": 12,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Ukraine's Prosecutor General publishes the citizenship of every identified suspect by offence, including offences against children, but child victims by citizenship only as one all-offence total. Citizenship is a proxy, ethnicity is not recorded, and the data exclude occupied territories.",
+ "short_name": "Ukraine",
+ "name_in_sentence": "Ukraine",
+ "nations": {
+  "National (Office of the Prosecutor General)": "Unified reports on criminal offences (Form 1) and on persons who committed them (Form 2)."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "ua_cit",
+   "label": "Ukrainian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "ua_or_unknown",
+   "label": "Not recorded as foreign (Ukrainian citizens)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "stateless",
+   "label": "Stateless persons",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Ukrainian source",
+ "european_note": "Ukrainian crime statistics record only citizenship (Ukrainian, foreign or stateless), never ethnicity. Almost everyone involved is a Ukrainian citizen, a group that includes many ethnic groups, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Suspect's citizenship"
+ },
+ "proxy_note": "Ukraine records citizenship only, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences and offences against children",
+   "years": "2025",
+   "intro": "Form 2 identified 3,008 people for criminal offences against children in 2025: 2,996 Ukrainian and 12 foreign citizens. For sexual offences (all victims) it identified 327 people (322 Ukrainian, 3 foreign, 2 stateless) and for corruption of minors (Art. 156) 54, all Ukrainian. Form 1 counts 348 child victims of rape, 193 of sexual violence, 158 of sexual acts with a child under 16 and 173 of corruption of minors, with no citizenship. Form 1 (section 7) counts 7,437 child victims of all criminal offences in 2025 (3,860 aged 14-17 and 3,577 under 14). Among victims who were foreigners, illegal migrants, refugees or stateless persons (1,167 of all ages), 10 were children (4 aged 14-17, 6 under 14), so about 0.1% of child victims were not Ukrainian citizens. This total covers every offence, including war crimes and road deaths, and is not split by harm.",
+   "victims": {
+    "status": "published",
+    "source": "gp1",
+    "scope": "Ukraine, child victims of all criminal offences, 2025",
+    "n": 7437,
+    "n_label": "child victims, all offences",
+    "unknown_share": null,
+    "share": {
+     "ua_or_unknown": 99.9,
+     "foreign_cit": 0.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 1 report for 2025, section 7, row 38 (foreigners, illegal migrants, refugees and stateless persons), columns 9-10. The rest are Ukrainian citizens. Not harm-specific. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for sexual offences (Criminal Code section IV), all victims, 2025",
+    "n": 327,
+    "n_label": "persons identified, all victims",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 98.5,
+     "foreign_cit": 0.9,
+     "stateless": 0.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ua_or_unknown",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ua_or_unknown",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Offences against children and domestic violence",
+   "years": "2025",
+   "intro": "Form 2 identified 3,008 people for criminal offences against children (12 foreign citizens) and 1,448 for domestic violence (Art. 126-1, all victims; 7 foreign). Form 1 counts 585 child victims of offences linked to domestic violence, with no citizenship. Form 1 (section 7) counts 7,437 child victims of all criminal offences in 2025 (3,860 aged 14-17 and 3,577 under 14). Among victims who were foreigners, illegal migrants, refugees or stateless persons (1,167 of all ages), 10 were children (4 aged 14-17, 6 under 14), so about 0.1% of child victims were not Ukrainian citizens. This total covers every offence, including war crimes and road deaths, and is not split by harm.",
+   "victims": {
+    "status": "published",
+    "source": "gp1",
+    "scope": "Ukraine, child victims of all criminal offences, 2025",
+    "n": 7437,
+    "n_label": "child victims, all offences",
+    "unknown_share": null,
+    "share": {
+     "ua_or_unknown": 99.9,
+     "foreign_cit": 0.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 1 report for 2025, section 7, row 38 (foreigners, illegal migrants, refugees and stateless persons), columns 9-10. The rest are Ukrainian citizens. Not harm-specific. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for criminal offences against children (all types), 2025",
+    "n": 3008,
+    "n_label": "persons identified",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 99.6,
+     "foreign_cit": 0.4,
+     "stateless": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ua_or_unknown",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ua_or_unknown",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Offences against children (all types)",
+   "years": "2025",
+   "intro": "No neglect-specific statistics by citizenship. Neglect offences are included in Form 2's row for all criminal offences against children (3,008 people identified, 12 foreign citizens). Form 1 (section 7) counts 7,437 child victims of all criminal offences in 2025 (3,860 aged 14-17 and 3,577 under 14). Among victims who were foreigners, illegal migrants, refugees or stateless persons (1,167 of all ages), 10 were children (4 aged 14-17, 6 under 14), so about 0.1% of child victims were not Ukrainian citizens. This total covers every offence, including war crimes and road deaths, and is not split by harm.",
+   "victims": {
+    "status": "published",
+    "source": "gp1",
+    "scope": "Ukraine, child victims of all criminal offences, 2025",
+    "n": 7437,
+    "n_label": "child victims, all offences",
+    "unknown_share": null,
+    "share": {
+     "ua_or_unknown": 99.9,
+     "foreign_cit": 0.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 1 report for 2025, section 7, row 38 (foreigners, illegal migrants, refugees and stateless persons), columns 9-10. The rest are Ukrainian citizens. Not harm-specific. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for criminal offences against children (all types), 2025",
+    "n": 3008,
+    "n_label": "persons identified",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 99.6,
+     "foreign_cit": 0.4,
+     "stateless": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ua_or_unknown",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ua_or_unknown",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Intentional murder",
+   "years": "2025",
+   "intro": "Form 2 identified 669 people for intentional murder (Art. 115) in 2025: 661 Ukrainian, 7 foreign and 1 stateless. For murder of a young child or a pregnant woman (Art. 115(2)(2)) it identified 15, all Ukrainian citizens. Form 1 counts 34 child victims of intentional murder, with no citizenship. Form 1 (section 7) counts 7,437 child victims of all criminal offences in 2025 (3,860 aged 14-17 and 3,577 under 14). Among victims who were foreigners, illegal migrants, refugees or stateless persons (1,167 of all ages), 10 were children (4 aged 14-17, 6 under 14), so about 0.1% of child victims were not Ukrainian citizens. This total covers every offence, including war crimes and road deaths, and is not split by harm.",
+   "victims": {
+    "status": "published",
+    "source": "gp1",
+    "scope": "Ukraine, child victims of all criminal offences, 2025",
+    "n": 7437,
+    "n_label": "child victims, all offences",
+    "unknown_share": null,
+    "share": {
+     "ua_or_unknown": 99.9,
+     "foreign_cit": 0.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 1 report for 2025, section 7, row 38 (foreigners, illegal migrants, refugees and stateless persons), columns 9-10. The rest are Ukrainian citizens. Not harm-specific. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for intentional murder (Art. 115), all victims, 2025",
+    "n": 669,
+    "n_label": "persons identified, all victims",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 98.8,
+     "foreign_cit": 1.0,
+     "stateless": 0.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ua_or_unknown",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ua_or_unknown",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (Art. 149)",
+   "years": "2025",
+   "intro": "Form 2 identified 47 people for trafficking in 2025 (42 Ukrainian, 5 foreign citizens), all victims. Form 1 counts 113 trafficking victims, 16 of them children, with no citizenship split.",
+   "victims": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Trafficking victims are not given by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for trafficking in human beings (Art. 149), 2025",
+    "n": 47,
+    "n_label": "persons identified, all victims",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 89.4,
+     "foreign_cit": 10.6,
+     "stateless": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Pornography offences (Art. 301)",
+   "years": "2025",
+   "intro": "Form 2 identified 119 people for pornography offences (Art. 301) in 2025 (116 Ukrainian, 2 foreign, 1 stateless); child abuse material is not separated. Form 1 counts 11 child victims of grooming (Art. 156-1), with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "No victims by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gp2",
+    "scope": "Ukraine, persons identified for pornography offences (Art. 301), 2025",
+    "n": 119,
+    "n_label": "persons identified, all victims",
+    "unknown_share": null,
+    "share": {
+     "ua_cit": 97.5,
+     "foreign_cit": 1.7,
+     "stateless": 0.8
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's Form 2 report for 2025, section 1: persons identified as having committed the offence (column 5), by citizenship at the time of the offence. Excludes territories under occupation; collected under martial law. Citizenship, a proxy, not ethnicity: Ukrainian citizens include every ethnic group (Ukrainians, Russians, Crimean Tatars, Hungarians, Roma and others). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gp1",
+    "text": "Victims and suspects are not linked by citizenship."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "ua_cit",
+     "foreign_cit",
+     "stateless"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "ua_cit",
+       "foreign_cit",
+       "stateless"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 12,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 11.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Prosecutor General's Form 2 report (2025) gives persons identified for each offence by citizenship (Ukrainian, foreign, stateless): sexual offences 327 (3 foreign, 2 stateless), corruption of minors 54 (none foreign), all offences against children 3,008 (12 foreign). Form 1 gives only an all-offence count of foreign child victims (10 of 7,437).",
+    "score": 12.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 1,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Form 2 gives persons identified for domestic violence (1,448; 7 foreign) and for all offences against children (3,008; 12 foreign). Victims by citizenship only as an all-offence total.",
+    "score": 12
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 1,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Neglect is covered only by the all-offences-against-children row (3,008 persons, 12 foreign); no child-welfare statistics by citizenship.",
+    "score": 11.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 1,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Form 2 gives persons identified for murder of a young child or a pregnant woman (Art. 115(2)(2): 15, all Ukrainian citizens) and all intentional murder (669; 7 foreign, 1 stateless). Child victims by citizenship only as the all-offence total.",
+    "score": 12.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Form 2 gives 47 persons identified for trafficking (5 foreign), all victim ages; Form 1 gives 113 trafficking victims (16 children) with no citizenship split.",
+    "score": 10.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0.5,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Form 2 gives pornography offences (Art. 301: 119 persons, 2 foreign, 1 stateless) without separating child abuse material; no victims by citizenship.",
+    "score": 10.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Ukraine scores 12% on the stricter scale (0-20%). The Prosecutor General's monthly reports give every identified suspect's citizenship (Ukrainian, foreign or stateless) by offence, including a row for all offences against children and for the murder of a young child or pregnant woman, but child victims by citizenship only as one all-offence total. Figures exclude occupied territories and are collected under martial law.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "gp2": {
+   "name": "Єдиний звіт про осіб, які вчинили кримінальні правопорушення (Form 2), January-December 2025",
+   "publisher": "Офіс Генерального прокурора (Office of the Prosecutor General of Ukraine)",
+   "years": "2025 (monthly cumulative)",
+   "records": "Persons identified by offence, age, sex, education, employment and citizenship (Ukrainian, foreign, stateless, illegal migrants, refugees).",
+   "limitations": "Citizenship only; excludes occupied territories.",
+   "url": "https://new.gp.gov.ua/ua/posts/pro-osib-yaki-vchinili-kriminalni-pravoporushennya-2",
+   "tier": "Official government statistics"
+  },
+  "gp1": {
+   "name": "Єдиний звіт про кримінальні правопорушення (Form 1), January-December 2025",
+   "publisher": "Офіс Генерального прокурора",
+   "years": "2025",
+   "records": "Registered offences; victims by offence, sex and age (minors, under 14), and victims who were foreigners or stateless.",
+   "limitations": "Victim citizenship only as an all-offence total.",
+   "url": "https://gp.gov.ua/ua/posts/pro-zareyestrovani-kriminalni-pravoporushennya-ta-rezultati-yih-dosudovogo-rozsliduvannya-2",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

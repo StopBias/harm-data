@@ -1,0 +1,582 @@
+{
+ "country": "Hungary",
+ "iso_a3": "HUN",
+ "completeness": 9,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Hungary's prosecutors publish each year how many offences of each type were committed by foreign citizens, including endangering a minor, child pornography, sexual violence and homicide. That is a citizenship proxy for perpetrators only; victims are published by age without citizenship, and the census's Roma and nationality data are never linked to crime or child-protection records.",
+ "short_name": "Hungary",
+ "name_in_sentence": "Hungary",
+ "nations": {
+  "National (Prosecutor General, KSH, Interior Ministry)": "Annual prosecutor crime report; KSH offender and victim tables."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "not_foreign",
+   "label": "Not attributed to foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign (non-Hungarian) citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Hungarian crime source",
+ "european_note": "Hungarian crime statistics separate only foreign citizens from the rest. The census asks about nationality (nemzetiség), including Roma, but no crime, victim or child-protection statistic records it, so neither European descent nor Roma identity can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Hungary records citizenship only in crime data, never ethnicity or nationality group. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual violence (registered offences, all victims)",
+   "years": "2025",
+   "intro": "Of 417 registered sexual violence offences in 2025, 17 were committed by foreign citizens. Sexual violence includes, but is not limited to, offences against children under 12 and 14. KSH counted 3,396 crime victims under 14 and 412 victims of sexual violence in 2025, with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "ksh",
+    "text": "KSH and police victim tables give age and sex but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, sexual violence, registered offences 2025",
+    "n": 417,
+    "n_label": "registered offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 95.9,
+     "foreign_cit": 4.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Domestic (relationship) violence (all victims)",
+   "years": "2025",
+   "intro": "Of 968 registered domestic (relationship) violence offences in 2025, 10 were committed by foreign citizens. No child victims of violence are published by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "ksh",
+    "text": "KSH and police victim tables give age and sex but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, domestic (relationship) violence, registered offences 2025",
+    "n": 968,
+    "n_label": "registered offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 99.0,
+     "foreign_cit": 1.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Endangering a minor (kiskorú veszélyeztetése)",
+   "years": "2025",
+   "intro": "Endangering a minor, which covers serious neglect of a child's care: 27 of 1,501 registered offences in 2025 were committed by foreign citizens. KSH counted 1,561 victims of this offence, and child-protection statistics give no citizenship or nationality.",
+   "victims": {
+    "status": "not_published",
+    "source": "ksh",
+    "text": "KSH victim and child-protection statistics give no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, endangering a minor, registered offences 2025",
+    "n": 1501,
+    "n_label": "registered offences",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 98.2,
+     "foreign_cit": 1.8
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Intentional completed homicide (all victims)",
+   "years": "2025",
+   "intro": "Of 78 registered intentional completed homicides in 2025, 5 were committed by foreign citizens. KSH counted 96 homicide victims, with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "ksh",
+    "text": "KSH and police victim tables give age and sex but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, intentional completed homicide, registered offences 2025",
+    "n": 78,
+    "n_label": "registered offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 93.6,
+     "foreign_cit": 6.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings and forced labour",
+   "years": "2025",
+   "intro": "Of 74 registered trafficking and forced-labour offences in 2025, 3 were committed by foreign citizens. No official count of trafficking victims by nationality was found.",
+   "victims": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No trafficking victims by nationality were found."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, trafficking in human beings and forced labour, registered offences 2025",
+    "n": 74,
+    "n_label": "registered offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 95.9,
+     "foreign_cit": 4.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography",
+   "years": "2025",
+   "intro": "Of 731 registered child pornography offences in 2025, 10 were committed by foreign citizens. No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "ksh",
+    "text": "KSH and police victim tables give age and sex but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ugy",
+    "scope": "Hungary, child pornography, registered offences 2025",
+    "n": 731,
+    "n_label": "registered offences",
+    "unknown_share": null,
+    "share": {
+     "not_foreign": 98.6,
+     "foreign_cit": 1.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Prosecutor General's 2025 report: registered offences committed by foreign (non-Hungarian) citizens, against all registered offences of that type in 2025 (Table 11). The total includes offences whose perpetrator is not known, so the foreign share is a lower bound. Counts are offences, not persons, all victim ages. Citizenship, a proxy, not ethnicity: foreign citizens are people without Hungarian citizenship (most often Romanian, Ukrainian, Slovak and Serbian citizens, many of them ethnic Hungarians); Hungarian citizens include Roma and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ugy",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "not_foreign",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "not_foreign",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 9,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 8.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The Prosecutor General's 2025 crime report gives registered sexual violence offences committed by foreign (non-Hungarian) citizens (17 of 417), all victim ages. KSH victim tables give age (3,396 victims under 14 in 2025) but no citizenship.",
+    "score": 9.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The prosecutor's report gives domestic (relationship) violence by foreign citizens (10 of 968 registered offences), all victim ages; no child victims by citizenship.",
+    "score": 9.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Endangering a minor (kiskorú veszélyeztetése), which covers neglect: 27 of 1,501 registered offences in 2025 were committed by foreign citizens. KSH child-protection statistics have no citizenship or nationality.",
+    "score": 9.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Intentional completed homicide: 5 of 78 registered offences in 2025 by foreign citizens, all victim ages. KSH counts 96 homicide victims with no citizenship.",
+    "score": 8.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Trafficking and forced labour: 3 of 74 registered offences in 2025 by foreign citizens. No official count of trafficking victims by nationality was found.",
+    "score": 7.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Child pornography: 10 of 731 registered offences in 2025 by foreign citizens. No victims by citizenship.",
+    "score": 9.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Hungary scores 9% on the stricter scale (0-20%). The Prosecutor General's annual crime report counts offences committed by foreign (non-Hungarian) citizens, including endangering a minor, child pornography, sexual violence and homicide; KSH gives offenders by citizenship but victims by age only. The census records Roma and other nationalities, but no crime, victim or child-protection statistic does.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "ugy": {
+   "name": "Tájékoztató a bűnözés 2025. évi adatairól",
+   "publisher": "Legfőbb Ügyészség (Office of the Prosecutor General of Hungary)",
+   "years": "2024-2025",
+   "records": "Registered offences by type; offences and offenders by foreign citizenship and the main foreign nationalities.",
+   "limitations": "Hungarian/foreign citizenship only; offences not persons; no victim citizenship.",
+   "url": "https://ugyeszseg.hu/wp-content/uploads/2026/10/tajekoztato-a-bunozes-2025.-evi-adatairol.pdf",
+   "tier": "Official government statistics"
+  },
+  "ksh": {
+   "name": "STADAT 11.1.1.4 Regisztrált elkövetők; 11.1.1.5 Regisztrált sértettek",
+   "publisher": "Központi Statisztikai Hivatal (KSH)",
+   "years": "2009-2025",
+   "records": "Offenders by age, recidivism and Hungarian/foreign citizenship (5,721 foreign of 169,278 in 2025); victims by age and offence type.",
+   "limitations": "Victims have no citizenship; offenders not by offence and citizenship together.",
+   "url": "https://www.ksh.hu/stadat_files/iga/hu/iga0005.html",
+   "tier": "Official government statistics"
+  },
+  "bsr": {
+   "name": "Bűnügyi Statisztikai Rendszer (BSR)",
+   "publisher": "Belügyminisztérium (Interior Ministry)",
+   "years": "2013-2025",
+   "records": "Interactive tables of offences, offenders and victims.",
+   "limitations": "The report files are served from bsr-sp.bm.hu, which did not answer from the box; the portal says reports open only in Firefox. Not used.",
+   "url": "https://bsr.bm.hu/Document",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

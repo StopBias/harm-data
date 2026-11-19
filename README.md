@@ -144,6 +144,22 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   when the box is smaller than the view, which clamped the Oceania view and cut off the south of the world view.
   Checked at 1280x800, 1024x700 and 390x844, with the panel closed and open (`test/views-results.txt`).
 
+### Europe batch 4: Russia, Ukraine, Romania, Czechia, Hungary
+- `data/rus.json`, `ukr.json`, `rou.json`, `cze.json` and `hun.json` are built by `build_<iso>.py` (kept with each
+  country's research, outside this repo) and scored by `score_v2_batch7.py` on the stricter scale with the 19 Nov 2026
+  harm weights. Ukraine 12%, Czechia 11%, Hungary 9%, Romania 8%, Russia 2%, all red; none reaches the 25% cap.
+- Every origin variable found is citizenship (Czech/foreign offences, Hungarian/foreign offences, Ukrainian/foreign/
+  stateless suspects, Romanian/foreign trafficking victims), so all heritage points are proxies. Romania's and Hungary's
+  censuses record ethnicity or nationality (including Roma), but no crime, victim or child-protection statistic does, so
+  the census is not used and the countries are not credited with ethnicity data.
+- Czech and Hungarian shares are of offences, not persons; Hungary's denominator is all registered offences, including
+  those with no known perpetrator, so its foreign share is a lower bound. Romania's trafficking shares are computed from
+  ANITP's one-row-per-victim open data. Ukraine's figures exclude occupied territories.
+- Blocked or unreachable sources, recorded and not worked around: Rosstat (certificate not trusted), the Russian
+  Interior Ministry (connection closed), the Russian Judicial Department and crimestat.ru (no response), the Romanian
+  police statistics file (site firewall), Hungary's BSR report files (no response) and data.gov.ua / data.gov.ro
+  (maintenance / connection closed; the same files were taken from the publishers' own sites where they offer them).
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
