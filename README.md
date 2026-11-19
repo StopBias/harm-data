@@ -45,6 +45,16 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   `combined_groups`, `not_recorded` on a group (with `european_note`/`european_title`), `score.why`, per-harm
   `extra_sources`/`rate_sources`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
 
+### UK data
+- `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
+  copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
+  has `unknown_share`, shown on the page as "Ethnicity unknown: X% of the total".
+- White British, White Irish, Any other White background (and Gypsy or Irish Traveller) and Pakistani are sub-groups
+  (`subgroups` maps each to its parent). They are left out of the "All groups" bars so the bars do not double-count, and
+  appear when picked. They are still not European descent, so "European descent" stays "Not recorded".
+- `also` blocks show a second published source for one side (e.g. police-recorded suspects next to court convictions).
+- VKPP and Hydrant reports are police-produced and labelled as not official statistics.
+
 ### US data
 - `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
   sets the USA score (56) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,

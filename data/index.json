@@ -1,6 +1,7 @@
 {
  "_about": "ISO3 codes that have a detailed data file at data/<iso3 lowercase>.json. To add a country, add its file and its code here.",
  "detailed": [
-  "USA"
+  "USA",
+  "GBR"
  ]
 }
