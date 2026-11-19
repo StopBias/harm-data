@@ -1,0 +1,516 @@
+{
+ "country": "Estonia",
+ "iso_a3": "EST",
+ "completeness": 10,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Estonian police statistics of offences against children give age, sex and the offender's relationship but no citizenship or nationality. The only group split is the Justice Ministry's ISRD4 school survey, which reports pupils' experience of parental violence, maltreatment and image abuse by questionnaire language (Estonian or Russian), a proxy, not ethnicity. Prisoners are counted by ethnic nationality, but only for all prisoners.",
+ "short_name": "Estonia",
+ "name_in_sentence": "Estonia",
+ "nations": {
+  "National (Justice Ministry)": "Annual crime report; ISRD4 school survey."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "est_lang",
+   "label": "Estonian-language questionnaire",
+   "proxy": "language"
+  },
+  {
+   "id": "rus_lang",
+   "label": "Russian-language questionnaire",
+   "proxy": "language"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Estonian child-harm source",
+ "european_note": "Estonia records ethnic nationality (rahvus) in the census and for prisoners as a whole (754 Estonians and 697 Russians in prison at the end of 2025), but not for any offence against children, so neither European descent nor any ethnic group can be measured for child harm.",
+ "select_labels": {
+  "victim": "Pupil's questionnaire language",
+  "perpetrator": "Offender's group"
+ },
+ "proxy_note": "Estonia records no ethnicity or citizenship for offences against children. The school-survey groups below are questionnaire language, a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against minors",
+   "years": "2025",
+   "intro": "Police registered 654 sexual offences against minors in 2025 (332 contact offences, including 97 rapes and 111 cases of intercourse or sexual acts with a child under 14, and 322 non-contact offences). 89% of victims were girls; 54% of offenders were other acquaintances, 33% family members and 12% strangers. No citizenship or nationality is given.",
+   "victims": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "Victims have age and sex only."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "The Justice Ministry publishes no citizenship or nationality of offenders against children."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Parental physical violence (school survey)",
+   "years": "2023",
+   "intro": "The ISRD4 school survey found that 5% of Estonian-language pupils and 10% of Russian-language pupils had experienced physical violence from a parent in the last year (20% and 27% in their lifetime). Police statistics of violence against children give no citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "isrd4",
+    "scope": "Estonia, pupils in grades 8-11 (about ages 14-17), ISRD4 school survey, 2023",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "est_lang": 5,
+     "rus_lang": 10
+    },
+    "rate_all": null,
+    "rate_unit": "%",
+    "rate_label": "of pupils in the group said they had experienced physical violence by a parent in the last 12 months",
+    "share_note": "Self-reported survey of 6,315 pupils (4,696 Estonian-language, 1,619 Russian-language questionnaires). Questionnaire language, a proxy, not ethnicity: pupils chose an Estonian or a Russian questionnaire; Russian-language pupils include Russians, Ukrainians, Belarusians and others, and some ethnic Russians answer in Estonian. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "The Justice Ministry publishes no citizenship or nationality of offenders against children."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [
+     "est_lang",
+     "rus_lang"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "est_lang",
+       "rus_lang"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Parental maltreatment (school survey)",
+   "years": "2023",
+   "intro": "ISRD4: 1% of Estonian-language and 5% of Russian-language pupils reported maltreatment by a parent in the last year (8% and 16% in their lifetime). There are no neglect statistics by citizenship or ethnicity.",
+   "victims": {
+    "status": "published",
+    "source": "isrd4",
+    "scope": "Estonia, pupils in grades 8-11 (about ages 14-17), ISRD4 school survey, 2023",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "est_lang": 1,
+     "rus_lang": 5
+    },
+    "rate_all": null,
+    "rate_unit": "%",
+    "rate_label": "of pupils in the group said they had experienced maltreatment by a parent in the last 12 months",
+    "share_note": "Self-reported survey of 6,315 pupils (4,696 Estonian-language, 1,619 Russian-language questionnaires). Questionnaire language, a proxy, not ethnicity: pupils chose an Estonian or a Russian questionnaire; Russian-language pupils include Russians, Ukrainians, Belarusians and others, and some ethnic Russians answer in Estonian. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "The Justice Ministry publishes no citizenship or nationality of offenders against children."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [
+     "est_lang",
+     "rus_lang"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "est_lang",
+       "rus_lang"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Killings and murders",
+   "years": "2025",
+   "intro": "The Justice Ministry's homicide chapter gives the number and circumstances of killings in 2025, with no citizenship or nationality of victims or offenders.",
+   "victims": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No citizenship or nationality."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No citizenship or nationality."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking-related offences",
+   "years": "2025",
+   "intro": "Police registered 22 trafficking-related offences in 2025: 12 trafficking in human beings, 8 pimping and 2 trafficking of a minor. The Social Insurance Board's helpline helped 727 people, 90% of them foreigners from third countries (mostly work-related, all ages). One court decision convicted 2 Romanian citizens of pimping.",
+   "victims": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "Only the helpline share of third-country foreigners (90% of 727 people helped, all ages) is given; identified victims have no citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "Only one court case names the offenders' citizenship (2 Romanian citizens)."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Intimate images shared on social media (school survey)",
+   "years": "2023",
+   "intro": "ISRD4: 4% of Estonian-language and 5% of Russian-language pupils said intimate images of them had been shared on social media in the last year (9% and 6% in their lifetime). Police counts of child sexual abuse material and grooming have no citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "isrd4",
+    "scope": "Estonia, pupils in grades 8-11 (about ages 14-17), ISRD4 school survey, 2023",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "est_lang": 4,
+     "rus_lang": 5
+    },
+    "rate_all": null,
+    "rate_unit": "%",
+    "rate_label": "of pupils in the group said they had experienced intimate images of themselves shared on social media in the last 12 months",
+    "share_note": "Self-reported survey of 6,315 pupils (4,696 Estonian-language, 1,619 Russian-language questionnaires). Questionnaire language, a proxy, not ethnicity: pupils chose an Estonian or a Russian questionnaire; Russian-language pupils include Russians, Ukrainians, Belarusians and others, and some ethnic Russians answer in Estonian. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "The Justice Ministry publishes no citizenship or nationality of offenders against children."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kur",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [
+     "est_lang",
+     "rus_lang"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "est_lang",
+       "rus_lang"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 10,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 10.3,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The Justice Ministry's 'Kuritegevus Eestis 2025' gives 654 sexual offences against minors (332 contact, 322 non-contact; 97 rapes of minors, 111 cases of intercourse with a child under 14), victims' sex (89% girls) and the offender's relationship (54% other acquaintance, 33% family, 12% stranger), but no citizenship or nationality on either side.",
+    "score": 10.0
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 4,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 1,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The Justice Ministry's ISRD4 school survey (2023, grades 8-11) reports parental physical violence by questionnaire language: 20% lifetime and 5% in the last year for Estonian-language pupils, 27% and 10% for Russian-language pupils. Language is a proxy, not ethnicity. Police statistics give no citizenship of child victims or offenders.",
+    "score": 14
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 2.5,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "ISRD4 reports parental maltreatment by questionnaire language (8% lifetime and 1% last year for Estonian-language pupils; 16% and 5% for Russian-language pupils). No neglect statistics by citizenship or ethnicity.",
+    "score": 10.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The Justice Ministry's homicide chapter gives counts and circumstances of killings, with no citizenship or nationality of victims or offenders.",
+    "score": 9.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 0.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "22 trafficking-related offences in 2025 (12 trafficking, 8 pimping, 2 trafficking of a minor). The prevention helpline helped 727 people, 90% foreigners from third countries (all ages, mostly labour). The only nationality given for offenders is one court decision convicting 2 Romanian citizens of pimping.",
+    "score": 9.0
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 2.5,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "ISRD4 reports intimate images shared on social media by questionnaire language (9% lifetime and 4% last year for Estonian-language pupils; 6% and 5% for Russian-language pupils). Police counts of child sexual abuse material and grooming have no citizenship.",
+    "score": 12.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Estonia scores 10% on the stricter scale (0-20%). The Justice Ministry's ISRD4 school survey splits pupils' experience of parental violence, maltreatment and image abuse by questionnaire language (Estonian or Russian), a proxy, not ethnicity. Police statistics of offences against children give no citizenship. Prisoners are counted by ethnic nationality, but only for all prisoners, not by harm.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "kur": {
+   "name": "Kuritegevus Eestis 2025",
+   "publisher": "Justiits- ja Digiministeerium (Ministry of Justice and Digital Affairs)",
+   "years": "2024-2025",
+   "records": "Registered offences, victims and offenders by offence type, with age, sex and relationship; prisoners by citizenship and ethnic nationality (rahvus).",
+   "limitations": "No citizenship or ethnicity for offences against children. Prisoner ethnicity (754 Estonians, 697 Russians at the end of 2025) covers all prisoners, not any harm.",
+   "url": "https://www.justdigi.ee/kuritegevus2025/",
+   "tier": "Official government statistics"
+  },
+  "isrd4": {
+   "name": "ISRD4 uuring Eestis (International Self-Report Delinquency Study, 4th round)",
+   "publisher": "University of Tallinn for the Ministry of Justice (Markina, Žarkovski, Murakas, 2024)",
+   "years": "2023 survey; 2024 report",
+   "records": "Pupils' self-reported victimisation, including parental violence and image abuse, by questionnaire language (Estonian/Russian).",
+   "limitations": "Questionnaire language is a proxy, not ethnicity; self-reported; grades 8-11 only.",
+   "url": "https://datadoi.ee/api/access/datafile/4844",
+   "tier": "Official government survey"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

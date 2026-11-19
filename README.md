@@ -176,6 +176,19 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   Police yearbook was taken from the Ministry of Citizen Protection's own dataset on data.gov.gr, the government's
   official open-data portal, not from a mirror or archive.
 
+### Europe batch 6a: Estonia, Latvia, Lithuania, Slovenia, Belarus, Moldova
+- `data/est.json`, `lva.json`, `ltu.json`, `svn.json`, `blr.json` and `mda.json` are built by `build_<iso>.py` (kept with
+  each country's research, outside this repo) and scored by `score_v2_batch9.py` on the stricter scale with the 19 Nov 2026
+  harm weights. Slovenia 12%, Lithuania 11%, Estonia 10%, Latvia 10%, Moldova 9%, Belarus 2%, all red.
+- None records ethnicity in crime data, so all heritage points are proxies and the 25% cap rule applies (none reaches it).
+  Slovenia publishes convicted adults by citizenship (Slovenian / other EU / non-EU) per offence; Latvia gives the foreign
+  share of suspects of sexual offences against minors; Lithuania and Moldova give citizenship only for all offences;
+  Estonia's only split is the ISRD4 school survey by questionnaire language (Estonian/Russian), a language proxy. Estonia's
+  prison statistics by ethnicity cover all offences and are not credited.
+- Blocked or unreachable sources, recorded and not worked around: every Belarusian official site (belstat.gov.by,
+  dataportal, mvd.gov.by, genproc.gov.by, court.gov.by: timeouts; pravo.by: 403). Lithuania's vrm.lrv.lt trafficking review
+  returned a Cloudflare challenge to the box's own fetchers and was read with the public web-fetch tool.
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block

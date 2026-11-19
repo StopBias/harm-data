@@ -1,0 +1,681 @@
+{
+ "country": "Slovenia",
+ "iso_a3": "SVN",
+ "completeness": 12,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Slovenia's statistics office publishes convictions of adults by citizenship (Slovenian, other EU, non-EU) for each offence, including sexual assault on a child under 15, child pornography and neglect of children, and the trafficking report lists each victim and suspect by citizenship and age. That is a citizenship proxy only; victims of other offences have no citizenship, and no ethnicity is recorded.",
+ "short_name": "Slovenia",
+ "name_in_sentence": "Slovenia",
+ "nations": {
+  "National (SURS, Interior Ministry)": "Court-based conviction tables; annual trafficking report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "svn_cit",
+   "label": "Slovenian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "eu_cit",
+   "label": "Other EU citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "noneu_cit",
+   "label": "Citizens of non-EU countries",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Slovenian crime source",
+ "european_note": "Slovenian crime statistics separate only Slovenian, other EU and non-EU citizens. Ethnicity is not recorded in any crime, victim or child-protection statistic, so neither European descent nor any ethnic group can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Slovenia records citizenship only in crime data, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual assault on a person under 15",
+   "years": "2025",
+   "intro": "26 adults were convicted of sexual assault on a person under 15 in 2025: 20 Slovenian citizens, 3 other EU citizens and 3 from outside the EU. All offences against sexual integrity: 77 convicted (61, 5 and 11).",
+   "victims": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "Victims are not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "surs",
+    "scope": "Slovenia, adults convicted of sexual assault on a person under 15, 2025",
+    "n": 26,
+    "n_label": "convicted adults",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 76.9,
+     "eu_cit": 11.5,
+     "noneu_cit": 11.5
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Small numbers. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "All offences against sexual integrity (2025)",
+     "data": {
+      "status": "published",
+      "source": "surs",
+      "scope": "Slovenia, adults convicted of offences against sexual integrity, all victim ages, 2025",
+      "n": 77,
+      "n_label": "convicted adults",
+      "unknown_share": null,
+      "share": {
+       "svn_cit": 79.2,
+       "eu_cit": 6.5,
+       "noneu_cit": 14.3
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault (all victims)",
+   "years": "2025",
+   "intro": "473 adults were convicted of assault in 2025 (410 Slovenian, 5 EU, 58 non-EU), for victims of all ages. The table has no child-specific assault offence, and victims are not published by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "Victims are not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "surs",
+    "scope": "Slovenia, adults convicted of assault, all victim ages, 2025",
+    "n": 473,
+    "n_label": "convicted adults",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 86.7,
+     "eu_cit": 1.1,
+     "noneu_cit": 12.3
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect of children in care",
+   "years": "2025",
+   "intro": "68 adults were convicted of neglect of children in their care in 2025: 57 Slovenian citizens and 11 from outside the EU.",
+   "victims": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "Victims are not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "surs",
+    "scope": "Slovenia, adults convicted of neglect of children in care, 2025",
+    "n": 68,
+    "n_label": "convicted adults",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 83.8,
+     "eu_cit": 0.0,
+     "noneu_cit": 16.2
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Intentional murder (all victims)",
+   "years": "2025",
+   "intro": "22 adults were convicted of intentional murder in 2025 (18 Slovenian, 1 EU, 3 non-EU), for victims of all ages.",
+   "victims": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "Victims are not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "surs",
+    "scope": "Slovenia, adults convicted of intentional murder, all victim ages, 2025",
+    "n": 22,
+    "n_label": "convicted adults",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 81.8,
+     "eu_cit": 4.5,
+     "noneu_cit": 13.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Small numbers. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "Police dealt with 26 identified or presumed trafficking victims in 2025, each listed by sex, citizenship, age group and exploitation; 7 were clearly under 18 (3 Slovenian, 1 Hungarian, 2 Montenegrin, 1 Serbian; one Bangladeshi aged 17-18 is not counted). Of 41 suspects, 19 were Slovenian, 7 other EU (Romania, Croatia, Slovakia) and 15 from outside the EU. 5 adults were convicted of trafficking (2 Slovenian, 2 EU, 1 non-EU).",
+   "victims": {
+    "status": "published",
+    "source": "mds",
+    "scope": "Slovenia, identified and presumed child trafficking victims (under 18), 2025",
+    "n": 7,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 42.9,
+     "eu_cit": 14.3,
+     "noneu_cit": 42.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interministerial working group report 2025, table 3 (police). Very small numbers. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mds",
+    "scope": "Slovenia, trafficking suspects dealt with by police, 2025",
+    "n": 41,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 46.3,
+     "eu_cit": 17.1,
+     "noneu_cit": 36.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interministerial working group report 2025, table 4. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "All identified and presumed victims, all ages (2025)",
+     "data": {
+      "status": "published",
+      "source": "mds",
+      "scope": "Slovenia, identified and presumed trafficking victims, all ages, 2025",
+      "n": 26,
+      "n_label": "victims (all ages)",
+      "unknown_share": null,
+      "share": {
+       "svn_cit": 15.4,
+       "eu_cit": 15.4,
+       "noneu_cit": 69.2
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Table 3. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Convicted of trafficking (SURS, 2025)",
+     "data": {
+      "status": "published",
+      "source": "surs",
+      "scope": "Slovenia, adults convicted of trafficking in human beings, 2025",
+      "n": 5,
+      "n_label": "convicted adults",
+      "unknown_share": null,
+      "share": {
+       "svn_cit": 40.0,
+       "eu_cit": 40.0,
+       "noneu_cit": 20.0
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Very small numbers. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography",
+   "years": "2025",
+   "intro": "23 adults were convicted of child pornography offences in 2025: 21 Slovenian, 1 EU and 1 non-EU citizen.",
+   "victims": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "Victims are not published by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "surs",
+    "scope": "Slovenia, adults convicted of child pornography, 2025",
+    "n": 23,
+    "n_label": "convicted adults",
+    "unknown_share": null,
+    "share": {
+     "svn_cit": 91.3,
+     "eu_cit": 4.3,
+     "noneu_cit": 4.3
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "SURS 1360205S (2025), convictions of adults by citizenship: Slovenia, other EU, outside the EU. Small numbers. Citizenship, a proxy, not ethnicity: Slovenian citizens include people of every origin; ethnicity is not recorded in crime data. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "surs",
+    "text": "No link between victim and offender groups."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svn_cit",
+     "eu_cit",
+     "noneu_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svn_cit",
+       "eu_cit",
+       "noneu_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 12,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 12.0,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "SURS table 1360205S gives 2025 convictions of adults by citizenship (Slovenia, other EU, non-EU): sexual assault on a person under 15, 26 convicted (20 Slovenian, 3 EU, 3 non-EU); all offences against sexual integrity 77 (61, 5, 11). No victims by citizenship.",
+    "score": 12.0
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Convicted of assault 473 (410 Slovenian, 5 EU, 58 non-EU), all victim ages; no child-specific assault offence in the table and no victims by citizenship.",
+    "score": 11.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Neglect of children in care: 68 convicted in 2025 (57 Slovenian, 11 non-EU). No victims by citizenship.",
+    "score": 12.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Intentional murder: 22 convicted (18 Slovenian, 1 EU, 3 non-EU), all victim ages.",
+    "score": 10.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 3,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The interministerial working group's 2025 report lists every identified and presumed trafficking victim by sex, citizenship, age group and exploitation (26 in total; 5 identified, from Romania and Pakistan; presumed child victims from Slovenia, Montenegro, Hungary, Serbia), and all 41 suspects by citizenship and age. SURS: 5 convicted of trafficking (2 Slovenian, 2 EU, 1 non-EU).",
+    "score": 14.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Child pornography: 23 convicted in 2025 (21 Slovenian, 1 EU, 1 non-EU). No victims by citizenship.",
+    "score": 12.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Slovenia scores 12% on the stricter scale (0-20%). The statistics office publishes convictions by citizenship (Slovenian, other EU, non-EU) for child sexual assault, child pornography and neglect of children, and the trafficking report lists each victim and suspect by citizenship and age. No ethnicity is recorded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "surs": {
+   "name": "1360205S Obsodilne sodbe zoper polnoletne osebe po kaznivem dejanju in državljanstvu",
+   "publisher": "Statistični urad Republike Slovenije (SURS)",
+   "years": "2025",
+   "records": "5,114 convictions of adults by ICCS offence class and citizenship (Slovenia, other EU, outside the EU).",
+   "limitations": "Citizenship in three groups only; convicted adults only; no victims.",
+   "url": "https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1360205S.px/",
+   "tier": "Official government statistics"
+  },
+  "mds": {
+   "name": "Poročilo o delu Medresorske delovne skupine za boj proti trgovini z ljudmi za leto 2025",
+   "publisher": "Ministrstvo za notranje zadeve (Interministerial working group on trafficking)",
+   "years": "2025",
+   "records": "Each identified and presumed trafficking victim and each suspect by sex, citizenship and age group.",
+   "limitations": "Citizenship only; very small numbers.",
+   "url": "https://www.gov.si/assets/ministrstva/MNZ/SPBTL/POROCILA/Porocilo-2025.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
