@@ -1,7 +1,7 @@
 {
  "country": "Poland",
  "iso_a3": "POL",
- "completeness": 8,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Poland publishes counts of crimes against children from police and court statistics, but no nationality or origin of victims or suspects for any child harm. The only origin data are trafficking victims by citizenship.",
@@ -353,17 +353,17 @@
   }
  ],
  "score": {
-  "value": 8,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 7.8,
+  "uncapped": 8.6,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 25,
+    "weight": 20,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -389,7 +389,7 @@
    },
    {
     "harm": "Neglect",
-    "weight": 15,
+    "weight": 10,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1,
@@ -402,7 +402,7 @@
    },
    {
     "harm": "Homicide",
-    "weight": 15,
+    "weight": 25,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -415,7 +415,7 @@
    },
    {
     "harm": "Sex trafficking",
-    "weight": 15,
+    "weight": 20,
     "victim": 4,
     "perpetrator": 1,
     "coverage": 3,
@@ -428,7 +428,7 @@
    },
    {
     "harm": "Online exploitation",
-    "weight": 15,
+    "weight": 10,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1,
@@ -469,7 +469,30 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Poland scores 8% on the stricter scale (0-20%). Police and Justice Ministry statistics on crimes against children give no nationality or origin of victims or suspects for any harm. The only origin data are trafficking victims by citizenship and recruiters' citizenship from an NGO-run centre."
+  "why": "Poland scores 9% on the stricter scale (0-20%). Police and Justice Ministry statistics on crimes against children give no nationality or origin of victims or suspects for any harm. The only origin data are trafficking victims by citizenship and recruiters' citizenship from an NGO-run centre.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "previous_weights": {
+   "value": 8,
+   "band": "0-20%",
+   "uncapped": 7.8,
+   "weights": {
+    "Sexual abuse": 25,
+    "Physical abuse": 15,
+    "Neglect": 15,
+    "Homicide": 15,
+    "Sex trafficking": 15,
+    "Online exploitation": 15
+   },
+   "changed": "2026-11-19"
+  }
  },
  "sources": {
   "iws": {

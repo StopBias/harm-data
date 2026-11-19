@@ -1,7 +1,7 @@
 {
  "country": "United States",
  "iso_a3": "USA",
- "completeness": 57,
+ "completeness": 59,
  "as_of": "2026-11-18",
  "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies people of European descent.",
  "groups": [
@@ -614,10 +614,10 @@
   }
  ],
  "score": {
-  "value": 57,
+  "value": 59,
   "band": "40-60%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 56.8,
+  "uncapped": 58.7,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": {
@@ -628,7 +628,7 @@
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 25,
+    "weight": 20,
     "victim": 30.0,
     "perpetrator": 18.0,
     "coverage": 6.0,
@@ -670,7 +670,7 @@
    },
    {
     "harm": "Neglect",
-    "weight": 15,
+    "weight": 10,
     "victim": 30.0,
     "perpetrator": 19.5,
     "coverage": 5.5,
@@ -691,7 +691,7 @@
    },
    {
     "harm": "Homicide",
-    "weight": 15,
+    "weight": 25,
     "victim": 36.0,
     "perpetrator": 21.0,
     "coverage": 7.5,
@@ -712,7 +712,7 @@
    },
    {
     "harm": "Sex trafficking",
-    "weight": 15,
+    "weight": 20,
     "victim": 15.0,
     "perpetrator": 16.5,
     "coverage": 3.0,
@@ -733,7 +733,7 @@
    },
    {
     "harm": "Online exploitation",
-    "weight": 15,
+    "weight": 10,
     "victim": 3.0,
     "perpetrator": 15.0,
     "coverage": 2.5,
@@ -782,8 +782,31 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "The US scores 57% on the stricter scale (40-60%). It is the only country reviewed whose official data separate White non-Hispanic children from Hispanic and other children for abuse, neglect and child deaths, so it keeps most of its heritage points. It loses points where offender race is perceived, where Hispanic origin is missing (police data lump White and Hispanic offenders), and where online exploitation and trafficking carry almost no demographics.",
-  "judgement_notes": "Under the approved rule, 'White' published separately from Hispanic counts as identifying European descent. The US federal 'White' category also includes Middle Eastern and North African origins; if that were treated as lumping and victim heritage capped at three-quarters, the US would score about 54% instead of 57%."
+  "why": "The US scores 59% on the stricter scale (40-60%). It is the only country reviewed whose official data separate White non-Hispanic children from Hispanic and other children for abuse, neglect and child deaths, so it keeps most of its heritage points. It loses points where offender race is perceived, where Hispanic origin is missing (police data lump White and Hispanic offenders), and where online exploitation and trafficking carry almost no demographics.",
+  "judgement_notes": "Under the approved rule, 'White' published separately from Hispanic counts as identifying European descent. The US federal 'White' category also includes Middle Eastern and North African origins; if that were treated as lumping and victim heritage capped at three-quarters, the US would score about 56% instead of 59%.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "previous_weights": {
+   "value": 57,
+   "band": "40-60%",
+   "uncapped": 56.8,
+   "weights": {
+    "Sexual abuse": 25,
+    "Physical abuse": 15,
+    "Neglect": 15,
+    "Homicide": 15,
+    "Sex trafficking": 15,
+    "Online exploitation": 15
+   },
+   "changed": "2026-11-19"
+  }
  },
  "sources": {
   "ncands": {

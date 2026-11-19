@@ -1,7 +1,7 @@
 {
  "country": "Canada",
  "iso_a3": "CAN",
- "completeness": 21,
+ "completeness": 25,
  "provisional": false,
  "as_of": "2026-11-18",
  "summary": "Canada's police report the racialized and Indigenous identity of homicide victims and accused, but no other police-reported crime carries race or Indigenous identity yet (national collection is not expected before 2027). Statistics Canada's racialized categories never separate White people: 'rest of the population' combines White and Indigenous people.",
@@ -830,17 +830,17 @@
   }
  ],
  "score": {
-  "value": 21,
+  "value": 25,
   "band": "20-40%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 21.4,
+  "uncapped": 24.8,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 25,
+    "weight": 20,
     "victim": 11,
     "perpetrator": 0,
     "coverage": 5,
@@ -866,7 +866,7 @@
    },
    {
     "harm": "Neglect",
-    "weight": 15,
+    "weight": 10,
     "victim": 6,
     "perpetrator": 0,
     "coverage": 3,
@@ -879,7 +879,7 @@
    },
    {
     "harm": "Homicide",
-    "weight": 15,
+    "weight": 25,
     "victim": 17,
     "perpetrator": 15,
     "coverage": 9,
@@ -892,7 +892,7 @@
    },
    {
     "harm": "Sex trafficking",
-    "weight": 15,
+    "weight": 20,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
@@ -905,7 +905,7 @@
    },
    {
     "harm": "Online exploitation",
-    "weight": 15,
+    "weight": 10,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
@@ -946,7 +946,30 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Canada scores 21% on the stricter scale (20-40%). Homicide is well covered: police report the racialized and Indigenous identity of victims and accused, with official rates. For every other harm, the police record no race or Indigenous identity yet (national collection is not expected before 2027), so heritage data come only from a 2018 adult survey and a non-government child-welfare study. Even the homicide data lump White people with Indigenous people as 'rest of the population', so European descent is never separately identified in official data."
+  "why": "Canada scores 25% on the stricter scale (20-40%). Homicide is well covered: police report the racialized and Indigenous identity of victims and accused, with official rates. For every other harm, the police record no race or Indigenous identity yet (national collection is not expected before 2027), so heritage data come only from a 2018 adult survey and a non-government child-welfare study. Even the homicide data lump White people with Indigenous people as 'rest of the population', so European descent is never separately identified in official data.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "previous_weights": {
+   "value": 21,
+   "band": "20-40%",
+   "uncapped": 21.4,
+   "weights": {
+    "Sexual abuse": 25,
+    "Physical abuse": 15,
+    "Neglect": 15,
+    "Homicide": 15,
+    "Sex trafficking": 15,
+    "Online exploitation": 15
+   },
+   "changed": "2026-11-19"
+  }
  },
  "sources": {
   "hs_indig": {

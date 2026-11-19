@@ -409,7 +409,8 @@
         { name: "Perpetrator heritage", points: "37.5", full: "The same standard for perpetrators." },
         { name: "Coverage, rates and access", points: "25", full: "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release." }
       ],
-      cap: "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is."
+      cap: "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is.",
+      weights: "The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%, sex trafficking 20%, physical abuse 15%, online exploitation 10% and neglect 10% (weights in use since 19 November 2026)."
     };
 
 
@@ -431,11 +432,11 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 57,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 59,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies European descent separately. Details below the map."
       },
       GBR: {
-        completeness: 51,   // overwritten by data/gbr.json when it loads
+        completeness: 53,   // overwritten by data/gbr.json when it loads
         note: "England and Wales publish victim ethnicity for child protection and homicide, and offender ethnicity for court convictions, splitting White British from other White groups. Police records of child sexual abuse miss ethnicity for about two-thirds of cases, and no source identifies European descent. Details below the map."
       },
       DEU: {
@@ -443,11 +444,11 @@
         note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, so the score is capped at 25%. Details below the map."
       },
       CAN: {
-        completeness: 21,   // overwritten by data/can.json when it loads
+        completeness: 25,   // overwritten by data/can.json when it loads
         note: "Police report the racialized and Indigenous identity of homicide victims and accused, but no other police-reported crime carries race or Indigenous identity yet. Official categories never separately identify White or European-descent people. Details below the map."
       },
       FRA: {
-        completeness: 21,   // overwritten by data/fra.json when it loads
+        completeness: 24,   // overwritten by data/fra.json when it loads
         note: "France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality. These are proxies: no source identifies European descent. Details below the map."
       },
       AUS: {
@@ -455,15 +456,15 @@
         note: "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, often with official rates, but everyone else is counted as 'non-Indigenous', so White or European-descent Australians are never separately identified. Police Indigenous victim data cover only some states. Details below the map."
       },
       NZL: {
-        completeness: 44,   // overwritten by data/nzl.json when it loads
+        completeness: 41,   // overwritten by data/nzl.json when it loads
         note: "New Zealand Police publish child sexual assault, child assault, abuse-material and grooming victims, and the people proceeded against, by ethnicity every month, with European separate from Māori, Pacific and Asian people. It is the only country reviewed so far whose official crime data separately identify European-descent victims and offenders. Details below the map."
       },
       ZAF: {
-        completeness: 6,    // overwritten by data/zaf.json when it loads
+        completeness: 7,    // overwritten by data/zaf.json when it loads
         note: "South Africa's police publish counts of crimes against children with no population group for victims or suspects. Death notifications record population group, including White, but child homicide by population group is not published in the main release. Details below the map."
       },
       ITA: {
-        completeness: 22,  // overwritten by data/ita.json when it loads
+        completeness: 24,  // overwritten by data/ita.json when it loads
         note: "Italy does not collect ethnic statistics. ISTAT and the Interior Ministry split girls who are victims of sexual violence and maltreatment, child homicide victims and authors of offences against children by Italian or foreign citizenship. These are proxies: no source identifies European descent. Details below the map."
       },
       ESP: {
@@ -471,11 +472,11 @@
         note: "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences by nationality and continent, and people detained by nationality for all victims. These are proxies: no source identifies European descent. Details below the map."
       },
       POL: {
-        completeness: 8,   // overwritten by data/pol.json when it loads
+        completeness: 9,   // overwritten by data/pol.json when it loads
         note: "Poland's police and justice statistics on crimes against children give no nationality or origin of victims or suspects. Only trafficking victims are published by citizenship. Details below the map."
       },
       NLD: {
-        completeness: 15,  // overwritten by data/nld.json when it loads
+        completeness: 16,  // overwritten by data/nld.json when it loads
         note: "Statistics Netherlands publishes suspects of sexual and violent crimes by nationality and by country of birth, with rates, but never for crimes against children, and no source gives the origin of child victims. These are proxies. Details below the map."
       },
       SWE: {
@@ -1201,6 +1202,10 @@
       const hist = (prev && prev.value != null && !mentionsOld)
         ? `<p class="ex-small">On the previous rubric this country scored ${esc(String(prev.value))}%${prev.band ? ` (${esc(prev.band)})` : ""}.</p>`
         : "";
+      const pw = sc.previous_weights;
+      const weightsHist = (pw && pw.value != null)
+        ? `<p class="ex-small">Harm weights changed on ${esc(pw.changed || "19 Nov 2026")}. With the earlier weights (sexual abuse 25%, the other five harms 15% each) this country scored ${esc(String(pw.value))}%.</p>`
+        : "";
       const totalRows = (sc.cap_applied && sc.uncapped != null)
         ? `<tr><td>Weighted total (uncapped)</td><td class="num">100%</td><td class="num">${esc(String(sc.uncapped))}</td></tr>` +
           `<tr><td><strong>Published score (capped at 25%)</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr>`
@@ -1215,8 +1220,9 @@
         SCORE_RUBRIC.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
         `</tbody></table>` +
         `<p>${esc(SCORE_RUBRIC.cap)}</p>` +
+        `<p>${esc(SCORE_RUBRIC.weights)}</p>` +
         `<h3>Why ${esc(D.name_in_sentence || D.country)} scores ${esc(String(value))}%</h3><p>${esc(sc.why || "")}</p>` +
-        capBox + hist +
+        capBox + hist + weightsHist +
         (sc.breakdown && sc.breakdown.length ? `<h3>Score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
         totalRows + `</tbody></table>` : "") +
