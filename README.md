@@ -34,7 +34,18 @@ Bands include the lower bound and exclude the upper (20 → orange), except 100 
 `provisional: true` adds "(provisional)" and a note that data collection is still in progress.
 Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = SOL.
 
-## US data explorer (below the map)
+## Country data explorer (below the map)
+- The section below the map always follows the selected country. Nothing selected (or after tapping the sea or a
+  country outside the project, or pressing Esc): a short prompt. A country without a detailed file: its name,
+  completeness band, note and "Detailed data for … has not been added yet." A country with a file: the full explorer.
+- To add a country (e.g. the UK): create `data/<iso3 lowercase>.json` (e.g. `data/gbr.json`) in the same format as
+  `data/usa.json`, and add its ISO3 code to `"detailed"` in `data/index.json`. No code changes are needed. The
+  manifest means the page only requests files that exist, so there are no 404 errors for countries without one.
+- Optional text fields keep wording out of the code: `short_name`, `name_in_sentence`, `extra_group_labels`,
+  `combined_groups`, `not_recorded` on a group (with `european_note`/`european_title`), `score.why`, per-harm
+  `extra_sources`/`rate_sources`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
+
+### US data
 - `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
   sets the USA score (56) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
   share % vs rate per 100,000), the explanation panel, the expandable source list and the "How the score works" box.

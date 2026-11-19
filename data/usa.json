@@ -39,7 +39,8 @@
   },
   {
    "id": "european",
-   "label": "European descent"
+   "label": "European descent",
+   "not_recorded": true
   }
  ],
  "european_note": "No US source records European descent. US statistics use 'White', which under the federal standard in use covers people with origins in Europe, the Middle East and North Africa. A 2024 federal standard adds a separate Middle Eastern or North African category, which agencies must adopt by 2029, but no category for European ancestry.",
@@ -179,7 +180,10 @@
     "status": "not_recorded",
     "source": "ussc",
     "text": "Federal sentencing data do not record the victim's race, and no published police table links child victims' race to offenders' race."
-   }
+   },
+   "extra_sources": [
+    "ncands"
+   ]
   },
   {
    "id": "teen_violence",
@@ -223,7 +227,11 @@
      "hispanic"
     ],
     "note": "Offender race as perceived by the victim. Only White, Black and Hispanic victims and offenders are included; other groups were excluded by BJS. Rates not published for this age group.",
-    "rate_reason": "Not published: the report gives rates by race for all ages, not for teens."
+    "rate_reason": "Not published: the report gives rates by race for all ages, not for teens.",
+    "pair_sentence": "of violent crimes against {victim} teens were committed by {perp} offenders, as the victims perceived them.",
+    "row_intro": "Perceived offenders in violent crimes against {victim} teens:",
+    "col_intro": "Share of violent crimes against teens of each group committed by {perp} offenders (as perceived):",
+    "overview": "Pick a victim heritage to see who harmed teens of that group, or both heritages for a single figure."
    }
   },
   {
@@ -264,7 +272,15 @@
     "status": "not_recorded",
     "source": "bjs_ht",
     "text": "Victim race is not recorded in federal case data or published by NCMEC or the hotline."
-   }
+   },
+   "extra_sources": [
+    "ncmec",
+    "nhth",
+    "ussc"
+   ],
+   "rate_sources": [
+    "census"
+   ]
   },
   {
    "id": "homicide",
@@ -351,7 +367,7 @@
    }
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "why_us": "The US scores 56%: the most complete data found anywhere, but insufficient. It publishes victim race for abuse, neglect and deaths, and perpetrator race for abuse and neglect and for federal cases. But 'White' combines European, Middle Eastern and North African origins, offender race in police data is often perceived or unknown, victim and perpetrator heritage are almost never linked in published tables, and trafficking and online exploitation data carry almost no demographics."
+  "why": "The US scores 56%: the most complete data found anywhere, but insufficient. It publishes victim race for abuse, neglect and deaths, and perpetrator race for abuse and neglect and for federal cases. But 'White' combines European, Middle Eastern and North African origins, offender race in police data is often perceived or unknown, victim and perpetrator heritage are almost never linked in published tables, and trafficking and online exploitation data carry almost no demographics."
  },
  "sources": {
   "ncands": {
@@ -444,5 +460,19 @@
    "url": "https://www.census.gov/newsroom/press-kits/2026/vintage-2025-pop-estimates.html",
    "tier": "Official government statistics"
   }
+ },
+ "short_name": "US",
+ "name_in_sentence": "the United States",
+ "european_title": "Not recorded by any US source",
+ "extra_group_labels": {
+  "other": "Other races",
+  "unknown": "Unknown",
+  "asian_nhpi": "Asian or Pacific Islander"
+ },
+ "combined_groups": {
+  "asian_nhpi": [
+   "asian",
+   "nhpi"
+  ]
  }
 }

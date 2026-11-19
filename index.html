@@ -137,6 +137,8 @@
     .ex-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 4px; }
     .ex-head h2 { margin: 0; font-size: 1.2rem; font-weight: 600; }
     .ex-head .badge { margin: 0; }
+    [hidden] { display: none !important; }
+    .pending-note { color: var(--muted); border-left: 3px solid #d5d8da; padding: 6px 12px; margin: 0; font-size: 0.92rem; }
     .ex-lede { margin: 4px 0 16px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; max-width: 760px; }
     .ex-controls {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -292,11 +294,11 @@
   <section id="explorer" aria-labelledby="ex-title">
     <div class="ex-inner">
       <div class="ex-head">
-        <h2 id="ex-title">United States: what the data shows</h2>
-        <span class="badge" id="ex-badge"></span>
+        <h2 id="ex-title">Country data</h2>
+        <span class="badge" id="ex-badge" hidden></span>
       </div>
-      <p class="ex-lede" id="ex-lede">Loading data…</p>
-      <div class="ex-controls" id="ex-controls">
+      <p class="ex-lede" id="ex-lede">Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.</p>
+      <div class="ex-controls" id="ex-controls" hidden>
         <label>Harm<select id="sel-harm"></select></label>
         <label>Victim's heritage<select id="sel-victim"></select></label>
         <label>Perpetrator's heritage<select id="sel-perp"></select></label>
@@ -306,8 +308,8 @@
         </select></label>
       </div>
       <div id="ex-result" aria-live="polite"></div>
-      <div id="ex-sources"></div>
-      <details class="method" id="method"></details>
+      <div id="ex-sources" hidden></div>
+      <details class="method" id="method" hidden></details>
     </div>
   </section>
 
@@ -349,8 +351,7 @@
 
     const tracked = {
       USA: {
-        completeness: 56,   // from data/usa.json (overwritten when that file loads)
-        exact: true,        // show the exact score, not only the band (scored with the full rubric)
+        completeness: 56,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies European descent separately. Details below the map."
       },
       GBR: {
@@ -371,7 +372,8 @@
 
     const PANEL_NOTE = "The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.";
     const COUNTRIES_URL = "data/countries-ne50m.geojson";   // Natural Earth 1:50m, public domain
-    const USA_DATA_URL = "data/usa.json";                   // US figures, sources and score (data kept out of the code)
+    const DATA_INDEX_URL = "data/index.json";               // lists ISO3 codes that have data/<iso3 lowercase>.json
+    const DETAIL = {};                                       // loaded detailed data files, keyed by ISO3
 
     // ------------------------------------------------------------------
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
@@ -498,7 +500,7 @@
     const tooltip = new maplibregl.Popup({
       closeButton: false, closeOnClick: false, className: "country-tooltip", offset: 14, maxWidth: "320px"
     });
-    let hoveredId = null, selectedId = null;
+    let hoveredId = null, selectedId = null, selectedName = null;
 
     function setState(id, state) { if (id) map.setFeatureState({ source: "countries", id }, state); }
 
@@ -530,19 +532,22 @@
 
     // ---------- Click: data panel ----------
     const panel = document.getElementById("panel");
+    const PANEL_DEFAULT_HTML = document.getElementById("panel-content").innerHTML;
     document.getElementById("panel-handle").addEventListener("click", () => panel.classList.toggle("open"));
 
     function showCountry(iso, name) {
       const info = tracked[iso];
+      const detail = DETAIL[iso];
       setState(selectedId, { selected: false });
       selectedId = iso;
+      selectedName = name;
       setState(iso, { selected: true });
       document.getElementById("panel-title").textContent = name;
       document.getElementById("panel-content").innerHTML = info ? `
         <div class="badge"><span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}</div>
         <p>${info.note}</p>
         ${info.provisional ? '<p class="hint"><em>Provisional rating — data collection for this country is still in progress.</em></p>' : ""}
-        ${iso === "USA" ? '<p><button type="button" class="panel-link" id="to-explorer">Explore the US data below the map ↓</button></p>' : ""}
+        ${detail ? `<p><button type="button" class="panel-link" id="to-explorer">Explore the ${esc(detail.short_name || detail.country)} data below the map ↓</button></p>` : ""}
         <p class="note">${PANEL_NOTE}</p>
       ` : `
         <div class="badge"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</div>
@@ -554,6 +559,18 @@
         panel.classList.remove("open");
         document.getElementById("explorer").scrollIntoView({ behavior: "smooth", block: "start" });
       });
+      renderExplorerFor(iso, name);
+    }
+
+    // Reset: nothing selected (side panel and the section below the map go back to their prompts)
+    function clearSelection() {
+      setState(selectedId, { selected: false });
+      selectedId = null;
+      selectedName = null;
+      document.getElementById("panel-title").textContent = "Select a country";
+      document.getElementById("panel-content").innerHTML = PANEL_DEFAULT_HTML;
+      panel.classList.remove("open");
+      renderExplorerFor(null);
     }
 
     map.on("click", (e) => {
@@ -562,14 +579,20 @@
         : null;
       if (hit && inScope.has(hit.properties.iso_a3)) {
         showCountry(hit.properties.iso_a3, hit.properties.name);
+      } else if (selectedId) {
+        clearSelection();   // tap on the sea or on a country outside the project
       } else if (isMobile()) {
         panel.classList.remove("open");
       }
     });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && selectedId) clearSelection(); });
 
     let resizeTimer;
     window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView); }, 200); });
-    // ---------- US data explorer (below the map); figures live in data/usa.json ----------
+
+    // ---------- Country data explorer (below the map) ----------
+    // Generic: any country listed in data/index.json has its figures in data/<iso3 lowercase>.json.
+    // The section below the map always follows the selected country.
     const STATUS_LABEL = {
       published: "Published",
       not_published: "Recorded, not published",
@@ -578,8 +601,11 @@
     };
     const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const fmt = v => v >= 100 ? Math.round(v).toLocaleString("en-US") : (Math.round(v * 100) / 100).toLocaleString("en-US");
-    let US = null;
+    const fill = (tpl, vars) => esc(tpl).replace(/\{(\w+)\}/g, (_, k) => vars[k] != null ? `<strong>${esc(vars[k])}</strong>` : "");
+    let D = null;          // data of the country shown in the explorer
+    let shownIso = null;
     const ex = { harm: null, victim: "all", perp: "all", measure: "share" };
+    const $ = id => document.getElementById(id);
 
     function refreshFill() {
       const fc = ["match", ["get", "iso_a3"]];
@@ -588,14 +614,15 @@
       if (map.getLayer("countries-fill")) map.setPaintProperty("countries-fill", "fill-color", fc);
     }
 
-    const groupLabel = id => id === "other" ? "Other races" : id === "unknown" ? "Unknown" : id === "asian_nhpi"
-      ? "Asian or Pacific Islander" : ((US.groups.find(g => g.id === id) || {}).label || id);
+    const groupLabel = id => ((D.groups.find(g => g.id === id) || {}).label) || (D.extra_group_labels || {})[id] || id;
+    const listLabels = ids => { const l = ids.map(groupLabel); return l.length > 1 ? l.slice(0, -1).join(", ") + " and " + l[l.length - 1] : l[0]; };
 
-    // Value for a group; Asian and Pacific Islander fall back to a combined figure where a source merges them
+    // Value for a group; falls back to a combined figure where a source merges groups (e.g. Asian + Pacific Islander)
     function pick(obj, group) {
       if (!obj) return null;
       if (obj[group] != null) return { v: obj[group], g: group };
-      if ((group === "asian" || group === "nhpi") && obj.asian_nhpi != null) return { v: obj.asian_nhpi, g: "asian_nhpi" };
+      const comb = D.combined_groups || {};
+      for (const key in comb) if (comb[key].includes(group) && obj[key] != null) return { v: obj[key], g: key };
       return null;
     }
 
@@ -603,6 +630,7 @@
       return `<span class="status ${status}">${STATUS_LABEL[status]}</span>` +
         `<div class="absent">${title ? `<strong>${esc(title)}</strong>` : ""}${esc(text)}</div>`;
     }
+    const rateNA = reason => `<span class="status not_published">Rate not available</span><div class="absent">${esc(reason || "No rate is published for this selection.")}</div>`;
 
     function barsHtml(values, highlight, unit) {
       const keys = Object.keys(values).filter(k => values[k] != null);
@@ -618,21 +646,22 @@
     }
 
     // One side (victims or perpetrators) for one group or for all groups
-    function sideHtml(side, who, group, harm) {
+    function sideHtml(side, who, group) {
       const label = who === "victims" ? "Victims" : "Perpetrators";
       if (side.status !== "published") return statusBlock(side.status, side.text, `${label}: ${STATUS_LABEL[side.status].toLowerCase()}`);
       const scope = side.scope ? ` <span class="ex-small">(${esc(side.scope)})</span>` : "";
       if (ex.measure === "rate") {
-        if (!side.rate) return `<span class="status not_published">Rate not available</span><div class="absent">${esc(side.rate_reason)}</div>`;
+        if (!side.rate) return rateNA(side.rate_reason);
+        const rl = side.rate_label || "";
         if (group === "all") {
-          return `<p>${esc(side.rate_label.charAt(0).toUpperCase() + side.rate_label.slice(1))}${scope}${side.rate_all != null ? `; all children: <strong>${fmt(side.rate_all)}</strong>` : ""}.</p>` +
-            barsHtml(side.rate, null, "") + `<p class="ex-small">${esc(side.rate_note)}</p>`;
+          return `<p>${esc(rl.charAt(0).toUpperCase() + rl.slice(1))}${scope}${side.rate_all != null ? `; all children: <strong>${fmt(side.rate_all)}</strong>` : ""}.</p>` +
+            barsHtml(side.rate, null, "") + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
         }
         const r = pick(side.rate, group);
         if (!r) return statusBlock("not_recorded", `This source does not report a rate for ${groupLabel(group)}.`, "");
-        return `<div class="ex-big">${fmt(r.v)}</div><p>${esc(side.rate_label.replace("the same group", groupLabel(r.g)))}` +
+        return `<div class="ex-big">${fmt(r.v)}</div><p>${esc(rl.replace("the same group", groupLabel(r.g)))}` +
           `${side.rate_all != null ? `, compared with ${fmt(side.rate_all)} for all children` : ""}.${scope}</p>` +
-          barsHtml(side.rate, r.g, "") + `<p class="ex-small">${esc(side.rate_note)}</p>`;
+          barsHtml(side.rate, r.g, "") + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
       }
       const note = side.share_note ? `<p class="ex-small">${esc(side.share_note)}</p>` : "";
       if (group === "all") {
@@ -645,64 +674,64 @@
     }
 
     function renderResult() {
-      const harm = US.harms.find(h => h.id === ex.harm);
+      const harm = D.harms.find(h => h.id === ex.harm);
       const out = [`<p>${esc(harm.intro)}${harm.years ? ` <span class="ex-small">(${esc(harm.years)})</span>` : ""}</p>`];
       const v = ex.victim, p = ex.perp, cross = harm.cross;
+      const unrecorded = D.groups.filter(g => g.not_recorded).map(g => g.id);
 
-      if (v === "european" || p === "european") {
-        out.push(statusBlock("not_recorded", US.european_note, "Not recorded by any US source"));
+      if (unrecorded.includes(v) || unrecorded.includes(p)) {
+        const g = D.groups.find(x => x.id === (unrecorded.includes(v) ? v : p));
+        out.push(statusBlock("not_recorded", g.note || D.european_note || "", g.title || D.european_title || "Not recorded"));
       } else if (v !== "all" && p !== "all") {
         // victim heritage x perpetrator heritage
         if (cross.status !== "published") {
           out.push(statusBlock(cross.status, cross.text, "Victim heritage linked to perpetrator heritage"));
         } else if (ex.measure === "rate") {
-          out.push(`<span class="status not_published">Rate not available</span><div class="absent">${esc(cross.rate_reason)}</div>`);
+          out.push(rateNA(cross.rate_reason));
         } else if (!cross.groups.includes(v) || !cross.groups.includes(p)) {
-          out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic victims and offenders.", ""));
+          out.push(statusBlock("not_recorded", `This table includes only ${listLabels(cross.groups)} victims and offenders.`, ""));
         } else {
-          out.push(`<div class="ex-big">${fmt(cross.matrix[v][p])}%</div><p>of violent crimes against ${esc(groupLabel(v))} teens were committed by ${esc(groupLabel(p))} offenders, as the victims perceived them.</p>` +
+          out.push(`<div class="ex-big">${fmt(cross.matrix[v][p])}%</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
             barsHtml(cross.matrix[v], p, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
         }
       } else if (cross.status === "published" && (v !== "all" || p !== "all")) {
         // cross-tab source: one row (victim chosen) or one column (perpetrator chosen)
         if (ex.measure === "rate") {
-          out.push(`<span class="status not_published">Rate not available</span><div class="absent">${esc(cross.rate_reason)}</div>`);
+          out.push(rateNA(cross.rate_reason));
         } else if (v !== "all") {
-          if (!cross.matrix[v]) out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic victims.", ""));
-          else out.push(`<p>Perceived offenders in violent crimes against <strong>${esc(groupLabel(v))}</strong> teens:</p>` + barsHtml(cross.matrix[v], null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
+          if (!cross.matrix[v]) out.push(statusBlock("not_recorded", `This table includes only ${listLabels(cross.groups)} victims.`, ""));
+          else out.push(`<p>${fill(cross.row_intro, { victim: groupLabel(v) })}</p>` + barsHtml(cross.matrix[v], null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
         } else {
-          if (!cross.groups.includes(p)) out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic offenders.", ""));
+          if (!cross.groups.includes(p)) out.push(statusBlock("not_recorded", `This table includes only ${listLabels(cross.groups)} offenders.`, ""));
           else {
             const col = {}; cross.groups.forEach(g => col[g] = cross.matrix[g][p]);
-            out.push(`<p>Share of violent crimes against teens of each group committed by <strong>${esc(groupLabel(p))}</strong> offenders (as perceived):</p>` + barsHtml(col, null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
+            out.push(`<p>${fill(cross.col_intro, { perp: groupLabel(p) })}</p>` + barsHtml(col, null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
           }
         }
       } else if (cross.status === "published") {
-        out.push(`<p>Pick a victim heritage to see who harmed teens of that group, or both heritages for a single figure.</p>`);
+        out.push(`<p>${esc(cross.overview || "Pick a victim heritage, a perpetrator heritage, or both.")}</p>`);
         const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
           cross.groups.map(o => `${esc(groupLabel(o))} offender ${fmt(cross.matrix[g][o])}%`).join(" · ") + "</p>").join("");
         out.push(allRows + `<p class="ex-small">${esc(cross.note)}</p>`);
       } else if (v !== "all") {
-        out.push(sideHtml(harm.victims, "victims", v, harm));
+        out.push(sideHtml(harm.victims, "victims", v));
       } else if (p !== "all") {
-        out.push(sideHtml(harm.perpetrators, "perpetrators", p, harm));
+        out.push(sideHtml(harm.perpetrators, "perpetrators", p));
       } else {
-        out.push(`<div class="cols"><div><h3>Victims</h3>${sideHtml(harm.victims, "victims", "all", harm)}</div>` +
-                 `<div><h3>Perpetrators</h3>${sideHtml(harm.perpetrators, "perpetrators", "all", harm)}</div></div>`);
+        out.push(`<div class="cols"><div><h3>Victims</h3>${sideHtml(harm.victims, "victims", "all")}</div>` +
+                 `<div><h3>Perpetrators</h3>${sideHtml(harm.perpetrators, "perpetrators", "all")}</div></div>`);
         out.push(`<p class="ex-small"><strong>Victim and perpetrator heritage together:</strong> ${esc(STATUS_LABEL[cross.status])}. ${esc(cross.text || "")}</p>`);
       }
-      document.getElementById("ex-result").innerHTML = out.join("");
+      $("ex-result").innerHTML = out.join("");
     }
 
     function renderSources() {
-      const harm = US.harms.find(h => h.id === ex.harm);
-      const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source];
-      if (harm.id === "exploitation") ids.push("ncmec", "nhth", "ussc");
-      if (harm.id === "sexual_abuse") ids.push("ncands");
-      if (harm.id === "exploitation" && ex.measure === "rate") ids.push("census");
-      const uniq = [...new Set(ids)].filter(id => US.sources[id]);
-      document.getElementById("ex-sources").innerHTML = "<h3>Sources</h3>" + uniq.map(id => {
-        const s = US.sources[id];
+      const harm = D.harms.find(h => h.id === ex.harm);
+      const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source, ...(harm.extra_sources || [])];
+      if (ex.measure === "rate") ids.push(...(harm.rate_sources || []));
+      const uniq = [...new Set(ids)].filter(id => D.sources[id]);
+      $("ex-sources").innerHTML = "<h3>Sources</h3>" + uniq.map(id => {
+        const s = D.sources[id];
         return `<details class="src"><summary><span>${esc(s.name)}</span><span class="tier">${esc(s.tier)}</span></summary><dl>` +
           `<dt>Publisher</dt><dd>${esc(s.publisher)}</dd>` +
           `<dt>Years</dt><dd>${esc(s.years)}</dd>` +
@@ -713,49 +742,85 @@
     }
 
     function renderMethod() {
-      const sc = US.score;
-      document.getElementById("method").innerHTML =
+      const sc = D.score;
+      $("method").open = false;
+      $("method").innerHTML =
         `<summary>How the ${sc.value}% score works</summary>` +
         `<h3>The 100% standard</h3><div class="gold">${esc(sc.gold_standard)}</div>` +
-        `<h3>Why the United States scores ${sc.value}%</h3><p>${esc(sc.why_us)}</p>` +
+        `<h3>Why ${esc(D.name_in_sentence || D.country)} scores ${sc.value}%</h3><p>${esc(sc.why || "")}</p>` +
         `<h3>Scoring rubric (points per harm)</h3><table><thead><tr><th>Component</th><th class="num">Points</th><th>Full points require</th></tr></thead><tbody>` +
         sc.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
         `</tbody></table>` +
-        `<h3>US score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
+        `<h3>Score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
         `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${sc.value}</strong></td></tr></tbody></table>` +
-        `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(US.as_of)}).</p>`;
+        `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(D.as_of)}).</p>`;
     }
 
     function renderExplorer() { renderResult(); renderSources(); }
 
-    function initExplorer(data) {
-      US = data;
-      tracked.USA.completeness = data.completeness;
-      refreshFill();
-      const band = bandFor(data.completeness);
-      document.getElementById("ex-badge").innerHTML = `<span class="swatch" style="background:${band.color}"></span>${data.completeness}% complete · ${bandLabel(band)}`;
-      document.getElementById("ex-lede").textContent = data.summary;
-      const hSel = document.getElementById("sel-harm");
-      hSel.innerHTML = data.harms.map(h => `<option value="${h.id}">${esc(h.label)}</option>`).join("");
-      ex.harm = data.harms[0].id;
-      const opts = data.groups.map(g => `<option value="${g.id}">${esc(g.label)}</option>`).join("");
-      document.getElementById("sel-victim").innerHTML = opts;
-      document.getElementById("sel-perp").innerHTML = opts;
-      [["sel-harm", "harm"], ["sel-victim", "victim"], ["sel-perp", "perp"], ["sel-measure", "measure"]].forEach(([id, key]) =>
-        document.getElementById(id).addEventListener("change", e => { ex[key] = e.target.value; renderExplorer(); }));
-      renderMethod();
-      renderExplorer();
-      if (selectedId === "USA") showCountry("USA", "United States of America");
+    function badgeHtml(iso) {
+      const info = tracked[iso];
+      if (!info) return `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed`;
+      return `<span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}`;
     }
 
-    fetch(USA_DATA_URL)
-      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(initExplorer)
-      .catch(err => {
-        console.error(err);
-        document.getElementById("ex-lede").textContent = "US data failed to load. Please refresh.";
-      });
+    // The section below the map: prompt (nothing selected), full explorer (country has a data file),
+    // or a short "not added yet" note (country without a data file).
+    function renderExplorerFor(iso, name) {
+      const detail = iso ? DETAIL[iso] : null;
+      $("ex-controls").hidden = $("ex-sources").hidden = $("method").hidden = !detail;
+      $("ex-badge").hidden = !iso;
+      if (!iso) {
+        shownIso = null; D = null;
+        $("ex-title").textContent = "Country data";
+        $("ex-lede").textContent = "Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.";
+        $("ex-result").innerHTML = "";
+        return;
+      }
+      $("ex-badge").innerHTML = badgeHtml(iso);
+      if (!detail) {
+        shownIso = iso; D = null;
+        const info = tracked[iso];
+        $("ex-title").textContent = name;
+        $("ex-lede").textContent = info ? info.note : "This country is part of the project. Its published crime data has not been reviewed yet.";
+        $("ex-result").innerHTML = `<p class="pending-note">Detailed data for ${esc(name)} has not been added yet.</p>`;
+        return;
+      }
+      $("ex-title").textContent = `${detail.country}: what the data shows`;
+      $("ex-lede").textContent = detail.summary;
+      if (shownIso === iso && D === detail) return;   // same country: keep the reader's selections
+      shownIso = iso; D = detail;
+      Object.assign(ex, { harm: detail.harms[0].id, victim: "all", perp: "all", measure: "share" });
+      $("sel-harm").innerHTML = detail.harms.map(h => `<option value="${h.id}">${esc(h.label)}</option>`).join("");
+      const opts = detail.groups.map(g => `<option value="${g.id}">${esc(g.label)}</option>`).join("");
+      $("sel-victim").innerHTML = opts;
+      $("sel-perp").innerHTML = opts;
+      $("sel-harm").value = ex.harm; $("sel-victim").value = "all"; $("sel-perp").value = "all"; $("sel-measure").value = "share";
+      renderMethod();
+      renderExplorer();
+    }
+
+    [["sel-harm", "harm"], ["sel-victim", "victim"], ["sel-perp", "perp"], ["sel-measure", "measure"]].forEach(([id, key]) =>
+      $(id).addEventListener("change", e => { if (!D) return; ex[key] = e.target.value; renderExplorer(); }));
+
+    renderExplorerFor(null);
+
+    // Load the list of countries with detailed files, then each file
+    const getJSON = url => fetch(url).then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
+    getJSON(DATA_INDEX_URL)
+      .then(idx => Promise.all((idx.detailed || []).map(iso =>
+        getJSON(`data/${iso.toLowerCase()}.json`)
+          .then(data => {
+            DETAIL[iso] = data;
+            if (tracked[iso] && data.completeness != null) { tracked[iso].completeness = data.completeness; tracked[iso].exact = true; }
+          })
+          .catch(err => console.error(err)))))
+      .then(() => {
+        refreshFill();
+        if (selectedId) showCountry(selectedId, selectedName);
+      })
+      .catch(err => console.error(err));
   </script>
 </body>
 </html>
