@@ -1,0 +1,574 @@
+{
+ "country": "Iceland",
+ "iso_a3": "ISL",
+ "completeness": 8,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Iceland's only origin variable in crime data is a two-way split of suspects into Icelandic and foreign citizens on a police dashboard, for all victims. No child victims are published by citizenship or origin for any harm, and trafficking victims' nationality comes only from a US government report.",
+ "short_name": "Iceland",
+ "name_in_sentence": "Iceland",
+ "nations": {
+  "National (Police, Barna- og fjölskyldustofa)": "Police suspects dashboard and sexual-offence reports; national child-protection figures."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "isl_cit",
+   "label": "Icelandic citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "origin_iceland",
+   "label": "Icelandic origin (Reykjavik team cases)",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "origin_foreign",
+   "label": "Foreign origin (Reykjavik team cases)",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Icelandic source",
+ "european_note": "Icelandic statistics record only citizenship (Icelandic or foreign), never ethnicity or parents' origin. Icelandic citizens include naturalised immigrants of any origin, and foreign citizens include Europeans and tourists, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship or origin",
+  "perpetrator": "Suspect's citizenship"
+ },
+ "proxy_note": "Iceland records citizenship only, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences (police suspects, all victims)",
+   "years": "2025",
+   "intro": "Police recorded 124 sexual offences against children in 2024 and 94 in January-September 2025, with no citizenship or origin of victims or suspects. The police suspects dashboard gives the share of Icelandic and foreign citizens among the 398 people suspected of sexual offences in 2025 (all victims, suspects aged 15 and over).",
+   "victims": {
+    "status": "not_published",
+    "source": "pol_kyn",
+    "text": "Police and child-protection statistics on child victims publish no citizenship or origin."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pol_dash",
+    "scope": "Iceland, suspects of sexual offences aged 15+, all victims, 2025",
+    "n": 398,
+    "n_label": "suspects, all victims",
+    "unknown_share": null,
+    "share": {
+     "isl_cit": 71.0,
+     "foreign_cit": 29.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Icelandic Police dashboard 'Grunaðir einstaklingar skv. gögnum lögreglu 2019-2025': suspects aged 15 and over, read by selecting the offence category on 19 November 2026; percentages as shown on the dashboard. Over 2019-2025 as a whole, 76% of sexual-offence suspects were Icelandic citizens. Not child-specific. Citizenship, a proxy, not ethnicity: Icelandic citizens include naturalised immigrants, and foreign citizens include tourists and other non-residents (the police could not split the data by residence). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pol_dash",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "isl_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "isl_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Violent offences (police suspects, all victims)",
+   "years": "2025",
+   "intro": "No child victims of violence are published by citizenship. The police dashboard gives the Icelandic and foreign shares of the 1,825 people suspected of violent offences in 2025 (all victims).",
+   "victims": {
+    "status": "not_published",
+    "source": "pol_kyn",
+    "text": "Police and child-protection statistics on child victims publish no citizenship or origin."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pol_dash",
+    "scope": "Iceland, suspects of violent offences aged 15+, all victims, 2025",
+    "n": 1825,
+    "n_label": "suspects, all victims",
+    "unknown_share": null,
+    "share": {
+     "isl_cit": 69.0,
+     "foreign_cit": 31.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Icelandic Police dashboard 'Grunaðir einstaklingar skv. gögnum lögreglu 2019-2025': suspects aged 15 and over, read by selecting the offence category on 19 November 2026; percentages as shown on the dashboard. Over 2019-2025 as a whole, 70% of violence suspects were Icelandic citizens. Not child-specific. Citizenship, a proxy, not ethnicity: Icelandic citizens include naturalised immigrants, and foreign citizens include tourists and other non-residents (the police could not split the data by residence). "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pol_dash",
+    "text": "No victim data by citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "isl_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "isl_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Child protection (Reykjavik team for children of foreign origin)",
+   "years": "2024",
+   "intro": "Child-protection services received 18,429 notifications in 2025, most for neglect, but national figures give no citizenship or origin. Reykjavik's child-protection report lists by country of origin only the 208 cases handled by its team for children of foreign origin (35% neglect, 27% physical violence, 25% witnessing domestic violence); by design almost all are of foreign origin, so these are not population figures.",
+   "victims": {
+    "status": "published",
+    "source": "rvk",
+    "scope": "Reykjavik, cases allocated to the investigation and treatment team for children of foreign origin, 2024",
+    "n": 208,
+    "n_label": "cases (selected team)",
+    "unknown_share": null,
+    "share": {
+     "origin_iceland": 9.6,
+     "origin_foreign": 90.4
+    },
+    "rate": null,
+    "rate_reason": "Not population-based; not calculated.",
+    "share_note": "Reykjavik child protection annual report 2024, Table 1: Poland 29, Romania 22, Iceland 20, Vietnam 16, Iraq 11, Ukraine 10, Somalia 8, Philippines 8, Afghanistan 7, Lithuania 7, 24 other countries 68. The team exists for children of foreign origin, so the split reflects case allocation, not risk. Country of origin, a proxy, not ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "bofs",
+    "text": "No perpetrator data."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bofs",
+    "text": "No perpetrator data."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "origin_iceland",
+     "origin_foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "origin_iceland",
+       "origin_foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "-",
+   "intro": "No official statistics on homicide victims or perpetrators by citizenship or origin were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "pol_dash",
+    "text": "Not published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "pol_dash",
+    "text": "The dashboard has no homicide category."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pol_dash",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "Iceland publishes no official trafficking statistics by nationality. The US State Department's 2025 report (a foreign-government source) says Icelandic authorities identified 37 trafficking victims in 2024 (10 sex trafficking, 20 labour, 7 unspecified), all foreign nationals; six were children. No trafficker data.",
+   "victims": {
+    "status": "published",
+    "source": "tip",
+    "scope": "Iceland, trafficking victims identified by the authorities, all ages and forms, 2024",
+    "n": 37,
+    "n_label": "victims (6 children)",
+    "unknown_share": null,
+    "share": {
+     "isl_cit": 0.0,
+     "foreign_cit": 100.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "Non-Icelandic source: US State Department, 2025 Trafficking in Persons Report. Nationality, a proxy, not ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "tip",
+    "text": "No trafficker nationality is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "tip",
+    "text": "No perpetrator data."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "isl_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "isl_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child sexual abuse material",
+   "years": "2024-2025",
+   "intro": "Police recorded 40 offences involving child sexual abuse material in 2024 and 40 in January-September 2025, with no citizenship of victims or suspects; the dashboard has no separate category for them.",
+   "victims": {
+    "status": "not_published",
+    "source": "pol_kyn",
+    "text": "No citizenship published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "pol_kyn",
+    "text": "No citizenship published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pol_kyn",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 8,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The police dashboard of suspects 2019-2025 gives the Icelandic-citizen share of sexual-offence suspects aged 15+ (71% in 2025), all victims; the police report on sexual offences (124 against children in 2024, 94 in January-September 2025) gives no citizenship.",
+    "score": 11
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0.5,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The police dashboard gives the Icelandic-citizen share of violence suspects (about 69% in 2025), all victims. Reykjavík child protection publishes origin only for its team for children of foreign origin, which is not a population figure.",
+    "score": 9.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0.5,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "National child-protection figures (18,429 notifications in 2025, most for neglect) give no citizenship or origin; Reykjavík's team for children of foreign origin lists its cases by country.",
+    "score": 6.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No official homicide victims or perpetrators by citizenship or origin were found.",
+    "score": 4.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "No Icelandic official statistics; the US State Department's 2025 report (a foreign-government source) says the 37 victims identified in 2024 were all foreign nationals, 6 of them children.",
+    "score": 10
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police count child sexual abuse material offences (40 in 2024 and 40 in January-September 2025) with no citizenship.",
+    "score": 5.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Iceland scores 8% on the stricter scale (0-20%). The only origin variable in Icelandic crime data is a two-way split of suspects into Icelandic and foreign citizens, with no child victims by origin for any harm; trafficking victims' nationality comes only from a US government report.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "pol_dash": {
+   "name": "Grunaðir einstaklingar skv. gögnum lögreglu 2019-2025 (suspects dashboard)",
+   "publisher": "Ríkislögreglustjóri (National Commissioner of the Icelandic Police)",
+   "years": "2019-2025",
+   "records": "Suspects aged 15+ by year, sex, age, offence category and Icelandic/foreign citizenship.",
+   "limitations": "Interactive Power BI dashboard; citizenship only, no residence; not by victim age.",
+   "url": "https://island.is/s/logreglan/frett/nytt-maelabord-um-grunada-einstaklinga",
+   "tier": "Official government statistics"
+  },
+  "pol_kyn": {
+   "name": "Kynferðisbrot: skráð brot 2010-2024 og jan-sept 2025",
+   "publisher": "Ríkislögreglustjóri",
+   "years": "2010-September 2025",
+   "records": "Recorded sexual offences by type, including against children and abuse material; victims and suspects by age and sex.",
+   "limitations": "No citizenship.",
+   "url": "https://assets.ctfassets.net/8k0h54kbe6bj/7eqk2tiwTpUg04QGt6vl4Z/59d94eacc82171a15626072728c0d02d/Kynfer%C3%83_isbrot_Aukaa%C3%83_ild_og_sakb._fyrir_ytri_vef_jan-sept_2025_2.pdf",
+   "tier": "Official government statistics"
+  },
+  "bofs": {
+   "name": "Tilkynningum fjölgaði um 10% á milli áranna 2024 og 2025",
+   "publisher": "Barna- og fjölskyldustofa",
+   "years": "2023-2025",
+   "records": "Child-protection notifications by reason.",
+   "limitations": "No citizenship or origin.",
+   "url": "https://island.is/s/bofs/frett/tilkynningum-fjoelgadi-um-10-a-milli-aranna-2024-og-2025-likt-og-arin-a",
+   "tier": "Official government statistics"
+  },
+  "rvk": {
+   "name": "Ársskýrsla Barnaverndar Reykjavíkur 2024",
+   "publisher": "Reykjavíkurborg (City of Reykjavík child protection)",
+   "years": "2024",
+   "records": "Cases of the team for children of foreign origin by country of origin.",
+   "limitations": "One municipality and one specialised team; not population-based.",
+   "url": "https://reykjavik.is/sites/default/files/2026-03/A%CC%81rsky%CC%81rsla%20Barnaverndar%202024.pdf",
+   "tier": "Official local government report"
+  },
+  "tip": {
+   "name": "2025 Trafficking in Persons Report: Iceland",
+   "publisher": "United States Department of State",
+   "years": "2024",
+   "records": "Victims identified by Icelandic authorities, with nationality summary.",
+   "limitations": "Foreign-government report, not Icelandic official statistics.",
+   "url": "https://www.state.gov/reports/2025-trafficking-in-persons-report/iceland/",
+   "tier": "Non-Icelandic source (foreign government report)"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

@@ -1,0 +1,943 @@
+{
+ "country": "Denmark",
+ "iso_a3": "DNK",
+ "completeness": 20,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Danmarks Statistik publishes convictions every year by herkomst (Danish origin; immigrants and descendants from Western and non-Western countries) and by country of origin, including sexual offences against children, and the Justice Ministry's homicide study links victim and perpetrator herkomst. Herkomst is a birth-country and citizenship proxy, not ethnicity, and no child victims are published by herkomst outside homicide.",
+ "short_name": "Denmark",
+ "name_in_sentence": "Denmark",
+ "nations": {
+  "National (Danmarks Statistik, Justice Ministry)": "Conviction statistics by herkomst and country of origin; homicide and crime-and-herkomst studies; Center mod Menneskehandel trafficking statistics.",
+  "Greenland and the Faroe Islands": "Not included."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "danish_origin",
+   "label": "Danish origin (at least one Danish-born Danish-citizen parent)",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "western_imm",
+   "label": "Immigrants from Western countries",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "nonwestern_imm",
+   "label": "Immigrants from non-Western countries",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "western_desc",
+   "label": "Descendants from Western countries",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "nonwestern_desc",
+   "label": "Descendants from non-Western countries",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "western",
+   "label": "Western immigrants and descendants",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "nonwestern",
+   "label": "Non-Western immigrants and descendants",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "immigrants",
+   "label": "Immigrants (all)",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "descendants",
+   "label": "Descendants (all)",
+   "proxy": "herkomst"
+  },
+  {
+   "id": "no_cpr",
+   "label": "No Danish personal number",
+   "proxy": "residence"
+  },
+  {
+   "id": "origin_europe",
+   "label": "Origin in another European country (33 listed)",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "origin_turkey",
+   "label": "Origin in Turkey",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "origin_non_europe",
+   "label": "Origin in a listed non-European country",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "origin_other",
+   "label": "Origin in other (unlisted) countries",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "nat_danish",
+   "label": "Danish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "nat_foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Herkomst unknown",
+ "european_title": "Not recorded by any Danish source",
+ "european_note": "Danish statistics record herkomst, built from the birth country and citizenship of the person and their parents, never ethnicity. 'Danish origin' is the closest group to European descent but is a proxy: it includes grandchildren of immigrants (40,286 children of descendants were classed as Danish origin on 1 January 2026, most with Turkish, Pakistani or Lebanese roots) and anyone with one Danish-born Danish-citizen parent. 'Western' is not 'European' (it includes the USA, Canada, Australia and New Zealand), and 'non-Western' includes non-EU Europe such as Ukraine, Russia and the Balkans.",
+ "select_labels": {
+  "victim": "Victim's herkomst or nationality",
+  "perpetrator": "Perpetrator's herkomst or country of origin"
+ },
+ "proxy_note": "Denmark records herkomst (birth country and citizenship of the person and parents), never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children (convictions)",
+   "years": "2021-2025",
+   "intro": "Danmarks Statistik counts 81 persons found guilty of sexual offences against a child under 15 and 36 against a child under 12 in 2025 (350 and 180 over 2021-2025). Both are published every year by herkomst and by country of origin. No victims are published by herkomst.",
+   "victims": {
+    "status": "not_published",
+    "source": "dst_straf5",
+    "text": "Danmarks Statistik publishes victims of reported crime by age and sex only (STRAF5, LIGEPB1); no herkomst."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dst_strfna10",
+    "scope": "Denmark, persons found guilty of a sexual offence against a child under 15, 2021-2025 combined",
+    "n": 350,
+    "n_label": "persons found guilty (2021-2025)",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 87.4,
+     "western_imm": 2.3,
+     "nonwestern_imm": 5.7,
+     "western_desc": 0.6,
+     "nonwestern_desc": 4.0
+    },
+    "rate": null,
+    "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+    "share_note": "Shares calculated here from StatBank STRFNA10 counts (Danish origin 306, Western immigrants 8, non-Western immigrants 20, Western descendants 2, non-Western descendants 14). Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dst_strfna10",
+    "text": "Convictions are not published with the herkomst of the victim, so no table links victim and perpetrator."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Sexual offence against a child under 12, persons found guilty 2021-2025",
+     "data": {
+      "status": "published",
+      "source": "dst_strfna10",
+      "scope": "Denmark, persons found guilty of a sexual offence against a child under 12, 2021-2025",
+      "n": 180,
+      "n_label": "persons found guilty (2021-2025)",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 88.3,
+       "western_imm": 3.3,
+       "nonwestern_imm": 7.2,
+       "western_desc": 1.1,
+       "nonwestern_desc": 0.0
+      },
+      "rate": null,
+      "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+      "share_note": "Shares calculated here (Danish origin 159, Western immigrants 6, non-Western immigrants 13, Western descendants 2, non-Western descendants 0). Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Sexual offence against a child under 15, persons found guilty 2025 only",
+     "data": {
+      "status": "published",
+      "source": "dst_strfna10",
+      "scope": "Denmark, 2025",
+      "n": 81,
+      "n_label": "persons found guilty (2025)",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 80.2,
+       "western_imm": 3.7,
+       "nonwestern_imm": 9.9,
+       "western_desc": 1.2,
+       "nonwestern_desc": 4.9
+      },
+      "rate": null,
+      "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+      "share_note": "Shares calculated here (Danish origin 65, Western immigrants 3, non-Western immigrants 8, Western descendants 1, non-Western descendants 4). Small numbers. Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Same offence by country of origin, 2021-2025 (the closest to a European grouping)",
+     "data": {
+      "status": "published",
+      "source": "dst_strafna4",
+      "scope": "Denmark, persons found guilty of a sexual offence against a child under 15, 2021-2025",
+      "n": 350,
+      "n_label": "persons found guilty (2021-2025)",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 87.4,
+       "origin_europe": 3.4,
+       "origin_turkey": 0.9,
+       "origin_non_europe": 7.7,
+       "origin_other": 0.6
+      },
+      "rate": null,
+      "rate_reason": "Not published; not calculated here.",
+      "share_note": "StatBank STRAFNA4; shares calculated here. Country of origin is the parents' country of birth or citizenship (the mother's if both are known) for immigrants and descendants; people of Danish origin have country of origin Denmark. Grouped here: 'other European country' sums the 33 European countries StatBank lists separately; Turkey is shown on its own; 'other countries' are the unlisted countries StatBank lumps together. Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "danish_origin",
+     "western_imm",
+     "nonwestern_imm",
+     "western_desc",
+     "nonwestern_desc",
+     "origin_europe",
+     "origin_turkey",
+     "origin_non_europe",
+     "origin_other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "danish_origin",
+       "western_imm",
+       "nonwestern_imm",
+       "western_desc",
+       "nonwestern_desc",
+       "origin_europe",
+       "origin_turkey",
+       "origin_non_europe",
+       "origin_other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Violence (convictions, all victims)",
+   "years": "2025",
+   "intro": "5,953 persons were found guilty of crimes of violence in 2025, published by herkomst but not split by the victim's age, so most are not offences against children. The Justice Ministry's 'Kriminalitet og herkomst 2023' gives age-standardised crime indices by herkomst. No child victims of violence are published by herkomst.",
+   "victims": {
+    "status": "not_published",
+    "source": "dst_straf5",
+    "text": "Danmarks Statistik publishes victims of reported crime by age and sex only (STRAF5, LIGEPB1); no herkomst."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dst_strfna10",
+    "scope": "Denmark, persons found guilty of crimes of violence (all victims), 2025",
+    "n": 5953,
+    "n_label": "persons found guilty, all victims",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 72.2,
+     "western_imm": 3.3,
+     "nonwestern_imm": 12.5,
+     "western_desc": 0.6,
+     "nonwestern_desc": 11.4
+    },
+    "rate": null,
+    "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+    "share_note": "Shares calculated here (Danish origin 4301, Western immigrants 194, non-Western immigrants 743, Western descendants 36, non-Western descendants 679). Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dst_strfna10",
+    "text": "Convictions are not published with the herkomst of the victim, so no table links victim and perpetrator."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "danish_origin",
+     "western_imm",
+     "nonwestern_imm",
+     "western_desc",
+     "nonwestern_desc"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "danish_origin",
+       "western_imm",
+       "nonwestern_imm",
+       "western_desc",
+       "nonwestern_desc"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Offences against family relations (convictions)",
+   "years": "2021-2025",
+   "intro": "No neglect statistics by herkomst exist. The nearest category, offences against family relations, had 58 persons found guilty over 2021-2025; it is not specific to neglect of children.",
+   "victims": {
+    "status": "not_published",
+    "source": "dst_straf5",
+    "text": "Child-protection and neglect statistics publish no herkomst."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dst_strfna10",
+    "scope": "Denmark, persons found guilty of offences against family relations, 2021-2025",
+    "n": 58,
+    "n_label": "persons found guilty (2021-2025)",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 50.0,
+     "western_imm": 15.5,
+     "nonwestern_imm": 27.6,
+     "western_desc": 0.0,
+     "nonwestern_desc": 6.9
+    },
+    "rate": null,
+    "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+    "share_note": "Shares calculated here (Danish origin 29, Western immigrants 9, non-Western immigrants 16, Western descendants 0, non-Western descendants 4). Not specific to neglect. Small numbers. Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dst_strfna10",
+    "text": "Convictions are not published with the herkomst of the victim, so no table links victim and perpetrator."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "danish_origin",
+     "western_imm",
+     "nonwestern_imm",
+     "western_desc",
+     "nonwestern_desc"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "danish_origin",
+       "western_imm",
+       "nonwestern_imm",
+       "western_desc",
+       "nonwestern_desc"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide (Justice Ministry study and convictions)",
+   "years": "2017-2021; 2021-2025",
+   "intro": "The Justice Ministry's study 'Drab i Danmark 2017-2021' covers all 223 homicides: victims and perpetrators by herkomst, Western and non-Western splits, population shares and victim-perpetrator linkage. 19 victims (9%) were children; the report says 14 of the 19 were of Danish origin and just over half of their 10 perpetrators. StatBank also gives persons found guilty of homicide each year by herkomst (127 over 2021-2025, all victims).",
+   "victims": {
+    "status": "published",
+    "source": "jm_drab",
+    "scope": "Denmark, homicide victims of all ages, 2017-2021",
+    "n": 223,
+    "n_label": "victims (19 children)",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 61.4,
+     "immigrants": 19.7,
+     "descendants": 16.1,
+     "no_cpr": 2.7
+    },
+    "rate": null,
+    "rate_reason": "The report compares with population shares (86% Danish origin, 10% immigrants, 3% descendants) but gives no rates; not calculated here.",
+    "share_note": "Counts from the report (Danish origin 137, immigrants 44, descendants 36, no Danish personal number 6); shares calculated here. Of the 80 immigrant or descendant victims, 67 had non-Western and 13 Western background. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "jm_drab",
+    "scope": "Denmark, homicide perpetrators, all victims, 2017-2021",
+    "n": 248,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 58.5,
+     "immigrants": 20.2,
+     "descendants": 14.5,
+     "no_cpr": 6.9
+    },
+    "rate": null,
+    "rate_reason": "Not published; not calculated here.",
+    "share_note": "Counts from the report (Danish origin 145, immigrants 50, descendants 36, no Danish personal number 17); shares calculated here. Of the 86 immigrant or descendant perpetrators, 79 had non-Western and 7 Western background. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "jm_drab",
+    "text": "The linkage is published only as two percentages, not as a table: where the victim was of Danish origin, the perpetrator was too in 83% of cases; where the victim was an immigrant or descendant, the perpetrator was too in 64%."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Homicide victims by Western / non-Western background, 2017-2021",
+     "data": {
+      "status": "published",
+      "source": "jm_drab",
+      "scope": "Denmark, homicide victims, 2017-2021",
+      "n": 223,
+      "n_label": "victims",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 61.4,
+       "western": 5.8,
+       "nonwestern": 30.0,
+       "no_cpr": 2.7
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Shares calculated here from the report counts. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Homicide perpetrators by Western / non-Western background, 2017-2021",
+     "data": {
+      "status": "published",
+      "source": "jm_drab",
+      "scope": "Denmark, homicide perpetrators, 2017-2021",
+      "n": 248,
+      "n_label": "perpetrators",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 58.5,
+       "western": 2.8,
+       "nonwestern": 31.9,
+       "no_cpr": 6.9
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Shares calculated here from the report counts. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Persons found guilty of homicide, 2021-2025 (StatBank)",
+     "data": {
+      "status": "published",
+      "source": "dst_strfna10",
+      "scope": "Denmark, persons found guilty of homicide, all victims, 2021-2025",
+      "n": 127,
+      "n_label": "persons found guilty (2021-2025)",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 62.2,
+       "western_imm": 2.4,
+       "nonwestern_imm": 15.0,
+       "western_desc": 1.6,
+       "nonwestern_desc": 18.9
+      },
+      "rate": null,
+      "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+      "share_note": "Shares calculated here (Danish origin 79, Western immigrants 3, non-Western immigrants 19, Western descendants 2, non-Western descendants 24). Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Persons found guilty of homicide by country of origin, 2021-2025",
+     "data": {
+      "status": "published",
+      "source": "dst_strafna4",
+      "scope": "Denmark, persons found guilty of homicide, 2021-2025",
+      "n": 127,
+      "n_label": "persons found guilty (2021-2025)",
+      "unknown_share": null,
+      "share": {
+       "danish_origin": 62.2,
+       "origin_europe": 8.7,
+       "origin_turkey": 4.7,
+       "origin_non_europe": 21.3,
+       "origin_other": 3.1
+      },
+      "rate": null,
+      "rate_reason": "Not published; not calculated here.",
+      "share_note": "StatBank STRAFNA4; shares calculated here. Country of origin is the parents' country of birth or citizenship (the mother's if both are known) for immigrants and descendants; people of Danish origin have country of origin Denmark. Grouped here: 'other European country' sums the 33 European countries StatBank lists separately; Turkey is shown on its own; 'other countries' are the unlisted countries StatBank lumps together. Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "danish_origin",
+     "western",
+     "nonwestern",
+     "immigrants",
+     "descendants",
+     "no_cpr"
+    ],
+    "perpetrators": [
+     "all",
+     "danish_origin",
+     "western_imm",
+     "nonwestern_imm",
+     "western_desc",
+     "nonwestern_desc",
+     "western",
+     "nonwestern",
+     "immigrants",
+     "descendants",
+     "no_cpr",
+     "origin_europe",
+     "origin_turkey",
+     "origin_non_europe",
+     "origin_other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "danish_origin",
+       "western",
+       "nonwestern",
+       "immigrants",
+       "descendants",
+       "no_cpr"
+      ],
+      "perpetrators": [
+       "all",
+       "danish_origin",
+       "western_imm",
+       "nonwestern_imm",
+       "western_desc",
+       "nonwestern_desc",
+       "western",
+       "nonwestern",
+       "immigrants",
+       "descendants",
+       "no_cpr",
+       "origin_europe",
+       "origin_turkey",
+       "origin_non_europe",
+       "origin_other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (identified victims)",
+   "years": "2025",
+   "intro": "Center mod Menneskehandel (Social- og Boligstyrelsen) assessed 101 people as trafficked in 2025: 78 women and 23 men, 55 for sexual exploitation, one minor (a 15-year-old girl). They came from 31 countries, most often Thailand (24), Ukraine (11), Vietnam (9), Romania (8) and Nigeria (8); none was Danish. No trafficker nationality is published, and trafficking convictions are not separated in StatBank's herkomst tables.",
+   "victims": {
+    "status": "published",
+    "source": "cmm",
+    "scope": "Denmark, people assessed as trafficking victims, all ages and forms, 2025",
+    "n": 101,
+    "n_label": "victims (1 minor)",
+    "unknown_share": null,
+    "share": {
+     "nat_danish": 0.0,
+     "nat_foreign": 100.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "Nationality, a proxy, not ethnicity. The report lists 31 countries of origin and Denmark is not among them."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "cmm",
+    "text": "No trafficker nationality or herkomst is published; trafficking is inside \"offences against personal liberty\" in the herkomst tables."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cmm",
+    "text": "No perpetrator data."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "nat_danish",
+     "nat_foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "nat_danish",
+       "nat_foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Grooming (convictions)",
+   "years": "2021-2025",
+   "intro": "Only grooming is separated in the herkomst tables: 4 persons were found guilty over 2021-2025, all of Danish origin. Child sexual abuse material offences are not published by herkomst.",
+   "victims": {
+    "status": "not_published",
+    "source": "dst_straf5",
+    "text": "No victims of online offences by herkomst."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dst_strfna10",
+    "scope": "Denmark, persons found guilty of grooming, 2021-2025",
+    "n": 4,
+    "n_label": "persons found guilty (2021-2025)",
+    "unknown_share": null,
+    "share": {
+     "danish_origin": 100.0,
+     "western_imm": 0.0,
+     "nonwestern_imm": 0.0,
+     "western_desc": 0.0,
+     "nonwestern_desc": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Danmarks Statistik does not publish rates for these offences by herkomst; not calculated here.",
+    "share_note": "Shares calculated here (Danish origin 4, Western immigrants 0, non-Western immigrants 0, Western descendants 0, non-Western descendants 0). Very small numbers. Persons resident in Denmark found guilty (convictions, fines and similar decisions), counted once by main offence per year. Herkomst (Danmarks Statistik): 'Danish origin' means at least one parent who is both a Danish citizen and born in Denmark, wherever the person was born, so it includes grandchildren of immigrants and children with one immigrant parent. Immigrants are born abroad and descendants born in Denmark with no such parent. 'Western' means the EU, Andorra, Iceland, Liechtenstein, Monaco, Norway, San Marino, Switzerland, the UK, the Vatican, Canada, the USA, Australia and New Zealand; 'non-Western' is every other country, including non-EU Europe (Ukraine, Russia, Serbia, Bosnia, Turkey). This is a birth-country and citizenship proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dst_strfna10",
+    "text": "Convictions are not published with the herkomst of the victim, so no table links victim and perpetrator."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "danish_origin",
+     "western_imm",
+     "nonwestern_imm",
+     "western_desc",
+     "nonwestern_desc"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "danish_origin",
+       "western_imm",
+       "nonwestern_imm",
+       "western_desc",
+       "nonwestern_desc"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 20,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 19.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 8,
+    "coverage": 6,
+    "rates": 2,
+    "access": 7,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Danmarks Statistik gives persons found guilty of sexual offences against children under 12 and under 15 every year by herkomst (Danish origin, Western and non-Western immigrants and descendants; 36 and 81 in 2025) and by 75 countries of origin. Residents only, convictions not victims; no child victims by herkomst.",
+    "score": 23
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 3,
+    "coverage": 4,
+    "rates": 1.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Persons guilty of violence (5,953 in 2025) by herkomst and country of origin, all victims; the Justice Ministry publishes age-standardised indices by herkomst. No child victims of violence by herkomst (victim tables give age and sex only).",
+    "score": 14.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 3,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Only 'offences against family relations' (58 persons guilty 2021-2025) by herkomst, not specific to neglect; child-protection statistics publish no herkomst for neglect.",
+    "score": 9
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 6,
+    "perpetrator": 7,
+    "coverage": 7,
+    "rates": 5,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Justice Ministry's 'Drab i Danmark 2017-2021' gives the 223 victims and 248 perpetrators by herkomst with Western/non-Western splits, population shares and victim-perpetrator linkage (83% same group for Danish-origin victims); child homicides (19) are described only in a sentence. Persons guilty of homicide are published annually by herkomst and country of origin.",
+    "score": 30
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 5,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Center mod Menneskehandel lists the 101 people identified as trafficked in 2025 by nationality (31 countries, no Danes; 1 minor; 55 sexual exploitation). No trafficker nationality.",
+    "score": 16
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 3,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Only grooming convictions by herkomst (3 in 2025, all Danish origin); child sexual abuse material is not separated in the herkomst tables. No victims by herkomst.",
+    "score": 12.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Denmark scores 20% on the stricter scale (20-40%). Danmarks Statistik publishes convictions every year by herkomst (Danish origin, immigrants and descendants from Western and non-Western countries) and by country of origin, including for sexual offences against children, and the Justice Ministry's homicide study links victim and perpetrator herkomst. But herkomst is built from parents' birth country and citizenship, a proxy, there are no child victims by herkomst outside homicide, and grandchildren of immigrants count as Danish origin.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "dst_strfna10": {
+   "name": "STRFNA10: Persons found guilty by type of offence and herkomst",
+   "publisher": "Danmarks Statistik",
+   "years": "2021-2025",
+   "records": "Persons found guilty by main offence and herkomst (Danish origin; Western and non-Western immigrants and descendants).",
+   "limitations": "Residents only; convictions, not victims; herkomst is a birth-country and citizenship proxy.",
+   "url": "https://www.statbank.dk/STRFNA10",
+   "tier": "Official government statistics"
+  },
+  "dst_strafna4": {
+   "name": "STRAFNA4: Persons found guilty by type of offence and country of origin",
+   "publisher": "Danmarks Statistik",
+   "years": "2021-2025",
+   "records": "Persons found guilty by offence and 75 countries of origin.",
+   "limitations": "Country of origin is the parents' birth country or citizenship; unlisted countries are lumped.",
+   "url": "https://www.statbank.dk/STRAFNA4",
+   "tier": "Official government statistics"
+  },
+  "dst_straf5": {
+   "name": "STRAF5: Victims of reported crimes by age and sex",
+   "publisher": "Danmarks Statistik",
+   "years": "2025",
+   "records": "Victims by offence, age and sex.",
+   "limitations": "No herkomst or citizenship.",
+   "url": "https://www.statbank.dk/STRAF5",
+   "tier": "Official government statistics"
+  },
+  "dst_eb1": {
+   "name": "EB1: Children of descendants by herkomst and country of origin",
+   "publisher": "Danmarks Statistik",
+   "years": "1 January 2026",
+   "records": "Third-generation children (at least one parent a descendant, neither of Danish origin) and how herkomst classifies them.",
+   "limitations": "Population counts only.",
+   "url": "https://www.statbank.dk/EB1",
+   "tier": "Official government statistics"
+  },
+  "jm_drab": {
+   "name": "Drab i Danmark 2017-2021",
+   "publisher": "Justitsministeriets Forskningskontor",
+   "years": "2017-2021 (published January 2024)",
+   "records": "All 223 homicides: victims and perpetrators by herkomst, Western/non-Western, relationship, child homicides.",
+   "limitations": "Periodic study; child homicides by herkomst only in one sentence.",
+   "url": "https://www.justitsministeriet.dk/wp-content/uploads/2024/01/Drab-i-Danmark-2017-2021_WT.pdf",
+   "tier": "Official government statistics"
+  },
+  "jm_kh": {
+   "name": "Kriminalitet og herkomst 2023",
+   "publisher": "Justitsministeriets Forskningskontor",
+   "years": "2023 (published April 2025)",
+   "records": "Age-standardised crime indices and counts of persons convicted by herkomst and offence group.",
+   "limitations": "No sexual-offence figures; not child-specific.",
+   "url": "https://www.justitsministeriet.dk/wp-content/uploads/2025/05/Kriminalitet-og-herkomst-2023-WT.pdf",
+   "tier": "Official government statistics"
+  },
+  "cmm": {
+   "name": "Menneskehandel i Danmark. Årsstatistik 2025",
+   "publisher": "Center mod Menneskehandel, Social- og Boligstyrelsen",
+   "years": "2025",
+   "records": "People assessed as trafficking victims by sex, age, form of exploitation and country of origin.",
+   "limitations": "Victims only; no trafficker data.",
+   "url": "https://cdn2.gopublic.dk/socialboligstyrelsen/Media/639161707154764964/Menneskehandel%20i%20Danmark.%20A%C2%B0rsstatistik%202025.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

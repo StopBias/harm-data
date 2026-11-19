@@ -1,0 +1,1027 @@
+{
+ "country": "Norway",
+ "iso_a3": "NOR",
+ "completeness": 22,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Statistics Norway has published child victims of reported sexual offences and maltreatment by immigrant background (with a Europe / outside-Europe split and rates per 1,000), charges by immigrant background and country group, and child-welfare measures every year by immigrant category. All are birth-country proxies, not ethnicity, and the third generation counts as 'rest of the population'.",
+ "short_name": "Norway",
+ "name_in_sentence": "Norway",
+ "nations": {
+  "National (SSB, Kripos, KOM)": "SSB articles and Statbank tables by immigrant background; Kripos homicide overview; KOM trafficking reports.",
+  "Svalbard and Jan Mayen": "Not separately covered."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "ovrig",
+   "label": "Rest of the population / without immigrant background (incl. third generation)",
+   "proxy": "immigrant background"
+  },
+  {
+   "id": "other_residents",
+   "label": "Residents who are not immigrants (incl. Norwegian-born children of immigrants)",
+   "proxy": "immigrant background"
+  },
+  {
+   "id": "immigrants",
+   "label": "Immigrants (all)",
+   "proxy": "immigrant background"
+  },
+  {
+   "id": "imm_europe",
+   "label": "Immigrants from Europe",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "imm_non_europe",
+   "label": "Immigrants from outside Europe",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "imm_g1",
+   "label": "Immigrants from Nordic/EU/EFTA/UK/North America/Oceania",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "imm_g2",
+   "label": "Immigrants from other countries (incl. non-EU Europe)",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "nb_imm_parents",
+   "label": "Norwegian-born to immigrant parents",
+   "proxy": "immigrant background"
+  },
+  {
+   "id": "nb_europe",
+   "label": "Norwegian-born to immigrant parents from Europe",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "nb_non_europe",
+   "label": "Norwegian-born to immigrant parents from outside Europe",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "nb_g1",
+   "label": "Norwegian-born to immigrant parents, group 1 countries",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "nb_g2",
+   "label": "Norwegian-born to immigrant parents, group 2 countries",
+   "proxy": "country of birth"
+  },
+  {
+   "id": "non_resident",
+   "label": "Not resident in Norway",
+   "proxy": "residence"
+  },
+  {
+   "id": "nor_born_no",
+   "label": "Norwegian citizens born in Norway",
+   "proxy": "nationality"
+  },
+  {
+   "id": "nor_born_abroad",
+   "label": "Norwegian citizens born abroad",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "from_asia",
+   "label": "From Asian countries",
+   "proxy": "country of origin"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "imm_europe": "immigrants",
+  "imm_non_europe": "immigrants",
+  "nb_europe": "nb_imm_parents",
+  "nb_non_europe": "nb_imm_parents",
+  "imm_g1": "immigrants",
+  "imm_g2": "immigrants",
+  "nb_g1": "nb_imm_parents",
+  "nb_g2": "nb_imm_parents"
+ },
+ "extra_group_labels": {},
+ "unknown_label": "Not resident or background unknown",
+ "european_title": "Not recorded by any Norwegian source",
+ "european_note": "Norwegian statistics record immigrant background from the birth country of the person, parents and grandparents, never ethnicity. The 'rest of the population' plus immigrants and their children from Europe is the closest to European descent, but it is a proxy: the rest of the population includes the grandchildren of immigrants from anywhere and people with one foreign-born parent, and 'Europe' is a birth-country region, not descent. SSB's country groups put non-EU Europe (for example Ukraine, Russia and the Balkans) with Africa and Asia.",
+ "select_labels": {
+  "victim": "Victim's immigrant background",
+  "perpetrator": "Charged person's immigrant background or citizenship"
+ },
+ "proxy_note": "Norway records immigrant background (birth country of the person, parents and grandparents) and citizenship, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Rape of a child under 14 (reported to police)",
+   "years": "2017-2022; 2020-2023",
+   "intro": "An average of 692 victims a year were recorded for reported rape of a child under 14 in 2017-2022, and 517 for sexual acts with a child under 16. SSB published these by immigrant background, with the background split into Europe and outside Europe and rates per 1,000 by age. A second SSB article gives charges for the same offences by immigrant background and country group for 2020-2023. Both are one-off articles, not annual tables.",
+   "victims": {
+    "status": "published",
+    "source": "ssb_ofre",
+    "scope": "Norway, victims of reported rape of a child under 14, annual average 2017-2022",
+    "n": 692,
+    "n_label": "victims a year",
+    "unknown_share": 1.6,
+    "share": {
+     "ovrig": 85.4,
+     "immigrants": 6.4,
+     "imm_europe": 1.9,
+     "imm_non_europe": 4.5,
+     "nb_imm_parents": 6.6,
+     "nb_europe": 1.7,
+     "nb_non_europe": 4.9
+    },
+    "share_note": "SSB article 'Innvandrere oftere utsatt for vold og bedrageri', Table 6: victims of offences reported to the police, annual average 2017-2022. Counts as published (annual averages are rounded separately, so Europe and outside-Europe may not add exactly to the total); shares calculated here; the remainder are victims who are not registered residents or have no background recorded. Counts: rest of population 591, immigrants 44 (Europe 13, outside Europe 31), Norwegian-born with immigrant parents 46 (Europe 12, outside Europe 34). Immigrant background (SSB): immigrants were born abroad to two foreign-born parents and four foreign-born grandparents; Norwegian-born with immigrant parents were born in Norway to two immigrant parents. Everyone else is the 'rest of the population' (øvrig befolkning): Norwegian-born to Norwegian-born parents, but also people with one foreign-born parent, people born abroad to Norwegian-born parents and the grandchildren of immigrants. 'Europe' and 'outside Europe' refer to the immigrant's (or the parents') country of birth. This is a birth-country proxy, not ethnicity. ",
+    "rate": {
+     "ovrig": 0.76,
+     "immigrants": 0.92
+    },
+    "rate_all": 0.74,
+    "rate_unit": " per 1,000",
+    "rate_label": "children aged 5-9 per 1,000 of the same group were recorded victims each year",
+    "rate_all_label": "all children aged 5-9"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssb_sikt",
+    "scope": "Norway, charges for rape of a child under 14 (incl. aggravated), all charged persons, 2020-2023",
+    "n": 2223,
+    "n_label": "charges (2020-2023)",
+    "unknown_share": null,
+    "share": {
+     "other_residents": 86.4,
+     "immigrants": 8.4,
+     "imm_g1": 2.0,
+     "imm_g2": 6.3,
+     "non_resident": 5.3
+    },
+    "rate": null,
+    "rate_reason": "SSB gives rates only for whole offence groups (Table 2); not calculated here.",
+    "share_note": "SSB article 'Siktelser og siktede personer etter innvandringsbakgrunn', Table 1a. Counts: other residents 1920, immigrants 186 (group 1 45, group 2 141), not resident 117; shares calculated here. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssb_ofre",
+    "text": "Victims and charged persons are published in separate articles; no table links their backgrounds."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Sexual acts with a child under 16, victims a year 2017-2022",
+     "data": {
+      "status": "published",
+      "source": "ssb_ofre",
+      "scope": "Norway, victims of reported sexual acts with a child under 16, annual average 2017-2022",
+      "n": 517,
+      "n_label": "victims a year",
+      "unknown_share": 2.3,
+      "share": {
+       "ovrig": 83.4,
+       "immigrants": 7.7,
+       "imm_europe": 2.3,
+       "imm_non_europe": 5.2,
+       "nb_imm_parents": 6.6,
+       "nb_europe": 1.9,
+       "nb_non_europe": 4.6
+      },
+      "share_note": "SSB article 'Innvandrere oftere utsatt for vold og bedrageri', Table 6: victims of offences reported to the police, annual average 2017-2022. Counts as published (annual averages are rounded separately, so Europe and outside-Europe may not add exactly to the total); shares calculated here; the remainder are victims who are not registered residents or have no background recorded. Counts: rest of population 431, immigrants 40 (Europe 12, outside Europe 27), Norwegian-born with immigrant parents 34 (Europe 10, outside Europe 24). Immigrant background (SSB): immigrants were born abroad to two foreign-born parents and four foreign-born grandparents; Norwegian-born with immigrant parents were born in Norway to two immigrant parents. Everyone else is the 'rest of the population' (øvrig befolkning): Norwegian-born to Norwegian-born parents, but also people with one foreign-born parent, people born abroad to Norwegian-born parents and the grandchildren of immigrants. 'Europe' and 'outside Europe' refer to the immigrant's (or the parents') country of birth. This is a birth-country proxy, not ethnicity. ",
+      "rate": null,
+      "rate_reason": "Not published for this offence by background."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "All sexual offences: charges per 1,000 residents, 2020-2023 (all victims)",
+     "data": {
+      "status": "published",
+      "source": "ssb_sikt",
+      "scope": "Norway, residents, charges for all sexual offences 2020-2023 per 1,000 average residents",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "ovrig": 2.83,
+       "immigrants": 2.32,
+       "nb_imm_parents": 2.02,
+       "imm_g1": 1.21,
+       "imm_g2": 3.21
+      },
+      "rate_all": 2.72,
+      "rate_unit": " per 1,000",
+      "rate_label": "charges for sexual offences over 2020-2023 per 1,000 residents of the same group",
+      "rate_all_label": "all residents",
+      "share_note": "SSB Table 2 (charges 2020-2023 combined, divided by the average population). Here 'rest of the population' excludes Norwegian-born children of immigrants, who are shown separately. Not child-specific. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. ",
+      "rate_note": "SSB Table 2 (charges 2020-2023 combined, divided by the average population). Here 'rest of the population' excludes Norwegian-born children of immigrants, who are shown separately. Not child-specific. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "ovrig",
+     "immigrants",
+     "imm_europe",
+     "imm_non_europe",
+     "nb_imm_parents",
+     "nb_europe",
+     "nb_non_europe"
+    ],
+    "perpetrators": [
+     "all",
+     "ovrig",
+     "other_residents",
+     "immigrants",
+     "imm_g1",
+     "imm_g2",
+     "nb_imm_parents",
+     "non_resident"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "imm_europe",
+       "imm_non_europe",
+       "nb_imm_parents",
+       "nb_europe",
+       "nb_non_europe"
+      ],
+      "perpetrators": [
+       "all",
+       "other_residents",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "non_resident"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants"
+      ],
+      "perpetrators": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "nb_imm_parents"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Maltreatment in close relations (reported to police)",
+   "years": "2017-2022; 2020-2023",
+   "intro": "An average of 2,587 children aged 0-14 a year were recorded as victims of reported maltreatment in close relations in 2017-2022. SSB gives them by immigrant background with rates per 1,000 by age; charges for the offence (all ages) are given by immigrant background and country group.",
+   "victims": {
+    "status": "published",
+    "source": "ssb_ofre",
+    "scope": "Norway, child victims aged 0-14 of reported maltreatment in close relations, annual average 2017-2022",
+    "n": 2587,
+    "n_label": "child victims a year",
+    "unknown_share": 3.4,
+    "share": {
+     "ovrig": 50.6,
+     "immigrants": 18.1,
+     "nb_imm_parents": 27.9
+    },
+    "rate": {
+     "ovrig": 2.11,
+     "immigrants": 9.97
+    },
+    "rate_all": 3.31,
+    "rate_unit": " per 1,000",
+    "rate_label": "children aged 5-9 per 1,000 of the same group were recorded victims each year",
+    "rate_all_label": "all children aged 5-9",
+    "share_note": "SSB article 'Innvandrere oftere utsatt for vold og bedrageri', Table 6: victims of offences reported to the police, annual average 2017-2022. Counts as published (annual averages are rounded separately, so Europe and outside-Europe may not add exactly to the total); shares calculated here; the remainder are victims who are not registered residents or have no background recorded. Counts for ages 0-14 summed here from the age columns (rest of population 1308, immigrants 468, Norwegian-born with immigrant parents 723); the Europe split is not given by age. SSB publishes no rates for Norwegian-born children of immigrants in this table. Immigrant background (SSB): immigrants were born abroad to two foreign-born parents and four foreign-born grandparents; Norwegian-born with immigrant parents were born in Norway to two immigrant parents. Everyone else is the 'rest of the population' (øvrig befolkning): Norwegian-born to Norwegian-born parents, but also people with one foreign-born parent, people born abroad to Norwegian-born parents and the grandchildren of immigrants. 'Europe' and 'outside Europe' refer to the immigrant's (or the parents') country of birth. This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssb_sikt",
+    "scope": "Norway, charges for maltreatment in close relations, all victims, 2020-2023",
+    "n": 2260,
+    "n_label": "charges (2020-2023)",
+    "unknown_share": null,
+    "share": {
+     "other_residents": 46.5,
+     "immigrants": 47.3,
+     "imm_g1": 7.3,
+     "imm_g2": 40.0,
+     "non_resident": 6.2
+    },
+    "rate": null,
+    "rate_reason": "SSB gives rates only for whole offence groups (Table 2); not calculated here.",
+    "share_note": "SSB article 'Siktelser og siktede personer etter innvandringsbakgrunn', Table 1a. Counts: other residents 1052, immigrants 1069 (group 1 164, group 2 905), not resident 139; shares calculated here. Not split by victim age. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssb_ofre",
+    "text": "Victims and charged persons are published in separate articles; no table links their backgrounds."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ovrig",
+     "immigrants",
+     "nb_imm_parents"
+    ],
+    "perpetrators": [
+     "all",
+     "other_residents",
+     "immigrants",
+     "imm_g1",
+     "imm_g2",
+     "non_resident"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "nb_imm_parents"
+      ],
+      "perpetrators": [
+       "all",
+       "other_residents",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "non_resident"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Child-welfare care measures (Statbank)",
+   "years": "2025",
+   "intro": "6,324 children aged 0-17 had a child-welfare care measure (omsorgstiltak) on 31 December 2025. Statbank publishes them every year by immigrant category and country group with rates per 1,000. Care measures follow neglect, abuse and other serious failures of care; they are not neglect alone. No perpetrator data.",
+   "victims": {
+    "status": "published",
+    "source": "ssb_11298",
+    "scope": "Norway, children 0-17 with a care measure on 31 December 2025",
+    "n": 6324,
+    "n_label": "children",
+    "unknown_share": 0.1,
+    "share": {
+     "ovrig": 77.4,
+     "immigrants": 9.2,
+     "imm_g1": 1.3,
+     "imm_g2": 7.9,
+     "nb_imm_parents": 13.3,
+     "nb_g1": 1.5,
+     "nb_g2": 11.8
+    },
+    "rate": {
+     "ovrig": 5.8,
+     "immigrants": 6.6,
+     "imm_g1": 3.3,
+     "imm_g2": 7.8,
+     "nb_imm_parents": 5.2,
+     "nb_g1": 2.1,
+     "nb_g2": 6.4
+    },
+    "rate_all": 5.7,
+    "rate_unit": " per 1,000",
+    "rate_label": "children per 1,000 of the same group had a care measure on 31 December 2025",
+    "rate_all_label": "all children",
+    "share_note": "Shares calculated here from the Statbank counts; rates as published. Statbank table 11298. 'Without immigrant background' is SSB's 'barn og unge elles' (everyone who is not an immigrant or Norwegian-born to immigrant parents, including the third generation and children with one foreign-born parent). Group 1 countries: the Nordic countries, EU/EFTA, the UK, USA, Canada, Australia and New Zealand; group 2: all other countries, including Europe outside EU/EFTA and the UK. Birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ssb_11298",
+    "text": "Child-welfare statistics do not record who caused the harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssb_11298",
+    "text": "No perpetrator data."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Children with a notification of concern to child welfare, 2025",
+     "data": {
+      "status": "published",
+      "source": "ssb_11292",
+      "scope": "Norway, children 0-17 with a notification of concern during 2025 (all reasons)",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "ovrig": 34.1,
+       "immigrants": 79.2,
+       "imm_g1": 57.4,
+       "imm_g2": 87.5,
+       "nb_imm_parents": 51.4,
+       "nb_g1": 35.5,
+       "nb_g2": 57.6
+      },
+      "rate_all": 40.8,
+      "rate_unit": " per 1,000",
+      "rate_label": "children per 1,000 of the same group had a notification of concern in 2025",
+      "rate_all_label": "all children",
+      "share_note": "Statbank table 11292; all reasons for concern, not only neglect. Statbank table 11298. 'Without immigrant background' is SSB's 'barn og unge elles' (everyone who is not an immigrant or Norwegian-born to immigrant parents, including the third generation and children with one foreign-born parent). Group 1 countries: the Nordic countries, EU/EFTA, the UK, USA, Canada, Australia and New Zealand; group 2: all other countries, including Europe outside EU/EFTA and the UK. Birth-country proxy, not ethnicity. ",
+      "rate_note": "Statbank table 11292; all reasons for concern, not only neglect. Statbank table 11298. 'Without immigrant background' is SSB's 'barn og unge elles' (everyone who is not an immigrant or Norwegian-born to immigrant parents, including the third generation and children with one foreign-born parent). Group 1 countries: the Nordic countries, EU/EFTA, the UK, USA, Canada, Australia and New Zealand; group 2: all other countries, including Europe outside EU/EFTA and the UK. Birth-country proxy, not ethnicity. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "ovrig",
+     "immigrants",
+     "imm_g1",
+     "imm_g2",
+     "nb_imm_parents",
+     "nb_g1",
+     "nb_g2"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "nb_imm_parents",
+       "nb_g1",
+       "nb_g2"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "nb_imm_parents",
+       "nb_g1",
+       "nb_g2"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide (Kripos national overview)",
+   "years": "2025; 2015-2024",
+   "intro": "Kripos recorded 19 homicide victims and 23 perpetrators in 2025; 2 victims were children. It publishes both by citizenship and says which Norwegian citizens were born abroad, for all ages; the child victims are not given by citizenship. SSB gives 379 charges for homicide (incl. attempts) in 2020-2023 by immigrant background and country group.",
+   "victims": {
+    "status": "published",
+    "source": "kripos",
+    "scope": "Norway, homicide victims, all ages, 2025",
+    "n": 19,
+    "n_label": "victims (2 children)",
+    "unknown_share": null,
+    "share": {
+     "nor_born_no": 73.7,
+     "nor_born_abroad": 10.5,
+     "foreign_cit": 15.8
+    },
+    "rate": null,
+    "rate_reason": "Not published; not calculated here.",
+    "share_note": "Kripos: 16 Norwegian citizens (2 born abroad, in Eritrea and Ethiopia) and 3 foreign citizens (Eritrea, Somalia); Norwegian citizens born in Norway (14) and the shares are calculated here. Citizenship and country of birth, a proxy, not ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "kripos",
+    "scope": "Norway, homicide perpetrators, 2025",
+    "n": 23,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "nor_born_no": 69.6,
+     "nor_born_abroad": 13.0,
+     "foreign_cit": 17.4
+    },
+    "rate": null,
+    "rate_reason": "Not published; not calculated here.",
+    "share_note": "Kripos: 19 Norwegian citizens (3 born abroad, in Eritrea, Somalia and Vietnam) and 4 foreign citizens (Denmark, Eritrea, Somalia, Germany); Norwegian citizens born in Norway (16) and the shares are calculated here. Citizenship and country of birth, a proxy, not ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kripos",
+    "text": "Kripos gives the victim-perpetrator relationship but not the citizenship of victim and perpetrator together."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Homicide victims 2015-2024 (Kripos)",
+     "data": {
+      "status": "published",
+      "source": "kripos",
+      "scope": "Norway, homicide victims, all ages, 2015-2024",
+      "n": 281,
+      "n_label": "victims (21 under 18)",
+      "unknown_share": null,
+      "share": {
+       "nor_born_no": 66.9,
+       "nor_born_abroad": 10.7,
+       "foreign_cit": 22.4
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Kripos: 218 Norwegian citizens (30 born abroad) and 63 foreign citizens; shares calculated here. Citizenship and country of birth, a proxy, not ethnicity."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Charges for homicide incl. attempts, 2020-2023 (SSB)",
+     "data": {
+      "status": "published",
+      "source": "ssb_sikt",
+      "scope": "Norway, charges for homicide including attempts, all victims, 2020-2023",
+      "n": 379,
+      "n_label": "charges (2020-2023)",
+      "unknown_share": null,
+      "share": {
+       "other_residents": 60.4,
+       "immigrants": 27.2,
+       "imm_g1": 4.0,
+       "imm_g2": 23.2,
+       "non_resident": 12.4
+      },
+      "rate": null,
+      "rate_reason": "SSB gives rates only for whole offence groups (Table 2); not calculated here.",
+      "share_note": "SSB article 'Siktelser og siktede personer etter innvandringsbakgrunn', Table 1a. Counts: other residents 229, immigrants 103 (group 1 15, group 2 88), not resident 47; shares calculated here. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "nor_born_no",
+     "nor_born_abroad",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "other_residents",
+     "immigrants",
+     "imm_g1",
+     "imm_g2",
+     "non_resident",
+     "nor_born_no",
+     "nor_born_abroad",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "nor_born_no",
+       "nor_born_abroad",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "other_residents",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "non_resident",
+       "nor_born_no",
+       "nor_born_abroad",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "There is no national count of trafficking victims by nationality. The coordinating unit KOM (National Police Directorate) reports about 200 presumed victims receiving assistance each year in 2022-2024, many of them foreign citizens, and 8 minors placed by child welfare in 2024 under suspicion of trafficking, all boys aged 13-16 from Asian countries. SSB's victim tables count an average of 38 victims of reported trafficking a year (2017-2022), but the background split is mostly suppressed.",
+   "victims": {
+    "status": "published",
+    "source": "kom",
+    "scope": "Norway, minors placed by child welfare under suspicion of trafficking, 2024",
+    "n": 8,
+    "n_label": "minors",
+    "unknown_share": null,
+    "share": {
+     "from_asia": 100.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "KOM report 2024: 'all were from Asian countries'. Country of origin, a proxy, not ethnicity. Tiny, selected group."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kom",
+    "text": "No trafficker nationality or background is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kom",
+    "text": "No perpetrator data."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "from_asia"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "from_asia"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Sexually offensive behaviour towards a child under 16",
+   "years": "2017-2022; 2020-2023",
+   "intro": "No abuse-material or online figures are published by background. The nearest offence, sexually offensive behaviour towards a child under 16 (which includes online offences but does not separate them), had an average of 523 victims a year in 2017-2022 and 1,783 charges in 2020-2023, both by immigrant background.",
+   "victims": {
+    "status": "published",
+    "source": "ssb_ofre",
+    "scope": "Norway, victims of reported sexually offensive behaviour towards a child under 16, annual average 2017-2022",
+    "n": 523,
+    "n_label": "victims a year",
+    "unknown_share": 1.3,
+    "share": {
+     "ovrig": 89.7,
+     "immigrants": 4.4,
+     "imm_europe": 2.1,
+     "imm_non_europe": 2.3,
+     "nb_imm_parents": 4.6,
+     "nb_europe": 1.7,
+     "nb_non_europe": 2.9
+    },
+    "share_note": "SSB article 'Innvandrere oftere utsatt for vold og bedrageri', Table 6: victims of offences reported to the police, annual average 2017-2022. Counts as published (annual averages are rounded separately, so Europe and outside-Europe may not add exactly to the total); shares calculated here; the remainder are victims who are not registered residents or have no background recorded. Counts: rest of population 469, immigrants 23 (Europe 11, outside Europe 12), Norwegian-born with immigrant parents 24 (Europe 9, outside Europe 15). Immigrant background (SSB): immigrants were born abroad to two foreign-born parents and four foreign-born grandparents; Norwegian-born with immigrant parents were born in Norway to two immigrant parents. Everyone else is the 'rest of the population' (øvrig befolkning): Norwegian-born to Norwegian-born parents, but also people with one foreign-born parent, people born abroad to Norwegian-born parents and the grandchildren of immigrants. 'Europe' and 'outside Europe' refer to the immigrant's (or the parents') country of birth. This is a birth-country proxy, not ethnicity. ",
+    "rate": null,
+    "rate_reason": "Not published for this offence by background."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssb_sikt",
+    "scope": "Norway, charges for sexually offensive behaviour towards a child under 16, 2020-2023",
+    "n": 1783,
+    "n_label": "charges (2020-2023)",
+    "unknown_share": null,
+    "share": {
+     "other_residents": 88.5,
+     "immigrants": 10.4,
+     "imm_g1": 3.7,
+     "imm_g2": 6.7,
+     "non_resident": 1.1
+    },
+    "rate": null,
+    "rate_reason": "SSB gives rates only for whole offence groups (Table 2); not calculated here.",
+    "share_note": "SSB article 'Siktelser og siktede personer etter innvandringsbakgrunn', Table 1a. Counts: other residents 1578, immigrants 185 (group 1 66, group 2 119), not resident 20; shares calculated here. Charges (siktelser), not persons: one person can be charged several times. 'Other residents' are all registered residents who are not immigrants, so they include Norwegian-born children of immigrants and the third generation. Country group 1 is the Nordic countries, EU/EFTA, the UK, North America and Oceania; group 2 is Europe outside EU/EFTA and the UK, Africa, Asia and Latin America. Birth-country proxy, not ethnicity. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssb_ofre",
+    "text": "Victims and charged persons are published in separate articles; no table links their backgrounds."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "ovrig",
+     "immigrants",
+     "imm_europe",
+     "imm_non_europe",
+     "nb_imm_parents",
+     "nb_europe",
+     "nb_non_europe"
+    ],
+    "perpetrators": [
+     "all",
+     "other_residents",
+     "immigrants",
+     "imm_g1",
+     "imm_g2",
+     "non_resident"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "ovrig",
+       "immigrants",
+       "imm_europe",
+       "imm_non_europe",
+       "nb_imm_parents",
+       "nb_europe",
+       "nb_non_europe"
+      ],
+      "perpetrators": [
+       "all",
+       "other_residents",
+       "immigrants",
+       "imm_g1",
+       "imm_g2",
+       "non_resident"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 22,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 21.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 8,
+    "perpetrator": 7,
+    "coverage": 7,
+    "rates": 3.5,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "SSB gives victims of reported sexual offences against children (rape of a child under 14, sexual acts with a child under 16) by immigrant background and age with rates per 1,000 (annual average 2017-2022), and charges for the same offences by immigrant background and country-group (2020-2023). Both are one-off SSB articles; charges not persons; no linkage.",
+    "score": 30.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 7,
+    "perpetrator": 6,
+    "coverage": 7,
+    "rates": 3,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "SSB gives child victims of reported maltreatment in close relations by immigrant background and age with rates per 1,000 (2017-2022) and charges for maltreatment in close relations by immigrant background and country-group (2020-2023).",
+    "score": 28
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 6,
+    "perpetrator": 0,
+    "coverage": 6,
+    "rates": 3,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Statbank table 11298 gives children with child-welfare care measures in 2025 by immigrant category and country-group with rates per 1,000 (no immigrant background 5.8; immigrants 6.6; Norwegian-born to immigrant parents 5.2). Care measures are not only neglect; no perpetrator data.",
+    "score": 22.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 4,
+    "perpetrator": 5,
+    "coverage": 6,
+    "rates": 1,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Kripos's national homicide overview 2025 gives the 19 victims and 23 perpetrators by citizenship and whether Norwegian citizens were born abroad, all ages; SSB gives homicide charges by immigrant background. The 2 child victims in 2025 are not given by citizenship.",
+    "score": 23
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 2,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "No national count of trafficking victims by nationality: KOM's 2024 report says the 8 minors placed by child welfare were all from Asian countries; SSB victim counts by background are mostly suppressed. No trafficker data.",
+    "score": 10
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 2,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 1,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Only 'sexually offensive behaviour towards a child under 16' (which includes, but does not separate, online offences) by immigrant background, for victims and charges. No abuse-material figures by background.",
+    "score": 13
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Norway scores 22% on the stricter scale (20-40%). Statistics Norway has published child victims of reported sexual offences and maltreatment by immigrant background with rates per 1,000, charges by immigrant background and country-group, and annual child-welfare measures by immigrant category. These are birth-country proxies from one-off articles, and the third generation is counted in the 'rest of the population'.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "ssb_ofre": {
+   "name": "Innvandrere oftere utsatt for vold og bedrageri (victims of reported offences by immigrant background, Tables 1-12)",
+   "publisher": "Statistisk sentralbyrå (SSB)",
+   "years": "2017-2022",
+   "records": "Victims of reported offences by immigrant background, Europe/outside Europe, offence and age, with rates per 1,000.",
+   "limitations": "One-off article; small numbers suppressed; no rates for Norwegian-born children of immigrants in Table 6.",
+   "url": "https://www.ssb.no/sosiale-forhold-og-kriminalitet/kriminalitet-og-rettsvesen/artikler/innvandrere-som-ofre-for-anmeldte-lovbrudd",
+   "tier": "Official government statistics"
+  },
+  "ssb_sikt": {
+   "name": "Siktelser og siktede personer etter innvandringsbakgrunn (Tables 1a-3)",
+   "publisher": "Statistisk sentralbyrå (SSB)",
+   "years": "2020-2023 (published December 2024)",
+   "records": "Charges and charged persons by immigrant background, country group and offence, with rates.",
+   "limitations": "Charges, not persons, for offence detail; not split by victim age.",
+   "url": "https://www.ssb.no/sosiale-forhold-og-kriminalitet/kriminalitet-og-rettsvesen/statistikk/etterforskede-lovbrudd/artikler/siktelser-og-siktede-personer-etter-innvandringsbakgrunn",
+   "tier": "Official government statistics"
+  },
+  "ssb_11298": {
+   "name": "Statbank 11298: Children with child-welfare measures by immigrant category and country background",
+   "publisher": "Statistisk sentralbyrå (SSB)",
+   "years": "2013-2025",
+   "records": "Children with care and support measures by immigrant category, country group, age and sex, with rates per 1,000.",
+   "limitations": "Measures for all reasons; no perpetrator.",
+   "url": "https://www.ssb.no/statbank/table/11298/",
+   "tier": "Official government statistics"
+  },
+  "ssb_11292": {
+   "name": "Statbank 11292: Notifications of concern to child welfare by immigrant category and country background",
+   "publisher": "Statistisk sentralbyrå (SSB)",
+   "years": "2013-2025",
+   "records": "Notifications and children with a notification, with rates per 1,000.",
+   "limitations": "All reasons for concern.",
+   "url": "https://www.ssb.no/statbank/table/11292/",
+   "tier": "Official government statistics"
+  },
+  "kripos": {
+   "name": "Nasjonal drapsoversikt 2025",
+   "publisher": "Kripos (Norwegian police)",
+   "years": "2025; 2015-2024",
+   "records": "Homicide victims and perpetrators by age, sex, citizenship, country of birth of Norwegian citizens and relationship.",
+   "limitations": "Citizenship not given by age.",
+   "url": "https://www.politiet.no/globalassets/tall-og-fakta/drap/nasjonal-drapsoversikt-2025.pdf",
+   "tier": "Official government statistics"
+  },
+  "kom": {
+   "name": "KOM tilstandsrapport 2024 (trafficking situation report)",
+   "publisher": "Koordineringsenheten for ofre for menneskehandel (KOM), Politidirektoratet",
+   "years": "2024",
+   "records": "Assistance to presumed victims, child-welfare placements, criminal cases.",
+   "limitations": "No national victim count by nationality.",
+   "url": "https://www.politiet.no/globalassets/03-rad-og-forebygging/menneskehandel/kom-tilstandsrapport-2024.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

@@ -1,0 +1,1271 @@
+{
+ "country": "Finland",
+ "iso_a3": "FIN",
+ "completeness": 25,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Statistics Finland publishes, every year, child victims of sexual, violent and abuse-material offences by origin (Finnish or foreign background) and suspects by origin and background-country region with rates per 10,000. Origin is based on parents' country of birth, a proxy, never ethnicity.",
+ "short_name": "Finland",
+ "name_in_sentence": "Finland",
+ "nations": {
+  "National (Statistics Finland, police)": "Police-recorded offences, victims and suspects by origin; National Assistance System trafficking statistics.",
+  "Åland": "Included in national police statistics."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "fin_bg",
+   "label": "Finnish background (at least one parent born in Finland)",
+   "proxy": "origin"
+  },
+  {
+   "id": "fin_bg_fi",
+   "label": "Finnish background, born in Finland",
+   "proxy": "origin"
+  },
+  {
+   "id": "fin_bg_abroad",
+   "label": "Finnish background, born abroad",
+   "proxy": "origin"
+  },
+  {
+   "id": "foreign_bg",
+   "label": "Foreign background (both parents born abroad)",
+   "proxy": "origin"
+  },
+  {
+   "id": "foreign_bg_abroad",
+   "label": "Foreign background, born abroad (first generation)",
+   "proxy": "origin"
+  },
+  {
+   "id": "foreign_bg_fi",
+   "label": "Foreign background, born in Finland (second generation)",
+   "proxy": "origin"
+  },
+  {
+   "id": "bg_e_europe",
+   "label": "Foreign background: Eastern Europe",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_n_europe",
+   "label": "Foreign background: Northern Europe",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_s_europe",
+   "label": "Foreign background: Southern Europe",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_w_europe",
+   "label": "Foreign background: Western Europe",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_america",
+   "label": "Foreign background: the Americas",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_n_africa",
+   "label": "Foreign background: Northern Africa",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_ssa",
+   "label": "Foreign background: Sub-Saharan Africa",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_w_asia",
+   "label": "Foreign background: Western Asia (incl. Iraq, Syria, Turkey)",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_e_asia",
+   "label": "Foreign background: Eastern Asia",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_se_asia",
+   "label": "Foreign background: South-eastern Asia and Oceania",
+   "proxy": "background country"
+  },
+  {
+   "id": "bg_unknown",
+   "label": "Foreign background: region unknown",
+   "proxy": "background country"
+  },
+  {
+   "id": "europe_bg_all",
+   "label": "Finnish or European background (calculated)",
+   "proxy": "background country"
+  },
+  {
+   "id": "non_europe_bg",
+   "label": "Background outside Europe (calculated)",
+   "proxy": "background country"
+  },
+  {
+   "id": "nat_finnish",
+   "label": "Finnish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "nat_foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "fin_bg_fi": "fin_bg",
+  "fin_bg_abroad": "fin_bg",
+  "foreign_bg_abroad": "foreign_bg",
+  "foreign_bg_fi": "foreign_bg",
+  "bg_e_europe": "foreign_bg",
+  "bg_n_europe": "foreign_bg",
+  "bg_s_europe": "foreign_bg",
+  "bg_w_europe": "foreign_bg",
+  "bg_america": "foreign_bg",
+  "bg_n_africa": "foreign_bg",
+  "bg_ssa": "foreign_bg",
+  "bg_w_asia": "foreign_bg",
+  "bg_e_asia": "foreign_bg",
+  "bg_se_asia": "foreign_bg",
+  "bg_unknown": "foreign_bg"
+ },
+ "extra_group_labels": {},
+ "unknown_label": "Origin unknown",
+ "european_title": "Not recorded by any Finnish source",
+ "european_note": "Finnish statistics record origin and background country from parents' country of birth, never ethnicity. Finnish background plus foreign background from the four European regions is the closest any country in this batch comes to 'European background', and it is shown as a calculated group. It is still a proxy: Finnish background includes grandchildren of immigrants and anyone with one Finnish-born parent, and the regions are birth-country geography, not descent.",
+ "select_labels": {
+  "victim": "Victim's origin",
+  "perpetrator": "Suspect's origin or background-country region"
+ },
+ "proxy_note": "Finland records origin and background country (parents' country of birth), never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Rape of a child (police statistics)",
+   "years": "2025",
+   "intro": "Police recorded 551 child victims (0-17) of rape or aggravated rape of a child and 1,877 of sexual assault or abuse of a child in 2025, and 585 and 762 suspects of the same offences. Statistics Finland publishes victims by origin and suspects by origin and background-country region, with suspect rates per 10,000, every year.",
+   "victims": {
+    "status": "published",
+    "source": "sf_141k",
+    "scope": "Finland, child victims (0-17) of rape or aggravated rape of a child recorded by the police, 2025",
+    "n": 551,
+    "n_label": "child victims",
+    "unknown_share": 0.4,
+    "share": {
+     "fin_bg": 87.5,
+     "fin_bg_fi": 85.5,
+     "fin_bg_abroad": 2.0,
+     "foreign_bg": 12.2,
+     "foreign_bg_abroad": 6.7,
+     "foreign_bg_fi": 5.4
+    },
+    "rate": null,
+    "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+    "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 482 (born in Finland 471, abroad 11), foreign background 67 (born abroad 37, in Finland 30), unknown 2; shares calculated here. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sf_13z4",
+    "scope": "Finland, persons suspected of rape or aggravated rape of a child (solved offences), 2025",
+    "n": 585,
+    "n_label": "suspects",
+    "unknown_share": 1.2,
+    "share": {
+     "fin_bg": 77.3,
+     "foreign_bg": 21.5,
+     "bg_e_europe": 4.1,
+     "bg_n_europe": 2.4,
+     "bg_s_europe": 0.2,
+     "bg_w_europe": 3.4,
+     "bg_america": 0.0,
+     "bg_e_asia": 0.0,
+     "bg_w_asia": 5.8,
+     "bg_se_asia": 2.1,
+     "bg_unknown": 0.3,
+     "bg_n_africa": 0.3,
+     "bg_ssa": 2.9
+    },
+    "rate": {
+     "fin_bg": 0.9,
+     "foreign_bg": 1.9,
+     "bg_e_europe": 1.3,
+     "bg_n_europe": 1.9,
+     "bg_s_europe": 0.3,
+     "bg_w_europe": 1.7,
+     "bg_w_asia": 5.2,
+     "bg_se_asia": 2,
+     "bg_n_africa": 1.5,
+     "bg_ssa": 2.5
+    },
+    "rate_all": 1,
+    "rate_unit": " per 10,000",
+    "rate_label": "suspects per 10,000 residents of the same group in 2025",
+    "rate_all_label": "all residents",
+    "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 452, foreign background 126 (Eastern Europe 24, Northern Europe 14, Southern Europe 1, Western Europe 20, Western Asia 34, South-eastern Asia and Oceania 12, region unknown 2, Northern Africa 2, Sub-Saharan Africa 17), origin unknown 7; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "Victims and suspects are published in separate tables; no table links their origin."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Sexual assault or abuse of a child, child victims 2025",
+     "data": {
+      "status": "published",
+      "source": "sf_141k",
+      "scope": "Finland, child victims (0-17) of sexual assault, sexual abuse or solicitation of a child, 2025",
+      "n": 1877,
+      "n_label": "child victims",
+      "unknown_share": 0.5,
+      "share": {
+       "fin_bg": 88.3,
+       "fin_bg_fi": 87.3,
+       "fin_bg_abroad": 1.1,
+       "foreign_bg": 11.1,
+       "foreign_bg_abroad": 6.4,
+       "foreign_bg_fi": 4.7
+      },
+      "rate": null,
+      "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+      "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 1658 (born in Finland 1638, abroad 20), foreign background 209 (born abroad 120, in Finland 89), unknown 10; shares calculated here. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Sexual assault or abuse of a child, suspects 2025",
+     "data": {
+      "status": "published",
+      "source": "sf_13z4",
+      "scope": "Finland, persons suspected of sexual assault, sexual abuse or solicitation of a child, 2025",
+      "n": 762,
+      "n_label": "suspects",
+      "unknown_share": 0.5,
+      "share": {
+       "fin_bg": 82.2,
+       "foreign_bg": 17.3,
+       "bg_e_europe": 2.1,
+       "bg_n_europe": 2.2,
+       "bg_s_europe": 0.3,
+       "bg_w_europe": 2.4,
+       "bg_america": 0.0,
+       "bg_e_asia": 0.1,
+       "bg_w_asia": 5.2,
+       "bg_se_asia": 0.7,
+       "bg_unknown": 0.3,
+       "bg_n_africa": 0.8,
+       "bg_ssa": 3.3
+      },
+      "rate": {
+       "fin_bg": 1.3,
+       "foreign_bg": 2,
+       "bg_e_europe": 0.9,
+       "bg_n_europe": 2.3,
+       "bg_s_europe": 0.6,
+       "bg_w_europe": 1.5,
+       "bg_e_asia": 0.4,
+       "bg_w_asia": 6.2,
+       "bg_se_asia": 0.8,
+       "bg_n_africa": 4.4,
+       "bg_ssa": 3.7
+      },
+      "rate_all": 1.3,
+      "rate_unit": " per 10,000",
+      "rate_label": "suspects per 10,000 residents of the same group in 2025",
+      "rate_all_label": "all residents",
+      "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 626, foreign background 132 (Eastern Europe 16, Northern Europe 17, Southern Europe 2, Western Europe 18, Eastern Asia 1, Western Asia 40, South-eastern Asia and Oceania 5, region unknown 2, Northern Africa 6, Sub-Saharan Africa 25), origin unknown 4; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Rape of a child: Finnish or European background vs outside Europe (calculated)",
+     "data": {
+      "status": "published",
+      "source": "sf_13z4",
+      "scope": "Finland, persons suspected of rape of a child, 2025",
+      "n": 585,
+      "n_label": "suspects",
+      "unknown_share": 1.5,
+      "share": {
+       "europe_bg_all": 87.4,
+       "non_europe_bg": 11.1
+      },
+      "rate": null,
+      "rate_reason": "Not published for these combined groups.",
+      "share_note": "Calculated here from table 13z4: Finnish background (452) plus foreign background from the four European regions (59) = 511; foreign background from outside Europe = 65; the rest is origin or region unknown. This is the nearest these statistics come to 'European background', and it is still a parents'-birth-country proxy, not descent. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "fin_bg",
+     "fin_bg_fi",
+     "fin_bg_abroad",
+     "foreign_bg",
+     "foreign_bg_abroad",
+     "foreign_bg_fi"
+    ],
+    "perpetrators": [
+     "all",
+     "fin_bg",
+     "foreign_bg",
+     "bg_e_europe",
+     "bg_n_europe",
+     "bg_s_europe",
+     "bg_w_europe",
+     "bg_america",
+     "bg_n_africa",
+     "bg_ssa",
+     "bg_w_asia",
+     "bg_e_asia",
+     "bg_se_asia",
+     "bg_unknown",
+     "europe_bg_all",
+     "non_europe_bg"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "fin_bg",
+       "fin_bg_fi",
+       "fin_bg_abroad",
+       "foreign_bg",
+       "foreign_bg_abroad",
+       "foreign_bg_fi"
+      ],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia",
+       "bg_unknown",
+       "europe_bg_all",
+       "non_europe_bg"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault of children (police statistics)",
+   "years": "2025",
+   "intro": "Police recorded 11,304 child victims (0-17) of assault offences in 2025, and 2,761 child victims of domestic violence where the suspect was the child's parent. Both are published by origin. Assault suspects (31,417, all victims) are published by origin and background region with rates.",
+   "victims": {
+    "status": "published",
+    "source": "sf_141k",
+    "scope": "Finland, child victims (0-17) of assault offences recorded by the police, 2025",
+    "n": 11304,
+    "n_label": "child victims",
+    "unknown_share": 1.0,
+    "share": {
+     "fin_bg": 72.2,
+     "fin_bg_fi": 71.0,
+     "fin_bg_abroad": 1.2,
+     "foreign_bg": 26.8,
+     "foreign_bg_abroad": 14.2,
+     "foreign_bg_fi": 12.6
+    },
+    "rate": null,
+    "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+    "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 8163 (born in Finland 8027, abroad 136), foreign background 3029 (born abroad 1600, in Finland 1429), unknown 112; shares calculated here. Includes assaults by other children and strangers. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sf_13z4",
+    "scope": "Finland, persons suspected of assault offences, all victims, 2025",
+    "n": 31417,
+    "n_label": "suspects, all victims",
+    "unknown_share": 1.6,
+    "share": {
+     "fin_bg": 77.6,
+     "foreign_bg": 20.8,
+     "bg_e_europe": 3.3,
+     "bg_n_europe": 2.3,
+     "bg_s_europe": 0.8,
+     "bg_w_europe": 2.4,
+     "bg_america": 0.4,
+     "bg_e_asia": 0.2,
+     "bg_w_asia": 5.3,
+     "bg_se_asia": 0.7,
+     "bg_unknown": 0.4,
+     "bg_n_africa": 0.9,
+     "bg_ssa": 4.2
+    },
+    "rate": {
+     "fin_bg": 48.9,
+     "foreign_bg": 98.9,
+     "bg_e_europe": 58.6,
+     "bg_n_europe": 96.9,
+     "bg_s_europe": 77.8,
+     "bg_w_europe": 64,
+     "bg_america": 63.6,
+     "bg_e_asia": 24.2,
+     "bg_w_asia": 255,
+     "bg_se_asia": 34.8,
+     "bg_n_africa": 207.7,
+     "bg_ssa": 198.7
+    },
+    "rate_all": 55.6,
+    "rate_unit": " per 10,000",
+    "rate_label": "suspects per 10,000 residents of the same group in 2025",
+    "rate_all_label": "all residents",
+    "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 24388, foreign background 6534 (Eastern Europe 1045, Northern Europe 719, Southern Europe 265, Western Europe 747, the Americas 110, Eastern Asia 56, Western Asia 1657, South-eastern Asia and Oceania 208, region unknown 111, Northern Africa 285, Sub-Saharan Africa 1331), origin unknown 495; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Not split by victim age. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "Victims and suspects are published in separate tables; no table links their origin."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Domestic violence by the child's parent, child victims 2025",
+     "data": {
+      "status": "published",
+      "source": "sf_14cf",
+      "scope": "Finland, child victims (0-17) of domestic violence where the suspect is the victim's parent, 2025",
+      "n": 2761,
+      "n_label": "child victims",
+      "unknown_share": 0.4,
+      "share": {
+       "fin_bg": 72.5,
+       "foreign_bg": 27.1,
+       "foreign_bg_abroad": 13.4,
+       "foreign_bg_fi": 13.7
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "StatFin table 14cf. Counts: Finnish background 2002, foreign background 747 (born abroad 369, in Finland 378); shares calculated here. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "fin_bg",
+     "fin_bg_fi",
+     "fin_bg_abroad",
+     "foreign_bg",
+     "foreign_bg_abroad",
+     "foreign_bg_fi"
+    ],
+    "perpetrators": [
+     "all",
+     "fin_bg",
+     "foreign_bg",
+     "bg_e_europe",
+     "bg_n_europe",
+     "bg_s_europe",
+     "bg_w_europe",
+     "bg_america",
+     "bg_n_africa",
+     "bg_ssa",
+     "bg_w_asia",
+     "bg_e_asia",
+     "bg_se_asia",
+     "bg_unknown"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "fin_bg",
+       "fin_bg_fi",
+       "fin_bg_abroad",
+       "foreign_bg",
+       "foreign_bg_abroad",
+       "foreign_bg_fi"
+      ],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia",
+       "bg_unknown"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "No neglect figures by origin were found. Police statistics have no neglect offence for children, and THL's child-welfare statistics publish no origin variable.",
+   "victims": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "No neglect statistics by origin."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "sf_13z4",
+    "text": "No neglect statistics by origin."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "No data."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Offences against life (police statistics)",
+   "years": "2025",
+   "intro": "Police recorded 5 child victims (0-17) of completed offences against life (murder, manslaughter, killing) in 2025, all of Finnish background, and 26 child victims of attempts. 74 people were suspected of completed offences against life (all victims), published by origin and background region.",
+   "victims": {
+    "status": "published",
+    "source": "sf_141k",
+    "scope": "Finland, child victims (0-17) of attempted manslaughter, murder or killing, 2025",
+    "n": 26,
+    "n_label": "child victims",
+    "unknown_share": 0.0,
+    "share": {
+     "fin_bg": 57.7,
+     "fin_bg_fi": 57.7,
+     "fin_bg_abroad": 0.0,
+     "foreign_bg": 42.3,
+     "foreign_bg_abroad": 30.8,
+     "foreign_bg_fi": 11.5
+    },
+    "rate": null,
+    "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+    "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 15 (born in Finland 15, abroad 0), foreign background 11 (born abroad 8, in Finland 3), unknown 0; shares calculated here. Completed offences: 5 child victims, all Finnish background (4 born in Finland, 1 abroad). Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sf_13z4",
+    "scope": "Finland, persons suspected of completed offences against life, all victims, 2025",
+    "n": 74,
+    "n_label": "suspects, all victims",
+    "unknown_share": 5.4,
+    "share": {
+     "fin_bg": 82.4,
+     "foreign_bg": 12.2,
+     "bg_e_europe": 6.8,
+     "bg_n_europe": 1.4,
+     "bg_s_europe": 0.0,
+     "bg_w_europe": 2.7,
+     "bg_america": 0.0,
+     "bg_e_asia": 0.0,
+     "bg_w_asia": 0.0,
+     "bg_se_asia": 0.0,
+     "bg_unknown": 1.4,
+     "bg_n_africa": 0.0,
+     "bg_ssa": 0.0
+    },
+    "rate": {
+     "fin_bg": 0.1,
+     "foreign_bg": 0.1,
+     "bg_e_europe": 0.3,
+     "bg_n_europe": 0.1,
+     "bg_w_europe": 0.2
+    },
+    "rate_all": 0.1,
+    "rate_unit": " per 10,000",
+    "rate_label": "suspects per 10,000 residents of the same group in 2025",
+    "rate_all_label": "all residents",
+    "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 61, foreign background 9 (Eastern Europe 5, Northern Europe 1, Western Europe 2, region unknown 1), origin unknown 4; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Not split by victim age. Small numbers. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "Victims and suspects are published in separate tables; no table links their origin."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Completed offences against life, child victims 2025",
+     "data": {
+      "status": "published",
+      "source": "sf_141k",
+      "scope": "Finland, child victims (0-17) of completed offences against life, 2025",
+      "n": 5,
+      "n_label": "child victims",
+      "unknown_share": 0.0,
+      "share": {
+       "fin_bg": 100.0,
+       "fin_bg_fi": 80.0,
+       "fin_bg_abroad": 20.0,
+       "foreign_bg": 0.0,
+       "foreign_bg_abroad": 0.0,
+       "foreign_bg_fi": 0.0
+      },
+      "rate": null,
+      "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+      "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 5 (born in Finland 4, abroad 1), foreign background 0 (born abroad 0, in Finland 0), unknown 0; shares calculated here. Very small numbers. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "fin_bg",
+     "fin_bg_fi",
+     "fin_bg_abroad",
+     "foreign_bg",
+     "foreign_bg_abroad",
+     "foreign_bg_fi"
+    ],
+    "perpetrators": [
+     "all",
+     "fin_bg",
+     "foreign_bg",
+     "bg_e_europe",
+     "bg_n_europe",
+     "bg_s_europe",
+     "bg_w_europe",
+     "bg_america",
+     "bg_n_africa",
+     "bg_ssa",
+     "bg_w_asia",
+     "bg_e_asia",
+     "bg_se_asia",
+     "bg_unknown"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "fin_bg",
+       "fin_bg_fi",
+       "fin_bg_abroad",
+       "foreign_bg",
+       "foreign_bg_abroad",
+       "foreign_bg_fi"
+      ],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia",
+       "bg_unknown"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_w_europe"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "Police recorded 16 child victims (0-17) of trafficking in 2025, published by origin. The National Assistance System for Victims of Trafficking admitted 271 new adult and child clients in 2025 from 50 nationalities (most often Nepal and Somalia); 18 (7%) were Finns and 10 were minors. Of the 141 people exploited in Finland, 59 were Nepalese and 17 Finnish citizens. No trafficker origin is published.",
+   "victims": {
+    "status": "published",
+    "source": "sf_141k",
+    "scope": "Finland, child victims (0-17) of trafficking in human beings recorded by the police, 2025",
+    "n": 16,
+    "n_label": "child victims",
+    "unknown_share": 12.5,
+    "share": {
+     "fin_bg": 50.0,
+     "fin_bg_fi": 50.0,
+     "fin_bg_abroad": 0.0,
+     "foreign_bg": 37.5,
+     "foreign_bg_abroad": 37.5,
+     "foreign_bg_fi": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+    "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 8 (born in Finland 8, abroad 0), foreign background 6 (born abroad 6, in Finland 0), unknown 2; shares calculated here. Very small numbers. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "sf_13z4",
+    "text": "Trafficking suspects are not in the origin tables."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nas",
+    "text": "No perpetrator data."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "New clients of the National Assistance System, 2025 (all ages, all forms)",
+     "data": {
+      "status": "published",
+      "source": "nas",
+      "scope": "Finland, new clients admitted as trafficking victims, all ages and forms, 2025",
+      "n": 271,
+      "n_label": "new clients (10 minors)",
+      "unknown_share": null,
+      "share": {
+       "nat_finnish": 6.6,
+       "nat_foreign": 93.4
+      },
+      "rate": null,
+      "rate_reason": "Not calculated.",
+      "share_note": "National Assistance System annual statistics 2025: 18 Finns among 271 new clients; foreign share calculated here. Nationality, a proxy, not ethnicity."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "fin_bg",
+     "fin_bg_fi",
+     "fin_bg_abroad",
+     "foreign_bg",
+     "foreign_bg_abroad",
+     "foreign_bg_fi",
+     "nat_finnish",
+     "nat_foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "fin_bg",
+       "fin_bg_fi",
+       "fin_bg_abroad",
+       "foreign_bg",
+       "foreign_bg_abroad",
+       "foreign_bg_fi",
+       "nat_finnish",
+       "nat_foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child sexual abuse material and online offences",
+   "years": "2025",
+   "intro": "Police recorded 187 child victims (0-17) of offences involving sexually offensive images of a child in 2025. Suspects of these offences (1,891; 1,802 committed online) and of online sexual offences against children (386) are published by origin and background region with rates.",
+   "victims": {
+    "status": "published",
+    "source": "sf_141k",
+    "scope": "Finland, child victims (0-17) of dissemination or possession of sexually offensive images of a child, 2025",
+    "n": 187,
+    "n_label": "child victims",
+    "unknown_share": 0.5,
+    "share": {
+     "fin_bg": 88.2,
+     "fin_bg_fi": 85.6,
+     "fin_bg_abroad": 2.7,
+     "foreign_bg": 11.2,
+     "foreign_bg_abroad": 6.4,
+     "foreign_bg_fi": 4.8
+    },
+    "rate": null,
+    "rate_reason": "Statistics Finland publishes no victim rates by origin; for context, foreign-background children were 15.1% of children aged 0-14 at the end of 2025 (calculated here from table 11rt).",
+    "share_note": "StatFin table 141k (victims by offence heading, 2025). Counts: Finnish background 165 (born in Finland 160, abroad 5), foreign background 21 (born abroad 12, in Finland 9), unknown 1; shares calculated here. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sf_13z4",
+    "scope": "Finland, persons suspected of dissemination, possession or viewing of sexually offensive images of a child online, 2025",
+    "n": 1802,
+    "n_label": "suspects",
+    "unknown_share": 0.1,
+    "share": {
+     "fin_bg": 95.7,
+     "foreign_bg": 4.2,
+     "bg_e_europe": 0.4,
+     "bg_n_europe": 0.8,
+     "bg_s_europe": 0.2,
+     "bg_w_europe": 0.4,
+     "bg_america": 0.1,
+     "bg_e_asia": 0.0,
+     "bg_w_asia": 1.3,
+     "bg_se_asia": 0.4,
+     "bg_unknown": 0.0,
+     "bg_n_africa": 0.2,
+     "bg_ssa": 0.4
+    },
+    "rate": {
+     "fin_bg": 3.5,
+     "foreign_bg": 1.2,
+     "bg_e_europe": 0.4,
+     "bg_n_europe": 1.9,
+     "bg_s_europe": 0.9,
+     "bg_w_europe": 0.7,
+     "bg_america": 1.2,
+     "bg_w_asia": 3.5,
+     "bg_se_asia": 1.3,
+     "bg_n_africa": 2.2,
+     "bg_ssa": 1
+    },
+    "rate_all": 3.2,
+    "rate_unit": " per 10,000",
+    "rate_label": "suspects per 10,000 residents of the same group in 2025",
+    "rate_all_label": "all residents",
+    "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 1725, foreign background 76 (Eastern Europe 8, Northern Europe 14, Southern Europe 3, Western Europe 8, the Americas 2, Western Asia 23, South-eastern Asia and Oceania 8, Northern Africa 3, Sub-Saharan Africa 7), origin unknown 1; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sf_141k",
+    "text": "Victims and suspects are published in separate tables; no table links their origin."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Online sexual offences against a child (solicitation, abuse), suspects 2025",
+     "data": {
+      "status": "published",
+      "source": "sf_13z4",
+      "scope": "Finland, persons suspected of sexual offences against a child committed online, 2025",
+      "n": 386,
+      "n_label": "suspects",
+      "unknown_share": 0.0,
+      "share": {
+       "fin_bg": 92.0,
+       "foreign_bg": 8.0,
+       "bg_e_europe": 0.5,
+       "bg_n_europe": 1.6,
+       "bg_s_europe": 0.3,
+       "bg_w_europe": 1.3,
+       "bg_america": 0.0,
+       "bg_e_asia": 0.0,
+       "bg_w_asia": 2.1,
+       "bg_se_asia": 1.0,
+       "bg_unknown": 0.0,
+       "bg_n_africa": 0.3,
+       "bg_ssa": 1.0
+      },
+      "rate": {
+       "fin_bg": 0.7,
+       "foreign_bg": 0.5,
+       "bg_e_europe": 0.1,
+       "bg_n_europe": 0.8,
+       "bg_s_europe": 0.3,
+       "bg_w_europe": 0.4,
+       "bg_w_asia": 1.2,
+       "bg_se_asia": 0.7,
+       "bg_n_africa": 0.7,
+       "bg_ssa": 0.6
+      },
+      "rate_all": 0.7,
+      "rate_unit": " per 10,000",
+      "rate_label": "suspects per 10,000 residents of the same group in 2025",
+      "rate_all_label": "all residents",
+      "share_note": "StatFin table 13z4 (persons suspected of solved offences, 2025). Counts: Finnish background 355, foreign background 31 (Eastern Europe 2, Northern Europe 6, Southern Europe 1, Western Europe 5, Western Asia 8, South-eastern Asia and Oceania 4, Northern Africa 1, Sub-Saharan Africa 4), origin unknown 0; shares calculated here, rates as published. Suspects include minors and non-residents with unknown origin. Origin (Statistics Finland): 'Finnish background' means at least one parent was born in Finland, so it includes grandchildren of immigrants and children with one foreign-born parent; 'foreign background' means both parents (or the only known parent) were born abroad, split into those born abroad (first generation) and born in Finland (second generation). Background country is the parents' country of birth (the mother's first). This is a birth-country proxy, not ethnicity. Background-country regions are as published by Statistics Finland; Finland itself is the Finnish-background group, so 'Northern Europe' here means other northern European countries. In the UN regional grouping, Western Asia includes Iraq, Syria and Turkey and Eastern Europe includes Russia, Ukraine and Poland. Statistics Finland's continent totals (Europe, Africa) came back empty for 2025, so only the regions are shown. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "fin_bg",
+     "fin_bg_fi",
+     "fin_bg_abroad",
+     "foreign_bg",
+     "foreign_bg_abroad",
+     "foreign_bg_fi"
+    ],
+    "perpetrators": [
+     "all",
+     "fin_bg",
+     "foreign_bg",
+     "bg_e_europe",
+     "bg_n_europe",
+     "bg_s_europe",
+     "bg_w_europe",
+     "bg_america",
+     "bg_n_africa",
+     "bg_ssa",
+     "bg_w_asia",
+     "bg_e_asia",
+     "bg_se_asia",
+     "bg_unknown"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "fin_bg",
+       "fin_bg_fi",
+       "fin_bg_abroad",
+       "foreign_bg",
+       "foreign_bg_abroad",
+       "foreign_bg_fi"
+      ],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_e_asia",
+       "bg_se_asia",
+       "bg_unknown"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "fin_bg",
+       "foreign_bg",
+       "bg_e_europe",
+       "bg_n_europe",
+       "bg_s_europe",
+       "bg_w_europe",
+       "bg_america",
+       "bg_n_africa",
+       "bg_ssa",
+       "bg_w_asia",
+       "bg_se_asia"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 25,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 26.4,
+  "cap_applied": true,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 9,
+    "perpetrator": 9.375,
+    "coverage": 8,
+    "rates": 3,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Statistics Finland publishes 2025 child victims (0-17) of rape and sexual abuse of a child by origin (Finnish or foreign background, born in Finland or abroad) and suspects of the same offences by origin and background-country region with rates per 10,000. Origin is based on parents' birth country, a proxy; victims and suspects not linked.",
+    "score": 36.9
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 8,
+    "perpetrator": 7,
+    "coverage": 7,
+    "rates": 2.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Child assault victims (11,304 in 2025) and child victims of domestic violence by a parent (2,761) by origin; assault suspects by origin and background region with rates, all victims.",
+    "score": 32.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No neglect statistics by origin were found; THL child-welfare statistics have no origin variable.",
+    "score": 6
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 6,
+    "perpetrator": 7,
+    "coverage": 6,
+    "rates": 2,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Child victims of offences against life (5 in 2025, all Finnish background) and of attempts (26) by origin; suspects of offences against life (74) by origin and background region, all victims.",
+    "score": 28
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 6,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Police statistics give 16 child trafficking victims in 2025 by origin; the National Assistance System gives its 271 new clients by nationality (18 Finns, 10 minors). No trafficker origin.",
+    "score": 17
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 7,
+    "perpetrator": 9,
+    "coverage": 6,
+    "rates": 2.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Child victims of child sexual abuse material offences (187 in 2025) by origin; suspects of online child sexual offences and online abuse-material offences by origin and background region with rates.",
+    "score": 32.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Finland scores 25% on the stricter scale (20-40%), the best data in this batch. Statistics Finland publishes, every year, child victims of sexual, violent and abuse-material offences by origin and suspects by origin and background-country region with rates, so Finnish-background and European-background groups can be told apart from others. Origin is still based on parents' birth country, a proxy, so the no-ethnicity cap applies.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "sf_141k": {
+   "name": "StatFin 141k: Victims of certain offences by age, sex and origin",
+   "publisher": "Statistics Finland (Tilastokeskus)",
+   "years": "2009-2025",
+   "records": "Victims recorded by the police by offence heading, age, sex and origin (Finnish/foreign background, born in Finland/abroad).",
+   "limitations": "Origin only, no background country for victims; no rates.",
+   "url": "https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__rpk/statfin_rpk_pxt_141k.px/",
+   "tier": "Official government statistics"
+  },
+  "sf_14cf": {
+   "name": "StatFin 14cf: Victims of domestic and intimate partner violence by origin, relation and age",
+   "publisher": "Statistics Finland (Tilastokeskus)",
+   "years": "2009-2025",
+   "records": "Victims by relation to suspect (including parent), age and origin.",
+   "limitations": "Origin of the victim only.",
+   "url": "https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__rpk/statfin_rpk_pxt_14cf.px/",
+   "tier": "Official government statistics"
+  },
+  "sf_13z4": {
+   "name": "StatFin 13z4: Persons suspected of solved offences by origin, age and background country",
+   "publisher": "Statistics Finland (Tilastokeskus)",
+   "years": "2010-2025",
+   "records": "Suspects by offence, origin and background-country region, with rates per 10,000.",
+   "limitations": "Not split by victim age; continent totals empty for 2025.",
+   "url": "https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__rpk/statfin_rpk_pxt_13z4.px/",
+   "tier": "Official government statistics"
+  },
+  "sf_11rt": {
+   "name": "StatFin 11rt: Origin and background country by age group and sex",
+   "publisher": "Statistics Finland (Tilastokeskus)",
+   "years": "2025",
+   "records": "Population by origin and background country.",
+   "limitations": "Population only.",
+   "url": "https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__vaerak/statfin_vaerak_pxt_11rt.px/",
+   "tier": "Official government statistics"
+  },
+  "nas": {
+   "name": "The NAS Annual Statistics 2025",
+   "publisher": "National Assistance System for Victims of Human Trafficking (Finnish Immigration Service)",
+   "years": "2025",
+   "records": "New clients by nationality, age, sex and form of exploitation.",
+   "limitations": "Only people admitted to the system; nationality only.",
+   "url": "https://ihmiskauppa.fi/wp-content/uploads/2026/01/AnnualStatistics_2025.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
