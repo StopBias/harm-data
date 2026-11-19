@@ -122,6 +122,28 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - Survey prevalence (Ireland) and victimization rates (Switzerland) use `rate` with `rate_unit` and no `share`, like
   the Swedish school survey.
 
+### Europe batch 3: Denmark, Norway, Finland, Iceland
+- `data/dnk.json`, `nor.json`, `fin.json` and `isl.json` are built by `build_<iso>.py` (kept with each country's
+  research, outside this repo) and scored by `score_v2_batch6.py` on the stricter scale with the 19 Nov 2026 harm
+  weights. Finland 25% (capped from 26.4%), Norway 22%, Denmark 20%, Iceland 8%.
+- Denmark's herkomst (Danish origin; Western and non-Western immigrants and descendants), Norway's immigrant background
+  and country groups, and Finland's origin and background country are all built from the birth country (and, in Denmark,
+  citizenship) of the person and their parents, so they are scored as proxies like the Dutch and Swedish groups, and
+  the 25% cap rule applies. 'Danish origin', Norway's 'rest of the population' and 'Finnish background' all absorb the
+  grandchildren of immigrants and children with one native parent. Iceland records only Icelandic or foreign citizenship.
+- Finland's suspects table lists background-country regions; a calculated "Finnish or European background" group sums
+  Finnish background and the four European regions. Denmark's country-of-origin table is grouped the same way
+  (Denmark, 33 listed European countries, Turkey, other listed countries, unlisted). These are labelled as calculated.
+- Iceland's suspect shares are read from the police Power BI dashboard (percentages as displayed); its trafficking
+  figures come from the US State Department report, labelled as a non-Icelandic source.
+- Map views fix (requested by Mike): the World view now spans -180 to 180 so New Zealand, including South Island and
+  the Chatham Islands (stored at about -176.5, so they sit at the far west edge), is inside the view. Every view
+  button is fitted with padding that clears the view buttons and, on desktop, the legend overlay. Pan limits are a
+  custom camera constraint (`constrainCamera`): the fitted world view widened by 20% of its width and height on each
+  side. MapLibre's `setMaxBounds` is no longer used, because it cannot reach past +/-180 and it zooms the camera in
+  when the box is smaller than the view, which clamped the Oceania view and cut off the south of the world view.
+  Checked at 1280x800, 1024x700 and 390x844, with the panel closed and open (`test/views-results.txt`).
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
@@ -153,7 +175,8 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   `score.previous_weights` the score under the earlier weights. Current published scores: United States 59%,
   United Kingdom 53%, Germany 25% (capped from an uncapped 29.0%; 49% on the previous rubric), Canada 25%,
   France 24%, Australia 20%, New Zealand 41%, South Africa 7%, Italy 24%, Spain 21%, Netherlands 16%, Sweden 13%,
-  Poland 9%, Switzerland 25%, Austria 14%, Portugal 13%, Ireland 12%, Belgium 7%. To change a country's displayed score, edit
+  Poland 9%, Switzerland 25%, Austria 14%, Portugal 13%, Ireland 12%, Belgium 7%, Finland 25% (capped from an
+  uncapped 26.4%), Norway 22%, Denmark 20%, Iceland 8%. To change a country's displayed score, edit
   `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
   that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.

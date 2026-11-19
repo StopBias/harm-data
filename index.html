@@ -502,6 +502,22 @@
       PRT: {
         completeness: 13,  // overwritten by data/prt.json when it loads
         note: "Portugal's police and court statistics on crimes against children give no nationality. Child-protection commissions give children with a measure by nationality, and prison statistics give prisoners by nationality and crime. These are proxies. Details below the map."
+      },
+      DNK: {
+        completeness: 20,  // overwritten by data/dnk.json when it loads
+        note: "Denmark publishes convictions every year by herkomst (Danish origin; Western and non-Western immigrants and descendants) and country of origin, including sexual offences against children, and a homicide study links victim and perpetrator herkomst. Herkomst is a birth-country proxy and child victims are not published by it. Details below the map."
+      },
+      NOR: {
+        completeness: 22,  // overwritten by data/nor.json when it loads
+        note: "Norway has published child victims of reported sexual offences and maltreatment by immigrant background with rates, charges by immigrant background, and child-welfare measures every year by immigrant category. These are birth-country proxies, and the third generation counts as 'rest of the population'. Details below the map."
+      },
+      FIN: {
+        completeness: 25,  // overwritten by data/fin.json when it loads
+        note: "Finland publishes child victims of sexual, violent and abuse-material offences by origin every year, and suspects by origin and background-country region with rates. Origin is based on parents' country of birth, a proxy, so the score is capped at 25%. Details below the map."
+      },
+      ISL: {
+        completeness: 8,   // overwritten by data/isl.json when it loads
+        note: "Iceland's only origin variable is a police dashboard splitting suspects into Icelandic and foreign citizens for all victims. No child victims are published by citizenship or origin. Details below the map."
       }
     };
 
@@ -556,14 +572,49 @@
     map.keyboard.disableRotation();
 
     // Fitted world view (Antarctica hidden); allow only modest zoom (~3 levels in) and panning near the world
-    const WORLD_BOUNDS = [[-168, -56], [180, 80]];
+    // Fitted world view (Antarctica hidden). West edge at -180 so the Chatham Islands (NZ, about -176.5) are not clipped;
+    // east edge at 180, the edge of the map (renderWorldCopies is off, so nothing can be shown east of 180).
+    const WORLD_BOUNDS = [[-180, -56], [180, 80]];
+    const PAN_SLACK = 0.2;               // pan up to 20% of the fitted world's width/height past each edge
+    // Padding that keeps a fitted region clear of the view buttons (top) and, on desktop, the legend overlay (bottom)
+    function fitPadding() {
+      const viewsEl = document.getElementById("views"), legend = document.querySelector(".legend");
+      const mapRect = map.getContainer().getBoundingClientRect();
+      const top = viewsEl ? Math.max(12, viewsEl.getBoundingClientRect().bottom - mapRect.top + 8) : 48;
+      let bottom = 12;
+      if (legend && getComputedStyle(legend).position === "absolute") bottom = Math.max(12, mapRect.bottom - legend.getBoundingClientRect().top + 8);
+      return { top, bottom, left: 12, right: 12 };
+    }
+    // Pan limits as a Web Mercator box (x 0..1 west to east, y 0..1 north to south), applied by our own camera constraint
+    // instead of setMaxBounds: MapLibre's maxBounds cannot extend past +/-180 and zooms the camera in when the box is
+    // smaller than the view, which is what clamped the Oceania view and cut off the south of the world view.
+    const mercX = lng => (lng + 180) / 360;
+    const mercY = lat => { const s = Math.sin(Math.max(-85.05, Math.min(85.05, lat)) * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); };
+    const unY = y => 360 / Math.PI * Math.atan(Math.exp((0.5 - y) * 2 * Math.PI)) - 90;
+    let panBox = null;                   // {x0, x1, y0, y1}
+    function constrainCamera(lngLat, zoom) {
+      const z = Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), zoom));
+      let x = mercX(lngLat.lng), y = mercY(lngLat.lat);
+      if (panBox) {
+        const c = map.getCanvas(), ws = 512 * Math.pow(2, z);
+        const hw = c.clientWidth / 2 / ws, hh = c.clientHeight / 2 / ws;
+        const fit = (v, lo, hi, half) => (hi - lo <= 2 * half) ? (lo + hi) / 2 : Math.min(hi - half, Math.max(lo + half, v));
+        x = fit(x, panBox.x0, panBox.x1, hw); y = fit(y, panBox.y0, panBox.y1, hh);
+      }
+      return { center: new maplibregl.LngLat(x * 360 - 180, unY(y)), zoom: z };
+    }
+    map.setTransformConstrain(constrainCamera);
     function fitWorld() {
-      map.setMaxBounds(null); map.setMinZoom(-2); map.setMaxZoom(22);
-      map.fitBounds(WORLD_BOUNDS, { padding: 12, animate: false });
+      panBox = null; map.setMinZoom(-2); map.setMaxZoom(22);
+      map.fitBounds(WORLD_BOUNDS, { padding: fitPadding(), animate: false });
       const z = map.getZoom();
       map.setMinZoom(z);                 // can't zoom out past the fitted world
-      map.setMaxZoom(z + 3);             // modest zoom-in only
-      map.setMaxBounds(map.getBounds()); // panning stays inside the fitted world
+      map.setMaxZoom(z + 4);             // modest zoom-in (enough for the Europe view on phones)
+      // the fitted view's own box, widened by 20% of its width and height on each side
+      const c = map.getCanvas(), ws = 512 * Math.pow(2, z), ctr = map.getCenter();
+      const cx = mercX(ctr.lng), cy = mercY(ctr.lat), w = c.clientWidth / ws, h = c.clientHeight / ws;
+      panBox = { x0: cx - w / 2 - w * PAN_SLACK, x1: cx + w / 2 + w * PAN_SLACK,
+                 y0: Math.max(mercY(85.05), cy - h / 2 - h * PAN_SLACK), y1: Math.min(mercY(-85.05), cy + h / 2 + h * PAN_SLACK) };
     }
 
     // ---------- View buttons ----------
@@ -582,11 +633,13 @@
       btn.addEventListener("click", () => goToView(name));
       viewsEl.appendChild(btn);
     });
-    function goToView(name) {
+    function goToView(name, animate = true) {
       currentView = name;
       [...viewsEl.children].forEach(b => b.setAttribute("aria-pressed", String(b.textContent === name)));
-      const top = isMobile() ? 44 : 48;
-      map.fitBounds(VIEWS[name], { padding: { top, bottom: 12, left: 12, right: 12 }, duration: 900, essential: true });
+      if (name === "World") { fitWorld(); return; }
+      const cam = map.cameraForBounds(VIEWS[name], { padding: fitPadding() });
+      if (cam && cam.zoom > map.getMaxZoom()) map.setMaxZoom(cam.zoom);   // never let the zoom limit crop a region
+      map.fitBounds(VIEWS[name], { padding: fitPadding(), duration: animate ? 900 : 0, essential: true });
     }
 
     map.on("load", () => {
@@ -723,7 +776,7 @@
     document.addEventListener("keydown", e => { if (e.key === "Escape" && selectedId) clearSelection(); });
 
     let resizeTimer;
-    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView); }, 200); });
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView, false); }, 200); });
 
     // ---------- Country data explorer (below the map) ----------
     // Generic: any country listed in data/index.json has its figures in data/<iso3 lowercase>.json.
