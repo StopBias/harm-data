@@ -38,12 +38,24 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - The section below the map always follows the selected country. Nothing selected (or after tapping the sea or a
   country outside the project, or pressing Esc): a short prompt. A country without a detailed file: its name,
   completeness band, note and "Detailed data for … has not been added yet." A country with a file: the full explorer.
+- The explorer is split into three labelled parts: **Inputs** (the four dropdowns: harm, victim heritage,
+  perpetrator heritage, measure), a bordered **Output** box (the answer for that selection, in larger bold type),
+  and **Notes** (caveats, proxy warnings, definitions, unknown shares). Overall totals from the harm intro sit
+  inside the output, labelled "Overall total (all groups)", so they are never read as the answer for a filtered
+  selection. When a combination has no data, the output is a bold line such as "No data: Germany does not record this"
+  plus a one-line reason.
+- Dropdown options with no data for the selected harm (and the other current selections) are greyed out, with a
+  short helper line explaining why. If a selection becomes unavailable (for example after changing harm), the
+  explorer switches to the nearest available option (the parent group if there is one, otherwise "All groups").
+  Availability is derived from the JSON (published share/rate keys, `also` blocks, and published cross tables).
+  A harm may also set `availability: { "victim_groups": [...], "perpetrator_groups": [...], "measures": [...] }`;
+  when that field is present it is used as the list of available groups (or measures) and "all" is still always offered.
 - To add a country (e.g. the UK): create `data/<iso3 lowercase>.json` (e.g. `data/gbr.json`) in the same format as
   `data/usa.json`, and add its ISO3 code to `"detailed"` in `data/index.json`. No code changes are needed. The
   manifest means the page only requests files that exist, so there are no 404 errors for countries without one.
 - Optional text fields keep wording out of the code: `short_name`, `name_in_sentence`, `extra_group_labels`,
   `combined_groups`, `not_recorded` on a group (with `european_note`/`european_title`), `score.why`, per-harm
-  `extra_sources`/`rate_sources`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
+  `extra_sources`/`rate_sources`, `availability`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
 
 ### Germany data
 - `data/deu.json` is built by `build_deu.py` (kept with the German research, outside this repo). Germany records
@@ -75,8 +87,14 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - Figures come only from: HHS Child Maltreatment 2024, BJS Race and Hispanic Origin of Victims and Offenders 2012–15 (NCVS),
   BJS Human Trafficking Data Collection Activities 2025, US Sentencing Commission Quick Facts FY2024, and Census Vintage 2025
   population estimates (denominators for the federal-defendant rates). Sources and limitations are in the `sources` block.
-- Scoring standard: 100% = published data that separately identifies people of European descent as both victims and
-  perpetrators, alongside every other group, linked victim to perpetrator, for every harm. See `score` in `data/usa.json`.
+- Scoring standard (shown in "How the score works"): 100% = published data that separately identifies people of
+  European descent as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
+  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when European descent
+  is identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
+  migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
+  capped at 25%. The percentages currently shown on the map are the previous published scores and will be recalculated
+  under this scale in a later update. To change a country's displayed score, edit `completeness` in `data/<iso3>.json`
+  (keep `score.value` in step with it); the map, badge and method box all read that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.
 
 ## Licence
