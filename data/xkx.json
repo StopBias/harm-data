@@ -1,0 +1,455 @@
+{
+ "country": "Kosovo",
+ "iso_a3": "XKX",
+ "completeness": 7,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Kosovo Police publish case counts (19 murders, 2,509 domestic violence cases and 7 identified trafficking victims in 2025) without victim age, citizenship or ethnicity. The statistics agency has court tables by ethnicity, but only for all offences together and only up to 2019. Kosovo's status is disputed; it is shown as a separate area, as on the base map, without taking a position.",
+ "short_name": "Kosovo",
+ "name_in_sentence": "Kosovo",
+ "nations": {
+  "Kosovo (status disputed; code XKX)": "Police annual report; statistics agency court tables."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not available for any harm",
+ "european_note": "The Kosovo Agency of Statistics records the ethnicity of convicted adults (Albanian, Serbian, Turkish, foreign, other) only for all offences together, latest 2019, so nothing can be shown for child harm. Kosovo's status is disputed; it uses the code XKX, which is not an official ISO 3166 code.",
+ "select_labels": {
+  "victim": "Victim's group",
+  "perpetrator": "Perpetrator's group"
+ },
+ "proxy_note": "No Kosovo data by citizenship or ethnicity for any child harm; the only ethnicity table covers all offences to 2019.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children",
+   "years": "2025",
+   "intro": "Kosovo Police's 2025 annual report gives case counts only, with no age, citizenship or ethnicity of victims or offenders. The statistics agency's court tables give convicted adults by ethnicity (2019: 17,315 convicted, 16,292 Albanian, 657 Serbian, 62 Turkish, 44 foreign, 260 other) but only for all offences together, so they are not shown for any harm.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse and domestic violence",
+   "years": "2025",
+   "intro": "Police recorded 2,509 domestic violence cases in 2025 (2,547 in 2024), without victim age, citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "2025",
+   "intro": "No neglect statistics by ethnicity or citizenship were found.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "Police recorded 19 murders in 2025 (17 in 2024), without victim age, citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "Police registered 147 cases in the trafficking area in 2025 (9 of trafficking itself) and arrested 259 suspects; 7 trafficking victims were identified and 51 assisted, with no age, citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation",
+   "years": "2025",
+   "intro": "No statistics by ethnicity or citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "Case counts only; no age, citizenship or ethnicity of victims."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ask",
+    "text": "Court statistics by ethnicity cover all offences together and stop in 2019; not available by harm."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kp",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 7,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 6.9,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Kosovo Police's 2025 annual report gives case counts only, with no ethnicity or citizenship of victims or offenders. ASK's court statistics by ethnicity cover all offences and stop in 2019.",
+    "score": 7
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Domestic violence cases (2,509 in 2025) are counted without ethnicity, citizenship or victim age.",
+    "score": 7
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No neglect statistics by ethnicity or citizenship were found.",
+    "score": 6.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "19 murders in 2025, counted without ethnicity or citizenship.",
+    "score": 7
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police identified 7 trafficking victims and assisted 51 in 2025, with no age, citizenship or ethnicity.",
+    "score": 7
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No statistics by ethnicity or citizenship.",
+    "score": 6.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Kosovo scores 7% on the stricter scale (0-20%). Police statistics give case counts without ethnicity, citizenship or victim age. The statistics agency's court tables by ethnicity cover all offences and stop in 2019, so they earn no harm credit.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "kp": {
+   "name": "Annual Report 2025: the annual work report of the Kosovo Police",
+   "publisher": "Kosovo Police (Policia e Kosovës)",
+   "years": "2024-2025",
+   "records": "Case counts by crime area: murders, domestic violence, trafficking cases, suspects and victims.",
+   "limitations": "No victim age, citizenship or ethnicity; ethnicity appears only for police staff.",
+   "url": "https://www.kosovopolice.com/",
+   "tier": "Official government statistics"
+  },
+  "ask": {
+   "name": "Number of adult persons convicted of criminal offenses by courts and nationality (law06)",
+   "publisher": "Kosovo Agency of Statistics (ASK)",
+   "years": "2016-2019",
+   "records": "Convicted adults by basic court and ethnicity (Albanian, Serbian, Turkish, foreign, other).",
+   "limitations": "All offences together, no offence breakdown; latest year 2019. Real ethnicity data, but not usable for any single harm.",
+   "url": "https://askdata.rks-gov.net/pxweb/en/ASKdata/ASKdata__Justice__Jurisprudenca%20p%C3%ABr%20Persona%20Madhor%C3%AB/law06.px/",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

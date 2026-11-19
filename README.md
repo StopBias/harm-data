@@ -189,6 +189,21 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   dataportal, mvd.gov.by, genproc.gov.by, court.gov.by: timeouts; pravo.by: 403). Lithuania's vrm.lrv.lt trafficking review
   returned a Cloudflare challenge to the box's own fetchers and was read with the public web-fetch tool.
 
+### Europe batch 6b: Bosnia and Herzegovina, North Macedonia, Albania, Montenegro, Kosovo
+- `data/bih.json`, `mkd.json`, `alb.json`, `mne.json` and `xkx.json` are built by `build_<iso>.py` (kept with each
+  country's research, outside this repo) and scored by `score_v2_batch10.py` on the stricter scale with the 19 Nov 2026
+  harm weights. North Macedonia 14%, Bosnia and Herzegovina 9%, Albania 8%, Montenegro 7%, Kosovo 7%, all red.
+- Real ethnicity data: North Macedonia's statistics office tabulates reported adult perpetrators of every Criminal Code
+  chapter by ethnic affiliation (about 3% unknown), so the cap does not apply; points stay moderate because it is
+  perpetrators only, by chapter. Bosnia and Herzegovina's Ministry of Security bulletin gives the ethnicity (Bosniak, Serb,
+  other; 24% unknown) of victims in OSCE-monitored trafficking cases, all ages, so its cap does not apply either (a
+  judgement call). Kosovo's statistics agency has convicted adults by ethnicity only for all offences, to 2019: not credited.
+- Albania and Montenegro publish no citizenship or ethnicity in child-harm statistics; the cap rule applies.
+- Kosovo uses the code XKX (Natural Earth's KOS, mapped to XKX by `build-boundaries.sh`; not an official ISO 3166 code).
+  Its status is disputed; the map shows it as a separate area, as Natural Earth does, without taking a position.
+- Blocked or unreachable sources, recorded and not worked around: Montenegro's gov.me / wapi.gov.me trafficking documents
+  (TLS errors; web-fetch 504); the Bosnian ministry's statistics portal (login required, not used).
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block

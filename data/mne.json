@@ -1,0 +1,455 @@
+{
+ "country": "Montenegro",
+ "iso_a3": "MNE",
+ "completeness": 7,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Montenegro's statistics office publishes reported, accused and convicted adults by offence chapter and sex only, with no citizenship or ethnicity and no victim data. The government's trafficking reports could not be downloaded.",
+ "short_name": "Montenegro",
+ "name_in_sentence": "Montenegro",
+ "nations": {
+  "National (MONSTAT; gov.me not reachable)": "Perpetrator counts by sex."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not available",
+ "european_note": "No accessible Montenegrin official source records the ethnicity or citizenship of child victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's group",
+  "perpetrator": "Perpetrator's group"
+ },
+ "proxy_note": "No Montenegrin data by citizenship or ethnicity for child harm were found.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Crimes against sexual freedom (all victim ages)",
+   "years": "2025",
+   "intro": "MONSTAT counts 63 adults reported, 19 accused and 19 convicted for crimes against sexual freedom in 2025, by sex only, with no citizenship or ethnicity and no victims.",
+   "victims": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "By offence chapter and sex only; no citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Crimes against marriage and family",
+   "years": "2025",
+   "intro": "831 adults reported, 321 accused and 311 convicted for crimes against marriage and family in 2025 (which include domestic violence and neglect of a child), by sex only.",
+   "victims": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "By offence chapter and sex only; no citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (within the family chapter)",
+   "years": "2025",
+   "intro": "Neglect and abuse of a minor sit inside the marriage and family chapter, by sex only.",
+   "victims": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "By offence chapter and sex only; no citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Crimes against life and body",
+   "years": "2025",
+   "intro": "232 adults reported, 135 accused and 126 convicted for crimes against life and body in 2025, by sex only.",
+   "victims": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "By offence chapter and sex only; no citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "The government's anti-trafficking reports on gov.me could not be downloaded from our server (TLS errors and timeouts) and were not worked around. Press reports cite a government draft giving 50 victims in 2025, 36 of them children, without citizenship; that figure is not scored.",
+   "victims": {
+    "status": "not_published",
+    "source": "govme",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "govme",
+    "text": "Not reachable from our server; not used."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "govme",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation",
+   "years": "2025",
+   "intro": "No statistics by citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No victims by citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "By offence chapter and sex only; no citizenship or ethnicity."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "monstat",
+    "text": "No data by group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 7,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.0,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "MONSTAT's 2025 tables give reported, accused and convicted adults by offence chapter and sex only (sexual freedom: 63 reported, 19 convicted); no ethnicity or citizenship, and no victims.",
+    "score": 7.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Marriage and family chapter: 831 reported and 311 convicted adults in 2025, by sex only.",
+    "score": 7.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Neglect is inside the marriage and family chapter, by sex only.",
+    "score": 7.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Life and body chapter: 232 reported and 126 convicted adults in 2025, by sex only.",
+    "score": 7.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The government's trafficking documents (gov.me) could not be downloaded from our server (TLS errors and timeouts) and were not worked around. Press reports cite 50 victims in 2025 (36 children) from a government draft, without citizenship; not used for points.",
+    "score": 5.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No statistics by citizenship or ethnicity.",
+    "score": 7.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Montenegro scores 7% on the stricter scale (0-20%). MONSTAT publishes offenders by offence chapter and sex only, with no ethnicity or citizenship, and the government's trafficking documents could not be downloaded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "monstat": {
+   "name": "Punoljetni učinioci krivičnih djela u Crnoj Gori, 2025 (release and tables)",
+   "publisher": "Uprava za statistiku Crne Gore (MONSTAT)",
+   "years": "2025",
+   "records": "4,871 reported, 1,723 accused and 1,662 convicted adults by Criminal Code chapter and sex.",
+   "limitations": "No citizenship or ethnicity; no victims.",
+   "url": "https://www.monstat.org/uploads/files/pravosudje/punoljetni%20ucinioci/2025/Saopstenje-punoljetni%20ucinioci%202025.pdf",
+   "tier": "Official government statistics"
+  },
+  "govme": {
+   "name": "Anti-trafficking reports (Office for Combating Trafficking in Human Beings)",
+   "publisher": "Government of Montenegro",
+   "years": "-",
+   "records": "Victims and proceedings.",
+   "limitations": "Blocked: downloads from gov.me / wapi.gov.me failed from our server on 19 Nov 2026 (TLS errors; web-fetch 504). Not used.",
+   "url": "https://www.gov.me/",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
