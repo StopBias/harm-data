@@ -1,0 +1,448 @@
+{
+ "country": "United States",
+ "iso_a3": "USA",
+ "completeness": 56,
+ "as_of": "2026-11-18",
+ "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies people of European descent.",
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "white_nh",
+   "label": "White (non-Hispanic)"
+  },
+  {
+   "id": "black_nh",
+   "label": "Black (non-Hispanic)"
+  },
+  {
+   "id": "hispanic",
+   "label": "Hispanic (any race)"
+  },
+  {
+   "id": "aian",
+   "label": "American Indian or Alaska Native"
+  },
+  {
+   "id": "asian",
+   "label": "Asian"
+  },
+  {
+   "id": "nhpi",
+   "label": "Native Hawaiian or Pacific Islander"
+  },
+  {
+   "id": "multi",
+   "label": "Two or more races"
+  },
+  {
+   "id": "european",
+   "label": "European descent"
+  }
+ ],
+ "european_note": "No US source records European descent. US statistics use 'White', which under the federal standard in use covers people with origins in Europe, the Middle East and North Africa. A 2024 federal standard adds a separate Middle Eastern or North African category, which agencies must adopt by 2029, but no category for European ancestry.",
+ "harms": [
+  {
+   "id": "maltreatment",
+   "label": "Abuse and neglect (all types)",
+   "years": "FY2024",
+   "intro": "Children found by child protective services to have been abused or neglected: 532,228 children in FY2024, a rate of 720 per 100,000 children. Most (79.3%) were neglected; 19.0% were physically abused and 9.4% sexually abused.",
+   "victims": {
+    "status": "published",
+    "source": "ncands",
+    "n": 526951,
+    "n_label": "child victims with race reported (51 jurisdictions)",
+    "share": {
+     "aian": 1.4,
+     "asian": 0.9,
+     "black_nh": 22.7,
+     "hispanic": 23.8,
+     "nhpi": 0.2,
+     "multi": 6.2,
+     "white_nh": 40.8,
+     "unknown": 4.0
+    },
+    "rate": {
+     "aian": 1330,
+     "asian": 110,
+     "black_nh": 1180,
+     "hispanic": 640,
+     "nhpi": 790,
+     "multi": 920,
+     "white_nh": 620
+    },
+    "rate_all": 720,
+    "rate_label": "victims per 100,000 children of the same group",
+    "rate_note": "Published by HHS as rates per 1,000 children (shown here x100), using Census population estimates.",
+    "share_note": "Shares calculated here from the counts HHS publishes (Table 3-7)."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ncands",
+    "n": 393867,
+    "n_label": "perpetrators (50 states)",
+    "share": {
+     "aian": 1.3,
+     "asian": 1.1,
+     "black_nh": 21.7,
+     "hispanic": 21.8,
+     "multi": 2.5,
+     "nhpi": 0.3,
+     "white_nh": 45.1,
+     "unknown": 6.1
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: the published perpetrator count covers 50 states and includes perpetrators under 18, so there is no matching population to divide by.",
+    "share_note": "Shares as published by HHS (Table 5-4). Race or ethnicity unknown for 6.1%."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ncands",
+    "text": "The case-level file links each child to up to three perpetrators with race, but HHS does not publish victim race by perpetrator race; it requires restricted access."
+   }
+  },
+  {
+   "id": "fatalities",
+   "label": "Deaths from abuse and neglect",
+   "years": "FY2024",
+   "intro": "Children who died from abuse or neglect: 1,773 in FY2024, a rate of 2.41 per 100,000 children.",
+   "victims": {
+    "status": "published",
+    "source": "ncands",
+    "n": 1474,
+    "n_label": "child deaths with race reported (45 states)",
+    "share": {
+     "aian": 0.5,
+     "asian": 0.7,
+     "black_nh": 37.2,
+     "hispanic": 13.2,
+     "nhpi": 0.2,
+     "multi": 7.1,
+     "white_nh": 35.0,
+     "unknown": 6.0
+    },
+    "rate": {
+     "aian": 1.84,
+     "asian": 0.41,
+     "black_nh": 6.11,
+     "hispanic": 1.39,
+     "nhpi": 2.81,
+     "multi": 3.91,
+     "white_nh": 1.75
+    },
+    "rate_all": 2.41,
+    "rate_label": "deaths per 100,000 children of the same group",
+    "rate_note": "Published by HHS, using Census population estimates.",
+    "share_note": "Shares as published by HHS (Exhibit 4-D)."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ncands",
+    "text": "The report gives only the perpetrators' relationship to the child who died, not their race."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ncands",
+    "text": "HHS does not publish victim race by perpetrator race for child deaths."
+   }
+  },
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse",
+   "years": "FY2024",
+   "intro": "Child sexual abuse is counted by child protective services (9.4% of maltreatment victims in FY2024) and by police, but no national table shows the race of child sexual-abuse victims.",
+   "victims": {
+    "status": "not_published",
+    "source": "nibrs",
+    "text": "Police (NIBRS) and child protective services record the victim's race, but neither publishes child sexual-abuse victims by race."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ussc",
+    "scope": "Federal cases only",
+    "n": 1430,
+    "n_label": "people sentenced for federal sexual-abuse offenses",
+    "share": {
+     "white_nh": 55.1,
+     "hispanic": 15.2,
+     "black_nh": 13.9,
+     "aian": 13.0,
+     "other": 2.8
+    },
+    "share_note": "USSC groups Asian, Pacific Islander and multiracial people as 'Other races' (2.8%). Native American share reflects federal jurisdiction over crimes on tribal lands.",
+    "rate": null,
+    "rate_reason": "Not calculated: the source publishes shares only, for federal cases, which are a small and selected part of all cases."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "ussc",
+    "text": "Federal sentencing data do not record the victim's race, and no published police table links child victims' race to offenders' race."
+   }
+  },
+  {
+   "id": "teen_violence",
+   "label": "Violent crime, teens 12-17",
+   "years": "2012-2015",
+   "intro": "Violent crimes against teens aged 12 to 17 (rape or sexual assault, robbery and assault), from a national household survey. This is the only US source found that publishes victim race against offender race for young people.",
+   "victims": {
+    "status": "not_published",
+    "source": "ncvs",
+    "text": "This table shows who harmed teens of each group, not how many teens of each group were harmed. Pick a victim heritage to see the perceived offenders."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ncvs",
+    "text": "Offender race is shown only within each victim group. Pick a victim heritage."
+   },
+   "cross": {
+    "status": "published",
+    "source": "ncvs",
+    "unit": "% of violent victimizations of teens in the victim group",
+    "matrix": {
+     "white_nh": {
+      "white_nh": 76.6,
+      "black_nh": 9.8,
+      "hispanic": 13.7
+     },
+     "black_nh": {
+      "white_nh": 13.0,
+      "black_nh": 74.3,
+      "hispanic": 12.8
+     },
+     "hispanic": {
+      "white_nh": 19.5,
+      "black_nh": 26.6,
+      "hispanic": 53.9
+     }
+    },
+    "groups": [
+     "white_nh",
+     "black_nh",
+     "hispanic"
+    ],
+    "note": "Offender race as perceived by the victim. Only White, Black and Hispanic victims and offenders are included; other groups were excluded by BJS. Rates not published for this age group.",
+    "rate_reason": "Not published: the report gives rates by race for all ages, not for teens."
+   }
+  },
+  {
+   "id": "exploitation",
+   "label": "Exploitation and trafficking",
+   "years": "FY2023",
+   "intro": "Sexual exploitation of children, including abuse material and trafficking. Victim race is not published by any source found; offender race comes only from federal prosecutions.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "ncmec",
+    "text": "NCMEC's CyberTipline (21.3 million reports in 2025) and the National Human Trafficking Hotline publish no victim race, and federal court data do not record it."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bjs_ht",
+    "scope": "Federal cases only",
+    "n": 559,
+    "n_label": "defendants charged with sexual exploitation and other abuse of children in federal court",
+    "share": {
+     "white_nh": 70.6,
+     "black_nh": 11.9,
+     "hispanic": 13.8,
+     "aian": 1.3,
+     "asian_nhpi": 2.3
+    },
+    "share_note": "Asian, Native Hawaiian and Pacific Islander are combined by BJS. Also: of 1,375 people sentenced federally for child sexual abuse material in FY2024, 71.2% were White, 18.0% Hispanic, 6.0% Black and 4.8% other races (US Sentencing Commission).",
+    "rate": {
+     "white_nh": 0.23,
+     "black_nh": 0.2,
+     "hispanic": 0.15,
+     "aian": 0.4,
+     "asian_nhpi": 0.07
+    },
+    "rate_label": "federal defendants per 100,000 adults of the same group",
+    "rate_note": "Calculated here: BJS defendant counts divided by Census Vintage 2025 adults (18+) on July 1, 2023. Slightly understated because race was missing for some defendants."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "bjs_ht",
+    "text": "Victim race is not recorded in federal case data or published by NCMEC or the hotline."
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide (all causes)",
+   "years": "",
+   "intro": "All killings of children, not only by caregivers.",
+   "victims": {
+    "status": "pending",
+    "source": "wisqars",
+    "text": "Published by CDC death records (WISQARS) by race and Hispanic origin, but not yet added to this explorer."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "shr",
+    "text": "FBI homicide reports record offender race, but no national table for people who killed children is published."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "shr",
+    "text": "FBI case-level homicide files hold both, but no table is published."
+   }
+  }
+ ],
+ "score": {
+  "value": 56,
+  "band": "40-60%",
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "score": 62
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "score": 66
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "score": 62
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "score": 75
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "score": 39
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "score": 27
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 25,
+    "full": "Published by harm, self-reported or official, with European descent identified separately"
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 25,
+    "full": "Same standard for perpetrators; not perceived, few unknowns"
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 20,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 15,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 15,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "why_us": "The US scores 56%: the most complete data found anywhere, but insufficient. It publishes victim race for abuse, neglect and deaths, and perpetrator race for abuse and neglect and for federal cases. But 'White' combines European, Middle Eastern and North African origins, offender race in police data is often perceived or unknown, victim and perpetrator heritage are almost never linked in published tables, and trafficking and online exploitation data carry almost no demographics."
+ },
+ "sources": {
+  "ncands": {
+   "name": "Child Maltreatment 2024 (NCANDS)",
+   "publisher": "US Department of Health and Human Services, Administration for Children and Families, Children's Bureau",
+   "years": "Federal fiscal year 2024 (Oct 2023 to Sep 2024); published 16 January 2026; annual since 1990 data",
+   "records": "Children found by child protective services to have been abused or neglected, and the people found responsible, with race and Hispanic origin of both. Race tables: victims from 51 jurisdictions, perpetrators from 50 states, deaths from 45 states.",
+   "limitations": "Only cases known to and substantiated by child protective services, mostly involving parents and caregivers. The published report does not split race by type of abuse, and does not link victim race to perpetrator race; that needs restricted case-level files (NDACAN Child File). Perpetrator race unknown for 6.1%.",
+   "url": "https://acf.gov/cb/report/child-maltreatment-2024",
+   "tier": "Official government statistics"
+  },
+  "ussc": {
+   "name": "US Sentencing Commission Quick Facts, FY2024",
+   "publisher": "United States Sentencing Commission",
+   "years": "Federal fiscal year 2024; annual",
+   "records": "People sentenced in federal court, with their race and Hispanic origin. Sexual abuse: 1,430 people. Child sexual abuse material ('child pornography'): 1,375 people.",
+   "limitations": "Federal cases only, a small and selected share of all cases (most are prosecuted by states). Victim race is not recorded. The summary does not say how many sexual-abuse cases involved adult rather than child victims.",
+   "url": "https://www.ussc.gov/research/quick-facts/sexual-abuse",
+   "tier": "Official government statistics"
+  },
+  "bjs_ht": {
+   "name": "Human Trafficking Data Collection Activities, 2025 (BJS)",
+   "publisher": "US Department of Justice, Bureau of Justice Statistics",
+   "years": "Federal fiscal year 2023 cases; published January 2026; annual",
+   "records": "Defendants charged in US district court with federal trafficking-related offenses, by race and Hispanic origin. Used here: 559 defendants charged with sexual exploitation and other abuse of children.",
+   "limitations": "Federal prosecutions only, so it reflects enforcement priorities rather than how often the harm happens. Victim race is not recorded. Race or Hispanic origin was missing for 87 of 1,160 trafficking defendants in this table.",
+   "url": "https://bjs.ojp.gov/library/publications/human-trafficking-data-collection-activities-2025",
+   "tier": "Official government statistics"
+  },
+  "ncvs": {
+   "name": "Race and Hispanic Origin of Victims and Offenders, 2012-15 (NCVS)",
+   "publisher": "US Department of Justice, Bureau of Justice Statistics",
+   "years": "Average of 2012 to 2015; published 2017",
+   "records": "Survey of US households: violent crimes (rape or sexual assault, robbery, aggravated and simple assault) against people aged 12 and older, with the victim's race and the offender's race as the victim perceived it. Table 9 gives teens aged 12 to 17.",
+   "limitations": "Excludes children under 12. Offender race is the victim's perception. Only White, Black and Hispanic victims and offenders are shown; other groups are excluded. Rape and sexual assault are not shown separately for teens. Data are about ten years old.",
+   "url": "https://bjs.ojp.gov/library/publications/race-and-hispanic-origin-victims-and-offenders-2012-15",
+   "tier": "Official government survey"
+  },
+  "nibrs": {
+   "name": "FBI National Incident-Based Reporting System (NIBRS)",
+   "publisher": "Federal Bureau of Investigation, Uniform Crime Reporting Program",
+   "years": "Since 1991; annual; 2025 data covered 89.5% of the US population",
+   "records": "Crimes reported to police, including sex offenses and homicide, with victim race, offender race (as perceived), and victim-offender relationship for each incident.",
+   "limitations": "No published national table shows child victims or their offenders by race for sex offenses. Offender race is often unknown (about 40% across all offenses, per researcher Jacob Kaplan) and offender Hispanic origin is mostly unknown. Building child-specific figures needs incident-level files.",
+   "url": "https://cde.ucr.cjis.gov/",
+   "tier": "Official government statistics"
+  },
+  "ncmec": {
+   "name": "NCMEC CyberTipline Data, 2025",
+   "publisher": "National Center for Missing & Exploited Children (non-government, federally designated)",
+   "years": "2025; annual",
+   "records": "21.3 million reports of suspected online child sexual exploitation in 2025, mostly from technology companies.",
+   "limitations": "Non-government source. Reports are not victims or cases. No race or ethnicity of victims or offenders is published.",
+   "url": "https://www.missingkids.org/gethelpnow/cybertipline/cybertiplinedata",
+   "tier": "Non-government source"
+  },
+  "nhth": {
+   "name": "National Human Trafficking Hotline data",
+   "publisher": "US Department of Health and Human Services, Office on Trafficking in Persons (hotline operated by Polaris until December 2025, then Compass Connections)",
+   "years": "Fiscal years 2013 to 2025",
+   "records": "Contacts to the hotline and potential trafficking situations identified (13,623 in FY2025).",
+   "limitations": "Counts contacts, not how common trafficking is. No victim or trafficker race found in the published figures (not confirmed whether it is collected).",
+   "url": "https://acf.gov/otip/research-policy/data/nhth-data",
+   "tier": "Official program data"
+  },
+  "wisqars": {
+   "name": "CDC WISQARS (death records)",
+   "publisher": "Centers for Disease Control and Prevention",
+   "years": "Fatal injury data from 1981; annual",
+   "records": "All deaths of US residents from death certificates, including homicides of children, by age, race and Hispanic origin.",
+   "limitations": "Victim side only; no information about who killed the child. Figures not yet added to this explorer.",
+   "url": "https://wisqars.cdc.gov/",
+   "tier": "Official government statistics"
+  },
+  "shr": {
+   "name": "FBI Supplementary Homicide Reports",
+   "publisher": "Federal Bureau of Investigation",
+   "years": "1976 onward; annual",
+   "records": "Homicide victims and offenders with age, sex, race, ethnicity and relationship.",
+   "limitations": "Voluntary and incomplete; offender missing for unsolved cases. No published national table for offenders who killed children; case-level files only.",
+   "url": "https://bjs.ojp.gov/library/publications/homicide-victimization-united-states-2025",
+   "tier": "Official government statistics"
+  },
+  "census": {
+   "name": "Census Bureau population estimates, Vintage 2025",
+   "publisher": "US Census Bureau",
+   "years": "July 1 of each year, 2020 to 2025; released 25 June 2026",
+   "records": "US population by age, sex, race and Hispanic origin (table NC-EST2025-ASR6H). Used here as the denominator for rates per 100,000.",
+   "limitations": "Census 'White' includes people of European, Middle Eastern and North African origin. Categories do not always match the source being divided.",
+   "url": "https://www.census.gov/newsroom/press-kits/2026/vintage-2025-pop-estimates.html",
+   "tier": "Official government statistics"
+  }
+ }
+}

@@ -17,13 +17,14 @@
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; height: 100%; }
+    html, body { margin: 0; }
     body {
       font-family: var(--font);
       color: var(--ink);
       background: var(--bg);
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -54,9 +55,11 @@
 
     /* ---------- Layout ---------- */
     .layout {
-      flex: 1 1 auto;
+      flex: 0 0 auto;
+      height: min(72vh, 660px);
       display: flex;
-      min-height: 0;
+      min-height: 420px;
+      border-bottom: 1px solid var(--line);
     }
     .map-wrap {
       position: relative;
@@ -122,6 +125,83 @@
     .note { font-size: 0.82rem !important; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
     .hint { color: var(--muted); }
 
+    .panel-link {
+      font: inherit; font-size: 0.85rem; color: var(--ink); background: #f1f3f4;
+      border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; cursor: pointer;
+    }
+    .panel-link:hover { background: #e7eaec; }
+
+    /* ---------- Data explorer (below the map) ---------- */
+    #explorer { padding: 22px 18px 40px; }
+    .ex-inner { max-width: 1040px; margin: 0 auto; }
+    .ex-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 4px; }
+    .ex-head h2 { margin: 0; font-size: 1.2rem; font-weight: 600; }
+    .ex-head .badge { margin: 0; }
+    .ex-lede { margin: 4px 0 16px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; max-width: 760px; }
+    .ex-controls {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px 14px; margin-bottom: 18px;
+    }
+    .ex-controls label { display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+    .ex-controls select {
+      font: inherit; font-size: 0.9rem; color: var(--ink); background: #fff;
+      border: 1px solid #cfd5d9; border-radius: 4px; padding: 7px 8px; width: 100%;
+    }
+    .ex-controls select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+    #ex-result p { font-size: 0.95rem; line-height: 1.55; margin: 0 0 10px; max-width: 760px; }
+    .ex-big { font-size: 1.6rem; font-weight: 600; margin: 4px 0 2px; }
+    .ex-small { font-size: 0.8rem !important; color: var(--muted); }
+    .status {
+      display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+      padding: 2px 7px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase;
+    }
+    .status.published { background: #e3f2e6; color: #1e6b34; }
+    .status.not_published { background: #fdf0d5; color: #8a5a00; }
+    .status.not_recorded { background: #fbe1de; color: #9b2a1d; }
+    .status.pending { background: #eef0f2; color: #4a555d; }
+    .absent {
+      border-left: 3px solid #e0b4ae; background: #fcf6f5; padding: 10px 12px; margin: 0 0 12px;
+      font-size: 0.92rem; line-height: 1.5; max-width: 760px;
+    }
+    .absent strong { display: block; margin-bottom: 2px; }
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px 28px; margin: 6px 0 8px; }
+    .cols h3, #ex-sources h3, .method h3 { font-size: 0.85rem; margin: 0 0 8px; font-weight: 600; }
+    .bars { display: grid; grid-template-columns: minmax(110px, max-content) 1fr auto; gap: 5px 10px; align-items: center; font-size: 0.82rem; }
+    .bars .lbl { color: var(--ink); }
+    .bars .track { display: block; height: 10px; background: #f1f3f4; border-radius: 2px; overflow: hidden; }
+    .bars .fill { display: block; height: 100%; background: #9aa5ad; }
+    .bars .hl .fill, .bars .fill.hl { background: var(--ink); }
+    .bars .val { font-variant-numeric: tabular-nums; color: var(--muted); text-align: right; }
+    .bars .lbl.hl, .bars .val.hl { font-weight: 600; color: var(--ink); }
+    #ex-sources { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }
+    .src { border-bottom: 1px solid var(--line); }
+    .src summary { cursor: pointer; padding: 8px 0; font-size: 0.9rem; list-style: none; display: flex; gap: 8px; align-items: baseline; }
+    .src summary::-webkit-details-marker { display: none; }
+    .src summary::before { content: "+"; width: 12px; color: var(--muted); font-weight: 600; }
+    .src[open] summary::before { content: "\2212"; }
+    .src .tier { font-size: 0.72rem; color: var(--muted); }
+    .src dl { margin: 0 0 12px 20px; display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; font-size: 0.84rem; line-height: 1.45; }
+    .src dt { color: var(--muted); }
+    .src dd { margin: 0; }
+    .src a, .method a { color: #0b7d93; word-break: break-word; }
+    .method { margin-top: 18px; border: 1px solid var(--line); border-radius: 4px; padding: 0 14px; }
+    .method > summary { cursor: pointer; padding: 10px 0; font-weight: 600; font-size: 0.92rem; }
+    .method p, .method li { font-size: 0.88rem; line-height: 1.5; }
+    .method table { border-collapse: collapse; font-size: 0.84rem; margin: 6px 0 14px; width: 100%; max-width: 760px; }
+    .method th, .method td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .method td.num, .method th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .gold { border-left: 3px solid #c9a227; background: #fbf7e9; padding: 10px 12px; margin: 4px 0 12px; }
+    @media (max-width: 768px) {
+      #explorer { padding: 16px 12px 96px; }  /* room for the collapsed bottom sheet */
+      .ex-head h2 { font-size: 1.05rem; }
+      .ex-controls { grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+      .ex-controls label:first-child { grid-column: 1 / -1; }
+      .src summary { flex-wrap: wrap; }
+      .src .tier { flex-basis: 100%; padding-left: 20px; }
+      .src dl { grid-template-columns: 1fr; margin-left: 20px; }
+      .src dt { margin-top: 4px; }
+    }
+
     /* ---------- Tooltip ---------- */
     .country-tooltip .maplibregl-popup-content {
       font-family: var(--font);
@@ -146,11 +226,11 @@
       header .sub { display: none; }
       /* Map box sized to the world's shape (a flat world is wider than tall),
          legend sits under it, details slide up from the bottom. */
-      .layout { display: block; }
+      .layout { display: block; height: auto; min-height: 0; border-bottom: 0; }
       .map-wrap { height: auto; }
       #map { position: relative; height: min(62vh, 80vw); }
       .legend {
-        position: static; margin: 10px 12px 90px; box-shadow: none; padding: 0;
+        position: static; margin: 10px 12px 6px; box-shadow: none; padding: 0;
         font-size: 0.72rem; background: none;
       }
       .legend-items { gap: 3px 9px; }
@@ -209,6 +289,28 @@
     </aside>
   </div>
 
+  <section id="explorer" aria-labelledby="ex-title">
+    <div class="ex-inner">
+      <div class="ex-head">
+        <h2 id="ex-title">United States: what the data shows</h2>
+        <span class="badge" id="ex-badge"></span>
+      </div>
+      <p class="ex-lede" id="ex-lede">Loading data…</p>
+      <div class="ex-controls" id="ex-controls">
+        <label>Harm<select id="sel-harm"></select></label>
+        <label>Victim's heritage<select id="sel-victim"></select></label>
+        <label>Perpetrator's heritage<select id="sel-perp"></select></label>
+        <label>Measure<select id="sel-measure">
+          <option value="share">Share (%)</option>
+          <option value="rate">Rate per 100,000</option>
+        </select></label>
+      </div>
+      <div id="ex-result" aria-live="polite"></div>
+      <div id="ex-sources"></div>
+      <details class="method" id="method"></details>
+    </div>
+  </section>
+
   <script>
     // ==================================================================
     // DATA
@@ -247,8 +349,9 @@
 
     const tracked = {
       USA: {
-        completeness: 50,   // band midpoint placeholder (40–60%)
-        note: "Some NIBRS / NCVS juvenile data exist. Full victim × perpetrator race cross-tabs for children are incomplete or unpublished."
+        completeness: 56,   // from data/usa.json (overwritten when that file loads)
+        exact: true,        // show the exact score, not only the band (scored with the full rubric)
+        note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies European descent separately. Details below the map."
       },
       GBR: {
         completeness: 30,   // provisional, band midpoint placeholder (20–40%)
@@ -268,6 +371,7 @@
 
     const PANEL_NOTE = "The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.";
     const COUNTRIES_URL = "data/countries-ne50m.geojson";   // Natural Earth 1:50m, public domain
+    const USA_DATA_URL = "data/usa.json";                   // US figures, sources and score (data kept out of the code)
 
     // ------------------------------------------------------------------
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
@@ -275,7 +379,7 @@
     const colorFor = iso => tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
                           : inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
 
-    const statusText = info => `${bandLabel(bandFor(info.completeness))} complete${info.provisional ? " (provisional)" : ""}`;
+    const statusText = info => `${info.exact ? info.completeness + "% · " : ""}${bandLabel(bandFor(info.completeness))} complete${info.provisional ? " (provisional)" : ""}`;
 
     // Legend
     document.getElementById("legend").innerHTML =
@@ -377,6 +481,7 @@
               "line-opacity": ["case", ["any", selected, hover], 1, 0]
             }
           });
+          refreshFill();   // picks up the score from data/usa.json if it loaded first
           /* FUTURE: sub-national layer (Natural Earth admin-1), see README.
           map.addSource("admin1", { type: "geojson", data: "data/admin1-<country>.geojson", promoteId: "iso_3166_2" });
           map.addLayer({ id: "admin1-fill", type: "fill", source: "admin1", minzoom: 2.5,
@@ -437,12 +542,18 @@
         <div class="badge"><span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}</div>
         <p>${info.note}</p>
         ${info.provisional ? '<p class="hint"><em>Provisional rating — data collection for this country is still in progress.</em></p>' : ""}
+        ${iso === "USA" ? '<p><button type="button" class="panel-link" id="to-explorer">Explore the US data below the map ↓</button></p>' : ""}
         <p class="note">${PANEL_NOTE}</p>
       ` : `
         <div class="badge"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</div>
         <p class="hint">This country is part of the project. Its published crime data has not been reviewed yet.</p>
       `;
       if (isMobile()) panel.classList.add("open");
+      const toEx = document.getElementById("to-explorer");
+      if (toEx) toEx.addEventListener("click", () => {
+        panel.classList.remove("open");
+        document.getElementById("explorer").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     }
 
     map.on("click", (e) => {
@@ -458,6 +569,193 @@
 
     let resizeTimer;
     window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView); }, 200); });
+    // ---------- US data explorer (below the map); figures live in data/usa.json ----------
+    const STATUS_LABEL = {
+      published: "Published",
+      not_published: "Recorded, not published",
+      not_recorded: "Not recorded by this source",
+      pending: "Published, not yet added here"
+    };
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const fmt = v => v >= 100 ? Math.round(v).toLocaleString("en-US") : (Math.round(v * 100) / 100).toLocaleString("en-US");
+    let US = null;
+    const ex = { harm: null, victim: "all", perp: "all", measure: "share" };
+
+    function refreshFill() {
+      const fc = ["match", ["get", "iso_a3"]];
+      [...inScope].forEach(iso => fc.push(iso, colorFor(iso)));
+      fc.push(OUT_OF_SCOPE_COLOR);
+      if (map.getLayer("countries-fill")) map.setPaintProperty("countries-fill", "fill-color", fc);
+    }
+
+    const groupLabel = id => id === "other" ? "Other races" : id === "unknown" ? "Unknown" : id === "asian_nhpi"
+      ? "Asian or Pacific Islander" : ((US.groups.find(g => g.id === id) || {}).label || id);
+
+    // Value for a group; Asian and Pacific Islander fall back to a combined figure where a source merges them
+    function pick(obj, group) {
+      if (!obj) return null;
+      if (obj[group] != null) return { v: obj[group], g: group };
+      if ((group === "asian" || group === "nhpi") && obj.asian_nhpi != null) return { v: obj.asian_nhpi, g: "asian_nhpi" };
+      return null;
+    }
+
+    function statusBlock(status, text, title) {
+      return `<span class="status ${status}">${STATUS_LABEL[status]}</span>` +
+        `<div class="absent">${title ? `<strong>${esc(title)}</strong>` : ""}${esc(text)}</div>`;
+    }
+
+    function barsHtml(values, highlight, unit) {
+      const keys = Object.keys(values).filter(k => values[k] != null);
+      if (!keys.length) return "";
+      keys.sort((a, b) => values[b] - values[a]);
+      const max = Math.max(...keys.map(k => values[k])) || 1;
+      return '<div class="bars">' + keys.map(k => {
+        const hl = highlight && (k === highlight) ? " hl" : "";
+        return `<span class="lbl${hl}">${esc(groupLabel(k))}</span>` +
+          `<span class="track"><span class="fill${hl}" style="width:${(values[k] / max * 100).toFixed(1)}%"></span></span>` +
+          `<span class="val${hl}">${fmt(values[k])}${unit}</span>`;
+      }).join("") + "</div>";
+    }
+
+    // One side (victims or perpetrators) for one group or for all groups
+    function sideHtml(side, who, group, harm) {
+      const label = who === "victims" ? "Victims" : "Perpetrators";
+      if (side.status !== "published") return statusBlock(side.status, side.text, `${label}: ${STATUS_LABEL[side.status].toLowerCase()}`);
+      const scope = side.scope ? ` <span class="ex-small">(${esc(side.scope)})</span>` : "";
+      if (ex.measure === "rate") {
+        if (!side.rate) return `<span class="status not_published">Rate not available</span><div class="absent">${esc(side.rate_reason)}</div>`;
+        if (group === "all") {
+          return `<p>${esc(side.rate_label.charAt(0).toUpperCase() + side.rate_label.slice(1))}${scope}${side.rate_all != null ? `; all children: <strong>${fmt(side.rate_all)}</strong>` : ""}.</p>` +
+            barsHtml(side.rate, null, "") + `<p class="ex-small">${esc(side.rate_note)}</p>`;
+        }
+        const r = pick(side.rate, group);
+        if (!r) return statusBlock("not_recorded", `This source does not report a rate for ${groupLabel(group)}.`, "");
+        return `<div class="ex-big">${fmt(r.v)}</div><p>${esc(side.rate_label.replace("the same group", groupLabel(r.g)))}` +
+          `${side.rate_all != null ? `, compared with ${fmt(side.rate_all)} for all children` : ""}.${scope}</p>` +
+          barsHtml(side.rate, r.g, "") + `<p class="ex-small">${esc(side.rate_note)}</p>`;
+      }
+      const note = side.share_note ? `<p class="ex-small">${esc(side.share_note)}</p>` : "";
+      if (group === "all") {
+        return `<p>Share of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + note;
+      }
+      const sh = pick(side.share, group);
+      if (!sh) return statusBlock("not_recorded", `This source does not report ${groupLabel(group)} as a separate group.`, "");
+      return `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)} were ${esc(groupLabel(sh.g))}.${scope}</p>` +
+        barsHtml(side.share, sh.g, "%") + note;
+    }
+
+    function renderResult() {
+      const harm = US.harms.find(h => h.id === ex.harm);
+      const out = [`<p>${esc(harm.intro)}${harm.years ? ` <span class="ex-small">(${esc(harm.years)})</span>` : ""}</p>`];
+      const v = ex.victim, p = ex.perp, cross = harm.cross;
+
+      if (v === "european" || p === "european") {
+        out.push(statusBlock("not_recorded", US.european_note, "Not recorded by any US source"));
+      } else if (v !== "all" && p !== "all") {
+        // victim heritage x perpetrator heritage
+        if (cross.status !== "published") {
+          out.push(statusBlock(cross.status, cross.text, "Victim heritage linked to perpetrator heritage"));
+        } else if (ex.measure === "rate") {
+          out.push(`<span class="status not_published">Rate not available</span><div class="absent">${esc(cross.rate_reason)}</div>`);
+        } else if (!cross.groups.includes(v) || !cross.groups.includes(p)) {
+          out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic victims and offenders.", ""));
+        } else {
+          out.push(`<div class="ex-big">${fmt(cross.matrix[v][p])}%</div><p>of violent crimes against ${esc(groupLabel(v))} teens were committed by ${esc(groupLabel(p))} offenders, as the victims perceived them.</p>` +
+            barsHtml(cross.matrix[v], p, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
+        }
+      } else if (cross.status === "published" && (v !== "all" || p !== "all")) {
+        // cross-tab source: one row (victim chosen) or one column (perpetrator chosen)
+        if (ex.measure === "rate") {
+          out.push(`<span class="status not_published">Rate not available</span><div class="absent">${esc(cross.rate_reason)}</div>`);
+        } else if (v !== "all") {
+          if (!cross.matrix[v]) out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic victims.", ""));
+          else out.push(`<p>Perceived offenders in violent crimes against <strong>${esc(groupLabel(v))}</strong> teens:</p>` + barsHtml(cross.matrix[v], null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
+        } else {
+          if (!cross.groups.includes(p)) out.push(statusBlock("not_recorded", "This table includes only White, Black and Hispanic offenders.", ""));
+          else {
+            const col = {}; cross.groups.forEach(g => col[g] = cross.matrix[g][p]);
+            out.push(`<p>Share of violent crimes against teens of each group committed by <strong>${esc(groupLabel(p))}</strong> offenders (as perceived):</p>` + barsHtml(col, null, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
+          }
+        }
+      } else if (cross.status === "published") {
+        out.push(`<p>Pick a victim heritage to see who harmed teens of that group, or both heritages for a single figure.</p>`);
+        const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
+          cross.groups.map(o => `${esc(groupLabel(o))} offender ${fmt(cross.matrix[g][o])}%`).join(" · ") + "</p>").join("");
+        out.push(allRows + `<p class="ex-small">${esc(cross.note)}</p>`);
+      } else if (v !== "all") {
+        out.push(sideHtml(harm.victims, "victims", v, harm));
+      } else if (p !== "all") {
+        out.push(sideHtml(harm.perpetrators, "perpetrators", p, harm));
+      } else {
+        out.push(`<div class="cols"><div><h3>Victims</h3>${sideHtml(harm.victims, "victims", "all", harm)}</div>` +
+                 `<div><h3>Perpetrators</h3>${sideHtml(harm.perpetrators, "perpetrators", "all", harm)}</div></div>`);
+        out.push(`<p class="ex-small"><strong>Victim and perpetrator heritage together:</strong> ${esc(STATUS_LABEL[cross.status])}. ${esc(cross.text || "")}</p>`);
+      }
+      document.getElementById("ex-result").innerHTML = out.join("");
+    }
+
+    function renderSources() {
+      const harm = US.harms.find(h => h.id === ex.harm);
+      const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source];
+      if (harm.id === "exploitation") ids.push("ncmec", "nhth", "ussc");
+      if (harm.id === "sexual_abuse") ids.push("ncands");
+      if (harm.id === "exploitation" && ex.measure === "rate") ids.push("census");
+      const uniq = [...new Set(ids)].filter(id => US.sources[id]);
+      document.getElementById("ex-sources").innerHTML = "<h3>Sources</h3>" + uniq.map(id => {
+        const s = US.sources[id];
+        return `<details class="src"><summary><span>${esc(s.name)}</span><span class="tier">${esc(s.tier)}</span></summary><dl>` +
+          `<dt>Publisher</dt><dd>${esc(s.publisher)}</dd>` +
+          `<dt>Years</dt><dd>${esc(s.years)}</dd>` +
+          `<dt>What it records</dt><dd>${esc(s.records)}</dd>` +
+          `<dt>Limitations</dt><dd>${esc(s.limitations)}</dd>` +
+          `<dt>Link</dt><dd><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></dd></dl></details>`;
+      }).join("");
+    }
+
+    function renderMethod() {
+      const sc = US.score;
+      document.getElementById("method").innerHTML =
+        `<summary>How the ${sc.value}% score works</summary>` +
+        `<h3>The 100% standard</h3><div class="gold">${esc(sc.gold_standard)}</div>` +
+        `<h3>Why the United States scores ${sc.value}%</h3><p>${esc(sc.why_us)}</p>` +
+        `<h3>Scoring rubric (points per harm)</h3><table><thead><tr><th>Component</th><th class="num">Points</th><th>Full points require</th></tr></thead><tbody>` +
+        sc.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
+        `</tbody></table>` +
+        `<h3>US score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
+        sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
+        `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${sc.value}</strong></td></tr></tbody></table>` +
+        `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(US.as_of)}).</p>`;
+    }
+
+    function renderExplorer() { renderResult(); renderSources(); }
+
+    function initExplorer(data) {
+      US = data;
+      tracked.USA.completeness = data.completeness;
+      refreshFill();
+      const band = bandFor(data.completeness);
+      document.getElementById("ex-badge").innerHTML = `<span class="swatch" style="background:${band.color}"></span>${data.completeness}% complete · ${bandLabel(band)}`;
+      document.getElementById("ex-lede").textContent = data.summary;
+      const hSel = document.getElementById("sel-harm");
+      hSel.innerHTML = data.harms.map(h => `<option value="${h.id}">${esc(h.label)}</option>`).join("");
+      ex.harm = data.harms[0].id;
+      const opts = data.groups.map(g => `<option value="${g.id}">${esc(g.label)}</option>`).join("");
+      document.getElementById("sel-victim").innerHTML = opts;
+      document.getElementById("sel-perp").innerHTML = opts;
+      [["sel-harm", "harm"], ["sel-victim", "victim"], ["sel-perp", "perp"], ["sel-measure", "measure"]].forEach(([id, key]) =>
+        document.getElementById(id).addEventListener("change", e => { ex[key] = e.target.value; renderExplorer(); }));
+      renderMethod();
+      renderExplorer();
+      if (selectedId === "USA") showCountry("USA", "United States of America");
+    }
+
+    fetch(USA_DATA_URL)
+      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(initExplorer)
+      .catch(err => {
+        console.error(err);
+        document.getElementById("ex-lede").textContent = "US data failed to load. Please refresh.";
+      });
   </script>
 </body>
 </html>
