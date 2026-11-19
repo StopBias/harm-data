@@ -1,7 +1,7 @@
 {
  "country": "United Kingdom",
  "iso_a3": "GBR",
- "completeness": 53,
+ "completeness": 51,
  "as_of": "2026-11-18",
  "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies European descent as such.",
  "nations": {
@@ -122,7 +122,76 @@
    ],
    "rate_sources": [
     "census"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "white",
+     "mixed",
+     "asian",
+     "black",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "white",
+     "white_british",
+     "white_irish",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other",
+     "gypsy_traveller"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "white",
+       "white_british",
+       "white_irish",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other",
+       "gypsy_traveller"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_recorded"
+    }
+   }
   },
   {
    "id": "sexual_abuse",
@@ -234,7 +303,81 @@
    ],
    "extra_sources": [
     "psni"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "white",
+     "white_british",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "white",
+     "white_british",
+     "white_irish",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other",
+     "gypsy_traveller"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "white",
+       "white_british",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "white",
+       "white_british",
+       "white_irish",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other",
+       "gypsy_traveller"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "sexual_abuse_survey",
@@ -275,6 +418,52 @@
     "status": "not_published",
     "source": "csew",
     "text": "No published table links victim and perpetrator ethnicity."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "white",
+     "white_british",
+     "white_irish",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "white",
+       "white_british",
+       "white_irish",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
    }
   },
   {
@@ -330,7 +519,69 @@
    },
    "extra_sources": [
     "cps"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "white",
+     "white_british",
+     "white_other",
+     "mixed",
+     "asian",
+     "black",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "white",
+     "white_british",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "white",
+       "white_british",
+       "white_other",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "white",
+       "white_british",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "homicide",
@@ -436,7 +687,194 @@
    },
    "extra_sources": [
     "scot_homicide"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "white",
+     "mixed",
+     "asian",
+     "black",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "white",
+     "mixed",
+     "asian",
+     "black",
+     "other",
+     "unknown"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other"
+      ],
+      "perpetrators": [
+       "white",
+       "mixed",
+       "asian",
+       "black",
+       "other",
+       "unknown"
+      ]
+     }
+    },
+    "linked_pairs": [
+     [
+      "white",
+      "white"
+     ],
+     [
+      "white",
+      "black"
+     ],
+     [
+      "white",
+      "asian"
+     ],
+     [
+      "white",
+      "mixed"
+     ],
+     [
+      "white",
+      "other"
+     ],
+     [
+      "white",
+      "unknown"
+     ],
+     [
+      "black",
+      "white"
+     ],
+     [
+      "black",
+      "black"
+     ],
+     [
+      "black",
+      "asian"
+     ],
+     [
+      "black",
+      "mixed"
+     ],
+     [
+      "black",
+      "other"
+     ],
+     [
+      "black",
+      "unknown"
+     ],
+     [
+      "asian",
+      "white"
+     ],
+     [
+      "asian",
+      "black"
+     ],
+     [
+      "asian",
+      "asian"
+     ],
+     [
+      "asian",
+      "mixed"
+     ],
+     [
+      "asian",
+      "other"
+     ],
+     [
+      "asian",
+      "unknown"
+     ],
+     [
+      "mixed",
+      "white"
+     ],
+     [
+      "mixed",
+      "black"
+     ],
+     [
+      "mixed",
+      "asian"
+     ],
+     [
+      "mixed",
+      "mixed"
+     ],
+     [
+      "mixed",
+      "other"
+     ],
+     [
+      "mixed",
+      "unknown"
+     ],
+     [
+      "other",
+      "white"
+     ],
+     [
+      "other",
+      "black"
+     ],
+     [
+      "other",
+      "asian"
+     ],
+     [
+      "other",
+      "mixed"
+     ],
+     [
+      "other",
+      "other"
+     ],
+     [
+      "other",
+      "unknown"
+     ]
+    ],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "published"
+    }
+   }
   },
   {
    "id": "online",
@@ -475,6 +913,54 @@
     "status": "not_recorded",
     "source": "moj_cjs",
     "text": "No published table links victim and perpetrator ethnicity."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "white",
+     "white_british",
+     "white_irish",
+     "white_other",
+     "mixed",
+     "asian",
+     "pakistani",
+     "black",
+     "other",
+     "gypsy_traveller"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "white",
+       "white_british",
+       "white_irish",
+       "white_other",
+       "mixed",
+       "asian",
+       "pakistani",
+       "black",
+       "other",
+       "gypsy_traveller"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_recorded"
+    }
    }
   },
   {
@@ -497,74 +983,204 @@
     "status": "not_recorded",
     "source": "nrm",
     "text": "No published table links victim and perpetrator ethnicity."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "proxy",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
    }
   }
  ],
  "score": {
-  "value": 53,
+  "value": 51,
   "band": "40-60%",
-  "previous": "20-40% (provisional orange placeholder)",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 51.4,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": {
+   "value": 53,
+   "band": "40-60%",
+   "scale": "v1 (A25 B25 C20 D15 E15)"
+  },
   "breakdown": [
    {
     "harm": "Sexual abuse",
     "weight": 25,
-    "score": 54
+    "victim": 22.5,
+    "perpetrator": 21.0,
+    "coverage": 4.0,
+    "rates": 3.0,
+    "access": 5.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 15,
+     "b": 14,
+     "c": 8,
+     "d": 6,
+     "e": 11,
+     "total": 54
+    },
+    "why": "Courts publish offender self-identified ethnicity by detailed group incl. White British (22% unknown); police record victim and suspect ethnicity for only 34%; a survey gives victim prevalence by sub-group. Scotland and Northern Ireland publish nothing by ethnicity.",
+    "score": 56.0
    },
    {
     "harm": "Physical abuse",
     "weight": 15,
-    "score": 59
+    "victim": 27.0,
+    "perpetrator": 15.0,
+    "coverage": 6.0,
+    "rates": 3.5,
+    "access": 6.0,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 18,
+     "b": 10,
+     "c": 12,
+     "d": 7,
+     "e": 12,
+     "total": 59
+    },
+    "why": "Child protection plans by ethnicity (England, 2.5% unknown, 5 groups, White separate); offenders only via child cruelty convictions (36% unknown).",
+    "score": 57.5
    },
    {
     "harm": "Neglect",
     "weight": 15,
-    "score": 58
+    "victim": 27.0,
+    "perpetrator": 13.5,
+    "coverage": 6.0,
+    "rates": 3.5,
+    "access": 6.0,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 18,
+     "b": 9,
+     "c": 12,
+     "d": 7,
+     "e": 12,
+     "total": 58
+    },
+    "why": "Same child protection structure; neglect convictions are combined with cruelty.",
+    "score": 56.0
    },
    {
     "harm": "Homicide",
     "weight": 15,
-    "score": 76
+    "victim": 30.0,
+    "perpetrator": 24.0,
+    "coverage": 7.5,
+    "rates": 6.0,
+    "access": 6.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 20,
+     "b": 16,
+     "c": 15,
+     "d": 12,
+     "e": 13,
+     "total": 76
+    },
+    "why": "Homicide Index publishes child victims and suspects by officer-identified ethnicity, rates and a victim-by-suspect table (all ages).",
+    "score": 74.0
    },
    {
     "harm": "Sex trafficking",
     "weight": 15,
-    "score": 33
+    "victim": 5.5,
+    "perpetrator": 13.5,
+    "coverage": 2.5,
+    "rates": 1.5,
+    "access": 4.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 7,
+     "b": 9,
+     "c": 5,
+     "d": 3,
+     "e": 9,
+     "total": 33
+    },
+    "why": "Victims: NRM records nationality only (proxy, capped). Perpetrators: police group-based CSE data have suspect ethnicity for 31%.",
+    "score": 27.5
    },
    {
     "harm": "Online exploitation",
     "weight": 15,
-    "score": 37
+    "victim": 4.5,
+    "perpetrator": 19.5,
+    "coverage": 3.5,
+    "rates": 1.5,
+    "access": 5.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "old": {
+     "a": 3,
+     "b": 13,
+     "c": 7,
+     "d": 3,
+     "e": 11,
+     "total": 37
+    },
+    "why": "Indecent-image convictions by self-identified ethnicity (24% unknown); victims usually unidentified.",
+    "score": 34.5
    }
   ],
-  "why": "The UK scores 53%, yellow, just below the US (56%). England and Wales publish victim ethnicity for child protection and homicide, offender ethnicity for court convictions, and a victim-by-suspect table for homicide, often with White British separated from Any other White. But police records of child sexual abuse miss ethnicity for about two-thirds of victims and suspects, trafficking data carry nationality only, and Scotland and Northern Ireland publish almost nothing by ethnicity.",
   "components": [
    {
     "name": "Victim heritage",
-    "points": 25,
-    "full": "Published by harm, self-reported or official, with European descent identified separately"
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
-    "points": 25,
-    "full": "Same standard for perpetrators; not perceived, few unknowns"
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
-    "points": 20,
+    "points": 10,
     "full": "Over 90% of the population covered, under 10% unknown"
    },
    {
     "name": "Rates and linkage",
-    "points": 15,
+    "points": 7.5,
     "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
    },
    {
     "name": "Access and timeliness",
-    "points": 15,
+    "points": 7.5,
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm."
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "The UK scores 51% on the stricter scale (40-60%). England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
+  "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points."
  },
  "sources": {
   "dfe_cin": {
@@ -689,5 +1305,7 @@
   "unknown": "Unknown",
   "gypsy_traveller": "White Gypsy or Irish Traveller"
  },
- "european_title": "Not recorded by any UK source"
+ "european_title": "Not recorded by any UK source",
+ "provisional": false,
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
 }

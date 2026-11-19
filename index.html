@@ -372,8 +372,7 @@
     const NOT_ANALYZED_COLOR = "#b9bfc4";  // in scope, not yet analyzed
     const OUT_OF_SCOPE_COLOR = "#eceeef";  // not part of the project
 
-    // Scoring rubric shown in "How the score works". Country percentages are still
-    // the current published figures and will be recalculated later.
+    // Scoring rubric shown in "How the score works".
     // To change a country's displayed score, edit `completeness` in data/<iso3>.json
     // (keep score.value in step with it). The map, badge and method box all read
     // that one number via publishedScore().
@@ -384,8 +383,7 @@
         { name: "Perpetrator heritage", points: "37.5", full: "The same standard for perpetrators." },
         { name: "Coverage, rates and access", points: "25", full: "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release." }
       ],
-      cap: "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is.",
-      pendingRescore: "The percentage shown for each country is the current published score. It will be recalculated under this scale in a later update."
+      cap: "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is."
     };
 
 
@@ -407,18 +405,25 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 56,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 57,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies European descent separately. Details below the map."
       },
       GBR: {
-        completeness: 53,   // overwritten by data/gbr.json when it loads
+        completeness: 51,   // overwritten by data/gbr.json when it loads
         note: "England and Wales publish victim ethnicity for child protection and homicide, and offender ethnicity for court convictions, splitting White British from other White groups. Police records of child sexual abuse miss ethnicity for about two-thirds of cases, and no source identifies European descent. Details below the map."
       },
       DEU: {
-        completeness: 49,   // overwritten by data/deu.json when it loads
-        note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, so no source identifies European descent. Details below the map."
+        completeness: 25,   // overwritten by data/deu.json when it loads
+        note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, so the score is capped at 25%. Details below the map."
       },
-      CAN: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
+      CAN: {
+        completeness: 21,   // overwritten by data/can.json when it loads
+        note: "Police report the racialized and Indigenous identity of homicide victims and accused, but no other police-reported crime carries race or Indigenous identity yet. Official categories never separately identify White or European-descent people. Details below the map."
+      },
+      FRA: {
+        completeness: 21,   // overwritten by data/fra.json when it loads
+        note: "France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality. These are proxies: no source identifies European descent. Details below the map."
+      },
       AUS: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       NZL: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       ZAF: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." }
@@ -771,33 +776,64 @@
       if (cross && cross.status === "published" && (cross.groups || []).includes(groupId)) return true;
       return false;
     }
-    function baseGroups(harm, who) {
-      const key = who === "victims" ? "victim_groups" : "perpetrator_groups";
-      const listed = harm.availability && Array.isArray(harm.availability[key]) ? harm.availability[key] : null;
-      if (listed) {
-        const set = new Set(["all", ...listed]);
-        return D.groups.filter(g => set.has(g.id)).map(g => g.id);
+    // Prefer the explicit harms[].availability map when present:
+    //   { victims:[], perpetrators:[], by_measure:{ share:{victims,perpetrators}, rate:{...}, linked:{...} }, linked_pairs:[] }
+    // Older files may use victim_groups / perpetrator_groups / measures. If nothing is listed, derive from the figures.
+    function explicitList(harm, who) {
+      const a = harm.availability;
+      if (!a) return null;
+      const key = who === "victims" ? "victims" : "perpetrators";
+      const old = who === "victims" ? "victim_groups" : "perpetrator_groups";
+      if (Array.isArray(a[key])) return a[key];
+      if (Array.isArray(a[old])) return a[old];
+      return null;
+    }
+    function listedIds(list) {
+      const set = new Set(["all", ...(list || [])]);
+      return D.groups.filter(g => set.has(g.id)).map(g => g.id);
+    }
+    function baseGroups(harm, who, measure) {
+      const a = harm.availability;
+      const m = measure || null;
+      if (m && a && a.by_measure && a.by_measure[m] && Array.isArray(a.by_measure[m][who])) {
+        return listedIds(a.by_measure[m][who]);
       }
+      const listed = explicitList(harm, who);
+      if (listed) return listedIds(listed);
       return D.groups.filter(g => groupHasData(harm, who, g.id)).map(g => g.id);
     }
-    // When the other side is a specific group, only "all" and groups that can be linked in a cross table stay available.
-    function groupsAvailable(harm, who, otherId) {
-      const base = baseGroups(harm, who);
-      if (!otherId || otherId === "all") return base;
+    function pairIsLinked(harm, v, p) {
+      const pairs = harm.availability && Array.isArray(harm.availability.linked_pairs) ? harm.availability.linked_pairs : null;
+      if (pairs && pairs.length) return pairs.some(pair => pair[0] === v && pair[1] === p);
       const cross = harm.cross;
-      const linked = (g) => {
-        if (g === "all") return true;
-        if (!cross || cross.status !== "published" || !cross.matrix) return false;
-        if (who === "perpetrators") return !!(cross.matrix[otherId] && cross.matrix[otherId][g] != null);
-        return !!(cross.matrix[g] && cross.matrix[g][otherId] != null);
-      };
-      return base.filter(linked);
+      return !!(cross && cross.status === "published" && cross.matrix && cross.matrix[v] && cross.matrix[v][p] != null);
+    }
+    // When the other side is a specific group, only "all" and groups that can be linked stay available.
+    function groupsAvailable(harm, who, otherId, measure) {
+      const base = baseGroups(harm, who, measure);
+      if (!otherId || otherId === "all") return base;
+      return base.filter(g => g === "all" || (who === "perpetrators" ? pairIsLinked(harm, otherId, g) : pairIsLinked(harm, g, otherId)));
+    }
+    function measureOpen(harm, measure, v, p) {
+      const a = harm.availability;
+      const bm = a && a.by_measure && a.by_measure[measure];
+      if (bm) {
+        if (v !== "all" && p !== "all") {
+          if (!pairIsLinked(harm, v, p)) return false;
+          // Linked tables are almost always shares; a rate list that includes the pair's groups is also accepted.
+          if (measure === "share") return true;
+          return (bm.victims || []).includes(v) || (bm.perpetrators || []).includes(p);
+        }
+        if (v !== "all") return (bm.victims || []).includes(v);
+        if (p !== "all") return (bm.perpetrators || []).includes(p);
+        return (bm.victims || []).length > 0 || (bm.perpetrators || []).length > 0;
+      }
+      return selectionHasMeasure(harm, measure, v, p);
     }
     function selectionHasMeasure(harm, measure, v, p) {
       if (v !== "all" && p !== "all") {
         if (measure === "rate") return !!(harm.cross && harm.cross.rate && pick(harm.cross.rate, v)); // none today
-        return !!(harm.cross && harm.cross.status === "published" && harm.cross.matrix &&
-          harm.cross.matrix[v] && harm.cross.matrix[v][p] != null);
+        return pairIsLinked(harm, v, p);
       }
       const who = v !== "all" ? "victims" : (p !== "all" ? "perpetrators" : null);
       const group = v !== "all" ? v : (p !== "all" ? p : "all");
@@ -819,8 +855,9 @@
       return false;
     }
     function measuresAvailable(harm, v, p) {
-      const listed = harm.availability && Array.isArray(harm.availability.measures) ? harm.availability.measures : ["share", "rate"];
-      const ok = listed.filter(m => selectionHasMeasure(harm, m, v, p));
+      const a = harm.availability;
+      const candidates = (a && Array.isArray(a.measures)) ? a.measures : ["share", "rate"];
+      const ok = candidates.filter(m => measureOpen(harm, m, v, p));
       return ok.length ? ok : ["share"];
     }
     function nearestAvailable(id, available) {
@@ -878,8 +915,11 @@
       }
       const mAvail = measuresAvailable(harm, ex.victim, ex.perp);
       if (!mAvail.includes(ex.measure)) ex.measure = mAvail.includes("share") ? "share" : mAvail[0];
-      const vAvail = groupsAvailable(harm, "victims", ex.perp);
-      const pAvail = groupsAvailable(harm, "perpetrators", ex.victim);
+      // Tighten groups to those that have figures for the chosen measure.
+      ex.victim = nearestAvailable(ex.victim, groupsAvailable(harm, "victims", ex.perp, ex.measure));
+      ex.perp = nearestAvailable(ex.perp, groupsAvailable(harm, "perpetrators", ex.victim, ex.measure));
+      const vAvail = groupsAvailable(harm, "victims", ex.perp, ex.measure);
+      const pAvail = groupsAvailable(harm, "perpetrators", ex.victim, ex.measure);
       $("sel-victim").innerHTML = D.groups.map(g => optionEl(g, vAvail.includes(g.id))).join("");
       $("sel-perp").innerHTML = D.groups.map(g => optionEl(g, pAvail.includes(g.id))).join("");
       $("sel-harm").value = ex.harm;
@@ -1095,6 +1135,21 @@
     function renderMethod() {
       const sc = D.score || {};
       const value = publishedScore(D);
+      const prev = sc.previous;
+      const proxyText = sc.proxy_note || "";
+      const capBox = proxyText
+        ? `<div class="gold">${esc(proxyText)}</div>`
+        : (sc.cap_applied && sc.uncapped != null
+          ? `<div class="gold"><strong>25% cap applied.</strong> The uncapped total is ${esc(String(sc.uncapped))}%. A country with no real ethnicity data is capped at 25%.</div>`
+          : "");
+      const mentionsOld = /old scale|previous rubric|scored \d+%/.test(proxyText);
+      const hist = (prev && prev.value != null && !mentionsOld)
+        ? `<p class="ex-small">On the previous rubric this country scored ${esc(String(prev.value))}%${prev.band ? ` (${esc(prev.band)})` : ""}.</p>`
+        : "";
+      const totalRows = (sc.cap_applied && sc.uncapped != null)
+        ? `<tr><td>Weighted total (uncapped)</td><td class="num">100%</td><td class="num">${esc(String(sc.uncapped))}</td></tr>` +
+          `<tr><td><strong>Published score (capped at 25%)</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr>`
+        : `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr>`;
       $("method").open = false;
       $("method").innerHTML =
         `<summary>How the ${esc(String(value))}% score works</summary>` +
@@ -1105,12 +1160,11 @@
         SCORE_RUBRIC.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
         `</tbody></table>` +
         `<p>${esc(SCORE_RUBRIC.cap)}</p>` +
-        `<p class="ex-small">${esc(SCORE_RUBRIC.pendingRescore)}</p>` +
-        `<h3>Why ${esc(D.name_in_sentence || D.country)} currently scores ${esc(String(value))}%</h3><p>${esc(sc.why || "")}</p>` +
-        (sc.proxy_note ? `<div class="gold"><strong>Under the previous rubric</strong> (this score has not yet been recalculated): ${esc(sc.proxy_note)}</div>` : "") +
-        (sc.breakdown && sc.breakdown.length ? `<h3>Score by harm (previous rubric)</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
+        `<h3>Why ${esc(D.name_in_sentence || D.country)} scores ${esc(String(value))}%</h3><p>${esc(sc.why || "")}</p>` +
+        capBox + hist +
+        (sc.breakdown && sc.breakdown.length ? `<h3>Score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
-        `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr></tbody></table>` : "") +
+        totalRows + `</tbody></table>` : "") +
         (D.nations ? `<h3>Coverage by nation</h3><table><tbody>` + Object.entries(D.nations).map(([k, t]) =>
           `<tr><td>${esc(({ england_wales: "England and Wales", scotland: "Scotland", northern_ireland: "Northern Ireland" })[k] || k)}</td><td>${esc(t)}</td></tr>`).join("") + `</tbody></table>` : "") +
         `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(D.as_of)}).</p>`;

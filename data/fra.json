@@ -1,0 +1,887 @@
+{
+ "country": "France",
+ "iso_a3": "FRA",
+ "completeness": 21,
+ "provisional": false,
+ "as_of": "2026-11-18",
+ "summary": "France does not collect ethnic statistics. Police data give child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality for all victims together; a government survey gives childhood violence by migration background. There are no national neglect data by origin and nothing for online exploitation.",
+ "short_name": "France",
+ "name_in_sentence": "France",
+ "nations": {
+  "National (SSMSI, SSER, INSEE)": "Police victim and suspect open data by French/foreign nationality since 2016; trafficking report with nationality groups; surveys with migration background.",
+  "Overseas departments": "Included in the SSMSI France totals."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "french",
+   "label": "French citizens (incl. naturalised)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens (all)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "eu",
+   "label": "Other EU citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_other",
+   "label": "Other European (non-EU) citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "africa",
+   "label": "African citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "asia",
+   "label": "Asian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "americas",
+   "label": "Citizens of the Americas",
+   "proxy": "nationality"
+  },
+  {
+   "id": "no_migration",
+   "label": "Neither immigrant nor child of immigrants",
+   "proxy": "migration background"
+  },
+  {
+   "id": "descendant",
+   "label": "Child of immigrant(s)",
+   "proxy": "migration background"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "eu": "foreign",
+  "europe_other": "foreign",
+  "africa": "foreign",
+  "asia": "foreign",
+  "americas": "foreign"
+ },
+ "extra_group_labels": {
+  "unknown": "Unknown nationality"
+ },
+ "unknown_label": "Nationality unknown",
+ "european_title": "Not recorded by any French source",
+ "european_note": "French law and practice exclude ethnic statistics from official data. Sources record nationality (French or foreign, sometimes by continent) or, in surveys, migration background. 'French' includes naturalised citizens of any origin and 'foreign' mixes Europeans and non-Europeans, so European descent cannot be identified for victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's nationality or origin",
+  "perpetrator": "Perpetrator's nationality"
+ },
+ "proxy_note": "France records nationality (French or foreign) or migration background, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual violence against children (police)",
+   "years": "2025",
+   "intro": "Police and gendarmerie recorded 76,167 child victims of sexual violence in 2025, including 25,786 victims of rape or attempted rape. Suspects are published by nationality only for all victims together: 84,937 people were suspected of sexual violence against victims of any age.",
+   "victims": {
+    "status": "published",
+    "source": "ssmsi_v",
+    "scope": "France, police-recorded child victims (under 18) of sexual violence, 2025",
+    "n": 76167,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "french": 95.9,
+     "foreign": 4.1
+    },
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total).",
+    "rate": {
+     "french": 559.4,
+     "foreign": 282.7
+    },
+    "rate_all": 538.1,
+    "rate_label": "child victims per 100,000 children of the same nationality group",
+    "rate_note": "Calculated here: SSMSI counts divided by INSEE 2022 census population by nationality (table NAT1). INSEE publishes under-15 and 15-24 bands, so under-18s are estimated as under-15 plus 3/10 of 15-24. Approximate; census year 2022, crime year 2025.",
+    "rate_all_label": "all children"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssmsi_m",
+    "scope": "France, suspects of sexual violence against victims of all ages, 2025",
+    "n": 84937,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "french": 87.4,
+     "foreign": 12.6
+    },
+    "rate": {
+     "french": 118.8,
+     "foreign": 202.3
+    },
+    "rate_all": 125.3,
+    "rate_label": "suspects per 100,000 residents of the same nationality group (all ages)",
+    "rate_note": "Calculated here with INSEE 2022 census population by nationality (all ages). Crude rates, not adjusted for age or sex: foreign residents are on average younger and more often male.",
+    "rate_all_label": "all residents",
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total). Suspects (mis en cause) in solved cases, not convicted offenders. Includes 21,160 suspects who were themselves minors. Not child-victim-specific."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssmsi_m",
+    "text": "Suspect tables are not split by the victim's age or nationality, so suspects of offences against children cannot be separated and no victim-by-suspect table exists."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Rape and attempted rape, child victims, 2025",
+     "data": {
+      "status": "published",
+      "source": "ssmsi_v",
+      "scope": "France, police-recorded child victims of rape or attempted rape, 2025",
+      "n": 25786,
+      "n_label": "child victims",
+      "unknown_share": null,
+      "share": {
+       "french": 96.0,
+       "foreign": 4.0
+      },
+      "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total).",
+      "rate": {
+       "french": 189.5,
+       "foreign": 94.6
+      },
+      "rate_all": 182.2,
+      "rate_label": "child victims per 100,000 children of the same nationality group",
+      "rate_note": "Calculated here: SSMSI counts divided by INSEE 2022 census population by nationality (table NAT1). INSEE publishes under-15 and 15-24 bands, so under-18s are estimated as under-15 plus 3/10 of 15-24. Approximate; census year 2022, crime year 2025.",
+      "rate_all_label": "all children"
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Rape and attempted rape, suspects (all victims), 2025",
+     "data": {
+      "status": "published",
+      "source": "ssmsi_m",
+      "scope": "France, suspects of rape or attempted rape, all victims, 2025",
+      "n": 30431,
+      "n_label": "suspects",
+      "unknown_share": null,
+      "share": {
+       "french": 86.9,
+       "foreign": 13.1
+      },
+      "rate": {
+       "french": 42.3,
+       "foreign": 75.3
+      },
+      "rate_all": 44.9,
+      "rate_label": "suspects per 100,000 residents of the same nationality group (all ages)",
+      "rate_note": "Calculated here with INSEE 2022 census population by nationality (all ages). Crude rates, not adjusted for age or sex: foreign residents are on average younger and more often male.",
+      "rate_all_label": "all residents",
+      "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total). Suspects (mis en cause) in solved cases, not convicted offenders. "
+     }
+    }
+   ],
+   "extra_sources": [
+    "justice205"
+   ],
+   "rate_sources": [
+    "insee_nat1"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "french",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "french",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "french",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "french",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical violence in the family (police)",
+   "years": "2025 (police); 2021 (survey)",
+   "intro": "Police and gendarmerie recorded 63,059 child victims of physical violence within the family in 2025. Suspects of intra-family violence (202,912) are published only for victims of all ages, so they mostly concern violence between partners.",
+   "victims": {
+    "status": "published",
+    "source": "ssmsi_v",
+    "scope": "France, police-recorded child victims of intra-family physical violence, 2025",
+    "n": 63059,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "french": 95.3,
+     "foreign": 4.7
+    },
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total).",
+    "rate": {
+     "french": 459.8,
+     "foreign": 274.1
+    },
+    "rate_all": 445.5,
+    "rate_label": "child victims per 100,000 children of the same nationality group",
+    "rate_note": "Calculated here: SSMSI counts divided by INSEE 2022 census population by nationality (table NAT1). INSEE publishes under-15 and 15-24 bands, so under-18s are estimated as under-15 plus 3/10 of 15-24. Approximate; census year 2022, crime year 2025.",
+    "rate_all_label": "all children"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssmsi_m",
+    "scope": "France, suspects of intra-family physical violence against victims of all ages, 2025",
+    "n": 202912,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "french": 84.0,
+     "foreign": 16.0
+    },
+    "rate": {
+     "french": 272.8,
+     "foreign": 615.2
+    },
+    "rate_all": 299.5,
+    "rate_label": "suspects per 100,000 residents of the same nationality group (all ages)",
+    "rate_note": "Calculated here with INSEE 2022 census population by nationality (all ages). Crude rates, not adjusted for age or sex: foreign residents are on average younger and more often male.",
+    "rate_all_label": "all residents",
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total). Suspects (mis en cause) in solved cases, not convicted offenders. Mostly partner violence; not child-victim-specific."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssmsi_m",
+    "text": "Suspect tables are not split by the victim's age or nationality, so suspects of offences against children cannot be separated and no victim-by-suspect table exists."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Physical violence by parents before age 15, by migration background (Genese survey, 2021)",
+     "data": {
+      "status": "published",
+      "source": "genese",
+      "scope": "Metropolitan France, people aged 18-74 recalling childhood, 2021",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "descendant": 16.0,
+       "no_migration": 11.0
+      },
+      "rate_all": null,
+      "rate_unit": "%",
+      "rate_label": "of people in the group said their parents were physically violent to them before age 15",
+      "share_note": "Official SSMSI survey. Migration background (lien à la migration), a proxy, not ethnicity. The report gives the two groups shown; no figure for immigrants themselves is given in the text."
+     }
+    }
+   ],
+   "rate_sources": [
+    "insee_nat1"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "french",
+     "foreign",
+     "no_migration",
+     "descendant"
+    ],
+    "perpetrators": [
+     "all",
+     "french",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "french",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "french",
+       "foreign",
+       "no_migration",
+       "descendant"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "France has no national statistics on child neglect by any origin variable. The national child-protection observatory (ONPE) reports that reasons for entering protection are not counted in a homogeneous way nationally.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "onpe",
+    "text": "Child-protection data (ONPE, OLINPE) publish no nationality or origin of children."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "onpe",
+    "text": "No origin is recorded for the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "onpe",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "Police and gendarmerie recorded 95 child homicide victims in 2025 (49 aged under 5) and 425 child victims of attempted homicide.",
+   "victims": {
+    "status": "published",
+    "source": "ssmsi_v",
+    "scope": "France, police-recorded child homicide victims (under 18), 2025",
+    "n": 95,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "french": 86.3,
+     "foreign": 13.7
+    },
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total).",
+    "rate": {
+     "french": 0.6,
+     "foreign": 1.2
+    },
+    "rate_all": 0.7,
+    "rate_label": "child victims per 100,000 children of the same nationality group",
+    "rate_note": "Calculated here: SSMSI counts divided by INSEE 2022 census population by nationality (table NAT1). INSEE publishes under-15 and 15-24 bands, so under-18s are estimated as under-15 plus 3/10 of 15-24. Approximate; census year 2022, crime year 2025. Small numbers (13 foreign child victims), so the foreign rate is unstable from year to year.",
+    "rate_all_label": "all children"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "ssmsi_m",
+    "scope": "France, homicide suspects, all victims, 2025",
+    "n": 1330,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "french": 81.1,
+     "foreign": 18.9
+    },
+    "rate": {
+     "french": 1.7,
+     "foreign": 4.8
+    },
+    "rate_all": 2.0,
+    "rate_label": "suspects per 100,000 residents of the same nationality group (all ages)",
+    "rate_note": "Calculated here with INSEE 2022 census population by nationality (all ages). Crude rates, not adjusted for age or sex: foreign residents are on average younger and more often male.",
+    "rate_all_label": "all residents",
+    "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total). Suspects (mis en cause) in solved cases, not convicted offenders. Not child-victim-specific."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ssmsi_m",
+    "text": "Suspect tables are not split by the victim's age or nationality, so suspects of offences against children cannot be separated and no victim-by-suspect table exists."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Attempted homicide, child victims, 2025",
+     "data": {
+      "status": "published",
+      "source": "ssmsi_v",
+      "scope": "France, police-recorded child victims of attempted homicide, 2025",
+      "n": 425,
+      "n_label": "child victims",
+      "unknown_share": null,
+      "share": {
+       "french": 84.2,
+       "foreign": 15.8
+      },
+      "share_note": "Nationality, not ethnicity: French statistics never record ethnic origin. 'French' includes naturalised citizens; how dual nationals are coded is not documented in the dataset. The dataset publishes no 'unknown nationality' category (French + foreign = total).",
+      "rate": {
+       "french": 2.7,
+       "foreign": 6.1
+      },
+      "rate_all": 3.0,
+      "rate_label": "child victims per 100,000 children of the same nationality group",
+      "rate_note": "Calculated here: SSMSI counts divided by INSEE 2022 census population by nationality (table NAT1). INSEE publishes under-15 and 15-24 bands, so under-18s are estimated as under-15 plus 3/10 of 15-24. Approximate; census year 2022, crime year 2025.",
+      "rate_all_label": "all children"
+     }
+    }
+   ],
+   "rate_sources": [
+    "insee_nat1"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "french",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "french",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "french",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "french",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking and exploitation",
+   "years": "2024",
+   "intro": "Police and gendarmerie recorded 2,127 victims of trafficking or exploitation in 2024, 22.9% of them minors, and 2,106 suspects. Minors were 35.4% of victims of pimping (proxénétisme). Nationality is published for all ages only.",
+   "victims": {
+    "status": "published",
+    "source": "infostat203",
+    "scope": "France, police-recorded victims of trafficking or exploitation, all ages, 2024",
+    "n": 2127,
+    "n_label": "victims, all ages",
+    "unknown_share": null,
+    "share": {
+     "french": 46.0,
+     "foreign": 54.0,
+     "africa": 27.0,
+     "americas": 12.0,
+     "asia": 9.0,
+     "eu": 4.0,
+     "europe_other": 1.0
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Nationality groups as rounded in the report text (Infostat Justice 203, figure 4). Not split by age: about 490 of these victims were minors. Among victims of pimping, 65% were French and 20% from the Americas."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "infostat203",
+    "scope": "France, suspects of trafficking or exploitation, 2024",
+    "n": 2106,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "french": 72.0,
+     "foreign": 28.0,
+     "eu": 5.0,
+     "asia": 6.0
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated.",
+    "share_note": "As rounded in the report text. 74.6% of suspects of pimping were French. Not split by the age of the victim."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "infostat203",
+    "text": "No table links victim and suspect nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "french",
+     "foreign",
+     "eu",
+     "europe_other",
+     "africa",
+     "asia",
+     "americas"
+    ],
+    "perpetrators": [
+     "all",
+     "french",
+     "foreign",
+     "eu",
+     "asia"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "french",
+       "foreign",
+       "eu",
+       "europe_other",
+       "africa",
+       "asia",
+       "americas"
+      ],
+      "perpetrators": [
+       "all",
+       "french",
+       "foreign",
+       "eu",
+       "asia"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "-",
+   "intro": "None of the 18 indicators in the SSMSI victim and suspect datasets covers child sexual abuse material or online exploitation, and no nationality breakdown for these offences was found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "ssmsi_v",
+    "text": "Not published by nationality or any origin variable."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "ssmsi_m",
+    "text": "Not published by nationality or any origin variable."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "ssmsi_m",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 21,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 21.4,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 7,
+    "perpetrator": 5.5,
+    "coverage": 7,
+    "rates": 3.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "SSMSI open data: 76,167 child victims of sexual violence in 2025 by French/foreign nationality; suspects by nationality for all victim ages only. Binary nationality proxy; ethnic statistics are not collected.",
+    "score": 30.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 7.5,
+    "perpetrator": 5,
+    "coverage": 7,
+    "rates": 3.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "63,059 child victims of intra-family physical violence by French/foreign nationality (2025); the official Genese survey gives parental violence by migration background. Suspects only for all victims of intra-family violence.",
+    "score": 30.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 2,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national neglect statistics by any origin variable; the ONPE notes there is no homogeneous national count of reasons for protection.",
+    "score": 3
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 7.5,
+    "perpetrator": 5.5,
+    "coverage": 7,
+    "rates": 3.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "95 child homicide victims in 2025 by French/foreign nationality (child-specific, unlike Germany); suspects by nationality for all ages.",
+    "score": 31.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 5.5,
+    "perpetrator": 5.5,
+    "coverage": 5,
+    "rates": 1.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Trafficking victims (2,127, 23% minors) and suspects (2,106) by nationality group, 2024, all ages only.",
+    "score": 23.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 2,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No nationality or origin published for online child sexual exploitation victims or suspects.",
+    "score": 4
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "France scores 21% on the stricter scale (20-40%). France does not collect ethnic statistics. The police publish child victims of sexual violence, intra-family violence and homicide by French or foreign nationality, and suspects by nationality for all ages, all as a capped proxy. There are no national neglect data by origin and nothing for online exploitation. The 25% cap for countries without ethnicity data would apply, but France is already below it."
+ },
+ "sources": {
+  "ssmsi_v": {
+   "name": "SSMSI: characteristics of victims recorded by police and gendarmerie (open data, 2016-2025)",
+   "publisher": "Service statistique ministériel de la sécurité intérieure (Ministère de l'Intérieur)",
+   "years": "Annual; created 29 Jan 2026 with 2025 data",
+   "records": "Victims of 16 offence indicators by sex, age band, minor/adult and French/foreign nationality.",
+   "limitations": "French vs foreign only; no ethnicity (not collected in France); small cells suppressed; no unknown-nationality category.",
+   "url": "https://www.data.gouv.fr/datasets/principales-caracteristiques-des-victimes-enregistrees-et-des-mis-en-cause-pour-des-infractions-elucidees-par-la-police-et-la-gendarmerie-nationales",
+   "tier": "Official government statistics"
+  },
+  "ssmsi_m": {
+   "name": "SSMSI: characteristics of suspects in solved offences (open data, 2016-2025)",
+   "publisher": "Service statistique ministériel de la sécurité intérieure (Ministère de l'Intérieur)",
+   "years": "Annual; created 29 Jan 2026 with 2025 data",
+   "records": "Suspects (mis en cause) of 17 offence indicators by sex, age band and French/foreign nationality.",
+   "limitations": "French vs foreign only; not split by victim age, so suspects of offences against children cannot be isolated.",
+   "url": "https://www.data.gouv.fr/datasets/principales-caracteristiques-des-victimes-enregistrees-et-des-mis-en-cause-pour-des-infractions-elucidees-par-la-police-et-la-gendarmerie-nationales",
+   "tier": "Official government statistics"
+  },
+  "infostat203": {
+   "name": "Infostat Justice 203: La traite et l’exploitation des êtres humains, état des lieux statistique, édition 2025",
+   "publisher": "SSER (Ministère de la Justice) with SSMSI",
+   "years": "2024 data; Oct 2025",
+   "records": "Trafficking and exploitation victims and suspects by type, age, sex and nationality group; convictions.",
+   "limitations": "Nationality groups for all ages only; figures rounded in the text.",
+   "url": "https://www.justice.gouv.fr/sites/default/files/2025-10/Infostat_Justice_203.pdf",
+   "tier": "Official government statistics"
+  },
+  "genese": {
+   "name": "Panorama des violences en France métropolitaine: enquête Genese 2021",
+   "publisher": "SSMSI",
+   "years": "2021 survey; Nov 2022",
+   "records": "Violence experienced before age 15 (psychological, physical, sexual) by adults aged 18-74, with migration background for parental physical violence.",
+   "limitations": "One-off survey; migration background, not ethnicity; metropolitan France only.",
+   "url": "https://onpe.france-enfance-protegee.fr/wp-content/uploads/2024/06/genese2022.pdf",
+   "tier": "Official government survey"
+  },
+  "onpe": {
+   "name": "Protection de l’enfance et maltraitances: état des lieux 2025 (données chiffrées)",
+   "publisher": "Observatoire national de la protection de l'enfance (ONPE)",
+   "years": "Dec 2025",
+   "records": "Children in protection, reports and types of maltreatment.",
+   "limitations": "No nationality or origin variable anywhere in the report; no homogeneous national count of reasons for protection.",
+   "url": "https://onpe.france-enfance-protegee.fr/wp-content/uploads/2025/12/rapport-donnees_chiffrees-2025_web.pdf",
+   "tier": "Official government statistics"
+  },
+  "justice205": {
+   "name": "Infostat Justice 205: Viol et agression sexuelle sur mineur (2017-2024)",
+   "publisher": "SSER (Ministère de la Justice)",
+   "years": "Nov 2025, corrected Mar 2026",
+   "records": "Prosecutors’ handling and court outcomes for rape and sexual assault of minors.",
+   "limitations": "No nationality or origin of the people prosecuted or of the victims.",
+   "url": "https://www.justice.gouv.fr/documentation/etudes-et-statistiques/viol-agression-sexuelle-mineur-quatre-personnes-mises-cause-dix-sont-mineures",
+   "tier": "Official government statistics"
+  },
+  "insee_nat1": {
+   "name": "INSEE census 2022, table NAT1: population by sex, age and nationality (France entière)",
+   "publisher": "INSEE",
+   "years": "2022 census",
+   "records": "Population by French/foreign nationality and age band.",
+   "limitations": "Age bands under 15 and 15-24 only; used as denominators.",
+   "url": "https://www.insee.fr/fr/statistiques/8582079?geo=FE-1&sommaire=8582090",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

@@ -1,7 +1,8 @@
 {
  "country": "Germany",
  "iso_a3": "DEU",
- "completeness": 49,
+ "completeness": 25,
+ "provisional": false,
  "as_of": "2026-11-18",
  "summary": "Germany records nationality, never ethnicity. Police statistics publish child victims and suspects by nationality for child sexual abuse and child maltreatment, plus official suspect rates for Germans and non-Germans; courts publish German vs foreign convictions; child-protection statistics record whether a child's parent comes from abroad. Because 'German' includes naturalised and dual citizens, these are proxies, and no source can identify European descent.",
  "short_name": "Germany",
@@ -254,7 +255,65 @@
    ],
    "rate_sources": [
     "mikrozensus"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "mh_yes",
+     "mh_no"
+    ],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "zuwanderer"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "mh_yes",
+       "mh_no"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "zuwanderer"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "mh_yes",
+       "mh_no"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
   },
   {
    "id": "physical_abuse",
@@ -352,7 +411,97 @@
    ],
    "rate_sources": [
     "population"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish"
+    ],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish",
+     "zuwanderer"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish",
+       "zuwanderer"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "german",
+       "non_german"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "sexual_abuse",
@@ -480,7 +629,103 @@
    ],
    "rate_sources": [
     "population"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish",
+     "mh_yes",
+     "mh_no"
+    ],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish",
+     "zuwanderer"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish",
+       "mh_yes",
+       "mh_no"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish",
+       "zuwanderer"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "german",
+       "non_german",
+       "mh_yes",
+       "mh_no"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "survey",
@@ -518,13 +763,47 @@
    },
    "extra_sources": [
     "ulm"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "mh_no",
+     "mh_first",
+     "mh_second"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "mh_no",
+       "mh_first",
+       "mh_second"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "homicide",
    "label": "Homicide",
    "years": "2025",
-   "intro": "Police recorded 84 children under 14 killed in completed murder or manslaughter in 2025 (192 including attempts) and 35 completed killings of 14-17-year-olds. Nationality of child victims is not published separately, so the figures below cover all ages.",
+   "intro": "Police recorded 84 children under 14 as victims of completed murder, manslaughter or killing on request in 2025 (192 including attempts) and 35 victims aged 14-17 of completed killings (PKS 2025, victims table 91, key 892500). Nationality of child victims is not published separately, so the figures below cover all ages.",
    "victims": {
     "status": "published",
     "source": "pks_victims",
@@ -594,11 +873,102 @@
     "text": "All ages only, Zuwanderer vs German only: in 2025, 111 German victims (10 completed) of killings with at least one Zuwanderer suspect, 188 Zuwanderer victims of Zuwanderer suspects (25 completed), and 44 Zuwanderer victims of German suspects (6 completed). No child-specific or full nationality table."
    },
    "extra_sources": [
+    "pks_age",
     "destatis_dc"
    ],
    "rate_sources": [
     "population"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish"
+    ],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish",
+     "zuwanderer"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish",
+       "zuwanderer"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "german",
+       "non_german"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   },
   {
    "id": "online",
@@ -670,7 +1040,65 @@
    ],
    "rate_sources": [
     "population"
-   ]
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german",
+     "eu",
+     "europe_other",
+     "turkish",
+     "non_european",
+     "syrian",
+     "afghan",
+     "iraqi",
+     "ukrainian",
+     "romanian",
+     "polish",
+     "zuwanderer"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german",
+       "eu",
+       "europe_other",
+       "turkish",
+       "non_european",
+       "syrian",
+       "afghan",
+       "iraqi",
+       "ukrainian",
+       "romanian",
+       "polish",
+       "zuwanderer"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_recorded"
+    }
+   }
   },
   {
    "id": "trafficking",
@@ -715,77 +1143,233 @@
    },
    "extra_sources": [
     "blb_sex"
-   ]
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "german",
+     "non_german",
+     "romanian"
+    ],
+    "perpetrators": [
+     "all",
+     "german",
+     "non_german"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "german",
+       "non_german",
+       "romanian"
+      ],
+      "perpetrators": [
+       "all",
+       "german",
+       "non_german"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
   }
  ],
  "score": {
-  "value": 49,
-  "band": "40-60%",
-  "previous": "20-40% (provisional orange placeholder)",
+  "value": 25,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 29.4,
+  "cap_applied": true,
+  "cap_rule_applies": true,
+  "previous": {
+   "value": 49,
+   "band": "40-60%",
+   "scale": "v1 (A25 B25 C20 D15 E15)"
+  },
   "breakdown": [
    {
     "harm": "Sexual abuse",
     "weight": 25,
-    "score": 55
+    "victim": 8.6,
+    "perpetrator": 7.0,
+    "coverage": 7.0,
+    "rates": 3.5,
+    "access": 7.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 11,
+     "b": 9,
+     "c": 14,
+     "d": 7,
+     "e": 14,
+     "total": 55
+    },
+    "why": "PKS publishes child victims (9.5% unknown) and suspects (0.4% unknown) by nationality every year, with official suspect rates; courts give German/foreign. Proxy only, so heritage points are capped at a quarter.",
+    "score": 33.1
    },
    {
     "harm": "Physical abuse",
     "weight": 15,
-    "score": 58
+    "victim": 9.4,
+    "perpetrator": 7.0,
+    "coverage": 7.5,
+    "rates": 4.0,
+    "access": 7.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 12,
+     "b": 9,
+     "c": 15,
+     "d": 8,
+     "e": 14,
+     "total": 58
+    },
+    "why": "Police victims and suspects of Misshandlung von Kindern by nationality, plus §8a physical-abuse cases by parental origin with calculable rates. Proxy only.",
+    "score": 34.9
    },
    {
     "harm": "Neglect",
     "weight": 15,
-    "score": 48
+    "victim": 7.8,
+    "perpetrator": 4.7,
+    "coverage": 6.5,
+    "rates": 2.5,
+    "access": 7.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 10,
+     "b": 6,
+     "c": 13,
+     "d": 5,
+     "e": 14,
+     "total": 48
+    },
+    "why": "§8a neglect cases by parental origin (yes/no). Perpetrators only via the narrow §171 police offence by nationality.",
+    "score": 28.5
    },
    {
     "harm": "Homicide",
     "weight": 15,
-    "score": 48
+    "victim": 5.5,
+    "perpetrator": 5.5,
+    "coverage": 6.5,
+    "rates": 3.5,
+    "access": 7.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 7,
+     "b": 7,
+     "c": 13,
+     "d": 7,
+     "e": 14,
+     "total": 48
+    },
+    "why": "84 children under 14 killed (PKS table 91), but nationality published only for all ages; cause-of-death statistics have no origin.",
+    "score": 28.0
    },
    {
     "harm": "Sex trafficking",
     "weight": 15,
-    "score": 39
+    "victim": 7.0,
+    "perpetrator": 5.5,
+    "coverage": 4.5,
+    "rates": 1.0,
+    "access": 6.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 9,
+     "b": 7,
+     "c": 9,
+     "d": 2,
+     "e": 12,
+     "total": 39
+    },
+    "why": "German share and top nationalities in the trafficking report, text only; 12.2% of suspects of unknown nationality.",
+    "score": 24.0
    },
    {
     "harm": "Online exploitation",
     "weight": 15,
-    "score": 44
+    "victim": 1.6,
+    "perpetrator": 7.0,
+    "coverage": 6.5,
+    "rates": 3.0,
+    "access": 7.0,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "old": {
+     "a": 2,
+     "b": 9,
+     "c": 13,
+     "d": 6,
+     "e": 14,
+     "total": 44
+    },
+    "why": "Abuse-material suspects by nationality with official rates; victims are not recorded.",
+    "score": 25.1
    }
   ],
-  "why": "Germany scores 49%, just inside yellow, below the US (56%) and UK (53%). Police statistics publish victims and suspects of child sexual abuse, child maltreatment and homicide by nationality every year, with few unknowns and official suspect rates for Germans and non-Germans, and child-protection data record whether a parent comes from abroad. But nothing records ethnicity: 'German' includes naturalised and dual citizens, so the data are a proxy and score no more than the proxy-only points. Victim-to-suspect links exist only for all ages, and only for the legal-status group 'Zuwanderer'.",
   "components": [
    {
     "name": "Victim heritage",
-    "points": 25,
-    "full": "Published by harm, self-reported or official, with European descent identified separately"
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
-    "points": 25,
-    "full": "Same standard for perpetrators; not perceived, few unknowns"
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
-    "points": 20,
+    "points": 10,
     "full": "Over 90% of the population covered, under 10% unknown"
    },
    {
     "name": "Rates and linkage",
-    "points": 15,
+    "points": 7.5,
     "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
    },
    {
     "name": "Access and timeliness",
-    "points": 15,
+    "points": 7.5,
     "full": "Public, annual, under 2 years old"
    }
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "proxy_note": "The band change rests on giving proxy data the proxy-only points the rubric allows. Germany earns most of its points on coverage, access and official rates, not on heritage. If nationality were given no heritage credit at all, Germany would score about 33%, still orange."
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Germany scores 25% on the stricter scale (20-40%), down from 49%. It records nationality and migration background but never ethnicity, so every heritage point is a proxy capped at a quarter of the heritage marks. Its good coverage, open access and official rates lift its uncapped total to 29%, but a country with no real ethnicity data on either side is capped at 25%.",
+  "proxy_note": "Every German figure is a proxy (nationality or migration background), so heritage earns at most a quarter of its points, and a country with no real ethnicity data is capped at 25%. Germany's uncapped total is about 29%, from its coverage, open access and official rates. On the old scale it scored 49%."
  },
  "sources": {
+  "pks_age": {
+   "name": "Polizeiliche Kriminalstatistik 2025: victims by age and sex (table 91)",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual; 2025 table created 13 Feb 2026",
+   "records": "Victims of each offence key by age band (under 6, 6-13, 14-17, 18-20, 21-59, 60+) and sex, completed and attempted. Key 892500 (murder, manslaughter and killing on request), completed: 47 victims under 6, 37 aged 6-13, 35 aged 14-17.",
+   "limitations": "No nationality in this table; the nationality table (911) has no age.",
+   "url": "https://www.bka.de/SharedDocs/Downloads/DE/Publikationen/PolizeilicheKriminalstatistik/2025/Bund/Opfer/BU-O-01-T91-Opfer_xls.xlsx?__blob=publicationFile&v=2",
+   "tier": "Official government statistics"
+  },
   "pks_victims": {
    "name": "Polizeiliche Kriminalstatistik 2025: victims by nationality (table 911)",
    "publisher": "Bundeskriminalamt (BKA)",
@@ -917,5 +1501,6 @@
   "victim": "Victim's nationality or origin",
   "perpetrator": "Perpetrator's nationality"
  },
- "proxy_note": "Germany records nationality (citizenship) or migration background, never ethnicity. Every group below is a proxy, not ethnicity."
+ "proxy_note": "Germany records nationality (citizenship) or migration background, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
 }

@@ -1,0 +1,1044 @@
+{
+ "country": "Canada",
+ "iso_a3": "CAN",
+ "completeness": 21,
+ "provisional": false,
+ "as_of": "2026-11-18",
+ "summary": "Canada's police report the racialized and Indigenous identity of homicide victims and accused, but no other police-reported crime carries race or Indigenous identity yet (national collection is not expected before 2027). Statistics Canada's racialized categories never separate White people: 'rest of the population' combines White and Indigenous people.",
+ "short_name": "Canada",
+ "name_in_sentence": "Canada",
+ "nations": {
+  "Federal (Statistics Canada)": "Homicide Survey with racialized and Indigenous identity since 2019 (Indigenous since 2014); UCR crime counts without identity; safety surveys by visible-minority status and Indigenous identity.",
+  "Provinces": "Child welfare is provincial; no national official child-welfare statistics by race. The CIS study (non-government) fills part of the gap every five to ten years."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "not_racialized",
+   "label": "Not racialized (White and Indigenous combined)",
+   "lumped": true
+  },
+  {
+   "id": "racialized",
+   "label": "Racialized (visible minority)"
+  },
+  {
+   "id": "black",
+   "label": "Black"
+  },
+  {
+   "id": "south_asian",
+   "label": "South Asian"
+  },
+  {
+   "id": "chinese",
+   "label": "Chinese"
+  },
+  {
+   "id": "filipino",
+   "label": "Filipino"
+  },
+  {
+   "id": "arab",
+   "label": "Arab"
+  },
+  {
+   "id": "latin_american",
+   "label": "Latin American"
+  },
+  {
+   "id": "southeast_asian",
+   "label": "Southeast Asian"
+  },
+  {
+   "id": "west_asian",
+   "label": "West Asian"
+  },
+  {
+   "id": "korean",
+   "label": "Korean"
+  },
+  {
+   "id": "japanese",
+   "label": "Japanese"
+  },
+  {
+   "id": "other_racialized",
+   "label": "Other racialized group"
+  },
+  {
+   "id": "multiple_racialized",
+   "label": "Multiple racialized groups"
+  },
+  {
+   "id": "indigenous",
+   "label": "Indigenous (First Nations, Métis, Inuit)"
+  },
+  {
+   "id": "first_nations",
+   "label": "First Nations"
+  },
+  {
+   "id": "metis",
+   "label": "Métis"
+  },
+  {
+   "id": "inuit",
+   "label": "Inuit"
+  },
+  {
+   "id": "non_indigenous",
+   "label": "Non-Indigenous (White and racialized combined)",
+   "lumped": true
+  },
+  {
+   "id": "white",
+   "label": "White (child-welfare study only)"
+  },
+  {
+   "id": "immigrant",
+   "label": "Immigrants",
+   "proxy": "immigrant status"
+  },
+  {
+   "id": "non_immigrant",
+   "label": "Non-immigrants",
+   "proxy": "immigrant status"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "black": "racialized",
+  "south_asian": "racialized",
+  "chinese": "racialized",
+  "filipino": "racialized",
+  "arab": "racialized",
+  "latin_american": "racialized",
+  "southeast_asian": "racialized",
+  "west_asian": "racialized",
+  "korean": "racialized",
+  "japanese": "racialized",
+  "other_racialized": "racialized",
+  "multiple_racialized": "racialized"
+ },
+ "extra_group_labels": {
+  "unknown": "Identity unknown"
+ },
+ "unknown_label": "Identity unknown",
+ "european_title": "Not separately identified by any Canadian official source",
+ "european_note": "Statistics Canada measures 'racialized' people with the visible-minority standard. Everyone else (White and Indigenous people) is grouped as 'rest of the population' or 'not a visible minority', so White or European-descent people are never separately identified in official crime or survey tables. Only the non-government CIS child-welfare study reports White children separately.",
+ "select_labels": {
+  "victim": "Victim's racialized or Indigenous identity",
+  "perpetrator": "Perpetrator's racialized or Indigenous identity"
+ },
+ "harms": [
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "Police reported 37 homicide victims under 18 in 2025 (15 aged 0-11), and 672 victims of all ages. Child victims are published by Indigenous identity only; racialized identity is published for all ages, for victims and for people accused.",
+   "victims": {
+    "status": "published",
+    "source": "hs_indig",
+    "scope": "Canada, homicide victims aged 0-17, 2025",
+    "n": 37,
+    "n_label": "child victims with known Indigenous identity (of 37)",
+    "unknown_share": 0.0,
+    "share": {
+     "indigenous": 40.5,
+     "non_indigenous": 59.5
+    },
+    "rate": null,
+    "rate_reason": "No child population by Indigenous identity is published with this table; rates are not calculated here.",
+    "share_note": "Indigenous identity only (First Nations, Métis, Inuit). 'Non-Indigenous' combines White and racialized children. Small numbers: over 2023-2025, 57 of 169 child victims with known identity were Indigenous (33.7%). No matching child population by Indigenous identity is used here, so no over-representation ratio is calculated.",
+    "unknown_label": "Indigenous identity unknown"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "hs_accused",
+    "scope": "Canada, persons accused of homicide, all ages and all victims, 2025",
+    "n": 587,
+    "n_label": "accused with known racialized identity (of 590)",
+    "unknown_share": 0.5,
+    "share": {
+     "racialized": 29.1,
+     "not_racialized": 70.9,
+     "south_asian": 5.1,
+     "chinese": 0.7,
+     "black": 15.8,
+     "filipino": 0.3,
+     "arab": 1.5,
+     "latin_american": 1.4,
+     "southeast_asian": 0.9,
+     "west_asian": 1.2,
+     "korean": 0.2,
+     "japanese": 0.0,
+     "other_racialized": 0.3,
+     "multiple_racialized": 1.4
+    },
+    "rate": {
+     "racialized": 1.26,
+     "not_racialized": 1.48,
+     "south_asian": 0.74,
+     "chinese": 0.19,
+     "black": 4.23,
+     "filipino": 0.16,
+     "arab": 0.92,
+     "latin_american": 0.91,
+     "southeast_asian": 0.98,
+     "west_asian": 1.4,
+     "korean": 0.33,
+     "japanese": 0.0,
+     "other_racialized": 0.96,
+     "multiple_racialized": 1.92
+    },
+    "rate_all": 1.42,
+    "rate_label": "persons accused of homicide per 100,000 people of the same group (all ages)",
+    "rate_note": "Official Statistics Canada rates (table 35-10-0207-01). Crude rates, not adjusted for age or sex.",
+    "rate_all_label": "all residents",
+    "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or European-descent people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Covers all victims, not only children. Rough derivation, calculated here across two tables: of the 416 'rest of the population' accused, 185 were Indigenous (table 35-10-0060-01), leaving roughly 231 (about 39%) neither racialized nor Indigenous, i.e. mostly White.",
+    "unknown_label": "Racialized identity unknown"
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "hs_rel",
+    "text": "Statistics Canada links victims' racialized identity only to their relationship with the accused (table 35-10-0208-01), not to the accused person's identity. No victim-by-accused identity table, and none for child victims."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Homicide victims of all ages by racialized identity, 2025",
+     "data": {
+      "status": "published",
+      "source": "hs_victims",
+      "scope": "Canada, all homicide victims, 2025",
+      "n": 660,
+      "n_label": "victims with known racialized identity (of 672)",
+      "unknown_share": 1.8,
+      "share": {
+       "racialized": 28.2,
+       "not_racialized": 71.8,
+       "south_asian": 6.1,
+       "chinese": 2.0,
+       "black": 11.4,
+       "filipino": 1.2,
+       "arab": 2.4,
+       "latin_american": 2.1,
+       "southeast_asian": 1.1,
+       "west_asian": 0.5,
+       "korean": 0.0,
+       "japanese": 0.0,
+       "other_racialized": 0.6,
+       "multiple_racialized": 0.5
+      },
+      "rate": {
+       "racialized": 1.37,
+       "not_racialized": 1.69,
+       "south_asian": 0.98,
+       "chinese": 0.61,
+       "black": 3.42,
+       "filipino": 0.65,
+       "arab": 1.63,
+       "latin_american": 1.6,
+       "southeast_asian": 1.38,
+       "west_asian": 0.6,
+       "korean": 0.0,
+       "japanese": 0.0,
+       "other_racialized": 1.91,
+       "multiple_racialized": 0.72
+      },
+      "rate_all": 1.61,
+      "rate_label": "homicide victims per 100,000 people of the same group (all ages)",
+      "rate_note": "Official Statistics Canada rates (table 35-10-0206-01).",
+      "rate_all_label": "all residents",
+      "unknown_label": "Racialized identity unknown",
+      "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or European-descent people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Not child-specific. Rough derivation, calculated here: of the 474 'rest of the population' victims, 203 were Indigenous (table 35-10-0060-01), leaving roughly 271 neither racialized nor Indigenous."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Youth aged 12-17 accused of homicide, by Indigenous identity, 2025",
+     "data": {
+      "status": "published",
+      "source": "hs_indig",
+      "scope": "Canada, persons aged 12-17 accused of homicide, 2025",
+      "n": 53,
+      "n_label": "accused youth with known Indigenous identity (of 57)",
+      "unknown_share": 7.0,
+      "share": {
+       "indigenous": 47.2,
+       "non_indigenous": 52.8
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated here.",
+      "share_note": "This is the age of the accused, not of the victim. 'Non-Indigenous' combines White and racialized youth.",
+      "unknown_label": "Indigenous identity unknown"
+     }
+    }
+   ],
+   "extra_sources": [
+    "hs_rel"
+   ],
+   "rate_sources": [],
+   "availability": {
+    "victims": [
+     "all",
+     "not_racialized",
+     "racialized",
+     "black",
+     "south_asian",
+     "chinese",
+     "filipino",
+     "arab",
+     "latin_american",
+     "southeast_asian",
+     "west_asian",
+     "korean",
+     "japanese",
+     "other_racialized",
+     "multiple_racialized",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "perpetrators": [
+     "all",
+     "not_racialized",
+     "racialized",
+     "black",
+     "south_asian",
+     "chinese",
+     "filipino",
+     "arab",
+     "latin_american",
+     "southeast_asian",
+     "west_asian",
+     "korean",
+     "japanese",
+     "other_racialized",
+     "multiple_racialized",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "black",
+       "south_asian",
+       "chinese",
+       "filipino",
+       "arab",
+       "latin_american",
+       "southeast_asian",
+       "west_asian",
+       "korean",
+       "japanese",
+       "other_racialized",
+       "multiple_racialized",
+       "indigenous",
+       "non_indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "black",
+       "south_asian",
+       "chinese",
+       "filipino",
+       "arab",
+       "latin_american",
+       "southeast_asian",
+       "west_asian",
+       "korean",
+       "japanese",
+       "other_racialized",
+       "multiple_racialized",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "black",
+       "south_asian",
+       "chinese",
+       "filipino",
+       "arab",
+       "latin_american",
+       "southeast_asian",
+       "west_asian",
+       "korean",
+       "japanese",
+       "other_racialized",
+       "multiple_racialized"
+      ],
+      "perpetrators": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "black",
+       "south_asian",
+       "chinese",
+       "filipino",
+       "arab",
+       "latin_american",
+       "southeast_asian",
+       "west_asian",
+       "korean",
+       "japanese",
+       "other_racialized",
+       "multiple_racialized"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse before age 15 (survey)",
+   "years": "2018 (survey)",
+   "intro": "In Statistics Canada's 2018 safety survey, 7.77% of adults said an adult had sexually abused them before age 15. Police reported 13,576 sexual violations against children in 2025 (table 35-10-0177-01), but police records carry no race or Indigenous identity yet.",
+   "victims": {
+    "status": "published",
+    "source": "sspps",
+    "scope": "Canada, people aged 15+ recalling childhood, 2018",
+    "n": 2401000,
+    "n_label": "adults (weighted estimate) who reported this abuse",
+    "share": null,
+    "rate": {
+     "racialized": 5.24,
+     "not_racialized": 8.52,
+     "first_nations": 17.07,
+     "metis": 13.57,
+     "inuit": 10.72,
+     "non_indigenous": 7.52
+    },
+    "rate_all": 7.77,
+    "rate_unit": "%",
+    "rate_label": "of adults in the group reported this abuse before age 15",
+    "rate_all_label": "all adults",
+    "rate_note": "Survey estimates with confidence intervals in the source table; Inuit estimate is based on few respondents.",
+    "share_note": "Adults aged 15+ in the provinces and territories recalling abuse by an adult before age 15 (Survey of Safety in Public and Private Spaces, 2018). 'Not a visible minority' combines White and Indigenous people; Indigenous groups are also shown separately. Identity is the respondent's own, now. The Indigenous groups are not a sub-total of the other groups."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "No source records the race or Indigenous identity of people who abuse children. Police collection through the UCR Survey began in 2024 but is voluntary; Statistics Canada does not expect national data before 2027."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "No perpetrator identity is recorded, so no victim-by-perpetrator table is possible."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "By immigrant status (proxy), 2018",
+     "data": {
+      "status": "published",
+      "source": "sspps",
+      "scope": "Canada, people aged 15+ recalling childhood, 2018",
+      "n": 2401000,
+      "n_label": "adults (weighted estimate) who reported this abuse",
+      "share": null,
+      "rate": {
+       "immigrant": 5.29,
+       "non_immigrant": 8.64
+      },
+      "rate_all": 7.77,
+      "rate_unit": "%",
+      "rate_label": "of adults in the group reported this abuse before age 15",
+      "rate_all_label": "all adults",
+      "share_note": "Immigrant status is a proxy, not ethnicity, and refers to the respondent now, not as a child."
+     }
+    }
+   ],
+   "extra_sources": [
+    "ucr",
+    "chscy"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "not_racialized",
+     "racialized",
+     "first_nations",
+     "metis",
+     "inuit",
+     "non_indigenous",
+     "immigrant",
+     "non_immigrant"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "first_nations",
+       "metis",
+       "inuit",
+       "non_indigenous",
+       "immigrant",
+       "non_immigrant"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse before age 15 (survey)",
+   "years": "2018 (survey)",
+   "intro": "In Statistics Canada's 2018 safety survey, 23.54% of adults said an adult had physically abused them before age 15. Police-reported assaults on children carry no race or Indigenous identity yet.",
+   "victims": {
+    "status": "published",
+    "source": "sspps",
+    "scope": "Canada, people aged 15+ recalling childhood, 2018",
+    "n": 7271000,
+    "n_label": "adults (weighted estimate) who reported this abuse",
+    "share": null,
+    "rate": {
+     "racialized": 23.09,
+     "not_racialized": 23.8,
+     "first_nations": 31.44,
+     "metis": 34.59,
+     "inuit": 14.94,
+     "non_indigenous": 23.27
+    },
+    "rate_all": 23.54,
+    "rate_unit": "%",
+    "rate_label": "of adults in the group reported this abuse before age 15",
+    "rate_all_label": "all adults",
+    "rate_note": "Survey estimates with confidence intervals in the source table; Inuit estimate is based on few respondents.",
+    "share_note": "Adults aged 15+ in the provinces and territories recalling abuse by an adult before age 15 (Survey of Safety in Public and Private Spaces, 2018). 'Not a visible minority' combines White and Indigenous people; Indigenous groups are also shown separately. Identity is the respondent's own, now. The Indigenous groups are not a sub-total of the other groups."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "No source records the race or Indigenous identity of people who abuse children. Police collection through the UCR Survey began in 2024 but is voluntary; Statistics Canada does not expect national data before 2027."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "No perpetrator identity is recorded, so no victim-by-perpetrator table is possible."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "By immigrant status (proxy), 2018",
+     "data": {
+      "status": "published",
+      "source": "sspps",
+      "scope": "Canada, people aged 15+ recalling childhood, 2018",
+      "n": 7271000,
+      "n_label": "adults (weighted estimate) who reported this abuse",
+      "share": null,
+      "rate": {
+       "immigrant": 23.97,
+       "non_immigrant": 23.49
+      },
+      "rate_all": 23.54,
+      "rate_unit": "%",
+      "rate_label": "of adults in the group reported this abuse before age 15",
+      "rate_all_label": "all adults",
+      "share_note": "Immigrant status is a proxy, not ethnicity, and refers to the respondent now, not as a child."
+     }
+    }
+   ],
+   "extra_sources": [
+    "ucr",
+    "chscy"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "not_racialized",
+     "racialized",
+     "first_nations",
+     "metis",
+     "inuit",
+     "non_indigenous",
+     "immigrant",
+     "non_immigrant"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "not_racialized",
+       "racialized",
+       "first_nations",
+       "metis",
+       "inuit",
+       "non_indigenous",
+       "immigrant",
+       "non_immigrant"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "maltreatment",
+   "label": "Child-welfare investigations (abuse and neglect)",
+   "years": "2019",
+   "intro": "An estimated 299,217 child-maltreatment-related investigations were conducted in Canada in 2019 (Canadian Incidence Study, CIS-2019). Neglect, physical abuse, sexual abuse, emotional maltreatment and exposure to intimate partner violence are all included.",
+   "victims": {
+    "status": "published",
+    "source": "cis2019",
+    "scope": "Canada, maltreatment-related investigations of children aged 15 and under, 2019",
+    "n": 299217,
+    "n_label": "estimated investigations",
+    "unknown_share": null,
+    "share": {
+     "white": 51.3,
+     "latin_american": 2.0
+    },
+    "rate": {
+     "white": 38.17,
+     "latin_american": 76.98
+    },
+    "rate_all": null,
+    "rate_label": "investigations per 1,000 children of the same group aged 15 and under",
+    "rate_note": "Published by the study team (Figure 1 of the CIS-2019 Latin American report). Investigations, not substantiated cases.",
+    "share_note": "Non-government source. 153,372 investigations involved White children and 5,902 Latin American children; this report does not give the other groups. A 2025 analysis of the same study (excluding Quebec) found 115.6 investigations per 1,000 Black children vs 51.0 per 1,000 White children."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "cis2019",
+    "text": "The study records caregivers' characteristics, but no national table of the ethno-racial identity of the alleged perpetrator was found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cis2019",
+    "text": "No published table links child and perpetrator identity."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Black and White children, CIS-2019 excluding Quebec",
+     "data": {
+      "status": "published",
+      "source": "bk2025",
+      "scope": "Canada excluding Quebec, children under 16, 2019",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "black": 115.6,
+       "white": 51.0
+      },
+      "rate_all": null,
+      "rate_label": "investigations per 1,000 children of the same group",
+      "rate_note": "Published in the article (Table 1).",
+      "share_note": "Non-government source (peer-reviewed article)."
+     }
+    }
+   ],
+   "extra_sources": [
+    "chscy"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "black",
+     "latin_american",
+     "white"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "latin_american",
+       "white"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "black",
+       "latin_american",
+       "white"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Human trafficking",
+   "years": "2025",
+   "intro": "Police reported 524 trafficking-in-persons incidents in 2025 (all ages; table 35-10-0177-01). No race or Indigenous identity is recorded for victims or accused.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Police-reported crime data carry no race or Indigenous identity outside the Homicide Survey; national collection is not expected before 2027."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Same as victims: not recorded in police-reported crime data yet."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Neither side is recorded."
+   },
+   "extra_sources": [
+    "ucr"
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "2025",
+   "intro": "Police reported 15,075 incidents of child sexual abuse and exploitation material (5,867 possessing or accessing; 9,208 making or distributing) and 3,556 incidents of luring a child via a computer in 2025 (table 35-10-0177-01).",
+   "victims": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Children shown in material are usually unidentified, and police data carry no race or Indigenous identity yet."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Not recorded in police-reported crime data yet (national collection not before 2027)."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "pirid",
+    "text": "Neither side is recorded."
+   },
+   "extra_sources": [
+    "ucr"
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 21,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 21.4,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 11,
+    "perpetrator": 0,
+    "coverage": 5,
+    "rates": 3,
+    "access": 4,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "Police record 13,576 sexual violations against children (2025) but no race or Indigenous identity until national PIRID data (not before 2027). Only the 2018 SSPPS survey gives childhood sexual abuse by visible-minority status and Indigenous identity; 'not a visible minority' lumps White with Indigenous people, so European descent is not separate.",
+    "score": 23
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 12,
+    "perpetrator": 0,
+    "coverage": 5,
+    "rates": 3,
+    "access": 4,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "SSPPS 2018 childhood physical abuse by visible-minority status and Indigenous identity (lumped), plus the non-government CIS-2019 child-welfare study, which does separate White children. No perpetrator heritage anywhere.",
+    "score": 24
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 6,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 2,
+    "access": 3,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "Only the non-government CIS-2019 (White children separately identified, 2019 data); no official national child-welfare statistics by race.",
+    "score": 14
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 17,
+    "perpetrator": 15,
+    "coverage": 9,
+    "rates": 4.5,
+    "access": 7.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Homicide Survey: victims and accused by police-reported racialized identity (all ages, 1.8% and 0.5% unknown) and Indigenous identity (child victims 0-17). 'Rest of the population' lumps White with Indigenous people, so European descent is not separate; official rates; no victim-by-accused identity table.",
+    "score": 53.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police count trafficking-in-persons incidents (524 in 2025) with no race or Indigenous identity for victims or accused.",
+    "score": 6.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police count child sexual abuse and exploitation material (15,075 incidents) and luring (3,556) in 2025 with no race or Indigenous identity.",
+    "score": 6.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Canada scores 21% on the stricter scale (20-40%). Homicide is well covered: police report the racialized and Indigenous identity of victims and accused, with official rates. For every other harm, the police record no race or Indigenous identity yet (national collection is not expected before 2027), so heritage data come only from a 2018 adult survey and a non-government child-welfare study. Even the homicide data lump White people with Indigenous people as 'rest of the population', so European descent is never separately identified in official data."
+ },
+ "sources": {
+  "hs_indig": {
+   "name": "Homicide Survey: victims and accused by Indigenous identity, age group and gender (table 35-10-0060-01)",
+   "publisher": "Statistics Canada",
+   "years": "Annual, 1974-2025; released 22 Jul 2026",
+   "records": "Homicide victims and accused by police-reported Indigenous identity and age group, including 0-11 and 12-17.",
+   "limitations": "Indigenous vs non-Indigenous only; 'non-Indigenous' combines White and racialized people. Accused are classed by their own age, not the victim's.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510006001",
+   "tier": "Official government statistics"
+  },
+  "hs_victims": {
+   "name": "Homicide Survey: victims by racialized identity group (table 35-10-0206-01)",
+   "publisher": "Statistics Canada",
+   "years": "Annual since 2019; 2025 data released 22 Jul 2026",
+   "records": "Number, share and rate of homicide victims by racialized (visible-minority) group, gender and region.",
+   "limitations": "No age breakdown. 'Rest of the population' lumps White and Indigenous victims. Police-determined identity.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510020601",
+   "tier": "Official government statistics"
+  },
+  "hs_accused": {
+   "name": "Homicide Survey: persons accused by racialized identity group (table 35-10-0207-01)",
+   "publisher": "Statistics Canada",
+   "years": "Annual since 2019; 2025 data released 22 Jul 2026",
+   "records": "Number, share and rate of persons accused of homicide by racialized group, gender and region.",
+   "limitations": "No victim age. 'Rest of the population' lumps White and Indigenous accused.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510020701",
+   "tier": "Official government statistics"
+  },
+  "hs_rel": {
+   "name": "Homicide Survey: victims of solved homicides by racialized identity and accused-victim relationship (table 35-10-0208-01)",
+   "publisher": "Statistics Canada",
+   "years": "Annual since 2019",
+   "records": "Victims by racialized group and relationship to the accused (family, acquaintance, stranger...).",
+   "limitations": "Links victim identity to relationship, not to the accused's identity.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510020801",
+   "tier": "Official government statistics"
+  },
+  "ucr": {
+   "name": "Incident-based crime statistics by detailed violation (table 35-10-0177-01)",
+   "publisher": "Statistics Canada (Uniform Crime Reporting Survey)",
+   "years": "Annual; 2025 released 22 Jul 2026",
+   "records": "Police-reported incidents and rates by violation, including sexual violations against children, child sexual abuse and exploitation material, luring and trafficking in persons.",
+   "limitations": "Counts of incidents; no race or Indigenous identity of victims or accused.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510017701",
+   "tier": "Official government statistics"
+  },
+  "pirid": {
+   "name": "Police-reported Indigenous and Racialized Identity Data (PIRID) through the UCR Survey: progress update",
+   "publisher": "Statistics Canada and Canadian Association of Chiefs of Police",
+   "years": "Collection possible since Feb 2024 (UCR 2.5); update June 2025",
+   "records": "Plan to record the Indigenous and racialized identity of all victims and accused in police-reported crime, by officer perception or self-identification.",
+   "limitations": "Adoption by police services is voluntary; 'national-level data are not expected to be received until at least 2027'.",
+   "url": "https://www.statcan.gc.ca/en/consultation/2021/ucrs/report-progress-update-june-2025",
+   "tier": "Official government statistics"
+  },
+  "sspps": {
+   "name": "Survey of Safety in Public and Private Spaces 2018: self-reported physical and sexual abuse during childhood (table 35-10-0167-01)",
+   "publisher": "Statistics Canada",
+   "years": "2018 survey",
+   "records": "Share of people aged 15+ who were physically or sexually abused by an adult before age 15, by visible-minority status, Indigenous identity, immigrant status and other characteristics.",
+   "limitations": "Retrospective adult recall; 2018 data. 'Not a visible minority' combines White and Indigenous people. No perpetrator identity.",
+   "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510016701",
+   "tier": "Official government survey"
+  },
+  "chscy": {
+   "name": "Canadian Health Survey on Children and Youth 2023: child maltreatment (PHAC analysis, Feb 2026)",
+   "publisher": "Public Health Agency of Canada / Statistics Canada",
+   "years": "2023 survey; article Feb 2026",
+   "records": "Youth aged 15-17 self-reporting maltreatment (physical abuse 22.3%, sexual abuse 5.3%).",
+   "limitations": "Published by gender only; racialized and Indigenous identity exist only in the microdata; excludes reserves and foster care.",
+   "url": "https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-46-no-2-2026/child-maltreatment-canada-prevalence-gender-differences-youth.html",
+   "tier": "Official government survey"
+  },
+  "cis2019": {
+   "name": "Canadian Incidence Study of Reported Child Abuse and Neglect 2019 (CIS-2019): Latin American children report",
+   "publisher": "CIS research team (Toronto Metropolitan University, McGill, University of Toronto); study funded by the Public Health Agency of Canada",
+   "years": "2019 data; report 2023",
+   "records": "Estimated child-welfare investigations and rates per 1,000 children by ethno-racial category of the child.",
+   "limitations": "Non-government academic source. Investigations, not confirmed abuse. Only every five to ten years; this report gives White and Latin American children only.",
+   "url": "https://doi.org/10.32920/24649341.v1",
+   "tier": "Non-government source"
+  },
+  "bk2025": {
+   "name": "Boatswain-Kyte et al. (2025), Racial disparities in child welfare: Black and White children in Canada, Child Abuse & Neglect 169",
+   "publisher": "Peer-reviewed journal (Elsevier)",
+   "years": "CIS-2019 data; published 2025",
+   "records": "Investigation and placement rates for Black and White children.",
+   "limitations": "Non-government academic source; excludes Quebec.",
+   "url": "https://doi.org/10.1016/j.chiabu.2025.107728",
+   "tier": "Non-government source"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
