@@ -1,0 +1,504 @@
+{
+ "country": "Poland",
+ "iso_a3": "POL",
+ "completeness": 8,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Poland publishes counts of crimes against children from police and court statistics, but no nationality or origin of victims or suspects for any child harm. The only origin data are trafficking victims by citizenship.",
+ "short_name": "Poland",
+ "name_in_sentence": "Poland",
+ "nations": {
+  "National (Police, Justice Ministry, Interior Ministry)": "Police crime statistics compiled by IWS; annual trafficking report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "polish",
+   "label": "Polish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Citizenship unknown",
+ "european_title": "Not recorded by any Polish source",
+ "european_note": "Polish official statistics on child harm record no ethnic origin, and citizenship is published only for trafficking victims. 'Foreign' mixes Europeans (for example Ukrainians) and non-Europeans, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Perpetrator's citizenship"
+ },
+ "proxy_note": "Poland records citizenship for trafficking victims only, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children (police)",
+   "years": "2024",
+   "intro": "Police recorded 2,959 child victims of sexual offences in 2024 (art. 197-205 of the Criminal Code), including 425 victims of rape and 1,334 of sexual intercourse with a child under 15. No nationality or origin of victims or suspects is published. A parliamentary answer reported to give the foreign share of suspects could not be opened (the Sejm site blocks automated access), so it is not used.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Police and court statistics on child victims publish no nationality or origin."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Suspect and conviction statistics for these offences publish no nationality or origin of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Abuse in the family (art. 207)",
+   "years": "2024",
+   "intro": "Police recorded 4,216 child victims of abuse (znęcanie się, art. 207) in 2024, with no nationality or origin of victims or suspects.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Police and court statistics on child victims publish no nationality or origin."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Suspect and conviction statistics for these offences publish no nationality or origin of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "No national statistics on child neglect by any origin variable were found. The police figure for offences against the family (32,582 child victims in 2024) is mostly non-payment of child support (28,064).",
+   "victims": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Police and court statistics on child victims publish no nationality or origin."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Suspect and conviction statistics for these offences publish no nationality or origin of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2024",
+   "intro": "Police recorded 43 child victims of homicide (art. 148) in 2024. Court data compiled by the Justice Ministry institute (IWS) give 18 child deaths in 2024 cases, 9 of them homicides. No nationality or origin is published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Police and court statistics on child victims publish no nationality or origin."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Suspect and conviction statistics for these offences publish no nationality or origin of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "Prosecutors recorded 316 victims of human trafficking in 2024, 4 of them minors; police identified 23 presumed victims, 5 of them minors. Citizenship is published for all ages and forms of trafficking together (223 of the 316 were victims of forced labour).",
+   "victims": {
+    "status": "published",
+    "source": "mswia_hl24",
+    "scope": "Poland, victims in prosecutors' trafficking proceedings, all ages, 2024",
+    "n": 316,
+    "n_label": "victims, all ages",
+    "unknown_share": null,
+    "share": {
+     "polish": 22.8,
+     "foreign": 77.2
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Colombian citizens (103) were the largest group, then Polish (72), Ukrainian and Venezuelan. Foreign = 316 minus 72 Polish, calculated here. Most were victims of forced labour. Citizenship, not ethnicity: Polish statistics never record ethnic origin. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "mswia_hl24",
+    "text": "No citizenship of suspects or convicted people is published. The report gives recruiters' citizenship as described by victims supported by KCIK, a support centre run by the NGO La Strada (Colombian 75, Polish 24); these are not official suspect statistics."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mswia_hl24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Presumed victims identified by the police, 2024",
+     "data": {
+      "status": "published",
+      "source": "mswia_hl24",
+      "scope": "Poland, presumed trafficking victims identified by the police, all ages, 2024",
+      "n": 23,
+      "n_label": "presumed victims (5 minors)",
+      "unknown_share": null,
+      "share": {
+       "polish": 39.1,
+       "foreign": 60.9
+      },
+      "rate": null,
+      "rate_reason": "Too few cases for rates.",
+      "share_note": "5 were victims of sexual exploitation, 15 of forced labour. Citizenship, not ethnicity: Polish statistics never record ethnic origin. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "polish",
+     "foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "polish",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "-",
+   "intro": "No national statistics on online child sexual exploitation by any origin variable were found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Police and court statistics on child victims publish no nationality or origin."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Suspect and conviction statistics for these offences publish no nationality or origin of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "iws",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 8,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police data compiled by the Justice Ministry's research institute (IWS) give 2,959 child victims of sexual offences in 2024 with no nationality. A parliamentary answer reported to give the foreign share of suspects could not be opened (site blocks automated access), so it is not used.",
+    "score": 8.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "IWS gives 4,216 child victims of abuse (art. 207) in 2024 with no nationality of victims or suspects.",
+    "score": 8.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 2,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national neglect statistics by any origin variable were found.",
+    "score": 3
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "IWS gives 43 child victims of homicide recorded by police in 2024, with no nationality.",
+    "score": 8.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 4,
+    "perpetrator": 1,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's 2024 trafficking report gives victims in prosecutors' proceedings by citizenship (316, 4 minors; 72 Polish, 103 Colombian) and police-identified victims (9 Polish, 14 foreign). The only perpetrator data are recruiters' citizenship from the KCIK support centre, run by the NGO La Strada.",
+    "score": 14
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national statistics on online child sexual exploitation by any origin variable were found.",
+    "score": 4
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Poland scores 8% on the stricter scale (0-20%). Police and Justice Ministry statistics on crimes against children give no nationality or origin of victims or suspects for any harm. The only origin data are trafficking victims by citizenship and recruiters' citizenship from an NGO-run centre."
+ },
+ "sources": {
+  "iws": {
+   "name": "Statystyczny obraz przestępczości na szkodę małoletnich w latach 2013-2024",
+   "publisher": "Instytut Wymiaru Sprawiedliwości (Ministry of Justice research institute), from police and court statistics",
+   "years": "2013-2024; Sep 2025",
+   "records": "Child victims recorded by the police by offence; court cases and child deaths.",
+   "limitations": "No nationality or origin of victims or perpetrators.",
+   "url": "https://iws.gov.pl/wp-content/uploads/2025/09/Pawel-Ostaszewski-Karolina-Bloch_Statystyczny-obraz-przestepczosci.pdf",
+   "tier": "Official government statistics"
+  },
+  "mswia_hl24": {
+   "name": "Raport Handel ludźmi 2024",
+   "publisher": "Ministerstwo Spraw Wewnętrznych i Administracji (Departament Porządku Publicznego), with prosecutor, police and KCIK data",
+   "years": "2024",
+   "records": "Trafficking victims by citizenship (prosecutors, police); KCIK beneficiaries and recruiters' citizenship.",
+   "limitations": "Citizenship for all ages and forms; recruiter data come from KCIK, run by the NGO La Strada with ministry funding, and are not official suspect statistics.",
+   "url": "https://www.gov.pl/attachment/d432b8f8-3103-4f87-9451-1fc5a9e334e3",
+   "tier": "Official government statistics"
+  },
+  "sejm8570": {
+   "name": "Odpowiedź na interpelację nr 8570 (Sejm)",
+   "publisher": "Sejm RP / Ministry answer",
+   "years": "2025",
+   "records": "Reported to give foreign shares of suspects of sexual offences.",
+   "limitations": "Could not be opened: the Sejm site blocks automated access (Incapsula). Not used for any figure.",
+   "url": "https://sejm.gov.pl/Sejm10.nsf/InterpelacjaTresc.xsp?key=DFQJ66",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

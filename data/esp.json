@@ -1,0 +1,728 @@
+{
+ "country": "Spain",
+ "iso_a3": "ESP",
+ "completeness": 21,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences and victims of online sexual offences by nationality and continent, and people detained or investigated by nationality for all victims. Family maltreatment, neglect and homicide have little or no victim nationality, and trafficking nationality is published only as a ranking.",
+ "short_name": "Spain",
+ "name_in_sentence": "Spain",
+ "nations": {
+  "National (Interior Ministry, Ministry of Youth and Children)": "Police crime statistics (SEC) and the annual sexual-offences report; child-maltreatment register RUMI.",
+  "Regions": "Regional figures exist; only national totals are used here."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "spanish",
+   "label": "Spanish citizens (incl. naturalised)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens (all)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_other",
+   "label": "Other European citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "africa",
+   "label": "African citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "americas",
+   "label": "Citizens of the Americas",
+   "proxy": "nationality"
+  },
+  {
+   "id": "asia",
+   "label": "Asian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "europe_other": "foreign",
+  "africa": "foreign",
+  "americas": "foreign",
+  "asia": "foreign"
+ },
+ "extra_group_labels": {},
+ "unknown_label": "Nationality unknown",
+ "european_title": "Not recorded by any Spanish source",
+ "european_note": "Spanish official statistics record nationality (Spanish or foreign, sometimes by continent), never ethnic origin. 'Spanish' includes naturalised citizens of any origin, and 'other European citizens' are foreign nationals from Europe, so European descent cannot be identified for victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's nationality",
+  "perpetrator": "Perpetrator's nationality"
+ },
+ "proxy_note": "Spain records nationality (Spanish or foreign, sometimes by continent), never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children (police)",
+   "years": "2024 (report); 2025 (portal)",
+   "intro": "Police recorded 9,393 victimizations of children in sexual offences in 2024 (4,196 aged 0-13), with the victim's nationality and continent. Detentions and investigations (14,375 in 2024; 14,784 in 2025) are published by nationality only for victims of all ages.",
+   "victims": {
+    "status": "published",
+    "source": "onvios24",
+    "scope": "Spain, police-recorded victimizations of children under 18 in sexual offences, 2024",
+    "n": 9393,
+    "n_label": "child victimizations",
+    "unknown_share": null,
+    "share": {
+     "spanish": 83.1,
+     "foreign": 16.9,
+     "africa": 2.1,
+     "americas": 8.7,
+     "asia": 0.5,
+     "europe_other": 4.7
+    },
+    "rate": null,
+    "rate_reason": "No rates by nationality are published, and population by nationality and age was not added for this review.",
+    "share_note": "Interior Ministry report, child victims by nationality. Continent shares are of all child victimizations; 79 foreign victims had an unknown country and 1 was from Oceania, so continents do not add up to the foreign total. Victimizations, not unique children. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "onvios24",
+    "scope": "Spain, people detained or investigated for sexual offences, victims of all ages, 2024",
+    "n": 14375,
+    "n_label": "people detained or investigated",
+    "unknown_share": null,
+    "share": {
+     "spanish": 60.8,
+     "foreign": 39.2,
+     "africa": 12.8,
+     "americas": 16.1,
+     "asia": 2.3,
+     "europe_other": 7.8
+    },
+    "rate": null,
+    "rate_reason": "No rates by nationality are published.",
+    "share_note": "Includes 1,206 people aged 14-17. Most frequent foreign nationalities: Moroccan (1,100), Colombian (676), Romanian (327). 25 had an unknown country and 4 were from Oceania. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sec",
+    "text": "Detainee tables are not split by the victim's age or nationality, so no victim-by-perpetrator table exists."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Detentions and investigations for sexual offences (all victims), 2025",
+     "data": {
+      "status": "published",
+      "source": "sec",
+      "scope": "Spain, detentions and investigations for sexual offences, victims of all ages, 2025",
+      "n": 14784,
+      "n_label": "detentions and investigations",
+      "unknown_share": null,
+      "share": {
+       "spanish": 58.6,
+       "foreign": 41.4
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+      "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+     }
+    }
+   ],
+   "extra_sources": [
+    "sec"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "spanish",
+     "foreign",
+     "europe_other",
+     "africa",
+     "americas",
+     "asia"
+    ],
+    "perpetrators": [
+     "all",
+     "spanish",
+     "foreign",
+     "europe_other",
+     "africa",
+     "americas",
+     "asia"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "spanish",
+       "foreign",
+       "europe_other",
+       "africa",
+       "americas",
+       "asia"
+      ],
+      "perpetrators": [
+       "all",
+       "spanish",
+       "foreign",
+       "europe_other",
+       "africa",
+       "americas",
+       "asia"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Maltreatment in the family",
+   "years": "2024 (RUMI); 2025 (portal)",
+   "intro": "Police recorded 7,427 victims under 18 of family maltreatment in 2025, with no nationality. The national child-maltreatment register (RUMI) received 28,550 notifications in 2024, split Spanish or foreign for all types of maltreatment together.",
+   "victims": {
+    "status": "published",
+    "source": "rumi",
+    "scope": "Spain, child-maltreatment notifications to RUMI, all types, 2024",
+    "n": 28550,
+    "n_label": "notifications",
+    "unknown_share": null,
+    "share": {
+     "spanish": 61.3,
+     "foreign": 38.7
+    },
+    "rate": null,
+    "rate_reason": "No rates by nationality are published.",
+    "share_note": "All types of maltreatment combined (physical abuse was 8,428 of 46,549 types recorded). Data quality is poor: the Balearic Islands report 0 Spanish and 5,428 foreign children, Catalonia 2,847 foreign of 3,555, and Aragón, Galicia and Melilla sent no data, so the foreign share is almost certainly overstated. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sec",
+    "scope": "Spain, detentions and investigations for family maltreatment, victims of all ages, 2025",
+    "n": 86393,
+    "n_label": "detentions and investigations",
+    "unknown_share": null,
+    "share": {
+     "spanish": 62.2,
+     "foreign": 37.8
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+    "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Mostly violence between partners and adults. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sec",
+    "text": "Detainee tables are not split by the victim's age or nationality, so no victim-by-perpetrator table exists."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Habitual family maltreatment (all victims), 2025",
+     "data": {
+      "status": "published",
+      "source": "sec",
+      "scope": "Spain, detentions and investigations for habitual family maltreatment, victims of all ages, 2025",
+      "n": 12507,
+      "n_label": "detentions and investigations",
+      "unknown_share": null,
+      "share": {
+       "spanish": 67.8,
+       "foreign": 32.2
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+      "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "spanish",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "spanish",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "spanish",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "spanish",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "2024",
+   "intro": "Neglect was the most frequent type in the national child-maltreatment register (19,699 of 46,549 types recorded in 2024). Nationality is published only for all notifications together.",
+   "victims": {
+    "status": "not_published",
+    "source": "rumi",
+    "text": "RUMI gives nationality for all 28,550 notifications (61.3% Spanish, 38.7% foreign, with serious regional coding problems), not for neglect separately."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "rumi",
+    "text": "No origin is recorded for the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "rumi",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "Police recorded 17 victims under 18 of completed homicide or murder in 2025 (72 including attempts), with no nationality. Detentions and investigations for completed homicide (501) are split Spanish or foreign for all victims.",
+   "victims": {
+    "status": "not_published",
+    "source": "sec",
+    "text": "Victims are published by age and sex only, not by nationality."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sec",
+    "scope": "Spain, detentions and investigations for completed homicide or murder, victims of all ages, 2025",
+    "n": 501,
+    "n_label": "detentions and investigations",
+    "unknown_share": null,
+    "share": {
+     "spanish": 69.7,
+     "foreign": 30.3
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+    "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sec",
+    "text": "Detainee tables are not split by the victim's age or nationality, so no victim-by-perpetrator table exists."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Homicide and murder including attempts (all victims), 2025",
+     "data": {
+      "status": "published",
+      "source": "sec",
+      "scope": "Spain, detentions and investigations for homicide or murder including attempts, victims of all ages, 2025",
+      "n": 1805,
+      "n_label": "detentions and investigations",
+      "unknown_share": null,
+      "share": {
+       "spanish": 63.5,
+       "foreign": 36.5
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+      "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "spanish",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "spanish",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Sexual trafficking and exploitation",
+   "years": "2024",
+   "intro": "Police recorded 256 victims of trafficking for sexual exploitation (5 minors) and 376 of sexual exploitation (11 minors) in 2024, and detained 300 and 225 people. The government summary gives nationality only as a ranked list.",
+   "victims": {
+    "status": "not_published",
+    "source": "citco24",
+    "text": "Only a ranking is published: trafficking victims were mostly Colombian, Venezuelan and Paraguayan; exploitation victims Colombian, Spanish and Venezuelan. Country counts appear in a CITCO table seen only on a third-party host that could not be opened, so they are not used."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "citco24",
+    "text": "Only a ranking is published: detainees were mostly Spanish, then Colombian and Venezuelan (trafficking) or Colombian and Paraguayan (exploitation)."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "citco24",
+    "text": "No table links victim and detainee nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online sexual offences",
+   "years": "2024 (report); 2025 (portal)",
+   "intro": "Police recorded 1,292 victimizations in online sexual offences in 2024, 84% of them of minors, with nationality and continent. Detentions and investigations for child-pornography offences (710 in 2025) are split Spanish or foreign.",
+   "victims": {
+    "status": "published",
+    "source": "onvios24",
+    "scope": "Spain, police-recorded victimizations in online sexual offences, all ages (84% minors), 2024",
+    "n": 1292,
+    "n_label": "victimizations, all ages",
+    "unknown_share": null,
+    "share": {
+     "spanish": 88.7,
+     "foreign": 11.3,
+     "africa": 1.2,
+     "americas": 5.9,
+     "asia": 0.2,
+     "europe_other": 3.1
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; no rates published.",
+    "share_note": "Nationality is not split by age, but 1,088 of the 1,292 victimizations were of children. The report's table prints 143 foreign victims, but its own rows add up to 146 (122 female, 23 male, 1 unknown), so 146 is used. 12 foreign victims had an unknown country. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sec",
+    "scope": "Spain, detentions and investigations for child-pornography offences, victims of all ages, 2025",
+    "n": 710,
+    "n_label": "detentions and investigations",
+    "unknown_share": null,
+    "share": {
+     "spanish": 86.8,
+     "foreign": 13.2
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated: the table is not split by the victim's age.",
+    "share_note": "SEC counts detentions and investigations (a person can be counted more than once), not convictions. Spanish = total minus foreign. Not child-victim-specific. Detentions and investigations for corruption of minors: 243 (50 foreign). Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "sec",
+    "text": "Detainee tables are not split by the victim's age or nationality, so no victim-by-perpetrator table exists."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "spanish",
+     "foreign",
+     "europe_other",
+     "africa",
+     "americas",
+     "asia"
+    ],
+    "perpetrators": [
+     "all",
+     "spanish",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "spanish",
+       "foreign",
+       "europe_other",
+       "africa",
+       "americas",
+       "asia"
+      ],
+      "perpetrators": [
+       "all",
+       "spanish",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 21,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 21.4,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 8.5,
+    "perpetrator": 6,
+    "coverage": 7,
+    "rates": 1.5,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's 2024 sexual-offences report gives 9,393 child victimizations by nationality, by age band, with foreign victims by continent (Europe outside Spain separate). Detained or investigated people are given by nationality and continent, but only for all victims (14,375). No rates published.",
+    "score": 30.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 4,
+    "perpetrator": 4.5,
+    "coverage": 5,
+    "rates": 0.5,
+    "access": 6.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Police victim tables give child victims of family maltreatment by age only, with no nationality. The child-protection register RUMI (28,550 notifications in 2024) gives Spanish/foreign for all types combined, with clear regional coding problems. Detained or investigated for family maltreatment by Spanish/foreign status, all victims (SEC 2025).",
+    "score": 20.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 3.5,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Neglect is the largest RUMI maltreatment type (19,699 of 46,549 types recorded in 2024); RUMI nationality is published only for all notifications combined. No data on the people responsible.",
+    "score": 13.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 4.5,
+    "coverage": 5,
+    "rates": 0.5,
+    "access": 7,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Police victim tables give child homicide victims by age only (17 victims of completed homicide under 18 in 2025, 72 including attempts). People detained or investigated for homicide are split Spanish/foreign for all victims.",
+    "score": 17.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 3,
+    "perpetrator": 3,
+    "coverage": 5,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "CITCO's 2024 executive summary gives 632 victims of sexual trafficking and exploitation (16 minors) and 525 detainees, but nationality only as a ranked list (Colombia, Venezuela, Paraguay; detainees Spain first). Country counts appear in a CITCO table seen only on a third-party host that could not be opened, so they are not used.",
+    "score": 18
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 6,
+    "perpetrator": 4.5,
+    "coverage": 5,
+    "rates": 0.5,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The 2024 sexual-offences report gives 1,292 cyber-sexual victimizations by nationality and continent (84% minors, not split by age). People detained or investigated for child-pornography offences split Spanish/foreign (SEC 2025).",
+    "score": 23.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Spain scores 21% on the stricter scale (20-40%). The Interior Ministry publishes child victims of sexual offences by nationality and continent, people detained or investigated by nationality, and online sexual-crime victims by nationality, but nationality is a proxy and perpetrators are not split by the victim's age. Physical abuse, neglect and homicide have little or no victim origin data, and trafficking nationality is published only as a ranking."
+ },
+ "sources": {
+  "onvios24": {
+   "name": "Informe sobre delitos contra la libertad sexual en España 2024",
+   "publisher": "Ministerio del Interior (Gabinete de Coordinación y Estudios, ONVIOS)",
+   "years": "2024; 11 Dec 2025",
+   "records": "Victimizations by age, sex and nationality (continent and country); people detained or investigated by age and nationality; online sexual offences.",
+   "limitations": "Perpetrators not split by the victim age; no rates by nationality. The PDF blocks automated downloads (Cloudflare); it was read through an ordinary public fetch.",
+   "url": "https://www.interior.gob.es/opencms/pdf/archivos-y-documentacion/documentacion-y-publicaciones/publicaciones-descargables/publicaciones-periodicas/informe-sobre-delitos-contra-la-libertad-e-indemnidad-sexual-en-Espana/Informe_DelitosSexuales24_v111225_ACC_OK.pdf",
+   "tier": "Official government statistics"
+  },
+  "sec": {
+   "name": "Portal Estadístico de Criminalidad (SEC): detenciones e investigados por tipología penal y nacionalidad; victimizaciones por edad",
+   "publisher": "Ministerio del Interior (Sistema Estadístico de Criminalidad)",
+   "years": "2010-2025",
+   "records": "Detentions and investigations by offence (all, foreign); victimizations by offence, age band and sex.",
+   "limitations": "Victims have no nationality; detentions are not unique people and not split by victim age.",
+   "url": "https://estadisticasdecriminalidad.ses.mir.es/sec/jaxiPx/Datos.htm?path=/Datos3/l0/&file=03005.px",
+   "tier": "Official government statistics"
+  },
+  "rumi": {
+   "name": "Boletín de datos estadísticos de medidas de protección a la infancia y la adolescencia, n.º 27 (datos 2024), incl. RUMI",
+   "publisher": "Ministerio de Juventud e Infancia (Observatorio de la Infancia)",
+   "years": "2024",
+   "records": "Child-maltreatment notifications (RUMI) by type, region and Spanish/foreign nationality.",
+   "limitations": "Nationality only for all types combined; obvious regional coding errors; three regions missing.",
+   "url": "https://www.observatoriodelainfancia.es/oia/esp/descargar.aspx?id=9108&tipo=documento",
+   "tier": "Official government statistics"
+  },
+  "citco24": {
+   "name": "Resumen ejecutivo anual 2024 sobre la trata y la explotación de seres humanos en España",
+   "publisher": "Ministerio del Interior (CITCO)",
+   "years": "2024; Apr 2025",
+   "records": "Victims and detainees of trafficking and sexual exploitation, minors, most frequent nationalities.",
+   "limitations": "Nationality only as a ranked list; detailed country tables not opened.",
+   "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/Documents/2025/160425-resumen-ejecutivo-anual.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

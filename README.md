@@ -95,6 +95,18 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   Police counts of crimes against children carry no population group for victims or suspects. Death notifications record
   population group, including White, but child homicide by population group is not in the main release.
 
+### Europe batch 1: Italy, Spain, Poland, Netherlands, Sweden
+- `data/ita.json`, `esp.json`, `pol.json`, `nld.json` and `swe.json` are built by `build_<iso>.py` (kept with each
+  country's research, outside this repo) and scored by `score_v2_batch4.py` on the stricter scale. None of the five
+  records ethnicity, so the 25% cap rule applies to all of them: Italy 22%, Spain 21%, Netherlands 15%, Sweden 13%,
+  Poland 8%.
+- Italy and Spain publish child victims and authors by citizenship or nationality (Spain also by continent); the
+  Netherlands publishes suspects by nationality and by country of birth with rates, but nothing for child victims;
+  Sweden has a school survey and a one-off suspect study by migration background; Poland publishes origin only for
+  trafficking victims.
+- A share block may have `n: null` when the source publishes percentages without the count (ISTAT female child
+  victims, Interior Ministry author chart); the page then omits the number.
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
@@ -122,7 +134,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
   capped at 25%. Current published scores: United States 57%, United Kingdom 51%, Germany 25% (capped from an
   uncapped 29.4%; 49% on the previous rubric), Canada 21%, France 21%, Australia 20%, New Zealand 44%,
-  South Africa 6%. To change a country's displayed score, edit
+  South Africa 6%, Italy 22%, Spain 21%, Netherlands 15%, Sweden 13%, Poland 8%. To change a country's displayed score, edit
   `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
   that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.

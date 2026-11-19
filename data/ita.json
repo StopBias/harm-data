@@ -1,0 +1,757 @@
+{
+ "country": "Italy",
+ "iso_a3": "ITA",
+ "completeness": 22,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Italy does not collect ethnic statistics. ISTAT and the Interior Ministry split girls who are victims of sexual violence and maltreatment, child homicide victims and the authors of offences against children by Italian or foreign citizenship, and a national survey gives maltreated children by citizenship with rates. Boys, online abuse and neglect have little or no citizenship data.",
+ "short_name": "Italy",
+ "name_in_sentence": "Italy",
+ "nations": {
+  "National (ISTAT, Interior Ministry)": "Police data (SDI-SSD) on victims and authors by Italian/foreign citizenship; homicide and trafficking reports.",
+  "Regions": "Regional tables exist in the ISTAT workbook; only national figures are used here."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "italian",
+   "label": "Italian citizens (incl. naturalised)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Citizenship unknown",
+ "european_title": "Not recorded by any Italian source",
+ "european_note": "Italian official statistics record citizenship (Italian or foreign, sometimes the country), never ethnic origin. 'Italian' includes naturalised citizens of any origin and 'foreign' mixes Europeans and non-Europeans, so European descent cannot be identified for victims or perpetrators.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Perpetrator's citizenship"
+ },
+ "proxy_note": "Italy records citizenship (Italian or foreign), never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual violence against children (police)",
+   "years": "2023; authors H1 2024",
+   "intro": "Police recorded 912 child victims of sexual violence in 2023, plus 645 of aggravated sexual violence and 444 of sexual acts with a minor (Interior Ministry). ISTAT splits female victims by age and Italian or foreign citizenship; boys are not split. The Interior Ministry gives the citizenship of known authors of all offences against children combined.",
+   "victims": {
+    "status": "published",
+    "source": "istat_sdi",
+    "scope": "Italy, police-recorded female victims of sexual violence aged 17 or under, 2023",
+    "n": null,
+    "n_label": "girls aged 17 or under recorded as victims of sexual violence",
+    "unknown_share": null,
+    "share": {
+     "italian": 80.0,
+     "foreign": 20.0
+    },
+    "rate": null,
+    "rate_reason": "ISTAT publishes percentages only; the number of girl victims is not given, so rates cannot be calculated.",
+    "share_note": "Calculated here from ISTAT Tavola 1: Italian girls were 21.6% and foreign girls 5.4% of all female victims of the 6,231 sexual-violence crimes reported in 2023, so Italian girls were 80.0% of girl victims. Boys are not split by citizenship. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "sac24",
+    "scope": "Italy, known authors of offences against children, January-June 2024",
+    "n": 23116,
+    "n_label": "reports (segnalazioni) against known authors of offences against children, first half of 2024",
+    "unknown_share": null,
+    "share": {
+     "italian": 63.0,
+     "foreign": 37.0
+    },
+    "rate": null,
+    "rate_reason": "No rates published; the counts behind the chart are not given.",
+    "share_note": "Interior Ministry (Servizio Analisi Criminale) chart combining all offences against children in the report: maltreatment, sexual violence, sexual acts with a minor, abandonment, child pornography, grooming and others. Among foreign authors, Romanian (12%), Moroccan (11%) and Albanian (5%) citizens were most frequent; the report does not say whether these are shares of foreign authors or of all authors. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "istat_sdi",
+    "text": "Author tables are not split by the victim's age or citizenship, so no victim-by-author table exists."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "People reported or arrested for sexual violence (all victims), 2023",
+     "data": {
+      "status": "published",
+      "source": "istat_sdi",
+      "scope": "Italy, people reported or arrested for sexual violence, victims of all ages, 2023",
+      "n": 5837,
+      "n_label": "people reported or arrested",
+      "unknown_share": null,
+      "share": {
+       "italian": 56.7,
+       "foreign": 43.3
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated: the table is not split by the age of the victim.",
+      "share_note": "Reports (segnalazioni) against suspects, not convictions. Includes 346 suspects who were themselves minors. Not child-victim-specific. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+     }
+    }
+   ],
+   "extra_sources": [
+    "indifesa"
+   ],
+   "availability": {
+    "victims": [
+     "italian",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "italian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Maltreatment in the family",
+   "years": "2023",
+   "intro": "Police recorded 2,843 child victims of family maltreatment in 2023 (Interior Ministry). A national survey of social services counted 113,892 children in care for maltreatment at the end of 2023, 13 per 1,000 resident children, with citizenship and rates.",
+   "victims": {
+    "status": "published",
+    "source": "garante_iii",
+    "scope": "Italy, children in social-services care for maltreatment, 31 Dec 2023 (sample survey of municipalities, national estimate)",
+    "n": 113892,
+    "n_label": "children in care for maltreatment",
+    "unknown_share": null,
+    "share": {
+     "italian": 72.0,
+     "foreign": 28.0
+    },
+    "rate": {
+     "italian": 10,
+     "foreign": 31
+    },
+    "rate_all": 13,
+    "rate_label": "children in care for maltreatment per 1,000 resident children of the same citizenship",
+    "rate_all_label": "all resident children",
+    "rate_note": "Rates as published in the survey (per 1,000, rounded).",
+    "share_note": "III national survey by the Garante per l'infanzia e l'adolescenza (a government authority) with CISMAI and Terre des Hommes (NGOs). Covers all forms of maltreatment, of which neglect is 37%; unaccompanied foreign minors are excluded. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "istat_sdi",
+    "scope": "Italy, people reported or arrested for family maltreatment, victims of all ages, 2023",
+    "n": 18921,
+    "n_label": "people reported or arrested",
+    "unknown_share": null,
+    "share": {
+     "italian": 71.9,
+     "foreign": 28.1
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated: the table is not split by the age of the victim.",
+    "share_note": "Reports (segnalazioni) against suspects, not convictions. Includes 193 suspects who were themselves minors. Not child-victim-specific. Mostly partner violence. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "istat_sdi",
+    "text": "Author tables are not split by the victim's age or citizenship, so no victim-by-author table exists."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Girls who were victims of family maltreatment (police), 2023",
+     "data": {
+      "status": "published",
+      "source": "istat_sdi",
+      "scope": "Italy, police-recorded female victims of family maltreatment aged 17 or under, 2023",
+      "n": null,
+      "n_label": "girls aged 17 or under recorded as victims of family maltreatment",
+      "unknown_share": null,
+      "share": {
+       "italian": 79.9,
+       "foreign": 20.1
+      },
+      "rate": null,
+      "rate_reason": "ISTAT publishes percentages only; the number of girl victims is not given, so rates cannot be calculated.",
+      "share_note": "Calculated here from ISTAT Tavola 1: Italian girls were 5.7% and foreign girls 1.4% of all female victims of the 25,260 family-maltreatment crimes reported in 2023, so Italian girls were 79.9% of girl victims. Boys are not split by citizenship. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Known authors of offences against children (combined), H1 2024",
+     "data": {
+      "status": "published",
+      "source": "sac24",
+      "scope": "Italy, known authors of offences against children, January-June 2024",
+      "n": 23116,
+      "n_label": "reports (segnalazioni) against known authors of offences against children, first half of 2024",
+      "unknown_share": null,
+      "share": {
+       "italian": 63.0,
+       "foreign": 37.0
+      },
+      "rate": null,
+      "rate_reason": "No rates published; the counts behind the chart are not given.",
+      "share_note": "Interior Ministry (Servizio Analisi Criminale) chart combining all offences against children in the report: maltreatment, sexual violence, sexual acts with a minor, abandonment, child pornography, grooming and others. Among foreign authors, Romanian (12%), Moroccan (11%) and Albanian (5%) citizens were most frequent; the report does not say whether these are shares of foreign authors or of all authors. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "italian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect and abandonment",
+   "years": "2023",
+   "intro": "Police recorded 568 child victims of abandonment in 2023, with no citizenship. Neglect is 37% of cases in the national maltreatment survey, which gives citizenship only for all forms of maltreatment combined.",
+   "victims": {
+    "status": "not_published",
+    "source": "garante_iii",
+    "text": "The national survey gives citizenship for all maltreated children (72% Italian, 28% foreign; 10 vs 31 per 1,000), not for neglect separately. Police abandonment figures have no citizenship."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "sac24",
+    "text": "Only the Interior Ministry's combined chart of authors of offences against children (63% Italian), which includes abandonment, is published."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "garante_iii",
+    "text": "Neither side is published for neglect."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2024",
+   "intro": "ISTAT counted 21 homicides of minors in 2024, all with a known author. Killings of children under 14 were committed by family members, in 10 of 13 cases by women, and in all but two cases by Italian citizens. 17 minors were charged with homicide, 5 of them foreign.",
+   "victims": {
+    "status": "published",
+    "source": "istat_omi",
+    "scope": "Italy, homicide victims aged under 18 with a known author, 2024",
+    "n": 21,
+    "n_label": "child homicide victims",
+    "unknown_share": null,
+    "share": {
+     "italian": 90.5,
+     "foreign": 9.5
+    },
+    "rate": null,
+    "rate_reason": "Too few cases for stable rates by citizenship. ISTAT gives 0.19 per 100,000 for children under 14 overall.",
+    "share_note": "ISTAT figure 4: victims aged 0-13 were 12 Italian and 1 foreign; aged 14-17, 7 Italian and 1 foreign. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "istat_omi",
+    "scope": "Italy, authors of homicides of children under 14, 2024",
+    "n": 13,
+    "n_label": "homicides of children under 14",
+    "unknown_share": null,
+    "share": {
+     "italian": 84.6,
+     "foreign": 15.4
+    },
+    "rate": null,
+    "rate_reason": "Too few cases for rates.",
+    "share_note": "From the report text: the authors were 'almost always (except in two cases) Italian citizens'. The citizenship of authors of the 8 homicides of 14-17-year-olds is not given. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "istat_omi",
+    "text": "Victim and author citizenship appear together only in the text for under-14s; no victim-by-author table."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Homicide victims of all ages, 2024",
+     "data": {
+      "status": "published",
+      "source": "istat_omi",
+      "scope": "Italy, homicide victims of all ages, 2024",
+      "n": 327,
+      "n_label": "homicide victims, all ages",
+      "unknown_share": null,
+      "share": {
+       "italian": 74.3,
+       "foreign": 25.7
+      },
+      "rate": {
+       "italian": 0.45,
+       "foreign": 1.62
+      },
+      "rate_all": null,
+      "rate_label": "homicide victims per 100,000 residents of the same citizenship (all ages)",
+      "rate_note": "Rates as published by ISTAT.",
+      "share_note": "Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "People reported or arrested for completed intentional homicide (all victims), 2023",
+     "data": {
+      "status": "published",
+      "source": "istat_sdi",
+      "scope": "Italy, people reported or arrested for completed intentional homicide, victims of all ages, 2023",
+      "n": 828,
+      "n_label": "people reported or arrested",
+      "unknown_share": null,
+      "share": {
+       "italian": 73.1,
+       "foreign": 26.9
+      },
+      "rate": null,
+      "rate_reason": "Rates not calculated: the table is not split by the age of the victim.",
+      "share_note": "Reports (segnalazioni) against suspects, not convictions. Includes 25 suspects who were themselves minors. Not child-victim-specific. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "italian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking and exploitation",
+   "years": "2025",
+   "intro": "Italy's anti-trafficking protection system (SIRIT) registered 3,520 people in 2025, 174 of them minors; 1,964 were formally identified as victims. Police reported 2,428 people for trafficking-related offences, 150 of them minors. Citizenship is published for all ages and forms of trafficking together.",
+   "victims": {
+    "status": "published",
+    "source": "istat_tratta",
+    "scope": "Italy, people registered in the anti-trafficking protection system (SIRIT), all ages, 2025",
+    "n": 3520,
+    "n_label": "people registered, all ages",
+    "unknown_share": null,
+    "share": {
+     "italian": 0.1,
+     "foreign": 99.9
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Only 5 Italian citizens were registered in 2025. Most frequent citizenships: Nigeria 641 (18.2%), Bangladesh 544, Morocco 368, Tunisia 292, India 153, Egypt 143. Includes labour exploitation. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "istat_tratta",
+    "scope": "Italy, people reported, arrested or charged for trafficking-related offences, 2025",
+    "n": 2428,
+    "n_label": "people reported",
+    "unknown_share": null,
+    "share": {
+     "italian": 46.5,
+     "foreign": 53.5
+    },
+    "rate": null,
+    "rate_reason": "Rates not calculated.",
+    "share_note": "Italian citizens were 1,130 (46.5%), followed by Chinese citizens (246). 64.9% of authors acted for sexual exploitation. Not split by the age of the victim. Citizenship, not ethnicity: Italian statistics never record ethnic origin. 'Italian' includes naturalised citizens."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "istat_tratta",
+    "text": "No table links victim and author citizenship."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "italian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "italian",
+       "foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "italian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "2023",
+   "intro": "Police recorded 171 child victims of child pornography offences and 605 of online grooming (adescamento) in 2023, with no citizenship. These offences are included in the Interior Ministry's combined chart of authors of offences against children.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sac24",
+    "text": "Victims of child pornography and grooming are published by age and sex only."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "sac24",
+    "text": "No separate citizenship for authors of online offences; only the combined chart for all offences against children (63% Italian, 37% foreign)."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sac24",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 22,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 22.1,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 5.5,
+    "perpetrator": 6.5,
+    "coverage": 6,
+    "rates": 1.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "ISTAT (SDI/SSD police data) gives female victims of sexual violence aged 17 or under split Italian/foreign as shares of all female victims (2023); boys are not split. The Interior Ministry's Servizio Analisi Criminale gives known authors of child-abuse offences as 63% Italian / 37% foreign (H1 2024, one chart for all child-abuse offences combined); ISTAT gives people reported for sexual violence by nationality for all victims. No rates published.",
+    "score": 25.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 6.5,
+    "perpetrator": 5.5,
+    "coverage": 6,
+    "rates": 3,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "ISTAT gives female victims of family maltreatment aged 17 or under by Italian/foreign (2023). The III national maltreatment survey (Garante per l'Infanzia with CISMAI and Terre des Hommes) gives 113,892 children in social-services care for maltreatment by citizenship with rates per 1,000 (10 Italian vs 31 foreign, end 2023). Authors of maltreatment by nationality for all victims (ISTAT); the Interior chart covers child-abuse authors combined.",
+    "score": 27.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 4,
+    "perpetrator": 1.5,
+    "coverage": 4,
+    "rates": 2,
+    "access": 4,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Neglect is 37% of the maltreatment cases in the III national survey, which gives citizenship and rates for all maltreated children but not by type; police counts of child abandonment (568 in 2023) have no nationality. Only the combined Interior author chart covers abandonment.",
+    "score": 15.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 7.5,
+    "perpetrator": 6,
+    "coverage": 7,
+    "rates": 4,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "ISTAT's 2024 homicide report gives child homicide victims by citizenship and the citizenship of the known author (ages 0-13 and 14-17), all-age victim rates by citizenship (0.45 Italian vs 1.62 foreign per 100,000) and minors charged by citizenship. Small numbers (21 child victims).",
+    "score": 32.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 5.5,
+    "perpetrator": 5.5,
+    "coverage": 5,
+    "rates": 1.5,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "ISTAT's 2021-2025 trafficking report gives people in the SIRIT protection system by citizenship (3,520 in 2025, 174 minors; 5 Italian) and people reported for trafficking-related offences by citizenship (46.5% Italian). Not split by age for nationality; all forms of trafficking.",
+    "score": 24.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 2,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Polizia Postale publishes case counts only. Child-pornography and grooming offences are inside the Interior's combined child-abuse author chart, which is the only nationality information.",
+    "score": 6
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Italy scores 22% on the stricter scale (20-40%). Official sources split child victims and authors only by Italian or foreign citizenship: ISTAT for girls who are victims of sexual violence and maltreatment and for child homicide victims and their killers, the Interior Ministry for authors of child-abuse offences, and a national maltreatment survey with rates. Citizenship is a proxy, so the no-ethnicity cap applies; boys, online abuse and most perpetrator tables are not split by the child's age."
+ },
+ "sources": {
+  "sac24": {
+   "name": "Minorenni vittime di abusi (dati 2022-2023 e primo semestre 2024)",
+   "publisher": "Ministero dell'Interno, Direzione Centrale della Polizia Criminale, Servizio Analisi Criminale",
+   "years": "Nov 2024",
+   "records": "Child victims of 13 offences by sex and age band; known authors by sex, age and citizenship (combined).",
+   "limitations": "Author citizenship only as one chart for all offences combined; no victim citizenship; 2024 data unconsolidated. No 2025 edition was found.",
+   "url": "https://www.interno.gov.it/sites/default/files/2024-12/elaborato_minorenni_vittime_di_abusi.pdf",
+   "tier": "Official government statistics"
+  },
+  "istat_sdi": {
+   "name": "Denunce SDI-SSD 2014-2023: delitti, vittime di sesso femminile e autori per nazionalità (Tavole 1 e 2)",
+   "publisher": "ISTAT, from Ministero dell'Interno SDI-SSD",
+   "years": "2014-2023; Dec 2025",
+   "records": "Female victims of gender-based crimes by age (minor/adult) and Italian/foreign citizenship; people reported or arrested by sex, age and citizenship.",
+   "limitations": "Female victims as percentages only, with no counts; boys not split; authors not split by victim age.",
+   "url": "https://www.istat.it/wp-content/uploads/2025/12/denunce-fonte-SDI-SSD-2014-2023.xlsx",
+   "tier": "Official government statistics"
+  },
+  "istat_omi": {
+   "name": "Le vittime di omicidio, anno 2024",
+   "publisher": "ISTAT (data from the Interior Ministry DCPC)",
+   "years": "2024; 25 Nov 2025",
+   "records": "Homicide victims by sex, age and citizenship with rates; child homicides by victim citizenship and author age; minors charged.",
+   "limitations": "Small numbers; author citizenship for child victims only in the text.",
+   "url": "https://www.istat.it/wp-content/uploads/2025/11/Report_Le-vittime-di-omicidio_Anno-2024.pdf",
+   "tier": "Official government statistics"
+  },
+  "garante_iii": {
+   "name": "III Indagine nazionale sul maltrattamento dei bambini e degli adolescenti in Italia",
+   "publisher": "Autorità Garante per l'infanzia e l'adolescenza with CISMAI and Terre des Hommes (NGOs); ISTAT methodological support",
+   "years": "Data at 31 Dec 2023; Nov 2025",
+   "records": "Children in social-services care for maltreatment by type, age, sex and citizenship, with rates per 1,000.",
+   "limitations": "Sample survey of municipalities; citizenship not by maltreatment type; unaccompanied minors excluded; not annual.",
+   "url": "https://www.garanteinfanzia.org/wp-content/uploads/2025/11/iii-indagine-maltrattamento.pdf",
+   "tier": "Government authority survey with NGO partners"
+  },
+  "istat_tratta": {
+   "name": "La tratta di esseri umani in Italia, anni 2021-2025",
+   "publisher": "ISTAT (SIRIT data from the Dipartimento Pari Opportunità; police and court data)",
+   "years": "2021-2025; 29 Oct 2026",
+   "records": "People in the anti-trafficking protection system by citizenship, sex and age; authors reported and convicted by citizenship.",
+   "limitations": "Citizenship not split by age; includes labour exploitation.",
+   "url": "https://www.istat.it/wp-content/uploads/2026/10/tratta-esseri-umani-in-Italia-Anni-2021-2025.pdf",
+   "tier": "Official government statistics"
+  },
+  "indifesa": {
+   "name": "Dossier Indifesa 2026",
+   "publisher": "Terre des Hommes Italia (NGO), using Interior Ministry data",
+   "years": "2025 data",
+   "records": "Child victims of offences in 2025 (7,272 in total).",
+   "limitations": "Non-government compilation; no citizenship. Used only for context, not for any figure in the explorer.",
+   "url": "https://terredeshommes.it/indifesa/",
+   "tier": "Non-government source"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

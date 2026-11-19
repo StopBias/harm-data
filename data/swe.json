@@ -1,0 +1,680 @@
+{
+ "country": "Sweden",
+ "iso_a3": "SWE",
+ "completeness": 13,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Sweden does not record ethnicity. Brå's school survey gives grade-9 pupils' experience of sexual offences and assault by migration background, and a one-off 2021 study gave suspects of sexual offences, assault and lethal violence by background with rates for 2015-2018. No regular statistics give the background of child victims or offenders; neglect, trafficking and online abuse have none.",
+ "short_name": "Sweden",
+ "name_in_sentence": "Sweden",
+ "nations": {
+  "National (Brå, Police)": "Crime statistics, school survey and one-off background studies by Brå; Police trafficking situation reports."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "swe_parents",
+   "label": "Born in Sweden, both parents born in Sweden",
+   "proxy": "migration background"
+  },
+  {
+   "id": "one_parent",
+   "label": "Born in Sweden, one parent born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "sub_swe1",
+   "label": "Born in Sweden, at least one parent born in Sweden (survey group)",
+   "proxy": "migration background"
+  },
+  {
+   "id": "two_parents",
+   "label": "Born in Sweden, both parents born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "born_abroad",
+   "label": "Born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Background unknown",
+ "european_title": "Not recorded by any Swedish source",
+ "european_note": "Swedish statistics describe background by country of birth of the person and their parents, never ethnicity. 'Born in Sweden to two Swedish-born parents' is the closest group to European descent but is a birth-country proxy: it includes people of any descent, and people born abroad include Europeans and non-Europeans.",
+ "select_labels": {
+  "victim": "Victim's background",
+  "perpetrator": "Perpetrator's background"
+ },
+ "proxy_note": "Sweden records background by country of birth of the person and parents, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences",
+   "years": "2025 (survey); 2015-2018 (suspects)",
+   "intro": "No regular statistics give the background of child victims or offenders. Brå's school survey shows how many grade-9 pupils were subjected to sexual offences by migration background (2025), and a one-off Brå study gave people suspected of sexual offences in 2015-2018 by background, for victims of all ages.",
+   "victims": {
+    "status": "published",
+    "source": "sub2025",
+    "scope": "Sweden, grade-9 pupils (about age 15), national school survey, 2025",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "sub_swe1": 10.8,
+     "two_parents": 10.3,
+     "born_abroad": 11.5
+    },
+    "rate_all": 10.9,
+    "rate_unit": "%",
+    "rate_label": "of grade-9 pupils in the group said they had been subjected to a sexual offence in the past 12 months",
+    "rate_all_label": "all grade-9 pupils",
+    "share_note": "Official Brå survey (Skolundersökningen om brott), every two years. Self-reported; age 15 only. Brå combines pupils born in Sweden with one or two Swedish-born parents into one group. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bra2021",
+    "scope": "Sweden, people suspected of sexual offences at least once in 2015-2018, victims of all ages",
+    "n": 18439,
+    "n_label": "people suspected",
+    "unknown_share": null,
+    "share": {
+     "swe_parents": 49.3,
+     "one_parent": 7.5,
+     "two_parents": 6.4,
+     "born_abroad": 36.8
+    },
+    "rate": {
+     "swe_parents": 1.56,
+     "one_parent": 2.75,
+     "two_parents": 4.53,
+     "born_abroad": 4.58
+    },
+    "rate_all": 2.29,
+    "rate_label": "people suspected per 1,000 people of the same group (aged 15+ at end of 2014)",
+    "rate_all_label": "everyone in the study population",
+    "rate_note": "Rates as published by Brå (unstandardised). Brå also publishes rates standardised for age, sex and socio-economic factors, which narrow but do not close the differences.",
+    "share_note": "One-off Brå study (report 2021:9); suspects, not convicted people; not split by the victim's age. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bra2021",
+    "text": "No source links the background of victims and suspects."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Rape, including attempts (all victims), 2015-2018",
+     "data": {
+      "status": "published",
+      "source": "bra2021",
+      "scope": "Sweden, people suspected of rape including attempts at least once in 2015-2018, victims of all ages",
+      "n": 8278,
+      "n_label": "people suspected",
+      "unknown_share": null,
+      "share": {
+       "swe_parents": 47.2,
+       "one_parent": 8.0,
+       "two_parents": 6.7,
+       "born_abroad": 38.1
+      },
+      "rate": {
+       "swe_parents": 0.67,
+       "one_parent": 1.32,
+       "two_parents": 2.12,
+       "born_abroad": 2.13
+      },
+      "rate_all": 1.03,
+      "rate_label": "people suspected per 1,000 people of the same group (aged 15+ at end of 2014)",
+      "rate_all_label": "everyone in the study population",
+      "rate_note": "Rates as published by Brå (unstandardised). Brå also publishes rates standardised for age, sex and socio-economic factors, which narrow but do not close the differences.",
+      "share_note": "One-off Brå study (report 2021:9); suspects, not convicted people; not split by the victim's age. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "sub_swe1",
+     "two_parents",
+     "born_abroad"
+    ],
+    "perpetrators": [
+     "all",
+     "swe_parents",
+     "one_parent",
+     "two_parents",
+     "born_abroad"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "sub_swe1",
+       "two_parents",
+       "born_abroad"
+      ],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault",
+   "years": "2025 (survey); 2015-2018 (suspects)",
+   "intro": "Brå's school survey gives grade-9 pupils subjected to assault by migration background (2025). The one-off 2021 study gives people suspected of assault in 2015-2018 by background, for victims of all ages.",
+   "victims": {
+    "status": "published",
+    "source": "sub2025",
+    "scope": "Sweden, grade-9 pupils (about age 15), national school survey, 2025",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "sub_swe1": 18.8,
+     "two_parents": 19.4,
+     "born_abroad": 21.7
+    },
+    "rate_all": 19.3,
+    "rate_unit": "%",
+    "rate_label": "of grade-9 pupils in the group said they had been subjected to assault in the past 12 months",
+    "rate_all_label": "all grade-9 pupils",
+    "share_note": "Official Brå survey (Skolundersökningen om brott), every two years. Self-reported; age 15 only. Brå combines pupils born in Sweden with one or two Swedish-born parents into one group. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bra2021",
+    "scope": "Sweden, people suspected of assault (excluding lethal) at least once in 2015-2018, victims of all ages",
+    "n": 99608,
+    "n_label": "people suspected",
+    "unknown_share": null,
+    "share": {
+     "swe_parents": 45.4,
+     "one_parent": 8.2,
+     "two_parents": 8.0,
+     "born_abroad": 38.4
+    },
+    "rate": {
+     "swe_parents": 7.77,
+     "one_parent": 16.35,
+     "two_parents": 30.5,
+     "born_abroad": 25.8
+    },
+    "rate_all": 12.35,
+    "rate_label": "people suspected per 1,000 people of the same group (aged 15+ at end of 2014)",
+    "rate_all_label": "everyone in the study population",
+    "rate_note": "Rates as published by Brå (unstandardised). Brå also publishes rates standardised for age, sex and socio-economic factors, which narrow but do not close the differences.",
+    "share_note": "One-off Brå study (report 2021:9); suspects, not convicted people; not split by the victim's age. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bra2021",
+    "text": "No source links the background of victims and suspects."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "sub_swe1",
+     "two_parents",
+     "born_abroad"
+    ],
+    "perpetrators": [
+     "all",
+     "swe_parents",
+     "one_parent",
+     "two_parents",
+     "born_abroad"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "sub_swe1",
+       "two_parents",
+       "born_abroad"
+      ],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "No national statistics on child neglect by any origin variable were found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sub2025",
+    "text": "No national statistics give the background of neglected children."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "sub2025",
+    "text": "No origin is recorded for the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sub2025",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Lethal violence",
+   "years": "2025 (victims); 2015-2018 (suspects)",
+   "intro": "Brå confirmed 84 cases of lethal violence in 2025, 4 of them against children under 18 (all boys); its statistics give no background of victims. The one-off 2021 study gives people suspected of lethal violence, including attempts, by background for victims of all ages.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "bra_dv25",
+    "text": "Confirmed lethal violence statistics give victims by age, sex and relationship, not background."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bra2021",
+    "scope": "Sweden, people suspected of lethal violence including attempted murder or manslaughter at least once in 2015-2018, victims of all ages",
+    "n": 3079,
+    "n_label": "people suspected",
+    "unknown_share": null,
+    "share": {
+     "swe_parents": 36.7,
+     "one_parent": 9.4,
+     "two_parents": 18.0,
+     "born_abroad": 36.0
+    },
+    "rate": {
+     "swe_parents": 0.19,
+     "one_parent": 0.58,
+     "two_parents": 2.12,
+     "born_abroad": 0.75
+    },
+    "rate_all": 0.38,
+    "rate_label": "people suspected per 1,000 people of the same group (aged 15+ at end of 2014)",
+    "rate_all_label": "everyone in the study population",
+    "rate_note": "Rates as published by Brå (unstandardised). Brå also publishes rates standardised for age, sex and socio-economic factors, which narrow but do not close the differences.",
+    "share_note": "One-off Brå study (report 2021:9); suspects, not convicted people; not split by the victim's age. Background by country of birth of the person and their parents (inrikes/utrikes bakgrund), a proxy, not ethnicity: Swedish statistics never record ethnicity, and 'born in Sweden to two Swedish-born parents' includes people of any descent. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bra2021",
+    "text": "No source links the background of victims and suspects."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "swe_parents",
+     "one_parent",
+     "two_parents",
+     "born_abroad"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "swe_parents",
+       "one_parent",
+       "two_parents",
+       "born_abroad"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Human trafficking",
+   "years": "2024",
+   "intro": "Regional coordinators identified 430 people subjected to human trafficking in 2024, 22 of them children (Police situation report 26). Origin countries are given only as a ranked list, with no counts and no suspect nationality.",
+   "victims": {
+    "status": "not_published",
+    "source": "polisen_lr26",
+    "text": "Only a ranked list of origin countries is published: Thailand, Ukraine, Romania, Sweden, the Philippines, Colombia, Venezuela, Nigeria and others, for all forms of trafficking, exploitation and prostitution."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "polisen_lr26",
+    "text": "No nationality or background of suspects is published."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "polisen_lr26",
+    "text": "Neither side is published with figures."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "-",
+   "intro": "No statistics on online child sexual exploitation by any origin variable were found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sub2025",
+    "text": "Not published by any origin variable."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "bra2021",
+    "text": "Not published by any origin variable."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "bra2021",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 13,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 13.0,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 5,
+    "perpetrator": 5,
+    "coverage": 5,
+    "rates": 3,
+    "access": 3,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Brå's 2025 school survey gives the share of grade-9 pupils subjected to a sexual offence by migration background (10.8% Swedish-born with a Swedish-born parent, 11.5% foreign-born); age 15 only. Brå's one-off 2021 study gives suspects of sexual offences 2015-2018 by background with rates per 1,000, all victims.",
+    "score": 21
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 5,
+    "perpetrator": 5,
+    "coverage": 5,
+    "rates": 3,
+    "access": 3,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The same school survey gives assault victimization by background (18.8% vs 21.7%); the 2021 study gives assault suspects by background with rates, all victims, 2015-2018.",
+    "score": 21
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 2,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national neglect statistics by any origin variable were found.",
+    "score": 3
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 4,
+    "coverage": 4,
+    "rates": 2,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Brå's confirmed lethal violence statistics give 4 child victims in 2025 with no background. The 2021 study gives suspects of lethal violence (including attempts) by background with rates, all victims, 2015-2018.",
+    "score": 13
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 1.5,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The Police situation report for 2024 gives 430 identified victims (22 children) and only a ranked list of origin countries (Thailand, Ukraine, Romania, Sweden, ...), with no counts and no suspect nationality.",
+    "score": 10.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No statistics on online child sexual exploitation by any origin variable were found.",
+    "score": 4
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Sweden scores 13% on the stricter scale (0-20%). Brå's school survey shows grade-9 pupils' experience of sexual offences and assault by migration background, and a one-off 2021 study gave suspects by background with rates for 2015-2018. No regular statistics give the origin of child victims or offenders, and neglect, online abuse and trafficking have almost none."
+ },
+ "sources": {
+  "sub2025": {
+   "name": "Skolundersökningen om brott 2025, tabellsamling SUB 2015-2025 (Tabell 3A)",
+   "publisher": "Brottsförebyggande rådet (Brå)",
+   "years": "2015-2025, every two years; Oct 2026",
+   "records": "Share of grade-9 pupils subjected to assault, threats, sexual offences, robbery and theft, by sex and background.",
+   "limitations": "Self-reported survey of 15-year-olds; one combined group for Swedish-born pupils with one or two Swedish-born parents.",
+   "url": "https://bra.se/download/18.115e271e1a0fb9a8d8b58f6/1791375541753/Tabellsamling_SUB%202015-2025.xlsx",
+   "tier": "Official government survey"
+  },
+  "bra2021": {
+   "name": "Misstänkta för brott bland personer med inrikes respektive utrikes bakgrund (Brå 2021:9), Tabellbilaga 1",
+   "publisher": "Brottsförebyggande rådet (Brå)",
+   "years": "2015-2018 suspects; Aug 2021",
+   "records": "People suspected of offences by background (country of birth of person and parents), counts and rates per 1,000.",
+   "limitations": "One-off study, now old; not split by victim age.",
+   "url": "https://bra.se/download/18.366598ab19270941a1c3955/1729256818286/2021_Tabellbilaga%201%20delstudie%201.pdf",
+   "tier": "Official government statistics"
+  },
+  "bra_dv25": {
+   "name": "Konstaterade fall av dödligt våld 2025",
+   "publisher": "Brottsförebyggande rådet (Brå)",
+   "years": "2025; Mar 2026",
+   "records": "Confirmed cases of lethal violence by victim age, sex, method and relationship.",
+   "limitations": "No background of victims or perpetrators.",
+   "url": "https://bra.se/download/18.3b6b697b19d24d83762587f/1774614625537/2026_10_Konstaterade%20fall%20av%20d%C3%B6dligt%20v%C3%A5ld.pdf",
+   "tier": "Official government statistics"
+  },
+  "polisen_lr26": {
+   "name": "Människohandel för sexuella och andra ändamål, Lägesrapport 26 (2024)",
+   "publisher": "Polismyndigheten",
+   "years": "2024",
+   "records": "Identified victims, reported offences and most frequent origin countries.",
+   "limitations": "Origin countries only as a ranked list; victims identified by regional coordinators.",
+   "url": "https://polisen.se/siteassets/dokument/manniskohandel/manniskohandel-lagesrapport-26.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
