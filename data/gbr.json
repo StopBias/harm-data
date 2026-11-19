@@ -1,0 +1,693 @@
+{
+ "country": "United Kingdom",
+ "iso_a3": "GBR",
+ "completeness": 53,
+ "as_of": "2026-11-18",
+ "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies European descent as such.",
+ "nations": {
+  "england_wales": "Most data. Police, courts, child protection (England; Wales publishes separately) and homicide all carry ethnicity.",
+  "scotland": "Homicide victims and accused by ethnicity for the first time in 2025-26 (White British vs Other White). No ethnicity found in child protection or recorded crime publications.",
+  "northern_ireland": "PSNI records child victims' age but says victim and offender ethnicity for child sexual offences can only be extracted by manual record review (FOI, April 2026). No ethnicity found in child protection register statistics."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "white",
+   "label": "White (all)"
+  },
+  {
+   "id": "white_british",
+   "label": "White British"
+  },
+  {
+   "id": "white_irish",
+   "label": "White Irish"
+  },
+  {
+   "id": "white_other",
+   "label": "Any other White background"
+  },
+  {
+   "id": "mixed",
+   "label": "Mixed or multiple"
+  },
+  {
+   "id": "asian",
+   "label": "Asian or Asian British"
+  },
+  {
+   "id": "pakistani",
+   "label": "Pakistani (Asian subgroup)"
+  },
+  {
+   "id": "black",
+   "label": "Black or Black British"
+  },
+  {
+   "id": "other",
+   "label": "Other ethnic group"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "european_note": "The UK's split of White into White British, White Irish and Any other White background is the closest any source gets, but it is still not European descent. No UK source records European descent. The 2021 Census and the police '18+1' self-defined codes split White into English/Welsh/Scottish/Northern Irish/British, Irish, Gypsy or Irish Traveller, Roma and Any other White background. 'White British' is a national-identity label, not ancestry, and 'Any other White' mixes continental Europeans with others who identify as White (for example from the Americas, Australasia, Turkey or the Middle East). Mixed groups such as 'White and Asian' have partial European ancestry. So the UK comes closer than the US (which has only 'White'), but only some sources publish the White sub-groups, and none publishes European descent as a category.",
+ "harms": [
+  {
+   "id": "maltreatment",
+   "label": "Child protection plans (abuse and neglect)",
+   "years": "At 31 March 2025",
+   "intro": "Children in England on a child protection plan: 49,420 at 31 March 2025, 40.6 per 10,000 children. Neglect (50%) and emotional abuse (37%) were the most common initial categories. Wales, Scotland and Northern Ireland publish separately.",
+   "victims": {
+    "status": "published",
+    "source": "dfe_cin",
+    "scope": "England only",
+    "n": 48170,
+    "n_label": "children on plans with ethnicity known",
+    "unknown_share": 2.5,
+    "share": {
+     "white": 73.8,
+     "mixed": 10.4,
+     "asian": 7.8,
+     "black": 5.9,
+     "other": 2.1
+    },
+    "rate": {
+     "white": 416,
+     "mixed": 628,
+     "asian": 258,
+     "black": 425,
+     "other": 317
+    },
+    "rate_all": 406,
+    "rate_label": "children on a plan per 100,000 children of the same group",
+    "rate_note": "Group rates calculated here: DfE counts at 31 March 2025 divided by Census 2021 children aged 0-17 in England. DfE's own all-children rate (40.6 per 10,000) uses 2024 mid-year estimates, which are not published by ethnicity. Rates are approximate.",
+    "share_note": "Shares of children with known ethnicity (48,170 of 49,420). National tables use 5 broad groups only."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "moj_cjs",
+    "scope": "England and Wales; convictions for cruelty to or neglect of children",
+    "n": 283,
+    "n_label": "people convicted in 2025 with ethnicity known (of 444)",
+    "unknown_share": 36.3,
+    "share": {
+     "white": 85.9,
+     "mixed": 3.2,
+     "other": 1.1,
+     "asian": 3.5,
+     "black": 6.4,
+     "white_british": 79.9,
+     "white_other": 5.7,
+     "white_irish": 0.4,
+     "pakistani": 0.7,
+     "gypsy_traveller": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: 36% of convicted people have unknown ethnicity, and convictions are a small, selected subset of maltreatment.",
+    "share_note": "Self-identified ethnicity recorded by police and passed to the courts. Calculated here from the MoJ Outcomes by Offence data (offence 11). Child protection data do not record who harmed the child."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "dfe_cin",
+    "text": "Child protection data record the child's ethnicity only, not that of the person who harmed them, so no victim-by-perpetrator table is possible."
+   },
+   "extra_sources": [
+    "moj_s95"
+   ],
+   "rate_sources": [
+    "census"
+   ]
+  },
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse (police and courts)",
+   "years": "2024 (police), 2025 (courts)",
+   "intro": "Police in England and Wales recorded 122,768 child sexual abuse and exploitation offences in 2024. Courts convicted 4,461 people of contact child sexual offences in 2025.",
+   "victims": {
+    "status": "published",
+    "source": "vkpp",
+    "scope": "England and Wales, police-recorded, 2024",
+    "n": 38015,
+    "n_label": "victim records with self-defined ethnicity (34% of all)",
+    "unknown_share": 65.9,
+    "share": {
+     "white": 89.9,
+     "asian": 3.1,
+     "black": 2.7,
+     "mixed": 2.8,
+     "other": 1.5,
+     "white_british": 86.9,
+     "white_other": 2.6,
+     "pakistani": 1.2
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: ethnicity is missing for 66% of victim records, so group rates would be meaningless.",
+    "share_note": "Police self-defined ethnicity (18+1 codes). Shares of the 34% with ethnicity recorded; recording is far from random, so treat with caution. Published by the police (NPCC's Vulnerability Knowledge and Practice Programme), not as official statistics."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "moj_cjs",
+    "scope": "England and Wales; convictions for contact child sexual offences, 2025",
+    "n": 3481,
+    "n_label": "people convicted with ethnicity known (of 4,461)",
+    "unknown_share": 22.0,
+    "share": {
+     "other": 0.9,
+     "white": 87.9,
+     "asian": 7.1,
+     "mixed": 1.4,
+     "black": 2.7,
+     "white_british": 84.4,
+     "white_other": 3.0,
+     "white_irish": 0.5,
+     "pakistani": 2.2,
+     "gypsy_traveller": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: 22% unknown ethnicity. For context, Census 2021 shares of the E&W population: White 81.7%, Asian 9.3%, Black 4.0%, Mixed 2.9%, Other 2.1%.",
+    "share_note": "Offences: child-specific rape, sexual assault and sexual activity offences (under 13 / under 16), familial child sex offences, abuse of children through sexual exploitation, abuse of trust, gross indecency with children and sexual grooming. Self-identified ethnicity. Calculated here from MoJ Outcomes by Offence data."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "vkpp",
+    "text": "Police systems record both victim and suspect ethnicity, but no national table links them for child sexual abuse."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Children on a child protection plan for sexual abuse (England, 31 March 2025)",
+     "data": {
+      "status": "published",
+      "source": "dfe_cin",
+      "scope": "England, children on a plan with sexual abuse as initial category, 31 Mar 2025",
+      "n": 1740,
+      "n_label": "children with ethnicity known (of 1,770)",
+      "unknown_share": 1.7,
+      "share": {
+       "white": 77.6,
+       "mixed": 7.5,
+       "asian": 7.5,
+       "black": 4.0,
+       "other": 3.4
+      },
+      "rate": {
+       "white": 15.8,
+       "mixed": 16.2,
+       "asian": 9.0,
+       "black": 10.4,
+       "other": 19.2
+      },
+      "rate_label": "per 100,000 children (Census 2021 denominators)",
+      "share_note": "Victim-side alternative from child protection data; the plan category is the initial reason for the plan."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Police-recorded suspects, 2024 (police-produced, not official statistics)",
+     "data": {
+      "status": "published",
+      "source": "vkpp",
+      "scope": "England and Wales, police-recorded, 2024",
+      "n": 44396,
+      "n_label": "suspect records with self-defined ethnicity",
+      "unknown_share": 65.6,
+      "share": {
+       "white": 87.8,
+       "asian": 5.3,
+       "black": 3.3,
+       "mixed": 2.2,
+       "other": 1.5,
+       "white_british": 83.4,
+       "white_other": 3.9,
+       "pakistani": 2.2
+      },
+      "rate": null,
+      "rate_reason": "Not calculated: ethnicity missing for about two-thirds of suspect records."
+     }
+    }
+   ],
+   "extra_sources": [
+    "psni"
+   ]
+  },
+  {
+   "id": "sexual_abuse_survey",
+   "label": "Sexual abuse before 18 (survey)",
+   "years": "Survey year to March 2024",
+   "intro": "In the Crime Survey for England and Wales, 9.1% of adults said they were sexually abused before age 18 (13.9% of women, 4.1% of men). Self-reported, so it captures abuse never reported to police.",
+   "victims": {
+    "status": "published",
+    "source": "csew",
+    "scope": "England and Wales, adults 18+ recalling childhood",
+    "n": 22580,
+    "n_label": "adults interviewed (unweighted)",
+    "share": null,
+    "rate": {
+     "white": 9.8,
+     "white_british": 9.8,
+     "white_irish": 10.5,
+     "white_other": 10.1,
+     "mixed": 14.7,
+     "asian": 3.3,
+     "pakistani": 1.5,
+     "black": 6.1,
+     "other": 5.7
+    },
+    "rate_all": 9.1,
+    "rate_label": "of adults in the group said they were sexually abused before age 18",
+    "rate_note": "Survey estimates with margins of error; Pakistani estimate based on 333 respondents. ONS Table 20.",
+    "share_note": "Ethnicity is the adult respondent's own, now, not necessarily as a child.",
+    "rate_unit": "%",
+    "rate_all_label": "all adults"
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "csew",
+    "text": "ONS publishes perpetrators' sex and relationship to the victim, but not their ethnicity (ONS FOI response)."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "csew",
+    "text": "No published table links victim and perpetrator ethnicity."
+   }
+  },
+  {
+   "id": "group_cse",
+   "label": "Group-based sexual exploitation",
+   "years": "2024",
+   "intro": "Police data on child sexual abuse by two or more offenders (the Complex and Organised Child Abuse Dataset). The 'CSE' subset is closest to so-called grooming gangs. Baroness Casey's 2025 national audit found national ethnicity data insufficient to draw conclusions, while local data in three force areas showed disproportionate numbers of Asian men among suspects.",
+   "victims": {
+    "status": "published",
+    "source": "cocad",
+    "scope": "England and Wales, CSE subset, 2024",
+    "n": 433,
+    "n_label": "CSE victims with self-defined ethnicity (56% of 769)",
+    "unknown_share": 43.7,
+    "share": {
+     "white": 88.2,
+     "asian": 1.4,
+     "black": 3.7,
+     "mixed": 4.8,
+     "other": 1.8,
+     "white_british": 85.5,
+     "white_other": 2.5
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: police operational data, 44% unknown.",
+    "share_note": "Police data published by the Hydrant Programme / CSE Taskforce, not official statistics."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "cocad",
+    "scope": "England and Wales, CSE subset, 2024",
+    "n": 310,
+    "n_label": "CSE suspects with self-defined ethnicity (31% of 1,006)",
+    "unknown_share": 69.2,
+    "share": {
+     "white": 64.2,
+     "asian": 21.0,
+     "black": 5.8,
+     "mixed": 3.9,
+     "other": 5.2,
+     "white_british": 55.2,
+     "white_other": 6.5,
+     "pakistani": 12.9
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: 69% unknown. Census 2021 Pakistani share of the population: 2.7%.",
+    "share_note": "White British 55.2% and Pakistani 12.9% of suspects with known ethnicity, against 74.4% and 2.7% of the population. With 69% unknown, the true shares could differ widely."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cocad",
+    "text": "Victim and suspect ethnicity are not cross-tabulated in the published report."
+   },
+   "extra_sources": [
+    "cps"
+   ]
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "Year to March 2025",
+   "intro": "59 children under 16 were victims of homicide in England and Wales in the year to March 2025; a parent or step-parent was the most common suspect. Ethnicity is as identified by the investigating officer.",
+   "victims": {
+    "status": "published",
+    "source": "homicide_index",
+    "scope": "England and Wales, victims under 16",
+    "n": 53,
+    "n_label": "child victims with ethnicity recorded (of 59)",
+    "unknown_share": 10.2,
+    "share": {
+     "white": 67.9,
+     "black": 15.1,
+     "asian": 1.9,
+     "mixed": 15.1,
+     "other": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Counts too small for reliable child rates. ONS publishes all-age rates: Black 36.8 and White 7.7 victims per million (3 years to March 2025).",
+    "share_note": "Officer-identified ethnic appearance. Counts: White 36, Black 8, Mixed 8, Asian 1, Other 0, not recorded 6. Calculated here from ONS Worksheets 5 and 6."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "homicide_index",
+    "scope": "England and Wales, all ages, convicted principal suspects, 3 years to March 2025",
+    "n": 956,
+    "n_label": "convicted principal suspects (all victim ages)",
+    "share": {
+     "white": 60.7,
+     "black": 24.0,
+     "asian": 8.5,
+     "mixed": 3.8,
+     "other": 2.2,
+     "unknown": 0.9
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific. Census 2021 comparison published by ONS (Table 33).",
+    "share_note": "Officer-identified. No published table for suspects in child homicides by ethnicity."
+   },
+   "cross": {
+    "status": "published",
+    "source": "homicide_index",
+    "scope": "All ages, 3 years to March 2025",
+    "unit": "% of convicted principal suspects for victims of each group",
+    "matrix": {
+     "white": {
+      "white": 80.6,
+      "black": 11.2,
+      "asian": 3.1,
+      "mixed": 2.9,
+      "other": 1.4,
+      "unknown": 0.8
+     },
+     "black": {
+      "white": 9.6,
+      "black": 78.3,
+      "asian": 6.6,
+      "mixed": 3.0,
+      "other": 1.8,
+      "unknown": 0.6
+     },
+     "asian": {
+      "white": 23.4,
+      "black": 11.7,
+      "asian": 61.0,
+      "mixed": 1.3,
+      "other": 1.3,
+      "unknown": 1.3
+     },
+     "mixed": {
+      "white": 33.3,
+      "black": 26.7,
+      "asian": 6.7,
+      "mixed": 30.0,
+      "other": 3.3,
+      "unknown": 0.0
+     },
+     "other": {
+      "white": 25.0,
+      "black": 35.0,
+      "asian": 0.0,
+      "mixed": 10.0,
+      "other": 30.0,
+      "unknown": 0.0
+     }
+    },
+    "groups": [
+     "white",
+     "black",
+     "asian",
+     "mixed",
+     "other"
+    ],
+    "note": "ONS Table 32. Officer-identified ethnicity for both victim and suspect. Covers victims of all ages; not published for children separately.",
+    "pair_sentence": "of convicted principal suspects in homicides of {victim} victims (all ages) were {perp}.",
+    "row_intro": "Convicted principal suspects in homicides of {victim} victims (all ages):",
+    "col_intro": "Share of convicted principal suspects who were {perp}, for homicide victims of each group (all ages):",
+    "overview": "Victim-by-suspect table for homicide (all ages, not children only). Pick a victim heritage to see that row, or both heritages for a single figure.",
+    "rate_reason": "The victim-by-suspect table is published as shares only."
+   },
+   "extra_sources": [
+    "scot_homicide"
+   ]
+  },
+  {
+   "id": "online",
+   "label": "Online exploitation (indecent images)",
+   "years": "2025",
+   "intro": "Courts in England and Wales convicted 4,064 people of indecent image of children offences in 2025. Indecent images were the most common child sexual offence recorded by police in 2024 (29%).",
+   "victims": {
+    "status": "not_recorded",
+    "source": "vkpp",
+    "text": "Children in abuse images are usually unidentified; no victim ethnicity is published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "moj_cjs",
+    "scope": "England and Wales, convictions 2025",
+    "n": 3096,
+    "n_label": "people convicted with ethnicity known (of 4,064)",
+    "unknown_share": 23.8,
+    "share": {
+     "white": 90.9,
+     "asian": 4.9,
+     "mixed": 2.1,
+     "black": 1.3,
+     "other": 0.8,
+     "white_british": 87.2,
+     "white_other": 3.2,
+     "white_irish": 0.5,
+     "pakistani": 1.7,
+     "gypsy_traveller": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not calculated: 24% unknown.",
+    "share_note": "Offences 86.1, 86.2 and 86.3 (indecent or prohibited images of children). Self-identified ethnicity."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "moj_cjs",
+    "text": "No published table links victim and perpetrator ethnicity."
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking and modern slavery",
+   "years": "2025",
+   "intro": "7,028 children were referred to the National Referral Mechanism in 2025 (30% of all referrals), most often for criminal exploitation (50%). UK nationals were 3,841 of them.",
+   "victims": {
+    "status": "proxy",
+    "source": "nrm",
+    "scope": "UK",
+    "text": "Nationality only, no ethnicity. UK nationals were 54.7% of child referrals (3,841 of 7,028), so most child victims are British, but their ethnicity is unknown."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "nrm",
+    "text": "The NRM records potential victims only."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "nrm",
+    "text": "No published table links victim and perpetrator ethnicity."
+   }
+  }
+ ],
+ "score": {
+  "value": 53,
+  "band": "40-60%",
+  "previous": "20-40% (provisional orange placeholder)",
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "score": 54
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "score": 59
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "score": 58
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "score": 76
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "score": 33
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "score": 37
+   }
+  ],
+  "why": "The UK scores 53%, yellow, just below the US (56%). England and Wales publish victim ethnicity for child protection and homicide, offender ethnicity for court convictions, and a victim-by-suspect table for homicide, often with White British separated from Any other White. But police records of child sexual abuse miss ethnicity for about two-thirds of victims and suspects, trafficking data carry nationality only, and Scotland and Northern Ireland publish almost nothing by ethnicity.",
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 25,
+    "full": "Published by harm, self-reported or official, with European descent identified separately"
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 25,
+    "full": "Same standard for perpetrators; not perceived, few unknowns"
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 20,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 15,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 15,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm."
+ },
+ "sources": {
+  "dfe_cin": {
+   "name": "Children in need, reporting year 2025",
+   "publisher": "Department for Education",
+   "years": "Annual; 2025 data published 30 Oct 2025 (updated 11 Sep 2026); next release Dec 2026",
+   "records": "Children in need and on child protection plans in England, by sex, age, ethnicity and initial category of abuse.",
+   "limitations": "England only. Five broad ethnic groups in national tables. Records the child, not the abuser.",
+   "url": "https://explore-education-statistics.service.gov.uk/find-statistics/children-in-need/2025",
+   "tier": "Official government statistics"
+  },
+  "moj_cjs": {
+   "name": "Criminal Justice System statistics quarterly: December 2025 (Outcomes by Offence)",
+   "publisher": "Ministry of Justice",
+   "years": "2017-2025 in the data tool; quarterly",
+   "records": "Prosecutions, convictions and sentences by detailed offence and self-identified ethnicity (18+1 groups).",
+   "limitations": "England and Wales only. 22-36% unknown ethnicity for the child offences used here. Counts people per proceeding, by principal offence. Figures calculated here from the CSV download.",
+   "url": "https://www.gov.uk/government/statistics/criminal-justice-statistics-quarterly-december-2025",
+   "tier": "Official government statistics"
+  },
+  "moj_s95": {
+   "name": "Statistics on Ethnicity and the Criminal Justice System, 2024 (Section 95)",
+   "publisher": "Ministry of Justice",
+   "years": "Biennial; published 27 Nov 2025; next 2027",
+   "records": "Ethnic groups as victims, suspects, defendants, offenders and staff.",
+   "limitations": "Not broken down for offences against children; IICSA noted it is silent on victims of sexual offending.",
+   "url": "https://www.gov.uk/government/statistics/ethnicity-and-the-criminal-justice-system-2024",
+   "tier": "Official government statistics"
+  },
+  "homicide_index": {
+   "name": "Homicide in England and Wales: year ending March 2025",
+   "publisher": "Office for National Statistics (Home Office Homicide Index)",
+   "years": "Annual; published 5 Feb 2026",
+   "records": "Victims and suspects by age, sex, officer-identified ethnicity, relationship and method; victim-by-suspect ethnicity table.",
+   "limitations": "Officer-identified ethnicity. Child victim counts are small. Suspect ethnicity not published for child victims separately.",
+   "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/articles/homicideinenglandandwales/yearendingmarch2025",
+   "tier": "Official government statistics"
+  },
+  "csew": {
+   "name": "Abuse during childhood in England and Wales: March 2024 (Crime Survey)",
+   "publisher": "Office for National Statistics",
+   "years": "Survey year to March 2024; published 5 Nov 2025",
+   "records": "Adults who experienced abuse or neglect before 18, by type and by the respondent's ethnic group and sub-group.",
+   "limitations": "Retrospective adult survey; margins of error; small samples for some groups; no perpetrator ethnicity.",
+   "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/abuseduringchildhoodinenglandandwales/march2024",
+   "tier": "Official government statistics"
+  },
+  "vkpp": {
+   "name": "2024 National Analysis of Police-Recorded CSAE Crimes",
+   "publisher": "Vulnerability Knowledge and Practice Programme (NPCC / police)",
+   "years": "Calendar 2024; published Dec 2025; annual since 2022",
+   "records": "All police-recorded child sexual abuse and exploitation in England and Wales, with victim and perpetrator self-defined ethnicity.",
+   "limitations": "Police operational data, not official statistics. Ethnicity recorded for only 34% of victims and perpetrators.",
+   "url": "https://www.vkpp.org.uk/assets/Totality/National-Analysis-of-Police-Recorded-Child-Sexual-Abuse-and-Exploitation-CSAE-crimes-report-2024-for-England-and-Wales-Totality-3-V2.pdf",
+   "tier": "Police-produced, not official statistics"
+  },
+  "cocad": {
+   "name": "Group-Based Child Sexual Abuse and Exploitation Data, Jan-Dec 2024",
+   "publisher": "Hydrant Programme / CSE Taskforce (police)",
+   "years": "Calendar 2024; published Dec 2025",
+   "records": "Group-based child sexual abuse from the Complex and Organised Child Abuse Dataset, split into CSE, familial, child-on-child and other.",
+   "limitations": "Police operational data. Suspect ethnicity unknown for 63% overall and 69% for CSE.",
+   "url": "https://www.hydrantprogramme.co.uk/assets/Documents/Group-Based-Child-Sexual-Abuse-and-Exploitation-Data-12-months-of-data-from-January-December-2024-December-2025.pdf",
+   "tier": "Police-produced, not official statistics"
+  },
+  "cps": {
+   "name": "CPS child abuse flagged prosecutions by ethnicity, 2020-2022 (FOI 12130)",
+   "publisher": "Crown Prosecution Service",
+   "years": "2020-2022; released 17 May 2024",
+   "records": "Defendants in child-abuse-flagged prosecutions by self-defined ethnicity and police force area.",
+   "limitations": "Management information, not official statistics; FOI release only. 27-36% not stated or provided. All child abuse, not only sexual.",
+   "url": "https://www.cps.gov.uk/foi/2024/ethnic-breakdown-prosecutions-hate-crime-rape-and-child-abuse-cases",
+   "tier": "CPS management information (FOI), not official statistics"
+  },
+  "nrm": {
+   "name": "Modern slavery: NRM and Duty to Notify statistics, end of year summary 2025",
+   "publisher": "Home Office",
+   "years": "Quarterly and annual; published 19 Feb 2026",
+   "records": "Potential victims of modern slavery referred, by age, sex, nationality and exploitation type.",
+   "limitations": "Nationality only, no ethnicity. Referrals are not confirmed victims. No perpetrator data.",
+   "url": "https://www.gov.uk/government/statistics/modern-slavery-nrm-and-dtn-statistics-end-of-year-summary-2025/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2025",
+   "tier": "Official government statistics"
+  },
+  "census": {
+   "name": "Census 2021: Ethnic group by age and sex",
+   "publisher": "Office for National Statistics",
+   "years": "Census Day, 21 March 2021",
+   "records": "19 ethnic groups by single year of age, England and Wales. Used here for rates per 100,000 children.",
+   "limitations": "2021 base; rounded to nearest 5. Scotland (Census 2022) and Northern Ireland (Census 2021) use different categories.",
+   "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/ethnicity/datasets/ethnicgroupbyageandsexinenglandandwales",
+   "tier": "Official government statistics"
+  },
+  "scot_homicide": {
+   "name": "Homicide in Scotland 2025-26",
+   "publisher": "Scottish Government",
+   "years": "Published 27 Oct 2026",
+   "records": "First publication with victim and accused ethnicity: 86% of victims and 85% of accused White British; 7% of victims and 12% of accused Other White.",
+   "limitations": "Small numbers (56 victims). Child victims not shown by ethnicity.",
+   "url": "https://www.gov.scot/publications/homicide-scotland-2025-26/pages/main-findings/",
+   "tier": "Official government statistics"
+  },
+  "psni": {
+   "name": "PSNI police recorded crime statistics",
+   "publisher": "Police Service of Northern Ireland",
+   "years": "Annual and monthly",
+   "records": "Crimes with a victim under 18: 2,219 sexual offences in 2024/25.",
+   "limitations": "No victim or offender ethnicity published; PSNI says extracting it needs manual review of records (FOI 17180, 3 Apr 2026).",
+   "url": "https://www.psni.police.uk/about-us/our-publications-and-reports/official-statistics/police-recorded-crime-statistics",
+   "tier": "Official government statistics"
+  }
+ },
+ "short_name": "UK",
+ "name_in_sentence": "the United Kingdom",
+ "subgroups": {
+  "white_british": "white",
+  "white_irish": "white",
+  "white_other": "white",
+  "gypsy_traveller": "white",
+  "pakistani": "asian"
+ },
+ "extra_group_labels": {
+  "unknown": "Unknown",
+  "gypsy_traveller": "White Gypsy or Irish Traveller"
+ },
+ "european_title": "Not recorded by any UK source"
+}

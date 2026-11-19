@@ -161,6 +161,9 @@
     .status.not_published { background: #fdf0d5; color: #8a5a00; }
     .status.not_recorded { background: #fbe1de; color: #9b2a1d; }
     .status.pending { background: #eef0f2; color: #4a555d; }
+    .status.proxy { background: #fdf0d5; color: #8a5a00; }
+    .unknown-note { border-left: 3px solid #d5d8da; padding-left: 8px; }
+    .also { margin-top: 14px; padding-top: 10px; border-top: 1px dashed #d5d8da; }
     .absent {
       border-left: 3px solid #e0b4ae; background: #fcf6f5; padding: 10px 12px; margin: 0 0 12px;
       font-size: 0.92rem; line-height: 1.5; max-width: 760px;
@@ -355,9 +358,8 @@
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies European descent separately. Details below the map."
       },
       GBR: {
-        completeness: 30,   // provisional, band midpoint placeholder (20–40%)
-        provisional: true,
-        note: "Published England & Wales homicide figures (recent years, overall): Victims ~67% White, 17% Black, 16% Other. The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes."
+        completeness: 53,   // overwritten by data/gbr.json when it loads
+        note: "England and Wales publish victim ethnicity for child protection and homicide, and offender ethnicity for court convictions, splitting White British from other White groups. Police records of child sexual abuse miss ethnicity for about two-thirds of cases, and no source identifies European descent. Details below the map."
       },
       DEU: {
         completeness: 30,   // provisional, band midpoint placeholder (20–40%)
@@ -597,7 +599,8 @@
       published: "Published",
       not_published: "Recorded, not published",
       not_recorded: "Not recorded by this source",
-      pending: "Published, not yet added here"
+      pending: "Published, not yet added here",
+      proxy: "Proxy only, not ethnicity"
     };
     const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const fmt = v => v >= 100 ? Math.round(v).toLocaleString("en-US") : (Math.round(v * 100) / 100).toLocaleString("en-US");
@@ -633,7 +636,8 @@
     const rateNA = reason => `<span class="status not_published">Rate not available</span><div class="absent">${esc(reason || "No rate is published for this selection.")}</div>`;
 
     function barsHtml(values, highlight, unit) {
-      const keys = Object.keys(values).filter(k => values[k] != null);
+      const sub = D.subgroups || {};
+      const keys = Object.keys(values).filter(k => values[k] != null && (!sub[k] || k === highlight));
       if (!keys.length) return "";
       keys.sort((a, b) => values[b] - values[a]);
       const max = Math.max(...keys.map(k => values[k])) || 1;
@@ -645,6 +649,11 @@
       }).join("") + "</div>";
     }
 
+    // Shares are of people with known ethnicity; say how many are unknown
+    const unknownNote = side => side.unknown_share != null
+      ? `<p class="ex-small unknown-note"><strong>Ethnicity unknown: ${fmt(side.unknown_share)}%</strong> of the total. Shares are of those with known ethnicity.</p>` : "";
+    const subNote = g => (D.subgroups || {})[g] ? `, a sub-group of ${groupLabel(D.subgroups[g]).replace(/ \(all\)$/, "")}` : "";
+
     // One side (victims or perpetrators) for one group or for all groups
     function sideHtml(side, who, group) {
       const label = who === "victims" ? "Victims" : "Perpetrators";
@@ -652,24 +661,25 @@
       const scope = side.scope ? ` <span class="ex-small">(${esc(side.scope)})</span>` : "";
       if (ex.measure === "rate") {
         if (!side.rate) return rateNA(side.rate_reason);
-        const rl = side.rate_label || "";
+        const rl = side.rate_label || "", ru = side.rate_unit || "", ra = side.rate_all_label || "all children";
         if (group === "all") {
-          return `<p>${esc(rl.charAt(0).toUpperCase() + rl.slice(1))}${scope}${side.rate_all != null ? `; all children: <strong>${fmt(side.rate_all)}</strong>` : ""}.</p>` +
-            barsHtml(side.rate, null, "") + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
+          return `<p>${esc(rl.charAt(0).toUpperCase() + rl.slice(1))}${scope}${side.rate_all != null ? `; ${esc(ra)}: <strong>${fmt(side.rate_all)}${ru}</strong>` : ""}.</p>` +
+            barsHtml(side.rate, null, ru) + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
         }
         const r = pick(side.rate, group);
         if (!r) return statusBlock("not_recorded", `This source does not report a rate for ${groupLabel(group)}.`, "");
-        return `<div class="ex-big">${fmt(r.v)}</div><p>${esc(rl.replace("the same group", groupLabel(r.g)))}` +
-          `${side.rate_all != null ? `, compared with ${fmt(side.rate_all)} for all children` : ""}.${scope}</p>` +
-          barsHtml(side.rate, r.g, "") + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
+        return `<div class="ex-big">${fmt(r.v)}${ru}</div><p>${esc(rl.replace("the same group", groupLabel(r.g)))}${esc(subNote(r.g))}` +
+          `${side.rate_all != null ? `, compared with ${fmt(side.rate_all)}${ru} for ${esc(ra)}` : ""}.${scope}</p>` +
+          barsHtml(side.rate, r.g, ru) + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
       }
-      const note = side.share_note ? `<p class="ex-small">${esc(side.share_note)}</p>` : "";
+      const note = unknownNote(side) + (side.share_note ? `<p class="ex-small">${esc(side.share_note)}</p>` : "");
+      if (!side.share) return `<span class="status not_published">Shares not published</span><div class="absent">This source publishes rates only. Switch Measure to "Rate per 100,000" to see them.</div>` + note;
       if (group === "all") {
         return `<p>Share of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + note;
       }
       const sh = pick(side.share, group);
       if (!sh) return statusBlock("not_recorded", `This source does not report ${groupLabel(group)} as a separate group.`, "");
-      return `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)} were ${esc(groupLabel(sh.g))}.${scope}</p>` +
+      return `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)} were ${esc(groupLabel(sh.g))}${esc(subNote(sh.g))}.${scope}</p>` +
         barsHtml(side.share, sh.g, "%") + note;
     }
 
@@ -695,7 +705,13 @@
             barsHtml(cross.matrix[v], p, "%") + `<p class="ex-small">${esc(cross.note)}</p>`);
         }
       } else if (cross.status === "published" && (v !== "all" || p !== "all")) {
-        // cross-tab source: one row (victim chosen) or one column (perpetrator chosen)
+        // cross-tab source: one row (victim chosen) or one column (perpetrator chosen),
+        // after the one-sided figures when the source also publishes those
+        const side = v !== "all" ? harm.victims : harm.perpetrators;
+        if (side.status === "published") {
+          out.push(`<h3>${v !== "all" ? "Victims" : "Perpetrators"}</h3>` + sideHtml(side, v !== "all" ? "victims" : "perpetrators", v !== "all" ? v : p));
+          out.push(`<h3>Victim heritage linked to perpetrator heritage</h3>`);
+        }
         if (ex.measure === "rate") {
           out.push(rateNA(cross.rate_reason));
         } else if (v !== "all") {
@@ -709,6 +725,11 @@
           }
         }
       } else if (cross.status === "published") {
+        if (harm.victims.status === "published" || harm.perpetrators.status === "published") {
+          out.push(`<div class="cols"><div><h3>Victims</h3>${sideHtml(harm.victims, "victims", "all")}</div>` +
+                   `<div><h3>Perpetrators</h3>${sideHtml(harm.perpetrators, "perpetrators", "all")}</div></div>`);
+          out.push(`<h3>Victim heritage linked to perpetrator heritage</h3>`);
+        }
         out.push(`<p>${esc(cross.overview || "Pick a victim heritage, a perpetrator heritage, or both.")}</p>`);
         const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
           cross.groups.map(o => `${esc(groupLabel(o))} offender ${fmt(cross.matrix[g][o])}%`).join(" · ") + "</p>").join("");
@@ -722,12 +743,20 @@
                  `<div><h3>Perpetrators</h3>${sideHtml(harm.perpetrators, "perpetrators", "all")}</div></div>`);
         out.push(`<p class="ex-small"><strong>Victim and perpetrator heritage together:</strong> ${esc(STATUS_LABEL[cross.status])}. ${esc(cross.text || "")}</p>`);
       }
+      // Other published figures for this harm (e.g. a second source for victims or perpetrators)
+      if (!unrecorded.includes(v) && !unrecorded.includes(p) && (v === "all" || p === "all")) {
+        (harm.also || []).forEach(a => {
+          const g = a.side === "victims" ? v : p;
+          if ((v !== "all" || p !== "all") && g === "all") return;   // only the side that was picked
+          out.push(`<div class="also"><h3>Also published: ${esc(a.title)}</h3>${sideHtml(a.data, a.side, g)}</div>`);
+        });
+      }
       $("ex-result").innerHTML = out.join("");
     }
 
     function renderSources() {
       const harm = D.harms.find(h => h.id === ex.harm);
-      const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source, ...(harm.extra_sources || [])];
+      const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source, ...(harm.also || []).map(a => a.data.source), ...(harm.extra_sources || [])];
       if (ex.measure === "rate") ids.push(...(harm.rate_sources || []));
       const uniq = [...new Set(ids)].filter(id => D.sources[id]);
       $("ex-sources").innerHTML = "<h3>Sources</h3>" + uniq.map(id => {
@@ -754,6 +783,8 @@
         `<h3>Score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
         `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${sc.value}</strong></td></tr></tbody></table>` +
+        (D.nations ? `<h3>Coverage by nation</h3><table><tbody>` + Object.entries(D.nations).map(([k, t]) =>
+          `<tr><td>${esc(({ england_wales: "England and Wales", scotland: "Scotland", northern_ireland: "Northern Ireland" })[k] || k)}</td><td>${esc(t)}</td></tr>`).join("") + `</tbody></table>` : "") +
         `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(D.as_of)}).</p>`;
     }
 
