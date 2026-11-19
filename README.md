@@ -38,22 +38,47 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - The section below the map always follows the selected country. Nothing selected (or after tapping the sea or a
   country outside the project, or pressing Esc): a short prompt. A country without a detailed file: its name,
   completeness band, note and "Detailed data for … has not been added yet." A country with a file: the full explorer.
+- The explorer is split into three labelled parts: **Inputs** (the four dropdowns: harm, victim heritage,
+  perpetrator heritage, measure), a bordered **Output** box (the answer for that selection, in larger bold type),
+  and **Notes** (caveats, proxy warnings, definitions, unknown shares). Overall totals from the harm intro sit
+  inside the output, labelled "Overall total (all groups)", so they are never read as the answer for a filtered
+  selection. When a combination has no data, the output is a bold line such as "No data: Germany does not record this"
+  plus a one-line reason.
+- Dropdown options with no data for the selected harm (and the other current selections) are greyed out, with a
+  short helper line explaining why. If a selection becomes unavailable (for example after changing harm), the
+  explorer switches to the nearest available option (the parent group if there is one, otherwise "All groups").
+  Availability comes from each harm's `availability` map: `victims`, `perpetrators`, `by_measure` (share / rate /
+  linked) and `linked_pairs`. Groups not listed have no data for that harm and are greyed out. "All groups" is still
+  always offered so a harm with no figures can show a "No data" answer. If `availability` is absent, the explorer
+  derives the same lists from published share/rate keys, `also` blocks, and published cross tables.
 - To add a country (e.g. the UK): create `data/<iso3 lowercase>.json` (e.g. `data/gbr.json`) in the same format as
   `data/usa.json`, and add its ISO3 code to `"detailed"` in `data/index.json`. No code changes are needed. The
   manifest means the page only requests files that exist, so there are no 404 errors for countries without one.
 - Optional text fields keep wording out of the code: `short_name`, `name_in_sentence`, `extra_group_labels`,
   `combined_groups`, `not_recorded` on a group (with `european_note`/`european_title`), `score.why`, per-harm
-  `extra_sources`/`rate_sources`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
+  `extra_sources`/`rate_sources`, `availability`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
 
 ### Germany data
 - `data/deu.json` is built by `build_deu.py` (kept with the German research, outside this repo). Germany records
   nationality (citizenship) and, in child protection and surveys, migration background, never ethnicity.
+  It scores 25% on the stricter scale (capped from an uncapped 29.4%; it scored 49% on the previous rubric).
 - Proxy display fields: `proxy_note` (banner under the summary), a `proxy` kind on each group (each result is tagged
   "Proxy: nationality, not ethnicity" or "Proxy: migration background, not ethnicity"), `select_labels` (dropdown
   labels), `unknown_label` ("Nationality unknown"; a block can override it), and `score.proxy_note` in the score box.
   Files without these fields (US, UK) look as before, with "Ethnicity unknown".
 - Sub-groups (e.g. Syrian or EU citizens within non-German citizens) are listed under the "All groups" bars as shares of
   the total, and shown as their own figure when picked. "European descent" stays "Not recorded".
+
+### Canada data
+- `data/can.json` is built by `build_can.py` (kept with the Canadian research, outside this repo). Canada scores 21%.
+  Police report the racialized and Indigenous identity of homicide victims and accused; no other police-reported crime
+  carries race or Indigenous identity yet. Official "racialized" / "rest of the population" categories never separately
+  identify White or European-descent people.
+
+### France data
+- `data/fra.json` is built by `build_fra.py` (kept with the French research, outside this repo). France scores 21%.
+  France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and
+  homicide by French or foreign nationality, and suspects by nationality — proxies, not ethnicity.
 
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
@@ -67,7 +92,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 
 ### US data
 - `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
-  sets the USA score (56) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
+  sets the USA score (57) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
   share % vs rate per 100,000), the explanation panel, the expandable source list and the "How the score works" box.
 - Each harm has `victims`, `perpetrators` and `cross` (victim × perpetrator) blocks with a `status`:
   `published`, `not_published` (recorded but no public table), `not_recorded`, or `pending` (published, not yet added).
@@ -75,8 +100,15 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - Figures come only from: HHS Child Maltreatment 2024, BJS Race and Hispanic Origin of Victims and Offenders 2012–15 (NCVS),
   BJS Human Trafficking Data Collection Activities 2025, US Sentencing Commission Quick Facts FY2024, and Census Vintage 2025
   population estimates (denominators for the federal-defendant rates). Sources and limitations are in the `sources` block.
-- Scoring standard: 100% = published data that separately identifies people of European descent as both victims and
-  perpetrators, alongside every other group, linked victim to perpetrator, for every harm. See `score` in `data/usa.json`.
+- Scoring standard (shown in "How the score works"): 100% = published data that separately identifies people of
+  European descent as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
+  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when European descent
+  is identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
+  migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
+  capped at 25%. Current published scores: United States 57%, United Kingdom 51%, Germany 25% (capped from an
+  uncapped 29.4%; 49% on the previous rubric), Canada 21%, France 21%. To change a country's displayed score, edit
+  `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
+  that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.
 
 ## Licence
