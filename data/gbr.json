@@ -1,7 +1,7 @@
 {
  "country": "United Kingdom",
  "iso_a3": "GBR",
- "completeness": 51,
+ "completeness": 53,
  "as_of": "2026-11-18",
  "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies European descent as such.",
  "nations": {
@@ -1011,10 +1011,10 @@
   }
  ],
  "score": {
-  "value": 51,
+  "value": 53,
   "band": "40-60%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 51.4,
+  "uncapped": 52.9,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": {
@@ -1025,7 +1025,7 @@
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 25,
+    "weight": 20,
     "victim": 22.5,
     "perpetrator": 21.0,
     "coverage": 4.0,
@@ -1067,7 +1067,7 @@
    },
    {
     "harm": "Neglect",
-    "weight": 15,
+    "weight": 10,
     "victim": 27.0,
     "perpetrator": 13.5,
     "coverage": 6.0,
@@ -1088,7 +1088,7 @@
    },
    {
     "harm": "Homicide",
-    "weight": 15,
+    "weight": 25,
     "victim": 30.0,
     "perpetrator": 24.0,
     "coverage": 7.5,
@@ -1109,7 +1109,7 @@
    },
    {
     "harm": "Sex trafficking",
-    "weight": 15,
+    "weight": 20,
     "victim": 5.5,
     "perpetrator": 13.5,
     "coverage": 2.5,
@@ -1130,7 +1130,7 @@
    },
    {
     "harm": "Online exploitation",
-    "weight": 15,
+    "weight": 10,
     "victim": 4.5,
     "perpetrator": 19.5,
     "coverage": 3.5,
@@ -1179,8 +1179,31 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "The UK scores 51% on the stricter scale (40-60%). England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
-  "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points."
+  "why": "The UK scores 53% on the stricter scale (40-60%). England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
+  "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "previous_weights": {
+   "value": 51,
+   "band": "40-60%",
+   "uncapped": 51.4,
+   "weights": {
+    "Sexual abuse": 25,
+    "Physical abuse": 15,
+    "Neglect": 15,
+    "Homicide": 15,
+    "Sex trafficking": 15,
+    "Online exploitation": 15
+   },
+   "changed": "2026-11-19"
+  }
  },
  "sources": {
   "dfe_cin": {

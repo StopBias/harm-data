@@ -571,14 +571,14 @@
   "value": 21,
   "band": "20-40%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 21.4,
+  "uncapped": 20.7,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 25,
+    "weight": 20,
     "victim": 8.5,
     "perpetrator": 6,
     "coverage": 7,
@@ -604,7 +604,7 @@
    },
    {
     "harm": "Neglect",
-    "weight": 15,
+    "weight": 10,
     "victim": 3.5,
     "perpetrator": 0,
     "coverage": 4,
@@ -617,7 +617,7 @@
    },
    {
     "harm": "Homicide",
-    "weight": 15,
+    "weight": 25,
     "victim": 0,
     "perpetrator": 4.5,
     "coverage": 5,
@@ -630,7 +630,7 @@
    },
    {
     "harm": "Sex trafficking",
-    "weight": 15,
+    "weight": 20,
     "victim": 3,
     "perpetrator": 3,
     "coverage": 5,
@@ -643,7 +643,7 @@
    },
    {
     "harm": "Online exploitation",
-    "weight": 15,
+    "weight": 10,
     "victim": 6,
     "perpetrator": 4.5,
     "coverage": 5,
@@ -684,7 +684,30 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Spain scores 21% on the stricter scale (20-40%). The Interior Ministry publishes child victims of sexual offences by nationality and continent, people detained or investigated by nationality, and online sexual-crime victims by nationality, but nationality is a proxy and perpetrators are not split by the victim's age. Physical abuse, neglect and homicide have little or no victim origin data, and trafficking nationality is published only as a ranking."
+  "why": "Spain scores 21% on the stricter scale (20-40%). The Interior Ministry publishes child victims of sexual offences by nationality and continent, people detained or investigated by nationality, and online sexual-crime victims by nationality, but nationality is a proxy and perpetrators are not split by the victim's age. Physical abuse, neglect and homicide have little or no victim origin data, and trafficking nationality is published only as a ranking.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "previous_weights": {
+   "value": 21,
+   "band": "20-40%",
+   "uncapped": 21.4,
+   "weights": {
+    "Sexual abuse": 25,
+    "Physical abuse": 15,
+    "Neglect": 15,
+    "Homicide": 15,
+    "Sex trafficking": 15,
+    "Online exploitation": 15
+   },
+   "changed": "2026-11-19"
+  }
  },
  "sources": {
   "onvios24": {
