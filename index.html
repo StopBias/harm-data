@@ -14,6 +14,7 @@
       --bg: #ffffff;
       --map-bg: #ffffff;
       --accent: #0cc0df;
+      --io: #1f5fa8;  /* title bars and the Input+Output frame; dark enough for white text */
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     * { box-sizing: border-box; }
@@ -144,10 +145,29 @@
       margin: 0 0 8px; font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
     }
-    .ex-inputs { margin-bottom: 16px; }
+    .ex-io {
+      border: 2px solid var(--io);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0 0 18px;
+      background: #fff;
+    }
+    .ex-inputs, .ex-output { margin: 0; }
+    .ex-bar {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--io);
+      padding: 8px 16px;
+      line-height: 1.25;
+    }
     .ex-control-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 10px 14px;
+      padding: 14px 16px 10px;
     }
     .ex-control-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 0.75rem; font-weight: 600; color: var(--muted); }
     .ex-control-grid select {
@@ -156,11 +176,12 @@
     }
     .ex-control-grid select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
     .ex-control-grid select option:disabled { color: #9aa5ad; }
-    .ex-avail { margin: 8px 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.45; max-width: 760px; }
-    .ex-output { margin-bottom: 16px; }
+    .ex-avail { margin: 0; padding: 0 16px 14px; font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
     .ex-output-box {
-      border: 1px solid var(--line); border-radius: 4px;
-      padding: 16px 18px; background: #fff; min-height: 4.5em;
+      border: 0;
+      padding: 16px 18px;
+      background: #fff;
+      min-height: 4.5em;
     }
     .ex-output-box > :last-child { margin-bottom: 0; }
     #ex-result p { font-size: 0.95rem; line-height: 1.55; margin: 0 0 10px; max-width: 760px; }
@@ -222,6 +243,9 @@
       .ex-head h2 { font-size: 1.05rem; }
       .ex-control-grid { grid-template-columns: 1fr 1fr; gap: 8px 10px; }
       .ex-control-grid label:first-child { grid-column: 1 / -1; }
+      .ex-bar { font-size: 1rem; padding: 8px 12px; }
+      .ex-control-grid { padding: 12px 12px 8px; }
+      .ex-avail { padding: 0 12px 12px; }
       .ex-output-box { padding: 12px 12px; }
       .ex-answer { font-size: 1.2rem; }
       .src summary { flex-wrap: wrap; }
@@ -324,22 +348,24 @@
         <span class="badge" id="ex-badge" hidden></span>
       </div>
       <p class="ex-lede" id="ex-lede">Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.</p>
-      <div class="ex-inputs" id="ex-controls" hidden>
-        <h3 class="ex-kicker">Inputs</h3>
-        <div class="ex-control-grid">
-          <label>Harm<select id="sel-harm"></select></label>
-          <label><span id="lbl-victim">Victim's heritage</span><select id="sel-victim"></select></label>
-          <label><span id="lbl-perp">Perpetrator's heritage</span><select id="sel-perp"></select></label>
-          <label>Measure<select id="sel-measure">
-            <option value="share">Share (%)</option>
-            <option value="rate">Rate per 100,000</option>
-          </select></label>
+      <div class="ex-io" id="ex-io" hidden>
+        <div class="ex-inputs" id="ex-controls" hidden>
+          <h3 class="ex-bar">Inputs</h3>
+          <div class="ex-control-grid">
+            <label>Harm<select id="sel-harm"></select></label>
+            <label><span id="lbl-victim">Victim's heritage</span><select id="sel-victim"></select></label>
+            <label><span id="lbl-perp">Perpetrator's heritage</span><select id="sel-perp"></select></label>
+            <label>Measure<select id="sel-measure">
+              <option value="share">Share (%)</option>
+              <option value="rate">Rate per 100,000</option>
+            </select></label>
+          </div>
+          <p class="ex-avail" id="ex-avail" hidden></p>
         </div>
-        <p class="ex-avail" id="ex-avail" hidden></p>
-      </div>
-      <div class="ex-output" id="ex-output" hidden>
-        <h3 class="ex-kicker">Output</h3>
-        <div class="ex-output-box" id="ex-result" aria-live="polite"></div>
+        <div class="ex-output" id="ex-output" hidden>
+          <h3 class="ex-bar">Output</h3>
+          <div class="ex-output-box" id="ex-result" aria-live="polite"></div>
+        </div>
       </div>
       <div class="ex-notes" id="ex-notes" hidden>
         <h3 class="ex-kicker">Notes</h3>
@@ -1184,6 +1210,7 @@
     }
 
     function hideExplorerChrome(showInputs, showOutput, showMethod) {
+      $("ex-io").hidden = !showInputs && !showOutput;
       $("ex-controls").hidden = !showInputs;
       $("ex-output").hidden = !showOutput;
       $("ex-sources").hidden = !showMethod;
