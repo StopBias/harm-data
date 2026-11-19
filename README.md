@@ -80,6 +80,21 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and
   homicide by French or foreign nationality, and suspects by nationality — proxies, not ethnicity.
 
+### Australia data
+- `data/aus.json` is built by `build_aus.py` (kept with the Australian research, outside this repo). Australia scores 20%.
+  Police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, but everyone
+  else is 'non-Indigenous', so White or European-descent Australians are never separately identified.
+
+### New Zealand data
+- `data/nzl.json` is built by `build_nzl.py` (kept with the New Zealand research, outside this repo). New Zealand scores 44%.
+  It is the first country reviewed whose official police data separately identify European-descent victims and offenders,
+  published monthly for child sexual assault, child assault, abuse material and grooming.
+
+### South Africa data
+- `data/zaf.json` is built by `build_zaf.py` (kept with the South African research, outside this repo). South Africa scores 6%.
+  Police counts of crimes against children carry no population group for victims or suspects. Death notifications record
+  population group, including White, but child homicide by population group is not in the main release.
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
@@ -106,7 +121,8 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   is identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
   migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
   capped at 25%. Current published scores: United States 57%, United Kingdom 51%, Germany 25% (capped from an
-  uncapped 29.4%; 49% on the previous rubric), Canada 21%, France 21%. To change a country's displayed score, edit
+  uncapped 29.4%; 49% on the previous rubric), Canada 21%, France 21%, Australia 20%, New Zealand 44%,
+  South Africa 6%. To change a country's displayed score, edit
   `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
   that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.

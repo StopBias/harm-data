@@ -1,0 +1,477 @@
+{
+ "country": "South Africa",
+ "iso_a3": "ZAF",
+ "completeness": 6,
+ "provisional": false,
+ "as_of": "2026-11-18",
+ "summary": "South Africa's police publish counts of crimes against children with no population group for victims or suspects. Death notifications record population group, including White, but child homicide by population group is not published in the main release, and registered assault deaths miss most child murders. There are no national neglect or online-exploitation statistics.",
+ "short_name": "South Africa",
+ "name_in_sentence": "South Africa",
+ "nations": {
+  "National (SAPS)": "Quarterly and annual crime statistics, including contact crimes against children, without population group.",
+  "Stats SA": "Census, mid-year estimates and death registration with population group (Black African, Coloured, Indian/Asian, White)."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "black_african",
+   "label": "Black African"
+  },
+  {
+   "id": "coloured",
+   "label": "Coloured"
+  },
+  {
+   "id": "indian_asian",
+   "label": "Indian/Asian"
+  },
+  {
+   "id": "white",
+   "label": "White"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {
+  "unknown": "Population group unknown"
+ },
+ "unknown_label": "Population group unknown",
+ "european_title": "Not published for any child harm",
+ "european_note": "South Africa's official population groups include 'White', which broadly corresponds to European descent, and Stats SA uses them in the census and on death notifications. But no police, child-protection or published death statistics on harm to children are broken down by population group, so European-descent children and perpetrators cannot be identified for any harm.",
+ "select_labels": {
+  "victim": "Victim's population group",
+  "perpetrator": "Perpetrator's population group"
+ },
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against children (police)",
+   "years": "2025/26",
+   "intro": "Police recorded 22,379 sexual offences against children under 18 in 2025/26 (22,055 the year before). No population group is published for victims or suspects.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "Neither side is published by population group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault of children (police)",
+   "years": "2025/26",
+   "intro": "Police recorded 8,611 assaults with intent to inflict grievous bodily harm, 14,132 common assaults and 1,535 attempted murders of children in 2025/26. No population group is published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "Neither side is published by population group."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "No national statistics on child neglect were found. The Department of Social Development keeps a Child Protection Register, but no national figures by population group are published.",
+   "victims": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "No national neglect statistics were found in police, Stats SA or Department of Social Development releases."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "No data on the people responsible."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025/26 (police); 2024 (deaths)",
+   "intro": "Police recorded 924 murders of children under 18 in 2025/26, down from 1,065. Death registration recorded only 71 assault deaths of children under 15 in 2024 (8 infants and 63 aged 1-14), because most violent deaths are certified without a specific cause.",
+   "victims": {
+    "status": "not_published",
+    "source": "statssa_mcod",
+    "text": "Death notifications record the deceased's population group (Black African, Coloured, Indian/Asian, White) as judged by the certifying doctor or nurse; it was unknown for 15.0% of all 2024 deaths. Stats SA publishes causes of death by population group only in a separate workbook, which could not be downloaded for this review, so no child homicide figure by population group is shown. SAPS murder statistics have no population group."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "No perpetrator population group is published."
+   },
+   "extra_sources": [
+    "statssa_mcod23"
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Child trafficking",
+   "years": "2025/26",
+   "intro": "The only national police figure found is 5 arrests for child trafficking at South Africa's 71 ports of entry in 2025/26 (none reported the year before); no national count of child-trafficking cases or victims is published, and no population group.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "SAPS crime statistics do not publish the population group (race) of victims or suspects."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "saps",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "-",
+   "intro": "No national statistics on online child sexual exploitation were found in SAPS or Stats SA releases.",
+   "victims": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "No national statistics were found."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "No national statistics were found."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "saps",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 6,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 6.2,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "SAPS reports 22,379 sexual offences against children (2025/26) with no population group of victims or suspects.",
+    "score": 8.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "SAPS reports assault GBH (8,611) and common assault (14,132) against children with no population group.",
+    "score": 8.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 1,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national neglect statistics were found; the Child Protection Register is not published with population group.",
+    "score": 1.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 1,
+    "access": 5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "SAPS reports 924 children murdered (2025/26) with no population group. Death notifications record the population group (White separately) as judged by the certifying doctor or nurse, and Stats SA publishes causes by population group only in a separate workbook that could not be opened for this review; registered assault deaths miss most child murders (71 under age 15 in 2024).",
+    "score": 12
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "SAPS reports only 5 child-trafficking arrests at ports of entry (2025/26); no national case count; no population group.",
+    "score": 4
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 0.5,
+    "rates": 0,
+    "access": 0.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national statistics on online child sexual exploitation were found in SAPS or Stats SA releases.",
+    "score": 1.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "South Africa scores 6% on the stricter scale (0-20%). The police publish counts of crimes against children with no population group for victims or suspects, and there are no national neglect or online-exploitation statistics. Death notifications record population group, including White, but cause of death by population group is published only in a separate workbook, and registered assault deaths miss most child murders.",
+  "judgement_notes": "Homicide victims get 3 of 37.5 heritage points because death notifications record population group with White separately and Stats SA publishes cause of death by population group, even though that workbook could not be opened here and registered assault deaths miss most child murders. With 0 for that cell South Africa would still score 6%."
+ },
+ "sources": {
+  "saps": {
+   "name": "SAPS Annual Report 2025/26: presentation to the NCOP Select Committee on Security and Justice",
+   "publisher": "South African Police Service (hosted by the Parliamentary Monitoring Group)",
+   "years": "2025/26 (1 Apr 2025 - 31 Mar 2026); presented Oct 2026",
+   "records": "Contact crimes against children under 18 by category (murder, attempted murder, assault GBH, common assault, sexual offences), detection and conviction rates, child-trafficking arrests at ports of entry.",
+   "limitations": "Counts only; no population group, age detail or perpetrator characteristics.",
+   "url": "https://static.pmg.org.za/261022SAPS_PRESENTATION_FOR_THE_SELECT_COMMIITTEE.pdf",
+   "tier": "Official government statistics"
+  },
+  "statssa_mcod": {
+   "name": "Mortality and causes of death in South Africa, 2024: findings from death notification (P0309.3)",
+   "publisher": "Statistics South Africa",
+   "years": "Deaths in 2024",
+   "records": "Registered deaths by cause, age, sex and province; deaths by population group (cause by population group in a separate workbook).",
+   "limitations": "Assault deaths are heavily under-recorded (most violent deaths coded as 'other external causes'); population group is judged by the certifier and unknown for about 15% of deaths.",
+   "url": "https://www.statssa.gov.za/publications/P03093/P030932024.pdf",
+   "tier": "Official government statistics"
+  },
+  "statssa_mcod23": {
+   "name": "Mortality and causes of death in South Africa, 2023 (P0309.3)",
+   "publisher": "Statistics South Africa",
+   "years": "Deaths in 2023",
+   "records": "Same structure; states that the workbook covers underlying causes of death by population group.",
+   "limitations": "As above.",
+   "url": "https://www.statssa.gov.za/publications/P03093/P030932023.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

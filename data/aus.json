@@ -1,0 +1,815 @@
+{
+ "country": "Australia",
+ "iso_a3": "AUS",
+ "completeness": 20,
+ "provisional": false,
+ "as_of": "2026-11-18",
+ "summary": "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, with official rates, but everyone else is 'non-Indigenous', so White or European-descent Australians are never separately identified. Police victim data by Indigenous status cover only NSW, Queensland and South Australia; offenders are not linked to child victims; trafficking and online exploitation have no heritage data.",
+ "short_name": "Australia",
+ "name_in_sentence": "Australia",
+ "nations": {
+  "Federal (ABS, AIHW, AFP)": "National police-recorded crime statistics, child-protection data and homicide monitoring, with Indigenous status.",
+  "States and territories": "Police and child protection are state-run; Indigenous status in crime data meets ABS standards only in some states."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "indigenous",
+   "label": "Aboriginal and Torres Strait Islander"
+  },
+  {
+   "id": "non_indigenous",
+   "label": "Non-Indigenous (White and all other groups combined)",
+   "lumped": true
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {
+  "unknown": "Indigenous status not stated"
+ },
+ "unknown_label": "Indigenous status not stated",
+ "european_title": "Not separately identified by any Australian official source",
+ "european_note": "Australian official statistics record Indigenous status (Aboriginal, Torres Strait Islander, or both) and sometimes country of birth. Everyone else is 'non-Indigenous', which combines White Australians with Asian, Middle Eastern, African and all other Australians, so European descent cannot be identified for victims or offenders.",
+ "select_labels": {
+  "victim": "Victim's Indigenous status",
+  "perpetrator": "Offender's Indigenous status"
+ },
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual assault of children (police)",
+   "years": "2025; 2024-25 (offenders)",
+   "intro": "NSW police recorded 7095 sexual-assault victims aged under 18 at report in 2025, 1196 of them Aboriginal or Torres Strait Islander. Indigenous status is published only for NSW, Queensland and South Australia, and offenders are published by Indigenous status without the victim's age.",
+   "victims": {
+    "status": "published",
+    "source": "abs_vic",
+    "scope": "New South Wales, sexual-assault victims aged under 18 at report, 2025",
+    "n": 7095,
+    "n_label": "child victims (all Indigenous statuses)",
+    "unknown_share": null,
+    "share": {
+     "indigenous": 16.9
+    },
+    "rate": {
+     "indigenous": 850.3
+    },
+    "rate_all": 393.1,
+    "rate_label": "victims per 100,000 children of the same group",
+    "rate_all_label": "all children in NSW",
+    "rate_note": "Official ABS victimisation rates (Tables 11 and 26/24). No rate is published for non-Indigenous children separately.",
+    "unknown_label": "Indigenous status not stated",
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1196 Aboriginal and Torres Strait Islander victims of 7095 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "abs_off",
+    "scope": "New South Wales, offenders proceeded against by police, principal offence sexual assault and related offences, 2024-25",
+    "n": 2863,
+    "n_label": "offenders with known Indigenous status (of 2901)",
+    "unknown_share": 1.3,
+    "share": {
+     "indigenous": 17.2,
+     "non_indigenous": 82.8
+    },
+    "rate": {
+     "indigenous": 174.2,
+     "non_indigenous": 32.5
+    },
+    "rate_all": 38.3,
+    "rate_label": "offenders per 100,000 people aged 10+ of the same group",
+    "rate_all_label": "all people aged 10+",
+    "rate_note": "Official ABS crude offender rates for New South Wales (Table 26).",
+    "unknown_label": "Indigenous status unknown",
+    "share_note": "Indigenous status is self-identified. 'Non-Indigenous' combines White Australians with every other group. Offences against victims of all ages, not only children. Across the five jurisdictions publishing Indigenous status (Australian Capital Territory, New South Wales, Northern Territory, Queensland, South Australia): 1147 Aboriginal and Torres Strait Islander and 5127 non-Indigenous offenders of 6420."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "abs_vic",
+    "text": "The ABS links victims to their relationship with the offender, but not to the offender's Indigenous status."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Queensland and South Australia, 2025",
+     "data": {
+      "status": "published",
+      "source": "abs_vic",
+      "scope": "Queensland and South Australia, sexual-assault victims aged under 18 at report, 2025",
+      "n": 3973,
+      "n_label": "child victims (all Indigenous statuses)",
+      "unknown_share": null,
+      "share": {
+       "indigenous": 12.6
+      },
+      "rate": null,
+      "rate_reason": "Official rates differ by state: Queensland 385.6 vs 276.2 per 100,000 (Indigenous vs all children); South Australia 242.1 vs 155.7.",
+      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 451 of 3384; South Australia 51 of 589."
+     }
+    },
+    {
+     "side": "victims",
+     "title": "Substantiated sexual abuse (child protection), 2023-24",
+     "data": {
+      "status": "published",
+      "source": "aihw_hpf",
+      "scope": "Australia, children aged 0-17 with substantiated maltreatment, 2023-24",
+      "n": 1007,
+      "n_label": "Aboriginal and Torres Strait Islander children with sexual abuse as the primary substantiated type",
+      "share": null,
+      "rate": {
+       "indigenous": 2.5,
+       "non_indigenous": 0.5
+      },
+      "rate_all": null,
+      "rate_unit": " per 1,000",
+      "rate_label": "children per 1,000 of the same group",
+      "share_note": "AIHW child-protection national data (Productivity Commission Report on Government Services table SE12m.1, quoted by the AIHW Indigenous Health Performance Framework, 2023-24). Rates of children who were the subject of a substantiation with this primary type of maltreatment. 'Non-Indigenous' includes White children with all other groups."
+     }
+    }
+   ],
+   "extra_sources": [
+    "aihw_hpf"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "perpetrators": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault of children (police)",
+   "years": "2025; 2024-25 (offenders)",
+   "intro": "NSW police recorded 12762 assault victims aged under 18 at report in 2025, 1774 of them Aboriginal or Torres Strait Islander. Assault offenders are published by Indigenous status for all victims together.",
+   "victims": {
+    "status": "published",
+    "source": "abs_vic",
+    "scope": "New South Wales, assault victims aged under 18 at report, 2025",
+    "n": 12762,
+    "n_label": "child victims (all Indigenous statuses)",
+    "unknown_share": null,
+    "share": {
+     "indigenous": 13.9
+    },
+    "rate": {
+     "indigenous": 1261.3
+    },
+    "rate_all": 707.1,
+    "rate_label": "victims per 100,000 children of the same group",
+    "rate_all_label": "all children in NSW",
+    "rate_note": "Official ABS victimisation rates (Tables 11 and 26/24). No rate is published for non-Indigenous children separately.",
+    "unknown_label": "Indigenous status not stated",
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1774 Aboriginal and Torres Strait Islander victims of 12762 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "abs_off",
+    "scope": "New South Wales, offenders proceeded against by police, principal offence acts intended to cause injury, 2024-25",
+    "n": 40286,
+    "n_label": "offenders with known Indigenous status (of 40645)",
+    "unknown_share": 0.9,
+    "share": {
+     "indigenous": 29.2,
+     "non_indigenous": 70.8
+    },
+    "rate": {
+     "indigenous": 4158.6,
+     "non_indigenous": 391.3
+    },
+    "rate_all": 536.9,
+    "rate_label": "offenders per 100,000 people aged 10+ of the same group",
+    "rate_all_label": "all people aged 10+",
+    "rate_note": "Official ABS crude offender rates for New South Wales (Table 26).",
+    "unknown_label": "Indigenous status unknown",
+    "share_note": "Indigenous status is self-identified. 'Non-Indigenous' combines White Australians with every other group. Offences against victims of all ages, not only children. Across the five jurisdictions publishing Indigenous status (Australian Capital Territory, New South Wales, Northern Territory, Queensland, South Australia): 22898 Aboriginal and Torres Strait Islander and 42732 non-Indigenous offenders of 66548."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "abs_vic",
+    "text": "No table links child victims to offenders by Indigenous status."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Queensland and South Australia, 2025",
+     "data": {
+      "status": "published",
+      "source": "abs_vic",
+      "scope": "Queensland and South Australia, assault victims aged under 18 at report, 2025",
+      "n": 9599,
+      "n_label": "child victims (all Indigenous statuses)",
+      "unknown_share": null,
+      "share": {
+       "indigenous": 18.3
+      },
+      "rate": null,
+      "rate_reason": "Official rates differ by state: Queensland 1218.3 vs 577.2 per 100,000 (Indigenous vs all children); South Australia 1552.3 vs 668.3.",
+      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 1425 of 7071; South Australia 327 of 2528."
+     }
+    },
+    {
+     "side": "victims",
+     "title": "Substantiated physical abuse (child protection), 2023-24",
+     "data": {
+      "status": "published",
+      "source": "aihw_hpf",
+      "scope": "Australia, children aged 0-17 with substantiated maltreatment, 2023-24",
+      "n": 1447,
+      "n_label": "Aboriginal and Torres Strait Islander children with physical abuse as the primary substantiated type",
+      "share": null,
+      "rate": {
+       "indigenous": 3.7,
+       "non_indigenous": 0.7
+      },
+      "rate_all": null,
+      "rate_unit": " per 1,000",
+      "rate_label": "children per 1,000 of the same group",
+      "share_note": "AIHW child-protection national data (Productivity Commission Report on Government Services table SE12m.1, quoted by the AIHW Indigenous Health Performance Framework, 2023-24). Rates of children who were the subject of a substantiation with this primary type of maltreatment. 'Non-Indigenous' includes White children with all other groups."
+     }
+    }
+   ],
+   "extra_sources": [
+    "aihw_hpf"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "perpetrators": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (child protection)",
+   "years": "2023-24",
+   "intro": "Of 40,468 children with known Indigenous status who were the subject of a substantiated child-protection notification in 2023-24, 12,965 were Aboriginal or Torres Strait Islander and 27,503 non-Indigenous. Neglect was the primary type for 3,798 Indigenous children.",
+   "victims": {
+    "status": "published",
+    "source": "aihw_hpf",
+    "scope": "Australia, children aged 0-17 with substantiated neglect (primary type), 2023-24",
+    "n": 3798,
+    "n_label": "Aboriginal and Torres Strait Islander children with neglect as the primary substantiated type",
+    "share": null,
+    "rate": {
+     "indigenous": 9.6,
+     "non_indigenous": 0.9
+    },
+    "rate_all": null,
+    "rate_unit": " per 1,000",
+    "rate_label": "children per 1,000 of the same group",
+    "share_note": "AIHW child-protection national data (Productivity Commission Report on Government Services table SE12m.1, quoted by the AIHW Indigenous Health Performance Framework, 2023-24). Rates of children who were the subject of a substantiation with this primary type of maltreatment. 'Non-Indigenous' includes White children with all other groups."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "aihw_hpf",
+    "text": "National child-protection data do not publish the Indigenous status or any other heritage of the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "aihw_hpf",
+    "text": "No perpetrator heritage, so no link is possible."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Any substantiated maltreatment, 2023-24",
+     "data": {
+      "status": "published",
+      "source": "aihw_hpf",
+      "scope": "Australia, children aged 0-17 with any substantiated maltreatment, 2023-24",
+      "n": 40468,
+      "n_label": "children with known Indigenous status",
+      "unknown_share": null,
+      "share": {
+       "indigenous": 32.0,
+       "non_indigenous": 68.0
+      },
+      "rate": {
+       "indigenous": 33.0,
+       "non_indigenous": 5.1
+      },
+      "rate_all": null,
+      "rate_unit": " per 1,000",
+      "rate_label": "children per 1,000 of the same group",
+      "share_note": "AIHW child-protection national data (Productivity Commission Report on Government Services table SE12m.1, quoted by the AIHW Indigenous Health Performance Framework, 2023-24). Rates of children who were the subject of a substantiation with this primary type of maltreatment. 'Non-Indigenous' includes White children with all other groups."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "indigenous",
+       "non_indigenous"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025; 2024-25",
+   "intro": "NSW police recorded 158 homicide victims in 2025 (19 aged under 18), including 8 Aboriginal or Torres Strait Islander victims of all ages. Five Aboriginal and Torres Strait Islander children were victims of filicide (killed by a parent or parent figure) nationally in 2024-25.",
+   "victims": {
+    "status": "published",
+    "source": "abs_vic",
+    "scope": "New South Wales, homicide victims of all ages (murder, attempted murder, manslaughter), 2025",
+    "n": 158,
+    "n_label": "victims (all Indigenous statuses)",
+    "unknown_share": null,
+    "share": {
+     "indigenous": 5.1
+    },
+    "rate": {
+     "indigenous": 2.2
+    },
+    "rate_all": 1.8,
+    "rate_label": "victims per 100,000 people of the same group",
+    "rate_all_label": "all NSW residents",
+    "rate_note": "Official ABS rates (Tables 11 and 23). Small numbers.",
+    "unknown_label": "Indigenous status not stated",
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Not child-specific: child homicide victims are not published by Indigenous status (about 11% of NSW homicide victims have Indigenous status not stated). South Australia: 3 Indigenous homicide victims."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "abs_off",
+    "scope": "New South Wales, offenders proceeded against by police, principal offence homicide and related offences, 2024-25",
+    "n": 205,
+    "n_label": "offenders with known Indigenous status (of 221)",
+    "unknown_share": 7.2,
+    "share": {
+     "indigenous": 26.8,
+     "non_indigenous": 73.2
+    },
+    "rate": {
+     "indigenous": 19.4,
+     "non_indigenous": 2.1
+    },
+    "rate_all": 2.9,
+    "rate_label": "offenders per 100,000 people aged 10+ of the same group",
+    "rate_all_label": "all people aged 10+",
+    "rate_note": "Official ABS crude offender rates for New South Wales (Table 26).",
+    "unknown_label": "Indigenous status unknown",
+    "share_note": "Indigenous status is self-identified. 'Non-Indigenous' combines White Australians with every other group. Offences against victims of all ages, not only children. Across the five jurisdictions publishing Indigenous status (Australian Capital Territory, New South Wales, Northern Territory, Queensland, South Australia): 98 Aboriginal and Torres Strait Islander and 269 non-Indigenous offenders of 385."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "abs_off",
+    "text": "No published table links homicide victims to offenders by Indigenous status."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Aboriginal and Torres Strait Islander child victims of filicide, 2024-25",
+     "data": {
+      "status": "published",
+      "source": "aihw_filicide",
+      "scope": "Australia, Aboriginal and Torres Strait Islander children aged 0-17 killed by a parent or parent figure, 2024-25",
+      "n": 5,
+      "n_label": "child victims",
+      "share": null,
+      "rate": {
+       "indigenous": 1.25
+      },
+      "rate_all": null,
+      "rate_label": "victims per 100,000 Aboriginal and Torres Strait Islander children",
+      "rate_note": "Official AIHW National Plan measure from AIC National Homicide Monitoring Program data; fewer than 20 events, so unstable.",
+      "share_note": "Only Indigenous children are reported for this measure; no matching figure for other children was found."
+     }
+    }
+   ],
+   "extra_sources": [
+    "aihw_filicide"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "indigenous"
+    ],
+    "perpetrators": [
+     "all",
+     "indigenous",
+     "non_indigenous"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "indigenous"
+      ],
+      "perpetrators": [
+       "all",
+       "indigenous",
+       "non_indigenous"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Human trafficking and slavery",
+   "years": "2024-25",
+   "intro": "The AFP received 420 reports of human trafficking and modern slavery in 2024-25, including 36 of child trafficking, 84 of sexual servitude and 118 of forced marriage. No heritage of victims or offenders is published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "afp_ht",
+    "text": "AFP figures are counts by offence type only."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "afp_ht",
+    "text": "No offender heritage is published."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "afp_ht",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "2024-25",
+   "intro": "The AFP-led Australian Centre to Counter Child Exploitation received 82,764 reports of online child sexual exploitation in 2024-25, up from 58,503 the year before. No heritage of victims or offenders is published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "accce",
+    "text": "Reports are counted, mostly referrals from the US NCMEC; victims are usually unidentified."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "accce",
+    "text": "No offender heritage is published."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "accce",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 20,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 20.4,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 9,
+    "perpetrator": 5,
+    "coverage": 5,
+    "rates": 3,
+    "access": 7,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "ABS police data give child sexual-assault victims who are Aboriginal or Torres Strait Islander, with official rates, for NSW, Qld and SA only; offenders by Indigenous status for five jurisdictions, but not split by victim age. AIHW child protection gives substantiated sexual abuse rates by Indigenous status nationally. 'Non-Indigenous' lumps White Australians with every other group, so European descent is never identified.",
+    "score": 29
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 9,
+    "perpetrator": 4,
+    "coverage": 5,
+    "rates": 3,
+    "access": 7,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Child assault victims by Indigenous status (NSW, Qld, SA, official rates) and national AIHW physical-abuse substantiation rates; offenders only for all assaults (acts intended to cause injury). Binary Indigenous / non-Indigenous only.",
+    "score": 28
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 8,
+    "perpetrator": 0,
+    "coverage": 5,
+    "rates": 3,
+    "access": 6,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "none",
+    "why": "AIHW substantiated neglect rates for Indigenous and non-Indigenous children (national, 2023-24). No heritage of the people responsible.",
+    "score": 22
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 7,
+    "perpetrator": 5,
+    "coverage": 4,
+    "rates": 2.5,
+    "access": 6,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "First Nations child filicide victims (AIC homicide monitoring, via AIHW) and Indigenous homicide victims of all ages (NSW, SA); homicide offenders by Indigenous status for five jurisdictions, all victims. The AIC homicide report could not be opened from the review machine.",
+    "score": 24.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "AFP publishes counts of trafficking reports (420 in 2024-25, 36 of child trafficking) with no heritage of victims or offenders.",
+    "score": 6.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0.5,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "The ACCCE publishes counts of reports (82,764 in 2024-25) with no heritage of victims or offenders.",
+    "score": 6.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Australia scores 20% on the stricter scale (20-40%). Its police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, often with official rates, but everyone else is counted as 'non-Indigenous', so White or European-descent Australians are never separately identified. Police Indigenous data cover only some states, offenders are not linked to child victims, and trafficking and online exploitation carry no heritage at all.",
+  "judgement_notes": "Indigenous status is real ethnicity data, so the 25% cap does not apply, but every side is binary and lumps White Australians with all other non-Indigenous people, so heritage credit is kept low (at most 9 of 37.5). Police data cover only NSW, Qld and SA for victims. If Indigenous-only data were treated as no European-descent data and capped, Australia would still score about 20%, because it is already below the cap."
+ },
+ "sources": {
+  "abs_vic": {
+   "name": "Recorded Crime - Victims, 2025 (Tables 11, 23, 24, 26)",
+   "publisher": "Australian Bureau of Statistics",
+   "years": "Annual; 2025 released 3 Sep 2026",
+   "records": "Police-recorded victims by offence, age, sex and state; Aboriginal and Torres Strait Islander victims with official rates for NSW, Queensland and South Australia.",
+   "limitations": "Indigenous / non-Indigenous only; other states' Indigenous data not of sufficient quality; Northern Territory not published since 2023. No offender heritage.",
+   "url": "https://www.abs.gov.au/statistics/people/crime-and-justice/recorded-crime-victims/latest-release",
+   "tier": "Official government statistics"
+  },
+  "abs_off": {
+   "name": "Recorded Crime - Offenders, 2024-25 (Table 26)",
+   "publisher": "Australian Bureau of Statistics",
+   "years": "Annual; 2024-25 released 18 Mar 2026",
+   "records": "Offenders proceeded against by police by Indigenous status and principal offence, with official rates, for NSW, Qld, SA, NT and ACT.",
+   "limitations": "Not split by the victim's age or Indigenous status; 'non-Indigenous' lumps all other groups.",
+   "url": "https://www.abs.gov.au/statistics/people/crime-and-justice/recorded-crime-offenders/latest-release",
+   "tier": "Official government statistics"
+  },
+  "aihw_hpf": {
+   "name": "Aboriginal and Torres Strait Islander Health Performance Framework, measure 2.12 Child protection",
+   "publisher": "Australian Institute of Health and Welfare and National Indigenous Australians Agency",
+   "years": "2023-24 data; 2026 update",
+   "records": "Children receiving child-protection services and substantiated maltreatment by type, Indigenous vs non-Indigenous, with rates.",
+   "limitations": "Indigenous / non-Indigenous only; no heritage of the people responsible; 2023-24 data.",
+   "url": "https://www.indigenoushpf.gov.au/measures/2-12-child-protection",
+   "tier": "Official government statistics"
+  },
+  "aihw_filicide": {
+   "name": "National Plan outcomes: First Nations child victims of filicide",
+   "publisher": "Australian Institute of Health and Welfare (data: AIC National Homicide Monitoring Program)",
+   "years": "2016-17 to 2024-25; updated 23 Apr 2026",
+   "records": "Number and rate of Aboriginal and Torres Strait Islander children aged 0-17 killed by a parent or parent figure.",
+   "limitations": "Indigenous children only; small numbers. The AIC homicide report itself could not be opened from the review machine.",
+   "url": "https://www.aihw.gov.au/family-domestic-and-sexual-violence/resources/national-plan-outcomes/national-targets/first-nations-child-victims-of-homicide",
+   "tier": "Official government statistics"
+  },
+  "afp_ht": {
+   "name": "AFP: Reports of human trafficking nearly double over past five years (2024-25 figures)",
+   "publisher": "Australian Federal Police",
+   "years": "2024-25; released 12 Oct 2025",
+   "records": "Reports of human trafficking and slavery by offence type.",
+   "limitations": "Counts only; no victim or offender heritage.",
+   "url": "https://www.afp.gov.au/news-centre/media-release/reports-human-trafficking-nearly-double-over-past-five-years",
+   "tier": "Official government statistics"
+  },
+  "accce": {
+   "name": "AFP / ACCCE: 41 per cent jump in online child sexual exploitation reports (2024-25 figures)",
+   "publisher": "Australian Federal Police",
+   "years": "2024-25; released 7 Sep 2025",
+   "records": "Reports of online child sexual exploitation received by the ACCCE.",
+   "limitations": "Counts only; no victim or offender heritage.",
+   "url": "https://www.afp.gov.au/news-centre/media-release/41-cent-jump-online-child-sexual-exploitation-reports-underscores-need",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

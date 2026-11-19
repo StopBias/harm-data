@@ -1,0 +1,1099 @@
+{
+ "country": "New Zealand",
+ "iso_a3": "NZL",
+ "completeness": 44,
+ "provisional": false,
+ "as_of": "2026-11-18",
+ "summary": "New Zealand Police publish child sexual assault, child assault, abuse-material and grooming victims, and the people proceeded against, by ethnicity every month, with European separate from Māori, Pacific and Asian people. It is the only country reviewed so far whose official crime data separately identify European-descent victims and offenders. Gaps: many child victims have no recorded ethnicity, offenders are not split by victim age outside child-specific offences, there is no victim-by-offender ethnicity table, and child-protection data lump NZ European with Other.",
+ "short_name": "New Zealand",
+ "name_in_sentence": "New Zealand",
+ "nations": {
+  "National (NZ Police)": "Recorded Crime Victims and Offenders Statistics by ethnicity, monthly since July 2014; homicide victims report.",
+  "Oranga Tamariki": "Child-protection data with prioritised ethnicity (Māori, Pacific, NZ European & Other)."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "european",
+   "label": "European (incl. NZ European)"
+  },
+  {
+   "id": "maori",
+   "label": "Māori"
+  },
+  {
+   "id": "pacific",
+   "label": "Pacific peoples"
+  },
+  {
+   "id": "asian",
+   "label": "Asian (incl. Indian)"
+  },
+  {
+   "id": "indian",
+   "label": "Indian"
+  },
+  {
+   "id": "melaa",
+   "label": "Middle Eastern, Latin American or African"
+  },
+  {
+   "id": "other",
+   "label": "Other ethnicity (not elsewhere classified)"
+  },
+  {
+   "id": "maori_pacific",
+   "label": "Māori and Pacific (child-protection data)"
+  },
+  {
+   "id": "nz_european_other",
+   "label": "NZ European and Other combined (child-protection data)",
+   "lumped": true
+  }
+ ],
+ "subgroups": {
+  "indian": "asian"
+ },
+ "extra_group_labels": {
+  "unknown": "Ethnicity not stated"
+ },
+ "unknown_label": "Ethnicity not stated",
+ "european_title": "Separately identified in police data",
+ "european_note": "NZ Police record 'European' (NZ European and other European ethnicities) as its own group for victims and for people proceeded against, alongside Māori, Pacific, Asian, Indian and other groups. Oranga Tamariki child-protection data instead lump NZ European with Other.",
+ "select_labels": {
+  "victim": "Victim's ethnicity",
+  "perpetrator": "Offender's ethnicity"
+ },
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual assault of a child (police)",
+   "years": "2025",
+   "intro": "Police recorded 3417 victimisations of sexual assault of a child in 2025 (1690 with the victim recorded as aged 0-14), and proceeded against offenders 856 times. Both victims and offenders are published by ethnicity, with European separate.",
+   "victims": {
+    "status": "published",
+    "source": "nzp_vic",
+    "scope": "New Zealand, victimisations of sexual assault of a child, victims aged 0-14, 2025",
+    "n": 1220,
+    "n_label": "victimisations with recorded ethnicity (of 1690)",
+    "unknown_share": 27.8,
+    "share": {
+     "european": 40.0,
+     "maori": 44.0,
+     "pacific": 7.5,
+     "asian": 4.3,
+     "indian": 2.1,
+     "melaa": 1.1,
+     "other": 3.1
+    },
+    "rate": {
+     "european": 80.7,
+     "maori": 204.6,
+     "pacific": 66.9,
+     "asian": 29.7,
+     "melaa": 58.1
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 180.5,
+    "rate_label": "victimisations per 100,000 children aged 0-14 of the same ethnic group",
+    "rate_all_label": "all children aged 0-14",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Victimisations count a victim once per incident and offence type. Excludes incidents later found to be 'no crime'."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for sexual assault of a child, offenders of all ages, 2025",
+    "n": 748,
+    "n_label": "proceedings with recorded ethnicity (of 856)",
+    "unknown_share": 12.6,
+    "share": {
+     "european": 48.0,
+     "maori": 29.7,
+     "pacific": 12.7,
+     "asian": 7.5,
+     "indian": 3.9,
+     "melaa": 1.3,
+     "other": 0.8
+    },
+    "rate": {
+     "european": 10.6,
+     "maori": 25.0,
+     "pacific": 21.5,
+     "asian": 6.5,
+     "melaa": 10.8
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 17.1,
+    "rate_label": "proceedings per 100,000 residents of the same ethnic group (all ages)",
+    "rate_all_label": "all residents",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Counts proceedings (a person proceeded against on a day), not unique people or convictions. The offence itself means the victim was a child. 147 of the 856 proceedings were against people aged 10-19."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nzp_vic",
+    "text": "Police publish the offender's relationship to the victim, but not the offender's ethnicity alongside the victim's, so no victim-by-offender ethnicity table exists."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "All recorded ages, sexual assault of a child, 2025",
+     "data": {
+      "status": "published",
+      "source": "nzp_vic",
+      "scope": "New Zealand, victimisations of sexual assault of a child, all recorded ages, 2025",
+      "n": 2492,
+      "n_label": "victimisations with recorded ethnicity (of 3417)",
+      "unknown_share": 27.1,
+      "share": {
+       "european": 45.5,
+       "maori": 39.4,
+       "pacific": 7.0,
+       "asian": 4.3,
+       "indian": 2.3,
+       "melaa": 1.0,
+       "other": 2.8
+      },
+      "rate": null,
+      "unknown_label": "Ethnicity not stated",
+      "rate_reason": "Rates are not calculated for this small or non-population-based count.",
+      "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Includes victims whose recorded age is 15 or over (the offence covers children under 16, and age may be recorded at report)."
+     }
+    },
+    {
+     "side": "victims",
+     "title": "Any sexual offence, victims aged 0-14, 2025",
+     "data": {
+      "status": "published",
+      "source": "nzp_vic",
+      "scope": "New Zealand, victimisations of any sexual offence, victims aged 0-14, 2025",
+      "n": 1484,
+      "n_label": "victimisations with recorded ethnicity (of 2177)",
+      "unknown_share": 31.8,
+      "share": {
+       "european": 41.4,
+       "maori": 43.4,
+       "pacific": 6.7,
+       "asian": 4.4,
+       "indian": 2.1,
+       "melaa": 1.1,
+       "other": 3.0
+      },
+      "rate": {
+       "european": 101.6,
+       "maori": 245.4,
+       "pacific": 73.5,
+       "asian": 36.5,
+       "melaa": 71.5
+      },
+      "unknown_label": "Ethnicity not stated",
+      "rate_all": 232.5,
+      "rate_label": "victimisations per 100,000 children aged 0-14 of the same ethnic group",
+      "rate_all_label": "all children aged 0-14",
+      "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+      "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. All sexual offences, including abuse material and grooming offences."
+     }
+    }
+   ],
+   "extra_sources": [
+    "census23"
+   ],
+   "rate_sources": [
+    "census23"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault of children aged 0-14 (police)",
+   "years": "2025",
+   "intro": "Police recorded 9089 assault victimisations of children aged 0-14 in 2025, 861 of them by a family member (688 by a parent). Child victims are published by ethnicity; offenders only for all assaults.",
+   "victims": {
+    "status": "published",
+    "source": "nzp_vic",
+    "scope": "New Zealand, assault victimisations, victims aged 0-14, 2025",
+    "n": 4913,
+    "n_label": "victimisations with recorded ethnicity (of 9089)",
+    "unknown_share": 45.9,
+    "share": {
+     "european": 32.9,
+     "maori": 47.5,
+     "pacific": 9.2,
+     "asian": 7.0,
+     "indian": 3.8,
+     "melaa": 1.4,
+     "other": 2.0
+    },
+    "rate": {
+     "european": 267.4,
+     "maori": 889.8,
+     "pacific": 330.7,
+     "asian": 192.9,
+     "melaa": 303.8
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 970.7,
+    "rate_label": "victimisations per 100,000 children aged 0-14 of the same ethnic group",
+    "rate_all_label": "all children aged 0-14",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. All assaults on children, whoever the offender (including other children). Ethnicity is not stated for a large share of child victims."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for assault, all victims and offenders, 2025",
+    "n": 16467,
+    "n_label": "proceedings with recorded ethnicity (of 17655)",
+    "unknown_share": 6.7,
+    "share": {
+     "european": 29.9,
+     "maori": 54.6,
+     "pacific": 10.4,
+     "asian": 3.4,
+     "indian": 2.1,
+     "melaa": 1.1,
+     "other": 0.6
+    },
+    "rate": {
+     "european": 145.4,
+     "maori": 1013.8,
+     "pacific": 386.6,
+     "asian": 64.2,
+     "melaa": 193.0
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 353.5,
+    "rate_label": "proceedings per 100,000 residents of the same ethnic group (all ages)",
+    "rate_all_label": "all residents",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Not child-specific: proceedings are not split by the victim's age, so offenders against children cannot be separated."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nzp_vic",
+    "text": "No table links the victim's ethnicity to the offender's ethnicity."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Assaulted by a family member, aged 0-14, 2025",
+     "data": {
+      "status": "published",
+      "source": "nzp_vic",
+      "scope": "New Zealand, assault victimisations of children aged 0-14 by a family member, 2025",
+      "n": 582,
+      "n_label": "victimisations with recorded ethnicity (of 861)",
+      "unknown_share": 32.4,
+      "share": {
+       "european": 23.9,
+       "maori": 50.5,
+       "pacific": 14.6,
+       "asian": 5.7,
+       "indian": 4.1,
+       "melaa": 1.0,
+       "other": 4.3
+      },
+      "rate": {
+       "european": 23.0,
+       "maori": 112.0,
+       "pacific": 62.5,
+       "asian": 18.5,
+       "melaa": 26.8
+      },
+      "unknown_label": "Ethnicity not stated",
+      "rate_all": 92.0,
+      "rate_label": "victimisations per 100,000 children aged 0-14 of the same ethnic group",
+      "rate_all_label": "all children aged 0-14",
+      "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+      "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Offender recorded as a family member; 688 of these 861 were by a parent. Most child assaults (6625) had no offender identified, so the relationship is unknown."
+     }
+    }
+   ],
+   "extra_sources": [
+    "census23"
+   ],
+   "rate_sources": [
+    "census23"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect, and harm to children in state care",
+   "years": "2025 (police); year to 31 Mar 2025 (care)",
+   "intro": "New Zealand publishes no national count of neglect findings by ethnicity. Oranga Tamariki reports how many children in state care were found to have been harmed (any abuse or neglect) by ethnicity, lumping NZ European with Other. Police proceeded against offenders for neglect or ill-treatment of a person under care 77 times in 2025.",
+   "victims": {
+    "status": "published",
+    "source": "ot_ar25",
+    "scope": "Children in Oranga Tamariki care or custody, 12 months to 31 March 2025",
+    "n": 530,
+    "n_label": "children with a finding of harm in care (sum of the four groups)",
+    "unknown_share": null,
+    "share": {
+     "maori": 60.6,
+     "maori_pacific": 12.3,
+     "pacific": 3.8,
+     "nz_european_other": 23.4
+    },
+    "rate": {
+     "maori": 10.0,
+     "maori_pacific": 11.1,
+     "pacific": 6.3,
+     "nz_european_other": 8.8
+    },
+    "rate_all": null,
+    "rate_unit": "%",
+    "rate_label": "of children in care in the group were found to have been harmed",
+    "rate_note": "Children harmed divided by children in care in the group (Oranga Tamariki, Safety of Children in Care appendix); published rounded as 10%, 11%, 6% and 9%.",
+    "share_note": "Official Oranga Tamariki figures. Prioritised ethnicity groups: Māori, Māori & Pacific, Pacific, and 'NZ European & Other', which lumps European children with Asian and all other children. Covers children in state care only, and all types of harm (physical, sexual, emotional abuse and neglect). Oranga Tamariki notes a child can appear in more than one category."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for neglect or ill-treatment of a person under care, 2025",
+    "n": 63,
+    "n_label": "proceedings with recorded ethnicity (of 77)",
+    "unknown_share": 18.2,
+    "share": {
+     "european": 41.3,
+     "maori": 41.3,
+     "pacific": 14.3,
+     "asian": 3.2,
+     "indian": 1.6,
+     "melaa": 0.0,
+     "other": 0.0
+    },
+    "rate": null,
+    "unknown_label": "Ethnicity not stated",
+    "rate_reason": "Rates are not calculated for this small or non-population-based count.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. Includes neglect of vulnerable adults as well as children; small numbers."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "ot_ar25",
+    "text": "Oranga Tamariki reports who caused harm (caregivers, family, others) but not their ethnicity."
+   },
+   "extra_sources": [],
+   "availability": {
+    "victims": [
+     "all",
+     "maori",
+     "pacific",
+     "maori_pacific",
+     "nz_european_other"
+    ],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "maori",
+       "pacific",
+       "maori_pacific",
+       "nz_european_other"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "maori",
+       "pacific",
+       "maori_pacific",
+       "nz_european_other"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2007-2022 (victims); 2025 (offenders)",
+   "intro": "Police counted 1174 homicide victims from 2007 to 2022, of whom 152 were under 15 (123 under 5). Victims are published by ethnicity (European 405, Māori 372) but not by ethnicity and age together. Police proceeded against offenders for murder or manslaughter 135 times in 2025, published by ethnicity.",
+   "victims": {
+    "status": "published",
+    "source": "nzp_hom",
+    "scope": "New Zealand, homicide victims (murder and manslaughter) of all ages, 2007-2022",
+    "n": 950,
+    "n_label": "victims with ethnicity recorded as Asian, European, Indian, Māori or Pacific (of 1174)",
+    "unknown_share": 19.1,
+    "unknown_label": "Other or unknown ethnicity",
+    "share": {
+     "european": 42.6,
+     "maori": 39.2,
+     "pacific": 7.8,
+     "asian": 10.4,
+     "indian": 4.9
+    },
+    "rate": null,
+    "rate_reason": "The report publishes no rates by ethnicity and warns that police and census ethnicity are recorded differently; 16 years of counts are not divided by one census here.",
+    "share_note": "Official NZ Police figures (Homicide Victims Report 2023, Table A.3), all ages: European 405, Māori 372, Pacific 74, Asian 52, Indian 47. 'Other / Unknown' (224) combines other ethnicities with unknown, so it is shown as unknown here. Ethnicity is not published by age, so child victims cannot be split by ethnicity. 2019 includes the 51 victims of the Christchurch mosque attacks."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for murder or manslaughter, all victims, 2025",
+    "n": 131,
+    "n_label": "proceedings with recorded ethnicity (of 135)",
+    "unknown_share": 3.0,
+    "share": {
+     "european": 22.9,
+     "maori": 60.3,
+     "pacific": 12.2,
+     "asian": 2.3,
+     "indian": 0.8,
+     "melaa": 0.8,
+     "other": 1.5
+    },
+    "rate": {
+     "european": 0.9,
+     "maori": 8.9,
+     "pacific": 3.6,
+     "asian": 0.3,
+     "melaa": 1.1
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 2.7,
+    "rate_label": "proceedings per 100,000 residents of the same ethnic group (all ages)",
+    "rate_all_label": "all residents",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. All victims, not only children; excludes driving causing death. Small numbers."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nzp_hom",
+    "text": "The report gives the victim's relationship to the offender (116 children killed by a parent, 2007-2022, all ages of 'child') but not the offender's ethnicity."
+   },
+   "extra_sources": [
+    "census23"
+   ],
+   "rate_sources": [
+    "census23"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian"
+    ],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Human trafficking",
+   "years": "Jul 2014 - Sep 2026",
+   "intro": "Police proceeded against offenders for human trafficking or slavery 45 times between July 2014 and September 2026. No victim statistics by ethnicity are published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "nzp_vic",
+    "text": "Trafficking is not among the offences in the police victimisation statistics, and no other source publishes trafficking victims by ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for human trafficking or slavery, July 2014 to September 2026",
+    "n": 44,
+    "n_label": "proceedings with recorded ethnicity (of 45)",
+    "unknown_share": 2.2,
+    "share": {
+     "european": 75.0,
+     "maori": 11.4,
+     "pacific": 4.5,
+     "asian": 2.3,
+     "indian": 2.3,
+     "melaa": 0.0,
+     "other": 6.8
+    },
+    "rate": null,
+    "unknown_label": "Ethnicity not stated",
+    "rate_reason": "Rates are not calculated for this small or non-population-based count.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. All forms of trafficking and slavery and all victim ages, over 12 years (2 in 2025). Very small numbers."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "nzp_off",
+    "text": "No victim ethnicity, so no link is possible."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child abuse material and grooming",
+   "years": "2025",
+   "intro": "Police recorded 283 victimisations of child abuse material or child grooming offences in 2025 and proceeded against offenders 196 times; both are published by ethnicity.",
+   "victims": {
+    "status": "published",
+    "source": "nzp_vic",
+    "scope": "New Zealand, victimisations of child abuse material and child grooming offences, all ages, 2025",
+    "n": 166,
+    "n_label": "victimisations with recorded ethnicity (of 283)",
+    "unknown_share": 41.3,
+    "share": {
+     "european": 65.1,
+     "maori": 23.5,
+     "pacific": 1.8,
+     "asian": 4.8,
+     "indian": 2.4,
+     "melaa": 0.6,
+     "other": 4.2
+    },
+    "rate": null,
+    "unknown_label": "Ethnicity not stated",
+    "rate_reason": "Rates are not calculated for this small or non-population-based count.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. 232 grooming and 51 abuse-material victimisations; most children shown in abuse material are never identified."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nzp_off",
+    "scope": "New Zealand, police proceedings for child abuse material and child grooming offences, 2025",
+    "n": 181,
+    "n_label": "proceedings with recorded ethnicity (of 196)",
+    "unknown_share": 7.7,
+    "share": {
+     "european": 77.3,
+     "maori": 13.3,
+     "pacific": 2.8,
+     "asian": 4.4,
+     "indian": 2.2,
+     "melaa": 1.7,
+     "other": 0.6
+    },
+    "rate": {
+     "european": 4.1,
+     "maori": 2.7,
+     "pacific": 1.1,
+     "asian": 0.9,
+     "melaa": 3.2
+    },
+    "unknown_label": "Ethnicity not stated",
+    "rate_all": 3.9,
+    "rate_label": "proceedings per 100,000 residents of the same ethnic group (all ages)",
+    "rate_all_label": "all residents",
+    "rate_note": "Calculated here: police counts divided by 2023 Census usually resident population (Stats NZ, total-response ethnicity). Police record one ethnicity per person while the census counts people in every group they identify with, so these rates are approximate (groups with many multi-ethnic people, such as Māori and Pacific, are understated less than they would be with single-ethnicity denominators). The all-groups rate includes people whose ethnicity was not stated.",
+    "share_note": "NZ Police record one ethnicity per person (European, Māori, Pacific, Asian, Indian, African, Latin American, Middle Eastern, other). 'European' covers NZ European and other European ethnicities, so European-descent people are separately identified. Asian here includes the police 'Indian' category (shown separately too); 'Middle Eastern, Latin American or African' combines three police categories. 135 abuse-material and 61 grooming proceedings. Excludes cases prosecuted by the Department of Internal Affairs or Customs, which handle many abuse-material cases."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nzp_vic",
+    "text": "No victim-by-offender ethnicity table."
+   },
+   "extra_sources": [
+    "census23"
+   ],
+   "rate_sources": [
+    "census23"
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "perpetrators": [
+     "all",
+     "european",
+     "maori",
+     "pacific",
+     "asian",
+     "indian",
+     "melaa",
+     "other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "indian",
+       "melaa",
+       "other"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "european",
+       "maori",
+       "pacific",
+       "asian",
+       "melaa"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 44,
+  "band": "40-60%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 43.6,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 26,
+    "perpetrator": 28,
+    "coverage": 7,
+    "rates": 3,
+    "access": 7.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "NZ Police publish victims of 'sexual assault of a child' and people proceeded against for it by ethnicity, with European separate from Māori, Pacific, Asian and other groups, updated monthly. Victim ethnicity is not stated for about a quarter of victimisations; offender ethnicity unknown for about 13%. Police record one ethnicity per person and the method is not fully documented. No victim-by-offender ethnicity table.",
+    "score": 71.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 20,
+    "perpetrator": 6,
+    "coverage": 5,
+    "rates": 2,
+    "access": 7.5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Assault victims aged 0-14 by ethnicity (European separate), including assaults by a family member; ethnicity not stated for 46% of child assault victimisations. Offender ethnicity exists only for all assaults, not split by the victim's age.",
+    "score": 40.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 6,
+    "perpetrator": 12,
+    "coverage": 3,
+    "rates": 1.5,
+    "access": 6,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "People proceeded against for neglect or ill-treatment of a person under care by ethnicity (European separate; includes vulnerable adults). Victims: only Oranga Tamariki's count of children harmed in state care, which lumps 'NZ European & Other'.",
+    "score": 28.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 17,
+    "perpetrator": 15,
+    "coverage": 7,
+    "rates": 2.5,
+    "access": 5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Police homicide victims report gives victims by ethnicity (European separate) and by age, but not ethnicity by age; final data end in 2022. People proceeded against for murder and manslaughter by ethnicity (2025), all victims. No rates or victim-offender ethnicity link published.",
+    "score": 46.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 4,
+    "coverage": 1,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "ethnicity",
+    "why": "No victim data. 45 police proceedings for human trafficking or slavery since mid-2014 by offender ethnicity, all forms and ages.",
+    "score": 9
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 12,
+    "perpetrator": 22,
+    "coverage": 4,
+    "rates": 2,
+    "access": 7,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Victims and offenders of child abuse material and child grooming offences by ethnicity (European separate). Most victims in abuse material are unidentified (41% of victimisations have no ethnicity), and cases prosecuted by Internal Affairs or Customs are not in police data.",
+    "score": 47
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "New Zealand scores 44% on the stricter scale (40-60%), the first country reviewed whose police data separately identify European victims and European offenders. NZ Police publish child sexual assault victims and the people proceeded against for it by ethnicity every month. It loses points because a quarter to half of child victims have no recorded ethnicity, offenders are not split by the victim's age outside child-specific offences, there is no victim-by-offender ethnicity table, and child-protection data lump NZ European with Other.",
+  "judgement_notes": "Police ethnicity is treated as real ethnicity data with European descent separately identified, even though police record a single ethnicity and the method (self-identified or officer-recorded) is not documented in the release. If police ethnicity were treated as perceived and docked like US offender race, NZ would score about 38% (every police-based heritage score cut by a fifth)."
+ },
+ "sources": {
+  "nzp_vic": {
+   "name": "policedata.nz: Victimisations (demographics), Recorded Crime Victims Statistics",
+   "publisher": "New Zealand Police",
+   "years": "Monthly, July 2014 to September 2026 (workbook downloaded 18 Nov 2026)",
+   "records": "Victimisations by ANZSOC 2023 offence (including sexual assault of a child, assault, child abuse material and grooming), victim age group, sex, ethnicity and offender relationship.",
+   "limitations": "One police-recorded ethnicity per victim; 'not stated' is common for child victims. Excludes homicide and offences without a specific victim. No offender ethnicity in the victim data.",
+   "url": "https://www.police.govt.nz/about-us/publications-statistics/data-and-statistics/policedatanz/victimisations-demographics",
+   "tier": "Official government statistics"
+  },
+  "nzp_off": {
+   "name": "policedata.nz: Proceedings (offender demographics), Recorded Crime Offenders Statistics",
+   "publisher": "New Zealand Police",
+   "years": "Monthly, July 2014 to September 2026 (workbook downloaded 18 Nov 2026)",
+   "records": "Police proceedings by ANZSOC 2023 offence, offender age group, sex, ethnicity and method of proceeding.",
+   "limitations": "Counts proceedings, not unique offenders or convictions; not split by the victim's age except where the offence is child-specific. One police-recorded ethnicity.",
+   "url": "https://www.police.govt.nz/about-us/publications-statistics/data-and-statistics/policedatanz/proceedings-offender-demographics",
+   "tier": "Official government statistics"
+  },
+  "nzp_hom": {
+   "name": "Homicide Victims Report 2023",
+   "publisher": "New Zealand Police",
+   "years": "Victims 2007-2022 (2023 provisional); published July 2025",
+   "records": "Homicide victims by year, gender, age group, ethnicity and relationship to offender.",
+   "limitations": "Ethnicity and age are not cross-tabulated; 'Other/Unknown' is one category; no offender ethnicity.",
+   "url": "https://www.police.govt.nz/about-us/publication/homicide-victims-report-2023-and-historical-nz-murder-rate-report-1926-2023",
+   "tier": "Official government statistics"
+  },
+  "census23": {
+   "name": "2023 Census population counts by ethnic group, age and Māori descent (Table 9)",
+   "publisher": "Stats NZ",
+   "years": "2023 Census; released 29 May 2024",
+   "records": "Usually resident population by ethnic group (total responses, level 1) and five-year age group.",
+   "limitations": "Total-response ethnicity (people counted in each group they identify with), unlike police single ethnicity; used here only as rate denominators.",
+   "url": "https://www.stats.govt.nz/information-releases/2023-census-population-counts-by-ethnic-group-age-and-maori-descent-and-dwelling-counts/",
+   "tier": "Official government statistics"
+  },
+  "ot_ar25": {
+   "name": "Oranga Tamariki Annual Report 2024/25: Safety of Children in Care appendix",
+   "publisher": "Oranga Tamariki (Ministry for Children)",
+   "years": "12 months to 31 March 2025",
+   "records": "Children in care with findings of harm, by prioritised ethnicity, age and gender, and the people believed responsible by role.",
+   "limitations": "Children in state care only; 'NZ European & Other' lumps European with all other non-Māori, non-Pacific children; no ethnicity of the people responsible.",
+   "url": "https://www.orangatamariki.govt.nz/assets/Uploads/About-us/Corporate-reports/Annual-Report/Annual-Report-2024-2025.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
