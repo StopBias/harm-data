@@ -34,6 +34,20 @@ Bands include the lower bound and exclude the upper (20 → orange), except 100 
 `provisional: true` adds "(provisional)" and a note that data collection is still in progress.
 Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = SOL.
 
+## US data explorer (below the map)
+- `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
+  sets the USA score (56) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
+  share % vs rate per 100,000), the explanation panel, the expandable source list and the "How the score works" box.
+- Each harm has `victims`, `perpetrators` and `cross` (victim × perpetrator) blocks with a `status`:
+  `published`, `not_published` (recorded but no public table), `not_recorded`, or `pending` (published, not yet added).
+  Missing combinations are shown on the page, never hidden.
+- Figures come only from: HHS Child Maltreatment 2024, BJS Race and Hispanic Origin of Victims and Offenders 2012–15 (NCVS),
+  BJS Human Trafficking Data Collection Activities 2025, US Sentencing Commission Quick Facts FY2024, and Census Vintage 2025
+  population estimates (denominators for the federal-defendant rates). Sources and limitations are in the `sources` block.
+- Scoring standard: 100% = published data that separately identifies people of European descent as both victims and
+  perpetrators, alongside every other group, linked victim to perpetrator, for every harm. See `score` in `data/usa.json`.
+- `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.
+
 ## Licence
 Natural Earth: public domain ("No permission is needed to use Natural Earth. Crediting the authors is unnecessary.")
 https://www.naturalearthdata.com/about/terms-of-use/ — credited anyway in the map attribution.
