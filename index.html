@@ -461,6 +461,26 @@
       ZAF: {
         completeness: 6,    // overwritten by data/zaf.json when it loads
         note: "South Africa's police publish counts of crimes against children with no population group for victims or suspects. Death notifications record population group, including White, but child homicide by population group is not published in the main release. Details below the map."
+      },
+      ITA: {
+        completeness: 22,  // overwritten by data/ita.json when it loads
+        note: "Italy does not collect ethnic statistics. ISTAT and the Interior Ministry split girls who are victims of sexual violence and maltreatment, child homicide victims and authors of offences against children by Italian or foreign citizenship. These are proxies: no source identifies European descent. Details below the map."
+      },
+      ESP: {
+        completeness: 21,  // overwritten by data/esp.json when it loads
+        note: "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences by nationality and continent, and people detained by nationality for all victims. These are proxies: no source identifies European descent. Details below the map."
+      },
+      POL: {
+        completeness: 8,   // overwritten by data/pol.json when it loads
+        note: "Poland's police and justice statistics on crimes against children give no nationality or origin of victims or suspects. Only trafficking victims are published by citizenship. Details below the map."
+      },
+      NLD: {
+        completeness: 15,  // overwritten by data/nld.json when it loads
+        note: "Statistics Netherlands publishes suspects of sexual and violent crimes by nationality and by country of birth, with rates, but never for crimes against children, and no source gives the origin of child victims. These are proxies. Details below the map."
+      },
+      SWE: {
+        completeness: 13,  // overwritten by data/swe.json when it loads
+        note: "Sweden's crime agency publishes a school survey of 15-year-olds' victimisation by migration background and a one-off study of suspects by background (2015-2018). These are proxies: no source identifies European descent. Details below the map."
       }
     };
 
@@ -1002,12 +1022,12 @@
         return { main: noDataHtml("No data: no share is published for this selection", "This source publishes rates only. Switch Measure to “Rate per 100,000” to see them."), notes };
       }
       if (group === "all") {
-        main += `<p>Share of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + subgroupLine(side.share, "%");
+        main += `<p>Share of ${side.n != null ? side.n.toLocaleString("en-US") + " " : ""}${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + subgroupLine(side.share, "%");
         return { main, notes };
       }
       const sh = pick(side.share, group);
       if (!sh) return { main: noDataRecord(`This source does not report ${groupLabel(group)} as a separate group.`), notes };
-      main += `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)} were ${esc(groupLabel(sh.g))}${esc(subNote(sh.g))}.${scope}</p>` +
+      main += `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n != null ? side.n.toLocaleString("en-US") + " " : ""}${esc(side.n_label)} were ${esc(groupLabel(sh.g))}${esc(subNote(sh.g))}.${scope}</p>` +
         barsHtml(side.share, sh.g, "%");
       return { main, notes };
     }

@@ -1,0 +1,711 @@
+{
+ "country": "Netherlands",
+ "iso_a3": "NLD",
+ "completeness": 15,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "The Netherlands does not record ethnicity. CBS publishes suspects of sexual and violent crimes by nationality and by country of birth and origin, with rates, but never for crimes against children, and no national statistics give the origin of child victims. Trafficking figures give victims and suspects by nationality; neglect, homicide and online abuse have no origin data.",
+ "short_name": "Netherlands",
+ "name_in_sentence": "the Netherlands",
+ "nations": {
+  "National (CBS, National Rapporteur)": "CBS police-suspect statistics by nationality and origin; National Rapporteur monitors on trafficking and sexual violence against children.",
+  "Caribbean Netherlands": "Not included in the CBS suspect tables used here."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "dutch_nat",
+   "label": "Dutch nationality (incl. naturalised)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_nat",
+   "label": "Foreign nationality (all)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_nat",
+   "label": "Other European nationality",
+   "proxy": "nationality"
+  },
+  {
+   "id": "africa_nat",
+   "label": "African nationality",
+   "proxy": "nationality"
+  },
+  {
+   "id": "asia_nat",
+   "label": "Asian nationality",
+   "proxy": "nationality"
+  },
+  {
+   "id": "latam_nat",
+   "label": "Latin American nationality",
+   "proxy": "nationality"
+  },
+  {
+   "id": "nl_parents_nl",
+   "label": "Born in the Netherlands, both parents born in the Netherlands",
+   "proxy": "migration background"
+  },
+  {
+   "id": "nl_one_parent",
+   "label": "Born in the Netherlands, one parent born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "nl_two_parents",
+   "label": "Born in the Netherlands, both parents born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "born_abroad",
+   "label": "Born abroad",
+   "proxy": "migration background"
+  },
+  {
+   "id": "herk_europe",
+   "label": "Origin elsewhere in Europe",
+   "proxy": "migration background"
+  },
+  {
+   "id": "herk_non_europe",
+   "label": "Origin outside Europe",
+   "proxy": "migration background"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "europe_nat": "foreign_nat",
+  "africa_nat": "foreign_nat",
+  "asia_nat": "foreign_nat",
+  "latam_nat": "foreign_nat"
+ },
+ "extra_group_labels": {},
+ "unknown_label": "Nationality or origin unknown",
+ "european_title": "Not recorded by any Dutch source",
+ "european_note": "Dutch statistics record nationality and origin based on country of birth of the person and their parents, never ethnicity. 'Born in the Netherlands to Dutch-born parents' and 'origin elsewhere in Europe' are the closest groups to European descent, but they are birth-country proxies: they include people of any descent and leave out European-descent people born outside Europe.",
+ "select_labels": {
+  "victim": "Victim's nationality or origin",
+  "perpetrator": "Perpetrator's nationality or origin"
+ },
+ "proxy_note": "The Netherlands records nationality and origin by country of birth, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences (suspects, all victims)",
+   "years": "2025",
+   "intro": "CBS registered 3,740 suspects of sexual offences in 2025, by nationality, for victims of all ages. The National Rapporteur's monitor of sexual violence against children (2020-2024) has no origin variable for victims or suspects.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "msgk",
+    "text": "No national statistics give the nationality or origin of child victims."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "cbs85656",
+    "scope": "Netherlands, registrations of suspects of sexual offences, victims of all ages, 2025",
+    "n": 3740,
+    "n_label": "registrations of suspects",
+    "unknown_share": 1.3,
+    "share": {
+     "dutch_nat": 78.0,
+     "foreign_nat": 22.0
+    },
+    "rate": null,
+    "rate_reason": "CBS does not publish rates by nationality for this table.",
+    "share_note": "CBS rounds counts to tens. Foreign = total minus Dutch minus stateless/unknown, calculated here. Most frequent foreign nationalities: pools 120, syrisch 100, roemeens 70, marokkaans 60, turks 50. Registrations of suspects, not unique people or convictions; includes suspects with no address in the Netherlands. Not child-victim-specific. Nationality, not ethnicity: Dutch statistics never record ethnic origin. 'Dutch' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cbs85656",
+    "text": "Suspect tables are not split by the victim's age or origin, so no victim-by-suspect table exists."
+   },
+   "extra_sources": [
+    "msgk"
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "dutch_nat",
+     "foreign_nat"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "dutch_nat",
+       "foreign_nat"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Violence and assault (suspects, all victims)",
+   "years": "2025",
+   "intro": "No national statistics give the origin of children who are victims of violence. CBS publishes suspects of violent crimes (32,360 in 2025) by country of birth and origin with rates, and suspects of assault (23,450) by nationality, all for victims of all ages.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "msgk",
+    "text": "No national statistics give the nationality or origin of child victims."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "cbs85658",
+    "scope": "Netherlands, registered suspects of violent crimes aged 12 and over, victims of all ages, 2025",
+    "n": 32360,
+    "n_label": "suspects of violent crimes",
+    "unknown_share": 0.4,
+    "share": {
+     "nl_parents_nl": 44.0,
+     "nl_one_parent": 7.5,
+     "nl_two_parents": 14.9,
+     "born_abroad": 33.5
+    },
+    "rate": {
+     "nl_parents_nl": 12,
+     "nl_one_parent": 26,
+     "nl_two_parents": 63,
+     "born_abroad": 28
+    },
+    "rate_all": 18,
+    "rate_label": "suspects per 10,000 residents of the same group",
+    "rate_all_label": "all residents",
+    "rate_note": "Rates as published by CBS (per 10,000 registered residents; crude, not adjusted for age).",
+    "share_note": "CBS origin (herkomst) is based on the country of birth of the person and their parents; it is not ethnicity, and people born in the Netherlands to Dutch-born parents can be of any descent. Violent crimes cover all victims, mostly adults; not child-victim-specific. Counts rounded to tens."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cbs85656",
+    "text": "Suspect tables are not split by the victim's age or origin, so no victim-by-suspect table exists."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Suspects of violent crimes by origin region, 2025",
+     "data": {
+      "status": "published",
+      "source": "cbs85658",
+      "scope": "Netherlands, registered suspects of violent crimes aged 12 and over by origin region, victims of all ages, 2025",
+      "n": 32360,
+      "n_label": "suspects of violent crimes",
+      "unknown_share": 0.4,
+      "share": {
+       "nl_parents_nl": 44.0,
+       "herk_europe": 12.8,
+       "herk_non_europe": 42.8
+      },
+      "rate": {
+       "nl_parents_nl": 12,
+       "herk_europe": 17
+      },
+      "rate_all": 18,
+      "rate_label": "suspects per 10,000 residents of the same group",
+      "rate_all_label": "all residents",
+      "rate_note": "Rates as published by CBS. No combined rate is published for origin outside Europe; by region: Turkey 40, Morocco 63, Suriname 52, Dutch Caribbean 84, Indonesia 10, other non-European 36 per 10,000.",
+      "share_note": "CBS origin (herkomst): origin 'Netherlands' is people born in the Netherlands to Dutch-born parents (the same 14,250 suspects as in the main block); 'elsewhere in Europe' is people born elsewhere in Europe or, if born in the Netherlands, with a parent born there. Origin outside Europe adds Turkey, Morocco, Suriname, Dutch Caribbean, Indonesia and other countries, calculated here. A birth-country proxy, not ethnicity."
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Registrations of suspects of assault (mishandeling) by nationality, 2025",
+     "data": {
+      "status": "published",
+      "source": "cbs85656",
+      "scope": "Netherlands, registrations of suspects of assault, victims of all ages, 2025",
+      "n": 23450,
+      "n_label": "registrations of suspects",
+      "unknown_share": 1.1,
+      "share": {
+       "dutch_nat": 80.6,
+       "foreign_nat": 19.4
+      },
+      "rate": null,
+      "rate_reason": "CBS does not publish rates by nationality for this table.",
+      "share_note": "CBS rounds counts to tens. Foreign = total minus Dutch minus stateless/unknown, calculated here. Most frequent foreign nationalities: pools 870, syrisch 660, marokkaans 300, turks 250, oekraïens 230. Registrations of suspects, not unique people or convictions; includes suspects with no address in the Netherlands. Not child-victim-specific. Nationality, not ethnicity: Dutch statistics never record ethnic origin. 'Dutch' includes naturalised citizens. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "dutch_nat",
+     "foreign_nat",
+     "nl_parents_nl",
+     "nl_one_parent",
+     "nl_two_parents",
+     "born_abroad",
+     "herk_europe",
+     "herk_non_europe"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "dutch_nat",
+       "foreign_nat",
+       "nl_parents_nl",
+       "nl_one_parent",
+       "nl_two_parents",
+       "born_abroad",
+       "herk_europe",
+       "herk_non_europe"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "nl_parents_nl",
+       "nl_one_parent",
+       "nl_two_parents",
+       "born_abroad",
+       "herk_europe"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "-",
+   "intro": "Veilig Thuis and youth-protection statistics publish no usable origin variable; CBS has discontinued the migration-background breakdown of youth-protection data (all values empty in table 85100NED).",
+   "victims": {
+    "status": "not_recorded",
+    "source": "cbs85100",
+    "text": "No nationality or origin of children is published."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "cbs85100",
+    "text": "No origin is recorded for the people responsible."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cbs85100",
+    "text": "Neither side is recorded."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "-",
+   "intro": "CBS publishes homicide victims by age (with an under-20 band) but no origin of victims or suspects in its current tables.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "cbs84726",
+    "text": "Homicide victims are published by age and sex only."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "cbs84726",
+    "text": "No origin of homicide suspects is published separately; homicide is included in the violent-crime suspect figures (see Physical abuse)."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cbs84726",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Human trafficking",
+   "years": "2025",
+   "intro": "952 possible victims of human trafficking were reported to the national coordination centre (CoMensha) in 2025, 90 of them minors. Police and the Royal Marechaussee had 202 trafficking suspects in view, 11 of them minors. Nationality is published for all ages and forms together.",
+   "victims": {
+    "status": "published",
+    "source": "nrm_mh25",
+    "scope": "Netherlands, possible trafficking victims registered by CoMensha, all ages, 2025",
+    "n": 952,
+    "n_label": "possible victims, all ages",
+    "unknown_share": 2.9,
+    "share": {
+     "dutch_nat": 24.2,
+     "foreign_nat": 75.8,
+     "europe_nat": 31.0,
+     "africa_nat": 20.2,
+     "asia_nat": 12.3,
+     "latam_nat": 11.7
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Registrations by CoMensha, an NGO that acts as the national coordination centre, analysed by the National Rapporteur. The group counts add up to 950, two fewer than the total. Among the 44 minors who were victims of criminal exploitation, 35 were Dutch. Nationality, not ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nrm_mh25",
+    "scope": "Netherlands, trafficking suspects in police and KMar investigations, 2025",
+    "n": 202,
+    "n_label": "suspects",
+    "unknown_share": null,
+    "share": {
+     "dutch_nat": 74.3,
+     "foreign_nat": 25.7
+    },
+    "rate": null,
+    "rate_reason": "Too few cases for rates.",
+    "share_note": "150 Dutch, 13 Romanian, 9 Bulgarian and 5 Moroccan suspects; foreign = 202 minus 150, calculated here (it may include a few of unknown nationality). People tried in 2021-2025 were 63% born in the Netherlands (68% in 2025). Nationality, not ethnicity: Dutch statistics never record ethnic origin. 'Dutch' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nrm_mh25",
+    "text": "No table links victim and suspect nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "dutch_nat",
+     "foreign_nat",
+     "europe_nat",
+     "africa_nat",
+     "asia_nat",
+     "latam_nat"
+    ],
+    "perpetrators": [
+     "all",
+     "dutch_nat",
+     "foreign_nat"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "dutch_nat",
+       "foreign_nat",
+       "europe_nat",
+       "africa_nat",
+       "asia_nat",
+       "latam_nat"
+      ],
+      "perpetrators": [
+       "all",
+       "dutch_nat",
+       "foreign_nat"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "2020-2024",
+   "intro": "The police child-abuse-material team identified 1,595 victims and 1,280 suspects over 2020-2024 (National Rapporteur monitor), with no nationality or origin.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "msgk",
+    "text": "Identified victims are not published by any origin variable."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "msgk",
+    "text": "Suspects are not published by any origin variable."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "msgk",
+    "text": "Neither side is published."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 15,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 14.7,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 5,
+    "coverage": 5,
+    "rates": 1,
+    "access": 7.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "CBS gives registrations of suspects of sexual offences by nationality (3,740 in 2025; Dutch 2,880), all victims and rounded to tens. The National Rapporteur's monitor of sexual violence against children has no origin variable for victims or suspects.",
+    "score": 18.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 6.5,
+    "coverage": 5,
+    "rates": 2.5,
+    "access": 7.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "No victim origin. CBS gives assault suspects by nationality and suspects of violent crime by origin (born in the Netherlands, rest of Europe, Turkey, Morocco, Suriname, ...) with rates per 10,000 residents, all victims.",
+    "score": 21.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Veilig Thuis and youth-protection statistics publish no usable origin variable (CBS has discontinued the migration-background breakdown).",
+    "score": 4.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 1,
+    "access": 7,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "CBS gives homicide victims by age only; no origin of victims or suspects is published in current tables.",
+    "score": 12
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "victim": 5,
+    "perpetrator": 6,
+    "coverage": 5,
+    "rates": 1,
+    "access": 7.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The National Rapporteur's 2025 figures give possible victims by nationality group (952; 224 Dutch; 90 minors) from CoMensha (an NGO) registrations, police and KMar suspects by nationality (202; 150 Dutch) and people tried by country of birth. All forms of trafficking.",
+    "score": 24.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police identify victims of child sexual abuse material (1,595 over 2020-2024) but publish no origin of victims or suspects.",
+    "score": 4.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "The Netherlands scores 15% on the stricter scale (0-20%). CBS publishes suspects of sexual and violent crimes by nationality and by origin (born in the Netherlands, rest of Europe and other regions), with rates, but never for crimes against children and never for victims. Trafficking figures give victims and suspects by nationality; other child harms have no origin data."
+ },
+ "sources": {
+  "cbs85656": {
+   "name": "Registraties van verdachten; delict, geslacht, nationaliteit, woonadres (85656NED)",
+   "publisher": "CBS (Statistics Netherlands)",
+   "years": "2010-2025; modified 27 Mar 2026",
+   "records": "Registrations of suspects by offence type and nationality.",
+   "limitations": "All victims; rounded to tens; registrations, not people.",
+   "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85656NED/table",
+   "tier": "Official government statistics"
+  },
+  "cbs85658": {
+   "name": "Verdachten; geslacht, leeftijd, herkomst, opleiding, huishoudensinkomen (85658NED)",
+   "publisher": "CBS (Statistics Netherlands)",
+   "years": "2010-2025; modified 27 Mar 2026",
+   "records": "Registered suspects aged 12+ by crime group, country of birth of person and parents, and origin, with rates per 10,000.",
+   "limitations": "Crime groups only (violent crimes, not child-specific); all victims.",
+   "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85658NED/table",
+   "tier": "Official government statistics"
+  },
+  "cbs84726": {
+   "name": "Overledenen; moord en doodslag, slachtoffers (84726NED)",
+   "publisher": "CBS (Statistics Netherlands)",
+   "years": "Annual",
+   "records": "Homicide victims by age and sex.",
+   "limitations": "No origin variable.",
+   "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/84726NED/table",
+   "tier": "Official government statistics"
+  },
+  "cbs85100": {
+   "name": "Jeugdbescherming; migratieachtergrond (85100NED)",
+   "publisher": "CBS (Statistics Netherlands)",
+   "years": "Discontinued breakdown",
+   "records": "Children under youth-protection measures.",
+   "limitations": "Migration-background values are empty for all years.",
+   "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85100NED/table",
+   "tier": "Official government statistics"
+  },
+  "msgk": {
+   "name": "Monitor Seksueel Geweld tegen Kinderen 2020-2024",
+   "publisher": "Nationaal Rapporteur Mensenhandel en Seksueel Geweld tegen Kinderen",
+   "years": "2020-2024; Dec 2025",
+   "records": "Victims and suspects of sexual violence against children through the justice chain; child-abuse-material team figures.",
+   "limitations": "No nationality or origin of victims or suspects.",
+   "url": "https://www.nationaalrapporteur.nl/documenten/2025/12/11/monitor-seksueel-geweld-tegen-kinderen-2020-2024",
+   "tier": "Official government statistics"
+  },
+  "nrm_mh25": {
+   "name": "Jaarcijfers mensenhandel 2025",
+   "publisher": "Nationaal Rapporteur Mensenhandel en Seksueel Geweld tegen Kinderen (victim data from CoMensha, an NGO)",
+   "years": "2025; 16 Oct 2026",
+   "records": "Possible victims by nationality group, age and form; suspects by nationality; people tried by country of birth.",
+   "limitations": "Victim data are CoMensha registrations, not official crime statistics; nationality for all ages together.",
+   "url": "https://www.nationaalrapporteur.nl/documenten/2026/10/16/jaarcijfers-mensenhandel-2025",
+   "tier": "Official government statistics (victim registrations by an NGO)"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
