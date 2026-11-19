@@ -1,0 +1,609 @@
+{
+ "country": "Bulgaria",
+ "iso_a3": "BGR",
+ "completeness": 11,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Bulgaria's statistics institute publishes convicted persons by citizenship for each offence, including lewd acts against children, crimes against youth and trafficking, and child victims by age and sex without citizenship. Roma and Turkish identity are recorded only in the census, never in crime or child-protection data.",
+ "short_name": "Bulgaria",
+ "name_in_sentence": "Bulgaria",
+ "nations": {
+  "National (NSI, Interior Ministry, anti-trafficking commission)": "Annual court-based crime statistics; child victim tables."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "bgr_cit",
+   "label": "Bulgarian citizens (incl. dual)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Other citizenship",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Bulgarian crime source",
+ "european_note": "Bulgarian crime statistics separate only Bulgarian from other citizenship. The census asks about ethnic group (Bulgarian, Turkish, Roma and others), but no crime, victim or child-protection statistic records it, so neither European descent nor Roma identity can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Bulgaria records citizenship only in crime data, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Lewd acts (Art. 149-150) and rape",
+   "years": "2025",
+   "intro": "73 people were convicted of lewd acts (Art. 149-150; Art. 149 concerns children under 14) in 2025: 70 Bulgarian citizens and 3 of other citizenship. Of 35 convicted of rape, 34 were Bulgarian and 1 a dual citizen. NSI counted 68 child victims of lewd acts in 2024, with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "nsiv",
+    "text": "NSI publishes child victims (8-17) of each offence by age and sex, but no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of lewd acts (Art. 149-150), 2025",
+    "n": 73,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 95.9,
+     "foreign_cit": 4.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Bodily harm (all victims)",
+   "years": "2025",
+   "intro": "923 people were convicted of bodily harm in 2025: 909 Bulgarian citizens, 4 dual Bulgarian-and-other citizens and 10 of other citizenship; all victim ages. NSI counted 294 child victims of bodily harm in 2024, with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "nsiv",
+    "text": "NSI publishes child victims (8-17) of each offence by age and sex, but no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of bodily harm (Art. 128-134), all victims, 2025",
+    "n": 923,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 98.9,
+     "foreign_cit": 1.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Dual Bulgarian-and-other citizens (4) are counted with Bulgarian citizens. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Crimes against youth (Art. 187-193)",
+   "years": "2025",
+   "intro": "142 people were convicted of crimes against youth (Art. 187-193, which include leaving a child without care) in 2025, all Bulgarian citizens. The child-protection agency's reports give no citizenship or ethnicity.",
+   "victims": {
+    "status": "not_published",
+    "source": "nsiv",
+    "text": "No neglected children by citizenship or ethnicity are published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of crimes against youth (Art. 187-193), 2025",
+    "n": 142,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 100.0,
+     "foreign_cit": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Completed murder (all victims)",
+   "years": "2025",
+   "intro": "49 people were convicted of completed murder in 2025: 47 Bulgarian citizens and 2 of other citizenship, all victim ages. No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "nsiv",
+    "text": "NSI publishes child victims (8-17) of each offence by age and sex, but no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of completed murder, all victims, 2025",
+    "n": 49,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 95.9,
+     "foreign_cit": 4.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (Art. 159a-159d)",
+   "years": "2025",
+   "intro": "29 people were convicted of trafficking in 2025, all Bulgarian citizens. The National Commission for Combating Trafficking identified 89 victims in 2025 (56 women, 33 men, including children); 34 were third-country nationals. No child-by-citizenship split is published.",
+   "victims": {
+    "status": "published",
+    "source": "ncct",
+    "scope": "Bulgaria, trafficking victims identified by the National Commission (all ages), 2025",
+    "n": 89,
+    "n_label": "identified victims (all ages)",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 61.8,
+     "foreign_cit": 38.2
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "National Commission for Combating Trafficking in Human Beings, 2025 figures (statement of 30 July 2026, published by BTA): 34 third-country nationals; the remainder are counted here as not third-country nationals (Bulgarian or EU citizens). Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of trafficking (Art. 159a-159d), 2025",
+    "n": 29,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 100.0,
+     "foreign_cit": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Depravity chapter, incl. pornography (Art. 149-159)",
+   "years": "2025",
+   "intro": "Pornography offences are published by citizenship only within the depravity chapter: 215 convicted in 2025, 209 Bulgarian, 1 dual and 5 other citizenship. NSI counted 7 child victims of child pornography in 2024, with no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "nsiv",
+    "text": "NSI publishes child victims (8-17) of each offence by age and sex, but no citizenship or ethnicity."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "nsi",
+    "scope": "Bulgaria, persons convicted of depravity offences (Art. 149-159), 2025",
+    "n": 215,
+    "n_label": "convicted persons",
+    "unknown_share": null,
+    "share": {
+     "bgr_cit": 97.7,
+     "foreign_cit": 2.3
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "NSI 'Crimes and persons convicted 2025', table 11: persons convicted with a final sentence in 2025 by citizenship (Bulgarian; Bulgarian and other; other; stateless). All victim ages. Citizenship, a proxy, not ethnicity: 'other' is foreign or stateless citizenship; Bulgarian citizens (incl. dual Bulgarian and other) include Roma, Turks and every other ethnic group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "nsi",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "bgr_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "bgr_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 11,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 10.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "NSI 'Crimes and persons convicted 2025' (table 11) gives convicted persons by citizenship: lewd acts (Art. 149-150, mostly against children) 73 convicted, 70 Bulgarian and 3 other; rape 35 (1 dual citizen). NSI child victims (1,215 in 2024) have age and sex but no citizenship.",
+    "score": 11.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Bodily harm: 923 convicted (10 other citizenship, 4 dual), all victim ages; crimes against youth (Art. 187-193): 142 convicted, all Bulgarian. 294 child victims of bodily harm (2024) have no citizenship.",
+    "score": 11
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Crimes against youth (Art. 187-193, incl. leaving a child without care): 142 convicted, all Bulgarian citizens. Child-protection reports (SACP) give age and sex but no citizenship or ethnicity.",
+    "score": 10.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Completed murder: 49 convicted (2 other citizenship), all victim ages. No victims by citizenship.",
+    "score": 10.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 1,
+    "perpetrator": 2,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Trafficking (Art. 159a-159d): 29 convicted, all Bulgarian. The National Commission reported 89 victims in 2025 (34 third-country nationals), with no child-by-citizenship split.",
+    "score": 11.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Pornography offences sit in the depravity chapter (215 convicted, 5 other citizenship, 1 dual). NSI counts 7 child victims of child pornography (2024), with no citizenship.",
+    "score": 9.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Bulgaria scores 11% on the stricter scale (0-20%). NSI publishes convicted persons by citizenship for each offence, including lewd acts against children and trafficking, and child victims by age without citizenship. Roma and other ethnic groups are recorded only in the census, never in crime data.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "nsi": {
+   "name": "Престъпления и осъдени лица 2025 (Crimes and persons convicted 2025)",
+   "publisher": "Национален статистически институт (NSI)",
+   "years": "2025",
+   "records": "21,187 convicted persons by offence, sex, age and citizenship (1,774 other or stateless).",
+   "limitations": "Citizenship only; convictions only; all victim ages.",
+   "url": "https://www.nsi.bg/index.php/file/38610/CRIMES2025.pdf",
+   "tier": "Official government statistics"
+  },
+  "nsiv": {
+   "name": "Малолетни и непълнолетни лица, пострадали от престъпления (Minors and juveniles injured by crimes)",
+   "publisher": "Национален статистически институт (NSI)",
+   "years": "2024",
+   "records": "1,215 child victims (8-17) in finally decided cases by offence, age, sex and region.",
+   "limitations": "No citizenship or ethnicity; 2025 table not yet published.",
+   "url": "https://www.nsi.bg/statistical-data/155/495",
+   "tier": "Official government statistics"
+  },
+  "ncct": {
+   "name": "National Commission for Combating Trafficking in Human Beings: 2025 figures",
+   "publisher": "Национална комисия за борба с трафика на хора (via BTA, the state news agency)",
+   "years": "2024-2025",
+   "records": "61 reports, 89 identified victims, 34 third-country nationals in 2025.",
+   "limitations": "Press figures only; no child-by-citizenship split.",
+   "url": "https://www.bta.bg/bg/news/bulgaria/1176775-prez-2025-g-v-natsionalnata-komisiya-za-borba-s-trafika-na-hora-sa-postapili-61",
+   "tier": "Official government statistics"
+  },
+  "mvr": {
+   "name": "Доклад за дейността на МВР през 2025 г.",
+   "publisher": "Министерство на вътрешните работи (Interior Ministry)",
+   "years": "2025",
+   "records": "Police activity: 4,491 child offenders; illegal migrants by nationality.",
+   "limitations": "No victims or offenders of child harm by citizenship or ethnicity.",
+   "url": "https://www.mvr.bg/upload/307519/%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B7%D0%B0%20%D0%B4%D0%B5%D0%B9%D0%BD%D0%BE%D1%81%D1%82%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%BE%20%D0%BD%D0%B0%20%D0%B2%D1%8A%D1%82%D1%80%D0%B5%D1%88%D0%BD%D0%B8%D1%82%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B8%20%D0%BF%D1%80%D0%B5%D0%B7%202025%20%D0%B3..pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

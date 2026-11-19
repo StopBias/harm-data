@@ -1,0 +1,609 @@
+{
+ "country": "Slovakia",
+ "iso_a3": "SVK",
+ "completeness": 11,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Slovakia's police statistics give offenders by citizenship only for broad crime groups (sexual, violent), and child victims by age, sex and relationship to the offender without citizenship. The Interior Ministry's trafficking report gives victims and accused by citizenship. No crime statistic records ethnicity or Roma identity.",
+ "short_name": "Slovakia",
+ "name_in_sentence": "Slovakia",
+ "nations": {
+  "National (Interior Ministry, Prosecutor General)": "Monthly police crime statistics; trafficking situation report; prosecution yearbook."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "svk_cit",
+   "label": "Slovak citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Slovak crime source",
+ "european_note": "Slovak crime statistics separate only foreign citizens from Slovak citizens. The census records nationality (including Roma and Hungarians), but no crime, victim or child-protection statistic does, so neither European descent nor Roma identity can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Slovakia records citizenship only in crime data, never ethnicity or nationality. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual (mravnostná) crime group (all victims)",
+   "years": "2025",
+   "intro": "Of 619 cleared sexual offences in 2025, 24 were committed by foreign citizens. Citizenship is published only by crime group, never for child sexual abuse itself. Child victims are published by section with age and sex but no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Table 5 gives child victims (under 18) for each section of the Criminal Code with age, sex and the offender's relationship (parent, sibling, guardian), but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "t6",
+    "scope": "Slovakia, cleared sexual (mravnostná) offences, all victims, 2025",
+    "n": 619,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 96.1,
+     "foreign_cit": 3.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry crime statistics 2025, table 6 (perpetrators by citizenship): cleared offences of the crime group, all victim ages; 'Slovenská republika' against the total. Crime groups only, not sections of the Criminal Code. The sexual crime group includes sexual abuse of children and child pornography. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Violent crime group (all victims)",
+   "years": "2025",
+   "intro": "Of 3,430 cleared violent offences in 2025, 135 were committed by foreign citizens, all victim ages. Child victims of violence have no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Table 5 gives child victims (under 18) for each section of the Criminal Code with age, sex and the offender's relationship (parent, sibling, guardian), but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "t6",
+    "scope": "Slovakia, cleared violent offences, all victims, 2025",
+    "n": 3430,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 96.1,
+     "foreign_cit": 3.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry crime statistics 2025, table 6 (perpetrators by citizenship): cleared offences of the crime group, all victim ages; 'Slovenská republika' against the total. Crime groups only, not sections of the Criminal Code. The violent crime group includes murder, bodily harm and maltreatment of a close person. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (no offence-level citizenship)",
+   "years": "2025",
+   "intro": "Neglect offences such as endangering a child's moral upbringing are not shown separately in the citizenship table; only the all-offence total is available (1,323 of 27,050 cleared offences by foreigners). Child victims have no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Table 5 gives child victims (under 18) for each section of the Criminal Code with age, sex and the offender's relationship (parent, sibling, guardian), but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "t6",
+    "scope": "Slovakia, all cleared offences, 2025",
+    "n": 27050,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 95.1,
+     "foreign_cit": 4.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry crime statistics 2025, table 6 (perpetrators by citizenship): cleared offences of the crime group, all victim ages; 'Slovenská republika' against the total. Crime groups only, not sections of the Criminal Code. All offence types. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Violent crime group, incl. murder (all victims)",
+   "years": "2025",
+   "intro": "Murder is published by citizenship only within the violent crime group (135 of 3,430 cleared offences by foreigners). No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "No homicide victims by citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "t6",
+    "scope": "Slovakia, cleared violent offences, all victims, 2025",
+    "n": 3430,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 96.1,
+     "foreign_cit": 3.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry crime statistics 2025, table 6 (perpetrators by citizenship): cleared offences of the crime group, all victim ages; 'Slovenská republika' against the total. Crime groups only, not sections of the Criminal Code. The violent crime group includes murder, bodily harm and maltreatment of a close person. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (identified victims and accused)",
+   "years": "2024",
+   "intro": "The Interior Ministry's 2024 situation report counts 43 identified trafficking victims, 23 of them children; the only foreign victims were 3 adult Bulgarian men, so all child victims were Slovak citizens. Of 22 people accused of trafficking, 21 were Slovak citizens and 1 Turkish. For 2025 the ministry reported 63 victims (27 children), almost a quarter foreign, without a child-by-citizenship split.",
+   "victims": {
+    "status": "published",
+    "source": "osl",
+    "scope": "Slovakia, identified trafficking victims (all ages), 2024",
+    "n": 43,
+    "n_label": "identified victims (all ages)",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 93.0,
+     "foreign_cit": 7.0
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Situation report on trafficking in human beings in the Slovak Republic 2024: 3 foreign victims (adult Bulgarian men), the rest Slovak citizens, incl. all 23 child victims. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "osl",
+    "scope": "Slovakia, persons accused of trafficking (Section 179), 2024",
+    "n": 22,
+    "n_label": "accused persons",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 95.5,
+     "foreign_cit": 4.5
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Situation report 2024: 21 Slovak citizens, 1 Turkish citizen. Very small numbers. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Sexual crime group, incl. child pornography (all victims)",
+   "years": "2025",
+   "intro": "Child pornography offences are published by citizenship only within the sexual crime group (24 of 619 cleared offences by foreigners). No victims by citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Table 5 gives child victims (under 18) for each section of the Criminal Code with age, sex and the offender's relationship (parent, sibling, guardian), but no citizenship."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "t6",
+    "scope": "Slovakia, cleared sexual (mravnostná) offences, all victims, 2025",
+    "n": 619,
+    "n_label": "cleared offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "svk_cit": 96.1,
+     "foreign_cit": 3.9
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry crime statistics 2025, table 6 (perpetrators by citizenship): cleared offences of the crime group, all victim ages; 'Slovenská republika' against the total. Crime groups only, not sections of the Criminal Code. The sexual crime group includes sexual abuse of children and child pornography. Citizenship, a proxy, not ethnicity: foreign citizens are people without Slovak citizenship (most often Ukrainian, Czech, Hungarian and Polish); Slovak citizens include Roma, Hungarians and every other nationality group. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "t5",
+    "text": "Victims have no citizenship, so nothing can be linked."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "svk_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "svk_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 11,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 11.2,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's 2025 crime statistics (table 6) give cleared offences by the perpetrator's citizenship only by crime group: 24 of 619 cleared sexual ('mravnostná') offences were committed by foreign citizens, all victim ages. Table 5 gives child victims (under 18) per section of the Criminal Code with age, sex and the offender's relationship, but no citizenship.",
+    "score": 11.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "135 of 3,430 cleared violent offences in 2025 were committed by foreign citizens, all victim ages. Child victims of violence have no citizenship.",
+    "score": 11.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Neglect offences are not shown separately in the citizenship table (only 'other' and 'remaining' crime groups). Child victims have no citizenship.",
+    "score": 10.0
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Murders are inside the violent-crime group of the citizenship table (135 of 3,430 cleared violent offences by foreigners). No victims by citizenship.",
+    "score": 10.0
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 3,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 5.5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's trafficking situation report (2024) gives 43 identified victims (23 children); the only foreign victims were 3 adult Bulgarians, and 21 accused traffickers were Slovak citizens and 1 Turkish. For 2025 the ministry reported 63 victims (27 children), almost a quarter foreign, without a child-by-citizenship split.",
+    "score": 13.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1.5,
+    "coverage": 2.5,
+    "rates": 0,
+    "access": 6.5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Child pornography falls in the sexual ('mravnostná') group of the citizenship table (24 of 619 by foreigners). No victims by citizenship.",
+    "score": 10.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Slovakia scores 11% on the stricter scale (0-20%). Police statistics give offenders by citizenship only for broad crime groups (sexual, violent), child victims without citizenship, and trafficking victims and accused by citizenship in the Interior Ministry's report. No ethnicity is recorded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "t6": {
+   "name": "Štatistika kriminality v SR 2025: Kriminalita spáchaná cudzincami (table 6)",
+   "publisher": "Ministerstvo vnútra Slovenskej republiky (Interior Ministry, Police)",
+   "years": "2025 (monthly cumulative)",
+   "records": "Cleared offences and prosecuted persons by citizenship and crime group (violent, sexual, property, drugs, economic and others).",
+   "limitations": "Crime groups only; all victim ages; no victim citizenship.",
+   "url": "https://www.minv.sk/swift_data/source/policia/statistiky_2025/12_december/6kriminalita_spachana_cudzincami_6_31.12.2025.xml",
+   "tier": "Official government statistics"
+  },
+  "t5": {
+   "name": "Štatistika kriminality v SR 2025: Trestné činy spáchané na mládeži podľa paragrafov (table 5)",
+   "publisher": "Ministerstvo vnútra Slovenskej republiky",
+   "years": "2025",
+   "records": "Offences against people under 18 by section: victims by age band and sex, offenders by age and relationship to the child.",
+   "limitations": "No citizenship or ethnicity of victims or offenders.",
+   "url": "https://www.minv.sk/swift_data/source/policia/statistiky_2025/12_december/5tc_spachana_na_mladezi_podla_par_5_31.12.2025.xml",
+   "tier": "Official government statistics"
+  },
+  "osl": {
+   "name": "Situačná správa o obchodovaní s ľuďmi v SR za rok 2024",
+   "publisher": "Ministerstvo vnútra Slovenskej republiky",
+   "years": "2019-2024",
+   "records": "Identified trafficking victims by age, sex, region, exploitation and citizenship; accused traffickers by age, sex and citizenship.",
+   "limitations": "Citizenship only; 2025 figures so far only in a ministry press statement.",
+   "url": "https://www.minv.sk/swift_data/source/mvsr/obchodovanie_ludmi/vyhodnotenia_ppoo/Situacna%20sprava_OSL_SR_2024_FINAL.pdf",
+   "tier": "Official government statistics"
+  },
+  "gp": {
+   "name": "Štatistická ročenka o činnosti prokuratúry SR za rok 2025",
+   "publisher": "Generálna prokuratúra Slovenskej republiky",
+   "years": "2021-2025",
+   "records": "1,152 foreigners among 23,343 persons whose prosecution ended in 2025.",
+   "limitations": "All offences only.",
+   "url": "https://www.genpro.gov.sk/fileadmin/Statistiky_datasety/2025/rocenka_2025.pdf",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

@@ -1,0 +1,723 @@
+{
+ "country": "Croatia",
+ "iso_a3": "HRV",
+ "completeness": 16,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Croatia's Interior Ministry publishes victims and perpetrators of every Criminal Code article, including child sexual abuse, child pornography and violation of a child's rights, with a count of foreign citizens, and the statistics bureau publishes convictions by citizenship. That is a citizenship proxy on both sides; no ethnicity or national minority is recorded in crime data.",
+ "short_name": "Croatia",
+ "name_in_sentence": "Croatia",
+ "nations": {
+  "National (Interior Ministry, DZS)": "Annual police statistical review; court-based conviction tables."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "hrv_cit",
+   "label": "Croatian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_cit",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Unknown",
+ "european_title": "Not recorded by any Croatian crime source",
+ "european_note": "Croatian crime statistics separate only foreign citizens from Croatian citizens. National minorities (Serbs, Roma and others) are counted in the census but not in any crime, victim or child-protection statistic, so neither European descent nor any ethnic group can be measured for child harm.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Offender's citizenship"
+ },
+ "proxy_note": "Croatia records citizenship only in crime data, never ethnicity or national minority. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of a child under 15 (Art. 158)",
+   "years": "2025",
+   "intro": "Police recorded 313 victims of sexual abuse of a child under 15 in 2025 (286 girls); 8 were foreign citizens. Of 129 perpetrators, 11 were foreigners. Courts convicted 121 adults of sexual abuse and exploitation of a child in 2025, 9 of them with another citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, victims of sexual abuse of a child under 15 (Art. 158), 2025",
+    "n": 313,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 97.4,
+     "foreign_cit": 2.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, perpetrators of sexual abuse of a child under 15 (Art. 158), 2025",
+    "n": 129,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 91.5,
+     "foreign_cit": 8.5
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Convicted of sexual abuse and exploitation of a child (DZS, 2025)",
+     "data": {
+      "status": "published",
+      "source": "dzs",
+      "scope": "Croatia, adults convicted of sexual abuse and exploitation of a child (offence group), 2025",
+      "n": 121,
+      "n_label": "convicted adults",
+      "unknown_share": null,
+      "share": {
+       "hrv_cit": 92.6,
+       "foreign_cit": 7.4
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "DZS PxWeb T.03.07 (2025), convicted adults by Croatian or other citizenship. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Violation of a child's rights (Art. 177)",
+   "years": "2025",
+   "intro": "Violation of a child's rights (abuse or neglect by a parent or carer) had 3,190 victims in 2025, 2,132 of them under 14; 70 victims were foreign citizens. Of 848 perpetrators, 37 were foreigners. Domestic violence (Art. 179a) had 2,600 victims (55 children), 88 of them foreign.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, victims of violation of a child's rights (Art. 177), 2025",
+    "n": 3190,
+    "n_label": "victims (mostly children)",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 97.8,
+     "foreign_cit": 2.2
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, perpetrators of violation of a child's rights (Art. 177), 2025",
+    "n": 848,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 95.6,
+     "foreign_cit": 4.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Domestic violence victims, all ages (Art. 179a, 2025)",
+     "data": {
+      "status": "published",
+      "source": "mup",
+      "scope": "Croatia, victims of domestic violence (Art. 179a), all ages, 2025",
+      "n": 2600,
+      "n_label": "victims (all ages)",
+      "unknown_share": null,
+      "share": {
+       "hrv_cit": 96.6,
+       "foreign_cit": 3.4
+      },
+      "rate": null,
+      "rate_reason": "Not published.",
+      "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Violation of a child's rights and abandoning a child",
+   "years": "2025",
+   "intro": "Neglect is covered by violation of a child's rights (Art. 177: 3,190 victims, 70 foreign; 848 perpetrators, 37 foreigners) and abandoning a child (Art. 176: 8 victims, 1 foreign). Child-welfare statistics publish no citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, victims of violation of a child's rights (Art. 177), 2025",
+    "n": 3190,
+    "n_label": "victims (mostly children)",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 97.8,
+     "foreign_cit": 2.2
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, perpetrators of violation of a child's rights (Art. 177), 2025",
+    "n": 848,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 95.6,
+     "foreign_cit": 4.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Murder and aggravated murder (all victims)",
+   "years": "2025",
+   "intro": "Murder and aggravated murder (Arts. 110-111) had 103 victims in 2025, 13 of them foreign citizens; 5 victims of aggravated murder were under 14. Of 97 perpetrators, 13 were foreigners. Child victims are not split by citizenship.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, victims of murder and aggravated murder (Arts. 110-111), all ages, 2025",
+    "n": 103,
+    "n_label": "victims (all ages)",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 87.4,
+     "foreign_cit": 12.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, perpetrators of murder and aggravated murder (Arts. 110-111), 2025",
+    "n": 97,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 86.6,
+     "foreign_cit": 13.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (Art. 106)",
+   "years": "2025",
+   "intro": "Police recorded 21 trafficking victims in 2025 (3 aged 14-17); 12 victims of all ages were foreign citizens. Of 22 perpetrators, 8 were foreigners.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, trafficking victims (Art. 106), all ages, 2025",
+    "n": 21,
+    "n_label": "victims (all ages)",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 42.9,
+     "foreign_cit": 57.1
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Very small numbers. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, trafficking perpetrators (Art. 106), 2025",
+    "n": 22,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 63.6,
+     "foreign_cit": 36.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Very small numbers. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Exploiting children for pornography (Art. 163)",
+   "years": "2025",
+   "intro": "Exploiting children for pornography had 275 child victims in 2025, 12 of them foreign citizens; of 176 perpetrators, 24 were foreigners. Grooming (Art. 161) had 16 victims.",
+   "victims": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, child victims of exploitation for pornography (Art. 163), 2025",
+    "n": 275,
+    "n_label": "child victims",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 95.6,
+     "foreign_cit": 4.4
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'injured persons by legal classification, sex and age'; the last column counts foreign citizens. Foreign victims are not split by age. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "mup",
+    "scope": "Croatia, perpetrators of exploiting children for pornography (Art. 163), 2025",
+    "n": 176,
+    "n_label": "perpetrators",
+    "unknown_share": null,
+    "share": {
+     "hrv_cit": 86.4,
+     "foreign_cit": 13.6
+    },
+    "rate": null,
+    "rate_reason": "Not published.",
+    "share_note": "Interior Ministry statistical review 2025, 'perpetrators by legal classification, sex and age'; the last column counts foreigners. Citizenship, a proxy, not ethnicity: foreign citizens are people without Croatian citizenship; Croatian citizens include Serbs, Roma and every other national minority. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "mup",
+    "text": "Victim and perpetrator citizenship are published separately, never linked."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "perpetrators": [
+     "all",
+     "hrv_cit",
+     "foreign_cit"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ],
+      "perpetrators": [
+       "all",
+       "hrv_cit",
+       "foreign_cit"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 16,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 15.8,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 4,
+    "perpetrator": 4,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Interior Ministry's 2025 statistical review gives, for sexual abuse of a child under 15 (Art. 158), 313 victims of whom 8 were foreign citizens and 129 perpetrators of whom 11 were foreigners. DZS convictions by citizenship: 121 adults convicted of child sexual abuse and exploitation, 9 with other citizenship. Croatian/foreign citizenship only.",
+    "score": 19
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 2.5,
+    "perpetrator": 2.5,
+    "coverage": 3.5,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Violation of a child's rights (Art. 177, abuse and neglect by carers): 3,190 victims (2,132 under 14), 70 foreign; 848 perpetrators, 37 foreigners. Domestic violence (Art. 179a): 2,600 victims (55 children), 88 foreign. Foreign victims are not split by age.",
+    "score": 15.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 3,
+    "perpetrator": 3,
+    "coverage": 3.5,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Art. 177 (violation of a child's rights, which covers neglect) and Art. 176 (abandoning a child: 8 victims, 1 foreign) give victims and perpetrators with a foreign-citizen count. Child-welfare statistics publish no citizenship.",
+    "score": 16.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 1.5,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Murder and aggravated murder: 103 victims (13 foreign; 5 under 14) and 97 perpetrators (13 foreigners) in 2025. Child victims are not split by citizenship.",
+    "score": 13.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 2,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Trafficking in human beings (Art. 106): 21 victims (3 aged 14-17; 12 foreign citizens of all ages) and 22 perpetrators (8 foreigners) in 2025.",
+    "score": 14
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 4,
+    "perpetrator": 4,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Exploiting children for pornography (Art. 163): 275 child victims, 12 foreign; 176 perpetrators, 24 foreigners. Grooming (Art. 161): 16 victims.",
+    "score": 19
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Croatia scores 16% on the stricter scale (0-20%). The Interior Ministry publishes victims and perpetrators of each offence, including child sexual abuse and child pornography, with a count of foreign citizens, and DZS publishes convictions by citizenship. That is a citizenship proxy only; no ethnicity is recorded.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "mup": {
+   "name": "Statistički pregled temeljnih sigurnosnih pokazatelja i rezultata rada u 2025. godini",
+   "publisher": "Ministarstvo unutarnjih poslova Republike Hrvatske (Interior Ministry)",
+   "years": "2024-2025",
+   "records": "Perpetrators and injured persons for each Criminal Code article by sex, age and foreign citizenship; foreign perpetrators and victims by country.",
+   "limitations": "Croatian/foreign citizenship only; foreign victims and perpetrators are not split by age; no victim-perpetrator link.",
+   "url": "https://mup.gov.hr/UserDocsImages/statistika/2026/5/Statisticki_pregled_2025_web.pdf",
+   "tier": "Official government statistics"
+  },
+  "dzs": {
+   "name": "T.03.07 Osuđeni punoljetni počinitelji prema grupama kaznenih djela, državljanstvu i bračnom stanju u 2025.",
+   "publisher": "Državni zavod za statistiku (Croatian Bureau of Statistics)",
+   "years": "2025",
+   "records": "13,456 convicted adults by offence group and Croatian/other/unknown citizenship (1,844 other).",
+   "limitations": "Citizenship only; offence groups; convictions only.",
+   "url": "https://web.dzs.hr/PxWeb/pxweb/hr/Pravosudje/Pravosudje__kaznena__punoljetni__2025/T0307_2025.px/",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
