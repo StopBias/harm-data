@@ -1,0 +1,863 @@
+{
+ "country": "Switzerland",
+ "iso_a3": "CHE",
+ "completeness": 25,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Switzerland's Federal Statistical Office publishes child victims and accused of sexual acts with children by nationality and residence status every year, plus child assault victimization rates by nationality group and homicide and trafficking figures by residence status. All of this is nationality, a proxy, never ethnicity.",
+ "short_name": "Switzerland",
+ "name_in_sentence": "Switzerland",
+ "nations": {
+  "National (BFS)": "Police crime statistics (PKS), homicide survey, victim-support statistics."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "swiss",
+   "label": "Swiss citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign_resident",
+   "label": "Permanent foreign residents (B/C permits)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "asylum",
+   "label": "Asylum population (F/N/S permits)",
+   "proxy": "residence status"
+  },
+  {
+   "id": "other_foreign",
+   "label": "Other foreigners (short-term, cross-border, no status, unknown)",
+   "proxy": "residence status"
+  },
+  {
+   "id": "foreign_other",
+   "label": "Foreigners other than permanent residents",
+   "proxy": "residence status"
+  },
+  {
+   "id": "eu_efta",
+   "label": "EU/EFTA citizens (resident)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "other_europe",
+   "label": "Other European citizens (resident)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_other",
+   "label": "Citizens of other European countries",
+   "proxy": "nationality"
+  },
+  {
+   "id": "other_states",
+   "label": "Citizens of non-European countries",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Nationality unknown",
+ "european_title": "Not recorded by any Swiss source",
+ "european_note": "Swiss statistics record nationality and residence status, never ethnic origin. 'Swiss' includes naturalised citizens of any origin; some tables split foreigners into EU/EFTA, other European and other countries, which is still citizenship, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's nationality or residence status",
+  "perpetrator": "Accused person's nationality or residence status"
+ },
+ "proxy_note": "Switzerland records nationality and residence status, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual acts with children (Art. 187, police)",
+   "years": "2025",
+   "intro": "Police recorded 1,118 offences of sexual acts with children (art. 187 of the Criminal Code) in 2025, with 986 victims (421 under 10, 387 aged 10-14, 157 aged 15-17) and 784 accused. The Federal Statistical Office publishes both victims and accused by nationality and residence status every year.",
+   "victims": {
+    "status": "published",
+    "source": "pks25_tab",
+    "scope": "Switzerland, victims of sexual acts with children (art. 187) recorded by the police, 2025",
+    "n": 986,
+    "n_label": "victims",
+    "unknown_share": null,
+    "share": {
+     "swiss": 73.2,
+     "foreign_resident": 20.9,
+     "asylum": 2.1,
+     "other_foreign": 3.8
+    },
+    "rate": null,
+    "rate_reason": "BFS does not publish child populations by residence status with this table; rates are not calculated here.",
+    "share_note": "Shares calculated here from the BFS counts (Swiss 722, permanent foreign residents 206, asylum population 21, other foreigners 37). Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "stattab",
+    "scope": "Switzerland, people accused of sexual acts with children (art. 187), 2025",
+    "n": 784,
+    "n_label": "accused people",
+    "unknown_share": null,
+    "share": {
+     "swiss": 62.0,
+     "foreign_resident": 26.3,
+     "asylum": 5.1,
+     "other_foreign": 6.6
+    },
+    "rate": null,
+    "rate_reason": "No rate for this offence is published; not calculated here.",
+    "share_note": "Shares calculated here from STAT-TAB counts (Swiss 486, permanent foreign residents 206, asylum population 40, other foreigners 52). Includes accused who are themselves minors. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault on children (victimization rates)",
+   "years": "2020-2024; 2025",
+   "intro": "Police recorded 206 victims under 10, 488 aged 10-14 and 497 aged 15-17 of simple assault (art. 123) in 2025. BFS publishes average victimization rates per 1,000 for children aged 0-14 by nationality group for 2020-2024, excluding domestic violence, so most abuse by carers is not in these rates.",
+   "victims": {
+    "status": "published",
+    "source": "bfs_rates",
+    "scope": "Switzerland, permanent resident children aged 0-14, victims of simple assault (art. 123) outside domestic violence, average 2020-2024",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "swiss": 1.09,
+     "eu_efta": 1.24,
+     "other_europe": 1.25,
+     "other_states": 1.49
+    },
+    "rate_all": 1.15,
+    "rate_unit": " per 1,000",
+    "rate_label": "children aged 0-14 per 1,000 of the same group were victims of simple assault each year",
+    "rate_all_label": "all resident children aged 0-14",
+    "share_note": "Official BFS table (su-d-01.05.07.10.02.01), permanent resident population only. Domestic-violence cases are excluded. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. ",
+    "rate_note": "Official BFS table (su-d-01.05.07.10.02.01), permanent resident population only. Domestic-violence cases are excluded. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks25",
+    "scope": "Switzerland, people accused of violent offences (all victims), 2025",
+    "n": 30364,
+    "n_label": "accused of violent offences, all victims",
+    "unknown_share": null,
+    "share": {
+     "swiss": 45.7,
+     "foreign_resident": 37.8,
+     "foreign_other": 16.5
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; not calculated.",
+    "share_note": "From PKS 2025 table T19: 16,473 foreign accused, 11,471 of them permanent residents; Swiss and the remainder calculated here. Not split by the age of the victim. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "swiss",
+     "eu_efta",
+     "other_europe",
+     "other_states"
+    ],
+    "perpetrators": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "foreign_other"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "foreign_other"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "swiss",
+       "eu_efta",
+       "other_europe",
+       "other_states"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect of the duty of care (Art. 219)",
+   "years": "-",
+   "intro": "Violation of the duty of care or education (art. 219) is recorded in the police statistics, and the STAT-TAB database lists it by accused residence status, but the query failed with a server error on 19 Nov 2026, so no figure is shown. Child-protection statistics publish no origin variable.",
+   "victims": {
+    "status": "not_published",
+    "source": "pks25",
+    "text": "No victims of neglect by nationality are published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "stattab",
+    "text": "Accused by residence status exist in STAT-TAB for art. 219 but could not be retrieved (server error); not used."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025; survey 2019-2023",
+   "intro": "Police recorded 55 victims of completed homicide in 2025, 8 of them under 18, and 317 people accused of completed or attempted homicide. Victims and accused are published by residence status for all ages. The BFS homicide survey 2019-2023 found 46 child victims under 15 of family homicides (96% with a parent as suspect) and gives family-homicide victims and suspects by nationality with rates per 100,000.",
+   "victims": {
+    "status": "published",
+    "source": "pks25_tab",
+    "scope": "Switzerland, victims of completed homicide, all ages, 2025",
+    "n": 55,
+    "n_label": "victims, all ages (8 under 18)",
+    "unknown_share": null,
+    "share": {
+     "swiss": 52.7,
+     "foreign_resident": 29.1,
+     "asylum": 9.1,
+     "other_foreign": 9.1
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; not calculated.",
+    "share_note": "Shares calculated here. Small numbers. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "stattab",
+    "scope": "Switzerland, people accused of completed or attempted homicide, all victims, 2025",
+    "n": 317,
+    "n_label": "accused people",
+    "unknown_share": null,
+    "share": {
+     "swiss": 35.3,
+     "foreign_resident": 27.8,
+     "asylum": 12.6,
+     "other_foreign": 24.3
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; not calculated.",
+    "share_note": "Shares calculated here from STAT-TAB counts. Not split by the age of the victim. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Family homicides (completed and attempted), 2019-2023: victim rates",
+     "data": {
+      "status": "published",
+      "source": "bfs_hom",
+      "scope": "Switzerland, victims of family homicides, all ages, 2019-2023 average",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "swiss": 0.3,
+       "foreign_resident": 0.4
+      },
+      "rate_all": null,
+      "rate_unit": " per 100,000",
+      "rate_label": "victims per 100,000 residents of the same group per year",
+      "rate_all_label": null,
+      "share_note": "BFS homicide survey. 46 of the victims were children under 15, but nationality is not given by age. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. ",
+      "rate_note": "BFS homicide survey. 46 of the victims were children under 15, but nationality is not given by age. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Family homicides (completed and attempted), 2019-2023: suspect rates",
+     "data": {
+      "status": "published",
+      "source": "bfs_hom",
+      "scope": "Switzerland, suspects of family homicides, all victims, 2019-2023 average",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "swiss": 0.3,
+       "foreign_resident": 0.5
+      },
+      "rate_all": null,
+      "rate_unit": " per 100,000",
+      "rate_label": "suspects per 100,000 residents of the same group per year",
+      "rate_all_label": null,
+      "share_note": "BFS homicide survey; 52 suspects were parents accused of killing their children, not split by nationality. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. ",
+      "rate_note": "BFS homicide survey; 52 suspects were parents accused of killing their children, not split by nationality. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ]
+     },
+     "rate": {
+      "victims": [
+       "swiss",
+       "foreign_resident"
+      ],
+      "perpetrators": [
+       "swiss",
+       "foreign_resident"
+      ]
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings (Art. 182)",
+   "years": "2025",
+   "intro": "Police recorded 345 trafficking offences in 2025 (239 from closed cases in the canton of Bern), with 238 victims (1 minor; 183 sexual exploitation, 54 labour) and 89 accused (natural persons). Both are published by residence status for all ages and forms.",
+   "victims": {
+    "status": "published",
+    "source": "pks_mh",
+    "scope": "Switzerland, victims of trafficking (art. 182) recorded by the police, all ages, 2025",
+    "n": 238,
+    "n_label": "victims (1 minor)",
+    "unknown_share": null,
+    "share": {
+     "swiss": 4.6,
+     "foreign_resident": 9.2,
+     "asylum": 4.2,
+     "other_foreign": 81.9
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; not calculated.",
+    "share_note": "Shares calculated here. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks_mh",
+    "scope": "Switzerland, people accused of trafficking (art. 182), 2025",
+    "n": 89,
+    "n_label": "accused people",
+    "unknown_share": null,
+    "share": {
+     "swiss": 24.7,
+     "foreign_resident": 46.1,
+     "asylum": 4.5,
+     "other_foreign": 24.7
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "Shares calculated here. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Trafficking victims counselled by victim-support centres, 2025",
+     "data": {
+      "status": "published",
+      "source": "ohs",
+      "scope": "Switzerland, counselling cases for trafficking, victim-support statistics, 2025",
+      "n": 218,
+      "n_label": "counselling cases for trafficking (6 under 18)",
+      "unknown_share": 11.5,
+      "share": {
+       "swiss": 4.1,
+       "europe_other": 22.9,
+       "other_states": 61.5
+      },
+      "rate": null,
+      "rate_reason": "Not calculated.",
+      "share_note": "BFS victim-support statistics (OHS): nationality of the victim as Swiss, Europe or other. Shares calculated here. 'Europe' here means other European countries. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign",
+     "europe_other",
+     "other_states"
+    ],
+    "perpetrators": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign",
+       "europe_other",
+       "other_states"
+      ],
+      "perpetrators": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Pornography offences (Art. 197)",
+   "years": "2025",
+   "intro": "Police statistics count 2,332 people accused of pornography offences (art. 197) in 2025, which include child sexual abuse material but are not split from other illegal pornography in this table. Victims of unauthorised sharing of sexual content (art. 197a; 195 in 2025, 77 of them under 18) are given by residence status for all ages.",
+   "victims": {
+    "status": "published",
+    "source": "pks25_tab",
+    "scope": "Switzerland, victims of unauthorised sharing of non-public sexual content (art. 197a), all ages, 2025",
+    "n": 195,
+    "n_label": "victims (77 under 18)",
+    "unknown_share": null,
+    "share": {
+     "swiss": 60.5,
+     "foreign_resident": 32.3,
+     "asylum": 3.1,
+     "other_foreign": 4.1
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "Art. 197a counts as sexualised violence from 2025; it is not limited to children. Shares calculated here. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "stattab",
+    "scope": "Switzerland, people accused of pornography offences (art. 197), 2025",
+    "n": 2332,
+    "n_label": "accused people",
+    "unknown_share": null,
+    "share": {
+     "swiss": 65.8,
+     "foreign_resident": 27.3,
+     "asylum": 4.2,
+     "other_foreign": 2.7
+    },
+    "rate": null,
+    "rate_reason": "Not calculated.",
+    "share_note": "Includes, but does not separate, child sexual abuse material. Shares calculated here. Nationality and residence status, a proxy, not ethnicity: Swiss statistics never record ethnic origin. 'Swiss' includes naturalised citizens; 'permanent foreign residents' hold B or C permits; 'asylum population' holds F, N or S permits; 'other foreigners' are short-term residents, cross-border workers, tourists, people without legal status or with status unknown. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "pks25_tab",
+    "text": "Victims and accused are published separately; no table links victim and accused nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "perpetrators": [
+     "all",
+     "swiss",
+     "foreign_resident",
+     "asylum",
+     "other_foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ],
+      "perpetrators": [
+       "all",
+       "swiss",
+       "foreign_resident",
+       "asylum",
+       "other_foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 25,
+  "band": "20-40%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 24.7,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 8,
+    "perpetrator": 8,
+    "coverage": 7,
+    "rates": 1.5,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Federal Statistical Office's police statistics give the 986 victims of sexual acts with children (art. 187) in 2025 by nationality and residence status (Swiss 73.2%) and the 784 accused (Swiss 62.0%), annually and nationwide. Residence status is a proxy, not ethnicity, and victims and accused are not linked; no rates for this offence.",
+    "score": 31.5
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 6,
+    "perpetrator": 5,
+    "coverage": 6,
+    "rates": 3,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "BFS publishes victimization rates per 1,000 for children aged 0-14 by nationality group for simple assault (Swiss 1.09, EU/EFTA 1.24, other Europe 1.25, other 1.49; 2020-2024, domestic violence excluded) and accused of violent offences by residence status, all victims.",
+    "score": 26
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 1,
+    "coverage": 3,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Neglect of the duty of care (art. 219) is in the police statistics database by accused residence status, but the table could not be retrieved (server error) and no child victims by origin are published; child-protection statistics have no origin variable.",
+    "score": 8
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 5,
+    "perpetrator": 6,
+    "coverage": 7,
+    "rates": 3,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Police statistics give 2025 homicide victims (8 under 18) and accused by residence status, all ages; the BFS homicide survey 2019-2023 gives victims and suspects of family homicides (46 children under 15) by nationality with rates per 100,000, not split by the child's age.",
+    "score": 27
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 6,
+    "perpetrator": 6,
+    "coverage": 6,
+    "rates": 1,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Police statistics give the 238 trafficking victims in 2025 (1 minor; Swiss 11) and 89 accused (Swiss 22) by residence status, and the victim-support statistics give counselled trafficking victims by nationality and age. All ages and forms.",
+    "score": 26
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 2,
+    "perpetrator": 5,
+    "coverage": 4,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "Accused of pornography offences (art. 197, which includes child sexual abuse material but is not split) by residence status (2,332 in 2025; Swiss 1,535); victims of unauthorised sharing of sexual content (art. 197a, mostly not children) by residence status.",
+    "score": 17.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Switzerland scores 25% on the stricter scale (20-40%). The Federal Statistical Office publishes child victims and accused of sexual acts with children by nationality and residence status every year, child assault victimization rates by nationality group, and homicide and trafficking figures by residence status. All of this is nationality, a proxy, so the no-ethnicity cap rule applies.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "pks25": {
+   "name": "Polizeiliche Kriminalstatistik (PKS) Jahresbericht 2025",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2025",
+   "records": "Offences, accused and victims; violent-offence tables by age, sex and nationality/residence status.",
+   "limitations": "Nationality and residence status only; victims and accused not linked.",
+   "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36434644/master",
+   "tier": "Official government statistics"
+  },
+  "pks25_tab": {
+   "name": "PKS tables: sexualised violence and violent offences, offences and victims 2009-2025 (T 19.02.10.01.01 and related)",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2025",
+   "records": "Victims by offence, sex, age band and nationality/residence status.",
+   "limitations": "Age and nationality are separate breakdowns, not cross-tabulated.",
+   "url": "https://www.bfs.admin.ch/asset/de/36456017",
+   "tier": "Official government statistics"
+  },
+  "stattab": {
+   "name": "STAT-TAB: accused people under the Criminal Code by offence, canton, residence group, sex and age (px-x-1903020100_102)",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2009-2025",
+   "records": "Accused by offence and residence group.",
+   "limitations": "Not split by victim age; some queries failed with server errors (art. 219, art. 196).",
+   "url": "https://www.pxweb.bfs.admin.ch/pxweb/de/px-x-1903020100_102/",
+   "tier": "Official government statistics"
+  },
+  "pks_mh": {
+   "name": "Menschenhandel StGB Art. 182: Straftaten, beschuldigte und geschädigte Personen 2020-2025",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2025",
+   "records": "Trafficking offences, accused and victims by sex, age group and residence status.",
+   "limitations": "All ages; residence status only.",
+   "url": "https://www.bfs.admin.ch/asset/de/36455962",
+   "tier": "Official government statistics"
+  },
+  "bfs_rates": {
+   "name": "Geschädigte Personen der ständigen Wohnbevölkerung nach ausgewählten Straftaten, Staatsangehörigkeit, Geschlecht und Altersgruppe, in Promille",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2020-2024 average",
+   "records": "Victimization rates for simple assault and threats by nationality group and age group.",
+   "limitations": "Two offences only; domestic violence excluded; permanent residents only.",
+   "url": "https://www.bfs.admin.ch/bfs/fr/home/statistiques/catalogues-banques-donnees.assetdetail.36283806.html",
+   "tier": "Official government statistics"
+  },
+  "bfs_hom": {
+   "name": "Tötungsdelikte in der Schweiz 2019-2023 (Zusatzerhebung PKS)",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2019-2023",
+   "records": "Domestic homicides: victims and suspects by relationship, age, sex and nationality, with rates.",
+   "limitations": "Domestic homicides only; nationality not given by the child victims' age.",
+   "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36237916/master",
+   "tier": "Official government statistics"
+  },
+  "ohs": {
+   "name": "Opferhilfestatistik: counselling, compensation and support cases for trafficking and promotion of prostitution 2000-2025",
+   "publisher": "Bundesamt für Statistik (BFS)",
+   "years": "2025",
+   "records": "Counselling cases by victim age, sex and nationality (Swiss, Europe, other).",
+   "limitations": "Only people who sought victim support; broad nationality groups.",
+   "url": "https://www.bfs.admin.ch/asset/de/36592031",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

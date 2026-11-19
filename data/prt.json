@@ -1,0 +1,573 @@
+{
+ "country": "Portugal",
+ "iso_a3": "PRT",
+ "completeness": 13,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Portugal's police and court statistics on crimes against children give no nationality of victims or suspects. Origin data come only from the child-protection commissions (children with a measure by nationality, all dangers combined), sentenced prisoners by nationality and crime, and partial nationality of flagged trafficking victims.",
+ "short_name": "Portugal",
+ "name_in_sentence": "Portugal",
+ "nations": {
+  "National (DGPJ, INE, DGRSP, CNPDPCJ, OTSH)": "Justice and survey statistics; prison statistics; child-protection commission report; Internal Security Report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "portuguese",
+   "label": "Portuguese citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Nationality unknown",
+ "european_title": "Not recorded by any Portuguese source",
+ "european_note": "Portuguese statistics record nationality, never ethnic origin. 'Portuguese' includes naturalised citizens and 'foreign' mixes Europeans with Brazilians, Africans and Asians, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's nationality",
+  "perpetrator": "Perpetrator's nationality"
+ },
+ "proxy_note": "Portugal records nationality, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children",
+   "years": "2024",
+   "intro": "Police recorded 1,418 crimes of sexual abuse of children and minors and of child prostitution and pornography in 2024 (DGPJ); 92.2% of suspects were male and 80.7% of victims female. Courts convicted 425 people of these crimes. The INE 2022 survey found 2.3% of adults aged 18-74 reported sexual abuse before age 15. None of these give nationality. The prison service gives sentenced prisoners for child sexual abuse by nationality.",
+   "victims": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "Police and court statistics on crimes against children give the sex and age of victims only; no nationality is published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dgrsp24",
+    "scope": "Portugal, sentenced prisoners held on 31 Dec 2024 for sexual abuse of children or dependent minors",
+    "n": 226,
+    "n_label": "sentenced prisoners",
+    "unknown_share": null,
+    "share": {
+     "portuguese": 96.9,
+     "foreign": 3.1
+    },
+    "rate": null,
+    "rate_reason": "A prison stock on one day, not a flow of convictions; rates not calculated.",
+    "share_note": "219 Portuguese and 7 foreign prisoners, read from the DGRSP table (men and women, all ages). Foreign citizens were 13.5% of all sentenced prisoners in the same table. A stock of prisoners reflects sentence lengths as well as offending. Citizenship, not ethnicity: Portuguese statistics do not record ethnic origin. 'Portuguese' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "portuguese",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "portuguese",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Maltreatment (child-protection commissions)",
+   "years": "2024",
+   "intro": "The child-protection commissions (CPCJ) received 3,282 reports of physical maltreatment in 2024 (5.2% of reports). The national commission (CNPDPCJ) gives the nationality of children with a protection measure for all danger types combined. No perpetrator origin is published.",
+   "victims": {
+    "status": "published",
+    "source": "cpcj24",
+    "scope": "Portugal, children and young people with a promotion and protection measure followed by the CPCJ, all danger types, 2024",
+    "n": 27215,
+    "n_label": "children with a protection measure",
+    "unknown_share": null,
+    "share": {
+     "portuguese": 87.4,
+     "foreign": 12.6
+    },
+    "rate": null,
+    "rate_reason": "The report compares foreign children with immigrant shares by country but gives no rates.",
+    "share_note": "All danger situations combined (neglect, domestic violence, maltreatment and others). Of the 3,442 foreign children, 1,692 were Brazilian, 281 Angolan, 214 from São Tomé and Príncipe and 148 Cape Verdean. Citizenship, not ethnicity: Portuguese statistics do not record ethnic origin. 'Portuguese' includes naturalised citizens. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "Suspects, defendants and convicted people are published by sex and age only; no nationality for these offences."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "portuguese",
+     "foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "portuguese",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (child-protection commissions)",
+   "years": "2024",
+   "intro": "Neglect was the most reported danger situation in 2024 (19,107 reports, 30.4%) and the most diagnosed (5,123 cases, 33.0%). Nationality is given only for all children with a measure.",
+   "victims": {
+    "status": "published",
+    "source": "cpcj24",
+    "scope": "Portugal, children and young people with a promotion and protection measure followed by the CPCJ, all danger types, 2024",
+    "n": 27215,
+    "n_label": "children with a protection measure",
+    "unknown_share": null,
+    "share": {
+     "portuguese": 87.4,
+     "foreign": 12.6
+    },
+    "rate": null,
+    "rate_reason": "The report compares foreign children with immigrant shares by country but gives no rates.",
+    "share_note": "All danger situations combined (neglect, domestic violence, maltreatment and others). Of the 3,442 foreign children, 1,692 were Brazilian, 281 Angolan, 214 from São Tomé and Príncipe and 148 Cape Verdean. Citizenship, not ethnicity: Portuguese statistics do not record ethnic origin. 'Portuguese' includes naturalised citizens. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "Suspects, defendants and convicted people are published by sex and age only; no nationality for these offences."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "portuguese",
+     "foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "portuguese",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2024",
+   "intro": "No statistics on child homicide victims by nationality were found. The prison service gives sentenced prisoners for homicide by nationality, for all victims.",
+   "victims": {
+    "status": "not_published",
+    "source": "rasi25",
+    "text": "No child homicide victims by nationality are published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dgrsp24",
+    "scope": "Portugal, sentenced prisoners held on 31 Dec 2024 for homicide (all victims)",
+    "n": 877,
+    "n_label": "sentenced prisoners",
+    "unknown_share": null,
+    "share": {
+     "portuguese": 84.8,
+     "foreign": 15.2
+    },
+    "rate": null,
+    "rate_reason": "A prison stock on one day, not a flow of convictions; rates not calculated.",
+    "share_note": "744 Portuguese and 133 foreign prisoners, read from the DGRSP table (men and women, all ages). Foreign citizens were 13.5% of all sentenced prisoners in the same table. A stock of prisoners reflects sentence lengths as well as offending. Not split by the age of the victim. Citizenship, not ethnicity: Portuguese statistics do not record ethnic origin. 'Portuguese' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "portuguese",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "portuguese",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2025",
+   "intro": "The Trafficking Observatory (OTSH) received 307 records in 2025; for the 191 valid records of presumed victims in Portugal, 125 were labour exploitation and 22 sexual exploitation. 25 presumed victims were minors (mean age 9; 7 for illegal adoption). Nationality is published only for the largest groups, the rest being under statistical secrecy, so no full distribution exists.",
+   "victims": {
+    "status": "not_published",
+    "source": "rasi25",
+    "text": "OTSH gives partial nationality: labour-exploitation victims were 95% foreign (Brazil 27, India 15, Timor-Leste 13; Portuguese 6, 5%); sexual-exploitation victims were mostly foreign (20 of 22); minors came from 11 countries (Moldova 4, DR Congo 5, Angola 3, others under statistical secrecy). In 2025, 73 victims were taken into the shelters, from 26 nationalities (Brazil 12, Portugal 11)."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "dgrsp24",
+    "scope": "Portugal, sentenced prisoners held on 31 Dec 2024 for trafficking in persons",
+    "n": 14,
+    "n_label": "sentenced prisoners",
+    "unknown_share": null,
+    "share": {
+     "portuguese": 57.1,
+     "foreign": 42.9
+    },
+    "rate": null,
+    "rate_reason": "A prison stock on one day, not a flow of convictions; rates not calculated.",
+    "share_note": "8 Portuguese and 6 foreign prisoners, read from the DGRSP table (men and women, all ages). Foreign citizens were 13.5% of all sentenced prisoners in the same table. A stock of prisoners reflects sentence lengths as well as offending. Citizenship, not ethnicity: Portuguese statistics do not record ethnic origin. 'Portuguese' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "portuguese",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "portuguese",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child pornography",
+   "years": "2024",
+   "intro": "Child pornography is counted together with child prostitution (lenocínio e pornografia de menores) in DGPJ figures, with no nationality of victims or suspects.",
+   "victims": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "Police and court statistics on crimes against children give the sex and age of victims only; no nationality is published."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "Suspects, defendants and convicted people are published by sex and age only; no nationality for these offences."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "dgpj_ine",
+    "text": "No table links victim and perpetrator nationality."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 13,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 12.6,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 3,
+    "coverage": 4,
+    "rates": 1,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Police and court statistics (DGPJ) give 1,418 child sexual abuse and child prostitution/pornography crimes in 2024 and the INE survey gives prevalence by sex and age, with no nationality. The prison service gives sentenced prisoners for child sexual abuse on 31 Dec 2024 by nationality (219 Portuguese, 7 foreign).",
+    "score": 14
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The national child-protection commission (CNPDPCJ) gives the 27,215 children with a protection measure in 2024 by nationality (87.4% Portuguese), all danger types combined; 3,282 physical-maltreatment reports. No perpetrator origin.",
+    "score": 13.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 3,
+    "perpetrator": 0,
+    "coverage": 4,
+    "rates": 0.5,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Neglect is the most diagnosed danger (5,123 cases, 33.0%) in CPCJ data, which give nationality only for all children with a measure. No perpetrator origin.",
+    "score": 13.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "No child homicide victims by nationality. The prison service gives sentenced prisoners for homicide by nationality (877; 133 foreign), all victims.",
+    "score": 10
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 4,
+    "perpetrator": 1.5,
+    "coverage": 4,
+    "rates": 0,
+    "access": 7,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Trafficking Observatory (OTSH) in the Internal Security Report gives flagged victims with partial nationality (25 minors, top nationalities only; other figures under statistical secrecy). Prisoners for trafficking by nationality (14; 8 Portuguese).",
+    "score": 16.5
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Child pornography is counted with child prostitution in DGPJ figures, with no nationality.",
+    "score": 6
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Portugal scores 13% on the stricter scale (0-20%). Police and court statistics on crimes against children give no nationality; the origin data come from the child-protection commissions (children with a measure by nationality, all dangers combined), prisoners by nationality and crime, and partial nationality of flagged trafficking victims.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "rasi25": {
+   "name": "Relatório Anual de Segurança Interna (RASI) 2025",
+   "publisher": "Sistema de Segurança Interna / Government of Portugal (OTSH trafficking data; DGRSP prison data)",
+   "years": "2025",
+   "records": "Recorded crime; flagged trafficking victims with partial nationality; prison population by nationality.",
+   "limitations": "No nationality for crimes against children; trafficking nationality partly under statistical secrecy.",
+   "url": "https://portugal.gov.pt/gc25/comunicacao/documentos/rasi-2025-relatorio-anual-de-seguranca-interna",
+   "tier": "Official government statistics"
+  },
+  "dgpj_ine": {
+   "name": "Dia Europeu para a Proteção das Crianças contra a Exploração Sexual e os Abusos Sexuais (joint release, 18 Nov 2025)",
+   "publisher": "Instituto Nacional de Estatística (INE) and Direção-Geral da Política de Justiça (DGPJ)",
+   "years": "2014-2024; survey 2022",
+   "records": "Police-recorded crimes against children, court cases and convictions; INE survey prevalence of childhood sexual abuse.",
+   "limitations": "Sex and age only; no nationality.",
+   "url": "https://dgpj.justica.gov.pt/Portals/31/18Dia%20Europ_%20Protecao%20das%20Criancas%20contra%20Exploracao%20Sexual%20e%20Abusos%20Sexuais.pdf",
+   "tier": "Official government statistics"
+  },
+  "dgrsp24": {
+   "name": "Reclusos condenados existentes em 31 de dezembro, segundo o sexo, os escalões de idade e a nacionalidade, por crimes (2024)",
+   "publisher": "Direção-Geral de Reinserção e Serviços Prisionais (DGRSP)",
+   "years": "31 Dec 2024",
+   "records": "Sentenced prisoners by crime, sex, age group and Portuguese/foreign nationality.",
+   "limitations": "Prison stock on one day; not victim-specific except for child sexual abuse; values read by column position from the PDF table.",
+   "url": "https://dgrsp.justica.gov.pt/Portals/16/pag%2010_1.pdf",
+   "tier": "Official government statistics"
+  },
+  "cpcj24": {
+   "name": "Relatório Anual de Avaliação da Atividade das CPCJ 2024",
+   "publisher": "Comissão Nacional de Promoção dos Direitos e Proteção das Crianças e Jovens (CNPDPCJ)",
+   "years": "2024",
+   "records": "Reports and diagnosed danger situations by type; children with a measure by nationality.",
+   "limitations": "Nationality only for all children with a measure, not by danger type; no perpetrator origin.",
+   "url": "https://www.cnpdpcj.gov.pt/documents/10182/16406/Relat%C3%B3rio+Anual+Avalia%C3%A7%C3%A3o+Atividade+CPCJ+2024/66ec5733-2da6-4f75-b959-a719c6d2829d",
+   "tier": "Official government statistics"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

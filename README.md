@@ -107,6 +107,21 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - A share block may have `n: null` when the source publishes percentages without the count (ISTAT female child
   victims, Interior Ministry author chart); the page then omits the number.
 
+### Europe batch 2: Ireland, Belgium, Austria, Switzerland, Portugal
+- `data/irl.json`, `bel.json`, `aut.json`, `che.json` and `prt.json` are built by `build_<iso>.py` (kept with each
+  country's research, outside this repo) and scored by `score_v2_batch5.py` on the stricter scale with the 19 Nov 2026
+  harm weights (`score.weights`; new files have no `previous_weights`). Switzerland 25%, Austria 14%, Portugal 13%,
+  Ireland 12%, Belgium 7%.
+- Ireland is the only one with real ethnicity data: the CSO Sexual Violence Survey 2022 gives childhood sexual violence
+  by ethnic background with White Irish separate, so the 25% cap rule does not apply; its crime, child-protection and
+  homicide statistics carry no ethnicity or nationality. The other four record nationality or residence status only,
+  so the cap rule applies (none reaches it).
+- Switzerland publishes child victims and accused of sexual acts with children by residence status; Austria gives
+  conviction shares by citizenship; Portugal gives children in child protection and prisoners by nationality; Belgium
+  publishes origin only for supported trafficking victims.
+- Survey prevalence (Ireland) and victimization rates (Switzerland) use `rate` with `rate_unit` and no `share`, like
+  the Swedish school survey.
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
@@ -138,7 +153,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   `score.previous_weights` the score under the earlier weights. Current published scores: United States 59%,
   United Kingdom 53%, Germany 25% (capped from an uncapped 29.0%; 49% on the previous rubric), Canada 25%,
   France 24%, Australia 20%, New Zealand 41%, South Africa 7%, Italy 24%, Spain 21%, Netherlands 16%, Sweden 13%,
-  Poland 9%. To change a country's displayed score, edit
+  Poland 9%, Switzerland 25%, Austria 14%, Portugal 13%, Ireland 12%, Belgium 7%. To change a country's displayed score, edit
   `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
   that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.

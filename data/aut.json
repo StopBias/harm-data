@@ -1,0 +1,649 @@
+{
+ "country": "Austria",
+ "iso_a3": "AUT",
+ "completeness": 14,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Austria publishes the share of convictions for child sexual abuse and abuse material by Austrian citizens, and trafficking victims by nationality, but no citizenship of child victims in police statistics. Other origin figures appear only in parliamentary answers that count foreign suspects without Austrian totals.",
+ "short_name": "Austria",
+ "name_in_sentence": "Austria",
+ "nations": {
+  "National (Statistik Austria, Interior Ministry)": "Court statistics; police crime statistics; trafficking situation report; child-welfare statistics.",
+  "Salzburg": "Study of child-protection assessments for the Land Salzburg."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "austrian",
+   "label": "Austrian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "eu",
+   "label": "EU citizens (Salzburg study)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "third_country",
+   "label": "Third-country citizens (Salzburg study)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "eu": "foreign",
+  "third_country": "foreign"
+ },
+ "extra_group_labels": {},
+ "unknown_label": "Citizenship unknown",
+ "european_title": "Not recorded by any Austrian source",
+ "european_note": "Austrian official statistics record citizenship, never ethnic origin. 'Austrian' includes naturalised citizens and 'foreign' mixes EU and other Europeans with non-Europeans, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Perpetrator's citizenship"
+ },
+ "proxy_note": "Austria records citizenship, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children (convictions)",
+   "years": "2024",
+   "intro": "Police recorded 363 victims of sexual abuse of children under 14 (section 207) in 2024, 277 girls and 86 boys, by age and sex only. Statistik Austria's court statistics give the citizenship of people convicted: Austrian citizens committed 76.9% of the convicted delicts of sexual abuse of children under 14 (sections 206-207) in 2024. Police counts of foreign suspects (112 for section 206 in 2024) appear only in parliamentary answers, with no Austrian total.",
+   "victims": {
+    "status": "not_published",
+    "source": "pks24",
+    "text": "Police statistics give child victims by age and sex only; no citizenship of victims is published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gks24",
+    "scope": "Austria, convicted delicts of sexual abuse of children under 14 (StGB sections 206-207), 2024",
+    "n": 163,
+    "n_label": "delicts cited by the report",
+    "unknown_share": null,
+    "share": {
+     "austrian": 76.9,
+     "foreign": 23.1
+    },
+    "rate": null,
+    "rate_reason": "No rates by citizenship are published for these offences.",
+    "share_note": "Share of convicted delicts committed by Austrian citizens, from the Statistik Austria report text; foreign = 100 minus 76.9, calculated here. Austrian citizens were 53.9% of all people convicted in 2024 and 71.9% within sexual offences. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gks24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Foreign suspects only (police), 2024",
+     "data": {
+      "status": "not_published",
+      "source": "ab570",
+      "text": "Parliamentary answer 570/AB counts foreign suspects of completed offences in 2024 (section 206: 112, of whom 8 asylum seekers; rape: 480) but gives no Austrian total, so no share can be calculated."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "austrian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "austrian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse and child-protection assessments",
+   "years": "2019-2024",
+   "intro": "No national statistics give the citizenship of child victims of physical abuse. A study for the Land Salzburg gives the citizenship of minors in child-protection assessments for all concerns combined. Foreign suspects of torment or neglect of children or vulnerable people (section 92) are counted in a parliamentary answer (125 in 2024, including attempts) with no Austrian total.",
+   "victims": {
+    "status": "published",
+    "source": "sbg25",
+    "scope": "Land Salzburg only, minors in child-protection assessments (Gefährdungsabklärungen), all concerns combined, 2019-2023",
+    "n": null,
+    "n_label": "minors in child-protection assessments (5,776 were Austrian)",
+    "unknown_share": null,
+    "share": {
+     "austrian": 63.5,
+     "foreign": 36.5,
+     "eu": 13.5,
+     "third_country": 23.0
+    },
+    "rate": null,
+    "rate_reason": "No rates in the study. For comparison it notes that foreign citizens were 19.7% of the population of Salzburg in 2023.",
+    "share_note": "Study commissioned by the Land Salzburg child and youth welfare department and written by a research institute (ifz) from the state's own case records. One of nine states, all types of concern combined (abuse, neglect and other risks). Foreign = 100 minus 63.5, calculated here. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ab570",
+    "text": "Only foreign suspects are counted (parliamentary answer), with no Austrian total and no victim age."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gks24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "availability": {
+    "victims": [
+     "austrian",
+     "foreign",
+     "eu",
+     "third_country"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "austrian",
+       "foreign",
+       "eu",
+       "third_country"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect and child-protection assessments",
+   "years": "2019-2024",
+   "intro": "Child and youth welfare services started 53,162 child-protection assessments in Austria in 2024 (Statistik Austria), with no citizenship. The Salzburg study is the only origin data. A parliamentary answer counts 8 foreign suspects of neglect of a duty of care (section 199) in 2024.",
+   "victims": {
+    "status": "published",
+    "source": "sbg25",
+    "scope": "Land Salzburg only, minors in child-protection assessments (Gefährdungsabklärungen), all concerns combined, 2019-2023",
+    "n": null,
+    "n_label": "minors in child-protection assessments (5,776 were Austrian)",
+    "unknown_share": null,
+    "share": {
+     "austrian": 63.5,
+     "foreign": 36.5,
+     "eu": 13.5,
+     "third_country": 23.0
+    },
+    "rate": null,
+    "rate_reason": "No rates in the study. For comparison it notes that foreign citizens were 19.7% of the population of Salzburg in 2023.",
+    "share_note": "Study commissioned by the Land Salzburg child and youth welfare department and written by a research institute (ifz) from the state's own case records. One of nine states, all types of concern combined (abuse, neglect and other risks). Foreign = 100 minus 63.5, calculated here. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "ab570",
+    "text": "Only foreign suspects are counted (parliamentary answer), with no Austrian total."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gks24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "availability": {
+    "victims": [
+     "austrian",
+     "foreign",
+     "eu",
+     "third_country"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "austrian",
+       "foreign",
+       "eu",
+       "third_country"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Murder",
+   "years": "2024",
+   "intro": "Police recorded 76 victims of reported murder offences in 2024 (36 male, 40 female), with no child victims by citizenship. Statistik Austria reports that Austrian citizens committed 49.5% of the convicted murder delicts in 2024 (all victims); a parliamentary answer counts 18 foreign suspects of completed murder, 2 of them asylum seekers.",
+   "victims": {
+    "status": "not_published",
+    "source": "pks24",
+    "text": "Police statistics give child victims by age and sex only; no citizenship of victims is published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gks24",
+    "scope": "Austria, convicted murder delicts (section 75), victims of all ages, 2024",
+    "n": null,
+    "n_label": "",
+    "unknown_share": null,
+    "share": {
+     "austrian": 49.5,
+     "foreign": 50.5
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; no rates by citizenship.",
+    "share_note": "From the Statistik Austria report text; foreign = 100 minus 49.5, calculated here. Not split by the age of the victim. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gks24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "austrian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "austrian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "The Bundeskriminalamt identified 45 victims of trafficking (section 104a) in 2024: 28 for labour, 10 for sexual exploitation and 1 for begging among the adults, plus 6 minors (all girls). It lists the nationalities of all of them; the only Austrian victims were 2 girls (aged 12 and 15) among the minors. 36 suspects were investigated (25 male, 11 female), with no nationality given.",
+   "victims": {
+    "status": "published",
+    "source": "bk_mh24",
+    "scope": "Austria, trafficking victims (section 104a) identified by the police, all ages, 2024",
+    "n": 45,
+    "n_label": "victims, all ages (6 minors)",
+    "unknown_share": null,
+    "share": {
+     "austrian": 4.4,
+     "foreign": 95.6
+    },
+    "rate": null,
+    "rate_reason": "Small numbers; rates not calculated.",
+    "share_note": "Adults by nationality: labour exploitation Vietnam 12, Serbia 5, Hungary 3, Moldova 3, Bosnia-Herzegovina 2, others 1 each; sexual exploitation Nigeria 3, Romania 3, Bulgaria 2, China 1, Peru 1; begging Afghanistan 1. Minors: Moldova 2 and Bosnia-Herzegovina 2 (labour), Austria 2 (sexual exploitation and child trafficking). Shares calculated here. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "bk_mh24",
+    "text": "The situation report gives suspects by sex only. A parliamentary answer (570/AB) counts 26 foreign suspects of trafficking in 2024, with no Austrian total."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bk_mh24",
+    "text": "No table links victim and trafficker nationality."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "austrian",
+     "foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "austrian",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Child sexual abuse material (convictions)",
+   "years": "2024",
+   "intro": "Statistik Austria reports that Austrian citizens committed 83.2% of the convicted delicts of child sexual abuse material (section 207a) in 2024. No victim data by origin are published; police counts of online grooming (section 208a) have no citizenship.",
+   "victims": {
+    "status": "not_published",
+    "source": "pks24",
+    "text": "Police statistics give child victims by age and sex only; no citizenship of victims is published."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "gks24",
+    "scope": "Austria, convicted delicts of child sexual abuse material (StGB section 207a), 2024",
+    "n": 499,
+    "n_label": "delicts cited by the report",
+    "unknown_share": null,
+    "share": {
+     "austrian": 83.2,
+     "foreign": 16.8
+    },
+    "rate": null,
+    "rate_reason": "No rates by citizenship are published.",
+    "share_note": "Share of convicted delicts committed by Austrian citizens, from the report text; foreign = 100 minus 83.2, calculated here. Citizenship, not ethnicity: Austrian statistics do not record ethnic origin. 'Austrian' includes naturalised citizens. "
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "gks24",
+    "text": "No table links victim and perpetrator citizenship."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [
+     "all",
+     "austrian",
+     "foreign"
+    ],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": [
+       "all",
+       "austrian",
+       "foreign"
+      ]
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_published",
+     "perpetrators": "published",
+     "cross": "not_published"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 14,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 13.9,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 6,
+    "coverage": 5,
+    "rates": 1,
+    "access": 6,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Statistik Austria's court statistics give the share of convictions by citizenship: 76.9% of delicts of sexual abuse of children under 14 (sections 206-207) convicted in 2024 were by Austrian citizens (the report cites 163 delicts). Police statistics give foreign suspects only (112 for section 206 in 2024) through parliamentary answers, and victims by age and sex only.",
+    "score": 18
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 2.5,
+    "perpetrator": 1,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "No national victim origin. A study commissioned by the Land Salzburg from its own child-welfare records gives child-protection assessments 2019-2023 by the child's citizenship (63.5% Austrian, 13.5% EU, 23% third-country), one state only, all concerns combined. Foreign suspects of torment or neglect of children (section 92) are counted only in a parliamentary answer.",
+    "score": 12.0
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 2.5,
+    "perpetrator": 0.5,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The national child and youth welfare statistics count 53,162 child-protection assessments in 2024 with no citizenship; the Salzburg study is the only origin data. Foreign suspects of neglect (section 199) appear only in a parliamentary answer.",
+    "score": 11.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 2,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Police statistics give 76 victims of reported murder offences in 2024 by sex and relationship, with no child victims by citizenship. Court statistics give Austrian citizens' share of convicted murder delicts (49.5% in 2024), all victims; a parliamentary answer counts 18 foreign suspects of completed murder.",
+    "score": 10.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 6,
+    "perpetrator": 1,
+    "coverage": 4,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "proxy",
+    "why": "The Bundeskriminalamt 2024 situation report lists the nationalities of the 45 trafficking victims (none of the adults Austrian) and of the 6 minor victims (2 Austrian girls), and gives suspects by sex only; foreign suspects are counted in a parliamentary answer.",
+    "score": 17
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 5,
+    "coverage": 2.5,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "proxy",
+    "why": "Court statistics give 83.2% of child sexual abuse material delicts (section 207a) convicted in 2024 as committed by Austrian citizens (the report cites 499 delicts). No victim data by origin.",
+    "score": 13.0
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Austria scores 14% on the stricter scale (0-20%). Statistik Austria gives the share of convictions for child sexual abuse and abuse material by Austrian citizens, and the police trafficking report lists victims' nationalities, but citizenship is a proxy, police data on child victims have no origin, and other figures appear only in parliamentary answers.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "gks24": {
+   "name": "Gerichtliche Kriminalstatistik 2023-2024 (STATreport)",
+   "publisher": "Statistik Austria",
+   "years": "2023-2024",
+   "records": "Convictions and convicted delicts by offence and citizenship (Austrian or not).",
+   "limitations": "Citizenship only; shares given in the text for selected offences; no victim age or origin.",
+   "url": "https://www.statistik.at/fileadmin/publications/Gerichtliche-Kriminalstatistik_2023-2024_barrierefrei.pdf",
+   "tier": "Official government statistics"
+  },
+  "pks24": {
+   "name": "Polizeiliche Kriminalstatistik 2024 (Kriminalitätsbericht) and police data on violence against women 2024",
+   "publisher": "Bundesministerium für Inneres, Bundeskriminalamt",
+   "years": "2024",
+   "records": "Recorded offences, suspects by citizenship for all offences, victims by age and sex.",
+   "limitations": "No victim citizenship; no child-specific suspect citizenship tables.",
+   "url": "https://www.bundeskriminalamt.at/501/files/pks-24-web3_bf_20250919.pdf",
+   "tier": "Official government statistics"
+  },
+  "ab570": {
+   "name": "Parliamentary answer 570/AB (XXVIII. GP) on murders and violent crimes by non-Austrians 2024",
+   "publisher": "Bundesministerium für Inneres, police crime statistics (data as of 25 Mar 2025)",
+   "years": "2024",
+   "records": "Foreign suspects (and asylum seekers among them) by offence.",
+   "limitations": "Foreign suspects only, no Austrian totals; ad hoc answer.",
+   "url": "https://www.parlament.gv.at/dokument/XXVIII/AB/570/imfname_1679639.pdf",
+   "tier": "Official government statistics"
+  },
+  "ab6096": {
+   "name": "Parliamentary answer 6096/AB (XXVIII. GP) on group sexual exploitation of minors",
+   "publisher": "Bundesministerium für Inneres, Bundeskriminalamt (data as of 11 Aug 2026)",
+   "years": "2020-2025",
+   "records": "Minor victims of sexual offences by age and offence; foreign suspects by nationality and residence status.",
+   "limitations": "Foreign suspects only, no Austrian totals; victims without citizenship; ad hoc answer.",
+   "url": "https://www.parlament.gv.at/dokument/XXVIII/AB/6096/imfname_1779309.pdf",
+   "tier": "Official government statistics"
+  },
+  "bk_mh24": {
+   "name": "Lagebericht Schlepperei und Menschenhandel 2024",
+   "publisher": "Bundeskriminalamt",
+   "years": "2024",
+   "records": "Trafficking suspects by sex; victims by sex, exploitation form and nationality; minor victims by nationality and age.",
+   "limitations": "Small numbers; no suspect nationality.",
+   "url": "https://www.bundeskriminalamt.at/304/files/lagebericht_schlepperei_menschenhandel_2024_webbf.pdf",
+   "tier": "Official government statistics"
+  },
+  "kjh24": {
+   "name": "Kinder- und Jugendhilfestatistik 2024",
+   "publisher": "Statistik Austria for the Federal Chancellery",
+   "years": "2024",
+   "records": "Child-protection assessments (53,162) and care measures.",
+   "limitations": "No citizenship or origin of children.",
+   "url": "https://www.statistik.at/fileadmin/publications/Kinder-und-Jugendhilfestatistik-2024.pdf",
+   "tier": "Official government statistics"
+  },
+  "sbg25": {
+   "name": "Gefährdungsabklärungen im Bundesland Salzburg 2019-2023: Entwicklungen und Trends",
+   "publisher": "Commissioned and funded by the Land Salzburg child and youth welfare department; written by ifz (Internationales Forschungszentrum für soziale und ethische Fragen) from the state social information system",
+   "years": "2019-2023",
+   "records": "Child-protection assessments and interventions by the child's citizenship (Austrian, EU, third country).",
+   "limitations": "One state only; all concerns combined; written by a non-government research institute from official records.",
+   "url": "https://www.salzburg.gv.at/fileadmin/Dateien/Soziales/Kinder-und-Jugendhilfe/gefaehrdungsabklaerung-studie2025.pdf",
+   "tier": "Official program data"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

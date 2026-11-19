@@ -1,0 +1,641 @@
+{
+ "country": "Ireland",
+ "iso_a3": "IRL",
+ "completeness": 12,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Ireland's census and the CSO Sexual Violence Survey record ethnicity, and the survey shows childhood sexual violence by ethnic background with White Irish separate. Crime, child-protection and homicide statistics publish no ethnicity or nationality, and trafficking victims are given only by source country.",
+ "short_name": "Ireland",
+ "name_in_sentence": "Ireland",
+ "nations": {
+  "National (CSO, Tusla, Department of Justice)": "CSO recorded-crime and survey statistics; Tusla referrals; annual trafficking report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "white_irish",
+   "label": "White Irish"
+  },
+  {
+   "id": "white_other",
+   "label": "White Irish Traveller, White Roma or Other White background",
+   "lumped": true
+  },
+  {
+   "id": "black",
+   "label": "Black or Black Irish"
+  },
+  {
+   "id": "asian",
+   "label": "Asian or Asian Irish"
+  },
+  {
+   "id": "other_mixed",
+   "label": "Other, including mixed background"
+  },
+  {
+   "id": "irish",
+   "label": "Irish citizens / Ireland as source country",
+   "proxy": "nationality"
+  },
+  {
+   "id": "non_irish",
+   "label": "Non-Irish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "africa",
+   "label": "Source country in Africa",
+   "proxy": "nationality"
+  },
+  {
+   "id": "asia",
+   "label": "Source country in Asia",
+   "proxy": "nationality"
+  },
+  {
+   "id": "eea",
+   "label": "Source country in the EEA",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_other",
+   "label": "Source country in non-EEA Europe",
+   "proxy": "nationality"
+  },
+  {
+   "id": "south_america",
+   "label": "Source country in South America",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {
+  "unknown": "Not stated"
+ },
+ "unknown_label": "Not stated",
+ "european_title": "Partly: White Irish only",
+ "european_note": "The CSO survey uses the census ethnic categories. White Irish is separate, but other White Europeans are combined with Irish Travellers and Roma, so European descent as a whole cannot be identified. Crime statistics have no ethnicity at all.",
+ "select_labels": {
+  "victim": "Victim's ethnic background or citizenship",
+  "perpetrator": "Perpetrator's ethnic background or citizenship"
+ },
+ "proxy_note": "Citizenship and source country are proxies, not ethnicity. Real ethnic background (census categories) appears only in the 2022 Sexual Violence Survey.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual violence experienced as a child (CSO survey)",
+   "years": "2022 survey; crime data 2025",
+   "intro": "Gardaí recorded 2,991 victims of sexual offences in 2025, 1,377 (46%) of them under 18 when the offence happened, and the suspected offender was known to the victim in 70% of sexual offences in 2024 (CSO). These crime statistics give age and sex only. The CSO Sexual Violence Survey 2022, which asked adults about experiences before age 17, is the one official source with ethnicity, using the census categories.",
+   "victims": {
+    "status": "published",
+    "source": "cso_svs",
+    "scope": "Ireland, adults aged 18 and over asked about sexual violence experienced as a child (before age 17), CSO Sexual Violence Survey 2022",
+    "n": null,
+    "n_label": "",
+    "share": null,
+    "rate": {
+     "white_irish": 29,
+     "white_other": 33,
+     "asian": 20,
+     "other_mixed": 22
+    },
+    "rate_all": 29,
+    "rate_unit": "%",
+    "rate_label": "of adults in the group said they experienced sexual violence as a child",
+    "rate_all_label": "all adults",
+    "share_note": "Official CSO survey (PxStat table SVS111), one-off, self-reported recall by adults; not records of child victims. Ethnic background on the census categories. White Irish is separate, but White Irish Traveller, White Roma and Other White background are combined into one group, so other Europeans cannot be separated from Travellers and Roma. Black or Black Irish figures are suppressed for reliability. 'Not stated' was 10% for White Irish, 14% for Asian and 51% for Other including mixed, 12% overall."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "pq_ips",
+    "text": "Neither the survey nor crime statistics give the origin of perpetrators. Parliamentary answers give Irish Prison Service counts by nationality (161 non-nationals sentenced for sexual offences in custody on 30 Nov 2025) and a separate total (800 sentenced prisoners for sexual offences on 31 May 2025). The dates differ and victims' ages are not given, so no share is calculated."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "cso_svs",
+    "text": "No table links victim and perpetrator ethnicity or nationality."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "The same survey question by citizenship (SVS108)",
+     "data": {
+      "status": "published",
+      "source": "cso_svs",
+      "scope": "Ireland, adults aged 18 and over, sexual violence experienced as a child, by citizenship, 2022",
+      "n": null,
+      "n_label": "",
+      "share": null,
+      "rate": {
+       "irish": 29,
+       "non_irish": 30
+      },
+      "rate_all": 29,
+      "rate_unit": "%",
+      "rate_label": "of adults in the group said they experienced sexual violence as a child",
+      "rate_all_label": "all adults",
+      "share_note": "Citizenship is a proxy, not ethnicity."
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "white_irish",
+     "white_other",
+     "asian",
+     "other_mixed",
+     "irish",
+     "non_irish"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [
+       "all",
+       "white_irish",
+       "white_other",
+       "asian",
+       "other_mixed",
+       "irish",
+       "non_irish"
+      ],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Assault and physical abuse",
+   "years": "2024-2025",
+   "intro": "Gardaí recorded 2,618 assault victims under 18 in 2025 (CSO, age and sex only). Tusla received 37,427 child-protection referrals in 2024, 9,452 (25%) for physical abuse, with no ethnicity or nationality published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Recorded-crime victim statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Suspected-offender statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Neither side is published by ethnicity or nationality, so no victim-by-perpetrator table exists."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect (Tusla referrals)",
+   "years": "2024",
+   "intro": "Tusla recorded 5,658 neglect referrals in 2024 (15% of child-protection referrals). No ethnicity or nationality of children or carers is published. A non-government study (Child Care Law Reporting Project, 2012-2015 court cases) found ethnic-minority families over-represented in childcare proceedings; it is not official statistics and is not scored.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "tusla_roa",
+    "text": "Tusla's annual review gives referrals by type of concern with no ethnicity or nationality of the children."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "tusla_roa",
+    "text": "No data on the people responsible are published by any origin variable."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Neither side is published by ethnicity or nationality, so no victim-by-perpetrator table exists."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Murder, manslaughter and infanticide",
+   "years": "2025",
+   "intro": "The CSO recorded 40 victims of murder, manslaughter or infanticide in 2025, 5 of them under 18, by age and sex only.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Recorded-crime victim statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Suspected-offender statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Neither side is published by ethnicity or nationality, so no victim-by-perpetrator table exists."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking in human beings",
+   "years": "2024",
+   "intro": "An Garda Síochána identified 67 victims of human trafficking in 2024: 48 for sexual exploitation, 15 for forced labour and 4 for forced criminality; 10 were minors (8 girls, 2 boys). There were 2 trafficking convictions. Victims are given by source country for all ages and forms together; no Irish victims were identified in 2024 (2 over 2020-2024).",
+   "victims": {
+    "status": "published",
+    "source": "doj_thb",
+    "scope": "Ireland, trafficking victims identified by An Garda Síochána, all ages and forms, 2024",
+    "n": 67,
+    "n_label": "victims, all ages (10 minors)",
+    "unknown_share": null,
+    "share": {
+     "africa": 71.6,
+     "asia": 10.4,
+     "eea": 9.0,
+     "south_america": 6.0,
+     "europe_other": 3.0,
+     "irish": 0.0
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Region of source country as given in the report (Africa 48, Asia 7, EEA 6, South America 4, non-EEA Europe 2); Nigeria alone was 38. Shares calculated here. Source country is a proxy, not ethnicity."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "doj_thb",
+    "text": "The report gives no nationality or origin of suspects or the 2 people convicted."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "doj_thb",
+    "text": "No table links victim and trafficker origin."
+   },
+   "availability": {
+    "victims": [
+     "all",
+     "irish",
+     "africa",
+     "asia",
+     "eea",
+     "europe_other",
+     "south_america"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "irish",
+       "africa",
+       "asia",
+       "eea",
+       "europe_other",
+       "south_america"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Online child sexual exploitation",
+   "years": "-",
+   "intro": "No statistics on online child sexual exploitation by any origin variable were found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Recorded-crime victim statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Suspected-offender statistics give age and sex only. The CSO says nationality or ethnicity of victims is not widely collected on PULSE (the Garda crime system) and is not used for statistical purposes; the Minister for Justice has confirmed that crime statistics are not published by nationality, ethnicity or citizenship."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "cso_rq",
+    "text": "Neither side is published by ethnicity or nationality, so no victim-by-perpetrator table exists."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_recorded",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 12,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 12.4,
+  "cap_applied": false,
+  "cap_rule_applies": false,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 13,
+    "perpetrator": 1,
+    "coverage": 5,
+    "rates": 2,
+    "access": 5,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "proxy",
+    "why": "The CSO Sexual Violence Survey 2022 gives the share of adults who experienced sexual violence as a child by ethnic background on the census categories, with White Irish separate (29%) but Irish Travellers and Roma lumped with Other White (33%), Black figures suppressed and 12% not stated. It is a one-off survey of adults recalling childhood, not records. Garda/CSO crime statistics (1,377 victims under 18 in 2025) give age and sex only; the CSO says ethnicity is not used for statistics. Prisoner counts by nationality come only from parliamentary answers on different dates.",
+    "score": 26
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "CSO recorded-crime victim statistics give 2,618 assault victims under 18 in 2025 by age and sex only; Tusla's 9,452 physical-abuse referrals (2024) have no ethnicity or nationality.",
+    "score": 8.5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Tusla counts 5,658 neglect referrals (2024) with no ethnicity or nationality published.",
+    "score": 6
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0.5,
+    "access": 5,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "CSO gives 40 victims of murder, manslaughter or infanticide in 2025, 5 under 18, by age and sex only; the Minister has confirmed that crime statistics are not published by nationality or ethnicity.",
+    "score": 8.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 5,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "The Department of Justice annual report gives the 67 victims identified in 2024 (10 minors, 48 sexual exploitation) by source country (Nigeria 38, no Irish victims), all ages and forms together. No trafficker nationality; 2 convictions.",
+    "score": 14
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No statistics on online child sexual exploitation by any origin variable were found.",
+    "score": 4
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Ireland scores 12% on the stricter scale (0-20%). It is the only country in this batch with real ethnicity data: the CSO Sexual Violence Survey 2022 shows childhood sexual violence by ethnic background with White Irish separate. But that is a one-off adult recall survey; Garda and CSO crime statistics, Tusla referrals and homicide figures publish no ethnicity or nationality, and trafficking victims are given only by source country.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "cso_svs": {
+   "name": "Sexual Violence Survey 2022 (tables SVS111 by ethnicity, SVS108 by citizenship)",
+   "publisher": "Central Statistics Office (CSO)",
+   "years": "2022 (published 2023)",
+   "records": "Adults aged 18+ reporting sexual violence before age 17, by ethnic background (census categories) and citizenship.",
+   "limitations": "One-off adult recall survey, not records; Travellers, Roma and other White people combined; Black figures suppressed; up to 51% not stated in small groups.",
+   "url": "https://data.cso.ie/table/SVS111",
+   "tier": "Official government survey"
+  },
+  "cso_rcv": {
+   "name": "Recorded Crime Victims 2025 and Suspected Offenders 2024",
+   "publisher": "Central Statistics Office (CSO), from Garda PULSE data",
+   "years": "2025 victims, 2024 offenders; released 14 May 2026",
+   "records": "Victims and suspected offenders by offence, age and sex.",
+   "limitations": "No ethnicity or nationality.",
+   "url": "https://www.cso.ie/en/releasesandpublications/ep/p-rcvo/recordedcrimevictims2025andsuspectedoffenders2024/",
+   "tier": "Official government statistics"
+  },
+  "cso_rq": {
+   "name": "Review of the Quality of Recorded Crime Statistics 2023: user needs",
+   "publisher": "Central Statistics Office (CSO)",
+   "years": "2023",
+   "records": "States that nationality or ethnicity of victims is not widely collected on PULSE and not used for statistics; lists victims and offenders by nationality/ethnicity as an unmet user need.",
+   "limitations": "A statement about the data, not figures.",
+   "url": "https://www.cso.ie/en/releasesandpublications/ep/p-rqcs/reviewofthequalityofrecordedcrimestatistics2023/userneedsforrecordedcrimestatistics/",
+   "tier": "Official government statistics"
+  },
+  "tusla_roa": {
+   "name": "Annual Review on the Adequacy of Child Care and Family Support Services Available 2024",
+   "publisher": "Tusla - Child and Family Agency",
+   "years": "2024 (published Aug 2025)",
+   "records": "Child-protection and welfare referrals by type (emotional 16,714; physical 9,452; neglect 5,658; sexual 5,603).",
+   "limitations": "No ethnicity or nationality of children.",
+   "url": "https://www.tusla.ie/uploads/content/Review_of_Adequacy_Report_2024_Final_01_08_2025.pdf",
+   "tier": "Official government statistics"
+  },
+  "doj_thb": {
+   "name": "Trafficking in Human Beings in Ireland: Annual Report 2024",
+   "publisher": "Department of Justice (Blue Blindfold), with An Garda Síochána data",
+   "years": "2024",
+   "records": "Identified victims by exploitation type, age, sex and source country; prosecutions and convictions.",
+   "limitations": "Source country only; no trafficker nationality; all ages together.",
+   "url": "https://www.blueblindfold.ie/wp-content/uploads/2026/03/2024_Annual_Report_Final_CLEAN.pdf",
+   "tier": "Official government statistics"
+  },
+  "pq_ips": {
+   "name": "Dáil parliamentary answers on prisoners by nationality and offence (16 Dec 2025, 3 Jul 2025) and on crime data by nationality (9 Oct 2025)",
+   "publisher": "Houses of the Oireachtas / Minister for Justice, with Irish Prison Service data",
+   "years": "2025",
+   "records": "Non-national prisoners in custody by offence (30 Nov 2025); sentenced sex-offence prisoners (31 May 2025); confirmation that crime statistics are not published by nationality or ethnicity.",
+   "limitations": "Ad hoc answers on different dates; no victim age; not a statistical series.",
+   "url": "https://www.oireachtas.ie/en/debates/question/2025-10-09/275/",
+   "tier": "Official government statistics"
+  },
+  "cclrp": {
+   "name": "Child Care Law Reporting Project: An Examination of Lengthy, Contested and Complex Child Protection Cases",
+   "publisher": "Child Care Law Reporting Project (independent research project)",
+   "years": "2012-2015 court cases",
+   "records": "Over-representation of ethnic-minority families in childcare proceedings.",
+   "limitations": "Not official statistics; not used for any score or figure on this page.",
+   "url": "https://www.childlawproject.ie/publications/",
+   "tier": "Non-government source"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}

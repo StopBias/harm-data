@@ -1,0 +1,541 @@
+{
+ "country": "Belgium",
+ "iso_a3": "BEL",
+ "completeness": 7,
+ "provisional": false,
+ "as_of": "2026-11-19",
+ "summary": "Belgium publishes police counts of sexual offences against minors but no nationality or origin of child victims or offenders for any harm; parliamentary requests for suspects' nationality were answered 'not available' or not at all. The only origin data are supported trafficking victims by nationality.",
+ "short_name": "Belgium",
+ "name_in_sentence": "Belgium",
+ "nations": {
+  "National (Federal Police, Myria)": "Police figures released in parliamentary answers; Myria trafficking report.",
+  "Flanders": "Vertrouwenscentra Kindermishandeling annual report."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "belgian",
+   "label": "Belgian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "foreign",
+   "label": "Foreign citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {},
+ "extra_group_labels": {},
+ "unknown_label": "Citizenship unknown",
+ "european_title": "Not recorded by any Belgian source",
+ "european_note": "Belgian official statistics record no ethnic origin, and nationality is published only for supported trafficking victims. 'Belgian' includes naturalised citizens and 'foreign' mixes Europeans and non-Europeans, so European descent cannot be identified.",
+ "select_labels": {
+  "victim": "Victim's citizenship",
+  "perpetrator": "Perpetrator's citizenship"
+ },
+ "proxy_note": "Belgium records citizenship for supported trafficking victims only, never ethnicity. Every group below is a proxy, not ethnicity.",
+ "harms": [
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual offences against minors (police)",
+   "years": "2022-2024",
+   "intro": "Federal Police data released in answer to Chamber written question 719 (30 Oct 2025) give offences with minor victims: 2,011 rapes and 2,674 other offences against sexual integrity in 2024, plus 284 voyeurism offences. The sexual criminal code was reformed in June 2022, which affects trends. No nationality of victims or suspects is given. A news site (Doorbraak.be, non-government) cites a foreign share of suspects of sexual offences, but with no primary source; it is not used.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Federal Police statistics on offences against minors are released without nationality; asked for it, the Minister answered that the information is not available."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "senate8399",
+    "text": "No nationality or origin of suspects or convicted people is published. Senate written questions 8-344 and 8-399 asking for the nationality of suspects of sexual offences against children had no published answer when checked."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse (Flemish child-abuse centres)",
+   "years": "2024",
+   "intro": "No national statistics on physical child abuse by origin. The six Vertrouwenscentra Kindermishandeling (recognised and subsidised by the Flemish government) received 7,501 reports involving 10,913 children in 2024; 3,200 children were in reports of physical abuse or neglect. No origin variable is published.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "vk24",
+    "text": "The Flemish child-abuse centres publish reports and children by type of abuse with no origin variable."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "senate8399",
+    "text": "No nationality or origin of suspects or convicted people is published. Senate written questions 8-344 and 8-399 asking for the nationality of suspects of sexual offences against children had no published answer when checked."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "neglect",
+   "label": "Neglect",
+   "years": "2024",
+   "intro": "Neglect is counted together with physical abuse (3,200 children) and with emotional abuse (4,147 children) by the Flemish centres in 2024, with no origin variable. No national neglect statistics by origin were found.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "vk24",
+    "text": "The Flemish child-abuse centres publish reports and children by type of abuse with no origin variable."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "senate8399",
+    "text": "No nationality or origin of suspects or convicted people is published. Senate written questions 8-344 and 8-399 asking for the nationality of suspects of sexual offences against children had no published answer when checked."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "-",
+   "intro": "Federal Police crime statistics give homicide fact counts only, with no victim age, nationality or origin.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Federal Police statistics on offences against minors are released without nationality; asked for it, the Minister answered that the information is not available."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "senate8399",
+    "text": "No nationality or origin of suspects or convicted people is published. Senate written questions 8-344 and 8-399 asking for the nationality of suspects of sexual offences against children had no published answer when checked."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  },
+  {
+   "id": "trafficking",
+   "label": "Trafficking victims supported by the specialised centres",
+   "years": "2024",
+   "intro": "The three specialised centres (Payoke, PAG-ASA and Sürya) began supporting 142 trafficking victims in 2024: 77 for economic exploitation, 50 for sexual exploitation and 6 for forced criminality among the 135 single-form cases. Myria, the federal migration centre, publishes them by exploitation type, sex, age (under or over 18) and nationality. Only victims who enter support are counted.",
+   "victims": {
+    "status": "published",
+    "source": "myria25",
+    "scope": "Belgium, trafficking victims newly supported by the specialised centres, all ages and forms, 2024",
+    "n": 142,
+    "n_label": "victims, all ages",
+    "unknown_share": null,
+    "share": {
+     "belgian": 16.2,
+     "foreign": 83.8
+    },
+    "rate": null,
+    "rate_reason": "Not child-specific; rates not calculated.",
+    "share_note": "Moroccan (29), Belgian (23), Brazilian (14), Colombian (11) and Afghan (8) citizens were the largest groups. Of the 50 victims of sexual exploitation, 14 were Belgian, 11 Brazilian and 8 Colombian. Foreign = 142 minus 23 Belgian, calculated here. Citizenship, not ethnicity: Belgian statistics do not record ethnic origin. "
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "myria25",
+    "text": "Myria reports final convictions for trafficking (104 in 2023, from the Justice Ministry criminal-policy service) without the nationality of the people convicted."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "myria25",
+    "text": "No table links victim and trafficker nationality."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Minor victims supported by Esperanto, 2015-2024",
+     "data": {
+      "status": "published",
+      "source": "myria25",
+      "scope": "Belgium (mainly Wallonia and Brussels), presumed minor trafficking victims taken in by the Esperanto centre, 2015-2024",
+      "n": 109,
+      "n_label": "minor victims over ten years",
+      "unknown_share": null,
+      "share": {
+       "belgian": 14.7,
+       "foreign": 85.3
+      },
+      "rate": null,
+      "rate_reason": "Small numbers over ten years; no rates.",
+      "share_note": "Serbian (25), Belgian (16, all girls in sexual exploitation) and Romanian (15) minors were most frequent. Myria's 2026 study of minor victims reports that the French-speaking youth-aid administration (AGAJ) often ticks Belgian nationality by default when recording minors. Citizenship, not ethnicity: Belgian statistics do not record ethnic origin. "
+     }
+    }
+   ],
+   "availability": {
+    "victims": [
+     "all",
+     "belgian",
+     "foreign"
+    ],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [
+       "all",
+       "belgian",
+       "foreign"
+      ],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "published",
+     "perpetrators": "not_published",
+     "cross": "not_published"
+    }
+   }
+  },
+  {
+   "id": "online",
+   "label": "Grooming and online sexual exploitation",
+   "years": "2022-2024",
+   "intro": "Police recorded 466 grooming offences against minors in 2024 (235 in 2022), from the same parliamentary answer, with no nationality.",
+   "victims": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Federal Police statistics on offences against minors are released without nationality; asked for it, the Minister answered that the information is not available."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "senate8399",
+    "text": "No nationality or origin of suspects or convicted people is published. Senate written questions 8-344 and 8-399 asking for the nationality of suspects of sexual offences against children had no published answer when checked."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "sv719",
+    "text": "Neither side is published by any origin variable."
+   },
+   "availability": {
+    "victims": [],
+    "perpetrators": [],
+    "by_measure": {
+     "share": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "rate": {
+      "victims": [],
+      "perpetrators": []
+     },
+     "linked": {
+      "victims": [],
+      "perpetrators": []
+     }
+    },
+    "linked_pairs": [],
+    "status": {
+     "victims": "not_recorded",
+     "perpetrators": "not_published",
+     "cross": "not_recorded"
+    }
+   }
+  }
+ ],
+ "score": {
+  "value": 7,
+  "band": "0-20%",
+  "scale": "v2 (stricter scale, 18 Nov 2026)",
+  "uncapped": 7.2,
+  "cap_applied": false,
+  "cap_rule_applies": true,
+  "previous": null,
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 20,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 3.5,
+    "rates": 0.5,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Federal Police figures released in answer to parliamentary question 719 give 2,011 rapes and 2,674 other sexual-integrity offences with minor victims in 2024, with no nationality: the Minister answered that the information is not available. Senate questions asking for suspects' nationality are unanswered.",
+    "score": 7.0
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 2,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "No national statistics on physical child abuse by any origin variable. Flanders' confidential child-abuse centres counted 10,913 children in 2024 reports with no origin.",
+    "score": 5
+   },
+   {
+    "harm": "Neglect",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Neglect is counted with physical abuse by the Flemish centres (3,200 children in 2024); no origin variable.",
+    "score": 4.5
+   },
+   {
+    "harm": "Homicide",
+    "weight": 25,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 4,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Federal Police crime statistics give homicide fact counts only, with no victim age or nationality.",
+    "score": 5.5
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 20,
+    "victim": 5,
+    "perpetrator": 0,
+    "coverage": 3,
+    "rates": 0,
+    "access": 6,
+    "victim_kind": "proxy",
+    "perpetrator_kind": "none",
+    "why": "Myria (the federal migration centre, an independent public body) gives the 142 trafficking victims newly supported by the three specialised centres in 2024 by nationality and age (Belgian 23; 50 sexual exploitation, Belgian 14). Only supported victims; no suspect nationality.",
+    "score": 14
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 10,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 1.5,
+    "rates": 0,
+    "access": 3,
+    "victim_kind": "none",
+    "perpetrator_kind": "none",
+    "why": "Police counted 466 grooming offences against minors in 2024 (parliamentary answer 719) with no nationality.",
+    "score": 4.5
+   }
+  ],
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 37.5,
+    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 37.5,
+    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 10,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 7.5,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 7.5,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
+  "why": "Belgium scores 7% on the stricter scale (0-20%). Federal Police statistics on sexual offences against minors are released without nationality (the Minister answered that it is not available), and no national source gives the origin of child victims or offenders for any harm. The only origin data are Myria's figures on supported trafficking victims by nationality.",
+  "weights": {
+   "Sexual abuse": 20,
+   "Physical abuse": 15,
+   "Neglect": 10,
+   "Homicide": 25,
+   "Sex trafficking": 20,
+   "Online exploitation": 10
+  },
+  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+ },
+ "sources": {
+  "sv719": {
+   "name": "Answer to Chamber written question 719 (Van Hoecke) on sexual offences against minors",
+   "publisher": "Minister of Security and Home Affairs (Annelies Verlinden), Federal Police (ANG/BNG) data",
+   "years": "2022-2024; data closed 25 Apr 2025",
+   "records": "Offences against sexual integrity, rape, voyeurism and grooming with minor victims.",
+   "limitations": "No nationality (\"information not available\"). The answer was read from a copy hosted by the party of the MP who asked it (Vlaams Belang); the figures are the official answer.",
+   "url": "https://www.vlaamsbelang.org/sites/default/files/2025-12/SV%20719%20bijlage_merged.pdf",
+   "tier": "Official government statistics"
+  },
+  "senate8399": {
+   "name": "Senate written questions 8-399 (13 Feb 2026) and 8-344 (7 Nov 2025) on the nationality of suspects of sexual offences",
+   "publisher": "Belgian Senate",
+   "years": "2025-2026",
+   "records": "Questions only.",
+   "limitations": "No answer published when checked on 19 Nov 2026.",
+   "url": "https://www.senate.be/",
+   "tier": "Official government statistics"
+  },
+  "myria25": {
+   "name": "Rapport annuel traite et trafic des êtres humains 2025",
+   "publisher": "Myria, Federal Migration Centre (independent public body), with data from Payoke, PAG-ASA, Sürya, Esperanto and the Justice Ministry",
+   "years": "2024 (minors 2015-2024)",
+   "records": "Supported trafficking victims by exploitation type, sex, age and nationality; final convictions by year.",
+   "limitations": "Only victims who enter support; no nationality of traffickers.",
+   "url": "https://www.myria.be/files/2025_MYRIA_Jaarverslag_Mensenhandel_en_mensensmokkel_1.pdf",
+   "tier": "Official government statistics"
+  },
+  "myria_min": {
+   "name": "Mineurs victimes de traite et/ou de trafic aggravé d'êtres humains: cartographie et analyse exploratoire des données chiffrées existantes",
+   "publisher": "Myria, Federal Migration Centre",
+   "years": "2026",
+   "records": "Review of the data on minor victims held by Belgian bodies.",
+   "limitations": "Notes that nationality is often recorded by default as Belgian; no national series by origin.",
+   "url": "https://www.myria.be/",
+   "tier": "Official government statistics"
+  },
+  "vk24": {
+   "name": "Jaarverslag 2024 Vertrouwenscentra Kindermishandeling en VECK",
+   "publisher": "Vertrouwenscentra Kindermishandeling (recognised and subsidised by the Flemish government)",
+   "years": "2024",
+   "records": "Reports and children by type of abuse, Flanders.",
+   "limitations": "Flanders only; no origin variable.",
+   "url": "https://www.vertrouwenscentrum-kindermishandeling.be/wp-content/uploads/2025/05/Jaarverslag-2024-VK-en-VECK.pdf",
+   "tier": "Official program data"
+  },
+  "doorbraak": {
+   "name": "Doorbraak.be article on foreign suspects of sexual offences",
+   "publisher": "Doorbraak.be (news and opinion site)",
+   "years": "2024",
+   "records": "Cites a count and foreign share of suspects of sexual offences.",
+   "limitations": "Non-government and no primary source given; not used for any figure or score.",
+   "url": "https://doorbraak.be/",
+   "tier": "Non-government source"
+  }
+ },
+ "availability_note": "Each harm has an 'availability' map listing the victim and perpetrator groups with any published figure (overall and by measure) and any linked victim-perpetrator pairs. Groups not listed have no data for that harm; the explorer should grey them out rather than offer an empty combination."
+}
