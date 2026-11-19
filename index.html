@@ -139,6 +139,8 @@
     .ex-head .badge { margin: 0; }
     [hidden] { display: none !important; }
     .pending-note { color: var(--muted); border-left: 3px solid #d5d8da; padding: 6px 12px; margin: 0; font-size: 0.92rem; }
+    .ex-proxy { margin: -6px 0 16px; font-size: 0.86rem; max-width: 760px; line-height: 1.5; }
+    .ex-proxy .status { margin: 0 6px 0 0; }
     .ex-lede { margin: 4px 0 16px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; max-width: 760px; }
     .ex-controls {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -301,10 +303,11 @@
         <span class="badge" id="ex-badge" hidden></span>
       </div>
       <p class="ex-lede" id="ex-lede">Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.</p>
+      <p class="ex-proxy" id="ex-proxy" hidden></p>
       <div class="ex-controls" id="ex-controls" hidden>
         <label>Harm<select id="sel-harm"></select></label>
-        <label>Victim's heritage<select id="sel-victim"></select></label>
-        <label>Perpetrator's heritage<select id="sel-perp"></select></label>
+        <label><span id="lbl-victim">Victim's heritage</span><select id="sel-victim"></select></label>
+        <label><span id="lbl-perp">Perpetrator's heritage</span><select id="sel-perp"></select></label>
         <label>Measure<select id="sel-measure">
           <option value="share">Share (%)</option>
           <option value="rate">Rate per 100,000</option>
@@ -362,9 +365,8 @@
         note: "England and Wales publish victim ethnicity for child protection and homicide, and offender ethnicity for court convictions, splitting White British from other White groups. Police records of child sexual abuse miss ethnicity for about two-thirds of cases, and no source identifies European descent. Details below the map."
       },
       DEU: {
-        completeness: 30,   // provisional, band midpoint placeholder (20–40%)
-        provisional: true,
-        note: "PKS 2025 / Bundestag 21/8856 (serious sexual offenses, key 111000): Cases with at least one adult non-German suspect had 800 minor victims, of which 585 (73.1%) were German. Full victim × perpetrator demographic cross-tabs for children are not published in standard tables. Nationality is the available proxy."
+        completeness: 49,   // overwritten by data/deu.json when it loads
+        note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, so no source identifies European descent. Details below the map."
       },
       CAN: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
       AUS: { completeness: 10, note: "No published data for the child-harm categories of homicide, assault, sexual assault by ethnic background of the victim and perpetrator." },
@@ -649,13 +651,37 @@
       }).join("") + "</div>";
     }
 
-    // Shares are of people with known ethnicity; say how many are unknown
-    const unknownNote = side => side.unknown_share != null
-      ? `<p class="ex-small unknown-note"><strong>Ethnicity unknown: ${fmt(side.unknown_share)}%</strong> of the total. Shares are of those with known ethnicity.</p>` : "";
+    // Shares are of people with a known group; say how many are unknown ("Ethnicity unknown" unless the data file says otherwise)
+    const unknownNote = side => {
+      if (side.unknown_share == null) return "";
+      const lbl = side.unknown_label || D.unknown_label || "Ethnicity unknown";
+      const what = lbl.replace(/\s*unknown$/i, "").toLowerCase() || "ethnicity";
+      return `<p class="ex-small unknown-note"><strong>${esc(lbl)}: ${fmt(side.unknown_share)}%</strong> of the total. Shares are of those with known ${esc(what)}.</p>`;
+    };
+    // Countries without ethnicity data: tag each result with the proxy it uses (group "proxy" field)
+    function proxyTag(side) {
+      const keys = new Set([...Object.keys(side.share || {}), ...Object.keys(side.rate || {})]);
+      const kinds = [...new Set(D.groups.filter(g => g.proxy && keys.has(g.id)).map(g => g.proxy))];
+      return kinds.length ? `<span class="status proxy">Proxy: ${esc(kinds.join(" and "))}, not ethnicity</span>` : "";
+    }
+    // In "all groups" view sub-groups are left out of the bars (they overlap their parent); list them underneath
+    function subgroupLine(values, unit) {
+      const sub = D.subgroups || {};
+      const ks = Object.keys(values || {}).filter(k => sub[k] && values[k] != null);
+      if (!ks.length) return "";
+      const byParent = {};
+      ks.forEach(k => (byParent[sub[k]] = byParent[sub[k]] || []).push(k));
+      return `<p class="ex-small"><strong>Sub-groups</strong> (each as a share of the total, not of the parent group): ` +
+        Object.entries(byParent).map(([par, list]) => `within ${esc(groupLabel(par))}: ` +
+          list.map(k => `${esc(groupLabel(k))} ${fmt(values[k])}${unit}`).join(", ")).join("; ") + ".</p>";
+    }
     const subNote = g => (D.subgroups || {})[g] ? `, a sub-group of ${groupLabel(D.subgroups[g]).replace(/ \(all\)$/, "")}` : "";
 
     // One side (victims or perpetrators) for one group or for all groups
     function sideHtml(side, who, group) {
+      return (side.status === "published" ? proxyTag(side) : "") + sideBody(side, who, group);
+    }
+    function sideBody(side, who, group) {
       const label = who === "victims" ? "Victims" : "Perpetrators";
       if (side.status !== "published") return statusBlock(side.status, side.text, `${label}: ${STATUS_LABEL[side.status].toLowerCase()}`);
       const scope = side.scope ? ` <span class="ex-small">(${esc(side.scope)})</span>` : "";
@@ -664,7 +690,7 @@
         const rl = side.rate_label || "", ru = side.rate_unit || "", ra = side.rate_all_label || "all children";
         if (group === "all") {
           return `<p>${esc(rl.charAt(0).toUpperCase() + rl.slice(1))}${scope}${side.rate_all != null ? `; ${esc(ra)}: <strong>${fmt(side.rate_all)}${ru}</strong>` : ""}.</p>` +
-            barsHtml(side.rate, null, ru) + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
+            barsHtml(side.rate, null, ru) + subgroupLine(side.rate, ru) + (side.rate_note ? `<p class="ex-small">${esc(side.rate_note)}</p>` : "");
         }
         const r = pick(side.rate, group);
         if (!r) return statusBlock("not_recorded", `This source does not report a rate for ${groupLabel(group)}.`, "");
@@ -675,7 +701,7 @@
       const note = unknownNote(side) + (side.share_note ? `<p class="ex-small">${esc(side.share_note)}</p>` : "");
       if (!side.share) return `<span class="status not_published">Shares not published</span><div class="absent">This source publishes rates only. Switch Measure to "Rate per 100,000" to see them.</div>` + note;
       if (group === "all") {
-        return `<p>Share of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + note;
+        return `<p>Share of ${side.n.toLocaleString("en-US")} ${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + subgroupLine(side.share, "%") + note;
       }
       const sh = pick(side.share, group);
       if (!sh) return statusBlock("not_recorded", `This source does not report ${groupLabel(group)} as a separate group.`, "");
@@ -777,6 +803,7 @@
         `<summary>How the ${sc.value}% score works</summary>` +
         `<h3>The 100% standard</h3><div class="gold">${esc(sc.gold_standard)}</div>` +
         `<h3>Why ${esc(D.name_in_sentence || D.country)} scores ${sc.value}%</h3><p>${esc(sc.why || "")}</p>` +
+        (sc.proxy_note ? `<div class="absent"><strong>Proxy data</strong>${esc(sc.proxy_note)}</div>` : "") +
         `<h3>Scoring rubric (points per harm)</h3><table><thead><tr><th>Component</th><th class="num">Points</th><th>Full points require</th></tr></thead><tbody>` +
         sc.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
         `</tbody></table>` +
@@ -802,6 +829,8 @@
       const detail = iso ? DETAIL[iso] : null;
       $("ex-controls").hidden = $("ex-sources").hidden = $("method").hidden = !detail;
       $("ex-badge").hidden = !iso;
+      $("ex-proxy").hidden = !(detail && detail.proxy_note);
+      if (detail && detail.proxy_note) $("ex-proxy").innerHTML = `<span class="status proxy">Proxy, not ethnicity</span> ${esc(detail.proxy_note)}`;
       if (!iso) {
         shownIso = null; D = null;
         $("ex-title").textContent = "Country data";
@@ -819,6 +848,8 @@
         return;
       }
       $("ex-title").textContent = `${detail.country}: what the data shows`;
+      $("lbl-victim").textContent = (detail.select_labels || {}).victim || "Victim's heritage";
+      $("lbl-perp").textContent = (detail.select_labels || {}).perpetrator || "Perpetrator's heritage";
       $("ex-lede").textContent = detail.summary;
       if (shownIso === iso && D === detail) return;   // same country: keep the reader's selections
       shownIso = iso; D = detail;

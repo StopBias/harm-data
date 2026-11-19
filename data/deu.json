@@ -1,0 +1,921 @@
+{
+ "country": "Germany",
+ "iso_a3": "DEU",
+ "completeness": 49,
+ "as_of": "2026-11-18",
+ "summary": "Germany records nationality, never ethnicity. Police statistics publish child victims and suspects by nationality for child sexual abuse and child maltreatment, plus official suspect rates for Germans and non-Germans; courts publish German vs foreign convictions; child-protection statistics record whether a child's parent comes from abroad. Because 'German' includes naturalised and dual citizens, these are proxies, and no source can identify European descent.",
+ "short_name": "Germany",
+ "name_in_sentence": "Germany",
+ "nations": {
+  "Federal (BKA, Destatis)": "Police statistics (PKS) and court statistics by nationality, child-protection statistics by parental origin. One nationality per person; German takes precedence.",
+  "North Rhine-Westphalia": "Since 1 July 2025 police record all citizenships of suspects and victims; 17.5% of German suspects in 2025 held another citizenship. Not yet published for child offences.",
+  "Bavaria": "Annual PKS report gives German, non-German and Zuwanderer shares (e.g. sexual offences: 32.0% non-German suspects); no child-specific nationality table found in the report.",
+  "Berlin": "Annual PKS short report gives case counts for child sexual abuse (1,013) and child maltreatment (385) and nationality for all suspects (47.3% non-German); no child-specific nationality table found."
+ },
+ "groups": [
+  {
+   "id": "all",
+   "label": "All groups"
+  },
+  {
+   "id": "german",
+   "label": "German citizens (incl. dual and naturalised)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "non_german",
+   "label": "Non-German citizens (all)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "eu",
+   "label": "EU citizens (other 26 states)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "europe_other",
+   "label": "Other European (non-EU, excl. Türkei)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "turkish",
+   "label": "Turkish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "non_european",
+   "label": "Non-European citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "syrian",
+   "label": "Syrian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "afghan",
+   "label": "Afghan citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "iraqi",
+   "label": "Iraqi citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "ukrainian",
+   "label": "Ukrainian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "romanian",
+   "label": "Romanian citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "polish",
+   "label": "Polish citizens",
+   "proxy": "nationality"
+  },
+  {
+   "id": "zuwanderer",
+   "label": "Zuwanderer (asylum seekers, refugees, tolerated, unlawful stay)",
+   "proxy": "nationality"
+  },
+  {
+   "id": "mh_yes",
+   "label": "Migration background (parent from abroad)",
+   "proxy": "migration background"
+  },
+  {
+   "id": "mh_no",
+   "label": "No migration background",
+   "proxy": "migration background"
+  },
+  {
+   "id": "mh_first",
+   "label": "Migration background, first generation",
+   "proxy": "migration background"
+  },
+  {
+   "id": "mh_second",
+   "label": "Migration background, second generation",
+   "proxy": "migration background"
+  },
+  {
+   "id": "european",
+   "label": "European descent",
+   "not_recorded": true
+  }
+ ],
+ "subgroups": {
+  "eu": "non_german",
+  "europe_other": "non_german",
+  "turkish": "non_german",
+  "non_european": "non_german",
+  "syrian": "non_german",
+  "afghan": "non_german",
+  "iraqi": "non_german",
+  "ukrainian": "non_german",
+  "romanian": "non_german",
+  "polish": "non_german",
+  "zuwanderer": "non_german"
+ },
+ "extra_group_labels": {
+  "unknown": "Unknown nationality"
+ },
+ "unknown_label": "Nationality unknown",
+ "european_note": "German data record citizenship (and, in child protection and surveys, migration background), never ethnicity or descent. 'German' covers native Germans, naturalised citizens and dual nationals alike, and 'non-German' mixes EU, other European and non-European citizens. So European descent cannot be identified for victims or perpetrators. The EU and Other European nationality groups are the closest proxy and cover only foreign citizens.",
+ "european_title": "Not recorded by any German source",
+ "harms": [
+  {
+   "id": "maltreatment",
+   "label": "Child endangerment cases (child protection, §8a)",
+   "years": "2025",
+   "intro": "Youth welfare offices completed 268,294 child-endangerment assessments in 2025 and confirmed 79,792 cases of acute or latent endangerment. Neglect was involved in 57.8%, psychological abuse in 37.6%, physical abuse in 29.1% and sexual violence in 5.4% (more than one type possible). A parent was the main source of the endangerment in 74.3% of cases.",
+   "victims": {
+    "status": "published",
+    "source": "destatis_8a",
+    "scope": "Germany, confirmed acute or latent endangerment, 2025",
+    "n": 79792,
+    "n_label": "children with confirmed endangerment",
+    "unknown_share": 0.0,
+    "share": {
+     "mh_yes": 51.8,
+     "mh_no": 48.2
+    },
+    "rate": {
+     "mh_yes": 683,
+     "mh_no": 479
+    },
+    "rate_all": 567,
+    "rate_label": "children with confirmed endangerment per 100,000 children of the same group",
+    "rate_note": "Calculated here: Destatis counts divided by Mikrozensus 2025 first-results estimates of under-18s with and without a migration background (under-15 bands plus 3/5 of the 15-19 band). The two definitions are close but not identical (§8a asks whether a parent comes from abroad; the Mikrozensus asks whether the person or a parent was born without German citizenship), so rates are approximate.",
+    "share_note": "The variable is whether at least one parent comes from abroad ('ausländische Herkunft'), regardless of the parents' current citizenship. That is a migration-background proxy, not ethnicity, and it cannot separate European from non-European origin. Destatis's headline 33.5% counts only children whose family also mainly speaks a language other than German.",
+    "unknown_label": "Migration background unknown",
+    "rate_all_label": "all children"
+   },
+   "perpetrators": {
+    "status": "not_recorded",
+    "source": "destatis_8a",
+    "text": "The §8a statistics record the person causing the endangerment only by relationship (mother, father, other relative, etc.), not by nationality or origin."
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "destatis_8a",
+    "text": "No perpetrator origin is recorded, so no victim-by-perpetrator table is possible."
+   },
+   "also": [
+    {
+     "side": "victims",
+     "title": "Physical abuse as a form of endangerment (2025)",
+     "data": {
+      "status": "published",
+      "source": "destatis_8a",
+      "scope": "Germany, confirmed endangerment involving physical abuse",
+      "n": 23222,
+      "n_label": "children",
+      "unknown_share": 0.0,
+      "share": {
+       "mh_yes": 58.4,
+       "mh_no": 41.6
+      },
+      "rate": {
+       "mh_yes": 224,
+       "mh_no": 120
+      },
+      "rate_all": 165,
+      "rate_label": "children per 100,000 children of the same group",
+      "rate_note": "Calculated here with Mikrozensus 2025 denominators; approximate.",
+      "share_note": "At least one parent from abroad: 13,573; neither parent: 9,649.",
+      "unknown_label": "Migration background unknown",
+      "rate_all_label": "all children"
+     }
+    },
+    {
+     "side": "victims",
+     "title": "Neglect as a form of endangerment (2025)",
+     "data": {
+      "status": "published",
+      "source": "destatis_8a",
+      "scope": "Germany, confirmed endangerment involving neglect",
+      "n": 46112,
+      "n_label": "children",
+      "unknown_share": 0.0,
+      "share": {
+       "mh_yes": 47.8,
+       "mh_no": 52.2
+      },
+      "rate": {
+       "mh_yes": 364,
+       "mh_no": 300
+      },
+      "rate_all": 328,
+      "rate_label": "children per 100,000 children of the same group",
+      "rate_note": "Calculated here with Mikrozensus 2025 denominators; approximate.",
+      "share_note": "At least one parent from abroad: 22,030; neither parent: 24,082.",
+      "unknown_label": "Migration background unknown",
+      "rate_all_label": "all children"
+     }
+    },
+    {
+     "side": "perpetrators",
+     "title": "Police suspects for neglect of care or upbringing duties (§171 StGB), 2025",
+     "data": {
+      "status": "published",
+      "source": "pks_suspects",
+      "scope": "Germany, police-recorded suspects, §171, 2025",
+      "n": 1338,
+      "n_label": "suspects with known nationality (of 1,340)",
+      "unknown_share": 0.1,
+      "share": {
+       "german": 68.2,
+       "non_german": 31.8,
+       "eu": 10.6,
+       "europe_other": 9.2,
+       "turkish": 2.2,
+       "non_european": 9.7,
+       "zuwanderer": 6.6
+      },
+      "rate": {
+       "german": 1.4,
+       "non_german": 3.4
+      },
+      "rate_all": 1.7,
+      "rate_label": "suspects per 100,000 residents aged 8+ of the same nationality group (BKA Tatverdächtigenbelastungszahl)",
+      "rate_note": "Official BKA rates, crude (not age-standardised), residents only.",
+      "share_note": "Nationality, not ethnicity. §171 is a narrow offence (grossly neglecting a child's care or upbringing); most neglect never reaches the police.",
+      "rate_all_label": "all residents aged 8+"
+     }
+    }
+   ],
+   "extra_sources": [
+    "hze_def"
+   ],
+   "rate_sources": [
+    "mikrozensus"
+   ]
+  },
+  {
+   "id": "physical_abuse",
+   "label": "Physical abuse (police: Misshandlung von Kindern)",
+   "years": "2025",
+   "intro": "Police recorded 4,630 child victims under 14 of 'Misshandlung von Kindern' (§225 StGB, abuse of children in one's care) in 2025, and 3,784 suspects. Nationality is recorded for both; ethnicity is not.",
+   "victims": {
+    "status": "published",
+    "source": "pks_victims",
+    "scope": "Germany, police-recorded, 2025 (completed and attempted)",
+    "n": 4551,
+    "n_label": "child victims with known nationality (of 4,630)",
+    "unknown_share": 1.7,
+    "share": {
+     "german": 79.7,
+     "non_german": 20.3,
+     "eu": 5.6,
+     "europe_other": 4.9,
+     "turkish": 0.7,
+     "non_european": 9.1,
+     "syrian": 2.9,
+     "afghan": 1.4,
+     "ukrainian": 2.2,
+     "romanian": 1.1,
+     "polish": 0.9,
+     "iraqi": 0.7
+    },
+    "rate": {
+     "german": 39.5,
+     "non_german": 55.7
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei.",
+    "rate_all": 42.7,
+    "rate_label": "child victims per 100,000 children under 14 of the same nationality group",
+    "rate_note": "Calculated here: PKS victims divided by Destatis population under 14 at 31 Dec 2024 (Census-2022 base). Victims of unknown nationality (1.7%) are left out of both group rates.",
+    "rate_all_label": "all children under 14"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks_suspects",
+    "scope": "Germany, police-recorded suspects, 2025",
+    "n": 3765,
+    "n_label": "suspects with known nationality (of 3,784)",
+    "unknown_share": 0.5,
+    "share": {
+     "german": 68.6,
+     "non_german": 31.4,
+     "eu": 7.5,
+     "europe_other": 6.6,
+     "turkish": 3.0,
+     "non_european": 14.3,
+     "syrian": 3.5,
+     "afghan": 1.5,
+     "ukrainian": 2.4,
+     "romanian": 1.5,
+     "polish": 1.2,
+     "iraqi": 0.8,
+     "zuwanderer": 6.1
+    },
+    "rate": {
+     "german": 3.9,
+     "non_german": 10.2
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. Zuwanderer = asylum seekers, people with protection status, tolerated people and people staying unlawfully (a sub-set of non-Germans across many nationalities).",
+    "rate_all": 4.8,
+    "rate_label": "suspects per 100,000 residents aged 8+ of the same nationality group (BKA Tatverdächtigenbelastungszahl)",
+    "rate_note": "Official BKA rates (PKS 2025, Census-2022-based population at 31 Dec 2024). Only suspects living in Germany are counted, so tourists and people without a registered address are excluded. Not adjusted for age or sex: non-German residents are on average younger and more often male, which raises their crude rate.",
+    "rate_all_label": "all residents aged 8+"
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "zuwanderung",
+    "text": "The PKS records victim and suspect nationality in the same case, but no table links them for child victims. The BKA's migration report links German and 'Zuwanderer' victims and suspects for all ages and broad offence groups only."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Convictions for §225 (all ages of victim), 2024",
+     "data": {
+      "status": "published",
+      "source": "destatis_sv",
+      "scope": "Germany, people convicted with §225 as principal offence, 2024",
+      "n": 86,
+      "n_label": "people convicted",
+      "unknown_share": null,
+      "share": {
+       "german": 74.4,
+       "non_german": 25.6
+      },
+      "rate": null,
+      "rate_reason": "Counts too small for rates. Destatis groups stateless and unknown nationality with foreigners.",
+      "share_note": "Destatis Strafverfolgung 2024: 64 German, 22 foreign. §225 covers abuse of any dependant, not only children."
+     }
+    }
+   ],
+   "rate_sources": [
+    "population"
+   ]
+  },
+  {
+   "id": "sexual_abuse",
+   "label": "Sexual abuse of children (police and courts)",
+   "years": "2025 (police), 2024 (courts)",
+   "intro": "Police recorded 17,126 cases of child sexual abuse (§§176-176e StGB) in 2025, with 18,736 victims under 14 and 12,823 suspects. In 54% of cases victim and suspect knew each other. Courts convicted 1,855 people under §§176-176e in 2024.",
+   "victims": {
+    "status": "published",
+    "source": "pks_victims",
+    "scope": "Germany, police-recorded, 2025 (completed and attempted)",
+    "n": 16965,
+    "n_label": "child victims with known nationality (of 18,736)",
+    "unknown_share": 9.5,
+    "share": {
+     "german": 90.4,
+     "non_german": 9.6,
+     "eu": 3.3,
+     "europe_other": 2.2,
+     "turkish": 0.4,
+     "non_european": 3.7,
+     "syrian": 1.1,
+     "afghan": 0.4,
+     "ukrainian": 1.0,
+     "romanian": 0.7,
+     "polish": 0.6,
+     "iraqi": 0.4
+    },
+    "rate": {
+     "german": 167.0,
+     "non_german": 98.4
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. Victims of §176 offences are under 14 by definition.",
+    "rate_all": 172.8,
+    "rate_label": "child victims per 100,000 children under 14 of the same nationality group",
+    "rate_note": "Calculated here: PKS victims divided by Destatis population under 14 at 31 Dec 2024. 1,771 victims (9.5%) have unknown or unclear nationality and are left out of both group rates, so the non-German rate in particular may be understated.",
+    "rate_all_label": "all children under 14"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks_suspects",
+    "scope": "Germany, police-recorded suspects, 2025",
+    "n": 12774,
+    "n_label": "suspects with known nationality (of 12,823)",
+    "unknown_share": 0.4,
+    "share": {
+     "german": 81.1,
+     "non_german": 18.9,
+     "eu": 5.2,
+     "europe_other": 2.8,
+     "turkish": 1.6,
+     "non_european": 9.2,
+     "syrian": 3.0,
+     "afghan": 2.0,
+     "ukrainian": 0.9,
+     "romanian": 1.1,
+     "polish": 0.7,
+     "iraqi": 0.9,
+     "zuwanderer": 5.3
+    },
+    "rate": {
+     "german": 15.2,
+     "non_german": 19.5
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. Zuwanderer = asylum seekers, people with protection status, tolerated people and people staying unlawfully.",
+    "rate_all": 15.9,
+    "rate_label": "suspects per 100,000 residents aged 8+ of the same nationality group (BKA Tatverdächtigenbelastungszahl)",
+    "rate_note": "Official BKA rates (PKS 2025, Census-2022-based population at 31 Dec 2024). Only suspects living in Germany are counted, so tourists and people without a registered address are excluded. Not adjusted for age or sex: non-German residents are on average younger and more often male, which raises their crude rate. 31.4% of suspects were under 18.",
+    "rate_all_label": "all residents aged 8+"
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "zuwanderung",
+    "text": "No table links child victims' nationality to suspects' nationality. The BKA's migration report gives, for all ages and all sexual offences in 2025: 2,941 German victims of offences with at least one Zuwanderer suspect, 650 Zuwanderer victims of Zuwanderer suspects, and 160 Zuwanderer victims of German suspects. It has no reverse figure for German victims of German suspects and is not child-specific."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Convictions under §§176-176e, 2024",
+     "data": {
+      "status": "published",
+      "source": "destatis_sv",
+      "scope": "Germany, people convicted, principal offence §§176-176e, 2024",
+      "n": 1855,
+      "n_label": "people convicted",
+      "unknown_share": null,
+      "share": {
+       "german": 83.3,
+       "non_german": 16.7
+      },
+      "rate": null,
+      "rate_reason": "Destatis publishes convictions by German/foreign only at this offence detail; nationality detail exists only for broad offence groups.",
+      "share_note": "1,545 German, 310 foreign (Destatis counts stateless and unknown with foreigners). Calculated here from Destatis table 24311-47."
+     }
+    },
+    {
+     "side": "victims",
+     "title": "Sexual violence as a form of child endangerment (§8a), 2025",
+     "data": {
+      "status": "published",
+      "source": "destatis_8a",
+      "scope": "Germany, confirmed endangerment involving sexual violence",
+      "n": 4309,
+      "n_label": "children",
+      "unknown_share": 0.0,
+      "share": {
+       "mh_yes": 37.2,
+       "mh_no": 62.8
+      },
+      "rate": {
+       "mh_yes": 26.5,
+       "mh_no": 33.7
+      },
+      "rate_all": 30.6,
+      "rate_label": "children per 100,000 children of the same group",
+      "rate_note": "Calculated here with Mikrozensus 2025 denominators; approximate.",
+      "share_note": "At least one parent from abroad: 1,603; neither parent: 2,706. Migration-background proxy, not ethnicity.",
+      "unknown_label": "Migration background unknown",
+      "rate_all_label": "all children"
+     }
+    }
+   ],
+   "extra_sources": [
+    "blb_sex",
+    "nrw"
+   ],
+   "rate_sources": [
+    "population"
+   ]
+  },
+  {
+   "id": "survey",
+   "label": "Parental violence (survey, Lower Saxony)",
+   "years": "Survey 2024",
+   "intro": "The Niedersachsensurvey 2024 asked ninth-graders in Lower Saxony about violence from their parents. 32.3% reported physical parental violence before age 12. Germany has no national survey of child abuse by origin; the 2025 Ulm national study (12.7% of adults reported childhood sexual violence) publishes no breakdown by migration background.",
+   "victims": {
+    "status": "published",
+    "source": "kfn",
+    "scope": "Lower Saxony, ninth-grade pupils, 2024",
+    "n": 9202,
+    "n_label": "ninth-grade pupils surveyed",
+    "share": null,
+    "rate": {
+     "mh_first": 41.6,
+     "mh_second": 41.0,
+     "mh_no": 26.9
+    },
+    "rate_all": 32.3,
+    "rate_unit": "%",
+    "rate_label": "of pupils in the group reported physical violence from a parent before age 12",
+    "rate_all_label": "all pupils",
+    "rate_note": "KFN Forschungsbericht 171. Migration generation is self-reported. Last 12 months: 21.3% (first generation), 22.3% (second), 12.6% (no migration history). One state only; non-government academic source funded by the state.",
+    "share_note": "Migration background, not ethnicity or nationality."
+   },
+   "perpetrators": {
+    "status": "not_published",
+    "source": "kfn",
+    "text": "The perpetrators are the pupils' parents; their origin is inferred from the pupil's migration generation, not recorded separately."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "kfn",
+    "text": "No separate victim-by-perpetrator table."
+   },
+   "extra_sources": [
+    "ulm"
+   ]
+  },
+  {
+   "id": "homicide",
+   "label": "Homicide",
+   "years": "2025",
+   "intro": "Police recorded 84 children under 14 killed in completed murder or manslaughter in 2025 (192 including attempts) and 35 completed killings of 14-17-year-olds. Nationality of child victims is not published separately, so the figures below cover all ages.",
+   "victims": {
+    "status": "published",
+    "source": "pks_victims",
+    "scope": "Germany, all ages, completed murder and manslaughter, 2025",
+    "n": 993,
+    "n_label": "victims of completed killings with known nationality, all ages (of 1,004)",
+    "unknown_share": 1.1,
+    "share": {
+     "german": 81.2,
+     "non_german": 18.8,
+     "eu": 6.0,
+     "europe_other": 3.6,
+     "turkish": 2.1,
+     "non_european": 7.0,
+     "syrian": 2.2,
+     "afghan": 1.2,
+     "ukrainian": 1.7,
+     "romanian": 1.2,
+     "polish": 1.1,
+     "iraqi": 0.5
+    },
+    "rate": {
+     "german": 1.1,
+     "non_german": 1.5
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. Not published for child victims separately.",
+    "rate_all": 1.2,
+    "rate_label": "victims of completed murder or manslaughter per 100,000 residents of the same nationality group (all ages)",
+    "rate_note": "Calculated here with Destatis population at 31 Dec 2024. Not child-specific.",
+    "rate_all_label": "all residents"
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks_suspects",
+    "scope": "Germany, suspects in murder and manslaughter including attempts, 2025",
+    "n": 2869,
+    "n_label": "suspects with known nationality, all ages (of 2,893)",
+    "unknown_share": 0.8,
+    "share": {
+     "german": 53.5,
+     "non_german": 46.5,
+     "eu": 11.5,
+     "europe_other": 8.2,
+     "turkish": 6.3,
+     "non_european": 20.2,
+     "syrian": 6.3,
+     "afghan": 3.4,
+     "ukrainian": 2.0,
+     "romanian": 3.0,
+     "polish": 2.4,
+     "iraqi": 1.4,
+     "zuwanderer": 15.5
+    },
+    "rate": {
+     "german": 2.2,
+     "non_german": 9.6
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. Covers all victims, not only children; suspect tables do not split by victim age.",
+    "rate_all": 3.3,
+    "rate_label": "suspects per 100,000 residents aged 8+ of the same nationality group (BKA Tatverdächtigenbelastungszahl)",
+    "rate_note": "Official BKA rates (PKS 2025, Census-2022-based population at 31 Dec 2024). Only suspects living in Germany are counted, so tourists and people without a registered address are excluded. Not adjusted for age or sex: non-German residents are on average younger and more often male, which raises their crude rate.",
+    "rate_all_label": "all residents aged 8+"
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "zuwanderung",
+    "text": "All ages only, Zuwanderer vs German only: in 2025, 111 German victims (10 completed) of killings with at least one Zuwanderer suspect, 188 Zuwanderer victims of Zuwanderer suspects (25 completed), and 44 Zuwanderer victims of German suspects (6 completed). No child-specific or full nationality table."
+   },
+   "extra_sources": [
+    "destatis_dc"
+   ],
+   "rate_sources": [
+    "population"
+   ]
+  },
+  {
+   "id": "online",
+   "label": "Child sexual abuse material (§184b)",
+   "years": "2025 (police), 2024 (courts)",
+   "intro": "Police recorded 41,677 cases of distributing, acquiring, possessing or producing child sexual abuse material in 2025, with 34,819 suspects. Courts convicted 4,562 people under §184b in 2024 (84.8% German).",
+   "victims": {
+    "status": "not_recorded",
+    "source": "pks_victims",
+    "text": "Children shown in the material are usually unidentified; the PKS records no victims for §184b."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "pks_suspects",
+    "scope": "Germany, police-recorded suspects, §184b, 2025",
+    "n": 34687,
+    "n_label": "suspects with known nationality (of 34,819)",
+    "unknown_share": 0.4,
+    "share": {
+     "german": 77.9,
+     "non_german": 22.1,
+     "eu": 6.5,
+     "europe_other": 5.0,
+     "turkish": 1.3,
+     "non_european": 9.3,
+     "syrian": 3.1,
+     "afghan": 1.6,
+     "ukrainian": 2.3,
+     "romanian": 1.7,
+     "polish": 0.9,
+     "iraqi": 1.5,
+     "zuwanderer": 5.3
+    },
+    "rate": {
+     "german": 39.7,
+     "non_german": 60.6
+    },
+    "share_note": "Nationality, not ethnicity. 'German' includes naturalised and dual citizens (the PKS counts anyone holding German citizenship as German). Non-German includes stateless people. Sub-groups: EU = other 26 EU states; Other Europe excludes the EU and Türkei. 41,677 cases. Many suspects are young people sharing material in chats.",
+    "rate_all": 42.8,
+    "rate_label": "suspects per 100,000 residents aged 8+ of the same nationality group (BKA Tatverdächtigenbelastungszahl)",
+    "rate_note": "Official BKA rates (PKS 2025, Census-2022-based population at 31 Dec 2024). Only suspects living in Germany are counted, so tourists and people without a registered address are excluded. Not adjusted for age or sex: non-German residents are on average younger and more often male, which raises their crude rate.",
+    "rate_all_label": "all residents aged 8+"
+   },
+   "cross": {
+    "status": "not_recorded",
+    "source": "pks_suspects",
+    "text": "No victims are recorded, so no link is possible."
+   },
+   "also": [
+    {
+     "side": "perpetrators",
+     "title": "Convictions under §184b, 2024",
+     "data": {
+      "status": "published",
+      "source": "destatis_sv",
+      "scope": "Germany, people convicted, principal offence §184b, 2024",
+      "n": 4562,
+      "n_label": "people convicted",
+      "unknown_share": null,
+      "share": {
+       "german": 84.8,
+       "non_german": 15.2
+      },
+      "rate": null,
+      "rate_reason": "German/foreign only at this offence detail.",
+      "share_note": "3,867 German, 695 foreign (incl. stateless and unknown)."
+     }
+    }
+   ],
+   "rate_sources": [
+    "population"
+   ]
+  },
+  {
+   "id": "trafficking",
+   "label": "Commercial sexual exploitation of minors",
+   "years": "2025",
+   "intro": "The BKA's trafficking report counted 164 minor victims of commercial sexual exploitation in 132 concluded investigations in 2025 (232 in 2024), 82% aged 14-17 and 75% female, and 181 suspects. 60 victims were first contacted online.",
+   "victims": {
+    "status": "published",
+    "source": "bka_mh",
+    "scope": "Germany, concluded police investigations, 2025",
+    "n": 164,
+    "n_label": "minor victims",
+    "unknown_share": null,
+    "share": {
+     "german": 72.6,
+     "non_german": 27.4,
+     "romanian": 4.3
+    },
+    "rate": null,
+    "rate_reason": "Counts too small for reliable rates.",
+    "share_note": "119 German. Most common non-German nationalities: Romanian (7), then Bulgarian, Filipino, Serbian and Syrian (3 each). The report does not say whether any victim's nationality was unknown, so the non-German share may include unknowns. Nationality only."
+   },
+   "perpetrators": {
+    "status": "published",
+    "source": "bka_mh",
+    "scope": "Germany, concluded police investigations, 2025",
+    "n": 159,
+    "n_label": "suspects with known nationality (of 181)",
+    "unknown_share": 12.2,
+    "share": {
+     "german": 69.2,
+     "non_german": 30.8
+    },
+    "rate": null,
+    "rate_reason": "Counts too small for rates.",
+    "share_note": "110 German; most common non-German: Serbian (7), Hungarian (5). Calculated here as shares of the 159 with known nationality. Some suspects also had adult victims."
+   },
+   "cross": {
+    "status": "not_published",
+    "source": "bka_mh",
+    "text": "No table links victim and suspect nationality."
+   },
+   "extra_sources": [
+    "blb_sex"
+   ]
+  }
+ ],
+ "score": {
+  "value": 49,
+  "band": "40-60%",
+  "previous": "20-40% (provisional orange placeholder)",
+  "breakdown": [
+   {
+    "harm": "Sexual abuse",
+    "weight": 25,
+    "score": 55
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 15,
+    "score": 58
+   },
+   {
+    "harm": "Neglect",
+    "weight": 15,
+    "score": 48
+   },
+   {
+    "harm": "Homicide",
+    "weight": 15,
+    "score": 48
+   },
+   {
+    "harm": "Sex trafficking",
+    "weight": 15,
+    "score": 39
+   },
+   {
+    "harm": "Online exploitation",
+    "weight": 15,
+    "score": 44
+   }
+  ],
+  "why": "Germany scores 49%, just inside yellow, below the US (56%) and UK (53%). Police statistics publish victims and suspects of child sexual abuse, child maltreatment and homicide by nationality every year, with few unknowns and official suspect rates for Germans and non-Germans, and child-protection data record whether a parent comes from abroad. But nothing records ethnicity: 'German' includes naturalised and dual citizens, so the data are a proxy and score no more than the proxy-only points. Victim-to-suspect links exist only for all ages, and only for the legal-status group 'Zuwanderer'.",
+  "components": [
+   {
+    "name": "Victim heritage",
+    "points": 25,
+    "full": "Published by harm, self-reported or official, with European descent identified separately"
+   },
+   {
+    "name": "Perpetrator heritage",
+    "points": 25,
+    "full": "Same standard for perpetrators; not perceived, few unknowns"
+   },
+   {
+    "name": "Coverage and missing data",
+    "points": 20,
+    "full": "Over 90% of the population covered, under 10% unknown"
+   },
+   {
+    "name": "Rates and linkage",
+    "points": 15,
+    "full": "Rates per 100,000 possible, and victim heritage linked to perpetrator heritage"
+   },
+   {
+    "name": "Access and timeliness",
+    "points": 15,
+    "full": "Public, annual, under 2 years old"
+   }
+  ],
+  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "proxy_note": "The band change rests on giving proxy data the proxy-only points the rubric allows. Germany earns most of its points on coverage, access and official rates, not on heritage. If nationality were given no heritage credit at all, Germany would score about 33%, still orange."
+ },
+ "sources": {
+  "pks_victims": {
+   "name": "Polizeiliche Kriminalstatistik 2025: victims by nationality (table 911)",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual; 2025 tables created 23 Feb 2026",
+   "records": "Victims of each offence key by single nationality (about 190 codes), completed and attempted, all ages.",
+   "limitations": "Nationality only, no ethnicity or migration background; German includes dual and naturalised citizens. Child age not crossed with nationality, so child victims are identifiable only for child-specific offences (§176, Misshandlung von Kindern). Police-recorded crime only.",
+   "url": "https://www.bka.de/DE/AktuelleInformationen/StatistikenLagebilder/PolizeilicheKriminalstatistik/PKS2025/pksTabellen_Interpretationshilfen/BundOpfertabellen/bundopfertabellen.html",
+   "tier": "Official government statistics"
+  },
+  "pks_suspects": {
+   "name": "Polizeiliche Kriminalstatistik 2025: suspects by nationality (table 62), Zuwanderer (table 56) and suspect rates (tables 20, 40, 50)",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual; 2025 tables created 19-23 Feb 2026",
+   "records": "Suspects by offence key and single nationality; Zuwanderer suspects by age and sex; official suspect rates per 100,000 for Germans and non-Germans.",
+   "limitations": "'Personen, die sowohl die deutsche als auch eine andere Staatsangehörigkeit besitzen, werden als Deutsche gezählt.' Suspects, not convicted offenders. Rates are crude (not age-standardised) and cover residents only.",
+   "url": "https://www.bka.de/DE/AktuelleInformationen/StatistikenLagebilder/PolizeilicheKriminalstatistik/PKS2025/pksTabellen_Interpretationshilfen/BundTVNationalitaet/bundTVNationalitaet.html",
+   "tier": "Official government statistics"
+  },
+  "blb_sex": {
+   "name": "Bundeslagebild Sexualdelikte zum Nachteil von Kindern und Jugendlichen 2025",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual since 2023 (replacing the joint BKA-UBSKM \"Kindliche Gewaltopfer\" release); 2025 edition 21 Jul 2026",
+   "records": "Child and youth sexual abuse, abuse material, exploitation, with victim and suspect profiles.",
+   "limitations": "Built on the PKS; nationality only. Its 18.2% non-German share of child victims includes 1,746 children of unclear nationality.",
+   "url": "https://www.bka.de/SharedDocs/Downloads/DE/Publikationen/JahresberichteUndLagebilder/SexualdeliktezNvKindernuJugendlichen/BLBSexualdeliktezNvKindernuJugendlichen2025.html",
+   "tier": "Official government statistics"
+  },
+  "bka_mh": {
+   "name": "Bundeslagebild Menschenhandel und Ausbeutung 2025",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual; 2025 edition July 2026",
+   "records": "Concluded trafficking and exploitation investigations, including commercial sexual exploitation of minors, with victim and suspect nationality.",
+   "limitations": "Small counts; concluded investigations only; nationality only, mostly top nationalities in text.",
+   "url": "https://www.bka.de/SharedDocs/Downloads/DE/Publikationen/JahresberichteUndLagebilder/Menschenhandel/menschenhandelBundeslagebild2025.pdf?__blob=publicationFile&v=2",
+   "tier": "Official government statistics"
+  },
+  "zuwanderung": {
+   "name": "Bundeslagebild Kriminalität im Kontext von Zuwanderung 2025",
+   "publisher": "Bundeskriminalamt (BKA)",
+   "years": "Annual; 2025 edition (data as of 22 Oct 2026)",
+   "records": "Crime by and against Zuwanderer, including suspect-victim constellations (Zuwanderer vs German) for all offences, sexual offences and homicide.",
+   "limitations": "All ages; Zuwanderer are a legal-status group, not an ethnicity; German-on-German constellation not given; not child-specific (8.6% of Zuwanderer victims were children).",
+   "url": "https://www.bka.de/SharedDocs/Downloads/DE/Publikationen/JahresberichteUndLagebilder/KriminalitaetImKontextVonZuwanderung/KriminalitaetImKontextVonZuwanderung_2025.pdf?__blob=publicationFile&v=6",
+   "tier": "Official government statistics"
+  },
+  "destatis_sv": {
+   "name": "Strafverfolgungsstatistik 2024 (Statistischer Bericht)",
+   "publisher": "Statistisches Bundesamt (Destatis)",
+   "years": "Annual; 2024 data published 21 Nov 2025; 2025 edition not yet out",
+   "records": "Convictions by detailed offence and German/foreign; foreign convictions by continent and nationality for broad offence groups; offences against child victims (no nationality).",
+   "limitations": "German vs foreign only at paragraph level (§176, §184b, §225); stateless and unknown counted as foreign; no victim data except a count of child-victim offences.",
+   "url": "https://www.destatis.de/DE/Themen/Staat/Justiz-Rechtspflege/Publikationen/Downloads-Strafverfolgung-Strafvollzug/statistischer-bericht-strafverfolgung-2100300247005.html",
+   "tier": "Official government statistics"
+  },
+  "destatis_8a": {
+   "name": "Statistik der Gefährdungseinschätzungen nach §8a SGB VIII, 2025",
+   "publisher": "Statistisches Bundesamt (Destatis)",
+   "years": "Annual since 2012; 2025 data published 13 Aug 2026",
+   "records": "Child-endangerment assessments by outcome, type of endangerment, age, sex, foreign origin of a parent, family language, and relationship of the person causing it.",
+   "limitations": "Origin of the child's parents only (from abroad or not), no nationality detail or ethnicity; nothing on the person who caused the harm besides relationship.",
+   "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/08/PD26_284_225.html",
+   "tier": "Official government statistics"
+  },
+  "hze_def": {
+   "name": "Child and youth welfare statistics: variable definition (ausländische Herkunft)",
+   "publisher": "Statistisches Amt Mecklenburg-Vorpommern (LAIV), form guidance 2026",
+   "years": "2026 guidance",
+   "records": "Defines the origin item: whether the mother and/or father come from abroad; 'the parents' current citizenship is not decisive'.",
+   "limitations": "Verified on the HzE (support) form guidance; assumed to be the same item in the §8a statistics, which use the same wording. Not confirmed on a §8a-specific form.",
+   "url": "https://www.laiv-mv.de/static/LAIV/Statistik/Dateien/Formulare/Kinder-%20und%20Jugendhilfe/HZE%202026_Erl%C3%A4uterung.pdf",
+   "tier": "Official government statistics"
+  },
+  "mikrozensus": {
+   "name": "Mikrozensus 2025 first results: population by migration background and age",
+   "publisher": "Statistisches Bundesamt (Destatis)",
+   "years": "Annual",
+   "records": "Population with and without migration background by age band (thousands); also the newer Einwanderungsgeschichte concept.",
+   "limitations": "Survey estimates; age bands do not split at 18, so under-18 figures are approximated here.",
+   "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Migration-Integration/Tabellen/migrationshintergrund-alter.html",
+   "tier": "Official government survey"
+  },
+  "population": {
+   "name": "Bevölkerungsfortschreibung (Census 2022 base), 31 Dec 2024",
+   "publisher": "Statistisches Bundesamt (Destatis)",
+   "years": "Annual",
+   "records": "Population by age, sex and German/non-German citizenship.",
+   "limitations": "German/non-German only.",
+   "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsstand/Publikationen/Downloads-Bevoelkerungsstand/statistischer-bericht-bevoelkerungsfortschreibung-zensus-2022-jaehrlich-5124108247005.xlsx?__blob=publicationFile&v=3",
+   "tier": "Official government statistics"
+  },
+  "destatis_dc": {
+   "name": "Todesursachenstatistik (cause of death): assault deaths by age",
+   "publisher": "Statistisches Bundesamt (Destatis)",
+   "years": "Annual, 1980-2025",
+   "records": "Deaths from assault (X85-Y09) by age and sex.",
+   "limitations": "No nationality or migration background with cause of death.",
+   "url": "https://genesis.destatis.de/datenbank/online/table/23211-0002",
+   "tier": "Official government statistics"
+  },
+  "nrw": {
+   "name": "NRW: recording of multiple citizenships in the police statistics",
+   "publisher": "Ministerium des Innern NRW; Landtag NRW",
+   "years": "Since 1 Jul 2025; first full year in PKS NRW 2025",
+   "records": "NRW police now record every citizenship of suspects and victims; 51,960 German suspects (17.5%) held at least one other citizenship in 2025.",
+   "limitations": "NRW only; the BKA still receives one nationality; no dual-citizenship breakdown for child offences was found (only for knife crime).",
+   "url": "https://www.im.nrw/system/files/media/document/file/pks-nrw-2025-handout.pdf",
+   "tier": "Official government statistics"
+  },
+  "kfn": {
+   "name": "Niedersachsensurvey 2024 (KFN Forschungsbericht 171)",
+   "publisher": "Kriminologisches Forschungsinstitut Niedersachsen (KFN)",
+   "years": "Repeated school survey; 2024 wave published Oct 2025",
+   "records": "Ninth-graders' self-reported victimisation, including parental violence, by migration generation.",
+   "limitations": "Non-government academic source. One state; migration background, not ethnicity.",
+   "url": "https://kfn.de/wp-content/uploads/2025/10/FB_171.pdf",
+   "tier": "Non-government source"
+  },
+  "ulm": {
+   "name": "National prevalence study of sexual violence in childhood (Universitätsklinikum Ulm, Deutsches Ärzteblatt 2025)",
+   "publisher": "Universitätsklinikum Ulm",
+   "years": "2025",
+   "records": "12.7% of adults reported childhood or adolescent sexual violence (20.6% of women, 4.8% of men).",
+   "limitations": "Non-government academic source. No breakdown by migration background published.",
+   "url": "https://doi.org/10.3238/arztebl.m2025.0076",
+   "tier": "Non-government source"
+  }
+ },
+ "select_labels": {
+  "victim": "Victim's nationality or origin",
+  "perpetrator": "Perpetrator's nationality"
+ },
+ "proxy_note": "Germany records nationality (citizenship) or migration background, never ethnicity. Every group below is a proxy, not ethnicity."
+}

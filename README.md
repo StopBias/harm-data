@@ -45,6 +45,16 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   `combined_groups`, `not_recorded` on a group (with `european_note`/`european_title`), `score.why`, per-harm
   `extra_sources`/`rate_sources`, and for cross tables `pair_sentence`, `row_intro`, `col_intro` (with `{victim}`/`{perp}`) and `overview`.
 
+### Germany data
+- `data/deu.json` is built by `build_deu.py` (kept with the German research, outside this repo). Germany records
+  nationality (citizenship) and, in child protection and surveys, migration background, never ethnicity.
+- Proxy display fields: `proxy_note` (banner under the summary), a `proxy` kind on each group (each result is tagged
+  "Proxy: nationality, not ethnicity" or "Proxy: migration background, not ethnicity"), `select_labels` (dropdown
+  labels), `unknown_label` ("Nationality unknown"; a block can override it), and `score.proxy_note` in the score box.
+  Files without these fields (US, UK) look as before, with "Ethnicity unknown".
+- Sub-groups (e.g. Syrian or EU citizens within non-German citizens) are listed under the "All groups" bars as shares of
+  the total, and shown as their own figure when picked. "European descent" stays "Not recorded".
+
 ### UK data
 - `data/gbr.json` is generated from the research file by `to_explorer.py` (kept with the UK research, outside this repo); it
   copies every figure unchanged and only adds labels and structure. Shares are of people with known ethnicity; each block
