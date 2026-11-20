@@ -21,46 +21,58 @@
  "counts": {
   "rows": 1500,
   "sample_rows_overlaid": 300,
+  "included": 14,
   "by_outlet": {
    "AP": {
     "frame": 31,
     "in_sample": 31,
-    "coded": 0
+    "coded": 31,
+    "included": 1
    },
    "CNN": {
     "frame": 157,
     "in_sample": 29,
-    "coded": 27
+    "coded": 27,
+    "included": 2
    },
    "Fox": {
     "frame": 521,
     "in_sample": 95,
-    "coded": 94
+    "coded": 94,
+    "included": 5
    },
    "NYT": {
     "frame": 439,
     "in_sample": 80,
-    "coded": 0
+    "coded": 80,
+    "included": 2
    },
    "WaPo": {
     "frame": 352,
     "in_sample": 65,
-    "coded": 0
+    "coded": 62,
+    "included": 4
    }
   },
   "sample_fetch_status": {
-   "AP|error": 31,
+   "AP|ok": 31,
    "CNN|404": 1,
    "CNN|ok": 28,
    "Fox|404": 1,
    "Fox|ok": 94,
-   "NYT|error": 80,
-   "WaPo|ok": 65
+   "NYT|no_text": 1,
+   "NYT|ok": 76,
+   "NYT|partial": 2,
+   "NYT|redirect": 1,
+   "WaPo|no_text": 1,
+   "WaPo|ok": 62,
+   "WaPo|redirect_home": 2
   }
  },
  "gaps": [
   "sample_weight, sample_order and fetch_status (coded file only) are not in the agreed v1.1 columns and were dropped; they remain in Joseph's pilot folder. Sample weights are constant within an outlet, so they do not change a within-outlet W_on_B : B_on_W ratio.",
   "Rows outside the 300-row random sample are uncoded frame rows (coded=false, coding fields blank).",
-  "Uncoded sample rows keep blank coding fields; nothing was inferred."
+  "Uncoded sample rows keep blank coding fields; nothing was inferred.",
+  "include=dup is a coded redirect to another sampled story; it is not counted as included."
  ]
 }

@@ -1,22 +1,34 @@
 # Media coverage data (data/media)
 
-Format: `media-data-format.md` v1.1 (agreed by Christa and Joseph on 2026-11-19). Every file here is
-built by a committed script; nothing is hand-edited. The site's **Media coverage** tab
-(`index.html#media`, code in `media.js` / `media.css`) reads `summary.json` and `baseline_ncvs.json`.
+Format: `media-data-format.md` v1.2. Every file here is built by a committed script; nothing is
+hand-edited. The site's **Media** tab (`index.html#media`, code in `media.js` / `media.css`) reads
+`summary.json`, `baseline_ncvs.json` and `baseline_shr.json`.
+
+The public name of the index is the **Antiwhite media bias index** (toggle: **Antiblack media bias
+index**). Coverage Distortion Index (CDI) is the methods name for the same calculation and is not
+used as a public label. A point-estimate CDI is never manufactured with a +0.5 (or any other)
+correction. When a direction cell is 0, the published figure is **0 of N** plus the Clopper-Pearson
+exact one-sided 95% lower bound. Outlet point-estimate index cells stay **pending** until an
+incident-based sample exists. **Insufficient data** means fewer than 20 included incidents overall.
 
 | File | What it is | Built by |
 |---|---|---|
 | `baseline_ncvs.json` | U.S. violent incidents by offender race x victim race, 2018-2023, from BJS | `build_baseline_ncvs.py` |
-| `stories_2023.csv` | 2023 Media Cloud story frame, with the pilot hand-coding merged in (v1.1 columns only) | `convert_pilot_stories.py` |
-| `stories_2023_conversion.json` | What the converter dropped, checked and counted | `convert_pilot_stories.py` |
-| `summary.json` | Per-outlet raw counts, Coverage Distortion Index (CDI), rates, gaps, judgement calls | `build_media_summary.py` |
+| `baseline_shr.json` | FBI SHR Expanded Homicide Data Table 6, 2023, single victim/single offender (White-on-Black 324, Black-on-White 726) | `build_baseline_shr.py` |
+| `incidents_2023.json` | Documented crime type and Table 6 eligibility for each coded incident id | (documented from the pilot notes; not inferred) |
+| `stories_2023.csv` | 2023 Media Cloud story frame with the **strict** rule-set coding overlaid (v1.1 columns) | `convert_pilot_stories.py` |
+| `stories_2023_broad.csv` | The same frame with the **broad** rule-set coding overlaid | `convert_pilot_stories.py` |
+| `stories_2023_conversion.json` / `stories_2023_broad_conversion.json` | What the converter dropped, checked and counted | `convert_pilot_stories.py` |
+| `summary.json` | Country- and outlet-level counts, bounds, rates, gaps and judgement calls (method_version 1.2) | `build_media_summary.py` |
 
 Rebuild everything (from the repo root; needs Python 3, curl and `pdftotext` from poppler-utils):
 
 ```sh
 python3 data/media/build_baseline_ncvs.py
-python3 data/media/convert_pilot_stories.py --frame <pilot>/stories_2023.csv --coded <pilot>/coded_2023_pass1.csv
-python3 data/media/build_media_summary.py
+python3 data/media/build_baseline_shr.py --generated YYYY-MM-DD
+python3 data/media/convert_pilot_stories.py --frame <pilot>/stories_2023.csv \
+    --coded-strict <pilot>/coded_2023_pass1.csv --coded-broad <pilot>/coded_2023_pass1b.csv
+python3 data/media/build_media_summary.py --generated YYYY-MM-DD
 ```
 
 ## 1. Crime baseline (`baseline_ncvs.json`)
