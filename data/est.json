@@ -305,7 +305,7 @@
    "id": "online",
    "label": "Intimate images shared on social media (school survey)",
    "years": "2023",
-   "intro": "ISRD4: 4% of Estonian-language and 5% of Russian-language pupils said intimate images of them had been shared on social media in the last year (9% and 6% in their lifetime). Police counts of child sexual abuse material and grooming have no citizenship.",
+   "intro": "ISRD4: 4% of Estonian-language and 3% of Russian-language pupils said intimate images of them had been shared on social media in the last year (9% and 6% in their lifetime). Police counts of child sexual abuse material and grooming have no citizenship.",
    "victims": {
     "status": "published",
     "source": "isrd4",
@@ -315,7 +315,7 @@
     "share": null,
     "rate": {
      "est_lang": 4,
-     "rus_lang": 5
+     "rus_lang": 3
     },
     "rate_all": null,
     "rate_unit": "%",
@@ -448,7 +448,7 @@
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "ISRD4 reports intimate images shared on social media by questionnaire language (9% lifetime and 4% last year for Estonian-language pupils; 6% and 5% for Russian-language pupils). Police counts of child sexual abuse material and grooming have no citizenship.",
+    "why": "ISRD4 reports intimate images shared on social media by questionnaire language (9% lifetime and 4% last year for Estonian-language pupils; 6% and 3% for Russian-language pupils). Police counts of child sexual abuse material and grooming have no citizenship.",
     "score": 12.0
    }
   ],
