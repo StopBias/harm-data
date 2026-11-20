@@ -61,7 +61,10 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   Countries without a file show their all-ages data and "No age breakdown published". Files so far: United States, United
   Kingdom (England and Wales Homicide Index victims; MoJ court defendants by 18+1 ethnicity), New Zealand (MoJ court data;
   age and ethnicity published separately, not crossed), Canada (StatCan homicide by Indigenous identity), Australia (ABS
-  Aboriginal and Torres Strait Islander victims by state; offenders all ages) and Germany (BKA PKS by nationality).
+  Aboriginal and Torres Strait Islander victims by state; offenders all ages) Germany (BKA PKS by nationality),
+  Switzerland (BFS accused by residence group; assault victim rates by citizenship), Finland (Statistics Finland victims
+  and suspects by origin), France (SSMSI victims and mis en cause by nationality), Italy (ISTAT victims and offenders by
+  citizenship, under 18 / 18+ only) and Norway (SSB victims by immigrant background; child-welfare measures).
 - Code and styles: `age.js`, `age.css`; strings: `age.*` in `i18n/*.json`. The explorer fires a `harm:explorer` event
   (`detail.iso`) whenever it renders a country, which is the only hook `age.js` needs.
 
