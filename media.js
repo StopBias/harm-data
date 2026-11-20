@@ -1,79 +1,27 @@
 // Media coverage view (pilot). Reads data/media/summary.json and data/media/baseline_ncvs.json.
-// All user-facing text lives in MEDIA_STRINGS so it can move into the site's i18n files later.
+// User-facing text lives in i18n/*.json under the media.* prefix and follows the site language picker.
 (function () {
   "use strict";
 
-  const MEDIA_STRINGS = {
-    en: {
-      tab_map: "Map",
-      tab_media: "Media coverage",
-      tabs_label: "Site sections",
-      title: "Media coverage",
-      badge_pilot: "Pilot",
-      lede: "How often five U.S. news outlets covered White-on-Black versus Black-on-White crime stories, compared with how often each happened according to the government's National Crime Victimization Survey (NCVS). Raw counts are shown beside every index.",
-      loading: "Loading media data…",
-      load_error: "The media data could not be loaded.",
-      outlets_h: "By outlet, {year}",
-      col_outlet: "Outlet",
-      col_total: "Keyword-matched stories",
-      col_total_hint: "Media Cloud hits for the search phrases (volume only, not yet checked for relevance)",
-      col_coded: "Coded sample",
-      col_coded_hint: "Hand-coded stories of those randomly sampled",
-      col_wb: "White-on-Black stories",
-      col_bw: "Black-on-White stories",
-      col_other: "Other included",
-      col_cdi: "Distortion index (CDI)",
-      of: "{a} of {b}",
-      cdi_null: "Not computed",
-      zero_adj: "+0.5 added to both story counts because one is 0",
-      calc: "({w} ÷ {b}) ÷ ({nw} ÷ {nb})",
-      coding_incomplete: "Coding incomplete",
-      not_coded: "Not coded yet",
-      cdi_explain_h: "What the index means",
-      cdi_explain: "CDI = (outlet's White-on-Black : Black-on-White story ratio) ÷ (NCVS White-on-Black : Black-on-White incident ratio for the same year). 1 means coverage matches the incident ratio; above 1 means relatively more White-on-Black stories; below 1 relatively more Black-on-White stories. With only a handful of coded stories the index is very unstable.",
-      ncvs_ratio: "NCVS {year}: {nw} White-on-Black and {nb} Black-on-White violent incidents (ratio {r}).",
-      baseline_h: "Government baseline: violent incidents by offender and victim race",
-      baseline_lede: "Bureau of Justice Statistics, National Crime Victimization Survey. Nonfatal violent incidents (rape or sexual assault, robbery, aggravated and simple assault); homicide is not covered. White and Black are non-Hispanic. Offender race is the victim's perception. These figures say nothing about motive and are not hate-crime counts.",
-      col_year: "Year",
-      col_bwi: "Black offender → White victim",
-      col_wbi: "White offender → Black victim",
-      col_source: "BJS source",
-      se: "SE {se}",
-      pct_only: "{p}% of incidents against {v} victims (count not published)",
-      not_published: "Not published",
-      victims_white: "White",
-      victims_black: "Black",
-      baseline_comp: "Not a strict time series: BJS changed how mixed Hispanic offender groups are classified in 2022, 2018 was published as percentages only, and BJS published no such table for 2020.",
-      gaps_h: "Data gaps",
-      method_h: "Method and judgement calls",
-      sources_h: "Sources and files",
-      src_stories: "Coded stories ({year}, CSV)",
-      src_summary: "Computed summary (summary.json)",
-      src_baseline: "NCVS baseline (baseline_ncvs.json)",
-      src_scripts: "Build scripts and README",
-      src_mediacloud: "Media Cloud search",
-      table_p: "p. {p}",
-      generated: "Summary generated {d} by {s}.",
-    },
-  };
-
-  const lang = () => {
-    const l = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
-    return MEDIA_STRINGS[l] ? l : "en";
-  };
-  const t = (key, vars) => {
-    let s = (MEDIA_STRINGS[lang()] || {})[key];
-    if (s == null) s = MEDIA_STRINGS.en[key];
-    if (s == null) return key;
-    return vars ? s.replace(/\{(\w+)\}/g, (m, k) => (vars[k] != null ? vars[k] : m)) : s;
-  };
+  const t = (key, vars) => (window.t ? window.t("media." + key, vars) : key);
+  const tPlural = (base, n, vars) => (window.tPlural ? window.tPlural("media." + base, n, vars) : String(n));
+  const locale = () => (window.currentLocale ? window.currentLocale() : (document.documentElement.lang || "en"));
   const esc = v => String(v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const fmt = n => (n == null ? "—" : Number(n).toLocaleString("en-US"));
+  const fmt = n => (n == null ? "—" : Number(n).toLocaleString(locale()));
+  const fmtCdi = n => Number(n).toLocaleString(locale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmtRatio = n => Number(n).toLocaleString(locale(), { minimumFractionDigits: 3, maximumFractionDigits: 3 });
   const REPO_BLOB = "https://github.com/StopBias/harm-data/blob/main/data/media/";
 
   let data = null, loading = null;
   const view = document.getElementById("media-view");
   if (!view) return;
+
+  function enOnlyBadge() {
+    const lang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+    if (lang === "en") return "";
+    const label = window.t ? window.t("shown_in_english") : "Shown in English";
+    return ` <span class="en-only">${esc(label)}</span>`;
+  }
 
   // ---------- Tabs (inserted after the header, so the header markup is untouched) ----------
   const nav = document.createElement("nav");
@@ -85,6 +33,7 @@
   const mapParts = [document.querySelector(".layout"), document.getElementById("explorer")];
 
   function labelTabs() {
+    nav.setAttribute("aria-label", t("tabs_label"));
     nav.querySelector('[data-tab="map"]').textContent = t("tab_map");
     nav.querySelector('[data-tab="media"]').textContent = t("tab_media");
   }
@@ -131,7 +80,7 @@
     }
     const adj = r.zero_adjust_applied ? 0.5 : 0;
     const calc = t("calc", { w: fmt(r.stories_W_on_B + adj), b: fmt(r.stories_B_on_W + adj), nw: fmt(r.ncvs_W_on_B), nb: fmt(r.ncvs_B_on_W) });
-    return `<span class="mv-cdi">${esc(r.cdi.toFixed(2))}</span><span class="mv-why">${esc(calc)}</span>` +
+    return `<span class="mv-cdi">${esc(fmtCdi(r.cdi))}</span><span class="mv-why">${esc(calc)}</span>` +
       (r.zero_adjust_applied ? `<span class="mv-why">${esc(t("zero_adj"))}</span>` : "");
   }
 
@@ -166,14 +115,15 @@
     const cell = (r, victimKey) => {
       if (!r) return "—";
       if (r.count != null) return `${fmt(r.count)}<span class="mv-why">${esc(t("se", { se: fmt(r.se) }))}</span>`;
-      if (r.pct != null) return `<span class="mv-null">${esc(t("pct_only", { p: r.pct, v: t(victimKey) }))}</span>`;
+      if (r.pct != null) return `<span class="mv-null">${esc(t("pct_only", { p: Number(r.pct).toLocaleString(locale()), v: t(victimKey) }))}</span>`;
       return `<span class="mv-null">${esc(t("not_published"))}</span>`;
     };
     const years = Object.keys(byYear).map(Number).sort();
     const rows = years.map(y => {
       const s = status[y] || {}; const src = s.source || {};
       const page = src.table_pdf_page ? " (" + t("table_p", { p: src.table_pdf_page }) + ")" : "";
-      const link = src.pdf_url ? `<a href="${esc(src.pdf_url)}" target="_blank" rel="noopener">${esc(src.report || src.pdf_url)}</a>${src.table ? `<span class="mv-why">${esc(src.table + page)}${src.se_table ? "; SE: " + esc(src.se_table) : ""}</span>` : `<span class="mv-why">${esc(t("not_published"))}</span>`}` : "—";
+      const badge = enOnlyBadge();
+      const link = src.pdf_url ? `<a href="${esc(src.pdf_url)}" target="_blank" rel="noopener">${esc(src.report || src.pdf_url)}</a>${badge}${src.table ? `<span class="mv-why">${esc(src.table + page)}${src.se_table ? "; SE: " + esc(src.se_table) : ""}</span>` : `<span class="mv-why">${esc(t("not_published"))}</span>`}` : "—";
       return `<tr data-year="${y}"><th scope="row" data-label="${esc(t("col_year"))}">${y}</th>
         <td class="num" data-label="${esc(t("col_bwi"))}">${cell(byYear[y]["Black>White"], "victims_white")}</td>
         <td class="num" data-label="${esc(t("col_wbi"))}">${cell(byYear[y]["White>Black"], "victims_black")}</td>
@@ -184,6 +134,17 @@
       <th scope="col">${esc(t("col_source"))}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
+  function ncvsRatioText(y, nw, nb, ratio) {
+    return t("ncvs_ratio", {
+      year: y,
+      nw: fmt(nw),
+      nb: fmt(nb),
+      r: fmtRatio(ratio),
+      inc_w: tPlural("violent_incidents", nw),
+      inc_b: tPlural("violent_incidents", nb)
+    });
+  }
+
   function render() {
     labelTabs();
     if (!data) return;
@@ -192,28 +153,29 @@
     const blocks = years.map(y => {
       const rows = s.by_outlet_year.filter(r => r.year === y);
       const r0 = rows[0] || {};
-      const ratio = r0.ncvs_W_on_B && r0.ncvs_B_on_W ? (r0.ncvs_W_on_B / r0.ncvs_B_on_W).toFixed(3) : null;
+      const ratio = r0.ncvs_W_on_B && r0.ncvs_B_on_W ? r0.ncvs_W_on_B / r0.ncvs_B_on_W : null;
       return `<h3 class="ex-kicker">${esc(t("outlets_h", { year: y }))}${rows.some(r => r.pilot) ? ` <span class="status pending">${esc(t("badge_pilot"))}</span>` : ""}</h3>
         ${outletTable(rows, y)}
-        ${ratio ? `<p class="ex-small mv-ratio">${esc(t("ncvs_ratio", { year: y, nw: fmt(r0.ncvs_W_on_B), nb: fmt(r0.ncvs_B_on_W), r: ratio }))}</p>` : ""}`;
+        ${ratio ? `<p class="ex-small mv-ratio">${esc(ncvsRatioText(y, r0.ncvs_W_on_B, r0.ncvs_B_on_W, ratio))}</p>` : ""}`;
     }).join("");
     const storyLinks = (s.story_files || []).map(f => {
       const y = (f.match(/\d{4}/) || [""])[0];
       return `<li><a href="${REPO_BLOB}${esc(f)}" target="_blank" rel="noopener">${esc(t("src_stories", { year: y }))}</a></li>`;
     }).join("");
+    const badge = enOnlyBadge();
     view.innerHTML = `<div class="mv-inner">
       <div class="ex-head"><h2 id="mv-title">${esc(t("title"))}</h2>${s.pilot_notice ? `<span class="badge mv-badge">${esc(t("badge_pilot"))}</span>` : ""}</div>
       <p class="ex-lede">${esc(t("lede"))}</p>
-      ${s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}</p>` : ""}
+      ${s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}${badge}</p>` : ""}
       ${blocks}
       <div class="mv-explain"><h3>${esc(t("cdi_explain_h"))}</h3><p>${esc(t("cdi_explain"))}</p></div>
       <h3 class="ex-kicker mv-section">${esc(t("baseline_h"))}</h3>
       <p class="ex-lede">${esc(t("baseline_lede"))}</p>
       ${baselineTable(b)}
       <p class="ex-small">${esc(t("baseline_comp"))}</p>
-      <h3 class="ex-kicker mv-section">${esc(t("gaps_h"))}</h3>
+      <h3 class="ex-kicker mv-section" id="mv-gaps-h">${esc(t("gaps_h"))}${badge}</h3>
       <ul class="mv-gaps" id="mv-gaps">${(s.data_gaps || []).map(g => `<li><b>${esc(g.topic)}:</b> ${esc(g.reason)}</li>`).join("")}</ul>
-      <details class="method"><summary>${esc(t("method_h"))}</summary>
+      <details class="method"><summary>${esc(t("method_h"))}${badge}</summary>
         <ul>${(s.judgement_calls || []).map(j => `<li>${esc(j)}</li>`).join("")}</ul>
         <p class="ex-small">${esc(t("generated", { d: s.generated, s: s.script }))}</p>
       </details>
@@ -222,14 +184,22 @@
         <li><a href="${REPO_BLOB}summary.json" target="_blank" rel="noopener">${esc(t("src_summary"))}</a></li>
         <li><a href="${REPO_BLOB}baseline_ncvs.json" target="_blank" rel="noopener">${esc(t("src_baseline"))}</a></li>
         <li><a href="${REPO_BLOB}README.md" target="_blank" rel="noopener">${esc(t("src_scripts"))}</a></li>
-        <li><a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)}</a></li>
+        <li><a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)}</a>${badge}</li>
         <li><a href="https://search.mediacloud.org/" target="_blank" rel="noopener">${esc(t("src_mediacloud"))}</a></li>
       </ul></div>
     </div>`;
   }
 
-  window.MEDIA_STRINGS = MEDIA_STRINGS;
-  window.renderMediaView = render;  // call after a language change
-  labelTabs();
-  show(location.hash === "#media" ? "media" : "map");
+  window.renderMediaView = function () {
+    labelTabs();
+    if (data && !view.hidden) render();
+  };
+
+  function start() {
+    labelTabs();
+    show(location.hash === "#media" ? "media" : "map");
+  }
+
+  const ready = window.I18N_READY || Promise.resolve();
+  ready.then(start);
 })();
