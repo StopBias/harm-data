@@ -10,7 +10,7 @@
   const REPO_BLOB = "https://github.com/StopBias/harm-data/blob/main/data/media/";
   const MINUS = "\u2212";
 
-  let data = null, loading = null;
+  let data = null, loading = null, detailed = [];
   const view = document.getElementById("media-view");
   if (!view) return;
 
@@ -30,6 +30,29 @@
     if (lang === "en") return "";
     const label = window.t ? window.t("shown_in_english") : "Shown in English";
     return ` <span class="en-only">${esc(label)}</span>`;
+  }
+
+  function approxBadge(iso) {
+    if (iso !== "USA") return "";
+    return ` <span class="badge mv-badge" title="${esc(t("badge_approximate_hint"))}">${esc(t("badge_approximate"))}</span>`;
+  }
+
+  function fmtCiMult(value, { flip } = {}) {
+    if (value == null || !isFinite(value)) return null;
+    const display = Number(value).toLocaleString(locale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (value > 1) return t("multiplier", { sign: flip ? MINUS : "+", value: display });
+    if (Math.abs(value - 1) < 1e-9) return t("multiplier", { sign: "", value: display });
+    return t("multiplier", { sign: "", value: display });
+  }
+
+  function ciText(rec) {
+    if (!rec || rec.ci95_low == null) return "";
+    const low = fmtCiMult(rec.ci95_low, { flip: state.label === "antiblack" });
+    if (!low) return "";
+    const high = rec.ci95_high == null
+      ? t("ci_unbounded")
+      : (fmtCiMult(rec.ci95_high, { flip: state.label === "antiblack" }) || t("ci_unbounded"));
+    return t("tt_ci95", { low, high });
   }
 
   // ---------- Tabs ----------
@@ -235,6 +258,17 @@
     return ["USA"];
   }
 
+  // Tables, CSV and country pickers use the 43 scored countries in data/index.json
+  // "detailed". IN_SCOPE (50) is for the map only, so microstates stay grey there
+  // but do not appear as table rows or picker options.
+  function detailedList() {
+    if (window.HarmMap && typeof window.HarmMap.getDetailed === "function") {
+      const d = window.HarmMap.getDetailed();
+      if (d && d.length) return d;
+    }
+    return detailed.slice();
+  }
+
   function countryRecord(iso) {
     return data && data.summary && data.summary.countries && data.summary.countries[iso];
   }
@@ -378,13 +412,29 @@
   window.mediaTooltipHtml = mediaTooltipHtml;
 
   // ---------- Controls ----------
+  function orderedCountryIsos(isos) {
+    const nameFn = countryName;
+    if (window.orderCountryIsos) return window.orderCountryIsos(isos, nameFn, locale());
+    const pinnedIsos = (window.PINNED_COUNTRY_ISOS && window.PINNED_COUNTRY_ISOS.slice()) || ["USA", "GBR", "FRA", "DEU", "ESP", "ITA", "RUS"];
+    const set = new Set(isos);
+    const pinned = pinnedIsos.filter(iso => set.has(iso));
+    const rest = isos.filter(iso => !pinnedIsos.includes(iso))
+      .sort((a, b) => nameFn(a).localeCompare(nameFn(b), locale()));
+    return { pinned, rest };
+  }
+
   function countrySelectHtml(id) {
     const opts = ["<option value=\"\">" + esc(t("select_country")) + "</option>"];
-    const names = inScopeList().map(iso => [iso, countryName(iso)]).sort((a, b) => a[1].localeCompare(b[1], locale()));
-    names.forEach(([iso, name]) => {
+    const { pinned, rest } = orderedCountryIsos(detailedList());
+    const opt = iso => {
       const sel = iso === state.selected ? " selected" : "";
-      opts.push(`<option value="${esc(iso)}"${sel}>${esc(name)}</option>`);
-    });
+      return `<option value="${esc(iso)}"${sel}>${esc(countryName(iso))}</option>`;
+    };
+    pinned.forEach(iso => opts.push(opt(iso)));
+    if (pinned.length && rest.length) {
+      opts.push(`<option disabled value="" class="country-sep">────────</option>`);
+    }
+    rest.forEach(iso => opts.push(opt(iso)));
     return `<div class="media-country-row">
       <label for="${id}">${esc(t("country_picker"))}</label>
       <select id="${id}" aria-label="${esc(t("country_picker_aria"))}">${opts.join("")}</select>
@@ -416,14 +466,24 @@
     const score = st.completeness;
     const scoreText = score != null ? fmt(score) : t("completeness_none");
     const zeroLine = h.zero ? `<div class="mv-stat-sub">${esc(h.zero)}</div>` : "";
+    const rec = usa() || {};
+    const ciLine = state.selected === "USA" && rec.ci95_low != null
+      ? `<div class="mv-stat-sub" id="mv-ci95">${esc(ciText(rec))}</div>` : "";
+    const eeRow = `<div class="mv-stat-ee" id="mv-ee-stat">
+        <div class="mv-stat-label">${esc(t("col_ee_index"))}</div>
+        <p class="mv-stat-value mv-stat-value-sm">${esc(t("pending"))}</p>
+        <p class="mv-stat-hint">${esc(t("ee_row_desc"))}</p>
+      </div>`;
     return `<div class="mv-results" id="mv-results">
       <div class="mv-stat" id="mv-index-stat">
         <div class="mv-stat-label" id="mv-index-label">${esc(indexLabel)}</div>
-        <p class="mv-stat-value" id="mv-index-value">${esc(h.text)}</p>
+        <p class="mv-stat-value" id="mv-index-value">${esc(h.text)}${approxBadge(state.selected)}</p>
         ${zeroLine}
+        ${ciLine}
         ${h.sub && h.sub !== h.zero ? `<div class="mv-stat-sub">${esc(h.sub)}</div>` : ""}
         ${state.selected === "USA" ? `<p class="mv-stat-hint">${esc(signHint)}</p>
         <button type="button" class="mv-toggle" id="mv-sign-toggle">${esc(toggleLabel)}</button>` : `<p class="mv-stat-hint">${esc(t("pending_hint"))}</p>`}
+        ${eeRow}
       </div>
       <div class="mv-stat" id="mv-completeness-stat">
         <div class="mv-stat-label">${esc(t("completeness"))}</div>
@@ -607,6 +667,22 @@
       <p class="ex-small">${esc(h.caveat || "")}${enOnlyBadge()}</p>`;
   }
 
+  function eeBaselineHtml() {
+    const b = (usa() || {}).euro_baseline;
+    if (!b) return "";
+    const ratio = b.ratio == null ? "—" : Number(b.ratio).toLocaleString(locale(), { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+    const unit = t("ee_baseline_unit");
+    return `<h3 class="mv-h ex-kicker mv-section" id="mv-ee-baseline-h">${esc(t("ee_baseline_h"))}</h3>
+      <p class="mv-desc">${esc(t("ee_baseline_desc"))}</p>
+      <div class="mv-table-wrap"><table class="mv-table" id="mv-ee-baseline">
+        <tbody>
+          <tr><th scope="row">${esc(t("ee_baseline_ne_on_e"))}</th><td class="num">${esc(fmt(b.non_european_on_european))} ${esc(unit)}</td></tr>
+          <tr><th scope="row">${esc(t("ee_baseline_e_on_ne"))}</th><td class="num">${esc(fmt(b.european_on_non_european))} ${esc(unit)}</td></tr>
+          <tr><th scope="row">${esc(t("ee_baseline_ratio"))}</th><td class="num">${esc(ratio)}</td></tr>
+        </tbody>
+      </table></div>`;
+  }
+
   function detailsHtml() {
     if (!state.details || state.selected !== "USA" || !data) return "";
     const s = data.summary;
@@ -636,6 +712,7 @@
       <p class="mv-desc">${esc(t("baseline_ncvs_desc"))}</p>
       ${ncvsTable(data.baseline)}
       <p class="ex-small">${esc(t("baseline_comp"))}</p>
+      ${eeBaselineHtml()}
       <h3 class="mv-h ex-kicker mv-section">${esc(t("disclosure_h"))}</h3>
       <p class="mv-desc">${esc(t("disclosure_desc"))}</p>
       <p>${esc(t("disclosure_pending"))}</p>
@@ -676,16 +753,18 @@
   }
 
   function countryRows() {
-    const rows = inScopeList().map(iso => {
+    const rows = detailedList().map(iso => {
       const st = mediaStateFor(iso);
       const name = countryName(iso);
-      let indexText, indexSort;
+      let indexText, indexSort, indexHtml;
       if (iso === "USA" && usa()) {
         const h = headline();
         indexText = [h.zero, h.text, significanceText(Object.assign({}, pref(), usa() || {}))].filter(Boolean).join(" · ");
+        indexHtml = esc(indexText) + approxBadge(iso);
         indexSort = (pref() && pref().index_lower_display) || 0;
       } else {
         indexText = t("pending");
+        indexHtml = esc(indexText);
         indexSort = -1;
       }
       const rb = iso === "USA" ? ruleBlock() : null;
@@ -701,7 +780,9 @@
         baseline: iso === "USA" ? "NCVS 2023; FBI SHR Table 6 2023" : "—",
         outlets: iso === "USA" ? (usa().outlet_names || []).join(", ") : "—",
         rule: iso === "USA" ? t(state.rule === "broad" ? "rule_broad" : "rule_strict") : "—",
-        pairing: iso === "USA" ? t("pairing") : "—"
+        pairing: iso === "USA" ? t("pairing") : "—",
+        eeText: t("pending"),
+        indexHtml
       };
     });
     const key = state.sortKey;
@@ -728,12 +809,13 @@
       `<th scope="col"${cls ? ` class="${cls}"` : ""} data-sort="${key}">${esc(label)}</th>`;
     let head, body;
     if (indexView) {
-      head = `<tr>${th("country", t("col_country"))}${th("index", t("col_index"))}${th("sample", t("col_sample"), "num")}${th("completeness", t("col_completeness"), "num")}${th("dates", t("col_dates"))}<th scope="col">${esc(t("col_directions"))}</th></tr>`;
+      head = `<tr>${th("country", t("col_country"))}${th("index", t("col_index"))}${th("sample", t("col_sample"), "num")}${th("completeness", t("col_completeness"), "num")}${th("ee_index", t("col_ee_index"))}${th("dates", t("col_dates"))}<th scope="col">${esc(t("col_directions"))}</th></tr>`;
       body = rows.map(r => `<tr data-iso="${esc(r.iso)}" class="${r.iso === state.selected ? "is-selected" : ""}">
         <th scope="row" data-label="${esc(t("col_country"))}">${esc(r.name)}</th>
-        <td data-label="${esc(t("col_index"))}">${esc(r.indexText)}</td>
+        <td data-label="${esc(t("col_index"))}">${r.indexHtml}</td>
         <td class="num" data-label="${esc(t("col_sample"))}">${r.sample != null ? fmt(r.sample) : "—"}</td>
         <td class="num" data-label="${esc(t("col_completeness"))}">${r.completeness != null ? fmt(r.completeness) : esc(t("completeness_none"))}</td>
+        <td data-label="${esc(t("col_ee_index"))}">${esc(r.eeText)}</td>
         <td data-label="${esc(t("col_dates"))}">${esc(r.dates)}</td>
         <td data-label="${esc(t("col_directions"))}">${esc(r.dirs)}</td>
       </tr>`).join("");
@@ -759,8 +841,8 @@
 
   function csvText() {
     const rows = countryRows();
-    const cols = ["iso", "name", "indexText", "sample", "completeness", "dates", "dirs", "baseline", "outlets", "rule"];
-    const header = ["iso", "country", "index", "sample_incidents", "completeness", "date_range", "stories_wb_bw_other", "baseline", "outlets", "rule_set"];
+    const cols = ["iso", "name", "indexText", "sample", "completeness", "eeText", "dates", "dirs", "baseline", "outlets", "rule"];
+    const header = ["iso", "country", "index", "sample_incidents", "completeness", "ethnic_european_index", "date_range", "stories_wb_bw_other", "baseline", "outlets", "rule_set"];
     const escCell = v => {
       const s = v == null ? "" : String(v);
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
@@ -929,8 +1011,13 @@
     loading = Promise.all([
       get("data/media/summary.json"),
       get("data/media/baseline_ncvs.json"),
-      get("data/media/baseline_shr.json")
-    ]).then(([summary, baseline, shr]) => { data = { summary, baseline, shr }; render(); })
+      get("data/media/baseline_shr.json"),
+      get("data/index.json")
+    ]).then(([summary, baseline, shr, index]) => {
+      detailed = Array.isArray(index && index.detailed) ? index.detailed.slice() : [];
+      data = { summary, baseline, shr };
+      render();
+    })
       .catch(err => {
         console.error(err);
         loading = null;

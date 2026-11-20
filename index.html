@@ -768,6 +768,19 @@
       if (special) return special;
       return countryDisplayName(iso, fallback);
     }
+    // Country dropdowns: these 7 first, in this fixed order, then a separator,
+    // then the rest alphabetically by the localized name in the current language.
+    const PINNED_COUNTRY_ISOS = ["USA", "GBR", "FRA", "DEU", "ESP", "ITA", "RUS"];
+    function orderCountryIsos(isos, nameFn, loc) {
+      const list = Array.isArray(isos) ? isos.slice() : [];
+      const set = new Set(list);
+      const pinned = PINNED_COUNTRY_ISOS.filter(iso => set.has(iso));
+      const rest = list.filter(iso => !PINNED_COUNTRY_ISOS.includes(iso))
+        .sort((a, b) => String((nameFn && nameFn(a)) || a).localeCompare(String((nameFn && nameFn(b)) || b), loc || currentLocale()));
+      return { pinned, rest };
+    }
+    window.PINNED_COUNTRY_ISOS = PINNED_COUNTRY_ISOS;
+    window.orderCountryIsos = orderCountryIsos;
     function formatDate(isoDate) {
       if (!isoDate) return "";
       const m = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -1271,6 +1284,7 @@
     const COUNTRIES_URL = "data/countries-ne50m.geojson";   // Natural Earth 1:50m, public domain
     const DATA_INDEX_URL = "data/index.json";               // lists ISO3 codes that have data/<iso3 lowercase>.json
     const DETAIL = {};                                       // loaded detailed data files, keyed by ISO3
+    let detailedIsos = [];                                   // data/index.json "detailed": scored countries (43). Tables use this, not IN_SCOPE.
 
     // ------------------------------------------------------------------
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
@@ -2304,6 +2318,9 @@
       clearSelection() { clearSelection(); if (mapMode === "media" && typeof window.clearMediaCountry === "function") window.clearMediaCountry(); },
       getTracked: () => tracked,
       getInScope: () => [...inScope],
+      getDetailed: () => detailedIsos.slice(),
+      pinnedCountryIsos: () => PINNED_COUNTRY_ISOS.slice(),
+      orderCountryIsos: (isos, nameFn, loc) => orderCountryIsos(isos, nameFn || countryDisplayName, loc),
       countryName: (iso) => countryDisplayName(iso),
       colorFor,
       colorForL,
@@ -2346,7 +2363,9 @@
     // Load the list of countries with detailed files, then each file
     const getJSON = url => fetch(url).then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
     getJSON(DATA_INDEX_URL)
-      .then(idx => Promise.all((idx.detailed || []).map(iso =>
+      .then(idx => {
+        detailedIsos = Array.isArray(idx.detailed) ? idx.detailed.slice() : [];
+        return Promise.all(detailedIsos.map(iso =>
         getJSON(`data/${iso.toLowerCase()}.json`)
           .then(data => {
             sortHarms(data);
@@ -2354,7 +2373,8 @@
             const score = publishedScore(data);
             if (tracked[iso] && score != null) { tracked[iso].completeness = score; tracked[iso].exact = true; }
           })
-          .catch(err => console.error(err)))))
+          .catch(err => console.error(err))));
+      })
       .then(() => {
         refreshFill();
         if (selectedId) showCountry(selectedId, selectedName);
