@@ -4,7 +4,8 @@
   font: inherit; font-size: 0.85rem; color: var(--muted); background: none; border: 0;
   border-bottom: 3px solid transparent; padding: 8px 12px 7px; cursor: pointer; white-space: nowrap;
 }
-.site-tabs button:hover { color: var(--ink); }
+.site-tabs button:hover { color: var(--brand-dark); }
+.site-tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .site-tabs button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--accent); }
 #media-view { padding: 22px 18px 40px; }
 .mv-inner { max-width: 1040px; margin: 0 auto; }
@@ -37,7 +38,7 @@
 .mv-sources { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }
 .mv-sources ul { margin: 0; padding-left: 18px; }
 .mv-sources li { font-size: 0.86rem; line-height: 1.6; }
-.mv-sources a, .mv-table a { color: #0b7d93; word-break: break-word; }
+.mv-sources a, .mv-table a { color: var(--brand-dark); word-break: break-word; }
 .method ul { padding-left: 18px; }
 @media (max-width: 768px) {
   .site-tabs { padding: 0 8px; }

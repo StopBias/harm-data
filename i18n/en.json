@@ -2,7 +2,7 @@
   "title": "Ethnic Bias Data Explorer",
   "title_lead": "Ethnic Bias",
   "title_rest": "Data Explorer",
-  "subtitle": "Calling for data transparency in government and media",
+  "subtitle": "Calling for transparency in ethnic data and reporting",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Language",
   "shown_in_english": "Shown in English",
@@ -17,7 +17,7 @@
     "oceania": "Oceania"
   },
   "legend": {
-    "title": "Child protection by data completeness",
+    "title": "Ethnic data completeness",
     "not_analyzed": "Not yet analyzed",
     "out_of_scope": "Outside current scope"
   },

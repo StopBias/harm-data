@@ -2,7 +2,7 @@
   "title": "Explorateur de données sur les biais ethniques",
   "title_lead": "Biais ethniques",
   "title_rest": "Explorateur de données",
-  "subtitle": "Appel à la transparence des données dans les administrations et les médias",
+  "subtitle": "Pour la transparence des données ethniques et de l’information",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Langue",
   "shown_in_english": "Affiché en anglais",
@@ -17,7 +17,7 @@
     "oceania": "Océanie"
   },
   "legend": {
-    "title": "Protection de l’enfance selon l’exhaustivité des données",
+    "title": "Exhaustivité des données ethniques",
     "not_analyzed": "Pas encore analysé",
     "out_of_scope": "Hors du champ actuel"
   },

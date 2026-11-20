@@ -2,7 +2,7 @@
   "title": "Adatböngésző az etnikai elfogultságról",
   "title_lead": "Etnikai elfogultság",
   "title_rest": "Adatböngésző",
-  "subtitle": "Felhívás az adatok átláthatóságára a kormányzatban és a médiában",
+  "subtitle": "Átláthatóságot az etnikai adatokban és a tájékoztatásban",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Nyelv",
   "shown_in_english": "Angolul megjelenítve",
@@ -17,7 +17,7 @@
     "oceania": "Óceánia"
   },
   "legend": {
-    "title": "Gyermekvédelem az adatok teljessége szerint",
+    "title": "Az etnikai adatok teljessége",
     "not_analyzed": "Még nem elemzett",
     "out_of_scope": "A jelenlegi hatókörön kívül"
   },

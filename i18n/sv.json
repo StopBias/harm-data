@@ -2,7 +2,7 @@
   "title": "Datautforskare om etnisk partiskhet",
   "title_lead": "Etnisk partiskhet",
   "title_rest": "Datautforskare",
-  "subtitle": "Vi efterlyser datatransparens inom myndigheter och medier",
+  "subtitle": "För öppenhet i etniska data och rapportering",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Språk",
   "shown_in_english": "Visas på engelska",
@@ -17,7 +17,7 @@
     "oceania": "Oceanien"
   },
   "legend": {
-    "title": "Barnskydd efter uppgifternas fullständighet",
+    "title": "Fullständighet i etniska data",
     "not_analyzed": "Ännu inte analyserat",
     "out_of_scope": "Utanför nuvarande räckvidd"
   },
