@@ -7,7 +7,12 @@
   "lang_picker_aria": "Språk",
   "shown_in_english": "Visas på engelska",
   "about": {
-    "heading": "Om projektet"
+    "heading": "Om projektet",
+    "ee_heading": "Vad menar vi med ”etniska européer”?"
+  },
+  "term": {
+    "ee_tip": "Etniska européer är människor vars härkomst går tillbaka till Europas ursprungsfolk; de kallas ofta ”vita”.",
+    "learn_more": "Läs mer"
   },
   "views_aria": "Kartvy",
   "views": {

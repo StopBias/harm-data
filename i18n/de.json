@@ -7,7 +7,12 @@
   "lang_picker_aria": "Sprache",
   "shown_in_english": "Auf Englisch angezeigt",
   "about": {
-    "heading": "Über das Projekt"
+    "heading": "Über das Projekt",
+    "ee_heading": "Was meinen wir mit „ethnischen Europäern“?"
+  },
+  "term": {
+    "ee_tip": "Ethnische Europäer sind Menschen, deren Abstammung auf die einheimischen Völker Europas zurückgeht; oft werden sie „Weiße“ genannt.",
+    "learn_more": "Mehr erfahren"
   },
   "views_aria": "Kartenansicht",
   "views": {
