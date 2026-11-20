@@ -7,7 +7,12 @@
   "lang_picker_aria": "Nyelv",
   "shown_in_english": "Angolul megjelenítve",
   "about": {
-    "heading": "A projektről"
+    "heading": "A projektről",
+    "ee_heading": "Mit értünk „etnikai európaiak” alatt?"
+  },
+  "term": {
+    "ee_tip": "Az etnikai európaiak olyan emberek, akiknek felmenői Európa őshonos népeitől származnak; gyakran „fehérnek” nevezik őket.",
+    "learn_more": "Tudj meg többet"
   },
   "views_aria": "Térképnézet",
   "views": {

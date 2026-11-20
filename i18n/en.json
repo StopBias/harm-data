@@ -7,7 +7,12 @@
   "lang_picker_aria": "Language",
   "shown_in_english": "Shown in English",
   "about": {
-    "heading": "About"
+    "heading": "About",
+    "ee_heading": "What do we mean by ‘ethnic European’?"
+  },
+  "term": {
+    "ee_tip": "Ethnic Europeans are people whose ancestry traces to the native peoples of Europe, often called ‘White’.",
+    "learn_more": "Learn more"
   },
   "views_aria": "Map view",
   "views": {

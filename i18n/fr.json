@@ -7,7 +7,12 @@
   "lang_picker_aria": "Langue",
   "shown_in_english": "Affiché en anglais",
   "about": {
-    "heading": "À propos"
+    "heading": "À propos",
+    "ee_heading": "Qu’entendons-nous par « Européen ethnique » ?"
+  },
+  "term": {
+    "ee_tip": "Les Européens ethniques sont les personnes dont l’ascendance remonte aux peuples autochtones d’Europe ; on les appelle souvent « Blancs ».",
+    "learn_more": "En savoir plus"
   },
   "views_aria": "Vue de la carte",
   "views": {

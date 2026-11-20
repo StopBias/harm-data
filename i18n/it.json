@@ -7,7 +7,12 @@
   "lang_picker_aria": "Lingua",
   "shown_in_english": "Mostrato in inglese",
   "about": {
-    "heading": "Informazioni"
+    "heading": "Informazioni",
+    "ee_heading": "Che cosa intendiamo per «europeo etnico»?"
+  },
+  "term": {
+    "ee_tip": "Gli europei etnici sono persone la cui ascendenza risale ai popoli nativi d’Europa; spesso sono chiamati «bianchi».",
+    "learn_more": "Scopri di più"
   },
   "views_aria": "Vista della mappa",
   "views": {

@@ -7,7 +7,12 @@
   "lang_picker_aria": "Język",
   "shown_in_english": "Wyświetlone po angielsku",
   "about": {
-    "heading": "O projekcie"
+    "heading": "O projekcie",
+    "ee_heading": "Co rozumiemy przez „etnicznych Europejczyków”?"
+  },
+  "term": {
+    "ee_tip": "Etniczni Europejczycy to osoby, których przodkowie wywodzą się z rdzennych ludów Europy; często nazywa się ich „białymi”.",
+    "learn_more": "Dowiedz się więcej"
   },
   "views_aria": "Widok mapy",
   "views": {

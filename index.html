@@ -477,6 +477,36 @@
     @media (max-width: 768px) {
       #about-view { padding: 16px 12px 40px; }
     }
+    .about-explainer { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+    .about-explainer h3 { font-size: 1.15rem; margin: 0 0 10px; }
+    .about-explainer p { font-size: 1.05rem; line-height: 1.65; margin: 0 0 1em; }
+
+    /* "ethnic European" term with an explanatory popup */
+    .term-ee {
+      border-bottom: 1px dotted currentColor;
+      cursor: help;
+      border-radius: 2px;
+    }
+    .term-ee:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .term-tip {
+      position: fixed;
+      z-index: 50;
+      max-width: min(320px, calc(100vw - 24px));
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+      padding: 10px 12px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      font-weight: 400;
+      text-align: left;
+    }
+    .term-tip[hidden] { display: none; }
+    .term-tip p { margin: 0 0 6px; }
+    .term-tip a { color: var(--brand-dark); font-weight: 600; }
 
     /* Attention shimmer: 3 bright pulses until the element is first used (off under prefers-reduced-motion) */
     .attention-shimmer {
@@ -607,6 +637,12 @@
         <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of antiwhite bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
         <!-- Social media links will be added here once handles are provided. -->
       </div>
+      <section class="about-explainer" id="ethnic-european" aria-labelledby="ee-title">
+        <h3 id="ee-title">What do we mean by ‘ethnic European’?</h3>
+        <p>Ethnic Europeans are people whose heritage traces to the native peoples of Europe, including those whose families settled in the Americas, Australia, New Zealand and elsewhere. They are commonly called ‘White’.</p>
+        <p>‘White’ describes skin colour, and many communities with light skin are not ethnic European. When we say antiwhite bias, we mean prejudice and discrimination aimed specifically at people of ethnic European heritage. This can more precisely be called ethnic Europhobia.</p>
+        <p>Most official statistics don’t record ethnic European heritage at all, and use broad categories like ‘White’ that mix different groups together. This gap makes it hard to see when ethnic European children are being harmed, and it’s one of the gaps this project highlights.</p>
+      </section>
     </div>
   </section>
   <link rel="stylesheet" href="media.css">
@@ -800,6 +836,9 @@
       setMeta('meta[property="og:description"]', desc);
       const aboutLink = document.getElementById("about-link");
       if (aboutLink) aboutLink.textContent = t("about.heading");
+      const eeTitle = document.getElementById("ee-title");
+      if (eeTitle) eeTitle.textContent = t("about.ee_heading");
+      if (window.refreshTermTips) window.refreshTermTips();
       const aboutTitle = document.getElementById("about-title");
       if (aboutTitle) aboutTitle.textContent = t("about.heading");
       const aboutBadge = document.getElementById("about-en-badge");
@@ -2172,6 +2211,114 @@
       })
       .catch(err => console.error(err));
     }).catch(err => { console.error(err); document.documentElement.removeAttribute("data-i18n-pending"); });
+  </script>
+  <div class="term-tip" id="term-tip" role="tooltip" hidden>
+    <p id="term-tip-text">Ethnic Europeans are people whose ancestry traces to the native peoples of Europe, often called ‘White’.</p>
+    <a href="#about" id="term-tip-more" data-scroll-to="ethnic-european">Learn more</a>
+  </div>
+  <script>
+    // "ethnic European" explainer: the first occurrence in each view's text gets a focusable term
+    // with a popup (hover, focus or tap; Escape closes) that links to the About explainer.
+    (function () {
+      "use strict";
+      const TERM_RE = /ethnic Europeans?/i;
+      // One group per view; only the first match across the group's containers is wrapped.
+      const GROUPS = [
+        { name: "about", sel: ["#about-body"] },
+        { name: "map", sel: ["#panel-content", "#legend", "#explorer"] },
+        { name: "media", sel: ["#media-view"] }
+      ];
+      const tip = document.getElementById("term-tip");
+      const tipText = document.getElementById("term-tip-text");
+      const more = document.getElementById("term-tip-more");
+      const tr = (k, fb) => { const s = window.t ? window.t(k) : null; return s && s !== k ? s : fb; };
+      let current = null, hideTimer = null;
+
+      function wrapFirst(container) {
+        const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+          acceptNode: n => (n.parentElement && n.parentElement.closest("a, button, select, option, script, style, .term-ee, .about-explainer"))
+            ? NodeFilter.FILTER_REJECT : (TERM_RE.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+        });
+        const node = walker.nextNode();
+        if (!node) return false;
+        const m = TERM_RE.exec(node.nodeValue);
+        const after = node.splitText(m.index);
+        after.splitText(m[0].length);
+        const span = document.createElement("span");
+        span.className = "term-ee";
+        span.tabIndex = 0;
+        span.setAttribute("role", "button");
+        span.setAttribute("aria-describedby", "term-tip");
+        span.setAttribute("aria-expanded", "false");
+        span.textContent = after.nodeValue;
+        after.parentNode.replaceChild(span, after);
+        return true;
+      }
+      function scan() {
+        GROUPS.forEach(g => {
+          const roots = g.sel.map(s => document.querySelector(s)).filter(Boolean);
+          if (roots.some(r => r.querySelector(".term-ee"))) return;
+          for (const r of roots) { if (wrapFirst(r)) break; }
+        });
+      }
+      function place(el) {
+        const r = el.getBoundingClientRect();
+        tip.style.left = "0px"; tip.style.top = "0px";
+        const w = tip.offsetWidth, hgt = tip.offsetHeight;
+        let left = Math.min(Math.max(8, r.left), window.innerWidth - w - 8);
+        let top = r.bottom + 6;
+        if (top + hgt > window.innerHeight - 8) top = Math.max(8, r.top - hgt - 6);
+        tip.style.left = left + "px"; tip.style.top = top + "px";
+      }
+      function show(el) {
+        clearTimeout(hideTimer);
+        if (current && current !== el) current.setAttribute("aria-expanded", "false");
+        current = el;
+        tipText.textContent = tr("term.ee_tip", tipText.textContent);
+        more.textContent = tr("term.learn_more", more.textContent);
+        tip.hidden = false;
+        el.setAttribute("aria-expanded", "true");
+        place(el);
+      }
+      function hide() {
+        clearTimeout(hideTimer);
+        tip.hidden = true;
+        if (current) current.setAttribute("aria-expanded", "false");
+        current = null;
+      }
+      const hideSoon = () => { clearTimeout(hideTimer); hideTimer = setTimeout(hide, 250); };
+      const termOf = e => e.target && e.target.closest && e.target.closest(".term-ee");
+
+      document.addEventListener("mouseover", e => { const el = termOf(e); if (el) show(el); else if (current && tip.contains(e.target)) clearTimeout(hideTimer); });
+      document.addEventListener("mouseout", e => { if (termOf(e) || tip.contains(e.target)) hideSoon(); });
+      document.addEventListener("focusin", e => { const el = termOf(e); if (el) show(el); else if (current && !tip.contains(e.target)) hide(); });
+      document.addEventListener("click", e => {
+        const el = termOf(e);
+        if (el) { e.preventDefault(); show(el); return; }
+        if (current && !tip.contains(e.target)) hide();
+      });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && !tip.hidden) { const el = current; hide(); if (el) el.focus(); }
+        else if ((e.key === "Enter" || e.key === " ") && termOf(e)) { e.preventDefault(); show(termOf(e)); }
+      });
+      window.addEventListener("scroll", () => { if (current) place(current); }, { passive: true });
+      window.addEventListener("resize", () => { if (current) place(current); });
+      more.addEventListener("click", e => {
+        e.preventDefault();
+        hide();
+        if (location.hash !== "#about") { history.pushState(null, "", "#about"); window.dispatchEvent(new HashChangeEvent("hashchange")); }
+        requestAnimationFrame(() => { const s = document.getElementById("ethnic-european"); if (s) s.scrollIntoView({ block: "start" }); });
+      });
+
+      let pending = false;
+      const obs = new MutationObserver(() => { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; scan(); }); });
+      function start() {
+        GROUPS.forEach(g => g.sel.forEach(s => { const r = document.querySelector(s); if (r) obs.observe(r, { childList: true, subtree: true }); }));
+        scan();
+      }
+      window.refreshTermTips = () => { if (!tip.hidden) show(current); };
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+    })();
   </script>
 </body>
 </html>
