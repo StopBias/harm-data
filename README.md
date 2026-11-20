@@ -58,7 +58,10 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - Data: `data/age/index.json` lists countries with a file at `data/age/<iso3 lowercase>.json` (schema `harm-data/age-bands/v1`:
   `harms.<harm>.series[]` with `role` victims / perpetrators / cross, `groups` or `victim_groups`/`offender_groups`,
   `bands.<band>` = `{fit, approx_band, cells | matrix, note}`, `native_bands`, `sources`, `available_bands`).
-  Countries without a file show their all-ages data and "No age breakdown published". Only the United States has a file so far.
+  Countries without a file show their all-ages data and "No age breakdown published". Files so far: United States, United
+  Kingdom (England and Wales Homicide Index victims; MoJ court defendants by 18+1 ethnicity), New Zealand (MoJ court data;
+  age and ethnicity published separately, not crossed), Canada (StatCan homicide by Indigenous identity), Australia (ABS
+  Aboriginal and Torres Strait Islander victims by state; offenders all ages) and Germany (BKA PKS by nationality).
 - Code and styles: `age.js`, `age.css`; strings: `age.*` in `i18n/*.json`. The explorer fires a `harm:explorer` event
   (`detail.iso`) whenever it renders a country, which is the only hook `age.js` needs.
 
