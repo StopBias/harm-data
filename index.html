@@ -3,6 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script>
+    (function () {
+      var supported = { en: 1, de: 1, es: 1, fr: 1 };
+      var q = /[?&]lang=([a-z]{2})/i.exec(location.search);
+      var lang = q && supported[q[1].toLowerCase()] ? q[1].toLowerCase() : null;
+      if (!lang) {
+        try { var s = localStorage.getItem("harm-data-lang"); if (supported[s]) lang = s; } catch (e) {}
+      }
+      if (!lang) {
+        var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"];
+        for (var i = 0; i < list.length; i++) {
+          var c = String(list[i] || "").slice(0, 2).toLowerCase();
+          if (supported[c]) { lang = c; break; }
+        }
+      }
+      if (!lang) lang = "en";
+      document.documentElement.lang = lang;
+      if (lang !== "en") document.documentElement.setAttribute("data-i18n-pending", "");
+    })();
+  </script>
   <title>Antiwhite Bias Child-Harm Data Explorer</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.js"></script>
@@ -47,7 +67,7 @@
       letter-spacing: 0.01em;
       line-height: 1.25;
     }
-    header h1 span { color: var(--accent); }
+    header h1 #title-rest { color: var(--accent); }
     header .sub {
       margin: 2px 0 0;
       font-size: 0.8rem;
@@ -270,11 +290,61 @@
 
     .maplibregl-ctrl-attrib { font-size: 0.65rem; }
 
+
+    html[data-i18n-pending] header h1,
+    html[data-i18n-pending] header .sub,
+    html[data-i18n-pending] .views,
+    html[data-i18n-pending] .legend,
+    html[data-i18n-pending] #panel,
+    html[data-i18n-pending] #explorer { visibility: hidden; }
+
+    header .header-text { flex: 1 1 auto; min-width: 0; }
+    .lang-picker {
+      margin-left: auto;
+      display: flex;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .lang-picker button {
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background: #fff;
+      border: 0;
+      border-right: 1px solid var(--line);
+      padding: 4px 7px;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+    .lang-picker button:last-child { border-right: 0; }
+    .lang-picker button:hover:not([aria-pressed="true"]) { background: #f3f5f6; }
+    .lang-picker button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+    .en-only {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #f1f3f4;
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .src dl { grid-template-columns: minmax(8.5em, 150px) 1fr; }
+
     /* ---------- Mobile: map first, bottom sheet ---------- */
     @media (max-width: 768px) {
       header { padding: 8px 12px; gap: 10px; }
       header img { height: 20px; }
       header h1 { font-size: 0.9rem; }
+      .lang-picker button { padding: 5px 6px; font-size: 0.7rem; }
+      .views button { white-space: normal; line-height: 1.2; padding: 6px 3px; font-size: 0.7rem; }
       header .sub { display: none; }
       /* Map box sized to the world's shape (a flat world is wider than tall),
          legend sits under it, details slide up from the bottom. */
@@ -316,12 +386,18 @@
 <body>
   <header>
     <a href="https://www.stopbias.org/" target="_blank" rel="noopener">
-      <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias">
+      <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias" id="logo">
     </a>
-    <div>
-      <h1>Antiwhite Bias <span>Child-Harm Data Explorer</span></h1>
-      <p class="sub">How completely each country publishes victim and perpetrator ethnicity in crimes against children</p>
+    <div class="header-text">
+      <h1><span id="title-lead">Antiwhite Bias</span> <span id="title-rest">Child-Harm Data Explorer</span></h1>
+      <p class="sub" id="site-sub">How completely each country publishes victim and perpetrator ethnicity in crimes against children</p>
     </div>
+    <nav class="lang-picker" id="lang-picker" aria-label="Language">
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="de" lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+      <button type="button" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+    </nav>
   </header>
 
   <div class="layout">
@@ -350,25 +426,25 @@
       <p class="ex-lede" id="ex-lede">Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.</p>
       <div class="ex-io" id="ex-io" hidden>
         <div class="ex-inputs" id="ex-controls" hidden>
-          <h3 class="ex-bar">Inputs</h3>
+          <h3 class="ex-bar" id="lbl-inputs">Inputs</h3>
           <div class="ex-control-grid">
-            <label>Harm<select id="sel-harm"></select></label>
+            <label><span id="lbl-harm">Harm</span><select id="sel-harm"></select></label>
             <label><span id="lbl-victim">Victim's heritage</span><select id="sel-victim"></select></label>
             <label><span id="lbl-perp">Perpetrator's heritage</span><select id="sel-perp"></select></label>
-            <label>Measure<select id="sel-measure">
-              <option value="share">Share (%)</option>
-              <option value="rate">Rate per 100,000</option>
+            <label><span id="lbl-measure">Measure</span><select id="sel-measure">
+              <option value="share" id="opt-share">Share (%)</option>
+              <option value="rate" id="opt-rate">Rate per 100,000</option>
             </select></label>
           </div>
           <p class="ex-avail" id="ex-avail" hidden></p>
         </div>
         <div class="ex-output" id="ex-output" hidden>
-          <h3 class="ex-bar">Output</h3>
+          <h3 class="ex-bar" id="lbl-output">Output</h3>
           <div class="ex-output-box" id="ex-result" aria-live="polite"></div>
         </div>
       </div>
       <div class="ex-notes" id="ex-notes" hidden>
-        <h3 class="ex-kicker">Notes</h3>
+        <h3 class="ex-kicker" id="ex-notes-kicker">Notes</h3>
         <div class="ex-notes-body" id="ex-notes-body"></div>
       </div>
       <div id="ex-sources" hidden></div>
@@ -378,6 +454,217 @@
   </section>
 
   <script>
+
+    // ---------- Languages (en, de, es, fr) ----------
+    const SUPPORTED_LANGS = ["en", "de", "es", "fr"];
+    const LANG_LOCALES = { en: "en-US", de: "de-DE", es: "es-ES", fr: "fr-FR" };
+    const ISO3_TO_ISO2 = {"ABW":"AW","AFG":"AF","AGO":"AO","AIA":"AI","ALA":"AX","ALB":"AL","AND":"AD","ARE":"AE","ARG":"AR","ARM":"AM","ASM":"AS","ATA":"AQ","ATF":"TF","ATG":"AG","AUS":"AU","AUT":"AT","AZE":"AZ","BDI":"BI","BEL":"BE","BEN":"BJ","BES":"BQ","BFA":"BF","BGD":"BD","BGR":"BG","BHR":"BH","BHS":"BS","BIH":"BA","BLM":"BL","BLR":"BY","BLZ":"BZ","BMU":"BM","BOL":"BO","BRA":"BR","BRB":"BB","BRN":"BN","BTN":"BT","BVT":"BV","BWA":"BW","CAF":"CF","CAN":"CA","CCK":"CC","CHE":"CH","CHL":"CL","CHN":"CN","CIV":"CI","CMR":"CM","COD":"CD","COG":"CG","COK":"CK","COL":"CO","COM":"KM","CPV":"CV","CRI":"CR","CUB":"CU","CUW":"CW","CXR":"CX","CYM":"KY","CYP":"CY","CZE":"CZ","DEU":"DE","DJI":"DJ","DMA":"DM","DNK":"DK","DOM":"DO","DZA":"DZ","ECU":"EC","EGY":"EG","ERI":"ER","ESH":"EH","ESP":"ES","EST":"EE","ETH":"ET","FIN":"FI","FJI":"FJ","FLK":"FK","FRA":"FR","FRO":"FO","FSM":"FM","GAB":"GA","GBR":"GB","GEO":"GE","GGY":"GG","GHA":"GH","GIB":"GI","GIN":"GN","GLP":"GP","GMB":"GM","GNB":"GW","GNQ":"GQ","GRC":"GR","GRD":"GD","GRL":"GL","GTM":"GT","GUF":"GF","GUM":"GU","GUY":"GY","HKG":"HK","HMD":"HM","HND":"HN","HRV":"HR","HTI":"HT","HUN":"HU","IDN":"ID","IMN":"IM","IND":"IN","IOT":"IO","IRL":"IE","IRN":"IR","IRQ":"IQ","ISL":"IS","ISR":"IL","ITA":"IT","JAM":"JM","JEY":"JE","JOR":"JO","JPN":"JP","KAZ":"KZ","KEN":"KE","KGZ":"KG","KHM":"KH","KIR":"KI","KNA":"KN","KOR":"KR","KWT":"KW","LAO":"LA","LBN":"LB","LBR":"LR","LBY":"LY","LCA":"LC","LIE":"LI","LKA":"LK","LSO":"LS","LTU":"LT","LUX":"LU","LVA":"LV","MAC":"MO","MAF":"MF","MAR":"MA","MCO":"MC","MDA":"MD","MDG":"MG","MDV":"MV","MEX":"MX","MHL":"MH","MKD":"MK","MLI":"ML","MLT":"MT","MMR":"MM","MNE":"ME","MNG":"MN","MNP":"MP","MOZ":"MZ","MRT":"MR","MSR":"MS","MTQ":"MQ","MUS":"MU","MWI":"MW","MYS":"MY","MYT":"YT","NAM":"NA","NCL":"NC","NER":"NE","NFK":"NF","NGA":"NG","NIC":"NI","NIU":"NU","NLD":"NL","NOR":"NO","NPL":"NP","NRU":"NR","NZL":"NZ","OMN":"OM","PAK":"PK","PAN":"PA","PCN":"PN","PER":"PE","PHL":"PH","PLW":"PW","PNG":"PG","POL":"PL","PRI":"PR","PRK":"KP","PRT":"PT","PRY":"PY","PSE":"PS","PYF":"PF","QAT":"QA","REU":"RE","ROU":"RO","RUS":"RU","RWA":"RW","SAU":"SA","SDN":"SD","SEN":"SN","SGP":"SG","SGS":"GS","SHN":"SH","SJM":"SJ","SLB":"SB","SLE":"SL","SLV":"SV","SMR":"SM","SOM":"SO","SPM":"PM","SRB":"RS","SSD":"SS","STP":"ST","SUR":"SR","SVK":"SK","SVN":"SI","SWE":"SE","SWZ":"SZ","SXM":"SX","SYC":"SC","SYR":"SY","TCA":"TC","TCD":"TD","TGO":"TG","THA":"TH","TJK":"TJ","TKL":"TK","TKM":"TM","TLS":"TL","TON":"TO","TTO":"TT","TUN":"TN","TUR":"TR","TUV":"TV","TWN":"TW","TZA":"TZ","UGA":"UG","UKR":"UA","UMI":"UM","URY":"UY","USA":"US","UZB":"UZ","VAT":"VA","VCT":"VC","VEN":"VE","VGB":"VG","VIR":"VI","VNM":"VN","VUT":"VU","WLF":"WF","WSM":"WS","XKX":"XK","YEM":"YE","ZAF":"ZA","ZMB":"ZM","ZWE":"ZW"};
+    const I18N_STORE = "harm-data-lang";
+    const I18N_CACHE = {};
+    const I18N_MISSING = new Set();
+    let I18N_EN = {}, I18N = {}, currentLang = document.documentElement.lang || "en";
+    let displayNames = null;
+    let selectedId = null, selectedName = null;
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    if (!SUPPORTED_LANGS.includes(currentLang)) currentLang = "en";
+
+    function i18nLookup(dict, key) {
+      if (!dict || !key) return undefined;
+      if (Object.prototype.hasOwnProperty.call(dict, key) && typeof dict[key] !== "object") return dict[key];
+      return key.split(".").reduce((o, k) => (o && o[k] != null ? o[k] : undefined), dict);
+    }
+    function t(key, vars) {
+      let s = i18nLookup(I18N, key);
+      if (s == null || s === "") {
+        s = i18nLookup(I18N_EN, key);
+        if ((s == null || s === "") && I18N_EN && Object.keys(I18N_EN).length) I18N_MISSING.add(key);
+      }
+      if (s == null) s = key;
+      if (typeof s !== "string") s = String(s);
+      if (vars) s = s.replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? String(vars[k]) : ""));
+      return s;
+    }
+    function currentLocale() { return LANG_LOCALES[currentLang] || "en-US"; }
+    function deepMerge(base, over) {
+      if (!over || typeof over !== "object" || Array.isArray(over)) return over != null ? over : base;
+      const out = { ...base };
+      Object.keys(over).forEach(k => {
+        if (over[k] && typeof over[k] === "object" && !Array.isArray(over[k]) && typeof base[k] === "object" && base[k] && !Array.isArray(base[k])) {
+          out[k] = deepMerge(base[k], over[k]);
+        } else if (over[k] != null && over[k] !== "") {
+          out[k] = over[k];
+        }
+      });
+      return out;
+    }
+    function collectKeys(obj, prefix, into) {
+      if (obj && typeof obj === "object" && !Array.isArray(obj)) {
+        Object.keys(obj).forEach(k => collectKeys(obj[k], prefix ? prefix + "." + k : k, into));
+      } else if (prefix) into.add(prefix);
+    }
+    async function loadI18nFile(lang) {
+      if (I18N_CACHE[lang]) return I18N_CACHE[lang];
+      const r = await fetch("i18n/" + lang + ".json");
+      if (!r.ok) throw new Error("i18n/" + lang + ".json: HTTP " + r.status);
+      const data = await r.json();
+      I18N_CACHE[lang] = data;
+      return data;
+    }
+    function refreshDisplayNames() {
+      try { displayNames = new Intl.DisplayNames([currentLang], { type: "region" }); }
+      catch (e) { displayNames = null; }
+    }
+    function countryDisplayName(iso, fallback) {
+      if (!iso) return fallback || t("explorer.this_country");
+      const manual = i18nLookup(I18N, "countries." + iso) || (currentLang !== "en" ? i18nLookup(I18N_EN, "countries." + iso) : undefined);
+      if (manual) return manual;
+      const a2 = ISO3_TO_ISO2[iso];
+      if (a2 && displayNames) {
+        try {
+          const name = displayNames.of(a2);
+          if (name && name !== a2 && name !== "Unknown Region") return name;
+        } catch (e) {}
+      }
+      return fallback || iso;
+    }
+    function countrySentenceName(iso, fallback) {
+      const special = i18nLookup(I18N, "countries_in_sentence." + iso);
+      if (special) return special;
+      return countryDisplayName(iso, fallback);
+    }
+    function formatDate(isoDate) {
+      if (!isoDate) return "";
+      const m = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!m) return String(isoDate);
+      const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], 12));
+      try {
+        return new Intl.DateTimeFormat(currentLocale(), { day: "numeric", month: "long", year: "numeric" }).format(d);
+      } catch (e) { return String(isoDate); }
+    }
+    function fmtPct(v) {
+      const n = v >= 100 ? Math.round(v) : Math.round(v * 100) / 100;
+      return t("percent_pattern", { n: n.toLocaleString(currentLocale()) });
+    }
+    function localeAndJoin(items) {
+      if (!items || !items.length) return "";
+      if (items.length === 1) return items[0];
+      return t("result.list_and", { head: items.slice(0, -1).join(", "), last: items[items.length - 1] });
+    }
+    function enOnlyBadge() {
+      return currentLang === "en" ? "" : ` <span class="en-only">${esc(t("shown_in_english"))}</span>`;
+    }
+    function proxyKindLabel(kind) {
+      return i18nLookup(I18N, "proxy_kinds." + kind) || i18nLookup(I18N_EN, "proxy_kinds." + kind) || kind;
+    }
+    function unknownLabel(raw) {
+      return i18nLookup(I18N, "unknown_labels." + raw) || i18nLookup(I18N_EN, "unknown_labels." + raw) || raw;
+    }
+    function tierLabel(raw) {
+      return i18nLookup(I18N, "tiers." + raw) || i18nLookup(I18N_EN, "tiers." + raw) || raw;
+    }
+    function missingI18nKeys() {
+      const enKeys = new Set();
+      collectKeys(I18N_EN, "", enKeys);
+      const locKeys = new Set();
+      collectKeys(currentLang === "en" ? I18N_EN : (I18N_CACHE[currentLang] || {}), "", locKeys);
+      // Optional per-language country sentence names are not required to match.
+      const required = [...enKeys].filter(k => !k.startsWith("countries_in_sentence."));
+      return required.filter(k => !locKeys.has(k));
+    }
+
+    async function applyLangData(lang) {
+      I18N_EN = await loadI18nFile("en");
+      currentLang = SUPPORTED_LANGS.includes(lang) ? lang : "en";
+      I18N = currentLang === "en" ? I18N_EN : deepMerge(I18N_EN, await loadI18nFile(currentLang));
+      document.documentElement.lang = currentLang;
+      document.documentElement.removeAttribute("data-i18n-pending");
+      refreshDisplayNames();
+    }
+    async function bootI18n() {
+      try {
+        await applyLangData(currentLang);
+      } catch (err) {
+        console.error(err);
+        currentLang = "en";
+        try { I18N_EN = I18N = await loadI18nFile("en"); } catch (e) { I18N_EN = I18N = {}; }
+        document.documentElement.lang = "en";
+        document.documentElement.removeAttribute("data-i18n-pending");
+        refreshDisplayNames();
+      }
+    }
+    function applyStaticI18n() {
+      document.title = t("title");
+      const lead = document.getElementById("title-lead");
+      const rest = document.getElementById("title-rest");
+      if (lead) lead.textContent = t("title_lead");
+      if (rest) rest.textContent = t("title_rest");
+      const sub = document.getElementById("site-sub");
+      if (sub) sub.textContent = t("subtitle");
+      const logo = document.getElementById("logo");
+      if (logo) logo.alt = t("logo_alt");
+      const picker = document.getElementById("lang-picker");
+      if (picker) {
+        picker.setAttribute("aria-label", t("lang_picker_aria"));
+        [...picker.querySelectorAll("button")].forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === currentLang)));
+      }
+      const handle = document.getElementById("panel-handle");
+      if (handle) handle.setAttribute("aria-label", t("panel.handle_aria"));
+      const setTxt = (id, key) => { const el = document.getElementById(id); if (el) el.textContent = t(key); };
+      setTxt("lbl-inputs", "explorer.inputs");
+      setTxt("lbl-output", "explorer.output");
+      setTxt("lbl-harm", "explorer.harm");
+      setTxt("lbl-measure", "explorer.measure");
+      setTxt("lbl-victim", "explorer.victim_heritage");
+      setTxt("lbl-perp", "explorer.perp_heritage");
+      setTxt("opt-share", "explorer.measure_share");
+      setTxt("opt-rate", "explorer.measure_rate");
+      setTxt("ex-planned", "explorer.planned");
+      const notesK = document.getElementById("ex-notes-kicker");
+      if (notesK) notesK.innerHTML = esc(t("explorer.notes")) + enOnlyBadge();
+    }
+    function renderLegend() {
+      document.getElementById("legend").innerHTML =
+        `<div class="legend-title">${esc(t("legend.title"))}</div><div class="legend-items">` +
+        SCALE.map(b =>
+          `<span class="legend-item"><span class="swatch" style="background:${b.color}"></span>${esc(bandLabel(b))}</span>`).join("") +
+        `<span class="legend-item"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>${esc(t("legend.not_analyzed"))}</span>` +
+        `<span class="legend-item subtle"><span class="swatch" style="background:${OUT_OF_SCOPE_COLOR}; box-shadow: inset 0 0 0 1px #d5d8da"></span>${esc(t("legend.out_of_scope"))}</span>` +
+        "</div>";
+    }
+    function updateAttribution() {
+      const el = document.querySelector(".maplibregl-ctrl-attrib-inner");
+      if (el) el.innerHTML = esc(t("map.attribution"));
+    }
+    async function setLang(lang, opts) {
+      const persist = !opts || opts.persist !== false;
+      const updateUrl = !opts || opts.updateUrl !== false;
+      if (!SUPPORTED_LANGS.includes(lang)) lang = "en";
+      await applyLangData(lang);
+      if (persist) { try { localStorage.setItem(I18N_STORE, lang); } catch (e) {} }
+      if (updateUrl) {
+        const u = new URL(location.href);
+        u.searchParams.set("lang", lang);
+        history.replaceState(null, "", u.pathname + u.search + u.hash);
+      }
+      applyStaticI18n();
+      renderLegend();
+      updateAttribution();
+      if (window.updateViewButtons) window.updateViewButtons();
+      if (selectedId && window.showCountry) window.showCountry(selectedId, countryDisplayName(selectedId, selectedName));
+      else if (window.clearSelection) window.clearSelection();
+    }
+    function setupLangPicker() {
+      const picker = document.getElementById("lang-picker");
+      if (!picker) return;
+      picker.addEventListener("click", e => {
+        const btn = e.target.closest("button[data-lang]");
+        if (!btn || btn.dataset.lang === currentLang) return;
+        setLang(btn.dataset.lang);
+      });
+    }
+
+    const I18N_READY = bootI18n();
+
     // ==================================================================
     // DATA
     // 1) SCALE: 5 bands of data completeness (0-100 %). A country's colour is the band its score falls in.
@@ -394,24 +681,14 @@
       { from: 80, to: 100, color: "#1e8449" }    // dark green
     ];
     const bandFor = score => SCALE.find((b, i) => score >= b.from && (score < b.to || (i === SCALE.length - 1 && score <= b.to)));
-    const bandLabel = b => `${b.from}–${b.to}%`;
+    const bandLabel = b => t("band_label", { from: b.from.toLocaleString(currentLocale()), to: b.to.toLocaleString(currentLocale()) });
     const NOT_ANALYZED_COLOR = "#b9bfc4";  // in scope, not yet analyzed
     const OUT_OF_SCOPE_COLOR = "#eceeef";  // not part of the project
 
-    // Scoring rubric shown in "How the score works".
+    // Scoring rubric strings live in i18n/*.json (key prefix method.).
     // To change a country's displayed score, edit `completeness` in data/<iso3>.json
     // (keep score.value in step with it). The map, badge and method box all read
     // that one number via publishedScore().
-    const SCORE_RUBRIC = {
-      gold: "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-      components: [
-        { name: "Victim heritage", points: "37.5", full: "Published by harm, with people of European descent identified separately — not only a broader category such as White, or a proxy such as nationality." },
-        { name: "Perpetrator heritage", points: "37.5", full: "The same standard for perpetrators." },
-        { name: "Coverage, rates and access", points: "25", full: "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release." }
-      ],
-      cap: "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is.",
-      weights: "The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%, sex trafficking 20%, physical abuse 15%, online exploitation 10% and neglect 10% (weights in use since 19 November 2026)."
-    };
 
 
     const IN_SCOPE = [
@@ -616,17 +893,18 @@
     const colorFor = iso => tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
                           : inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
 
-    const statusText = info => `${info.exact ? info.completeness + "% · " : ""}${bandLabel(bandFor(info.completeness))} complete${info.provisional ? " (provisional)" : ""}`;
+    const statusText = info => {
+      const band = bandLabel(bandFor(info.completeness));
+      const core = info.exact
+        ? t("band_complete_exact", { score: info.completeness.toLocaleString(currentLocale()), band })
+        : t("band_complete", { band });
+      return info.provisional ? `${core} ${t("provisional")}` : core;
+    };
 
-    // Legend
-    document.getElementById("legend").innerHTML =
-      '<div class="legend-title">Child protection by data completeness</div><div class="legend-items">' +
-      SCALE.map(b =>
-        `<span class="legend-item"><span class="swatch" style="background:${b.color}"></span>${bandLabel(b)}</span>`).join("") +
-      `<span class="legend-item"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</span>` +
-      `<span class="legend-item subtle"><span class="swatch" style="background:${OUT_OF_SCOPE_COLOR}; box-shadow: inset 0 0 0 1px #d5d8da"></span>Outside current scope</span>` +
-      '</div>';
+    // Legend is drawn in renderLegend() after i18n loads.
 
+
+    I18N_READY.then(() => {
     // Fill colour expression built from the data object
     const fillColor = ["match", ["get", "iso_a3"]];
     [...inScope].forEach(iso => fillColor.push(iso, colorFor(iso)));
@@ -650,7 +928,7 @@
       pitchWithRotate: false,
       touchPitch: false,
       boxZoom: false,
-      attributionControl: { compact: true, customAttribution: "Boundaries: Natural Earth" }
+      attributionControl: { compact: true, customAttribution: t("map.attribution") }
     });
     map.touchZoomRotate.disableRotation();
     map.keyboard.disableRotation();
@@ -703,24 +981,34 @@
 
     // ---------- View buttons ----------
     const VIEWS = {
-      "World":         WORLD_BOUNDS,
-      "Europe":        [[-25, 34], [45, 71.5]],
-      "North America": [[-168, 14], [-52, 72]],
-      "Oceania":       [[110, -48], [180, -9]]
+      world:         WORLD_BOUNDS,
+      europe:        [[-25, 34], [45, 71.5]],
+      north_america: [[-168, 14], [-52, 72]],
+      oceania:       [[110, -48], [180, -9]]
     };
-    let currentView = "World";
+    let currentView = "world";
     const viewsEl = document.getElementById("views");
+    function updateViewButtons() {
+      viewsEl.setAttribute("aria-label", t("views_aria"));
+      [...viewsEl.children].forEach(b => {
+        b.textContent = t("views." + b.dataset.view);
+        b.setAttribute("aria-pressed", String(b.dataset.view === currentView));
+      });
+    }
     Object.keys(VIEWS).forEach(name => {
       const btn = document.createElement("button");
-      btn.type = "button"; btn.textContent = name;
+      btn.type = "button";
+      btn.dataset.view = name;
+      btn.textContent = t("views." + name);
       btn.setAttribute("aria-pressed", String(name === currentView));
       btn.addEventListener("click", () => goToView(name));
       viewsEl.appendChild(btn);
     });
+    updateViewButtons();
     function goToView(name, animate = true) {
       currentView = name;
-      [...viewsEl.children].forEach(b => b.setAttribute("aria-pressed", String(b.textContent === name)));
-      if (name === "World") { fitWorld(); return; }
+      [...viewsEl.children].forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === name)));
+      if (name === "world") { fitWorld(); return; }
       const cam = map.cameraForBounds(VIEWS[name], { padding: fitPadding() });
       if (cam && cam.zoom > map.getMaxZoom()) map.setMaxZoom(cam.zoom);   // never let the zoom limit crop a region
       map.fitBounds(VIEWS[name], { padding: fitPadding(), duration: animate ? 900 : 0, essential: true });
@@ -728,6 +1016,7 @@
 
     map.on("load", () => {
       fitWorld();
+      updateAttribution();
       // start with the small (i) attribution button collapsed
       document.querySelectorAll(".maplibregl-compact-show").forEach(el => el.classList.remove("maplibregl-compact-show"));
       fetch(COUNTRIES_URL)
@@ -764,7 +1053,7 @@
         })
         .catch(err => {
           console.error(err);
-          document.getElementById("panel-content").innerHTML = "<p>Map data failed to load. Please refresh.</p>";
+          document.getElementById("panel-content").innerHTML = "<p>" + esc(t("map.load_error")) + "</p>";
         });
     });
 
@@ -772,7 +1061,7 @@
     const tooltip = new maplibregl.Popup({
       closeButton: false, closeOnClick: false, className: "country-tooltip", offset: 14, maxWidth: "320px"
     });
-    let hoveredId = null, selectedId = null, selectedName = null;
+    let hoveredId = null;
 
     function setState(id, state) { if (id) map.setFeatureState({ source: "countries", id }, state); }
 
@@ -790,40 +1079,44 @@
       if (hoveredId !== iso) { clearHover(); hoveredId = iso; setState(iso, { hover: true }); }
       const info = tracked[iso];
       map.getCanvas().style.cursor = inScope.has(iso) ? "pointer" : "";
+      const display = countryDisplayName(iso, f.properties.name);
       const status = info
         ? `<span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}`
         : inScope.has(iso)
-          ? `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed`
-          : "Outside current scope";
+          ? `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>${esc(t("legend.not_analyzed"))}`
+          : esc(t("legend.out_of_scope"));
       tooltip.setLngLat(e.lngLat)
-        .setHTML(`<div class="tt-title">${f.properties.name}</div><div class="tt-status">${status}</div>` +
-                 (info ? `<div style="margin-top:4px">${info.note}</div>` : ""))
+        .setHTML(`<div class="tt-title">${esc(display)}</div><div class="tt-status">${status}</div>` +
+                 (info ? `<div style="margin-top:4px">${esc(info.note)}${enOnlyBadge()}</div>` : ""))
         .addTo(map);
     });
     map.on("mouseleave", "countries-fill", clearHover);
 
     // ---------- Click: data panel ----------
     const panel = document.getElementById("panel");
-    const PANEL_DEFAULT_HTML = document.getElementById("panel-content").innerHTML;
+    function defaultPanelHtml() {
+      return `<p class="hint">${esc(t("panel.hint"))}</p><p class="note">${esc(t("panel.default_note"))}</p>`;
+    }
     document.getElementById("panel-handle").addEventListener("click", () => panel.classList.toggle("open"));
 
     function showCountry(iso, name) {
       const info = tracked[iso];
       const detail = DETAIL[iso];
+      const display = countryDisplayName(iso, name);
       setState(selectedId, { selected: false });
       selectedId = iso;
-      selectedName = name;
+      selectedName = display;
       setState(iso, { selected: true });
-      document.getElementById("panel-title").textContent = name;
+      document.getElementById("panel-title").textContent = display;
       document.getElementById("panel-content").innerHTML = info ? `
         <div class="badge"><span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}</div>
-        <p>${info.note}</p>
-        ${info.provisional ? '<p class="hint"><em>Provisional rating — data collection for this country is still in progress.</em></p>' : ""}
-        ${detail ? `<p><button type="button" class="panel-link" id="to-explorer">Explore the ${esc(detail.short_name || detail.country)} data below the map ↓</button></p>` : ""}
-        <p class="note">${PANEL_NOTE}</p>
+        <p>${esc(info.note)}${enOnlyBadge()}</p>
+        ${info.provisional ? `<p class="hint"><em>${esc(t("panel.provisional_hint"))}</em></p>` : ""}
+        ${detail ? `<p><button type="button" class="panel-link" id="to-explorer">${esc(t("panel.explore", { country: display }))}</button></p>` : ""}
+        <p class="note">${esc(t("panel.footer_note"))}</p>
       ` : `
-        <div class="badge"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed</div>
-        <p class="hint">This country is part of the project. Its published crime data has not been reviewed yet.</p>
+        <div class="badge"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>${esc(t("legend.not_analyzed"))}</div>
+        <p class="hint">${esc(t("panel.not_analyzed_hint"))}</p>
       `;
       if (isMobile()) panel.classList.add("open");
       const toEx = document.getElementById("to-explorer");
@@ -839,8 +1132,8 @@
       setState(selectedId, { selected: false });
       selectedId = null;
       selectedName = null;
-      document.getElementById("panel-title").textContent = "Select a country";
-      document.getElementById("panel-content").innerHTML = PANEL_DEFAULT_HTML;
+      document.getElementById("panel-title").textContent = t("panel.select_country");
+      document.getElementById("panel-content").innerHTML = defaultPanelHtml();
       panel.classList.remove("open");
       renderExplorerFor(null);
     }
@@ -850,7 +1143,7 @@
         ? map.queryRenderedFeatures(e.point, { layers: ["countries-fill"] })[0]
         : null;
       if (hit && inScope.has(hit.properties.iso_a3)) {
-        showCountry(hit.properties.iso_a3, hit.properties.name);
+        showCountry(hit.properties.iso_a3, countryDisplayName(hit.properties.iso_a3, hit.properties.name));
       } else if (selectedId) {
         clearSelection();   // tap on the sea or on a country outside the project
       } else if (isMobile()) {
@@ -860,26 +1153,22 @@
     document.addEventListener("keydown", e => { if (e.key === "Escape" && selectedId) clearSelection(); });
 
     let resizeTimer;
-    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "World") goToView(currentView, false); }, 200); });
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { map.resize(); fitWorld(); if (currentView !== "world") goToView(currentView, false); }, 200); });
 
     // ---------- Country data explorer (below the map) ----------
     // Generic: any country listed in data/index.json has its figures in data/<iso3 lowercase>.json.
     // The section below the map always follows the selected country.
-    const STATUS_LABEL = {
-      published: "Published",
-      not_published: "Recorded, not published",
-      not_recorded: "Not recorded by this source",
-      pending: "Published, not yet added here",
-      proxy: "Proxy only, not ethnicity"
-    };
-    const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    const fmt = v => v >= 100 ? Math.round(v).toLocaleString("en-US") : (Math.round(v * 100) / 100).toLocaleString("en-US");
+    const STATUS_LABEL = key => t("status." + key);
+    const fmt = v => (v >= 100 ? Math.round(v) : (Math.round(v * 100) / 100)).toLocaleString(currentLocale());
     const fill = (tpl, vars) => esc(tpl).replace(/\{(\w+)\}/g, (_, k) => vars[k] != null ? `<strong>${esc(vars[k])}</strong>` : "");
     let D = null;          // data of the country shown in the explorer
     let shownIso = null;
     const ex = { harm: null, victim: "all", perp: "all", measure: "share" };
     const $ = id => document.getElementById(id);
-    const countryName = () => (D && (D.name_in_sentence || D.country)) || "This country";
+    const countryName = () => {
+      if (D && D.iso_a3) return countrySentenceName(D.iso_a3, currentLang === "en" ? (D.name_in_sentence || D.country) : D.country);
+      return t("explorer.this_country");
+    };
     const publishedScore = d => d && (d.completeness != null ? d.completeness : (d.score && d.score.value));
 
     function refreshFill() {
@@ -890,7 +1179,7 @@
     }
 
     const groupLabel = id => ((D.groups.find(g => g.id === id) || {}).label) || (D.extra_group_labels || {})[id] || id;
-    const listLabels = ids => { const l = ids.map(groupLabel); return l.length > 1 ? l.slice(0, -1).join(", ") + " and " + l[l.length - 1] : l[0]; };
+    const listLabels = ids => localeAndJoin(ids.map(groupLabel));
     const currentHarm = () => (D && D.harms.find(h => h.id === ex.harm)) || (D && D.harms[0]);
 
     // Value for a group; falls back to a combined figure where a source merges groups (e.g. Asian + Pacific Islander)
@@ -912,15 +1201,15 @@
       return `<p class="ex-answer">${esc(headline)}</p>` +
         (reason ? `<p class="ex-answer-reason">${esc(reason)}</p>` : "");
     }
-    function noDataRecord(reason) { return noDataHtml(`No data: ${countryName()} does not record this`, reason); }
-    function noDataPublish(reason) { return noDataHtml(`No data: ${countryName()} does not publish this`, reason); }
+    function noDataRecord(reason) { return noDataHtml(t("nodata.not_recorded", { country: countryName() }), reason); }
+    function noDataPublish(reason) { return noDataHtml(t("nodata.not_published", { country: countryName() }), reason); }
     function noDataStatus(status, text) {
       const reason = firstSentence(text);
       if (status === "not_recorded") return noDataRecord(reason);
       if (status === "not_published") return noDataPublish(reason);
-      if (status === "pending") return noDataHtml("No data: this has been published but is not yet added here", reason);
-      if (status === "proxy") return noDataHtml(`No data: ${countryName()} does not record ethnicity for this`, reason);
-      return noDataHtml("No data: this selection has no published figures", reason);
+      if (status === "pending") return noDataHtml(t("nodata.pending"), reason);
+      if (status === "proxy") return noDataHtml(t("nodata.proxy", { country: countryName() }), reason);
+      return noDataHtml(t("nodata.none"), reason);
     }
 
     function barsHtml(values, highlight, unit) {
@@ -933,22 +1222,24 @@
         const hl = highlight && (k === highlight) ? " hl" : "";
         return `<span class="lbl${hl}">${esc(groupLabel(k))}</span>` +
           `<span class="track"><span class="fill${hl}" style="width:${(values[k] / max * 100).toFixed(1)}%"></span></span>` +
-          `<span class="val${hl}">${fmt(values[k])}${unit}</span>`;
+          `<span class="val${hl}">${unit === "%" ? fmtPct(values[k]) : esc(fmt(values[k]) + (unit || ""))}</span>`;
       }).join("") + "</div>";
     }
 
     // Shares are of people with a known group; say how many are unknown ("Ethnicity unknown" unless the data file says otherwise)
     const unknownNote = side => {
       if (side.unknown_share == null) return "";
-      const lbl = side.unknown_label || D.unknown_label || "Ethnicity unknown";
-      const what = lbl.replace(/\s*unknown$/i, "").toLowerCase() || "ethnicity";
-      return `<p class="unknown-note"><strong>${esc(lbl)}: ${fmt(side.unknown_share)}%</strong> of the total. Shares are of those with known ${esc(what)}.</p>`;
+      const raw = side.unknown_label || D.unknown_label || "Ethnicity unknown";
+      const lbl = unknownLabel(raw);
+      const whatBase = raw.replace(/\s*unknown$/i, "").trim() || "ethnicity";
+      const what = (i18nLookup(I18N, "proxy_kinds." + whatBase.toLowerCase()) || (currentLang === "en" ? whatBase.toLowerCase() : whatBase));
+      return `<p class="unknown-note">${esc(t("result.unknown_note", { label: lbl, pct: fmtPct(side.unknown_share), what }))}</p>`;
     };
     // Countries without ethnicity data: tag each result with the proxy it uses (group "proxy" field)
     function proxyTag(side) {
       const keys = new Set([...Object.keys(side.share || {}), ...Object.keys(side.rate || {})]);
       const kinds = [...new Set(D.groups.filter(g => g.proxy && keys.has(g.id)).map(g => g.proxy))];
-      return kinds.length ? `<span class="status proxy">Proxy: ${esc(kinds.join(" and "))}, not ethnicity</span>` : "";
+      return kinds.length ? `<span class="status proxy">${esc(t("result.proxy_tag", { kinds: localeAndJoin(kinds.map(proxyKindLabel)) }))}</span>` : "";
     }
     // In "all groups" view sub-groups are left out of the bars (they overlap their parent); list them underneath
     function subgroupLine(values, unit) {
@@ -957,11 +1248,13 @@
       if (!ks.length) return "";
       const byParent = {};
       ks.forEach(k => (byParent[sub[k]] = byParent[sub[k]] || []).push(k));
-      return `<p class="ex-small"><strong>Sub-groups</strong> (each as a share of the total, not of the parent group): ` +
-        Object.entries(byParent).map(([par, list]) => `within ${esc(groupLabel(par))}: ` +
-          list.map(k => `${esc(groupLabel(k))} ${fmt(values[k])}${unit}`).join(", ")).join("; ") + ".</p>";
+      const items = Object.entries(byParent).map(([par, list]) => t("result.within", {
+        parent: groupLabel(par),
+        items: list.map(k => `${groupLabel(k)} ${unit === "%" ? fmtPct(values[k]) : fmt(values[k]) + (unit || "")}`).join(", ")
+      }));
+      return `<p class="ex-small"><strong>${esc(t("result.subgroups"))}</strong> ${esc(t("result.subgroups_intro"))}${esc(items.join("; "))}.</p>`;
     }
-    const subNote = g => (D.subgroups || {})[g] ? `, a sub-group of ${groupLabel(D.subgroups[g]).replace(/ \(all\)$/, "")}` : "";
+    const subNote = g => (D.subgroups || {})[g] ? t("result.sub_of", { parent: groupLabel(D.subgroups[g]).replace(/ \(all\)$/, "") }) : "";
 
     function sideHasFigures(side, groupId, measure) {
       if (!side || side.status !== "published") return false;
@@ -1093,18 +1386,18 @@
         const total = D.groups.filter(g => g.proxy === proxy && !g.not_recorded).length;
         return total > 0 && missing.length === total;
       };
-      if (rec.length) bits.push(rec.map(g => g.label).join(", ") + (rec.length > 1 ? " are" : " is") + " not recorded");
-      if (mh.length) bits.push((allOf("migration background", mh) ? "migration-background groups" : "some migration-background groups") + " have no figures for this harm");
-      if (nat.length) bits.push((allOf("nationality", nat) ? "nationality groups" : "some nationality groups") + " have no figures for this harm");
-      if (rest.length) bits.push(rest.map(g => g.label).join(", ") + (rest.length > 1 ? " have" : " has") + " no figures for this harm");
+      if (rec.length) bits.push(t(rec.length > 1 ? "avail.not_recorded_many" : "avail.not_recorded_one", { label: rec[0].label, labels: localeAndJoin(rec.map(g => g.label)) }));
+      if (mh.length) bits.push(t(allOf("migration background", mh) ? "avail.mh_all" : "avail.mh_some"));
+      if (nat.length) bits.push(t(allOf("nationality", nat) ? "avail.nat_all" : "avail.nat_some"));
+      if (rest.length) bits.push(t(rest.length > 1 ? "avail.no_figures_many" : "avail.no_figures_one", { label: rest[0].label, labels: localeAndJoin(rest.map(g => g.label)) }));
       const oneSide = D.groups.some(g => g.id !== "all" && (vBase.includes(g.id) !== pBase.includes(g.id)));
-      if (oneSide) bits.push("some groups have figures for victims or perpetrators only");
-      if (harm.cross && harm.cross.status !== "published") bits.push("heritage of victims and perpetrators is not linked in a published table");
+      if (oneSide) bits.push(t("avail.one_side"));
+      if (harm.cross && harm.cross.status !== "published") bits.push(t("avail.not_linked"));
       const m = measuresAvailable(harm, ex.victim, ex.perp);
-      if (!m.includes("rate")) bits.push("no rate is published for this selection");
-      if (!m.includes("share")) bits.push("no share (%) is published for this selection");
+      if (!m.includes("rate")) bits.push(t("avail.no_rate"));
+      if (!m.includes("share")) bits.push(t("avail.no_share"));
       if (!bits.length) return "";
-      return "Greyed-out options have no data for this selection: " + bits.join("; ") + ".";
+      return t("avail.prefix") + bits.join("; ") + ".";
     }
     function optionEl(g, ok) {
       return `<option value="${g.id}"${ok ? "" : " disabled"}>${esc(g.label)}</option>`;
@@ -1148,7 +1441,7 @@
     // One side (victims or perpetrators) for one group or for all groups. Returns { main, notes }.
     function sideParts(side, who, group) {
       const notes = [];
-      const label = who === "victims" ? "Victims" : "Perpetrators";
+      const label = who === "victims" ? t("result.victims") : t("result.perpetrators");
       if (side.status !== "published") {
         if (side.text) notes.push(`<p><strong>${esc(label)}.</strong> ${esc(side.text)}</p>`);
         return { main: noDataStatus(side.status, side.text), notes };
@@ -1158,7 +1451,7 @@
       if (ex.measure === "rate") {
         if (!side.rate) {
           if (side.rate_reason) notes.push(`<p>${esc(side.rate_reason)}</p>`);
-          return { main: noDataHtml("No data: no rate is published for this selection", firstSentence(side.rate_reason)), notes };
+          return { main: noDataHtml(t("nodata.no_rate"), firstSentence(side.rate_reason)), notes };
         }
         const rl = side.rate_label || "", ru = side.rate_unit || "", ra = side.rate_all_label || "all children";
         if (group === "all") {
@@ -1166,9 +1459,9 @@
             barsHtml(side.rate, null, ru) + subgroupLine(side.rate, ru);
         } else {
           const r = pick(side.rate, group);
-          if (!r) return { main: noDataRecord(`This source does not report a rate for ${groupLabel(group)}.`), notes };
+          if (!r) return { main: noDataRecord(t("nodata.no_rate_for_group", { group: groupLabel(group) })), notes };
           main += `<div class="ex-big">${fmt(r.v)}${ru}</div><p>${esc(rl.replace("the same group", groupLabel(r.g)))}${esc(subNote(r.g))}` +
-            `${side.rate_all != null ? `, compared with ${fmt(side.rate_all)}${ru} for ${esc(ra)}` : ""}.${scope}</p>` +
+            `${side.rate_all != null ? esc(t("result.compared_with", { rate: fmt(side.rate_all) + ru, all_label: ra })) : ""}.${scope}</p>` +
             barsHtml(side.rate, r.g, ru);
         }
         if (side.rate_note) notes.push(`<p>${esc(side.rate_note)}</p>`);
@@ -1177,15 +1470,15 @@
       if (side.unknown_share != null) notes.push(unknownNote(side));
       if (side.share_note) notes.push(`<p>${esc(side.share_note)}</p>`);
       if (!side.share) {
-        return { main: noDataHtml("No data: no share is published for this selection", "This source publishes rates only. Switch Measure to “Rate per 100,000” to see them."), notes };
+        return { main: noDataHtml(t("nodata.no_share"), t("nodata.share_is_rates_only")), notes };
       }
       if (group === "all") {
-        main += `<p>Share of ${side.n != null ? side.n.toLocaleString("en-US") + " " : ""}${esc(side.n_label)}${scope}.</p>` + barsHtml(side.share, null, "%") + subgroupLine(side.share, "%");
+        main += `<p>${esc(t("result.share_of", { what: (side.n != null ? side.n.toLocaleString(currentLocale()) + " " : "") + (side.n_label || "") }))}${scope}</p>` + barsHtml(side.share, null, "%") + subgroupLine(side.share, "%");
         return { main, notes };
       }
       const sh = pick(side.share, group);
-      if (!sh) return { main: noDataRecord(`This source does not report ${groupLabel(group)} as a separate group.`), notes };
-      main += `<div class="ex-big">${fmt(sh.v)}%</div><p>of ${side.n != null ? side.n.toLocaleString("en-US") + " " : ""}${esc(side.n_label)} were ${esc(groupLabel(sh.g))}${esc(subNote(sh.g))}.${scope}</p>` +
+      if (!sh) return { main: noDataRecord(t("nodata.no_group", { group: groupLabel(group) })), notes };
+      main += `<div class="ex-big">${fmtPct(sh.v)}</div><p>${esc(t("result.were", { what: (side.n != null ? side.n.toLocaleString(currentLocale()) + " " : "") + (side.n_label || ""), group: groupLabel(sh.g) }))}${esc(subNote(sh.g))}${scope}</p>` +
         barsHtml(side.share, sh.g, "%");
       return { main, notes };
     }
@@ -1202,23 +1495,23 @@
         const alsoFallback = alsos[0];
         if (alsoFallback) {
           const p = sideParts(alsoFallback.data, who, group);
-          if (alsoFallback.title) p.main = `<h3>${esc(alsoFallback.title)}</h3>` + p.main;
-          if (main && main.status !== "published" && main.text) p.notes.unshift(`<p><strong>${who === "victims" ? "Victims" : "Perpetrators"} (main source).</strong> ${esc(main.text)}</p>`);
+          if (alsoFallback.title) p.main = `<h3>${esc(alsoFallback.title)}${enOnlyBadge()}</h3>` + p.main;
+          if (main && main.status !== "published" && main.text) p.notes.unshift(`<p><strong>${esc(t("result.main_source", { who: who === "victims" ? t("result.victims") : t("result.perpetrators") }))}</strong> ${esc(main.text)}</p>`);
           return p;
         }
         return sideParts(main || { status: "not_recorded", text: "" }, who, group);
       }
       const first = usable[0];
       const p = sideParts(first.data, who, group);
-      if (first.title) p.main = `<h3>${esc(first.title)}</h3>` + p.main;
+      if (first.title) p.main = `<h3>${esc(first.title)}${enOnlyBadge()}</h3>` + p.main;
       usable.slice(1).forEach(a => {
         const q = sideParts(a.data, who, group);
-        p.main += `<div class="also"><h3>Also published: ${esc(a.title)}</h3>${q.main}</div>`;
+        p.main += `<div class="also"><h3>${esc(t("result.also_published", { title: a.title }))}${enOnlyBadge()}</h3>${q.main}</div>`;
         p.notes.push(...q.notes);
       });
       // If the main source has no figures for this group but an "also" block does, explain that in notes.
       if (first.title && main && main.status !== "published" && main.text) {
-        p.notes.unshift(`<p><strong>${who === "victims" ? "Victims" : "Perpetrators"} (main source).</strong> ${esc(main.text)}</p>`);
+        p.notes.unshift(`<p><strong>${esc(t("result.main_source", { who: who === "victims" ? t("result.victims") : t("result.perpetrators") }))}</strong> ${esc(main.text)}</p>`);
       }
       return p;
     }
@@ -1226,7 +1519,7 @@
     function overallContext(harm) {
       if (!harm.intro) return "";
       const years = harm.years ? ` <span class="ex-small">(${esc(harm.years)})</span>` : "";
-      return `<div class="ex-context"><div class="ex-context-label">Overall total (all groups)</div><p>${esc(harm.intro)}${years}</p></div>`;
+      return `<div class="ex-context"><div class="ex-context-label">${esc(t("result.overall_total"))}${enOnlyBadge()}</div><p>${esc(harm.intro)}${years}</p></div>`;
     }
     function uniqueNotes(list) {
       const seen = new Set(), out = [];
@@ -1251,14 +1544,14 @@
       } else if (v !== "all" && p !== "all") {
         if (cross.status !== "published") {
           chunks.push(noDataStatus(cross.status, cross.text));
-          if (cross.text) notes.push(`<p><strong>Victim heritage linked to perpetrator heritage.</strong> ${esc(cross.text)}</p>`);
+          if (cross.text) notes.push(`<p><strong>${esc(t("result.linked"))}.</strong> ${esc(cross.text)}</p>`);
         } else if (ex.measure === "rate") {
-          chunks.push(noDataHtml("No data: no rate is published for this selection", firstSentence(cross.rate_reason)));
+          chunks.push(noDataHtml(t("nodata.no_rate"), firstSentence(cross.rate_reason)));
           if (cross.rate_reason) notes.push(`<p>${esc(cross.rate_reason)}</p>`);
         } else if (!cross.groups.includes(v) || !cross.groups.includes(p)) {
-          chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} victims and offenders.`));
+          chunks.push(noDataRecord(t("nodata.table_only_groups", { groups: listLabels(cross.groups) })));
         } else {
-          chunks.push(`<div class="ex-big">${fmt(cross.matrix[v][p])}%</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
+          chunks.push(`<div class="ex-big">${fmtPct(cross.matrix[v][p])}</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
             barsHtml(cross.matrix[v], p, "%"));
           if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
         }
@@ -1267,24 +1560,24 @@
         const group = v !== "all" ? v : p;
         if (harm[who].status === "published" || alsoSources(harm, who).length) {
           const parts = bestSideParts(harm, who, group);
-          chunks.push(`<h3>${v !== "all" ? "Victims" : "Perpetrators"}</h3>` + parts.main);
+          chunks.push(`<h3>${v !== "all" ? esc(t("result.victims")) : esc(t("result.perpetrators"))}</h3>` + parts.main);
           notes.push(...parts.notes);
-          chunks.push(`<h3>Victim heritage linked to perpetrator heritage</h3>`);
+          chunks.push(`<h3>${esc(t("result.linked"))}</h3>`);
         }
         if (ex.measure === "rate") {
-          chunks.push(noDataHtml("No data: no rate is published for this selection", firstSentence(cross.rate_reason)));
+          chunks.push(noDataHtml(t("nodata.no_rate"), firstSentence(cross.rate_reason)));
           if (cross.rate_reason) notes.push(`<p>${esc(cross.rate_reason)}</p>`);
         } else if (v !== "all") {
           if (!cross.matrix[v]) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} victims.`));
           else {
-            chunks.push(`<p>${fill(cross.row_intro, { victim: groupLabel(v) })}</p>` + barsHtml(cross.matrix[v], null, "%"));
+            chunks.push(`<p>${fill(cross.row_intro, { victim: groupLabel(v) })}${enOnlyBadge()}</p>` + barsHtml(cross.matrix[v], null, "%"));
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
         } else {
           if (!cross.groups.includes(p)) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} offenders.`));
           else {
             const col = {}; cross.groups.forEach(g => col[g] = cross.matrix[g][p]);
-            chunks.push(`<p>${fill(cross.col_intro, { perp: groupLabel(p) })}</p>` + barsHtml(col, null, "%"));
+            chunks.push(`<p>${fill(cross.col_intro, { perp: groupLabel(p) })}${enOnlyBadge()}</p>` + barsHtml(col, null, "%"));
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
         }
@@ -1292,14 +1585,14 @@
         const vParts = bestSideParts(harm, "victims", "all");
         const pParts = bestSideParts(harm, "perpetrators", "all");
         if (harm.victims.status === "published" || harm.perpetrators.status === "published") {
-          chunks.push(`<div class="cols"><div><h3>Victims</h3>${vParts.main}</div>` +
-                      `<div><h3>Perpetrators</h3>${pParts.main}</div></div>`);
+          chunks.push(`<div class="cols"><div><h3>${esc(t("result.victims"))}</h3>${vParts.main}</div>` +
+                      `<div><h3>${esc(t("result.perpetrators"))}</h3>${pParts.main}</div></div>`);
           notes.push(...vParts.notes, ...pParts.notes);
-          chunks.push(`<h3>Victim heritage linked to perpetrator heritage</h3>`);
+          chunks.push(`<h3>${esc(t("result.linked"))}</h3>`);
         }
-        chunks.push(`<p>${esc(cross.overview || "Pick a victim heritage, a perpetrator heritage, or both.")}</p>`);
+        chunks.push(`<p>${esc(cross.overview || t("result.pick_both"))}${cross.overview ? enOnlyBadge() : ""}</p>`);
         const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
-          cross.groups.map(o => `${esc(groupLabel(o))} offender ${fmt(cross.matrix[g][o])}%`).join(" · ") + "</p>").join("");
+          cross.groups.map(o => esc(t("result.offender_share", { group: groupLabel(o), pct: fmtPct(cross.matrix[g][o]) }))).join(" · ") + "</p>").join("");
         chunks.push(allRows);
         if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
       } else if (v !== "all") {
@@ -1313,15 +1606,15 @@
       } else {
         const vParts = bestSideParts(harm, "victims", "all");
         const pParts = bestSideParts(harm, "perpetrators", "all");
-        chunks.push(`<div class="cols"><div><h3>Victims</h3>${vParts.main}</div>` +
-                    `<div><h3>Perpetrators</h3>${pParts.main}</div></div>`);
+        chunks.push(`<div class="cols"><div><h3>${esc(t("result.victims"))}</h3>${vParts.main}</div>` +
+                    `<div><h3>${esc(t("result.perpetrators"))}</h3>${pParts.main}</div></div>`);
         notes.push(...vParts.notes, ...pParts.notes);
         if (cross && cross.status !== "published") {
-          notes.push(`<p><strong>Victim and perpetrator heritage together:</strong> ${esc(STATUS_LABEL[cross.status] || cross.status)}. ${esc(cross.text || "")}</p>`);
+          notes.push(`<p><strong>Victim and perpetrator heritage together:</strong> ${esc(STATUS_LABEL(cross.status) || cross.status)}. ${esc(cross.text || "")}</p>`);
         }
       }
       let html = chunks.join("");
-      if (!html.trim()) html = noDataHtml("No data: this selection has no published figures", "Nothing in the source file matches these inputs.");
+      if (!html.trim()) html = noDataHtml(t("nodata.none"), t("nodata.no_match_reason"));
       html += overallContext(harm);
       $("ex-result").innerHTML = html;
       const uniq = uniqueNotes(notes);
@@ -1334,14 +1627,14 @@
       const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source, ...(harm.also || []).map(a => a.data.source), ...(harm.extra_sources || [])];
       if (ex.measure === "rate") ids.push(...(harm.rate_sources || []));
       const uniq = [...new Set(ids)].filter(id => D.sources[id]);
-      $("ex-sources").innerHTML = "<h3>Sources</h3>" + uniq.map(id => {
+      $("ex-sources").innerHTML = `<h3>${esc(t("explorer.sources"))}${enOnlyBadge()}</h3>` + uniq.map(id => {
         const s = D.sources[id];
-        return `<details class="src"><summary><span>${esc(s.name)}</span><span class="tier">${esc(s.tier)}</span></summary><dl>` +
-          `<dt>Publisher</dt><dd>${esc(s.publisher)}</dd>` +
-          `<dt>Years</dt><dd>${esc(s.years)}</dd>` +
-          `<dt>What it records</dt><dd>${esc(s.records)}</dd>` +
-          `<dt>Limitations</dt><dd>${esc(s.limitations)}</dd>` +
-          `<dt>Link</dt><dd><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></dd></dl></details>`;
+        return `<details class="src"><summary><span>${esc(s.name)}</span><span class="tier">${esc(tierLabel(s.tier))}</span></summary><dl>` +
+          `<dt>${esc(t("source.publisher"))}</dt><dd>${esc(s.publisher)}</dd>` +
+          `<dt>${esc(t("source.years"))}</dt><dd>${esc(s.years)}</dd>` +
+          `<dt>${esc(t("source.records"))}</dt><dd>${esc(s.records)}</dd>` +
+          `<dt>${esc(t("source.limitations"))}</dt><dd>${esc(s.limitations)}</dd>` +
+          `<dt>${esc(t("source.link"))}</dt><dd><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></dd></dl></details>`;
       }).join("");
     }
 
@@ -1351,41 +1644,51 @@
       const prev = sc.previous;
       const proxyText = sc.proxy_note || "";
       const capBox = proxyText
-        ? `<div class="gold">${esc(proxyText)}</div>`
+        ? `<div class="gold">${esc(proxyText)}${enOnlyBadge()}</div>`
         : (sc.cap_applied && sc.uncapped != null
-          ? `<div class="gold"><strong>25% cap applied.</strong> The uncapped total is ${esc(String(sc.uncapped))}%. A country with no real ethnicity data is capped at 25%.</div>`
+          ? `<div class="gold"><strong>${esc(t("method.cap_applied"))}</strong> ${esc(t("method.cap_applied_body", { uncapped: fmt(sc.uncapped) }))}</div>`
           : "");
       const mentionsOld = /old scale|previous rubric|scored \d+%/.test(proxyText);
       const hist = (prev && prev.value != null && !mentionsOld)
-        ? `<p class="ex-small">On the previous rubric this country scored ${esc(String(prev.value))}%${prev.band ? ` (${esc(prev.band)})` : ""}.</p>`
+        ? `<p class="ex-small">${esc(prev.band ? t("method.previous_with_band", { score: fmt(prev.value), band: prev.band }) : t("method.previous", { score: fmt(prev.value) }))}</p>`
         : "";
       const pw = sc.previous_weights;
+      const weightsDate = formatDate(pw && /^\d{4}-\d{2}-\d{2}$/.test(pw.changed || "") ? pw.changed : "2026-11-19");
       const weightsHist = (pw && pw.value != null)
-        ? `<p class="ex-small">Harm weights changed on ${esc(pw.changed || "19 Nov 2026")}. With the earlier weights (sexual abuse 25%, the other five harms 15% each) this country scored ${esc(String(pw.value))}%.</p>`
+        ? `<p class="ex-small">${esc(t("method.previous_weights", { date: weightsDate, score: fmt(pw.value) }))}</p>`
         : "";
+      const hundred = fmtPct(100);
       const totalRows = (sc.cap_applied && sc.uncapped != null)
-        ? `<tr><td>Weighted total (uncapped)</td><td class="num">100%</td><td class="num">${esc(String(sc.uncapped))}</td></tr>` +
-          `<tr><td><strong>Published score (capped at 25%)</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr>`
-        : `<tr><td><strong>Weighted total</strong></td><td class="num">100%</td><td class="num"><strong>${esc(String(value))}</strong></td></tr>`;
+        ? `<tr><td>${esc(t("method.weighted_uncapped"))}</td><td class="num">${hundred}</td><td class="num">${esc(fmt(sc.uncapped))}</td></tr>` +
+          `<tr><td><strong>${esc(t("method.published_capped"))}</strong></td><td class="num">${hundred}</td><td class="num"><strong>${esc(fmt(value))}</strong></td></tr>`
+        : `<tr><td><strong>${esc(t("method.weighted_total"))}</strong></td><td class="num">${hundred}</td><td class="num"><strong>${esc(fmt(value))}</strong></td></tr>`;
+      const comps = [
+        { name: t("method.comp_victim"), points: 37.5, full: t("method.comp_victim_full") },
+        { name: t("method.comp_perp"), points: 37.5, full: t("method.comp_perp_full") },
+        { name: t("method.comp_other"), points: 25, full: t("method.comp_other_full") }
+      ];
+      const colourKeys = ["red", "orange", "yellow", "light_green", "dark_green"];
+      const bandColours = SCALE.map((b, i) => t("method.band_colour", { range: bandLabel(b), colour: t("colour." + colourKeys[i]) })).join(", ");
+      const whyCountry = countrySentenceName(D.iso_a3, D.name_in_sentence || D.country);
       $("method").open = false;
       $("method").innerHTML =
-        `<summary>How the ${esc(String(value))}% score works</summary>` +
-        `<h3>The 100% standard</h3><div class="gold">${esc(SCORE_RUBRIC.gold)}</div>` +
-        `<h3>The scoring scale</h3>` +
-        `<p>Each harm is scored out of 100. Heritage counts for most of the score. Full marks require separately identifying people of European descent, not only a broader category such as White, or a proxy such as nationality.</p>` +
-        `<table><thead><tr><th>Component</th><th class="num">Points</th><th>Full points require</th></tr></thead><tbody>` +
-        SCORE_RUBRIC.components.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${c.points}</td><td>${esc(c.full)}</td></tr>`).join("") +
+        `<summary>${esc(t("method.summary", { score: fmt(value) }))}</summary>` +
+        `<h3>${esc(t("method.standard"))}</h3><div class="gold">${esc(t("method.gold"))}</div>` +
+        `<h3>${esc(t("method.scale"))}</h3>` +
+        `<p>${esc(t("method.scale_intro"))}</p>` +
+        `<table><thead><tr><th>${esc(t("method.component"))}</th><th class="num">${esc(t("method.points"))}</th><th>${esc(t("method.full_require"))}</th></tr></thead><tbody>` +
+        comps.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${esc(fmt(c.points))}</td><td>${esc(c.full)}</td></tr>`).join("") +
         `</tbody></table>` +
-        `<p>${esc(SCORE_RUBRIC.cap)}</p>` +
-        `<p>${esc(SCORE_RUBRIC.weights)}</p>` +
-        `<h3>Why ${esc(D.name_in_sentence || D.country)} scores ${esc(String(value))}%</h3><p>${esc(sc.why || "")}</p>` +
+        `<p>${esc(t("method.cap"))}</p>` +
+        `<p>${esc(t("method.weights"))}</p>` +
+        `<h3>${esc(t("method.why", { country: whyCountry, score: fmt(value) }))}${enOnlyBadge()}</h3><p>${esc(sc.why || "")}</p>` +
         capBox + hist + weightsHist +
-        (sc.breakdown && sc.breakdown.length ? `<h3>Score by harm</h3><table><thead><tr><th>Harm</th><th class="num">Weight</th><th class="num">Score</th></tr></thead><tbody>` +
-        sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${b.weight}%</td><td class="num">${b.score}</td></tr>`).join("") +
+        (sc.breakdown && sc.breakdown.length ? `<h3>${esc(t("method.by_harm"))}${enOnlyBadge()}</h3><table><thead><tr><th>${esc(t("method.harm"))}</th><th class="num">${esc(t("method.weight"))}</th><th class="num">${esc(t("method.score"))}</th></tr></thead><tbody>` +
+        sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${fmtPct(b.weight)}</td><td class="num">${esc(fmt(b.score))}</td></tr>`).join("") +
         totalRows + `</tbody></table>` : "") +
-        (D.nations ? `<h3>Coverage by nation</h3><table><tbody>` + Object.entries(D.nations).map(([k, t]) =>
-          `<tr><td>${esc(({ england_wales: "England and Wales", scotland: "Scotland", northern_ireland: "Northern Ireland" })[k] || k)}</td><td>${esc(t)}</td></tr>`).join("") + `</tbody></table>` : "") +
-        `<p class="ex-small">Map colours: 0–20% red, 20–40% orange, 40–60% yellow, 60–80% light green, 80–100% dark green. Scores are reviewed as new data is found (last review ${esc(D.as_of)}).</p>`;
+        (D.nations ? `<h3>${esc(t("method.coverage"))}${enOnlyBadge()}</h3><table><tbody>` + Object.entries(D.nations).map(([k, txt]) =>
+          `<tr><td>${esc(t("nations." + k) !== "nations." + k ? t("nations." + k) : k)}</td><td>${esc(txt)}</td></tr>`).join("") + `</tbody></table>` : "") +
+        `<p class="ex-small">${esc(t("method.colours", { bands: bandColours, date: formatDate(D.as_of) }))}</p>`;
     }
 
     function renderExplorer() {
@@ -1397,7 +1700,7 @@
 
     function badgeHtml(iso) {
       const info = tracked[iso];
-      if (!info) return `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>Not yet analyzed`;
+      if (!info) return `<span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>${esc(t("legend.not_analyzed"))}`;
       return `<span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}`;
     }
 
@@ -1421,8 +1724,8 @@
         shownIso = null; D = null;
         hideExplorerChrome(false, false, false);
         $("ex-notes").hidden = true;
-        $("ex-title").textContent = "Country data";
-        $("ex-lede").textContent = "Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.";
+        $("ex-title").textContent = t("explorer.title");
+        $("ex-lede").textContent = t("explorer.lede");
         $("ex-result").innerHTML = "";
         $("ex-notes-body").innerHTML = "";
         return;
@@ -1434,16 +1737,19 @@
         hideExplorerChrome(false, true, false);
         $("ex-notes").hidden = true;
         $("ex-title").textContent = name;
-        $("ex-lede").textContent = info ? info.note : "This country is part of the project. Its published crime data has not been reviewed yet.";
-        $("ex-result").innerHTML = `<p class="pending-note">Detailed data for ${esc(name)} has not been added yet.</p>`;
+        $("ex-lede").innerHTML = info ? (esc(info.note) + enOnlyBadge()) : esc(t("panel.not_analyzed_hint"));
+        $("ex-result").innerHTML = `<p class="pending-note">${esc(t("explorer.pending_detail", { country: name }))}</p>`;
         $("ex-notes-body").innerHTML = "";
         return;
       }
       hideExplorerChrome(true, true, true);
-      $("ex-title").textContent = `${detail.country}: what the data shows`;
-      $("lbl-victim").textContent = (detail.select_labels || {}).victim || "Victim's heritage";
-      $("lbl-perp").textContent = (detail.select_labels || {}).perpetrator || "Perpetrator's heritage";
-      $("ex-lede").textContent = detail.summary;
+      const display = countryDisplayName(detail.iso_a3 || iso, name || detail.country);
+      $("ex-title").textContent = t("explorer.title_for", { country: display });
+      const customV = (detail.select_labels || {}).victim;
+      const customP = (detail.select_labels || {}).perpetrator;
+      $("lbl-victim").innerHTML = customV ? (esc(customV) + enOnlyBadge()) : esc(t("explorer.victim_heritage"));
+      $("lbl-perp").innerHTML = customP ? (esc(customP) + enOnlyBadge()) : esc(t("explorer.perp_heritage"));
+      $("ex-lede").innerHTML = esc(detail.summary) + enOnlyBadge();
       if (shownIso === iso && D === detail) return;   // same country: keep the reader's selections
       shownIso = iso; D = detail;
       Object.assign(ex, { harm: detail.harms[0].id, victim: "all", perp: "all", measure: "share" });
@@ -1468,6 +1774,37 @@
       currentHarm, baseGroups, groupsAvailable, measuresAvailable, publishedScore,
       get D() { return D; }, get shownIso() { return shownIso; }
     };
+    window.map = map;
+    window.showCountry = showCountry;
+    window.clearSelection = clearSelection;
+    window.updateViewButtons = updateViewButtons;
+    window.DETAIL = DETAIL;
+    window.panBox = panBox;
+    window.mercX = mercX;
+    window.mercY = mercY;
+    window.goToView = goToView;
+    window.t = t;
+    window.__i18nTest = () => ({
+      lang: currentLang,
+      htmlLang: document.documentElement.lang,
+      missing: missingI18nKeys(),
+      runtimeMissing: [...I18N_MISSING],
+      title: document.title,
+      h1: document.querySelector("header h1").textContent.replace(/\s+/g, " ").trim(),
+      views: [...document.querySelectorAll("#views button")].map(b => [b.dataset.view, b.textContent]),
+      picker: [...document.querySelectorAll("#lang-picker button")].map(b => [b.dataset.lang, b.getAttribute("aria-pressed")]),
+      kosovo: countryDisplayName("XKX", "Kosovo"),
+      germany: countryDisplayName("DEU", "Germany"),
+      usa: countryDisplayName("USA", "United States"),
+      fmt: fmt(1234.5),
+      pct: fmtPct(12.5),
+      shownInEnglish: currentLang === "en" ? null : t("shown_in_english")
+    });
+    applyStaticI18n();
+    renderLegend();
+    setupLangPicker();
+    document.getElementById("panel-title").textContent = t("panel.select_country");
+    document.getElementById("panel-content").innerHTML = defaultPanelHtml();
 
     renderExplorerFor(null);
 
@@ -1487,6 +1824,7 @@
         if (selectedId) showCountry(selectedId, selectedName);
       })
       .catch(err => console.error(err));
+    }).catch(err => { console.error(err); document.documentElement.removeAttribute("data-i18n-pending"); });
   </script>
 </body>
 </html>

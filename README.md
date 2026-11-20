@@ -24,6 +24,14 @@ Legend title: "Child protection by data completeness".
 
 Bands include the lower bound and exclude the upper (20 → orange), except 100 → dark green.
 
+
+## Languages
+The interface is available in English, German, Spanish and French. Strings live in `i18n/en.json`, `de.json`, `es.json` and `fr.json`. English is the fallback for any missing key.
+
+A compact EN | DE | ES | FR picker sits in the header. The choice is kept in `localStorage` (`harm-data-lang`), a `?lang=` URL parameter is honoured, and the page otherwise follows the browser language when it is one of the four. Country names use `Intl.DisplayNames` (Kosovo / XKX is named by hand). Numbers and percentages follow the active locale.
+
+Country notes, source descriptions and other per-country data text stay in English for now and are marked “Shown in English”. Official source titles are never translated.
+
 ## Adding / analysing a country
 1. Make sure its ISO 3166-1 alpha-3 code is in `IN_SCOPE` (all European states except Cyprus and the dependencies already are).
 2. Add one entry to `tracked`:

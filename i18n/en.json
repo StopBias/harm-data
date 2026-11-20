@@ -1,0 +1,202 @@
+{
+  "title": "Antiwhite Bias Child-Harm Data Explorer",
+  "title_lead": "Antiwhite Bias",
+  "title_rest": "Child-Harm Data Explorer",
+  "subtitle": "How completely each country publishes victim and perpetrator ethnicity in crimes against children",
+  "logo_alt": "Stop Bias",
+  "lang_picker_aria": "Language",
+  "shown_in_english": "Shown in English",
+  "views_aria": "Map view",
+  "views": {
+    "world": "World",
+    "europe": "Europe",
+    "north_america": "North America",
+    "oceania": "Oceania"
+  },
+  "legend": {
+    "title": "Child protection by data completeness",
+    "not_analyzed": "Not yet analyzed",
+    "out_of_scope": "Outside current scope"
+  },
+  "band_label": "{from}–{to}%",
+  "band_complete": "{band} complete",
+  "band_complete_exact": "{score}% · {band} complete",
+  "provisional": "(provisional)",
+  "percent_pattern": "{n}%",
+  "colour": {
+    "red": "red",
+    "orange": "orange",
+    "yellow": "yellow",
+    "light_green": "light green",
+    "dark_green": "dark green"
+  },
+  "map": {
+    "attribution": "Boundaries: Natural Earth",
+    "load_error": "Map data failed to load. Please refresh."
+  },
+  "panel": {
+    "select_country": "Select a country",
+    "hint": "Click a highlighted country to view available data and gaps.",
+    "default_note": "Missing data on the ethnic heritage of both victim and perpetrator in violent and other crimes harms children who are not being protected from hidden bias crimes.",
+    "footer_note": "The ethnic heritage of perpetrators and victims in interracial crimes is missing, harming children who are exposed to antiwhite bias crimes.",
+    "handle_aria": "Show or hide details",
+    "provisional_hint": "Provisional rating — data collection for this country is still in progress.",
+    "explore": "Explore the {country} data below the map ↓",
+    "not_analyzed_hint": "This country is part of the project. Its published crime data has not been reviewed yet."
+  },
+  "explorer": {
+    "title": "Country data",
+    "title_for": "{country}: what the data shows",
+    "lede": "Select a country on the map to see what it publishes about harm to children by the heritage of victims and perpetrators.",
+    "inputs": "Inputs",
+    "output": "Output",
+    "harm": "Harm",
+    "victim_heritage": "Victim's heritage",
+    "perp_heritage": "Perpetrator's heritage",
+    "measure": "Measure",
+    "measure_share": "Share (%)",
+    "measure_rate": "Rate per 100,000",
+    "notes": "Notes",
+    "sources": "Sources",
+    "planned": "Planned: psychological harm (e.g. curricula that demonize children or their ancestors)",
+    "pending_detail": "Detailed data for {country} has not been added yet.",
+    "this_country": "This country"
+  },
+  "status": {
+    "published": "Published",
+    "not_published": "Recorded, not published",
+    "not_recorded": "Not recorded by this source",
+    "pending": "Published, not yet added here",
+    "proxy": "Proxy only, not ethnicity"
+  },
+  "nodata": {
+    "not_recorded": "No data: {country} does not record this",
+    "not_published": "No data: {country} does not publish this",
+    "pending": "No data: this has been published but is not yet added here",
+    "proxy": "No data: {country} does not record ethnicity for this",
+    "none": "No data: this selection has no published figures",
+    "no_rate": "No data: no rate is published for this selection",
+    "no_share": "No data: no share is published for this selection",
+    "share_is_rates_only": "This source publishes rates only. Switch Measure to “Rate per 100,000” to see them.",
+    "no_rate_for_group": "This source does not report a rate for {group}.",
+    "no_group": "This source does not report {group} as a separate group.",
+    "table_only_groups": "This table includes only {groups} victims and offenders.",
+    "no_match_reason": "Nothing in the source file matches these inputs."
+  },
+  "result": {
+    "victims": "Victims",
+    "perpetrators": "Perpetrators",
+    "linked": "Victim heritage linked to perpetrator heritage",
+    "pick_both": "Pick a victim heritage, a perpetrator heritage, or both.",
+    "also_published": "Also published: {title}",
+    "main_source": "{who} (main source).",
+    "overall_total": "Overall total (all groups)",
+    "share_of": "Share of {what}.",
+    "were": "of {what} were {group}.",
+    "compared_with": ", compared with {rate} for {all_label}",
+    "all_children": "all children",
+    "subgroups": "Sub-groups",
+    "subgroups_intro": "Sub-groups (each as a share of the total, not of the parent group): ",
+    "within": "within {parent}: {items}",
+    "sub_of": ", a sub-group of {parent}",
+    "unknown_note": "{label}: {pct} of the total. Shares are of those with known {what}.",
+    "proxy_tag": "Proxy: {kinds}, not ethnicity",
+    "and": "and",
+    "list_and": "{head} and {last}",
+    "offender_share": "{group} offender {pct}"
+  },
+  "avail": {
+    "prefix": "Greyed-out options have no data for this selection: ",
+    "not_recorded_one": "{label} is not recorded",
+    "not_recorded_many": "{labels} are not recorded",
+    "mh_all": "migration-background groups have no figures for this harm",
+    "mh_some": "some migration-background groups have no figures for this harm",
+    "nat_all": "nationality groups have no figures for this harm",
+    "nat_some": "some nationality groups have no figures for this harm",
+    "no_figures_one": "{label} has no figures for this harm",
+    "no_figures_many": "{labels} have no figures for this harm",
+    "one_side": "some groups have figures for victims or perpetrators only",
+    "not_linked": "heritage of victims and perpetrators is not linked in a published table",
+    "no_rate": "no rate is published for this selection",
+    "no_share": "no share (%) is published for this selection"
+  },
+  "source": {
+    "publisher": "Publisher",
+    "years": "Years",
+    "records": "What it records",
+    "limitations": "Limitations",
+    "link": "Link"
+  },
+  "method": {
+    "summary": "How the {score}% score works",
+    "standard": "The 100% standard",
+    "scale": "The scoring scale",
+    "scale_intro": "Each harm is scored out of 100. Heritage counts for most of the score. Full marks require separately identifying people of European descent, not only a broader category such as White, or a proxy such as nationality.",
+    "component": "Component",
+    "points": "Points",
+    "full_require": "Full points require",
+    "why": "Why {country} scores {score}%",
+    "by_harm": "Score by harm",
+    "harm": "Harm",
+    "weight": "Weight",
+    "score": "Score",
+    "weighted_total": "Weighted total",
+    "weighted_uncapped": "Weighted total (uncapped)",
+    "published_capped": "Published score (capped at 25%)",
+    "cap_applied": "25% cap applied.",
+    "cap_applied_body": "The uncapped total is {uncapped}%. A country with no real ethnicity data is capped at 25%.",
+    "previous": "On the previous rubric this country scored {score}%.",
+    "previous_with_band": "On the previous rubric this country scored {score}% ({band}).",
+    "previous_weights": "Harm weights changed on {date}. With the earlier weights (sexual abuse 25%, the other five harms 15% each) this country scored {score}%.",
+    "coverage": "Coverage by nation",
+    "colours": "Map colours: {bands}. Scores are reviewed as new data is found (last review {date}).",
+    "band_colour": "{range} {colour}",
+    "gold": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+    "cap": "Proxies such as nationality or migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is capped at 25%, however complete its other counting is.",
+    "weights": "The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%, sex trafficking 20%, physical abuse 15%, online exploitation 10% and neglect 10% (weights in use since 19 November 2026).",
+    "comp_victim": "Victim heritage",
+    "comp_victim_full": "Published by harm, with people of European descent identified separately — not only a broader category such as White, or a proxy such as nationality.",
+    "comp_perp": "Perpetrator heritage",
+    "comp_perp_full": "The same standard for perpetrators.",
+    "comp_other": "Coverage, rates and access",
+    "comp_other_full": "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release."
+  },
+  "nations": {
+    "england_wales": "England and Wales",
+    "scotland": "Scotland",
+    "northern_ireland": "Northern Ireland"
+  },
+  "proxy_kinds": {
+    "nationality": "nationality",
+    "migration background": "migration background",
+    "citizenship": "citizenship",
+    "immigrant background": "immigrant background"
+  },
+  "unknown_labels": {
+    "Ethnicity unknown": "Ethnicity unknown",
+    "Nationality unknown": "Nationality unknown"
+  },
+  "tiers": {
+    "Official government statistics": "Official government statistics",
+    "Official government survey": "Official government survey",
+    "Official local government report": "Official local government report",
+    "Official program data": "Official program data",
+    "Non-government source": "Non-government source",
+    "Foreign government report": "Foreign government report",
+    "Official government statistics (victim registrations by an NGO)": "Official government statistics (victim registrations by an NGO)",
+    "Police-produced, not official statistics": "Police-produced, not official statistics",
+    "CPS management information (FOI), not official statistics": "CPS management information (FOI), not official statistics",
+    "Government authority survey with NGO partners": "Government authority survey with NGO partners",
+    "Non-Icelandic source (foreign government report)": "Non-Icelandic source (foreign government report)"
+  },
+  "countries": {
+    "XKX": "Kosovo"
+  },
+  "countries_in_sentence": {
+    "USA": "the United States",
+    "GBR": "the United Kingdom",
+    "NLD": "the Netherlands",
+    "XKX": "Kosovo",
+    "CZE": "Czechia"
+  }
+}
