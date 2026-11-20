@@ -1266,16 +1266,40 @@
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
     const MEDIA_PENDING_COLOR = "#e6e8eb";
-    const MEDIA_INSUFFICIENT_COLOR = "#c5c9ce";
+    // Log-symmetric PuOr scale, L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
+    const MEDIA_SCALE = [
+      [-2, [0x54, 0x27, 0x88]],
+      [-4 / 3, [0x80, 0x73, 0xac]],
+      [-2 / 3, [0xb2, 0xab, 0xd2]],
+      [0, [0xf7, 0xf7, 0xf7]],
+      [2 / 3, [0xfd, 0xb8, 0x63]],
+      [4 / 3, [0xe0, 0x82, 0x14]],
+      [2, [0xb3, 0x58, 0x06]]
+    ];
+    const rgbHex = c => "#" + c.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, "0")).join("");
+    const colorForL = L => {
+      if (L == null || !isFinite(L)) return MEDIA_PENDING_COLOR;
+      if (L <= MEDIA_SCALE[0][0]) return rgbHex(MEDIA_SCALE[0][1]);
+      const last = MEDIA_SCALE[MEDIA_SCALE.length - 1];
+      if (L >= last[0]) return rgbHex(last[1]);
+      for (let i = 1; i < MEDIA_SCALE.length; i++) {
+        if (L <= MEDIA_SCALE[i][0]) {
+          const [L0, c0] = MEDIA_SCALE[i - 1];
+          const [L1, c1] = MEDIA_SCALE[i];
+          const t = (L - L0) / (L1 - L0);
+          return rgbHex(c0.map((v, j) => v + (c1[j] - v) * t));
+        }
+      }
+      return MEDIA_PENDING_COLOR;
+    };
     const colorFor = iso => {
       if (mapMode === "media") {
         if (!inScope.has(iso)) return OUT_OF_SCOPE_COLOR;
         const st = window.mediaCountryState ? window.mediaCountryState(iso) : null;
-        if (st && st.status === "insufficient_data") return MEDIA_INSUFFICIENT_COLOR;
-        if (st && st.L != null) {
-          // log-symmetric colour would go here when a point estimate exists
-          return MEDIA_PENDING_COLOR;
+        if (st && st.L != null && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point")) {
+          return colorForL(st.L);
         }
+        if (st && st.status === "out") return OUT_OF_SCOPE_COLOR;
         return MEDIA_PENDING_COLOR;
       }
       return tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
@@ -1439,7 +1463,7 @@
             map.addLayer({
               id: "countries-hatch", type: "fill", source: "countries",
               filter: ["==", ["get", "iso_a3"], ""],
-              paint: { "fill-pattern": "hatch-insufficient", "fill-opacity": 0.85 }
+              paint: { "fill-pattern": "hatch-insufficient", "fill-opacity": 1 }
             }, "countries-line");
           }
           refreshHatch();
@@ -1583,16 +1607,17 @@
 
     function ensureHatchPattern() {
       if (!map || map.hasImage("hatch-insufficient")) return;
+      const size = 12;
       const c = document.createElement("canvas");
-      c.width = 8; c.height = 8;
+      c.width = size; c.height = size;
       const g = c.getContext("2d");
-      g.fillStyle = "#c5c9ce";
-      g.fillRect(0, 0, 8, 8);
-      g.strokeStyle = "#8b9198";
-      g.lineWidth = 1.5;
-      g.beginPath(); g.moveTo(-2, 8); g.lineTo(8, -2); g.stroke();
-      g.beginPath(); g.moveTo(0, 10); g.lineTo(10, 0); g.stroke();
-      map.addImage("hatch-insufficient", g.getImageData(0, 0, 8, 8));
+      g.clearRect(0, 0, size, size);
+      // Light strokes only, so the signed-scale fill shows through.
+      g.strokeStyle = "rgba(20, 20, 20, 0.28)";
+      g.lineWidth = 1.25;
+      g.beginPath(); g.moveTo(-2, size); g.lineTo(size, -2); g.stroke();
+      g.beginPath(); g.moveTo(0, size + 2); g.lineTo(size + 2, 0); g.stroke();
+      map.addImage("hatch-insufficient", g.getImageData(0, 0, size, size));
     }
     function refreshHatch() {
       if (!map.getLayer("countries-hatch")) return;
@@ -2252,6 +2277,8 @@
       getTracked: () => tracked,
       getInScope: () => [...inScope],
       countryName: (iso) => countryDisplayName(iso),
+      colorFor,
+      colorForL,
       refreshFill,
       refreshHatch,
       resize() { try { map.resize(); } catch (e) {} }

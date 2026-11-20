@@ -71,6 +71,8 @@
     document.body.classList.toggle("media-active", media);
     document.body.classList.toggle("media-table", media && state.mode === "table");
     document.body.classList.toggle("about-active", about);
+    const agePicker = document.getElementById("age-picker");
+    if (agePicker) agePicker.hidden = media;
     if (chrome) chrome.hidden = !media;
     if (window.HarmMap) window.HarmMap.setMode(media ? "media" : "crime");
     if (media) load();
@@ -111,6 +113,20 @@
     <button type="button" data-mode="table"></button>
   </div>`;
   nav.insertAdjacentElement("afterend", chrome);
+
+  const mapNote = document.createElement("p");
+  mapNote.id = "media-map-note";
+  mapNote.className = "media-map-note";
+  mapNote.hidden = true;
+  const mapWrap = document.querySelector(".map-wrap");
+  if (mapWrap) mapWrap.appendChild(mapNote);
+  function placeMapNote() {
+    if (!mapNote || !mapNote.isConnected) return;
+    const views = document.getElementById("views");
+    if (!views || !window.matchMedia("(max-width: 768px)").matches) { mapNote.style.top = ""; return; }
+    mapNote.style.top = (views.offsetTop + views.offsetHeight + 6) + "px";
+  }
+  window.addEventListener("resize", placeMapNote);
 
   function labelModes() {
     const group = document.getElementById("media-modes");
@@ -195,22 +211,40 @@
     return ["USA"];
   }
 
+  function countryRecord(iso) {
+    return data && data.summary && data.summary.countries && data.summary.countries[iso];
+  }
+
+  function signedL(bound, flip) {
+    if (bound == null || !isFinite(bound) || bound <= 0) return null;
+    const L = Math.log2(bound);
+    return flip ? -L : L;
+  }
+
   function mediaStateFor(iso) {
-    if (iso === "USA" && usa()) {
-      const p = pref();
-      const rb = ruleBlock();
+    const rec = countryRecord(iso);
+    const flip = state.label === "antiblack";
+    if (rec) {
+      const p = rec.preferred_inference;
+      const rb = rec.rule_sets && rec.rule_sets[state.rule];
+      const cdiBound = p && p.cdi_lower_bound;
+      const status = rec.index_status || (p && p.index_lower_display != null ? "insufficient_data" : "pending");
+      const bound = p && p.index_lower_display;
       return {
-        status: "insufficient_data",
+        status,
         zero_of_n: p && p.zero_of_n,
-        bound: p && p.index_lower_display,
+        n_pair: p && (p.n_pair != null ? p.n_pair : cdiBound && cdiBound.n_pair),
+        unit: (p && p.unit) || "incidents",
+        zero_direction: cdiBound && cdiBound.zero_direction,
+        bound,
+        L: signedL(bound, flip),
         incidents: rb && rb.included_incidents,
         start: rb && rb.date_start,
         end: rb && rb.date_end,
         stories: rb && rb.mixed_vs_ncvs && rb.mixed_vs_ncvs.stories,
-        completeness: completenessOf("USA")
+        completeness: completenessOf(iso)
       };
     }
-    const tracked = window.HarmMap ? window.HarmMap.getTracked() : {};
     const inScope = inScopeList().includes(iso);
     return {
       status: inScope ? "pending" : "out",
@@ -218,6 +252,53 @@
     };
   }
   window.mediaCountryState = mediaStateFor;
+
+  function measuredIsos() {
+    if (!data || !data.summary || !data.summary.countries) return [];
+    return Object.keys(data.summary.countries).filter(iso => {
+      const st = mediaStateFor(iso);
+      return st && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point");
+    });
+  }
+
+  function subjectCountryName(iso) {
+    const key = "countries_in_sentence." + iso;
+    const special = window.t ? window.t(key) : "";
+    const display = countryName(iso);
+    if (!special || special === key) return display;
+    // Locative forms (preposition + name) are not usable as a sentence subject.
+    if (/^(w|в|у|in|en|i|na|im)\s/i.test(special.trim())) return display;
+    return special;
+  }
+
+  function listNames(names) {
+    try { return new Intl.ListFormat(locale(), { type: "conjunction" }).format(names); }
+    catch (e) { return names.join(", "); }
+  }
+
+  function unitName(unit) {
+    return unit === "stories" ? t("unit_stories_name") : t("unit_incidents_name");
+  }
+
+  function directionName(dir) {
+    return dir === "W_on_B" ? t("dir_wb") : t("dir_bw");
+  }
+
+  function updateMapNote() {
+    if (!mapNote) return;
+    const media = document.body.classList.contains("media-active") && state.mode === "map";
+    if (!media || !data) { mapNote.hidden = true; return; }
+    const isos = measuredIsos();
+    if (!isos.length) { mapNote.hidden = true; return; }
+    const names = isos.map(subjectCountryName);
+    const n = isos.length;
+    const text = window.tPlural
+      ? window.tPlural("media.map_note", n, { country: names[0], list: listNames(names) })
+      : t(n === 1 ? "map_note_one" : "map_note_other", { country: names[0], list: listNames(names), n });
+    mapNote.textContent = text;
+    mapNote.hidden = false;
+    placeMapNote();
+  }
 
   function mediaTooltipHtml(iso, name) {
     const st = mediaStateFor(iso);
@@ -232,12 +313,21 @@
     }
     const flip = state.label === "antiblack";
     const m = fmtMult(st.bound, { flip, asBound: true });
-    const boundLine = t("tt_bound", { n: 5, unit: t("unit_incidents"), m: t("at_least", { m }) });
+    const lean = flip ? t("lean_antiblack") : t("lean_antiwhite");
+    const boundLine = t("tt_insufficient_bound", {
+      m,
+      lean,
+      zero: st.zero_of_n,
+      unit: unitName(st.unit),
+      direction: directionName(st.zero_direction)
+    });
     const stories = st.stories || {};
+    const fill = (window.HarmMap && typeof window.HarmMap.colorFor === "function")
+      ? window.HarmMap.colorFor(iso)
+      : "#b35806";
     const lines = [
       `<div class="tt-title">${display}</div>`,
-      `<div class="tt-status"><span class="swatch hatch" style="background:#c5c9ce"></span>${esc(t("tt_insufficient"))}</div>`,
-      `<div style="margin-top:4px">${esc(boundLine)}</div>`,
+      `<div class="tt-status"><span class="swatch hatch" style="background-color:${esc(fill)}"></span>${esc(boundLine)}</div>`,
       st.completeness != null ? `<div style="margin-top:4px">${esc(t("tt_completeness", { score: fmt(st.completeness) }))}</div>` : "",
       (st.start && st.end) ? `<div style="margin-top:4px">${esc(t("tt_sample", { n: fmt(st.incidents), start: st.start, end: st.end }))}</div>` : "",
       `<div style="margin-top:4px">${esc(t("tt_counts", { w: fmt(stories.W_on_B), b: fmt(stories.B_on_W), o: fmt(stories.other) }))}</div>`
@@ -705,18 +795,34 @@
     if (document.body.classList.contains("media-active")) render();
   };
 
+  function hatchFillColor() {
+    const iso = measuredIsos().find(code => {
+      const st = mediaStateFor(code);
+      return st && st.L != null;
+    });
+    if (iso && window.HarmMap && typeof window.HarmMap.colorFor === "function") return window.HarmMap.colorFor(iso);
+    if (window.HarmMap && typeof window.HarmMap.colorForL === "function") {
+      const flip = state.label === "antiblack";
+      return window.HarmMap.colorForL(flip ? -2 : 2);
+    }
+    return state.label === "antiblack" ? "#542788" : "#b35806";
+  }
+
   function renderLegend() {
     const el = document.getElementById("legend");
     if (!el || !document.body.classList.contains("media-active")) return;
+    const hatchColor = hatchFillColor();
     el.innerHTML =
       `<div class="legend-title">${esc(t("legend_title"))}</div>
        <div class="legend-scale"><span class="ex-small">${esc(t("legend_minus"))}</span>
          <span class="legend-scale-bar" aria-hidden="true"></span>
          <span class="ex-small">${esc(t("legend_plus"))}</span></div>
+       <div class="legend-scale-center"><span class="swatch" style="background:#f7f7f7;box-shadow:inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_center"))}</div>
+       <div class="legend-scale-notes">
+         <div class="legend-note"><span class="swatch hatch large" style="background-color:${esc(hatchColor)}"></span><span>${esc(t("legend_hatch_note"))}</span></div>
+         <div class="legend-note"><span class="swatch large" style="background:#e6e8eb;box-shadow:inset 0 0 0 1px #d5d8da"></span><span>${esc(t("legend_pending"))}</span></div>
+       </div>
        <div class="legend-items">
-         <span class="legend-item"><span class="swatch" style="background:#f7f7f7;box-shadow:inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_center"))}</span>
-         <span class="legend-item"><span class="swatch hatch"></span>${esc(t("legend_insufficient"))}</span>
-         <span class="legend-item"><span class="swatch" style="background:#e6e8eb;box-shadow:inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_pending"))}</span>
          <span class="legend-item subtle"><span class="swatch" style="background:#f4f5f6;box-shadow:inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_out"))}</span>
        </div>`;
   }
@@ -749,8 +855,12 @@
     if (state.mode === "table") bindTable();
     bindDetails();
     renderLegend();
+    updateMapNote();
     if (window.refreshTermTips) window.refreshTermTips();
-    if (window.HarmMap) window.HarmMap.refreshHatch && window.HarmMap.refreshHatch();
+    if (window.HarmMap) {
+      if (window.HarmMap.refreshFill) window.HarmMap.refreshFill();
+      else if (window.HarmMap.refreshHatch) window.HarmMap.refreshHatch();
+    }
   }
 
   function load() {
