@@ -157,3 +157,8 @@ body.media-table .media-map-note { display: none !important; }
   .mv-table td::before { content: attr(data-label); color: var(--muted); font-size: 0.78rem; font-weight: 600; }
   .mv-table td > * { grid-column: 2; }
 }
+
+.mv-findings { margin: 16px 0 18px; max-width: 760px; }
+.mv-ee-index { padding: 10px 12px; border: 1px dashed var(--line); border-radius: 4px; background: #fff; }
+.mv-ee-index .mv-h { margin: 0 0 4px; }
+.mv-ee-index .mv-desc { margin: 0; }

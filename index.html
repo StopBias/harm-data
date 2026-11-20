@@ -478,6 +478,7 @@
     .about-inner { max-width: 720px; margin: 0 auto; }
     .about-body { font-size: 1.05rem; line-height: 1.65; }
     .about-body p { margin: 0 0 1.15em; }
+    .about-europhobia { margin: 1.2em 0 0; font-size: 1.05rem; line-height: 1.65; max-width: 720px; }
     .about-body a { color: var(--brand-dark); }
     @media (max-width: 768px) {
       #about-view { padding: 16px 12px 40px; }
@@ -649,6 +650,7 @@
         <p>‘White’ describes skin colour, and many communities with light skin are not ethnic European. When we say antiwhite bias, we mean prejudice and discrimination aimed specifically at people of ethnic European heritage. This can more precisely be called ethnic Europhobia.</p>
         <p>Most official statistics don’t record ethnic European heritage at all, and use broad categories like ‘White’ that mix different groups together. This gap makes it hard to see when ethnic European children are being harmed, and it’s one of the gaps this project highlights.</p>
       </section>
+      <p id="about-europhobia" class="about-europhobia"></p>
     </div>
   </section>
   <link rel="stylesheet" href="media.css">
@@ -848,6 +850,8 @@
       if (window.refreshTermTips) window.refreshTermTips();
       const aboutTitle = document.getElementById("about-title");
       if (aboutTitle) aboutTitle.textContent = t("about.heading");
+      const europhobia = document.getElementById("about-europhobia");
+      if (europhobia) europhobia.textContent = t("about.europhobia");
       const aboutBadge = document.getElementById("about-en-badge");
       if (aboutBadge) {
         const en = currentLang === "en";
@@ -1630,7 +1634,7 @@
       const isos = (mapMode === "media" && typeof window.mediaCountryState === "function")
         ? [...inScope].filter(iso => {
             const st = window.mediaCountryState(iso);
-            return st && st.status === "insufficient_data";
+            return st && (st.status === "bound" || st.status === "insufficient_data");
           })
         : [];
       const filter = isos.length

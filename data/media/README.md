@@ -9,7 +9,7 @@ index**). Coverage Distortion Index (CDI) is the methods name for the same calcu
 used as a public label. A point-estimate CDI is never manufactured with a +0.5 (or any other)
 correction. When a direction cell is 0, the published figure is **0 of N** plus the Clopper-Pearson
 exact one-sided 95% lower bound. Outlet point-estimate index cells stay **pending** until an
-incident-based sample exists. **Insufficient data** means fewer than 20 included incidents overall.
+incident-based sample exists. **Insufficient data** means the index is undefined (no covered White–Black pair incidents). A significance test (exact two-sided p, alpha 0.05) is stored on each measured country; small samples are published with their p. The 2023 keyword sample’s exact test is a worked example and is not published as a finding.
 
 | File | What it is | Built by |
 |---|---|---|
@@ -19,7 +19,7 @@ incident-based sample exists. **Insufficient data** means fewer than 20 included
 | `stories_2023.csv` | 2023 Media Cloud story frame with the **strict** rule-set coding overlaid (v1.1 columns) | `convert_pilot_stories.py` |
 | `stories_2023_broad.csv` | The same frame with the **broad** rule-set coding overlaid | `convert_pilot_stories.py` |
 | `stories_2023_conversion.json` / `stories_2023_broad_conversion.json` | What the converter dropped, checked and counted | `convert_pilot_stories.py` |
-| `summary.json` | Country- and outlet-level counts, bounds, rates, gaps and judgement calls (method_version 1.2) | `build_media_summary.py` |
+| `summary.json` | Country- and outlet-level counts, bounds, rates, gaps and judgement calls (method_version 3.0) | `build_media_summary.py` |
 
 Rebuild everything (from the repo root; needs Python 3, curl and `pdftotext` from poppler-utils):
 

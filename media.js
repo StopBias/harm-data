@@ -171,26 +171,50 @@
     return t("multiplier", { sign: flip ? "+" : MINUS, value: display(rec) });
   }
 
+  function formatP(p) {
+    if (p == null || !isFinite(Number(p))) return "";
+    const n = Number(p);
+    if (n > 0 && n < 0.001) return n.toLocaleString(locale(), { maximumSignificantDigits: 2 });
+    return n.toLocaleString(locale(), { maximumSignificantDigits: 3 });
+  }
+
+  function significanceText(rec) {
+    if (!rec) return "";
+    const p = formatP(rec.p_two_sided);
+    const label = rec.significance_label;
+    if (label === "not_published_as_finding" || rec.finding_published === false) {
+      return p ? t("sig_not_a_finding", { p }) : "";
+    }
+    if (rec.significant) return t("sig_significant", { p });
+    if (rec.p_two_sided != null) return t("sig_not_significant", { p });
+    return "";
+  }
+
   function headline() {
     const p = pref();
     if (!p) return { status: "pending", text: t("pending"), sub: t("pending_hint") };
     const flip = state.label === "antiblack";
     const bound = p.index_lower_display;
     const zero = p.zero_of_n;
-    const status = (usa() && usa().index_status) || "pending";
-    if (status === "insufficient_data" || status === "bound") {
+    const rec = usa() || {};
+    const status = rec.index_status || "pending";
+    const sig = significanceText(Object.assign({}, p, rec));
+    if (status === "bound") {
       const m = fmtMult(bound, { flip, asBound: true });
       const atLeast = m ? t("at_least", { m }) : "";
       return {
-        status: "insufficient_data",
-        text: atLeast || t("insufficient"),
+        status: "bound",
+        text: atLeast || t("pending"),
         zero,
         bound: m,
-        sub: [zero, t("insufficient")].filter(Boolean).join(" · ")
+        sub: sig
       };
     }
+    if (status === "insufficient_data" || rec.index_defined === false) {
+      return { status: "insufficient_data", text: t("insufficient"), sub: t("insufficient_hint") };
+    }
     if (p.cdi != null && p.point_estimate_published) {
-      return { status: "point", text: fmtMult(p.cdi, { flip, asBound: false }), sub: "" };
+      return { status: "point", text: fmtMult(p.cdi, { flip, asBound: false }), sub: sig };
     }
     return { status: "pending", text: t("pending"), sub: t("pending_hint") };
   }
@@ -228,10 +252,25 @@
       const p = rec.preferred_inference;
       const rb = rec.rule_sets && rec.rule_sets[state.rule];
       const cdiBound = p && p.cdi_lower_bound;
-      const status = rec.index_status || (p && p.index_lower_display != null ? "insufficient_data" : "pending");
+      let status = rec.index_status;
+      if (!status) {
+        if (rec.index_defined === false) status = "insufficient_data";
+        else if (p && p.index_lower_display != null) status = "bound";
+        else if (p && p.point_estimate_published && p.cdi != null) status = "point";
+        else status = "pending";
+      }
       const bound = p && p.index_lower_display;
       return {
         status,
+        index_defined: rec.index_defined,
+        finding_published: rec.finding_published,
+        significant: rec.significant,
+        significance_label: rec.significance_label,
+        p_two_sided: rec.p_two_sided != null ? rec.p_two_sided : (p && p.p_two_sided),
+        p_one_sided: rec.p_one_sided != null ? rec.p_one_sided : (p && p.p_one_sided),
+        test: rec.test || (p && p.test),
+        n_covered_W: rec.n_covered_W,
+        n_covered_B: rec.n_covered_B,
         zero_of_n: p && p.zero_of_n,
         n_pair: p && (p.n_pair != null ? p.n_pair : cdiBound && cdiBound.n_pair),
         unit: (p && p.unit) || "incidents",
@@ -321,6 +360,7 @@
       unit: unitName(st.unit),
       direction: directionName(st.zero_direction)
     });
+    const sig = significanceText(st);
     const stories = st.stories || {};
     const fill = (window.HarmMap && typeof window.HarmMap.colorFor === "function")
       ? window.HarmMap.colorFor(iso)
@@ -328,6 +368,7 @@
     const lines = [
       `<div class="tt-title">${display}</div>`,
       `<div class="tt-status"><span class="swatch hatch" style="background-color:${esc(fill)}"></span>${esc(boundLine)}</div>`,
+      sig ? `<div style="margin-top:4px">${esc(sig)}</div>` : "",
       st.completeness != null ? `<div style="margin-top:4px">${esc(t("tt_completeness", { score: fmt(st.completeness) }))}</div>` : "",
       (st.start && st.end) ? `<div style="margin-top:4px">${esc(t("tt_sample", { n: fmt(st.incidents), start: st.start, end: st.end }))}</div>` : "",
       `<div style="margin-top:4px">${esc(t("tt_counts", { w: fmt(stories.W_on_B), b: fmt(stories.B_on_W), o: fmt(stories.other) }))}</div>`
@@ -641,7 +682,7 @@
       let indexText, indexSort;
       if (iso === "USA" && usa()) {
         const h = headline();
-        indexText = [h.zero, h.text, t("insufficient")].filter(Boolean).join(" · ");
+        indexText = [h.zero, h.text, significanceText(Object.assign({}, pref(), usa() || {}))].filter(Boolean).join(" · ");
         indexSort = (pref() && pref().index_lower_display) || 0;
       } else {
         indexText = t("pending");
@@ -828,6 +869,22 @@
   }
   window.renderMediaLegend = renderLegend;
 
+  function findingsHtml() {
+    const rec = usa() || {};
+    const published = rec.finding_published && rec.significant;
+    const conclusions = published
+      ? `<h3 class="mv-h" id="mv-findings-h">${esc(t("findings_h"))}</h3>
+         <p class="mv-desc" id="mv-findings-body">${esc(significanceText(Object.assign({}, pref() || {}, rec)))}</p>`
+      : "";
+    return `<section class="mv-findings" id="mv-findings">
+      ${conclusions}
+      <div class="mv-ee-index" id="mv-ee-index">
+        <h3 class="mv-h">${esc(t("ee_index"))}</h3>
+        <p class="mv-desc">${esc(t("ee_index_pending"))}</p>
+      </div>
+    </section>`;
+  }
+
   function render() {
     labelTabs();
     labelModes();
@@ -843,6 +900,7 @@
       <div class="ex-head"><h2 id="mv-title">${esc(t("title"))}</h2>${badge}</div>
       <p class="ex-lede">${esc(t("lede"))}</p>
       ${s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}${enOnlyBadge()}</p>` : ""}
+      ${findingsHtml()}
       ${resultsInView}
       ${tableBlock}
       ${detailsHtml()}
