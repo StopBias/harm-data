@@ -68,8 +68,9 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   arrested/investigated by nationality), Denmark (decisions by citizenship/residence status), Netherlands (CBS suspects
   by origin, with rates), Croatia (reported minors by citizenship), North Macedonia (reported children by ethnicity),
   Sweden (school-survey victimisation and self-reported offending by origin, ninth grade), Serbia (juveniles sanctioned
-  by national affiliation), Portugal (sentenced prisoners by nationality and age) and Slovenia (juveniles sanctioned by
-  citizenship).
+  by national affiliation), Portugal (sentenced prisoners by nationality and age), Slovenia (juveniles sanctioned by
+  citizenship), Estonia (school-survey victimisation by questionnaire language), Kosovo (juveniles convicted by
+  nationality, 2017) and Romania (trafficking victims by citizenship, counted from the ANITP open dataset).
 - Code and styles: `age.js`, `age.css`; strings: `age.*` in `i18n/*.json`. The explorer fires a `harm:explorer` event
   (`detail.iso`) whenever it renders a country, which is the only hook `age.js` needs.
 
