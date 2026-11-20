@@ -500,6 +500,15 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(12, 192, 223, 0); filter: brightness(1); }
       40% { box-shadow: 0 0 0 4px rgba(12, 192, 223, 0.95), 0 0 28px 10px rgba(12, 192, 223, 0.75); filter: brightness(1.35); }
     }
+    /* Tabs are transparent text buttons: a ring alone was too faint, so they get the same solid
+       logo-cyan fill as the language button at the peak of each pulse. */
+    .site-tabs button.attention-shimmer {
+      animation: attention-glow 1.2s ease-in-out 1, attention-fill 1.2s ease-in-out 1;
+    }
+    @keyframes attention-fill {
+      0%, 100% { background-color: rgba(12, 192, 223, 0); color: inherit; }
+      40% { background-color: rgba(12, 192, 223, 1); color: #000; }
+    }
     @keyframes attention-sweep {
       0% { background-position: 120% 0; opacity: 0; }
       15% { opacity: 1; }
@@ -591,11 +600,11 @@
         <span id="about-en-badge" hidden></span>
       </div>
       <div class="about-body" id="about-body">
-        <p>The Ethnic Bias Data Explorer is a project of the StopBias.org campaign to protect children from the harms of anti-white bias.</p>
-        <p>Around the world, ethnic European children are being made vulnerable to physical and psychological harm by incomplete and distorted interracial crime data from governments, and by biased media coverage that inverts the reality of interracial crime rates.</p>
+        <p>The Ethnic Bias Data Explorer is a project of the StopBias.org campaign to protect children from the harms of antiwhite bias.</p>
+        <p>Around the world, ethnic European children (commonly called “White”) are being made vulnerable to physical and psychological harm by incomplete and distorted interracial crime data from governments, and by biased media coverage that inverts the reality of interracial crime rates.</p>
         <p>The Ethnic Bias Data Explorer shows what data we currently have, what it shows, where the gaps are, and where the biases lie in government statistics and in media reporting.</p>
         <p>The Ethnic Bias Data Explorer reveals the need for better data so that we can protect children from harm, make better decisions as individuals informed by accurate media, and have governments that provide and use accurate interracial crime data.</p>
-        <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of anti-white bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
+        <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of antiwhite bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
         <!-- Social media links will be added here once handles are provided. -->
       </div>
     </div>
@@ -942,7 +951,7 @@
 
     // Attention shimmer: on every load, the language button pulses 3 times, 3 s apart, then the
     // Crime/Media tabs do the same, until the user has ever used that control (localStorage).
-    const ATTENTION_KEYS = { lang: "harm-data-seen-lang", tabs: "harm-data-seen-tabs" };
+    const ATTENTION_KEYS = { lang: "harm-data-seen-lang", tabs: "harm-data-seen-tabs-v2" };
     const ATTENTION_PULSE_MS = 1200, ATTENTION_GAP_MS = 3000, ATTENTION_REPEATS = 3;
     const attentionTimers = { lang: [], tabs: [] };
     function attentionSeen(group) {
