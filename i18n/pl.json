@@ -2,7 +2,7 @@
   "title": "Eksplorator danych o uprzedzeniach etnicznych",
   "title_lead": "Uprzedzenia etniczne",
   "title_rest": "Eksplorator danych",
-  "subtitle": "Apel o przejrzystość danych w administracji publicznej i mediach",
+  "subtitle": "O przejrzystość danych etnicznych i relacji medialnych",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Język",
   "shown_in_english": "Wyświetlone po angielsku",
@@ -17,7 +17,7 @@
     "oceania": "Oceania"
   },
   "legend": {
-    "title": "Ochrona dzieci według kompletności danych",
+    "title": "Kompletność danych etnicznych",
     "not_analyzed": "Jeszcze nie przeanalizowano",
     "out_of_scope": "Poza obecnym zakresem"
   },

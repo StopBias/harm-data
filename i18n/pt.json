@@ -2,7 +2,7 @@
   "title": "Explorador de dados sobre preconceito étnico",
   "title_lead": "Preconceito étnico",
   "title_rest": "Explorador de dados",
-  "subtitle": "Um apelo à transparência dos dados no governo e nos meios de comunicação",
+  "subtitle": "Pela transparência nos dados étnicos e na informação",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Idioma",
   "shown_in_english": "Mostrado em inglês",
@@ -17,7 +17,7 @@
     "oceania": "Oceânia"
   },
   "legend": {
-    "title": "Proteção infantil segundo a completude dos dados",
+    "title": "Completude dos dados étnicos",
     "not_analyzed": "Ainda não analisado",
     "out_of_scope": "Fora do âmbito atual"
   },

@@ -2,7 +2,7 @@
   "title": "Explorador de datos sobre sesgo étnico",
   "title_lead": "Sesgo étnico",
   "title_rest": "Explorador de datos",
-  "subtitle": "Una llamada a la transparencia de los datos en el gobierno y los medios",
+  "subtitle": "Por la transparencia en los datos étnicos y en la información",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Idioma",
   "shown_in_english": "Mostrado en inglés",
@@ -17,7 +17,7 @@
     "oceania": "Oceanía"
   },
   "legend": {
-    "title": "Protección infantil según la exhaustividad de los datos",
+    "title": "Completitud de los datos étnicos",
     "not_analyzed": "Aún no analizado",
     "out_of_scope": "Fuera del alcance actual"
   },

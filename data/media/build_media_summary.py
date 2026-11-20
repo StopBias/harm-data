@@ -125,7 +125,7 @@ def main():
         if st and st["status"] != "published":
             gaps.append({"topic": f"NCVS baseline {y}", "reason": st.get("note") or st["status"]})
     gaps += [
-        {"topic": "Jewish/ethnic-European direction", "reason": "no crime baseline: no NCVS or other official U.S. table records Jewish offenders against non-Hispanic White victims; story counts only, no CDI."},
+        {"topic": "Ethnic Jewish/ethnic European direction", "reason": "no crime baseline: no NCVS or other official U.S. table records ethnic Jewish offenders against non-Hispanic White victims; story counts only, no CDI."},
         {"topic": "AP, NYT and WaPo 2023 coding", "reason": "not coded yet. AP and NYT sample URLs returned errors or bot protection from our build machine; WaPo pages could not be retrieved (timeout/404), which is a fetch failure, not a demonstrated paywall. CDI is null for these outlets."},
         {"topic": "Homicide", "reason": "the NCVS does not cover homicide; the baseline is nonfatal violent incidents (rape/sexual assault, robbery, aggravated and simple assault)."},
         {"topic": "Query asymmetry", "reason": "the story frame was built from keyword queries, most of them anti-Black framings (\"white supremacist\", \"anti-Black\", \"racially motivated\", \"hate crime\"); only \"anti-white\" and \"Black supremacist\" target the reverse framing. Black-on-White crime stories that use none of these phrases are not in the frame, so the pilot frame is expected to under-sample them. This is a pre-registered alternative explanation (label convention, query misfire)."},

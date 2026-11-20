@@ -2,7 +2,7 @@
   "title": "Datenexplorer zu ethnischer Voreingenommenheit",
   "title_lead": "Ethnische Voreingenommenheit",
   "title_rest": "Datenexplorer",
-  "subtitle": "Aufruf zu Datentransparenz in Staat und Medien",
+  "subtitle": "Für Transparenz bei ethnischen Daten und in der Berichterstattung",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Sprache",
   "shown_in_english": "Auf Englisch angezeigt",
@@ -17,7 +17,7 @@
     "oceania": "Ozeanien"
   },
   "legend": {
-    "title": "Kinderschutz nach Vollständigkeit der Daten",
+    "title": "Vollständigkeit ethnischer Daten",
     "not_analyzed": "Noch nicht untersucht",
     "out_of_scope": "Außerhalb des derzeitigen Rahmens"
   },

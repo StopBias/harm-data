@@ -2,7 +2,7 @@
   "title": "Esploratore di dati sul pregiudizio etnico",
   "title_lead": "Pregiudizio etnico",
   "title_rest": "Esploratore di dati",
-  "subtitle": "Un appello alla trasparenza dei dati nelle istituzioni pubbliche e nei media",
+  "subtitle": "Per la trasparenza nei dati etnici e nell’informazione",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Lingua",
   "shown_in_english": "Mostrato in inglese",
@@ -17,7 +17,7 @@
     "oceania": "Oceania"
   },
   "legend": {
-    "title": "Protezione dell'infanzia secondo la completezza dei dati",
+    "title": "Completezza dei dati etnici",
     "not_analyzed": "Non ancora analizzato",
     "out_of_scope": "Fuori dall'ambito attuale"
   },

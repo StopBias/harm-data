@@ -1,6 +1,6 @@
 # Ethnic Bias Data Explorer
 
-The public name of this site is **Ethnic Bias Data Explorer**. The repository and site URL remain `harm-data` (`https://stopbias.github.io/harm-data/`). Subtitle: “Calling for data transparency in government and media”. An About page is at `#about`.
+The public name of this site is **Ethnic Bias Data Explorer**. The repository and site URL remain `harm-data` (`https://stopbias.github.io/harm-data/`). Subtitle: “Calling for transparency in ethnic data and reporting”. Interface colours follow the logo: cyan `#0cc0df` with black text, and the same hue darkened to `#077183` for text and white-on-colour. An About page is at `#about`.
 
 Data related to bias harms at the global, national, and regional levels.
 
@@ -13,7 +13,7 @@ Data related to bias harms at the global, national, and regional levels.
 - `build-boundaries.sh` — regenerates that file.
 
 ## Colours
-Legend title: "Child protection by data completeness".
+Legend title: "Ethnic data completeness".
 
 | Tier | Colour | Legend label |
 | --- | --- | --- |
