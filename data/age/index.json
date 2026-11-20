@@ -1,0 +1,6 @@
+{
+ "_about": "ISO3 codes with an age-band file at data/age/<iso3 lowercase>.json. Countries not listed show all-ages data and a note that no age breakdown is published.",
+ "countries": [
+  "USA"
+ ]
+}

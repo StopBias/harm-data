@@ -2155,6 +2155,7 @@
     // The section below the map: prompt (nothing selected), full explorer (country has a data file),
     // or a short "not added yet" note (country without a data file).
     function renderExplorerFor(iso, name) {
+      queueMicrotask(() => document.dispatchEvent(new CustomEvent("harm:explorer", { detail: { iso: iso || null } })));  // age.js
       const detail = iso ? DETAIL[iso] : null;
       $("ex-badge").hidden = !iso;
       if (!iso) {
@@ -2416,5 +2417,8 @@
       if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
     })();
   </script>
+  <!-- Age groups: map-level selector and per-country age figures; code in age.js / age.css, data in data/age/, strings in i18n/*.json (age.*) -->
+  <link rel="stylesheet" href="age.css">
+  <script src="age.js"></script>
 </body>
 </html>

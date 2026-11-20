@@ -197,6 +197,71 @@
     "Government authority survey with NGO partners": "Hatósági felmérés NGO partnerekkel",
     "Non-Icelandic source (foreign government report)": "Nem izlandi forrás (külföldi kormány jelentése)"
   },
+  "age": {
+    "selector_label": "Korcsoport",
+    "selector_hint": "A térkép alatti országadatokra vonatkozik.",
+    "section_title": "Adatok korcsoport szerint: {band}",
+    "lede": "Hivatalos adatok – {country} ({band}) – rassz és etnikai származás szerint, ahogyan az egyes források közlik őket. Soha nem egészítünk ki és nem módosítunk számokat.",
+    "no_breakdown": "Nincs korcsoport szerinti bontás",
+    "no_breakdown_note": "{country}: ezeket az adatokat nem közlik korcsoport szerint. A fenti adatok minden korosztályra vonatkoznak, nem csak erre: {band}.",
+    "no_breakdown_all": "{country}: ezeket az adatokat nem közlik korcsoport szerint. A fenti adatok minden korosztályra vonatkoznak.",
+    "bands_published": "Korcsoportok adatokkal:",
+    "more_harms": "További bűncselekménytípusok ebben a korcsoportban",
+    "source": "Forrás",
+    "year": "Év",
+    "rate_unit": "Arány",
+    "col_group": "Csoport",
+    "col_count": "Szám",
+    "col_count_perp": "Szám",
+    "col_share": "Arány az összesből",
+    "col_rate": "Arány",
+    "cross_corner": "Áldozat ↓ / elkövető →",
+    "cross_caption": "Az áldozat rassza (sorok) az elkövető rassza szerint (oszlopok)",
+    "suppressed": "Visszatartva",
+    "suppressed_help": "A forrás nem közli, mert a szám kicsi (a CDC-nél 1–9 haláleset). Soha nem egészítjük ki.",
+    "small_n": "10 vagy kevesebb felmérési eseten alapul: megbízhatatlan",
+    "no_figure": "Nincs adat erre a korcsoportra.",
+    "try_parent": "Lásd: {band}.",
+    "native_bands": "A forrás által közölt korcsoportok",
+    "other_age": "Korcsoporton kívül: ismeretlen életkor {unknown}; két korcsoportot átfogó életkor-tartomány {spans}.",
+    "band": {
+      "all": "Minden korosztály",
+      "0-17": "Gyermekek 0–17",
+      "0-12": "Gyermekek 0–12",
+      "13-17": "Serdülők 13–17",
+      "18-29": "Felnőttek 18–29",
+      "30-64": "Felnőttek 30–64",
+      "65+": "Felnőttek 65+"
+    },
+    "harm": {
+      "homicide": "Emberölés",
+      "sexual_abuse": "Szexuális bántalmazás és erőszak",
+      "trafficking": "Emberkereskedelem",
+      "physical_abuse": "Fizikai bántalmazás és testi sértés",
+      "online_exploitation": "Online kizsákmányolás",
+      "neglect": "Elhanyagolás és bántalmazás"
+    },
+    "role": {
+      "victims": "Áldozatok",
+      "perpetrators": "Elkövetők",
+      "cross": "Áldozat × elkövető"
+    },
+    "fit": {
+      "exact": "Pontos",
+      "derived_exact": "Pontos (származtatott)",
+      "computed_microdata": "Hivatalos nyilvántartásból számolva",
+      "estimated": "Becsült",
+      "estimated_band": "Becsült: legközelebbi közölt csoport {band}",
+      "unavailable": "Nem közölt"
+    },
+    "fit_help": {
+      "exact": "A forrás pontosan ezt a korcsoportot közli.",
+      "derived_exact": "Közölt számok összeadásával vagy kivonásával pontosan kiszámolva.",
+      "computed_microdata": "Általunk számolva a hivatalos egyedi adatfájlból, pontos életkorral.",
+      "estimated": "Csak egy szomszédos korcsoportot közölnek; annak száma változatlanul látható.",
+      "unavailable": "Nincs közölt adat erre a korcsoportra."
+    }
+  },
   "countries": {
     "XKX": "Koszovó"
   },
