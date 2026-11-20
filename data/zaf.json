@@ -34,7 +34,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -44,7 +44,7 @@
  },
  "unknown_label": "Population group unknown",
  "european_title": "Not published for any child harm",
- "european_note": "South Africa's official population groups include 'White', which broadly corresponds to European descent, and Stats SA uses them in the census and on death notifications. But no police, child-protection or published death statistics on harm to children are broken down by population group, so European-descent children and perpetrators cannot be identified for any harm.",
+ "european_note": "South Africa's official population groups include 'White', which broadly corresponds to ethnic Europeans, and Stats SA uses them in the census and on death notifications. But no police, child-protection or published death statistics on harm to children are broken down by population group, so ethnic European children and perpetrators cannot be identified for any harm.",
  "select_labels": {
   "victim": "Victim's population group",
   "perpetrator": "Perpetrator's population group"
@@ -416,12 +416,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -439,7 +439,7 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "South Africa scores 7% on the stricter scale (0-20%). The police publish counts of crimes against children with no population group for victims or suspects, and there are no national neglect or online-exploitation statistics. Death notifications record population group, including White, but cause of death by population group is published only in a separate workbook, and registered assault deaths miss most child murders.",
   "judgement_notes": "Homicide victims get 3 of 37.5 heritage points because death notifications record population group with White separately and Stats SA publishes cause of death by population group, even though that workbook could not be opened here and registered assault deaths miss most child murders. With 0 for that cell South Africa would score 6% instead of 7%.",

@@ -78,7 +78,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -91,7 +91,7 @@
  "extra_group_labels": {},
  "unknown_label": "Nationality or origin unknown",
  "european_title": "Not recorded by any Dutch source",
- "european_note": "Dutch statistics record nationality and origin based on country of birth of the person and their parents, never ethnicity. 'Born in the Netherlands to Dutch-born parents' and 'origin elsewhere in Europe' are the closest groups to European descent, but they are birth-country proxies: they include people of any descent and leave out European-descent people born outside Europe.",
+ "european_note": "Dutch statistics record nationality and origin based on country of birth of the person and their parents, never ethnicity. 'Born in the Netherlands to Dutch-born parents' and 'origin elsewhere in Europe' are the closest groups to ethnic Europeans, but they are birth-country proxies: they include people of any descent and leave out ethnic Europeans born outside Europe.",
  "select_labels": {
   "victim": "Victim's nationality or origin",
   "perpetrator": "Perpetrator's nationality or origin"
@@ -624,12 +624,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -647,7 +647,7 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "The Netherlands scores 16% on the stricter scale (0-20%). CBS publishes suspects of sexual and violent crimes by nationality and by origin (born in the Netherlands, rest of Europe and other regions), with rates, but never for crimes against children and never for victims. Trafficking figures give victims and suspects by nationality; other child harms have no origin data.",
   "weights": {

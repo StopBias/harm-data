@@ -110,7 +110,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -133,7 +133,7 @@
  },
  "unknown_label": "Identity unknown",
  "european_title": "Not separately identified by any Canadian official source",
- "european_note": "Statistics Canada measures 'racialized' people with the visible-minority standard. Everyone else (White and Indigenous people) is grouped as 'rest of the population' or 'not a visible minority', so White or European-descent people are never separately identified in official crime or survey tables. Only the non-government CIS child-welfare study reports White children separately.",
+ "european_note": "Statistics Canada measures 'racialized' people with the visible-minority standard. Everyone else (White and Indigenous people) is grouped as 'rest of the population' or 'not a visible minority', so White or ethnic European people are never separately identified in official crime or survey tables. Only the non-government CIS child-welfare study reports White children separately.",
  "select_labels": {
   "victim": "Victim's racialized or Indigenous identity",
   "perpetrator": "Perpetrator's racialized or Indigenous identity"
@@ -203,7 +203,7 @@
     "rate_label": "persons accused of homicide per 100,000 people of the same group (all ages)",
     "rate_note": "Official Statistics Canada rates (table 35-10-0207-01). Crude rates, not adjusted for age or sex.",
     "rate_all_label": "all residents",
-    "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or European-descent people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Covers all victims, not only children. Rough derivation, calculated here across two tables: of the 416 'rest of the population' accused, 185 were Indigenous (table 35-10-0060-01), leaving roughly 231 (about 39%) neither racialized nor Indigenous, i.e. mostly White.",
+    "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or ethnic European people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Covers all victims, not only children. Rough derivation, calculated here across two tables: of the 416 'rest of the population' accused, 185 were Indigenous (table 35-10-0060-01), leaving roughly 231 (about 39%) neither racialized nor Indigenous, i.e. mostly White.",
     "unknown_label": "Racialized identity unknown"
    },
    "cross": {
@@ -259,7 +259,7 @@
       "rate_note": "Official Statistics Canada rates (table 35-10-0206-01).",
       "rate_all_label": "all residents",
       "unknown_label": "Racialized identity unknown",
-      "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or European-descent people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Not child-specific. Rough derivation, calculated here: of the 474 'rest of the population' victims, 203 were Indigenous (table 35-10-0060-01), leaving roughly 271 neither racialized nor Indigenous."
+      "share_note": "Police-reported racialized identity (Statistics Canada's 'visible minority' standard). 'Rest of the population' (shown here as Not racialized) combines White people with Indigenous people, who are not counted as a visible minority, so White or ethnic European people are not separately identified. Identity is determined by police from information found with the person, family, community members or other sources. Not child-specific. Rough derivation, calculated here: of the 474 'rest of the population' victims, 203 were Indigenous (table 35-10-0060-01), leaving roughly 271 neither racialized nor Indigenous."
      }
     },
     {
@@ -848,7 +848,7 @@
     "access": 4,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "none",
-    "why": "Police record 13,576 sexual violations against children (2025) but no race or Indigenous identity until national PIRID data (not before 2027). Only the 2018 SSPPS survey gives childhood sexual abuse by visible-minority status and Indigenous identity; 'not a visible minority' lumps White with Indigenous people, so European descent is not separate.",
+    "why": "Police record 13,576 sexual violations against children (2025) but no race or Indigenous identity until national PIRID data (not before 2027). Only the 2018 SSPPS survey gives childhood sexual abuse by visible-minority status and Indigenous identity; 'not a visible minority' lumps White with Indigenous people, so ethnic Europeans are not separate.",
     "score": 23
    },
    {
@@ -887,7 +887,7 @@
     "access": 7.5,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "Homicide Survey: victims and accused by police-reported racialized identity (all ages, 1.8% and 0.5% unknown) and Indigenous identity (child victims 0-17). 'Rest of the population' lumps White with Indigenous people, so European descent is not separate; official rates; no victim-by-accused identity table.",
+    "why": "Homicide Survey: victims and accused by police-reported racialized identity (all ages, 1.8% and 0.5% unknown) and Indigenous identity (child victims 0-17). 'Rest of the population' lumps White with Indigenous people, so ethnic Europeans are not separate; official rates; no victim-by-accused identity table.",
     "score": 53.0
    },
    {
@@ -921,12 +921,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -944,9 +944,9 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Canada scores 25% on the stricter scale (20-40%). Homicide is well covered: police report the racialized and Indigenous identity of victims and accused, with official rates. For every other harm, the police record no race or Indigenous identity yet (national collection is not expected before 2027), so heritage data come only from a 2018 adult survey and a non-government child-welfare study. Even the homicide data lump White people with Indigenous people as 'rest of the population', so European descent is never separately identified in official data.",
+  "why": "Canada scores 25% on the stricter scale (20-40%). Homicide is well covered: police report the racialized and Indigenous identity of victims and accused, with official rates. For every other harm, the police record no race or Indigenous identity yet (national collection is not expected before 2027), so heritage data come only from a 2018 adult survey and a non-government child-welfare study. Even the homicide data lump White people with Indigenous people as 'rest of the population', so ethnic Europeans are never separately identified in official data.",
   "weights": {
    "Sexual abuse": 20,
    "Physical abuse": 15,

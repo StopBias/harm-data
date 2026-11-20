@@ -73,7 +73,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -83,7 +83,7 @@
  },
  "unknown_label": "Not stated",
  "european_title": "Partly: White Irish only",
- "european_note": "The CSO survey uses the census ethnic categories. White Irish is separate, but other White Europeans are combined with Irish Travellers and Roma, so European descent as a whole cannot be identified. Crime statistics have no ethnicity at all.",
+ "european_note": "The CSO survey uses the census ethnic categories. White Irish is separate, but other White Europeans are combined with Irish Travellers and Roma, so ethnic Europeans as a whole cannot be identified. Crime statistics have no ethnicity at all.",
  "select_labels": {
   "victim": "Victim's ethnic background or citizenship",
   "perpetrator": "Perpetrator's ethnic background or citizenship"
@@ -536,12 +536,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -559,7 +559,7 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "Ireland scores 12% on the stricter scale (0-20%). It is the only country in this batch with real ethnicity data: the CSO Sexual Violence Survey 2022 shows childhood sexual violence by ethnic background with White Irish separate. But that is a one-off adult recall survey; Garda and CSO crime statistics, Tusla referrals and homicide figures publish no ethnicity or nationality, and trafficking victims are given only by source country.",
   "weights": {

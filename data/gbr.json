@@ -3,7 +3,7 @@
  "iso_a3": "GBR",
  "completeness": 53,
  "as_of": "2026-11-18",
- "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies European descent as such.",
+ "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies ethnic Europeans as such.",
  "nations": {
   "england_wales": "Most data. Police, courts, child protection (England; Wales publishes separately) and homicide all carry ethnicity.",
   "scotland": "Homicide victims and accused by ethnicity for the first time in 2025-26 (White British vs Other White). No ethnicity found in child protection or recorded crime publications.",
@@ -52,11 +52,11 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
- "european_note": "The UK's split of White into White British, White Irish and Any other White background is the closest any source gets, but it is still not European descent. No UK source records European descent. The 2021 Census and the police '18+1' self-defined codes split White into English/Welsh/Scottish/Northern Irish/British, Irish, Gypsy or Irish Traveller, Roma and Any other White background. 'White British' is a national-identity label, not ancestry, and 'Any other White' mixes continental Europeans with others who identify as White (for example from the Americas, Australasia, Turkey or the Middle East). Mixed groups such as 'White and Asian' have partial European ancestry. So the UK comes closer than the US (which has only 'White'), but only some sources publish the White sub-groups, and none publishes European descent as a category.",
+ "european_note": "The UK's split of White into White British, White Irish and Any other White background is the closest any source gets, but it is still not ethnic European. No UK source records ethnic Europeans. The 2021 Census and the police '18+1' self-defined codes split White into English/Welsh/Scottish/Northern Irish/British, Irish, Gypsy or Irish Traveller, Roma and Any other White background. 'White British' is a national-identity label, not ancestry, and 'Any other White' mixes continental Europeans with others who identify as White (for example from the Americas, Australasia, Turkey or the Middle East). Mixed groups such as 'White and Asian' have partial European ancestry. So the UK comes closer than the US (which has only 'White'), but only some sources publish the White sub-groups, and none publishes ethnic Europeans as a category.",
  "harms": [
   {
    "id": "maltreatment",
@@ -1154,12 +1154,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -1177,7 +1177,7 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "The UK scores 53% on the stricter scale (40-60%). England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
   "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points.",

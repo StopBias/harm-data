@@ -4,7 +4,7 @@
  "completeness": 20,
  "provisional": false,
  "as_of": "2026-11-18",
- "summary": "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, with official rates, but everyone else is 'non-Indigenous', so White or European-descent Australians are never separately identified. Police victim data by Indigenous status cover only NSW, Queensland and South Australia; offenders are not linked to child victims; trafficking and online exploitation have no heritage data.",
+ "summary": "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, with official rates, but everyone else is 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police victim data by Indigenous status cover only NSW, Queensland and South Australia; offenders are not linked to child victims; trafficking and online exploitation have no heritage data.",
  "short_name": "Australia",
  "name_in_sentence": "Australia",
  "nations": {
@@ -27,7 +27,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -37,7 +37,7 @@
  },
  "unknown_label": "Indigenous status not stated",
  "european_title": "Not separately identified by any Australian official source",
- "european_note": "Australian official statistics record Indigenous status (Aboriginal, Torres Strait Islander, or both) and sometimes country of birth. Everyone else is 'non-Indigenous', which combines White Australians with Asian, Middle Eastern, African and all other Australians, so European descent cannot be identified for victims or offenders.",
+ "european_note": "Australian official statistics record Indigenous status (Aboriginal, Torres Strait Islander, or both) and sometimes country of birth. Everyone else is 'non-Indigenous', which combines White Australians with Asian, Middle Eastern, African and all other Australians, so ethnic Europeans cannot be identified for victims or offenders.",
  "select_labels": {
   "victim": "Victim's Indigenous status",
   "perpetrator": "Offender's Indigenous status"
@@ -66,7 +66,7 @@
     "rate_all_label": "all children in NSW",
     "rate_note": "Official ABS victimisation rates (Tables 11 and 26/24). No rate is published for non-Indigenous children separately.",
     "unknown_label": "Indigenous status not stated",
-    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1196 Aboriginal and Torres Strait Islander victims of 7095 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so ethnic European children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1196 Aboriginal and Torres Strait Islander victims of 7095 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
    },
    "perpetrators": {
     "status": "published",
@@ -111,7 +111,7 @@
       },
       "rate": null,
       "rate_reason": "Official rates differ by state: Queensland 385.6 vs 276.2 per 100,000 (Indigenous vs all children); South Australia 242.1 vs 155.7.",
-      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 451 of 3384; South Australia 51 of 589."
+      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so ethnic European children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 451 of 3384; South Australia 51 of 589."
      }
     },
     {
@@ -209,7 +209,7 @@
     "rate_all_label": "all children in NSW",
     "rate_note": "Official ABS victimisation rates (Tables 11 and 26/24). No rate is published for non-Indigenous children separately.",
     "unknown_label": "Indigenous status not stated",
-    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1774 Aboriginal and Torres Strait Islander victims of 12762 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so ethnic European children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Share calculated here: 1774 Aboriginal and Torres Strait Islander victims of 12762 victims aged under 18 at report in NSW; the total includes victims whose Indigenous status was not stated (about one in ten for sexual assault, all ages)."
    },
    "perpetrators": {
     "status": "published",
@@ -254,7 +254,7 @@
       },
       "rate": null,
       "rate_reason": "Official rates differ by state: Queensland 1218.3 vs 577.2 per 100,000 (Indigenous vs all children); South Australia 1552.3 vs 668.3.",
-      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 1425 of 7071; South Australia 327 of 2528."
+      "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so ethnic European children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Queensland 1425 of 7071; South Australia 327 of 2528."
      }
     },
     {
@@ -445,7 +445,7 @@
     "rate_all_label": "all NSW residents",
     "rate_note": "Official ABS rates (Tables 11 and 23). Small numbers.",
     "unknown_label": "Indigenous status not stated",
-    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so European-descent children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Not child-specific: child homicide victims are not published by Indigenous status (about 11% of NSW homicide victims have Indigenous status not stated). South Australia: 3 Indigenous homicide victims."
+    "share_note": "Indigenous status is self-identified when recorded by police. 'Non-Indigenous' (and the all-children rate) includes White Australians together with every other group, so ethnic European children are not separately identified. Published only for NSW, Queensland and South Australia, where data quality meets ABS standards. Not child-specific: child homicide victims are not published by Indigenous status (about 11% of NSW homicide victims have Indigenous status not stated). South Australia: 3 Indigenous homicide victims."
    },
    "perpetrators": {
     "status": "published",
@@ -654,7 +654,7 @@
     "access": 7,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "ABS police data give child sexual-assault victims who are Aboriginal or Torres Strait Islander, with official rates, for NSW, Qld and SA only; offenders by Indigenous status for five jurisdictions, but not split by victim age. AIHW child protection gives substantiated sexual abuse rates by Indigenous status nationally. 'Non-Indigenous' lumps White Australians with every other group, so European descent is never identified.",
+    "why": "ABS police data give child sexual-assault victims who are Aboriginal or Torres Strait Islander, with official rates, for NSW, Qld and SA only; offenders by Indigenous status for five jurisdictions, but not split by victim age. AIHW child protection gives substantiated sexual abuse rates by Indigenous status nationally. 'Non-Indigenous' lumps White Australians with every other group, so ethnic Europeans are never identified.",
     "score": 29
    },
    {
@@ -727,12 +727,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -750,10 +750,10 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Australia scores 20% on the stricter scale (20-40%). Its police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, often with official rates, but everyone else is counted as 'non-Indigenous', so White or European-descent Australians are never separately identified. Police Indigenous data cover only some states, offenders are not linked to child victims, and trafficking and online exploitation carry no heritage at all.",
-  "judgement_notes": "Indigenous status is real ethnicity data, so the 25% cap does not apply, but every side is binary and lumps White Australians with all other non-Indigenous people, so heritage credit is kept low (at most 9 of 37.5). Police data cover only NSW, Qld and SA for victims. If Indigenous-only data were treated as no European-descent data and capped, Australia would still score about 20%, because it is already below the cap.",
+  "why": "Australia scores 20% on the stricter scale (20-40%). Its police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, often with official rates, but everyone else is counted as 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police Indigenous data cover only some states, offenders are not linked to child victims, and trafficking and online exploitation carry no heritage at all.",
+  "judgement_notes": "Indigenous status is real ethnicity data, so the 25% cap does not apply, but every side is binary and lumps White Australians with all other non-Indigenous people, so heritage credit is kept low (at most 9 of 37.5). Police data cover only NSW, Qld and SA for victims. If Indigenous-only data were treated as no ethnic European data and capped, Australia would still score about 20%, because it is already below the cap.",
   "weights": {
    "Sexual abuse": 20,
    "Physical abuse": 15,
