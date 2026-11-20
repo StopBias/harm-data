@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script>
     (function () {
-      var supported = { en: 1, de: 1, es: 1, fr: 1, it: 1, ru: 1, uk: 1, pl: 1, hu: 1, sv: 1 };
+      var supported = { en: 1, de: 1, es: 1, fr: 1, it: 1, pt: 1, ru: 1, uk: 1, pl: 1, hu: 1, sv: 1 };
       var q = /[?&]lang=([a-z]{2})/i.exec(location.search);
       var lang = q && supported[q[1].toLowerCase()] ? q[1].toLowerCase() : null;
       if (!lang) {
@@ -23,7 +23,10 @@
       if (lang !== "en") document.documentElement.setAttribute("data-i18n-pending", "");
     })();
   </script>
-  <title>Antiwhite Bias Child-Harm Data Explorer</title>
+  <title>Ethnic Bias Data Explorer</title>
+  <meta name="description" content="Calling for data transparency in government and media">
+  <meta property="og:title" content="Ethnic Bias Data Explorer">
+  <meta property="og:description" content="Calling for data transparency in government and media">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@5.24.1/dist/maplibre-gl.js"></script>
   <style>
@@ -297,35 +300,65 @@
     html[data-i18n-pending] .legend,
     html[data-i18n-pending] #panel,
     html[data-i18n-pending] #explorer,
-    html[data-i18n-pending] .site-tabs { visibility: hidden; }
+    html[data-i18n-pending] .site-tabs,
+    html[data-i18n-pending] #about-link,
+    html[data-i18n-pending] #about-view { visibility: hidden; }
 
+    header { flex-wrap: wrap; }
     header .header-text { flex: 1 1 auto; min-width: 0; }
-    .lang-picker {
+    .header-actions {
       margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .about-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--io);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 8px;
+      border-radius: 4px;
+    }
+    .about-link:hover { background: #eef3f9; }
+    .about-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .about-link[aria-current="page"] {
+      color: var(--ink);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+    .lang-picker {
       flex: 0 0 auto;
       position: relative;
       z-index: 20;
     }
     .lang-picker-btn {
       font: inherit;
-      font-size: 0.72rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: var(--ink);
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 4px 8px;
+      color: #fff;
+      background: var(--io);
+      border: 1px solid var(--io);
+      border-radius: 6px;
+      padding: 8px 12px;
       cursor: pointer;
       line-height: 1.2;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      max-width: min(12rem, 48vw);
+      gap: 8px;
+      max-width: min(14rem, 58vw);
       white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     }
+    .lang-picker-btn:hover { background: #184e8c; border-color: #184e8c; }
+    .lang-picker-btn .lang-globe { flex: 0 0 auto; width: 1.2em; height: 1.2em; display: block; }
     .lang-picker-btn .lang-code { letter-spacing: 0.04em; }
     .lang-picker-btn .lang-name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; }
-    .lang-picker-btn[aria-expanded="true"] { background: #f3f5f6; }
+    .lang-picker-btn[aria-expanded="true"] { background: #184e8c; border-color: #184e8c; }
     .lang-picker-btn:focus-visible,
     .lang-picker-list [role="option"]:focus-visible {
       outline: 2px solid var(--accent);
@@ -387,7 +420,8 @@
       header { padding: 8px 12px; gap: 10px; }
       header img { height: 20px; }
       header h1 { font-size: 0.9rem; }
-      .lang-picker-btn { padding: 5px 8px; font-size: 0.7rem; }
+      .lang-picker-btn { padding: 7px 10px; font-size: 0.8rem; }
+      .about-link { font-size: 0.82rem; padding: 5px 6px; }
       .views button { white-space: normal; line-height: 1.2; padding: 6px 3px; font-size: 0.7rem; }
       header .sub { display: none; }
       /* Map box sized to the world's shape (a flat world is wider than tall),
@@ -425,6 +459,47 @@
       }
       #panel h2 { font-size: 1.05rem; }
     }
+
+    #about-view { padding: 22px 18px 40px; }
+    .about-inner { max-width: 720px; margin: 0 auto; }
+    .about-body { font-size: 1.05rem; line-height: 1.65; }
+    .about-body p { margin: 0 0 1.15em; }
+    .about-body a { color: #0b7d93; }
+    @media (max-width: 768px) {
+      #about-view { padding: 16px 12px 40px; }
+    }
+
+    /* One-time attention shimmer (disabled under prefers-reduced-motion) */
+    .attention-shimmer {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      animation: attention-glow 0.9s ease-in-out 1;
+    }
+    .attention-shimmer::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
+      background-size: 220% 100%;
+      background-repeat: no-repeat;
+      animation: attention-sweep 0.9s ease-in-out 1;
+    }
+    @keyframes attention-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(12, 192, 223, 0); }
+      45% { box-shadow: 0 0 0 3px rgba(12, 192, 223, 0.55), 0 0 16px 2px rgba(12, 192, 223, 0.35); }
+    }
+    @keyframes attention-sweep {
+      0% { background-position: 120% 0; opacity: 0; }
+      20% { opacity: 1; }
+      100% { background-position: -120% 0; opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .attention-shimmer,
+      .attention-shimmer::after { animation: none !important; box-shadow: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -433,12 +508,15 @@
       <img src="Stop Bias Logo no tag 980 X 200.png" alt="Stop Bias" id="logo">
     </a>
     <div class="header-text">
-      <h1><span id="title-lead">Antiwhite Bias</span> <span id="title-rest">Child-Harm Data Explorer</span></h1>
-      <p class="sub" id="site-sub">How completely each country publishes victim and perpetrator ethnicity in crimes against children</p>
+      <h1><span id="title-lead">Ethnic Bias</span> <span id="title-rest">Data Explorer</span></h1>
+      <p class="sub" id="site-sub">Calling for data transparency in government and media</p>
     </div>
-    <div class="lang-picker" id="lang-picker">
-      <button type="button" class="lang-picker-btn" id="lang-picker-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-picker-list" aria-label="Language">EN English</button>
-      <ul class="lang-picker-list" id="lang-picker-list" role="listbox" hidden></ul>
+    <div class="header-actions">
+      <a class="about-link" id="about-link" href="#about">About</a>
+      <div class="lang-picker" id="lang-picker">
+        <button type="button" class="lang-picker-btn" id="lang-picker-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-picker-list" aria-label="Language">EN English</button>
+        <ul class="lang-picker-list" id="lang-picker-list" role="listbox" hidden></ul>
+      </div>
     </div>
   </header>
 
@@ -497,20 +575,34 @@
 
   <!-- Media coverage view: markup and styles live in media.js / media.css; strings live in i18n/*.json (media.*) -->
   <section id="media-view" aria-labelledby="mv-title" hidden></section>
+  <section id="about-view" aria-labelledby="about-title" hidden>
+    <div class="about-inner">
+      <div class="ex-head">
+        <h2 id="about-title">About</h2>
+        <span id="about-en-badge" hidden></span>
+      </div>
+      <div class="about-body" id="about-body">
+        <p>The Ethnic Bias Data Explorer is a project of the StopBias.org campaign to protect children from the harms of anti-white bias. Around the world, ethnic European children are being made vulnerable to physical and psychological harm by incomplete and distorted data. While this view is disputed by some, the data is incomplete, and that is exactly what makes these children vulnerable. The Ethnic Bias Data Explorer shows where the gaps are and the biases in media reporting, and calls for better data so that we can truly protect children from harm.</p>
+        <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of anti-white bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
+        <!-- Social media links will be added here once handles are provided. -->
+      </div>
+    </div>
+  </section>
   <link rel="stylesheet" href="media.css">
   <script src="media.js" defer></script>
 
   <script>
 
-    // ---------- Languages (en, de, es, fr, it, ru, uk, pl, hu, sv) ----------
-    const SUPPORTED_LANGS = ["en", "de", "es", "fr", "it", "ru", "uk", "pl", "hu", "sv"];
-    const LANG_LOCALES = { en: "en-US", de: "de-DE", es: "es-ES", fr: "fr-FR", it: "it-IT", ru: "ru-RU", uk: "uk-UA", pl: "pl-PL", hu: "hu-HU", sv: "sv-SE" };
+    // ---------- Languages (en, de, es, fr, it, pt, ru, uk, pl, hu, sv) ----------
+    const SUPPORTED_LANGS = ["en", "de", "es", "fr", "it", "pt", "ru", "uk", "pl", "hu", "sv"];
+    const LANG_LOCALES = { en: "en-US", de: "de-DE", es: "es-ES", fr: "fr-FR", it: "it-IT", pt: "pt-PT", ru: "ru-RU", uk: "uk-UA", pl: "pl-PL", hu: "hu-HU", sv: "sv-SE" };
     const LANG_META = [
       { code: "en", native: "English" },
       { code: "de", native: "Deutsch" },
       { code: "es", native: "Español" },
       { code: "fr", native: "Français" },
       { code: "it", native: "Italiano" },
+      { code: "pt", native: "Português" },
       { code: "ru", native: "Русский" },
       { code: "uk", native: "Українська" },
       { code: "pl", native: "Polski" },
@@ -680,6 +772,22 @@
       if (sub) sub.textContent = t("subtitle");
       const logo = document.getElementById("logo");
       if (logo) logo.alt = t("logo_alt");
+      const desc = t("subtitle");
+      const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute("content", val); };
+      setMeta('meta[name="description"]', desc);
+      setMeta('meta[property="og:title"]', t("title"));
+      setMeta('meta[property="og:description"]', desc);
+      const aboutLink = document.getElementById("about-link");
+      if (aboutLink) aboutLink.textContent = t("about.heading");
+      const aboutTitle = document.getElementById("about-title");
+      if (aboutTitle) aboutTitle.textContent = t("about.heading");
+      const aboutBadge = document.getElementById("about-en-badge");
+      if (aboutBadge) {
+        const en = currentLang === "en";
+        aboutBadge.hidden = en;
+        aboutBadge.classList.toggle("en-only", !en);
+        aboutBadge.textContent = en ? "" : t("shown_in_english");
+      }
       syncLangPicker();
       const handle = document.getElementById("panel-handle");
       if (handle) handle.setAttribute("aria-label", t("panel.handle_aria"));
@@ -761,7 +869,8 @@
       picker.setAttribute("aria-label", t("lang_picker_aria"));
       btn.setAttribute("aria-label", t("lang_picker_aria"));
       const meta = langMeta(currentLang);
-      btn.innerHTML = `<span class="lang-code">${esc(meta.code.toUpperCase())}</span> <span class="lang-name">${esc(meta.native)}</span>`;
+      const globe = '<svg class="lang-globe" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+      btn.innerHTML = globe + ` <span class="lang-code">${esc(meta.code.toUpperCase())}</span> <span class="lang-name">${esc(meta.native)}</span>`;
       btn.setAttribute("lang", currentLang);
       list.innerHTML = LANG_META.map(m => {
         const selected = m.code === currentLang;
@@ -817,6 +926,38 @@
     window.I18N_READY = I18N_READY;
     window.openLangPicker = openLangPicker;
     window.closeLangPicker = closeLangPicker;
+
+    const ATTENTION_STORE = "harm-data-attention";
+    function visibleEl(el) {
+      if (!el) return false;
+      if (el.closest("[hidden]")) return false;
+      const r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0;
+    }
+    function shimmerEl(el, duration) {
+      return new Promise(resolve => {
+        if (!visibleEl(el)) { resolve(); return; }
+        el.classList.add("attention-shimmer");
+        window.setTimeout(() => { el.classList.remove("attention-shimmer"); resolve(); }, duration);
+      });
+    }
+    async function playAttentionShimmer() {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      try { if (sessionStorage.getItem(ATTENTION_STORE)) return; sessionStorage.setItem(ATTENTION_STORE, "1"); } catch (e) { return; }
+      const wait = ms => new Promise(r => setTimeout(r, ms));
+      await shimmerEl(document.getElementById("lang-picker-btn"), 1000);
+      await wait(120);
+      const tabs = [...document.querySelectorAll(".site-tabs button")];
+      for (const tab of tabs) { await shimmerEl(tab, 600); await wait(80); }
+      for (const id of ["sel-harm", "sel-victim", "sel-perp"]) {
+        const sel = document.getElementById(id);
+        const target = sel && (sel.closest("label") || sel);
+        if (!target) continue;
+        await shimmerEl(target, 450);
+        await wait(50);
+      }
+    }
+    window.playAttentionShimmer = playAttentionShimmer;
 
     // ==================================================================
     // DATA

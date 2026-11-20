@@ -1,11 +1,14 @@
 {
-  "title": "Anti-vit bias — Datautforskare om skador mot barn",
-  "title_lead": "Anti-vit bias",
-  "title_rest": "Datautforskare om skador mot barn",
-  "subtitle": "Hur fullständigt varje land publicerar offrets och förövarens etnicitet i brott mot barn",
+  "title": "Datautforskare om etnisk partiskhet",
+  "title_lead": "Etnisk partiskhet",
+  "title_rest": "Datautforskare",
+  "subtitle": "Vi efterlyser datatransparens inom myndigheter och medier",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Språk",
   "shown_in_english": "Visas på engelska",
+  "about": {
+    "heading": "Om projektet"
+  },
   "views_aria": "Kartvy",
   "views": {
     "world": "Världen",

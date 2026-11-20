@@ -1,11 +1,14 @@
 {
-  "title": "Explorateur de données sur le biais anti-Blancs et les préjudices aux enfants",
-  "title_lead": "Biais anti-Blancs",
-  "title_rest": "Explorateur de données sur les préjudices aux enfants",
-  "subtitle": "Dans quelle mesure chaque pays publie l’origine ethnique des victimes et des auteurs dans les crimes contre les enfants",
+  "title": "Explorateur de données sur les biais ethniques",
+  "title_lead": "Biais ethniques",
+  "title_rest": "Explorateur de données",
+  "subtitle": "Appel à la transparence des données dans les administrations et les médias",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Langue",
   "shown_in_english": "Affiché en anglais",
+  "about": {
+    "heading": "À propos"
+  },
   "views_aria": "Vue de la carte",
   "views": {
     "world": "Monde",
