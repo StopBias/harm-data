@@ -78,13 +78,13 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   labels), `unknown_label` ("Nationality unknown"; a block can override it), and `score.proxy_note` in the score box.
   Files without these fields (US, UK) look as before, with "Ethnicity unknown".
 - Sub-groups (e.g. Syrian or EU citizens within non-German citizens) are listed under the "All groups" bars as shares of
-  the total, and shown as their own figure when picked. "European descent" stays "Not recorded".
+  the total, and shown as their own figure when picked. "Ethnic European" stays "Not recorded".
 
 ### Canada data
 - `data/can.json` is built by `build_can.py` (kept with the Canadian research, outside this repo). Canada scores 25%.
   Police report the racialized and Indigenous identity of homicide victims and accused; no other police-reported crime
   carries race or Indigenous identity yet. Official "racialized" / "rest of the population" categories never separately
-  identify White or European-descent people.
+  identify White or ethnic European people.
 
 ### France data
 - `data/fra.json` is built by `build_fra.py` (kept with the French research, outside this repo). France scores 24%.
@@ -94,11 +94,11 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Australia data
 - `data/aus.json` is built by `build_aus.py` (kept with the Australian research, outside this repo). Australia scores 20%.
   Police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, but everyone
-  else is 'non-Indigenous', so White or European-descent Australians are never separately identified.
+  else is 'non-Indigenous', so White or ethnic European Australians are never separately identified.
 
 ### New Zealand data
 - `data/nzl.json` is built by `build_nzl.py` (kept with the New Zealand research, outside this repo). New Zealand scores 41%.
-  It is the first country reviewed whose official police data separately identify European-descent victims and offenders,
+  It is the first country reviewed whose official police data separately identify ethnic European victims and offenders,
   published monthly for child sexual assault, child assault, abuse material and grooming.
 
 ### South Africa data
@@ -221,7 +221,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   has `unknown_share`, shown on the page as "Ethnicity unknown: X% of the total".
 - White British, White Irish, Any other White background (and Gypsy or Irish Traveller) and Pakistani are sub-groups
   (`subgroups` maps each to its parent). They are left out of the "All groups" bars so the bars do not double-count, and
-  appear when picked. They are still not European descent, so "European descent" stays "Not recorded".
+  appear when picked. They are still not ethnic European, so "Ethnic European" stays "Not recorded".
 - `also` blocks show a second published source for one side (e.g. police-recorded suspects next to court convictions).
 - VKPP and Hydrant reports are police-produced and labelled as not official statistics.
 
@@ -235,10 +235,10 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 - Figures come only from: HHS Child Maltreatment 2024, BJS Race and Hispanic Origin of Victims and Offenders 2012–15 (NCVS),
   BJS Human Trafficking Data Collection Activities 2025, US Sentencing Commission Quick Facts FY2024, and Census Vintage 2025
   population estimates (denominators for the federal-defendant rates). Sources and limitations are in the `sources` block.
-- Scoring standard (shown in "How the score works"): 100% = published data that separately identifies people of
-  European descent as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
-  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when European descent
-  is identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
+- Scoring standard (shown in "How the score works"): 100% = published data that separately identifies
+  ethnic Europeans as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
+  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when ethnic Europeans
+  are identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
   migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
   capped at 25%. The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%,
   sex trafficking 20%, physical abuse 15%, online exploitation 10%, neglect 10% (approved 19 Nov 2026; before that,

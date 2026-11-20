@@ -3,7 +3,7 @@
  "iso_a3": "USA",
  "completeness": 59,
  "as_of": "2026-11-18",
- "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies people of European descent.",
+ "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies ethnic Europeans.",
  "groups": [
   {
    "id": "all",
@@ -39,11 +39,11 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
- "european_note": "No US source records European descent. US statistics use 'White', which under the federal standard in use covers people with origins in Europe, the Middle East and North Africa. A 2024 federal standard adds a separate Middle Eastern or North African category, which agencies must adopt by 2029, but no category for European ancestry.",
+ "european_note": "No US source records ethnic Europeans. US statistics use 'White', which under the federal standard in use covers people with origins in Europe, the Middle East and North Africa. A 2024 federal standard adds a separate Middle Eastern or North African category, which agencies must adopt by 2029, but no category for European ancestry.",
  "harms": [
   {
    "id": "maltreatment",
@@ -757,12 +757,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -780,10 +780,10 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "The US scores 59% on the stricter scale (40-60%). It is the only country reviewed whose official data separate White non-Hispanic children from Hispanic and other children for abuse, neglect and child deaths, so it keeps most of its heritage points. It loses points where offender race is perceived, where Hispanic origin is missing (police data lump White and Hispanic offenders), and where online exploitation and trafficking carry almost no demographics.",
-  "judgement_notes": "Under the approved rule, 'White' published separately from Hispanic counts as identifying European descent. The US federal 'White' category also includes Middle Eastern and North African origins; if that were treated as lumping and victim heritage capped at three-quarters, the US would score about 56% instead of 59%.",
+  "judgement_notes": "Under the approved rule, 'White' published separately from Hispanic counts as identifying ethnic Europeans. The US federal 'White' category also includes Middle Eastern and North African origins; if that were treated as lumping and victim heritage capped at three-quarters, the US would score about 56% instead of 59%.",
   "weights": {
    "Sexual abuse": 20,
    "Physical abuse": 15,

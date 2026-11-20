@@ -4,7 +4,7 @@
  "completeness": 25,
  "provisional": false,
  "as_of": "2026-11-18",
- "summary": "Germany records nationality, never ethnicity. Police statistics publish child victims and suspects by nationality for child sexual abuse and child maltreatment, plus official suspect rates for Germans and non-Germans; courts publish German vs foreign convictions; child-protection statistics record whether a child's parent comes from abroad. Because 'German' includes naturalised and dual citizens, these are proxies, and no source can identify European descent.",
+ "summary": "Germany records nationality, never ethnicity. Police statistics publish child victims and suspects by nationality for child sexual abuse and child maltreatment, plus official suspect rates for Germans and non-Germans; courts publish German vs foreign convictions; child-protection statistics record whether a child's parent comes from abroad. Because 'German' includes naturalised and dual citizens, these are proxies, and no source can identify ethnic Europeans.",
  "short_name": "Germany",
  "name_in_sentence": "Germany",
  "nations": {
@@ -105,7 +105,7 @@
   },
   {
    "id": "european",
-   "label": "European descent",
+   "label": "Ethnic European",
    "not_recorded": true
   }
  ],
@@ -126,7 +126,7 @@
   "unknown": "Unknown nationality"
  },
  "unknown_label": "Nationality unknown",
- "european_note": "German data record citizenship (and, in child protection and surveys, migration background), never ethnicity or descent. 'German' covers native Germans, naturalised citizens and dual nationals alike, and 'non-German' mixes EU, other European and non-European citizens. So European descent cannot be identified for victims or perpetrators. The EU and Other European nationality groups are the closest proxy and cover only foreign citizens.",
+ "european_note": "German data record citizenship (and, in child protection and surveys, migration background), never ethnicity or descent. 'German' covers native Germans, naturalised citizens and dual nationals alike, and 'non-German' mixes EU, other European and non-European citizens. So ethnic Europeans cannot be identified for victims or perpetrators. The EU and Other European nationality groups are the closest proxy and cover only foreign citizens.",
  "european_title": "Not recorded by any German source",
  "harms": [
   {
@@ -1332,12 +1332,12 @@
    {
     "name": "Victim heritage",
     "points": 37.5,
-    "full": "Official data by harm that separately identify children of European descent (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump European-descent people with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
+    "full": "Official data by harm that separately identify ethnic European children (e.g. White non-Hispanic, White British) alongside every other group, self-reported or official, few unknowns. Broad categories that lump ethnic Europeans with others get partial credit; proxies (nationality, citizenship, migration background, country of birth) at most 9.4 points."
    },
    {
     "name": "Perpetrator heritage",
     "points": 37.5,
-    "full": "Same standard for perpetrators: not perceived, few unknowns, European descent separately identified. Proxies at most 9.4 points."
+    "full": "Same standard for perpetrators: not perceived, few unknowns, ethnic Europeans separately identified. Proxies at most 9.4 points."
    },
    {
     "name": "Coverage and missing data",
@@ -1355,7 +1355,7 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies people of European descent, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when European-descent children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
   "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
   "why": "Germany scores 25% on the stricter scale (20-40%), down from 49%. It records nationality and migration background but never ethnicity, so every heritage point is a proxy capped at a quarter of the heritage marks. Its good coverage, open access and official rates lift its uncapped total to 29%, but a country with no real ethnicity data on either side is capped at 25%.",
   "proxy_note": "Every German figure is a proxy (nationality or migration background), so heritage earns at most a quarter of its points, and a country with no real ethnicity data is capped at 25%. Germany's uncapped total is about 29%, from its coverage, open access and official rates. On the old scale it scored 49%.",
