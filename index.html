@@ -226,6 +226,11 @@
     .ex-notes-body p { font-size: 0.88rem; line-height: 1.55; color: var(--ink); margin: 0 0 8px; }
     .ex-notes-body p:last-child { margin-bottom: 0; }
     .ex-planned { margin: 10px 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.45; max-width: 760px; }
+    .ex-conflation {
+      margin: 0 0 16px; padding: 8px 12px; max-width: 760px;
+      border-left: 3px solid var(--brand-dark); background: #f3fbfd;
+      font-size: 0.9rem; line-height: 1.5; color: var(--ink);
+    }
     .status {
       display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
       padding: 2px 7px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase;
@@ -473,6 +478,7 @@
     .about-inner { max-width: 720px; margin: 0 auto; }
     .about-body { font-size: 1.05rem; line-height: 1.65; }
     .about-body p { margin: 0 0 1.15em; }
+    .about-europhobia { margin: 1.2em 0 0; font-size: 1.05rem; line-height: 1.65; max-width: 720px; }
     .about-body a { color: var(--brand-dark); }
     @media (max-width: 768px) {
       #about-view { padding: 16px 12px 40px; }
@@ -616,6 +622,7 @@
         <div class="ex-notes-body" id="ex-notes-body"></div>
       </div>
       <div id="ex-sources" hidden></div>
+      <p class="ex-conflation" id="ex-conflation" hidden></p>
       <details class="method" id="method" hidden></details>
       <p class="ex-planned" id="ex-planned" hidden>Planned: psychological harm (e.g. curricula that demonize children or their ancestors)</p>
     </div>
@@ -643,6 +650,7 @@
         <p>‘White’ describes skin colour, and many communities with light skin are not ethnic European. When we say antiwhite bias, we mean prejudice and discrimination aimed specifically at people of ethnic European heritage. This can more precisely be called ethnic Europhobia.</p>
         <p>Most official statistics don’t record ethnic European heritage at all, and use broad categories like ‘White’ that mix different groups together. This gap makes it hard to see when ethnic European children are being harmed, and it’s one of the gaps this project highlights.</p>
       </section>
+      <p id="about-europhobia" class="about-europhobia"></p>
     </div>
   </section>
   <link rel="stylesheet" href="media.css">
@@ -842,6 +850,8 @@
       if (window.refreshTermTips) window.refreshTermTips();
       const aboutTitle = document.getElementById("about-title");
       if (aboutTitle) aboutTitle.textContent = t("about.heading");
+      const europhobia = document.getElementById("about-europhobia");
+      if (europhobia) europhobia.textContent = t("about.europhobia");
       const aboutBadge = document.getElementById("about-en-badge");
       if (aboutBadge) {
         const en = currentLang === "en";
@@ -1084,7 +1094,7 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 59,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 54,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
       },
       GBR: {
@@ -1266,16 +1276,40 @@
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
     const MEDIA_PENDING_COLOR = "#e6e8eb";
-    const MEDIA_INSUFFICIENT_COLOR = "#c5c9ce";
+    // Log-symmetric PuOr scale, L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
+    const MEDIA_SCALE = [
+      [-2, [0x54, 0x27, 0x88]],
+      [-4 / 3, [0x80, 0x73, 0xac]],
+      [-2 / 3, [0xb2, 0xab, 0xd2]],
+      [0, [0xf7, 0xf7, 0xf7]],
+      [2 / 3, [0xfd, 0xb8, 0x63]],
+      [4 / 3, [0xe0, 0x82, 0x14]],
+      [2, [0xb3, 0x58, 0x06]]
+    ];
+    const rgbHex = c => "#" + c.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, "0")).join("");
+    const colorForL = L => {
+      if (L == null || !isFinite(L)) return MEDIA_PENDING_COLOR;
+      if (L <= MEDIA_SCALE[0][0]) return rgbHex(MEDIA_SCALE[0][1]);
+      const last = MEDIA_SCALE[MEDIA_SCALE.length - 1];
+      if (L >= last[0]) return rgbHex(last[1]);
+      for (let i = 1; i < MEDIA_SCALE.length; i++) {
+        if (L <= MEDIA_SCALE[i][0]) {
+          const [L0, c0] = MEDIA_SCALE[i - 1];
+          const [L1, c1] = MEDIA_SCALE[i];
+          const t = (L - L0) / (L1 - L0);
+          return rgbHex(c0.map((v, j) => v + (c1[j] - v) * t));
+        }
+      }
+      return MEDIA_PENDING_COLOR;
+    };
     const colorFor = iso => {
       if (mapMode === "media") {
         if (!inScope.has(iso)) return OUT_OF_SCOPE_COLOR;
         const st = window.mediaCountryState ? window.mediaCountryState(iso) : null;
-        if (st && st.status === "insufficient_data") return MEDIA_INSUFFICIENT_COLOR;
-        if (st && st.L != null) {
-          // log-symmetric colour would go here when a point estimate exists
-          return MEDIA_PENDING_COLOR;
+        if (st && st.L != null && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point")) {
+          return colorForL(st.L);
         }
+        if (st && st.status === "out") return OUT_OF_SCOPE_COLOR;
         return MEDIA_PENDING_COLOR;
       }
       return tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
@@ -1439,7 +1473,7 @@
             map.addLayer({
               id: "countries-hatch", type: "fill", source: "countries",
               filter: ["==", ["get", "iso_a3"], ""],
-              paint: { "fill-pattern": "hatch-insufficient", "fill-opacity": 0.85 }
+              paint: { "fill-pattern": "hatch-insufficient", "fill-opacity": 1 }
             }, "countries-line");
           }
           refreshHatch();
@@ -1583,23 +1617,24 @@
 
     function ensureHatchPattern() {
       if (!map || map.hasImage("hatch-insufficient")) return;
+      const size = 12;
       const c = document.createElement("canvas");
-      c.width = 8; c.height = 8;
+      c.width = size; c.height = size;
       const g = c.getContext("2d");
-      g.fillStyle = "#c5c9ce";
-      g.fillRect(0, 0, 8, 8);
-      g.strokeStyle = "#8b9198";
-      g.lineWidth = 1.5;
-      g.beginPath(); g.moveTo(-2, 8); g.lineTo(8, -2); g.stroke();
-      g.beginPath(); g.moveTo(0, 10); g.lineTo(10, 0); g.stroke();
-      map.addImage("hatch-insufficient", g.getImageData(0, 0, 8, 8));
+      g.clearRect(0, 0, size, size);
+      // Light strokes only, so the signed-scale fill shows through.
+      g.strokeStyle = "rgba(20, 20, 20, 0.28)";
+      g.lineWidth = 1.25;
+      g.beginPath(); g.moveTo(-2, size); g.lineTo(size, -2); g.stroke();
+      g.beginPath(); g.moveTo(0, size + 2); g.lineTo(size + 2, 0); g.stroke();
+      map.addImage("hatch-insufficient", g.getImageData(0, 0, size, size));
     }
     function refreshHatch() {
       if (!map.getLayer("countries-hatch")) return;
       const isos = (mapMode === "media" && typeof window.mediaCountryState === "function")
         ? [...inScope].filter(iso => {
             const st = window.mediaCountryState(iso);
-            return st && st.status === "insufficient_data";
+            return st && (st.status === "bound" || st.status === "insufficient_data");
           })
         : [];
       const filter = isos.length
@@ -2085,6 +2120,9 @@
         : (sc.cap_applied && sc.uncapped != null
           ? `<div class="gold"><strong>${esc(t("method.cap_applied"))}</strong> ${esc(t("method.cap_applied_body", { uncapped: fmt(sc.uncapped) }))}</div>`
           : "");
+      const conflationBox = sc.conflation_note
+        ? `<div class="gold"><strong>${esc(t("method.conflation_label"))}.</strong> ${esc(sc.conflation_note)}${enOnlyBadge()}</div>`
+        : "";
       const mentionsOld = /old scale|previous rubric|scored \d+%/.test(proxyText);
       const hist = (prev && prev.value != null && !mentionsOld)
         ? `<p class="ex-small">${esc(prev.band ? t("method.previous_with_band", { score: fmt(prev.value), band: prev.band }) : t("method.previous", { score: fmt(prev.value) }))}</p>`
@@ -2107,6 +2145,17 @@
       const colourKeys = ["red", "orange", "yellow", "light_green", "dark_green"];
       const bandColours = SCALE.map((b, i) => t("method.band_colour", { range: bandLabel(b), colour: t("colour." + colourKeys[i]) })).join(", ");
       const whyCountry = countrySentenceName(D.iso_a3, D.name_in_sentence || D.country);
+      const conflationEl = $("ex-conflation");
+      if (conflationEl) {
+        const note = sc.conflation_note;
+        if (note) {
+          conflationEl.innerHTML = `<strong>${esc(t("method.conflation_label"))}.</strong> ${esc(note)}${enOnlyBadge()}`;
+          conflationEl.hidden = false;
+        } else {
+          conflationEl.innerHTML = "";
+          conflationEl.hidden = true;
+        }
+      }
       $("method").open = false;
       $("method").innerHTML =
         `<summary>${esc(t("method.summary", { score: fmt(value) }))}</summary>` +
@@ -2119,7 +2168,7 @@
         `<p>${esc(t("method.cap"))}</p>` +
         `<p>${esc(t("method.weights"))}</p>` +
         `<h3>${esc(t("method.why", { country: whyCountry, score: fmt(value) }))}${enOnlyBadge()}</h3><p>${esc(sc.why || "")}</p>` +
-        capBox + hist + weightsHist +
+        conflationBox + capBox + hist + weightsHist +
         (sc.breakdown && sc.breakdown.length ? `<h3>${esc(t("method.by_harm"))}${enOnlyBadge()}</h3><table><thead><tr><th>${esc(t("method.harm"))}</th><th class="num">${esc(t("method.weight"))}</th><th class="num">${esc(t("method.score"))}</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${fmtPct(b.weight)}</td><td class="num">${esc(fmt(b.score))}</td></tr>`).join("") +
         totalRows + `</tbody></table>` : "") +
@@ -2148,6 +2197,10 @@
       $("ex-sources").hidden = !showMethod;
       $("method").hidden = !showMethod;
       $("ex-planned").hidden = !showMethod;
+      if (!showMethod) {
+        const c = $("ex-conflation");
+        if (c) { c.hidden = true; c.innerHTML = ""; }
+      }
       if (!showInputs) $("ex-avail").hidden = true;
       if (!showMethod) $("ex-notes").hidden = true;
     }
@@ -2252,6 +2305,8 @@
       getTracked: () => tracked,
       getInScope: () => [...inScope],
       countryName: (iso) => countryDisplayName(iso),
+      colorFor,
+      colorForL,
       refreshFill,
       refreshHatch,
       resize() { try { map.resize(); } catch (e) {} }

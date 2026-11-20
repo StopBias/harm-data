@@ -1,8 +1,8 @@
 {
- "method_version": "1.2",
+ "method_version": "3.0",
  "generated": "2026-11-20",
  "script": "build_media_summary.py",
- "pilot_notice": "PILOT. These figures come from one coder's first pass on a stratified random sample of 300 keyword-matched 2023 Media Cloud stories from Associated Press, CNN, Fox News, The New York Times and The Washington Post (AP 31, a census of its frame; CNN 29; Fox 95; NYT 80; WaPo 65). Six sample rows could not be coded (fetch failures). No second coder or agreement rate yet. There are fewer than 20 included incidents, so a point-estimate index is not published. A zero Black-on-White cell is shown as 0 of N plus the exact one-sided 95% lower bound. The keyword frame is not a random sample of interracial incidents.",
+ "pilot_notice": "US media audit. Current figures come from the 2023 keyword sample: one coder’s first pass on a stratified random sample of 300 keyword-matched 2023 Media Cloud stories from Associated Press, CNN, Fox News, The New York Times and The Washington Post (AP 31, a census of its frame; CNN 29; Fox 95; NYT 80; WaPo 65). Six sample rows could not be coded (fetch failures). No second coder or agreement rate yet. A zero Black-on-White cell is shown as 0 of N plus the exact one-sided 95% lower bound. The keyword frame is not a random sample of interracial incidents, so the exact test on this sample is a worked example and is not published as a finding.",
  "baseline_files": [
   "baseline_ncvs.json",
   "baseline_shr.json"
@@ -620,9 +620,9 @@
    ],
    "pairing": "White / Black (race as stated in the article)",
    "race_basis": "race_stated_in_article",
-   "insufficient_data": true,
-   "insufficient_reason": "fewer than 20 included incidents overall (strict 6, broad 8); unweighted, all directions, including other",
-   "index_status": "insufficient_data",
+   "insufficient_data": false,
+   "insufficient_reason": null,
+   "index_status": "bound",
    "point_estimate_published": false,
    "cdi": null,
    "preferred_inference": {
@@ -644,7 +644,18 @@
      "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
     },
     "index_lower_display": 4.0,
-    "note": "Preferred country inference is the incident-level Clopper-Pearson exact one-sided 95% lower bound (0 of 5, Antiwhite media bias index at least +4.0× against the NCVS 2023 ratio). A signed-multiplier point estimate is not published."
+    "note": "Preferred country inference is the incident-level Clopper-Pearson exact one-sided 95% lower bound (0 of 5, Antiwhite media bias index at least +4.0× against the NCVS 2023 ratio). A signed-multiplier point estimate is not published. The exact binomial covered-split test against the NCVS 2023 baseline gives two-sided p = 0.00071; this is a worked example and is not published as a finding, because the keyword frame is not a valid sample for that test.",
+    "index_defined": true,
+    "p_two_sided": 0.00071,
+    "p_one_sided": 0.00071,
+    "test": "binomial_split",
+    "significant": true,
+    "significance_label": "not_published_as_finding",
+    "finding_published": false,
+    "n_covered_W": 5,
+    "n_covered_B": 0,
+    "n_sampled_W": null,
+    "n_sampled_B": null
    },
    "rule_sets": {
     "strict": {
@@ -1725,7 +1736,18 @@
     "status": "not_coded",
     "reason": "The 2023 keyword sample cannot support the disclosure track: inclusion required race to be stated, so disclosure is 100% by construction, and there are no knowable Black-on-White incidents in the file."
    },
-   "frame_caveat": "The keyword frame is a likely cause of the zero Black-on-White cell. Under a random frame, P(0 of 12 | NCVS share 0.766) is about 2.7e-8, but only 91 of 1,648 frame phrase-hits were B-direction, and none of the sampled B-phrase rows was a crime incident."
+   "frame_caveat": "The keyword frame is a likely cause of the zero Black-on-White cell. Under a random frame, P(0 of 12 | NCVS share 0.766) is about 2.7e-8, but only 91 of 1,648 frame phrase-hits were B-direction, and none of the sampled B-phrase rows was a crime incident.",
+   "index_defined": true,
+   "finding_published": false,
+   "p_two_sided": 0.00071,
+   "p_one_sided": 0.00071,
+   "test": "binomial_split",
+   "significant": true,
+   "significance_label": "not_published_as_finding",
+   "n_covered_W": 5,
+   "n_covered_B": 0,
+   "n_sampled_W": null,
+   "n_sampled_B": null
   }
  },
  "data_gaps": [
