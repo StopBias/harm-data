@@ -8,8 +8,21 @@ The public name of the index is the **Antiwhite media bias index** (toggle: **An
 index**). Coverage Distortion Index (CDI) is the methods name for the same calculation and is not
 used as a public label. A point-estimate CDI is never manufactured with a +0.5 (or any other)
 correction. When a direction cell is 0, the published figure is **0 of N** plus the Clopper-Pearson
-exact one-sided 95% lower bound. Outlet point-estimate index cells stay **pending** until an
+exact one-sided 95% lower bound (the headline “at least” figure). Outlet point-estimate index cells stay **pending** until an
 incident-based sample exists. **Insufficient data** means the index is undefined (no covered White–Black pair incidents). A significance test (exact two-sided p, alpha 0.05) is stored on each measured country; small samples are published with their p. The 2023 keyword sample’s exact test is a worked example and is not published as a finding.
+
+`summary.json` also stores the exact 95% interval that inverts that two-sided test (`ci95_low`,
+`ci95_high` with null = unbounded, `ci_method`, `ci_scale`) and `baseline_unit`. For the US keyword
+sample versus NCVS 2023 Table 13, the published Sterne interval (`ci_method`: `sterne_binomial`,
+`ci_scale`: `index`) is +3.27× to unbounded; the headline remains at least +4.0×. These interval
+figures come from the method’s published calculation.
+
+The Ethnic European media bias index is a separate pairing and stays **pending** until audit data
+exist. The official NCVS 2023 Table 13 ethnic European baseline (strict: Black or Hispanic) is stored
+on the US record as incidents only: 726,420 non-European-on-European versus 495,650
+European-on-non-European (ratio 0.682). That ratio is a baseline, not a published media index.
+Table 13 incidents are canonical; do not mix with victimizations or homicides. US published values
+carry an Approximate badge because White non-Hispanic is a proxy for ethnic European heritage.
 
 | File | What it is | Built by |
 |---|---|---|

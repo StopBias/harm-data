@@ -655,7 +655,13 @@
     "n_covered_W": 5,
     "n_covered_B": 0,
     "n_sampled_W": null,
-    "n_sampled_B": null
+    "n_sampled_B": null,
+    "ci95_low": 3.27,
+    "ci95_high": null,
+    "ci_method": "sterne_binomial",
+    "ci_scale": "index",
+    "baseline_unit": "incidents",
+    "lower_bound_one_sided_95": 4.0
    },
    "rule_sets": {
     "strict": {
@@ -1747,7 +1753,26 @@
    "n_covered_W": 5,
    "n_covered_B": 0,
    "n_sampled_W": null,
-   "n_sampled_B": null
+   "n_sampled_B": null,
+   "ci95_low": 3.27,
+   "ci95_high": null,
+   "ci_method": "sterne_binomial",
+   "ci_scale": "index",
+   "baseline_unit": "incidents",
+   "lower_bound_one_sided_95": 4.0,
+   "euro_index": null,
+   "euro_badge": "approximate",
+   "euro_range_low": null,
+   "euro_range_high": null,
+   "euro_index_status": "pending",
+   "euro_baseline": {
+    "source": "NCVS 2023, BJS Table 13, violent incidents (canonical), strict: Black or Hispanic",
+    "baseline_unit": "incidents",
+    "non_european_on_european": 726420,
+    "european_on_non_european": 495650,
+    "ratio": 0.682,
+    "note": "Table 13 incidents are canonical. These are official baseline counts, not a media-index value. Units must not be mixed with victimizations or homicides."
+   }
   }
  },
  "data_gaps": [

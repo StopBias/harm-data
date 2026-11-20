@@ -50,6 +50,10 @@ body.media-table .layout { display: none !important; }
 }
 .mv-stat-sub { margin: 6px 0 0; font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
 .mv-stat-hint { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+.mv-stat-value .mv-badge { margin-left: 0.4em; font-size: 0.5em; vertical-align: middle; letter-spacing: 0.04em; }
+.mv-stat-ee { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line, #dfe3e6); }
+.mv-stat-value-sm { font-size: 1.05rem; font-weight: 600; margin: 0; }
+.mv-table .mv-badge { margin-left: 0.4em; font-size: 0.7em; white-space: nowrap; }
 .mv-toggle {
   margin: 10px 0 0; font: inherit; font-size: 0.78rem; color: var(--brand-dark); background: none;
   border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px;
