@@ -203,8 +203,8 @@
     "CZE": "Czechia"
   },
   "media": {
-    "tab_map": "Map",
-    "tab_media": "Media coverage",
+    "tab_map": "Crime",
+    "tab_media": "Media",
     "tabs_label": "Site sections",
     "title": "Media coverage",
     "badge_pilot": "Pilot",
