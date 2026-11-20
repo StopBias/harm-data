@@ -71,33 +71,42 @@ standard-error table.
 - The **NCVS API** at data.ojp.usdoj.gov was unreachable from our build machine on 2026-11-19. The TLS connection was reset, and a second fetcher got HTTP 500. We did not work around this. It also counts victimizations on a collection-year basis, not incidents.
 - The **NCVS Dashboard** (https://ncvs.bjs.ojp.gov/) has no offender-race variable.
 
-## 2. Stories (`stories_2023.csv`)
+## 2. Stories (`stories_2023.csv` and `stories_2023_broad.csv`)
 
 Joseph's pilot files are in `/workspace/stopbias/pilot` on the team box and are never modified:
 - `stories_2023.csv` is the 1,500-story Media Cloud frame. It already uses the v1.1 columns, and every row is uncoded.
-- `coded_2023_pass1.csv` is the 300-story random sample, seed 20261119. It has the v1.1 columns plus `sample_weight`, `sample_order` and `fetch_status`.
+- `coded_2023_pass1.csv` is the 300-story random sample under the **strict** rule set, seed 20261119. It has the v1.1 columns plus `sample_weight`, `sample_order` and `fetch_status`.
+- `coded_2023_pass1b.csv` is the same sample under the **broad** rule set.
 
-The coded file does not conform exactly, so `convert_pilot_stories.py` builds the output as follows:
+The coded files do not conform exactly, so `convert_pilot_stories.py` builds each output as follows:
 - It takes every frame row.
 - For each story in the sample, it copies the coded file's v1.1 columns verbatim.
-- It drops the three extra columns.
-- It checks the identity fields and the allowed values, and writes `stories_2023_conversion.json`.
+- It drops the extra columns that are not in the format.
+- It checks the identity fields and the allowed values, and writes a conversion report beside each CSV.
 
-Nothing is inferred. On 2026-11-19 the converter found 0 identity mismatches and 0 value violations.
+Nothing is inferred. The latest conversion found 0 identity mismatches and 0 value violations in both rule sets.
 
 ## 3. Summary (`summary.json`) and CDI
 
-For each outlet and year, the CDI is:
+The Coverage Distortion Index (CDI) is the methods name for the calculation behind the Antiwhite
+media bias index. It is not a second public label. For a given pairing and baseline:
 
-`CDI = (stories_W_on_B / stories_B_on_W) / (ncvs_W_on_B / ncvs_B_on_W)`
+`CDI = (W_m / B_m) / (W_b / B_b)`
 
-- **Story counts** are coded stories with `include=true` in that direction. **NCVS counts** are the same year's incidents.
-- **Zero cells:** if exactly one media count is 0, 0.5 is added to both media counts and `zero_adjust_applied` is set to true. The raw counts are always printed, and the result is never infinity.
-- **Null CDI:** `cdi` is null when there are no coded stories, when no included story falls in either direction, or when there is no published NCVS count for that year.
+- **Media counts** (`W_m`, `B_m`) are included stories or incidents (`include=true`) in that direction. Stories of the same incident are a cluster; the preferred country inference is the incident-level figure.
+- **Baselines** are not pooled. Homicide is compared with FBI SHR Expanded Homicide Data Table 6 (single victim/single offender). Non-fatal violence, and the mixed keyword-sample country bound, are compared with NCVS for the same year.
+- **Zero cells:** no +0.5, or any other constant, is added to manufacture a point estimate. When a direction cell is 0, `cdi` is null and the published figure is **0 of N** plus the Clopper-Pearson exact one-sided 95% lower bound. `zero_adjust_applied` is always false.
+- **Null CDI:** `cdi` is also null when both media cells are 0, when there is no published baseline count for that comparison, when there are fewer than 20 included incidents (Insufficient data), or for an outlet until an incident-based sample exists (outlet index cells stay **pending**).
 
 The judgement calls (for example, which query phrases count, and what each rate's denominator is) are listed inside `summary.json`.
 
-**2023 is a PILOT with partial coding.** Fox News and CNN are coded by a single coder. AP, The New York
-Times and The Washington Post are not yet coded. There is no second coder or agreement rate yet.
-The story frame comes mostly from anti-Black framing queries, so it is expected to under-sample
-Black-on-White stories. The pilot CDI values are not findings.
+**2023 coding status** (from `summary.json`; a PILOT, one coder, no second coder or agreement rate yet).
+The figures come from a stratified random sample of 300 keyword-matched 2023 Media Cloud stories
+(AP 31, a census of its frame; CNN 29; Fox 95; NYT 80; WaPo 65). All five outlets have been coded
+by a single coder. Six sample rows could not be coded (fetch failures): AP 31 of 31, NYT 80 of 80,
+Fox 94 of 95, CNN 27 of 29, WaPo 62 of 65. Under the strict rule set the included set is 14 stories
+(12 White-on-Black, 0 Black-on-White, 2 other) and 6 incidents; under broad, 25 stories (16 / 0 / 9)
+and 8 incidents. That is fewer than 20 included incidents, so a point-estimate index is not
+published. A zero Black-on-White cell is shown as 0 of N plus the exact one-sided 95% lower bound.
+The keyword frame is not a random sample of interracial incidents. The story frame comes mostly
+from anti-Black framing queries, so it is expected to under-sample Black-on-White stories.
