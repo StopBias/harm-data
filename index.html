@@ -673,6 +673,7 @@
     let I18N_EN = {}, I18N = {}, currentLang = document.documentElement.lang || "en";
     let displayNames = null;
     let selectedId = null, selectedName = null;
+    let mapMode = "crime";
     const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     if (!SUPPORTED_LANGS.includes(currentLang)) currentLang = "en";
 
@@ -865,6 +866,10 @@
       if (notesK) notesK.innerHTML = esc(t("explorer.notes")) + enOnlyBadge();
     }
     function renderLegend() {
+      if (mapMode === "media" && typeof window.renderMediaLegend === "function") {
+        window.renderMediaLegend();
+        return;
+      }
       document.getElementById("legend").innerHTML =
         `<div class="legend-title">${esc(t("legend.title"))}</div><div class="legend-items">` +
         SCALE.map(b =>
@@ -1260,8 +1265,22 @@
     // ------------------------------------------------------------------
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
-    const colorFor = iso => tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
+    const MEDIA_PENDING_COLOR = "#e6e8eb";
+    const MEDIA_INSUFFICIENT_COLOR = "#c5c9ce";
+    const colorFor = iso => {
+      if (mapMode === "media") {
+        if (!inScope.has(iso)) return OUT_OF_SCOPE_COLOR;
+        const st = window.mediaCountryState ? window.mediaCountryState(iso) : null;
+        if (st && st.status === "insufficient_data") return MEDIA_INSUFFICIENT_COLOR;
+        if (st && st.L != null) {
+          // log-symmetric colour would go here when a point estimate exists
+          return MEDIA_PENDING_COLOR;
+        }
+        return MEDIA_PENDING_COLOR;
+      }
+      return tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
                           : inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
+    };
 
     const statusText = info => {
       const band = bandLabel(bandFor(info.completeness));
@@ -1415,6 +1434,15 @@
             }
           });
           refreshFill();   // picks up the score from data/usa.json if it loaded first
+          ensureHatchPattern();
+          if (!map.getLayer("countries-hatch")) {
+            map.addLayer({
+              id: "countries-hatch", type: "fill", source: "countries",
+              filter: ["==", ["get", "iso_a3"], ""],
+              paint: { "fill-pattern": "hatch-insufficient", "fill-opacity": 0.85 }
+            }, "countries-line");
+          }
+          refreshHatch();
           /* FUTURE: sub-national layer (Natural Earth admin-1), see README.
           map.addSource("admin1", { type: "geojson", data: "data/admin1-<country>.geojson", promoteId: "iso_3166_2" });
           map.addLayer({ id: "admin1-fill", type: "fill", source: "admin1", minzoom: 2.5,
@@ -1450,6 +1478,10 @@
       const info = tracked[iso];
       map.getCanvas().style.cursor = inScope.has(iso) ? "pointer" : "";
       const display = countryDisplayName(iso, f.properties.name);
+      if (mapMode === "media" && typeof window.mediaTooltipHtml === "function") {
+        tooltip.setLngLat(e.lngLat).setHTML(window.mediaTooltipHtml(iso, display)).addTo(map);
+        return;
+      }
       const status = info
         ? `<span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}`
         : inScope.has(iso)
@@ -1477,6 +1509,10 @@
       selectedId = iso;
       selectedName = display;
       setState(iso, { selected: true });
+      if (mapMode === "media" && typeof window.renderMediaCountry === "function") {
+        window.renderMediaCountry(iso, display);
+        return;
+      }
       document.getElementById("panel-title").textContent = display;
       document.getElementById("panel-content").innerHTML = info ? `
         <div class="badge"><span class="swatch" style="background:${colorFor(iso)}"></span>${statusText(info)}</div>
@@ -1502,6 +1538,10 @@
       setState(selectedId, { selected: false });
       selectedId = null;
       selectedName = null;
+      if (mapMode === "media") {
+        if (typeof window.clearMediaCountry === "function") window.clearMediaCountry();
+        return;
+      }
       document.getElementById("panel-title").textContent = t("panel.select_country");
       document.getElementById("panel-content").innerHTML = defaultPanelHtml();
       panel.classList.remove("open");
@@ -1541,11 +1581,38 @@
     };
     const publishedScore = d => d && (d.completeness != null ? d.completeness : (d.score && d.score.value));
 
+    function ensureHatchPattern() {
+      if (!map || map.hasImage("hatch-insufficient")) return;
+      const c = document.createElement("canvas");
+      c.width = 8; c.height = 8;
+      const g = c.getContext("2d");
+      g.fillStyle = "#c5c9ce";
+      g.fillRect(0, 0, 8, 8);
+      g.strokeStyle = "#8b9198";
+      g.lineWidth = 1.5;
+      g.beginPath(); g.moveTo(-2, 8); g.lineTo(8, -2); g.stroke();
+      g.beginPath(); g.moveTo(0, 10); g.lineTo(10, 0); g.stroke();
+      map.addImage("hatch-insufficient", g.getImageData(0, 0, 8, 8));
+    }
+    function refreshHatch() {
+      if (!map.getLayer("countries-hatch")) return;
+      const isos = (mapMode === "media" && typeof window.mediaCountryState === "function")
+        ? [...inScope].filter(iso => {
+            const st = window.mediaCountryState(iso);
+            return st && st.status === "insufficient_data";
+          })
+        : [];
+      const filter = isos.length
+        ? ["in", ["get", "iso_a3"], ["literal", isos]]
+        : ["==", ["get", "iso_a3"], ""];
+      map.setFilter("countries-hatch", filter);
+    }
     function refreshFill() {
       const fc = ["match", ["get", "iso_a3"]];
       [...inScope].forEach(iso => fc.push(iso, colorFor(iso)));
       fc.push(OUT_OF_SCOPE_COLOR);
       if (map.getLayer("countries-fill")) map.setPaintProperty("countries-fill", "fill-color", fc);
+      refreshHatch();
     }
 
     const groupLabel = id => ((D.groups.find(g => g.id === id) || {}).label) || (D.extra_group_labels || {})[id] || id;
@@ -2161,6 +2228,33 @@
     window.clearSelection = clearSelection;
     window.updateViewButtons = updateViewButtons;
     window.DETAIL = DETAIL;
+    window.tracked = tracked;
+    window.HarmMap = {
+      setMode(mode) {
+        mapMode = mode === "media" ? "media" : "crime";
+        refreshFill();
+        if (mapMode === "crime") renderLegend();
+        else if (typeof window.renderMediaLegend === "function") window.renderMediaLegend();
+        if (selectedId) showCountry(selectedId, selectedName);
+        else if (mapMode === "crime") {
+          document.getElementById("panel-title").textContent = t("panel.select_country");
+          document.getElementById("panel-content").innerHTML = defaultPanelHtml();
+        } else if (typeof window.clearMediaCountry === "function") {
+          window.clearMediaCountry();
+        }
+        try { map.resize(); } catch (e) {}
+      },
+      getMode: () => mapMode,
+      getSelected: () => selectedId ? { iso: selectedId, name: selectedName } : null,
+      selectCountry(iso, name) { showCountry(iso, name || countryDisplayName(iso)); },
+      clearSelection() { clearSelection(); if (mapMode === "media" && typeof window.clearMediaCountry === "function") window.clearMediaCountry(); },
+      getTracked: () => tracked,
+      getInScope: () => [...inScope],
+      countryName: (iso) => countryDisplayName(iso),
+      refreshFill,
+      refreshHatch,
+      resize() { try { map.resize(); } catch (e) {} }
+    };
     window.panBox = panBox;
     window.mercX = mercX;
     window.mercY = mercY;
@@ -2208,6 +2302,7 @@
       .then(() => {
         refreshFill();
         if (selectedId) showCountry(selectedId, selectedName);
+        if (mapMode === "media" && typeof window.renderMediaView === "function") window.renderMediaView();
       })
       .catch(err => console.error(err));
     }).catch(err => { console.error(err); document.documentElement.removeAttribute("data-i18n-pending"); });

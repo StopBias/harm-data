@@ -1,0 +1,69 @@
+{
+ "source": "Documented from the 2023 coverage-rate note and the approved media method (pilot coding notes). Crime type and Table 6 eligibility are not inferred from names or photos. incident_id values match the merged slugs in the coded story files.",
+ "incidents": [
+  {
+   "incident_id": "jacksonville-dollar-general-2023",
+   "year_of_crime": 2023,
+   "homicide": true,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "multiple victims, single offender",
+   "notes": "Three people killed. This is the one covered 2023 homicide in the keyword sample; it is outside Table 6."
+  },
+  {
+   "incident_id": "buffalo-tops-shooting-2022",
+   "year_of_crime": 2022,
+   "homicide": true,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "wrong year, and multiple victims",
+   "notes": "2023 follow-up coverage of a 2022 White-on-Black mass killing."
+  },
+  {
+   "incident_id": "rankin-county-jenkins-2023",
+   "year_of_crime": 2023,
+   "homicide": false,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "not a homicide (victim hospitalized)",
+   "notes": "Victim hospitalized, not recorded as a death."
+  },
+  {
+   "incident_id": "kansas-city-wrong-house-shooting-2023",
+   "year_of_crime": 2023,
+   "homicide": false,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "not a homicide (wounded person survived)",
+   "notes": "The wounded person, a minor, survived. The minor is not named in the coding or in this file."
+  },
+  {
+   "incident_id": "montgomery-riverfront-brawl-2023",
+   "year_of_crime": 2023,
+   "homicide": false,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "not a homicide (assault)",
+   "notes": "Direction conflict across articles (W_on_B vs other) is unresolved in a case file; per-article directions are left as coded."
+  },
+  {
+   "incident_id": "hawaii-maui-hate-crime-beating",
+   "year_of_crime": 2014,
+   "homicide": false,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "not a 2023 homicide (2014 assault, 2023 sentencing); direction other",
+   "notes": "Direction other, so the stories are counted in the sample size but not in the White-Black index ratio."
+  },
+  {
+   "incident_id": "vermont-palestinian-students-shooting",
+   "year_of_crime": 2023,
+   "homicide": false,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "not a homicide (injuries); direction other",
+   "notes": "Present in the broad rule set only. Direction other."
+  },
+  {
+   "incident_id": "el-paso-walmart-shooting",
+   "year_of_crime": 2019,
+   "homicide": true,
+   "in_table6_svso_2023": false,
+   "in_table6_reason": "wrong year (2019); direction other",
+   "notes": "Present in the broad rule set only. Direction other, so not in the White-Black index ratio."
+  }
+ ]
+}

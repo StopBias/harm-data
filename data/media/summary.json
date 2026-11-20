@@ -1,88 +1,166 @@
 {
- "method_version": "1.0",
- "generated": "2026-11-19",
+ "method_version": "1.2",
+ "generated": "2026-11-20",
  "script": "build_media_summary.py",
- "pilot_notice": "PILOT, partial coding. These figures come from one coder's first pass on a random sample of keyword-matched Media Cloud stories. Coded so far (coded of sampled): Associated Press 0 of 31; The New York Times 0 of 80; Fox News 94 of 95; CNN 27 of 29; The Washington Post 0 of 65. No second coder or agreement rate yet. Do not cite these as findings.",
+ "pilot_notice": "PILOT. These figures come from one coder's first pass on a stratified random sample of 300 keyword-matched 2023 Media Cloud stories from Associated Press, CNN, Fox News, The New York Times and The Washington Post (AP 31, a census of its frame; CNN 29; Fox 95; NYT 80; WaPo 65). Six sample rows could not be coded (fetch failures). No second coder or agreement rate yet. There are fewer than 20 included incidents, so a point-estimate index is not published. A zero Black-on-White cell is shown as 0 of N plus the exact one-sided 95% lower bound. The keyword frame is not a random sample of interracial incidents.",
+ "baseline_files": [
+  "baseline_ncvs.json",
+  "baseline_shr.json"
+ ],
  "baseline_file": "baseline_ncvs.json",
  "story_files": [
-  "stories_2023.csv"
+  "stories_2023.csv",
+  "stories_2023_broad.csv"
  ],
+ "incident_file": "incidents_2023.json",
  "by_outlet_year": [
   {
    "outlet": "AP",
+   "outlet_name": "Associated Press",
    "year": 2023,
+   "rule_set": "strict",
    "stories_W_on_B": 0,
    "stories_B_on_W": 0,
+   "stories_other": 1,
+   "included_n": 1,
+   "incidents_n": 1,
+   "incidents_W_on_B": 0,
+   "incidents_B_on_W": 0,
+   "incidents_other": 1,
+   "incidents_direction_conflict": 0,
    "ncvs_W_on_B": 117900,
    "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
    "zero_adjust_applied": false,
    "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": null,
+   "incidents_bound": null,
+   "zero_of_n_stories": null,
+   "zero_of_n_incidents": null,
    "stories_total": 31,
-   "headline_rate": null,
-   "coded_sample_n": 0,
-   "pct_first_para": null,
-   "photo_rate": null,
+   "headline_rate": 1.0,
+   "coded_sample_n": 31,
+   "pct_first_para": 1.0,
+   "photo_rate": 1.0,
    "stance": {
-    "affirming": 0,
+    "affirming": 1,
     "neutral": 0,
     "dismissive": 0
    },
-   "outlet_name": "Associated Press",
-   "included_n": 0,
-   "stories_other": 0,
-   "headline_rate_n": 0,
-   "pct_first_para_n": 0,
-   "photo_rate_n": 0,
-   "ncvs_W_on_B_se": 26784,
-   "ncvs_B_on_W_se": 39839,
-   "cdi_null_reason": "no coded stories",
+   "headline_rate_n": 1,
+   "pct_first_para_n": 1,
+   "photo_rate_n": 1,
    "pilot": true,
    "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on apnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
    "sample_n": 31,
-   "coding_complete": false
+   "coding_complete": true,
+   "empty_reason": "no included White-on-Black or Black-on-White stories in the coded sample"
   },
   {
    "outlet": "NYT",
+   "outlet_name": "The New York Times",
    "year": 2023,
-   "stories_W_on_B": 0,
+   "rule_set": "strict",
+   "stories_W_on_B": 2,
    "stories_B_on_W": 0,
+   "stories_other": 0,
+   "included_n": 2,
+   "incidents_n": 2,
+   "incidents_W_on_B": 2,
+   "incidents_B_on_W": 0,
+   "incidents_other": 0,
+   "incidents_direction_conflict": 0,
    "ncvs_W_on_B": 117900,
    "ncvs_B_on_W": 385400,
-   "zero_adjust_applied": false,
-   "cdi": null,
-   "stories_total": 439,
-   "headline_rate": null,
-   "coded_sample_n": 0,
-   "pct_first_para": null,
-   "photo_rate": null,
-   "stance": {
-    "affirming": 0,
-    "neutral": 0,
-    "dismissive": 0
-   },
-   "outlet_name": "The New York Times",
-   "included_n": 0,
-   "stories_other": 0,
-   "headline_rate_n": 0,
-   "pct_first_para_n": 0,
-   "photo_rate_n": 0,
    "ncvs_W_on_B_se": 26784,
    "ncvs_B_on_W_se": 39839,
-   "cdi_null_reason": "no coded stories",
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 2",
+   "zero_of_n_incidents": "0 of 2",
+   "stories_total": 439,
+   "headline_rate": 0.5,
+   "coded_sample_n": 80,
+   "pct_first_para": 0.5,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 1,
+    "neutral": 1,
+    "dismissive": 0
+   },
+   "headline_rate_n": 2,
+   "pct_first_para_n": 2,
+   "photo_rate_n": 1,
    "pilot": true,
    "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on nytimes.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
    "sample_n": 80,
-   "coding_complete": false
+   "coding_complete": true
   },
   {
    "outlet": "Fox",
+   "outlet_name": "Fox News",
    "year": 2023,
+   "rule_set": "strict",
    "stories_W_on_B": 4,
    "stories_B_on_W": 0,
+   "stories_other": 1,
+   "included_n": 5,
+   "incidents_n": 3,
+   "incidents_W_on_B": 2,
+   "incidents_B_on_W": 0,
+   "incidents_other": 1,
+   "incidents_direction_conflict": 0,
    "ncvs_W_on_B": 117900,
    "ncvs_B_on_W": 385400,
-   "zero_adjust_applied": true,
-   "cdi": 29.42,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 4,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.5271,
+    "coverage_W_on_B_lower": 0.4729,
+    "cdi_lower": 2.9324,
+    "cdi_lower_display": 2.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 4",
+   "zero_of_n_incidents": "0 of 2",
    "stories_total": 521,
    "headline_rate": 0.0,
    "coded_sample_n": 94,
@@ -93,15 +171,9 @@
     "neutral": 4,
     "dismissive": 1
    },
-   "outlet_name": "Fox News",
-   "included_n": 5,
-   "stories_other": 1,
    "headline_rate_n": 5,
    "pct_first_para_n": 5,
    "photo_rate_n": 5,
-   "ncvs_W_on_B_se": 26784,
-   "ncvs_B_on_W_se": 39839,
-   "cdi_null_reason": null,
    "pilot": true,
    "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on foxnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
    "sample_n": 95,
@@ -109,13 +181,46 @@
   },
   {
    "outlet": "CNN",
+   "outlet_name": "CNN",
    "year": 2023,
+   "rule_set": "strict",
    "stories_W_on_B": 2,
    "stories_B_on_W": 0,
+   "stories_other": 0,
+   "included_n": 2,
+   "incidents_n": 2,
+   "incidents_W_on_B": 2,
+   "incidents_B_on_W": 0,
+   "incidents_other": 0,
+   "incidents_direction_conflict": 0,
    "ncvs_W_on_B": 117900,
    "ncvs_B_on_W": 385400,
-   "zero_adjust_applied": true,
-   "cdi": 16.34,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 2",
+   "zero_of_n_incidents": "0 of 2",
    "stories_total": 157,
    "headline_rate": 1.0,
    "coded_sample_n": 27,
@@ -126,15 +231,9 @@
     "neutral": 2,
     "dismissive": 0
    },
-   "outlet_name": "CNN",
-   "included_n": 2,
-   "stories_other": 0,
    "headline_rate_n": 2,
    "pct_first_para_n": 2,
    "photo_rate_n": 2,
-   "ncvs_W_on_B_se": 26784,
-   "ncvs_B_on_W_se": 39839,
-   "cdi_null_reason": null,
    "pilot": true,
    "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on cnn.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
    "sample_n": 29,
@@ -142,50 +241,1509 @@
   },
   {
    "outlet": "WaPo",
+   "outlet_name": "The Washington Post",
    "year": 2023,
-   "stories_W_on_B": 0,
+   "rule_set": "strict",
+   "stories_W_on_B": 4,
    "stories_B_on_W": 0,
+   "stories_other": 0,
+   "included_n": 4,
+   "incidents_n": 3,
+   "incidents_W_on_B": 3,
+   "incidents_B_on_W": 0,
+   "incidents_other": 0,
+   "incidents_direction_conflict": 0,
    "ncvs_W_on_B": 117900,
    "ncvs_B_on_W": 385400,
-   "zero_adjust_applied": false,
-   "cdi": null,
-   "stories_total": 352,
-   "headline_rate": null,
-   "coded_sample_n": 0,
-   "pct_first_para": null,
-   "photo_rate": null,
-   "stance": {
-    "affirming": 0,
-    "neutral": 0,
-    "dismissive": 0
-   },
-   "outlet_name": "The Washington Post",
-   "included_n": 0,
-   "stories_other": 0,
-   "headline_rate_n": 0,
-   "pct_first_para_n": 0,
-   "photo_rate_n": 0,
    "ncvs_W_on_B_se": 26784,
    "ncvs_B_on_W_se": 39839,
-   "cdi_null_reason": "no coded stories",
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 4,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.5271,
+    "coverage_W_on_B_lower": 0.4729,
+    "cdi_lower": 2.9324,
+    "cdi_lower_display": 2.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 3,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.6316,
+    "coverage_W_on_B_lower": 0.3684,
+    "cdi_lower": 1.9067,
+    "cdi_lower_display": 1.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 4",
+   "zero_of_n_incidents": "0 of 3",
+   "stories_total": 352,
+   "headline_rate": 1.0,
+   "coded_sample_n": 62,
+   "pct_first_para": 0.5,
+   "photo_rate": 0.75,
+   "stance": {
+    "affirming": 2,
+    "neutral": 2,
+    "dismissive": 0
+   },
+   "headline_rate_n": 4,
+   "pct_first_para_n": 4,
+   "photo_rate_n": 4,
    "pilot": true,
    "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on washingtonpost.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
    "sample_n": 65,
    "coding_complete": false
+  },
+  {
+   "outlet": "AP",
+   "outlet_name": "Associated Press",
+   "year": 2023,
+   "rule_set": "broad",
+   "stories_W_on_B": 2,
+   "stories_B_on_W": 0,
+   "stories_other": 2,
+   "included_n": 4,
+   "incidents_n": 3,
+   "incidents_W_on_B": 1,
+   "incidents_B_on_W": 0,
+   "incidents_other": 2,
+   "incidents_direction_conflict": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 1,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.95,
+    "coverage_W_on_B_lower": 0.05,
+    "cdi_lower": 0.172,
+    "cdi_lower_display": 0.17,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 2",
+   "zero_of_n_incidents": "0 of 1",
+   "stories_total": 31,
+   "headline_rate": 0.75,
+   "coded_sample_n": 31,
+   "pct_first_para": 1.0,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 4,
+    "neutral": 0,
+    "dismissive": 0
+   },
+   "headline_rate_n": 4,
+   "pct_first_para_n": 4,
+   "photo_rate_n": 4,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on apnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023_broad.csv",
+   "sample_n": 31,
+   "coding_complete": true
+  },
+  {
+   "outlet": "NYT",
+   "outlet_name": "The New York Times",
+   "year": 2023,
+   "rule_set": "broad",
+   "stories_W_on_B": 2,
+   "stories_B_on_W": 0,
+   "stories_other": 2,
+   "included_n": 4,
+   "incidents_n": 4,
+   "incidents_W_on_B": 2,
+   "incidents_B_on_W": 0,
+   "incidents_other": 2,
+   "incidents_direction_conflict": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 2",
+   "zero_of_n_incidents": "0 of 2",
+   "stories_total": 439,
+   "headline_rate": 0.75,
+   "coded_sample_n": 80,
+   "pct_first_para": 0.75,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 2,
+    "neutral": 2,
+    "dismissive": 0
+   },
+   "headline_rate_n": 4,
+   "pct_first_para_n": 4,
+   "photo_rate_n": 3,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on nytimes.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023_broad.csv",
+   "sample_n": 80,
+   "coding_complete": true
+  },
+  {
+   "outlet": "Fox",
+   "outlet_name": "Fox News",
+   "year": 2023,
+   "rule_set": "broad",
+   "stories_W_on_B": 4,
+   "stories_B_on_W": 0,
+   "stories_other": 3,
+   "included_n": 7,
+   "incidents_n": 4,
+   "incidents_W_on_B": 2,
+   "incidents_B_on_W": 0,
+   "incidents_other": 2,
+   "incidents_direction_conflict": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 4,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.5271,
+    "coverage_W_on_B_lower": 0.4729,
+    "cdi_lower": 2.9324,
+    "cdi_lower_display": 2.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 2,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.7764,
+    "coverage_W_on_B_lower": 0.2236,
+    "cdi_lower": 0.9415,
+    "cdi_lower_display": 0.94,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 4",
+   "zero_of_n_incidents": "0 of 2",
+   "stories_total": 521,
+   "headline_rate": 0.2857,
+   "coded_sample_n": 94,
+   "pct_first_para": 0.4286,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 0,
+    "neutral": 6,
+    "dismissive": 1
+   },
+   "headline_rate_n": 7,
+   "pct_first_para_n": 7,
+   "photo_rate_n": 7,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on foxnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023_broad.csv",
+   "sample_n": 95,
+   "coding_complete": false
+  },
+  {
+   "outlet": "CNN",
+   "outlet_name": "CNN",
+   "year": 2023,
+   "rule_set": "broad",
+   "stories_W_on_B": 4,
+   "stories_B_on_W": 0,
+   "stories_other": 1,
+   "included_n": 5,
+   "incidents_n": 4,
+   "incidents_W_on_B": 3,
+   "incidents_B_on_W": 0,
+   "incidents_other": 1,
+   "incidents_direction_conflict": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 4,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.5271,
+    "coverage_W_on_B_lower": 0.4729,
+    "cdi_lower": 2.9324,
+    "cdi_lower_display": 2.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 3,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.6316,
+    "coverage_W_on_B_lower": 0.3684,
+    "cdi_lower": 1.9067,
+    "cdi_lower_display": 1.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 4",
+   "zero_of_n_incidents": "0 of 3",
+   "stories_total": 157,
+   "headline_rate": 0.4,
+   "coded_sample_n": 27,
+   "pct_first_para": 0.6,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 0,
+    "neutral": 5,
+    "dismissive": 0
+   },
+   "headline_rate_n": 5,
+   "pct_first_para_n": 5,
+   "photo_rate_n": 5,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on cnn.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023_broad.csv",
+   "sample_n": 29,
+   "coding_complete": false
+  },
+  {
+   "outlet": "WaPo",
+   "outlet_name": "The Washington Post",
+   "year": 2023,
+   "rule_set": "broad",
+   "stories_W_on_B": 4,
+   "stories_B_on_W": 0,
+   "stories_other": 1,
+   "included_n": 5,
+   "incidents_n": 4,
+   "incidents_W_on_B": 3,
+   "incidents_B_on_W": 0,
+   "incidents_other": 1,
+   "incidents_direction_conflict": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "cdi_null_reason": "outlet point-estimate index is pending until an incident-based sample is complete",
+   "index_status": "pending",
+   "stories_bound": {
+    "n_pair": 4,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.5271,
+    "coverage_W_on_B_lower": 0.4729,
+    "cdi_lower": 2.9324,
+    "cdi_lower_display": 2.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "incidents_bound": {
+    "n_pair": 3,
+    "zero_direction": "B_on_W",
+    "coverage_B_on_W_upper": 0.6316,
+    "coverage_W_on_B_lower": 0.3684,
+    "cdi_lower": 1.9067,
+    "cdi_lower_display": 1.9,
+    "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+   },
+   "zero_of_n_stories": "0 of 4",
+   "zero_of_n_incidents": "0 of 3",
+   "stories_total": 352,
+   "headline_rate": 1.0,
+   "coded_sample_n": 62,
+   "pct_first_para": 0.4,
+   "photo_rate": 0.75,
+   "stance": {
+    "affirming": 3,
+    "neutral": 2,
+    "dismissive": 0
+   },
+   "headline_rate_n": 5,
+   "pct_first_para_n": 5,
+   "photo_rate_n": 4,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on washingtonpost.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023_broad.csv",
+   "sample_n": 65,
+   "coding_complete": false
   }
  ],
+ "countries": {
+  "USA": {
+   "iso": "USA",
+   "year": 2023,
+   "outlets": [
+    "AP",
+    "NYT",
+    "Fox",
+    "CNN",
+    "WaPo"
+   ],
+   "outlet_names": [
+    "Associated Press",
+    "The New York Times",
+    "Fox News",
+    "CNN",
+    "The Washington Post"
+   ],
+   "pairing": "White / Black (race as stated in the article)",
+   "race_basis": "race_stated_in_article",
+   "insufficient_data": true,
+   "insufficient_reason": "fewer than 20 included incidents overall (strict 6, broad 8); unweighted, all directions, including other",
+   "index_status": "insufficient_data",
+   "point_estimate_published": false,
+   "cdi": null,
+   "preferred_inference": {
+    "unit": "incidents",
+    "rule_sets": "both (5 White-Black pair incidents under strict and broad)",
+    "zero_of_n": "0 of 5",
+    "n_pair": 5,
+    "baseline": "ncvs",
+    "baseline_W_on_B": 117900,
+    "baseline_B_on_W": 385400,
+    "baseline_ratio": 0.30591593149974056,
+    "cdi_lower_bound": {
+     "n_pair": 5,
+     "zero_direction": "B_on_W",
+     "coverage_B_on_W_upper": 0.4507,
+     "coverage_W_on_B_lower": 0.5493,
+     "cdi_lower": 3.9837,
+     "cdi_lower_display": 4.0,
+     "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+    },
+    "index_lower_display": 4.0,
+    "note": "Preferred country inference is the incident-level Clopper-Pearson exact one-sided 95% lower bound (0 of 5, Antiwhite media bias index at least +4.0× against the NCVS 2023 ratio). A signed-multiplier point estimate is not published."
+   },
+   "rule_sets": {
+    "strict": {
+     "rule_set": "strict",
+     "year": 2023,
+     "coded_sample_n": 294,
+     "sample_n": 300,
+     "included_stories": 14,
+     "included_incidents": 6,
+     "insufficient_data": true,
+     "date_start": "2023-02-15",
+     "date_end": "2023-08-30",
+     "mixed_vs_ncvs": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "ncvs",
+       "W_on_B": 12,
+       "B_on_W": 0,
+       "other": 2,
+       "n_pair": 12,
+       "n_included": 14,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 12",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 12,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.2209,
+        "coverage_W_on_B_lower": 0.7791,
+        "cdi_lower": 11.5276,
+        "cdi_lower_display": 11.5,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "incidents": {
+       "unit": "incidents",
+       "baseline": "ncvs",
+       "W_on_B": 5,
+       "B_on_W": 0,
+       "other": 1,
+       "n_pair": 5,
+       "n_included": 6,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 5",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 5,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.4507,
+        "coverage_W_on_B_lower": 0.5493,
+        "cdi_lower": 3.9837,
+        "cdi_lower_display": 4.0,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      }
+     },
+     "homicide_vs_shr": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "shr_table6",
+       "W_on_B": 7,
+       "B_on_W": 0,
+       "other": 0,
+       "n_pair": 7,
+       "n_included": 7,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 7",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 7,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.3482,
+        "coverage_W_on_B_lower": 0.6518,
+        "cdi_lower": 4.1951,
+        "cdi_lower_display": 4.2,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "incidents": {
+       "unit": "incidents",
+       "baseline": "shr_table6",
+       "W_on_B": 2,
+       "B_on_W": 0,
+       "other": 0,
+       "n_pair": 2,
+       "n_included": 2,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 2",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 2,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.7764,
+        "coverage_W_on_B_lower": 0.2236,
+        "cdi_lower": 0.6453,
+        "cdi_lower_display": 0.65,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "like_for_like_svso_2023": {
+       "descriptor": "Covered 2023 single-victim/single-offender interracial homicides in this keyword sample, over FBI Table 6 known-offender-race counts. Jacksonville is a multiple-victim case and is reported next to this row, not dropped into the Table 6 fraction.",
+       "W_on_B_covered": 0,
+       "B_on_W_covered": 0,
+       "W_on_B_baseline": 324,
+       "B_on_W_baseline": 726,
+       "W_on_B_of": "0 of 324",
+       "B_on_W_of": "0 of 726",
+       "outside_table6_2023_homicides": [
+        {
+         "incident_id": "jacksonville-dollar-general-2023",
+         "in_table6_reason": "multiple victims, single offender"
+        }
+       ]
+      },
+      "caveat": "Homicide stories in this sample include a 2023 multiple-victim case (Jacksonville) and 2022 follow-up coverage (Buffalo). Comparing those media counts with the 2023 Table 6 SV/SO ratio mixes units; the like-for-like SV/SO coverage is 0 of 324 and 0 of 726. The story and incident bounds against the Table 6 ratio are shown for transparency, with that caveat."
+     },
+     "nonfatal_vs_ncvs": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "ncvs",
+       "W_on_B": 5,
+       "B_on_W": 0,
+       "other": 2,
+       "n_pair": 5,
+       "n_included": 7,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 5",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 5,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.4507,
+        "coverage_W_on_B_lower": 0.5493,
+        "cdi_lower": 3.9837,
+        "cdi_lower_display": 4.0,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      }
+     },
+     "preferred": {
+      "rule_set": "strict",
+      "unit": "incidents",
+      "baseline": "ncvs",
+      "baseline_note": "Preferred country inference is the incident-level row of the mixed (homicide + non-fatal) keyword sample against the NCVS 2023 ratio. A point-estimate index is not published.",
+      "zero_of_n": "0 of 5",
+      "n_pair": 5,
+      "n_included_incidents": 6,
+      "cdi": null,
+      "cdi_lower_bound": {
+       "n_pair": 5,
+       "zero_direction": "B_on_W",
+       "coverage_B_on_W_upper": 0.4507,
+       "coverage_W_on_B_lower": 0.5493,
+       "cdi_lower": 3.9837,
+       "cdi_lower_display": 4.0,
+       "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+      },
+      "index_status": "insufficient_data",
+      "point_estimate_published": false
+     },
+     "incidents": [
+      {
+       "incident_id": "buffalo-tops-shooting-2022",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "WaPo"
+       ],
+       "stories": 1,
+       "homicide": true,
+       "year_of_crime": 2022,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "hawaii-maui-hate-crime-beating",
+       "directions": [
+        "other"
+       ],
+       "outlets": [
+        "AP"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2014,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "jacksonville-dollar-general-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "CNN",
+        "Fox",
+        "NYT",
+        "WaPo"
+       ],
+       "stories": 6,
+       "homicide": true,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "kansas-city-wrong-house-shooting-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "CNN"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "directions": [
+        "W_on_B",
+        "other"
+       ],
+       "outlets": [
+        "Fox",
+        "NYT",
+        "WaPo"
+       ],
+       "stories": 4,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "rankin-county-jenkins-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "Fox"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      }
+     ],
+     "included_story_list": [
+      {
+       "story_id": "144094c5836a3d6ff19022ab4ffab15065756069dba52f3e6de63d0685801168",
+       "outlet": "Fox",
+       "date": "2023-02-15",
+       "url": "https://www.foxnews.com/us/mississippi-police-shooting-left-man-hospitalized-weeks",
+       "headline": "Mississippi police shooting left man hospitalized for weeks",
+       "direction": "W_on_B",
+       "incident_id": "rankin-county-jenkins-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "2",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "b67bb9e67bc87b5dbc1156424891a4eacf88014f0bd96e787d516a7e8944d12e",
+       "outlet": "WaPo",
+       "date": "2023-02-15",
+       "url": "https://www.washingtonpost.com/national-security/2023/02/15/buffalo-shooting-gendron-sentencing/?utm_source=rss&utm_medium=referral&utm_campaign=wp_national-security",
+       "headline": "Gunman sentenced to life in prison for Buffalo massacre of Black victims",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "4",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "49b35841eebfff1754f6fcea8098f795d29c3c8ccee9dcb81dad88333952d603",
+       "outlet": "AP",
+       "date": "2023-03-02",
+       "url": "http://apnews.com/article/hawaiians-hate-crime-beating-sentence-55d0a9d504a49b062f56c1d09e662fd8",
+       "headline": "Maui hate crime case spotlights Hawaii's racial complexity",
+       "direction": "other",
+       "incident_id": "hawaii-maui-hate-crime-beating",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "7e7f0d373a9a8cc2b948f016b6d77bfba0b35364e7a8765f62e837182ea16d0b",
+       "outlet": "CNN",
+       "date": "2023-04-17",
+       "url": "https://www.cnn.com/2023/04/17/us/kansas-city-teen-shot-wrong-house/index.html",
+       "headline": "Accused shooter in Kansas City shooting of Black teen who went to the wrong house is White man in his 80s",
+       "direction": "W_on_B",
+       "incident_id": "kansas-city-wrong-house-shooting-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "f6ed4c4f36a5831fb42b205bddff2aa4407dca018e4330ef89a5613c20e796fa",
+       "outlet": "WaPo",
+       "date": "2023-08-08",
+       "url": "https://www.washingtonpost.com/nation/2023/08/08/montgomery-alabama-riverfront-brawl-charges/?utm_source=rss&utm_medium=referral&utm_campaign=wp_national",
+       "headline": "White men charged with attacking Black man in Montgomery Riverfront brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "88c5227bf4de0790aaea954c5447233419abd38743e127ae43050ac91ab0e613",
+       "outlet": "Fox",
+       "date": "2023-08-10",
+       "url": "https://www.foxnews.com/opinion/greg-gutfeld-alabama-melee-story",
+       "headline": "GREG GUTFELD: There was no point in covering the Alabama melee story, but everyone did",
+       "direction": "other",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "9",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "7e6c28182efd723ba1d6434e7630ae3801f8705955bb463bade3920cd5ea53b3",
+       "outlet": "NYT",
+       "date": "2023-08-10",
+       "url": "https://www.nytimes.com/2023/08/10/us/montgomery-alabama-river-boat-brawl-arrests.html",
+       "headline": "3 Men Charged With Assault After Alabama Riverfront Brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "2",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "b14c9a2fb31bc2ac0af49d009869d036ca0e816c5c5e60d112be41a4c90ec185",
+       "outlet": "WaPo",
+       "date": "2023-08-12",
+       "url": "https://www.washingtonpost.com/nation/2023/08/12/montgomery-brawl-alabama-history-response/",
+       "headline": "Racial tensions linger in Montgomery after dock brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "3",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "3b54815622ca8bfd7b609dc3c876fbac298621a95947fdefc6ca3fead3fa4ea3",
+       "outlet": "Fox",
+       "date": "2023-08-27",
+       "url": "https://www.foxnews.com/us/jacksonville-sheriff-releases-images-weapon-bearing-swastikas-dollar-general-shooting",
+       "headline": "Jacksonville Sheriff releases images of weapon bearing swastikas after Dollar General shooting",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "3",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "58b94819fb06bcd0034c329abbf84629e7f0b51229f64c0ffa127a6606dc9fa4",
+       "outlet": "NYT",
+       "date": "2023-08-27",
+       "url": "https://www.nytimes.com/2023/08/27/us/jacksonville-shooting-victims-timeline.html",
+       "headline": "The 11 Fatal Minutes in the Jacksonville Shooting",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "4",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "7003f00b899c87fa7c020cb34507d95ee0232b5c427f2ca82e566dfb90f0c3d9",
+       "outlet": "Fox",
+       "date": "2023-08-28",
+       "url": "https://www.foxnews.com/us/florida-sheriff-investigating-racially-motivated-dollar-general-shooting-challenges-anti-gun-narrative",
+       "headline": "Florida sheriff investigating racially-motivated Dollar General shooting challenges anti-gun narrative",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "6",
+       "first_mention_feature": "name",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "c49e17a958976b4db9c79de27e25b6c2142ad202bbacd5b9c3f7e59d5204aa1e",
+       "outlet": "CNN",
+       "date": "2023-08-29",
+       "url": "https://www.cnn.com/2023/08/29/us/jacksonville-residents-racist-attack-reaj/index.html",
+       "headline": "Locals see echoes of Jacksonville's past in racist attack that killed Black residents",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "dc3fd22cb55c87cf91150181fe9f3746b76e1154a8699b4ee695fa9567ff60a1",
+       "outlet": "WaPo",
+       "date": "2023-08-29",
+       "url": "https://www.washingtonpost.com/politics/2023/08/29/desantis-shooting-florida-black-floridians/?utm_source=rss&utm_medium=referral&utm_campaign=wp_politics",
+       "headline": "Racist killings reignite Black leaders’ anger at DeSantis in Florida",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "strict"
+      },
+      {
+       "story_id": "0e40f22f385f7a190beb12e69ab1094b411fd937e4274ad75d0e2e0cbd4c9c83",
+       "outlet": "Fox",
+       "date": "2023-08-30",
+       "url": "https://www.foxnews.com/media/tulsi-gabbard-calls-reporter-exploiting-shooting-attack-desantis-associated-propaganda",
+       "headline": "Tulsi Gabbard calls out reporter for 'exploiting' shooting to attack DeSantis: 'Associated Propaganda'",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "6",
+       "first_mention_feature": "race",
+       "rule_set": "strict"
+      }
+     ]
+    },
+    "broad": {
+     "rule_set": "broad",
+     "year": 2023,
+     "coded_sample_n": 294,
+     "sample_n": 300,
+     "included_stories": 25,
+     "included_incidents": 8,
+     "insufficient_data": true,
+     "date_start": "2023-02-08",
+     "date_end": "2023-11-27",
+     "mixed_vs_ncvs": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "ncvs",
+       "W_on_B": 16,
+       "B_on_W": 0,
+       "other": 9,
+       "n_pair": 16,
+       "n_included": 25,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 16",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 16,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.1707,
+        "coverage_W_on_B_lower": 0.8293,
+        "cdi_lower": 15.8754,
+        "cdi_lower_display": 15.9,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "incidents": {
+       "unit": "incidents",
+       "baseline": "ncvs",
+       "W_on_B": 5,
+       "B_on_W": 0,
+       "other": 3,
+       "n_pair": 5,
+       "n_included": 8,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 5",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 5,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.4507,
+        "coverage_W_on_B_lower": 0.5493,
+        "cdi_lower": 3.9837,
+        "cdi_lower_display": 4.0,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      }
+     },
+     "homicide_vs_shr": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "shr_table6",
+       "W_on_B": 11,
+       "B_on_W": 0,
+       "other": 4,
+       "n_pair": 11,
+       "n_included": 15,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 11",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 11,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.2384,
+        "coverage_W_on_B_lower": 0.7616,
+        "cdi_lower": 7.1582,
+        "cdi_lower_display": 7.2,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "incidents": {
+       "unit": "incidents",
+       "baseline": "shr_table6",
+       "W_on_B": 2,
+       "B_on_W": 0,
+       "other": 1,
+       "n_pair": 2,
+       "n_included": 3,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 2",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 2,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.7764,
+        "coverage_W_on_B_lower": 0.2236,
+        "cdi_lower": 0.6453,
+        "cdi_lower_display": 0.65,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      },
+      "like_for_like_svso_2023": {
+       "descriptor": "Covered 2023 single-victim/single-offender interracial homicides in this keyword sample, over FBI Table 6 known-offender-race counts. Jacksonville is a multiple-victim case and is reported next to this row, not dropped into the Table 6 fraction.",
+       "W_on_B_covered": 0,
+       "B_on_W_covered": 0,
+       "W_on_B_baseline": 324,
+       "B_on_W_baseline": 726,
+       "W_on_B_of": "0 of 324",
+       "B_on_W_of": "0 of 726",
+       "outside_table6_2023_homicides": [
+        {
+         "incident_id": "jacksonville-dollar-general-2023",
+         "in_table6_reason": "multiple victims, single offender"
+        }
+       ]
+      },
+      "caveat": "Homicide stories in this sample include a 2023 multiple-victim case (Jacksonville) and 2022 follow-up coverage (Buffalo). Comparing those media counts with the 2023 Table 6 SV/SO ratio mixes units; the like-for-like SV/SO coverage is 0 of 324 and 0 of 726. The story and incident bounds against the Table 6 ratio are shown for transparency, with that caveat."
+     },
+     "nonfatal_vs_ncvs": {
+      "stories": {
+       "unit": "stories",
+       "baseline": "ncvs",
+       "W_on_B": 5,
+       "B_on_W": 0,
+       "other": 5,
+       "n_pair": 5,
+       "n_included": 10,
+       "coverage_W_on_B": 1.0,
+       "coverage_B_on_W": 0.0,
+       "zero_of_n": "0 of 5",
+       "zero_kind": "zero_B_on_W",
+       "cdi": null,
+       "cdi_null_reason": "zero cell: point-estimate CDI is not published; see zero_of_n and cdi_lower_bound",
+       "cdi_lower_bound": {
+        "n_pair": 5,
+        "zero_direction": "B_on_W",
+        "coverage_B_on_W_upper": 0.4507,
+        "coverage_W_on_B_lower": 0.5493,
+        "cdi_lower": 3.9837,
+        "cdi_lower_display": 4.0,
+        "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+       },
+       "point_estimate_published": false
+      }
+     },
+     "preferred": {
+      "rule_set": "broad",
+      "unit": "incidents",
+      "baseline": "ncvs",
+      "baseline_note": "Preferred country inference is the incident-level row of the mixed (homicide + non-fatal) keyword sample against the NCVS 2023 ratio. A point-estimate index is not published.",
+      "zero_of_n": "0 of 5",
+      "n_pair": 5,
+      "n_included_incidents": 8,
+      "cdi": null,
+      "cdi_lower_bound": {
+       "n_pair": 5,
+       "zero_direction": "B_on_W",
+       "coverage_B_on_W_upper": 0.4507,
+       "coverage_W_on_B_lower": 0.5493,
+       "cdi_lower": 3.9837,
+       "cdi_lower_display": 4.0,
+       "method": "Clopper-Pearson exact one-sided 95% lower bound on CDI; binomial model on N White-Black pair units"
+      },
+      "index_status": "insufficient_data",
+      "point_estimate_published": false
+     },
+     "incidents": [
+      {
+       "incident_id": "buffalo-tops-shooting-2022",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "AP",
+        "CNN",
+        "WaPo"
+       ],
+       "stories": 5,
+       "homicide": true,
+       "year_of_crime": 2022,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "el-paso-walmart-shooting",
+       "directions": [
+        "other"
+       ],
+       "outlets": [
+        "AP",
+        "CNN",
+        "NYT",
+        "WaPo"
+       ],
+       "stories": 4,
+       "homicide": true,
+       "year_of_crime": 2019,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "hawaii-maui-hate-crime-beating",
+       "directions": [
+        "other"
+       ],
+       "outlets": [
+        "AP"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2014,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "jacksonville-dollar-general-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "CNN",
+        "Fox",
+        "NYT",
+        "WaPo"
+       ],
+       "stories": 6,
+       "homicide": true,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "kansas-city-wrong-house-shooting-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "CNN"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "directions": [
+        "W_on_B",
+        "other"
+       ],
+       "outlets": [
+        "Fox",
+        "NYT",
+        "WaPo"
+       ],
+       "stories": 4,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "rankin-county-jenkins-2023",
+       "directions": [
+        "W_on_B"
+       ],
+       "outlets": [
+        "Fox"
+       ],
+       "stories": 1,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      },
+      {
+       "incident_id": "vermont-palestinian-students-shooting",
+       "directions": [
+        "other"
+       ],
+       "outlets": [
+        "Fox",
+        "NYT"
+       ],
+       "stories": 3,
+       "homicide": false,
+       "year_of_crime": 2023,
+       "in_table6_svso_2023": false
+      }
+     ],
+     "included_story_list": [
+      {
+       "story_id": "35eb4481880083687f3b57da4ab4b0c60861783c173391ecd0f5c9a3f0b93bc8",
+       "outlet": "AP",
+       "date": "2023-02-08",
+       "url": "http://apnews.com/article/mexico-united-states-government-patrick-crusius-texas-el-paso-a2a924593883056af3782f33e3200fee",
+       "headline": "'Invasion' language continues after El Paso Walmart shooting",
+       "direction": "other",
+       "incident_id": "el-paso-walmart-shooting",
+       "headline_mentions_race": "no",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "b5b4c25add9265a3a8dde99df90bb8c8f05ddef639734379e1fd359d7e2d849c",
+       "outlet": "AP",
+       "date": "2023-02-15",
+       "url": "http://apnews.com/article/legal-proceedings-new-york-buffalo-crime-terrorism-a13cf95d1fbecfa64571de87d2ccfa8a",
+       "headline": "Buffalo supermarket gunman set to receive life prison term",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "144094c5836a3d6ff19022ab4ffab15065756069dba52f3e6de63d0685801168",
+       "outlet": "Fox",
+       "date": "2023-02-15",
+       "url": "https://www.foxnews.com/us/mississippi-police-shooting-left-man-hospitalized-weeks",
+       "headline": "Mississippi police shooting left man hospitalized for weeks",
+       "direction": "W_on_B",
+       "incident_id": "rankin-county-jenkins-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "2",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "b67bb9e67bc87b5dbc1156424891a4eacf88014f0bd96e787d516a7e8944d12e",
+       "outlet": "WaPo",
+       "date": "2023-02-15",
+       "url": "https://www.washingtonpost.com/national-security/2023/02/15/buffalo-shooting-gendron-sentencing/?utm_source=rss&utm_medium=referral&utm_campaign=wp_national-security",
+       "headline": "Gunman sentenced to life in prison for Buffalo massacre of Black victims",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "4",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "49b35841eebfff1754f6fcea8098f795d29c3c8ccee9dcb81dad88333952d603",
+       "outlet": "AP",
+       "date": "2023-03-02",
+       "url": "http://apnews.com/article/hawaiians-hate-crime-beating-sentence-55d0a9d504a49b062f56c1d09e662fd8",
+       "headline": "Maui hate crime case spotlights Hawaii's racial complexity",
+       "direction": "other",
+       "incident_id": "hawaii-maui-hate-crime-beating",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "7e7f0d373a9a8cc2b948f016b6d77bfba0b35364e7a8765f62e837182ea16d0b",
+       "outlet": "CNN",
+       "date": "2023-04-17",
+       "url": "https://www.cnn.com/2023/04/17/us/kansas-city-teen-shot-wrong-house/index.html",
+       "headline": "Accused shooter in Kansas City shooting of Black teen who went to the wrong house is White man in his 80s",
+       "direction": "W_on_B",
+       "incident_id": "kansas-city-wrong-house-shooting-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "626025419ff8a267a84f3973c07d77d8aabea9230b9bc613a76912cd436696fb",
+       "outlet": "AP",
+       "date": "2023-05-14",
+       "url": "https://apnews.com/article/buffalo-supermarket-shooting-4963c30d3d3c87d37a2dce819c51baa4",
+       "headline": "Bells toll for Buffalo supermarket mass shooting victims 1 year after massacre",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "ecb1f6157064b07341be5ed89a8800f9e0dbb73e98bc481f437b53664c522149",
+       "outlet": "CNN",
+       "date": "2023-05-14",
+       "url": "https://www.cnn.com/2023/05/14/us/buffalo-tops-anniversary-reaj/index.html",
+       "headline": "Our community is stronger': Buffalo stands resilient one year after grocery store massacre",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "no",
+       "first_mention_para": "7",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "0dfea82404faca180f56a29e9abd909deb271fc34cd2e3c78315bc5aedb8c8cc",
+       "outlet": "NYT",
+       "date": "2023-07-07",
+       "url": "https://www.nytimes.com/2023/07/07/us/el-paso-walmart-shooting-sentencing.html",
+       "headline": "Gunman in El Paso Mass Shooting Sentenced for Federal Hate Crimes",
+       "direction": "other",
+       "incident_id": "el-paso-walmart-shooting",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "f6ed4c4f36a5831fb42b205bddff2aa4407dca018e4330ef89a5613c20e796fa",
+       "outlet": "WaPo",
+       "date": "2023-08-08",
+       "url": "https://www.washingtonpost.com/nation/2023/08/08/montgomery-alabama-riverfront-brawl-charges/?utm_source=rss&utm_medium=referral&utm_campaign=wp_national",
+       "headline": "White men charged with attacking Black man in Montgomery Riverfront brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "88c5227bf4de0790aaea954c5447233419abd38743e127ae43050ac91ab0e613",
+       "outlet": "Fox",
+       "date": "2023-08-10",
+       "url": "https://www.foxnews.com/opinion/greg-gutfeld-alabama-melee-story",
+       "headline": "GREG GUTFELD: There was no point in covering the Alabama melee story, but everyone did",
+       "direction": "other",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "9",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "7e6c28182efd723ba1d6434e7630ae3801f8705955bb463bade3920cd5ea53b3",
+       "outlet": "NYT",
+       "date": "2023-08-10",
+       "url": "https://www.nytimes.com/2023/08/10/us/montgomery-alabama-river-boat-brawl-arrests.html",
+       "headline": "3 Men Charged With Assault After Alabama Riverfront Brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "2",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "b14c9a2fb31bc2ac0af49d009869d036ca0e816c5c5e60d112be41a4c90ec185",
+       "outlet": "WaPo",
+       "date": "2023-08-12",
+       "url": "https://www.washingtonpost.com/nation/2023/08/12/montgomery-brawl-alabama-history-response/",
+       "headline": "Racial tensions linger in Montgomery after dock brawl",
+       "direction": "W_on_B",
+       "incident_id": "montgomery-riverfront-brawl-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "3",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "82f27549cf1f143f5f5c7f971a937f5a410578581eb4ce64902a1bcc241971b7",
+       "outlet": "CNN",
+       "date": "2023-08-17",
+       "url": "https://www.cnn.com/2023/08/17/us/buffalo-shooting-family-survivors-lawsuits/index.html",
+       "headline": "Attorneys for survivors of Buffalo shooting and family of victim file lawsuits against shooter's parents, gun companies and social media companies",
+       "direction": "W_on_B",
+       "incident_id": "buffalo-tops-shooting-2022",
+       "headline_mentions_race": "no",
+       "first_mention_para": "6",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "3b54815622ca8bfd7b609dc3c876fbac298621a95947fdefc6ca3fead3fa4ea3",
+       "outlet": "Fox",
+       "date": "2023-08-27",
+       "url": "https://www.foxnews.com/us/jacksonville-sheriff-releases-images-weapon-bearing-swastikas-dollar-general-shooting",
+       "headline": "Jacksonville Sheriff releases images of weapon bearing swastikas after Dollar General shooting",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "3",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "58b94819fb06bcd0034c329abbf84629e7f0b51229f64c0ffa127a6606dc9fa4",
+       "outlet": "NYT",
+       "date": "2023-08-27",
+       "url": "https://www.nytimes.com/2023/08/27/us/jacksonville-shooting-victims-timeline.html",
+       "headline": "The 11 Fatal Minutes in the Jacksonville Shooting",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "4",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "7003f00b899c87fa7c020cb34507d95ee0232b5c427f2ca82e566dfb90f0c3d9",
+       "outlet": "Fox",
+       "date": "2023-08-28",
+       "url": "https://www.foxnews.com/us/florida-sheriff-investigating-racially-motivated-dollar-general-shooting-challenges-anti-gun-narrative",
+       "headline": "Florida sheriff investigating racially-motivated Dollar General shooting challenges anti-gun narrative",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "6",
+       "first_mention_feature": "name",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "c49e17a958976b4db9c79de27e25b6c2142ad202bbacd5b9c3f7e59d5204aa1e",
+       "outlet": "CNN",
+       "date": "2023-08-29",
+       "url": "https://www.cnn.com/2023/08/29/us/jacksonville-residents-racist-attack-reaj/index.html",
+       "headline": "Locals see echoes of Jacksonville's past in racist attack that killed Black residents",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "dc3fd22cb55c87cf91150181fe9f3746b76e1154a8699b4ee695fa9567ff60a1",
+       "outlet": "WaPo",
+       "date": "2023-08-29",
+       "url": "https://www.washingtonpost.com/politics/2023/08/29/desantis-shooting-florida-black-floridians/?utm_source=rss&utm_medium=referral&utm_campaign=wp_politics",
+       "headline": "Racist killings reignite Black leaders’ anger at DeSantis in Florida",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "0e40f22f385f7a190beb12e69ab1094b411fd937e4274ad75d0e2e0cbd4c9c83",
+       "outlet": "Fox",
+       "date": "2023-08-30",
+       "url": "https://www.foxnews.com/media/tulsi-gabbard-calls-reporter-exploiting-shooting-attack-desantis-associated-propaganda",
+       "headline": "Tulsi Gabbard calls out reporter for 'exploiting' shooting to attack DeSantis: 'Associated Propaganda'",
+       "direction": "W_on_B",
+       "incident_id": "jacksonville-dollar-general-2023",
+       "headline_mentions_race": "no",
+       "first_mention_para": "6",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "c534fb94925303baf4b357fa7a7ae4e97a449f96b33c6949e72ba6e4588f0d49",
+       "outlet": "CNN",
+       "date": "2023-09-25",
+       "url": "https://www.cnn.com/2023/09/25/us/el-paso-walmart-shooter-millions-restitution/index.html",
+       "headline": "El Paso Walmart shooter agrees to pay more than $5.5 million in restitution in federal case",
+       "direction": "other",
+       "incident_id": "el-paso-walmart-shooting",
+       "headline_mentions_race": "no",
+       "first_mention_para": "2",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "f9151122a19ed6d2afbd3f14c086eee51ae5eecfafe307003c3454a6e23b9e28",
+       "outlet": "WaPo",
+       "date": "2023-11-24",
+       "url": "https://www.washingtonpost.com/nation/2023/11/24/el-paso-walmart-shooting-mexican-victims/?utm_source=rssutm_medium=referralutm_campaign=wp_homepage",
+       "headline": "Mexicans victimized in El Paso mass killing struggle to heal, obtain visas",
+       "direction": "other",
+       "incident_id": "el-paso-walmart-shooting",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "5",
+       "first_mention_feature": null,
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "369890945eb325173261768010d1a20c721d1d18881a1553a1562d032da05fa7",
+       "outlet": "Fox",
+       "date": "2023-11-26",
+       "url": "https://www.foxnews.com/us/palestinian-students-shot-injured-holiday-gathering-university-vermont",
+       "headline": "Palestinian students shot, injured at holiday gathering near University of Vermont",
+       "direction": "other",
+       "incident_id": "vermont-palestinian-students-shooting",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "811fa0f5a1edd196eef65b53b3220885d1509f5fd37620ae62e97ab45af99daa",
+       "outlet": "NYT",
+       "date": "2023-11-26",
+       "url": "https://www.nytimes.com/2023/11/26/us/palestinian-students-shootings-burlington.html",
+       "headline": "Police Arrest Suspect in Shooting of 3 Palestinian Students in Vermont",
+       "direction": "other",
+       "incident_id": "vermont-palestinian-students-shooting",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      },
+      {
+       "story_id": "a7850b506b455dfe6d1f716e52fd31870d8ca68488af2989d7fae51508eb3d17",
+       "outlet": "Fox",
+       "date": "2023-11-27",
+       "url": "https://www.foxnews.com/us/suspect-accused-shooting-3-palestinian-students-vermont-enters-plea-first-court-appearance",
+       "headline": "Suspect accused of shooting 3 Palestinian students in Vermont enters plea in first court appearance",
+       "direction": "other",
+       "incident_id": "vermont-palestinian-students-shooting",
+       "headline_mentions_race": "yes",
+       "first_mention_para": "1",
+       "first_mention_feature": "race",
+       "rule_set": "broad"
+      }
+     ]
+    }
+   },
+   "disclosure_track": {
+    "status": "not_coded",
+    "reason": "The 2023 keyword sample cannot support the disclosure track: inclusion required race to be stated, so disclosure is 100% by construction, and there are no knowable Black-on-White incidents in the file."
+   },
+   "frame_caveat": "The keyword frame is a likely cause of the zero Black-on-White cell. Under a random frame, P(0 of 12 | NCVS share 0.766) is about 2.7e-8, but only 91 of 1,648 frame phrase-hits were B-direction, and none of the sampled B-phrase rows was a crime incident."
+  }
+ },
  "data_gaps": [
   {
+   "topic": "Incident-based sample",
+   "reason": "The public point-estimate index, and every outlet point-estimate index cell, stay pending until an incident-based sample (starting from official or news-of-record incidents, then finding all coverage, including stories that omit race) can support them. A zero cell is still shown as 0 of N plus the exact one-sided 95% lower bound."
+  },
+  {
    "topic": "Ethnic Jewish/ethnic European direction",
-   "reason": "no crime baseline: no NCVS or other official U.S. table records ethnic Jewish offenders against non-Hispanic White victims; story counts only, no CDI."
+   "reason": "no crime baseline: no NCVS or other official U.S. table records ethnic Jewish offenders against non-Hispanic White victims; story counts only, no index."
   },
   {
-   "topic": "AP, NYT and WaPo 2023 coding",
-   "reason": "not coded yet. AP and NYT sample URLs returned errors or bot protection from our build machine; WaPo pages could not be retrieved (timeout/404), which is a fetch failure, not a demonstrated paywall. CDI is null for these outlets."
+   "topic": "Homicide versus non-fatal baselines",
+   "reason": "Homicide stories are compared with FBI SHR Expanded Homicide Data Table 6 (single victim/single offender, 2023: White-on-Black 324, Black-on-White 726). NCVS covers nonfatal violent incidents and excludes homicide. The two are not pooled into one point-estimate index. The preferred country lower bound uses the NCVS ratio on the mixed keyword sample and is labelled as such."
   },
   {
-   "topic": "Homicide",
-   "reason": "the NCVS does not cover homicide; the baseline is nonfatal violent incidents (rape/sexual assault, robbery, aggravated and simple assault)."
+   "topic": "Per-capita rates for Table 6",
+   "reason": "A per-capita rate view is required next to the raw SHR counts. No cited population denominator for Table 6's race categories (race, not Hispanic origin) has been joined, so the rates are pending."
   },
   {
    "topic": "Query asymmetry",
@@ -193,11 +1751,15 @@
   },
   {
    "topic": "Inter-coder agreement",
-   "reason": "single coder (joseph-a) so far; the method requires a second coder and an agreement rate before results are reported."
+   "reason": "single coder (joseph-a) so far; the method requires a second coder and an agreement rate before results are reported as findings."
   },
   {
    "topic": "NCVS 2018",
    "reason": "BJS published only percentages (Table 14) for 2018, not counts; count is null and not derived."
+  },
+  {
+   "topic": "Countries other than the United States",
+   "reason": "No media coding has been done outside the U.S. 2023 keyword pilot. Those countries show pending / not yet measured for the index; Ethnic data completeness is still the shared crime-map score where it exists."
   },
   {
    "topic": "stories_2023.csv conversion",
@@ -210,14 +1772,39 @@
   {
    "topic": "stories_2023.csv conversion",
    "reason": "Uncoded sample rows keep blank coding fields; nothing was inferred."
+  },
+  {
+   "topic": "stories_2023.csv conversion",
+   "reason": "include=dup is a coded redirect to another sampled story; it is not counted as included."
+  },
+  {
+   "topic": "stories_2023_broad.csv conversion",
+   "reason": "sample_weight, sample_order and fetch_status (coded file only) are not in the agreed v1.1 columns and were dropped; they remain in Joseph's pilot folder. Sample weights are constant within an outlet, so they do not change a within-outlet W_on_B : B_on_W ratio."
+  },
+  {
+   "topic": "stories_2023_broad.csv conversion",
+   "reason": "Rows outside the 300-row random sample are uncoded frame rows (coded=false, coding fields blank)."
+  },
+  {
+   "topic": "stories_2023_broad.csv conversion",
+   "reason": "Uncoded sample rows keep blank coding fields; nothing was inferred."
+  },
+  {
+   "topic": "stories_2023_broad.csv conversion",
+   "reason": "include=dup is a coded redirect to another sampled story; it is not counted as included."
   }
  ],
  "judgement_calls": [
-  "stories_W_on_B / stories_B_on_W count coded stories with include=true in that direction, from any query phrase. pilot_method.md names the \"anti-Black\" / \"anti-white\" phrase pair as the primary CDI pair; format v1.1 does not restrict by phrase. Under the phrase-pair rule the 2023 pilot would have 0 included stories in both cells. To be settled with Joseph.",
-  "When both media cells are 0, cdi is null (a +0.5/+0.5 adjustment would produce a number with no stories behind it).",
+  "The Coverage Distortion Index (CDI) is the methods name for the calculation behind the Antiwhite media bias index. It is not a second public index. cdi is null whenever a cell is 0, when both cells are 0, or when a point estimate would otherwise be unpublished.",
+  "No +0.5, or any other constant, is added to manufacture a point-estimate index. Earlier +0.5 figures (including Fox 29.4× and CNN 16.3×, and the pooled pilot CDIs) are artifacts and must not be published as findings.",
+  "When a direction is 0, the published figure is 0 of N plus the Clopper-Pearson exact one-sided 95% lower bound. The preferred country inference is the incident-level bound (stories of the same incident are a cluster). Story-level bounds are stored for transparency and for outlet rows.",
+  "Insufficient data means fewer than 20 included incidents overall (unweighted, all directions, including other). A zero cell is not Insufficient data by itself; the US 2023 pilot is Insufficient data because it has 6 (strict) or 8 (broad) included incidents.",
+  "Outlet point-estimate index cells are pending until an incident-based sample is complete. A zero at an outlet is still 0 of N plus the bound.",
   "Rates (headline_rate, pct_first_para, photo_rate) and stance counts use included stories (include=true, any direction, including 'other'); each rate's denominator is given in the matching *_n field. pct_first_para = share whose first racial mention is in the headline (para 1) or first body paragraph (para 2).",
-  "stories_total = all rows for the outlet in stories_<year>.csv, i.e. keyword-matched Media Cloud hits (volume only), not coded crime stories.",
-  "CDI uses the raw NCVS incident ratio for the same year (not population-adjusted), as pre-registered. NCVS counts are survey estimates with standard errors (ncvs_*_se); the CDI carries that uncertainty and the much larger uncertainty of small story counts.",
-  "Sample weights are not applied: they are constant within an outlet, so the within-outlet ratio is the same weighted or unweighted."
+  "stories_total = all rows for the outlet in the stories file, i.e. keyword-matched Media Cloud hits (volume only), not coded crime stories.",
+  "Sample weights are not applied to the published counts: they are constant within an outlet, so the within-outlet ratio is the same weighted or unweighted. Thresholds use unweighted counts.",
+  "include=dup is not counted as included.",
+  "The Strict / Broad toggle follows the 19 Nov rules: Broad counts a \"white supremacist\" or \"white nationalist\" label, or \"espoused White supremacist beliefs\", as White; liking or sharing such content does not. ethnic Jewish or Palestinian (and similar) labels are coded direction=other.",
+  "Homicide and non-fatal comparisons are stored separately and are not pooled into one published point-estimate index."
  ]
 }
