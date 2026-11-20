@@ -197,6 +197,71 @@
     "Government authority survey with NGO partners": "Undersökning av en myndighet tillsammans med ideella organisationer",
     "Non-Icelandic source (foreign government report)": "Icke-isländsk källa (rapport från en utländsk regering)"
   },
+  "age": {
+    "selector_label": "Åldersgrupp",
+    "selector_hint": "Gäller landets uppgifter under kartan.",
+    "section_title": "Siffror per åldersgrupp: {band}",
+    "lede": "Officiella siffror för {country} ({band}), efter ras och etnisk bakgrund så som varje källa publicerar dem. Vi fyller aldrig i eller justerar siffror.",
+    "no_breakdown": "Ingen uppdelning efter ålder publiceras",
+    "no_breakdown_note": "{country} publicerar inte dessa siffror per åldersgrupp. Siffrorna ovan gäller alla åldrar, inte bara {band}.",
+    "no_breakdown_all": "{country} publicerar inte dessa siffror per åldersgrupp. Siffrorna ovan gäller alla åldrar.",
+    "bands_published": "Åldersgrupper med siffror:",
+    "more_harms": "Andra brottstyper för den här åldersgruppen",
+    "source": "Källa",
+    "year": "År",
+    "rate_unit": "Andel per 100 000",
+    "col_group": "Grupp",
+    "col_count": "Antal",
+    "col_count_perp": "Antal",
+    "col_share": "Andel av totalen",
+    "col_rate": "Andel per 100 000",
+    "cross_corner": "Offer ↓ / gärningsperson →",
+    "cross_caption": "Offrets ras (rader) efter gärningspersonens ras (kolumner)",
+    "suppressed": "Undertryckt",
+    "suppressed_help": "Källan redovisar inte talet eftersom det är litet (hos CDC 1–9 dödsfall). Vi fyller aldrig i det.",
+    "small_n": "Bygger på 10 eller färre enkätfall: osäkert",
+    "no_figure": "Ingen siffra för den här åldersgruppen.",
+    "try_parent": "Se {band}.",
+    "native_bands": "Åldersgrupper som källan publicerar",
+    "other_age": "Utanför åldersgrupper: okänd ålder {unknown}; åldersspann över två grupper {spans}.",
+    "band": {
+      "all": "Alla åldrar",
+      "0-17": "Barn 0–17",
+      "0-12": "Barn 0–12",
+      "13-17": "Tonåringar 13–17",
+      "18-29": "Vuxna 18–29",
+      "30-64": "Vuxna 30–64",
+      "65+": "Vuxna 65+"
+    },
+    "harm": {
+      "homicide": "Mord och dråp",
+      "sexual_abuse": "Sexuella övergrepp",
+      "trafficking": "Människohandel",
+      "physical_abuse": "Fysisk misshandel",
+      "online_exploitation": "Exploatering på nätet",
+      "neglect": "Försummelse och misshandel"
+    },
+    "role": {
+      "victims": "Offer",
+      "perpetrators": "Gärningspersoner",
+      "cross": "Offer × gärningsperson"
+    },
+    "fit": {
+      "exact": "Exakt",
+      "derived_exact": "Exakt (härledd)",
+      "computed_microdata": "Räknat från officiella register",
+      "estimated": "Uppskattad",
+      "estimated_band": "Uppskattad: närmaste publicerade grupp {band}",
+      "unavailable": "Publiceras inte"
+    },
+    "fit_help": {
+      "exact": "Källan publicerar exakt den här åldersgruppen.",
+      "derived_exact": "Beräknat exakt genom att lägga ihop eller dra ifrån publicerade siffror.",
+      "computed_microdata": "Räknat av oss från den officiella filen med enskilda poster, med exakt ålder.",
+      "estimated": "Bara en närliggande åldersgrupp publiceras; dess siffra visas som publicerad, utan justering.",
+      "unavailable": "Ingen publicerad siffra för den här åldersgruppen."
+    }
+  },
   "countries": {
     "XKX": "Kosovo"
   },

@@ -197,6 +197,71 @@
     "Government authority survey with NGO partners": "Indagine di un'autorità pubblica con partner ONG",
     "Non-Icelandic source (foreign government report)": "Fonte non islandese (rapporto di un governo estero)"
   },
+  "age": {
+    "selector_label": "Fascia d’età",
+    "selector_hint": "Vale per i dati del paese sotto la mappa.",
+    "section_title": "Dati per fascia d’età: {band}",
+    "lede": "Dati ufficiali per {country} ({band}), per razza ed etnia come li pubblica ciascuna fonte. Non completiamo né correggiamo mai i numeri.",
+    "no_breakdown": "Nessuna ripartizione per età pubblicata",
+    "no_breakdown_note": "{country} non pubblica questi dati per fascia d’età. I dati sopra riguardano tutte le età, non solo {band}.",
+    "no_breakdown_all": "{country} non pubblica questi dati per fascia d’età. I dati sopra riguardano tutte le età.",
+    "bands_published": "Fasce d’età con dati:",
+    "more_harms": "Altri tipi di reato per questa fascia d’età",
+    "source": "Fonte",
+    "year": "Anno",
+    "rate_unit": "Tasso",
+    "col_group": "Gruppo",
+    "col_count": "Numero",
+    "col_count_perp": "Numero",
+    "col_share": "Quota del totale",
+    "col_rate": "Tasso",
+    "cross_corner": "Vittima ↓ / autore →",
+    "cross_caption": "Razza della vittima (righe) per razza dell’autore (colonne)",
+    "suppressed": "Soppresso",
+    "suppressed_help": "Non pubblicato dalla fonte perché il numero è piccolo (per i CDC, 1–9 decessi). Non lo completiamo mai.",
+    "small_n": "Basato su 10 casi d’indagine o meno: inaffidabile",
+    "no_figure": "Nessun dato per questa fascia d’età.",
+    "try_parent": "Vedi {band}.",
+    "native_bands": "Fasce d’età pubblicate da questa fonte",
+    "other_age": "Fuori fascia: età sconosciuta {unknown}; intervallo d’età su due fasce {spans}.",
+    "band": {
+      "all": "Tutte le età",
+      "0-17": "Bambini 0–17",
+      "0-12": "Bambini 0–12",
+      "13-17": "Adolescenti 13–17",
+      "18-29": "Adulti 18–29",
+      "30-64": "Adulti 30–64",
+      "65+": "Adulti 65+"
+    },
+    "harm": {
+      "homicide": "Omicidio",
+      "sexual_abuse": "Abuso e violenza sessuale",
+      "trafficking": "Tratta di esseri umani",
+      "physical_abuse": "Maltrattamento fisico e aggressione",
+      "online_exploitation": "Sfruttamento online",
+      "neglect": "Trascuratezza e maltrattamento"
+    },
+    "role": {
+      "victims": "Vittime",
+      "perpetrators": "Autori",
+      "cross": "Vittima × autore"
+    },
+    "fit": {
+      "exact": "Esatto",
+      "derived_exact": "Esatto (derivato)",
+      "computed_microdata": "Contato dai dati ufficiali",
+      "estimated": "Stimato",
+      "estimated_band": "Stimato: fascia pubblicata più vicina {band}",
+      "unavailable": "Non pubblicato"
+    },
+    "fit_help": {
+      "exact": "La fonte pubblica esattamente questa fascia d’età.",
+      "derived_exact": "Calcolato esattamente sommando o sottraendo dati pubblicati.",
+      "computed_microdata": "Contato da noi dal file ufficiale dei singoli casi, con l’età esatta.",
+      "estimated": "Viene pubblicata solo una fascia vicina; il suo dato è mostrato così com’è, senza correzioni.",
+      "unavailable": "Nessun dato pubblicato per questa fascia d’età."
+    }
+  },
   "countries": {
     "XKX": "Kosovo"
   },

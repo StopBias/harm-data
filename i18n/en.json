@@ -197,6 +197,71 @@
     "Government authority survey with NGO partners": "Government authority survey with NGO partners",
     "Non-Icelandic source (foreign government report)": "Non-Icelandic source (foreign government report)"
   },
+  "age": {
+    "selector_label": "Age group",
+    "selector_hint": "Applies to the country figures below the map.",
+    "section_title": "Figures by age group: {band}",
+    "lede": "Official figures for {country} ({band}), by race and ethnicity as each source publishes them. We never fill in or adjust numbers.",
+    "no_breakdown": "No age breakdown published",
+    "no_breakdown_note": "{country} does not publish these figures by age group. The figures above are for all ages, not only {band}.",
+    "no_breakdown_all": "{country} does not publish these figures by age group. The figures above are for all ages.",
+    "bands_published": "Age groups with figures:",
+    "more_harms": "Other crime types for this age group",
+    "source": "Source",
+    "year": "Year",
+    "rate_unit": "Rate",
+    "col_group": "Group",
+    "col_count": "Count",
+    "col_count_perp": "Number",
+    "col_share": "Share of total",
+    "col_rate": "Rate",
+    "cross_corner": "Victim ↓ / offender →",
+    "cross_caption": "Victim race (rows) by offender race (columns)",
+    "suppressed": "Suppressed",
+    "suppressed_help": "Withheld by the source because the number is small (for CDC, 1–9 deaths). We never fill it in.",
+    "small_n": "Based on 10 or fewer survey cases: unreliable",
+    "no_figure": "No figure for this age group.",
+    "try_parent": "See {band}.",
+    "native_bands": "Age groups this source publishes",
+    "other_age": "Not in any age group: age unknown {unknown}; age range spans two groups {spans}.",
+    "band": {
+      "all": "All ages",
+      "0-17": "Children 0–17",
+      "0-12": "Children 0–12",
+      "13-17": "Teens 13–17",
+      "18-29": "Adults 18–29",
+      "30-64": "Adults 30–64",
+      "65+": "Adults 65+"
+    },
+    "harm": {
+      "homicide": "Homicide",
+      "sexual_abuse": "Sexual abuse and assault",
+      "trafficking": "Human trafficking",
+      "physical_abuse": "Physical abuse and assault",
+      "online_exploitation": "Online exploitation",
+      "neglect": "Neglect and maltreatment"
+    },
+    "role": {
+      "victims": "Victims",
+      "perpetrators": "Perpetrators",
+      "cross": "Victim × offender"
+    },
+    "fit": {
+      "exact": "Exact",
+      "derived_exact": "Exact (derived)",
+      "computed_microdata": "Counted from official records",
+      "estimated": "Estimated",
+      "estimated_band": "Estimated: nearest published group {band}",
+      "unavailable": "Not published"
+    },
+    "fit_help": {
+      "exact": "The source publishes this exact age group.",
+      "derived_exact": "Calculated exactly by adding or subtracting published figures.",
+      "computed_microdata": "Counted by us from the official record-level file, using exact ages.",
+      "estimated": "Only a nearby age group is published; its figure is shown as published, not adjusted.",
+      "unavailable": "No published figure for this age group."
+    }
+  },
   "countries": {
     "XKX": "Kosovo"
   },

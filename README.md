@@ -45,6 +45,23 @@ Country notes, source descriptions and other per-country data text stay in Engli
 `provisional: true` adds "(provisional)" and a note that data collection is still in progress.
 Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = SOL.
 
+## Age groups
+- A map-level **Age group** selector (top right of the map) offers All ages, Children 0–17 (default), with 0–12 and 13–17
+  as sub-options, 18–29, 30–64 and 65+. The choice is kept in `localStorage` (`harm-data-age`).
+- Below the explorer's Inputs/Output box, **Figures by age group** shows the selected group for the country: one block per
+  crime type (the type matching the Harm dropdown first, the others folded under "Other crime types"), each table with a
+  heading naming the crime type, a one-line descriptor, the source, year and a fit flag: *Exact*, *Exact (derived)*,
+  *Counted from official records* (our count of an official record-level file), *Estimated: nearest published group …*
+  (the figure of that nearby group, never pro-rated) or *Not published*. Each table also lists the age groups the source
+  itself publishes. Suppressed cells show as suppressed and are never filled in; survey cells on 10 or fewer cases are marked †.
+- FBI "White" is shown as published (it includes Hispanic people); NIBRS figures also split White by Hispanic origin.
+- Data: `data/age/index.json` lists countries with a file at `data/age/<iso3 lowercase>.json` (schema `harm-data/age-bands/v1`:
+  `harms.<harm>.series[]` with `role` victims / perpetrators / cross, `groups` or `victim_groups`/`offender_groups`,
+  `bands.<band>` = `{fit, approx_band, cells | matrix, note}`, `native_bands`, `sources`, `available_bands`).
+  Countries without a file show their all-ages data and "No age breakdown published". Only the United States has a file so far.
+- Code and styles: `age.js`, `age.css`; strings: `age.*` in `i18n/*.json`. The explorer fires a `harm:explorer` event
+  (`detail.iso`) whenever it renders a country, which is the only hook `age.js` needs.
+
 ## Country data explorer (below the map)
 - The section below the map always follows the selected country. Nothing selected (or after tapping the sea or a
   country outside the project, or pressing Esc): a short prompt. A country without a detailed file: its name,
