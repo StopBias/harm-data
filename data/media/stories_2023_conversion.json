@@ -1,0 +1,66 @@
+{
+ "inputs": {
+  "frame": "stories_2023.csv",
+  "coded": "coded_2023_pass1.csv"
+ },
+ "frame_header_conforms": true,
+ "coded_header_conforms": false,
+ "dropped_columns": [
+  "sample_weight",
+  "sample_order",
+  "fetch_status"
+ ],
+ "missing_columns": {
+  "frame": [],
+  "coded": []
+ },
+ "identity_mismatches": [],
+ "coded_ids_not_in_frame": [],
+ "duplicate_ids": [],
+ "value_violations": [],
+ "counts": {
+  "rows": 1500,
+  "sample_rows_overlaid": 300,
+  "by_outlet": {
+   "AP": {
+    "frame": 31,
+    "in_sample": 31,
+    "coded": 0
+   },
+   "CNN": {
+    "frame": 157,
+    "in_sample": 29,
+    "coded": 27
+   },
+   "Fox": {
+    "frame": 521,
+    "in_sample": 95,
+    "coded": 94
+   },
+   "NYT": {
+    "frame": 439,
+    "in_sample": 80,
+    "coded": 0
+   },
+   "WaPo": {
+    "frame": 352,
+    "in_sample": 65,
+    "coded": 0
+   }
+  },
+  "sample_fetch_status": {
+   "AP|error": 31,
+   "CNN|404": 1,
+   "CNN|ok": 28,
+   "Fox|404": 1,
+   "Fox|ok": 94,
+   "NYT|error": 80,
+   "WaPo|ok": 65
+  }
+ },
+ "gaps": [
+  "sample_weight, sample_order and fetch_status (coded file only) are not in the agreed v1.1 columns and were dropped; they remain in Joseph's pilot folder. Sample weights are constant within an outlet, so they do not change a within-outlet W_on_B : B_on_W ratio.",
+  "Rows outside the 300-row random sample are uncoded frame rows (coded=false, coding fields blank).",
+  "Uncoded sample rows keep blank coding fields; nothing was inferred."
+ ]
+}

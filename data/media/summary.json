@@ -1,0 +1,223 @@
+{
+ "method_version": "1.0",
+ "generated": "2026-11-19",
+ "script": "build_media_summary.py",
+ "pilot_notice": "PILOT, partial coding. These figures come from one coder's first pass on a random sample of keyword-matched Media Cloud stories. Coded so far (coded of sampled): Associated Press 0 of 31; The New York Times 0 of 80; Fox News 94 of 95; CNN 27 of 29; The Washington Post 0 of 65. No second coder or agreement rate yet. Do not cite these as findings.",
+ "baseline_file": "baseline_ncvs.json",
+ "story_files": [
+  "stories_2023.csv"
+ ],
+ "by_outlet_year": [
+  {
+   "outlet": "AP",
+   "year": 2023,
+   "stories_W_on_B": 0,
+   "stories_B_on_W": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "stories_total": 31,
+   "headline_rate": null,
+   "coded_sample_n": 0,
+   "pct_first_para": null,
+   "photo_rate": null,
+   "stance": {
+    "affirming": 0,
+    "neutral": 0,
+    "dismissive": 0
+   },
+   "outlet_name": "Associated Press",
+   "included_n": 0,
+   "stories_other": 0,
+   "headline_rate_n": 0,
+   "pct_first_para_n": 0,
+   "photo_rate_n": 0,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "cdi_null_reason": "no coded stories",
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on apnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
+   "sample_n": 31,
+   "coding_complete": false
+  },
+  {
+   "outlet": "NYT",
+   "year": 2023,
+   "stories_W_on_B": 0,
+   "stories_B_on_W": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "stories_total": 439,
+   "headline_rate": null,
+   "coded_sample_n": 0,
+   "pct_first_para": null,
+   "photo_rate": null,
+   "stance": {
+    "affirming": 0,
+    "neutral": 0,
+    "dismissive": 0
+   },
+   "outlet_name": "The New York Times",
+   "included_n": 0,
+   "stories_other": 0,
+   "headline_rate_n": 0,
+   "pct_first_para_n": 0,
+   "photo_rate_n": 0,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "cdi_null_reason": "no coded stories",
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on nytimes.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
+   "sample_n": 80,
+   "coding_complete": false
+  },
+  {
+   "outlet": "Fox",
+   "year": 2023,
+   "stories_W_on_B": 4,
+   "stories_B_on_W": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "zero_adjust_applied": true,
+   "cdi": 29.42,
+   "stories_total": 521,
+   "headline_rate": 0.0,
+   "coded_sample_n": 94,
+   "pct_first_para": 0.2,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 0,
+    "neutral": 4,
+    "dismissive": 1
+   },
+   "outlet_name": "Fox News",
+   "included_n": 5,
+   "stories_other": 1,
+   "headline_rate_n": 5,
+   "pct_first_para_n": 5,
+   "photo_rate_n": 5,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "cdi_null_reason": null,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on foxnews.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
+   "sample_n": 95,
+   "coding_complete": false
+  },
+  {
+   "outlet": "CNN",
+   "year": 2023,
+   "stories_W_on_B": 2,
+   "stories_B_on_W": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "zero_adjust_applied": true,
+   "cdi": 16.34,
+   "stories_total": 157,
+   "headline_rate": 1.0,
+   "coded_sample_n": 27,
+   "pct_first_para": 1.0,
+   "photo_rate": 1.0,
+   "stance": {
+    "affirming": 0,
+    "neutral": 2,
+    "dismissive": 0
+   },
+   "outlet_name": "CNN",
+   "included_n": 2,
+   "stories_other": 0,
+   "headline_rate_n": 2,
+   "pct_first_para_n": 2,
+   "photo_rate_n": 2,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "cdi_null_reason": null,
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on cnn.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
+   "sample_n": 29,
+   "coding_complete": false
+  },
+  {
+   "outlet": "WaPo",
+   "year": 2023,
+   "stories_W_on_B": 0,
+   "stories_B_on_W": 0,
+   "ncvs_W_on_B": 117900,
+   "ncvs_B_on_W": 385400,
+   "zero_adjust_applied": false,
+   "cdi": null,
+   "stories_total": 352,
+   "headline_rate": null,
+   "coded_sample_n": 0,
+   "pct_first_para": null,
+   "photo_rate": null,
+   "stance": {
+    "affirming": 0,
+    "neutral": 0,
+    "dismissive": 0
+   },
+   "outlet_name": "The Washington Post",
+   "included_n": 0,
+   "stories_other": 0,
+   "headline_rate_n": 0,
+   "pct_first_para_n": 0,
+   "photo_rate_n": 0,
+   "ncvs_W_on_B_se": 26784,
+   "ncvs_B_on_W_se": 39839,
+   "cdi_null_reason": "no coded stories",
+   "pilot": true,
+   "media_source": "Media Cloud (onlinenews-mediacloud) keyword-matched stories on washingtonpost.com, 2023; rows in https://github.com/StopBias/harm-data/blob/main/data/media/stories_2023.csv",
+   "sample_n": 65,
+   "coding_complete": false
+  }
+ ],
+ "data_gaps": [
+  {
+   "topic": "Jewish/ethnic-European direction",
+   "reason": "no crime baseline: no NCVS or other official U.S. table records Jewish offenders against non-Hispanic White victims; story counts only, no CDI."
+  },
+  {
+   "topic": "AP, NYT and WaPo 2023 coding",
+   "reason": "not coded yet. AP and NYT sample URLs returned errors or bot protection from our build machine; WaPo pages could not be retrieved (timeout/404), which is a fetch failure, not a demonstrated paywall. CDI is null for these outlets."
+  },
+  {
+   "topic": "Homicide",
+   "reason": "the NCVS does not cover homicide; the baseline is nonfatal violent incidents (rape/sexual assault, robbery, aggravated and simple assault)."
+  },
+  {
+   "topic": "Query asymmetry",
+   "reason": "the story frame was built from keyword queries, most of them anti-Black framings (\"white supremacist\", \"anti-Black\", \"racially motivated\", \"hate crime\"); only \"anti-white\" and \"Black supremacist\" target the reverse framing. Black-on-White crime stories that use none of these phrases are not in the frame, so the pilot frame is expected to under-sample them. This is a pre-registered alternative explanation (label convention, query misfire)."
+  },
+  {
+   "topic": "Inter-coder agreement",
+   "reason": "single coder (joseph-a) so far; the method requires a second coder and an agreement rate before results are reported."
+  },
+  {
+   "topic": "NCVS 2018",
+   "reason": "BJS published only percentages (Table 14) for 2018, not counts; count is null and not derived."
+  },
+  {
+   "topic": "stories_2023.csv conversion",
+   "reason": "sample_weight, sample_order and fetch_status (coded file only) are not in the agreed v1.1 columns and were dropped; they remain in Joseph's pilot folder. Sample weights are constant within an outlet, so they do not change a within-outlet W_on_B : B_on_W ratio."
+  },
+  {
+   "topic": "stories_2023.csv conversion",
+   "reason": "Rows outside the 300-row random sample are uncoded frame rows (coded=false, coding fields blank)."
+  },
+  {
+   "topic": "stories_2023.csv conversion",
+   "reason": "Uncoded sample rows keep blank coding fields; nothing was inferred."
+  }
+ ],
+ "judgement_calls": [
+  "stories_W_on_B / stories_B_on_W count coded stories with include=true in that direction, from any query phrase. pilot_method.md names the \"anti-Black\" / \"anti-white\" phrase pair as the primary CDI pair; format v1.1 does not restrict by phrase. Under the phrase-pair rule the 2023 pilot would have 0 included stories in both cells. To be settled with Joseph.",
+  "When both media cells are 0, cdi is null (a +0.5/+0.5 adjustment would produce a number with no stories behind it).",
+  "Rates (headline_rate, pct_first_para, photo_rate) and stance counts use included stories (include=true, any direction, including 'other'); each rate's denominator is given in the matching *_n field. pct_first_para = share whose first racial mention is in the headline (para 1) or first body paragraph (para 2).",
+  "stories_total = all rows for the outlet in stories_<year>.csv, i.e. keyword-matched Media Cloud hits (volume only), not coded crime stories.",
+  "CDI uses the raw NCVS incident ratio for the same year (not population-adjusted), as pre-registered. NCVS counts are survey estimates with standard errors (ncvs_*_se); the CDI carries that uncertainty and the much larger uncertainty of small story counts.",
+  "Sample weights are not applied: they are constant within an outlet, so the within-outlet ratio is the same weighted or unweighted."
+ ]
+}
