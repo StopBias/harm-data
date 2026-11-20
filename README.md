@@ -256,11 +256,13 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   ethnic Europeans as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
   every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when ethnic Europeans
   are identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
-  migration background earn at most one quarter of the heritage points. A country with no real ethnicity data is
+  migration background earn at most one quarter of the heritage points. A published “White” category that
+  merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is also scored as a proxy
+  under the same cap. A country with no real ethnicity data is
   capped at 25%. The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%,
   sex trafficking 20%, physical abuse 15%, online exploitation 10%, neglect 10% (approved 19 Nov 2026; before that,
   sexual abuse 25% and the other five 15% each). Each file's `score.weights` holds the weights in use and
-  `score.previous_weights` the score under the earlier weights. Current published scores: United States 59%,
+  `score.previous_weights` the score under the earlier weights. Current published scores: United States 54% (59% before the heritage-conflation demerit),
   United Kingdom 53%, Germany 25% (capped from an uncapped 29.0%; 49% on the previous rubric), Canada 25%,
   France 24%, Australia 20%, New Zealand 41%, South Africa 7%, Italy 24%, Spain 21%, Netherlands 16%, Sweden 13%,
   Poland 9%, Switzerland 25%, Austria 14%, Portugal 13%, Ireland 12%, Belgium 7%, Finland 25% (capped from an

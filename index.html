@@ -226,6 +226,11 @@
     .ex-notes-body p { font-size: 0.88rem; line-height: 1.55; color: var(--ink); margin: 0 0 8px; }
     .ex-notes-body p:last-child { margin-bottom: 0; }
     .ex-planned { margin: 10px 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.45; max-width: 760px; }
+    .ex-conflation {
+      margin: 0 0 16px; padding: 8px 12px; max-width: 760px;
+      border-left: 3px solid var(--brand-dark); background: #f3fbfd;
+      font-size: 0.9rem; line-height: 1.5; color: var(--ink);
+    }
     .status {
       display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
       padding: 2px 7px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase;
@@ -616,6 +621,7 @@
         <div class="ex-notes-body" id="ex-notes-body"></div>
       </div>
       <div id="ex-sources" hidden></div>
+      <p class="ex-conflation" id="ex-conflation" hidden></p>
       <details class="method" id="method" hidden></details>
       <p class="ex-planned" id="ex-planned" hidden>Planned: psychological harm (e.g. curricula that demonize children or their ancestors)</p>
     </div>
@@ -1084,7 +1090,7 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 59,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 54,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
       },
       GBR: {
@@ -2110,6 +2116,9 @@
         : (sc.cap_applied && sc.uncapped != null
           ? `<div class="gold"><strong>${esc(t("method.cap_applied"))}</strong> ${esc(t("method.cap_applied_body", { uncapped: fmt(sc.uncapped) }))}</div>`
           : "");
+      const conflationBox = sc.conflation_note
+        ? `<div class="gold"><strong>${esc(t("method.conflation_label"))}.</strong> ${esc(sc.conflation_note)}${enOnlyBadge()}</div>`
+        : "";
       const mentionsOld = /old scale|previous rubric|scored \d+%/.test(proxyText);
       const hist = (prev && prev.value != null && !mentionsOld)
         ? `<p class="ex-small">${esc(prev.band ? t("method.previous_with_band", { score: fmt(prev.value), band: prev.band }) : t("method.previous", { score: fmt(prev.value) }))}</p>`
@@ -2132,6 +2141,17 @@
       const colourKeys = ["red", "orange", "yellow", "light_green", "dark_green"];
       const bandColours = SCALE.map((b, i) => t("method.band_colour", { range: bandLabel(b), colour: t("colour." + colourKeys[i]) })).join(", ");
       const whyCountry = countrySentenceName(D.iso_a3, D.name_in_sentence || D.country);
+      const conflationEl = $("ex-conflation");
+      if (conflationEl) {
+        const note = sc.conflation_note;
+        if (note) {
+          conflationEl.innerHTML = `<strong>${esc(t("method.conflation_label"))}.</strong> ${esc(note)}${enOnlyBadge()}`;
+          conflationEl.hidden = false;
+        } else {
+          conflationEl.innerHTML = "";
+          conflationEl.hidden = true;
+        }
+      }
       $("method").open = false;
       $("method").innerHTML =
         `<summary>${esc(t("method.summary", { score: fmt(value) }))}</summary>` +
@@ -2144,7 +2164,7 @@
         `<p>${esc(t("method.cap"))}</p>` +
         `<p>${esc(t("method.weights"))}</p>` +
         `<h3>${esc(t("method.why", { country: whyCountry, score: fmt(value) }))}${enOnlyBadge()}</h3><p>${esc(sc.why || "")}</p>` +
-        capBox + hist + weightsHist +
+        conflationBox + capBox + hist + weightsHist +
         (sc.breakdown && sc.breakdown.length ? `<h3>${esc(t("method.by_harm"))}${enOnlyBadge()}</h3><table><thead><tr><th>${esc(t("method.harm"))}</th><th class="num">${esc(t("method.weight"))}</th><th class="num">${esc(t("method.score"))}</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${fmtPct(b.weight)}</td><td class="num">${esc(fmt(b.score))}</td></tr>`).join("") +
         totalRows + `</tbody></table>` : "") +
@@ -2173,6 +2193,10 @@
       $("ex-sources").hidden = !showMethod;
       $("method").hidden = !showMethod;
       $("ex-planned").hidden = !showMethod;
+      if (!showMethod) {
+        const c = $("ex-conflation");
+        if (c) { c.hidden = true; c.innerHTML = ""; }
+      }
       if (!showInputs) $("ex-avail").hidden = true;
       if (!showMethod) $("ex-notes").hidden = true;
     }
