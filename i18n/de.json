@@ -1,11 +1,14 @@
 {
-  "title": "Antiweißer Bias — Datenexplorer zu Schäden an Kindern",
-  "title_lead": "Antiweißer Bias",
-  "title_rest": "Datenexplorer zu Schäden an Kindern",
-  "subtitle": "Wie vollständig jedes Land die ethnische Zugehörigkeit von Opfern und Tätern bei Straftaten gegen Kinder veröffentlicht",
+  "title": "Datenexplorer zu ethnischer Voreingenommenheit",
+  "title_lead": "Ethnische Voreingenommenheit",
+  "title_rest": "Datenexplorer",
+  "subtitle": "Aufruf zu Datentransparenz in Staat und Medien",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Sprache",
   "shown_in_english": "Auf Englisch angezeigt",
+  "about": {
+    "heading": "Über das Projekt"
+  },
   "views_aria": "Kartenansicht",
   "views": {
     "world": "Welt",

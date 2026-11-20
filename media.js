@@ -31,6 +31,8 @@
   const header = document.querySelector("header");
   header.insertAdjacentElement("afterend", nav);
   const mapParts = [document.querySelector(".layout"), document.getElementById("explorer")];
+  const aboutView = document.getElementById("about-view");
+  const aboutLink = document.getElementById("about-link");
 
   function labelTabs() {
     nav.setAttribute("aria-label", t("tabs_label"));
@@ -38,26 +40,53 @@
     nav.querySelector('[data-tab="media"]').textContent = t("tab_media");
   }
 
+  function tabFromHash() {
+    if (location.hash === "#media") return "media";
+    if (location.hash === "#about") return "about";
+    return "map";
+  }
+
   function show(tab) {
     const media = tab === "media";
-    mapParts.forEach(el => { if (el) el.hidden = media; });
+    const about = tab === "about";
+    mapParts.forEach(el => { if (el) el.hidden = media || about; });
     view.hidden = !media;
+    if (aboutView) aboutView.hidden = !about;
     nav.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === tab)));
+    if (aboutLink) {
+      if (about) aboutLink.setAttribute("aria-current", "page");
+      else aboutLink.removeAttribute("aria-current");
+    }
     document.body.classList.toggle("media-active", media);
+    document.body.classList.toggle("about-active", about);
     if (media) load();
-    else window.dispatchEvent(new Event("resize"));  // the map re-measures itself after being hidden
+    else if (!about) window.dispatchEvent(new Event("resize"));  // the map re-measures itself after being hidden
+  }
+
+  function go(tab) {
+    if (tab === "media") {
+      if (location.hash !== "#media") history.pushState(null, "", "#media");
+    } else if (tab === "about") {
+      if (location.hash !== "#about") history.pushState(null, "", "#about");
+    } else if (location.hash === "#media" || location.hash === "#about") {
+      history.pushState(null, "", location.pathname + location.search);
+    }
+    show(tab);
   }
 
   nav.addEventListener("click", e => {
     const b = e.target.closest("button[data-tab]");
     if (!b) return;
-    const tab = b.dataset.tab;
-    if (tab === "media") { if (location.hash !== "#media") history.pushState(null, "", "#media"); }
-    else if (location.hash === "#media") history.pushState(null, "", location.pathname + location.search);
-    show(tab);
+    go(b.dataset.tab);
   });
-  window.addEventListener("popstate", () => show(location.hash === "#media" ? "media" : "map"));
-  window.addEventListener("hashchange", () => show(location.hash === "#media" ? "media" : "map"));
+  if (aboutLink) {
+    aboutLink.addEventListener("click", e => {
+      e.preventDefault();
+      go("about");
+    });
+  }
+  window.addEventListener("popstate", () => show(tabFromHash()));
+  window.addEventListener("hashchange", () => show(tabFromHash()));
 
   // ---------- Data ----------
   function load() {
@@ -197,7 +226,8 @@
 
   function start() {
     labelTabs();
-    show(location.hash === "#media" ? "media" : "map");
+    show(tabFromHash());
+    if (typeof window.playAttentionShimmer === "function") window.playAttentionShimmer();
   }
 
   const ready = window.I18N_READY || Promise.resolve();

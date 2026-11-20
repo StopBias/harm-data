@@ -1,11 +1,14 @@
 {
-  "title": "Bias antybiały — eksplorator danych o krzywdzie dzieci",
-  "title_lead": "Bias antybiały",
-  "title_rest": "Eksplorator danych o krzywdzie dzieci",
-  "subtitle": "Jak kompletnie poszczególne kraje publikują pochodzenie etniczne ofiar i sprawców w przestępstwach przeciwko dzieciom",
+  "title": "Eksplorator danych o uprzedzeniach etnicznych",
+  "title_lead": "Uprzedzenia etniczne",
+  "title_rest": "Eksplorator danych",
+  "subtitle": "Apel o przejrzystość danych w administracji publicznej i mediach",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Język",
   "shown_in_english": "Wyświetlone po angielsku",
+  "about": {
+    "heading": "O projekcie"
+  },
   "views_aria": "Widok mapy",
   "views": {
     "world": "Świat",

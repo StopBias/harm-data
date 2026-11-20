@@ -1,4 +1,7 @@
-# harm-data
+# Ethnic Bias Data Explorer
+
+The public name of this site is **Ethnic Bias Data Explorer**. The repository and site URL remain `harm-data` (`https://stopbias.github.io/harm-data/`). Subtitle: “Calling for data transparency in government and media”. An About page is at `#about`.
+
 Data related to bias harms at the global, national, and regional levels.
 
 ## OWID-style choropleth (no basemap)
@@ -26,11 +29,11 @@ Bands include the lower bound and exclude the upper (20 → orange), except 100 
 
 
 ## Languages
-The interface is available in English, German, Spanish, French, Italian, Russian, Ukrainian, Polish, Hungarian and Swedish. Strings live in `i18n/en.json`, `de.json`, `es.json`, `fr.json`, `it.json`, `ru.json`, `uk.json`, `pl.json`, `hu.json` and `sv.json`, including the media-coverage tab. English is the fallback for any missing key.
+The interface is available in English, German, Spanish, French, Italian, Portuguese, Russian, Ukrainian, Polish, Hungarian and Swedish. Strings live in `i18n/en.json`, `de.json`, `es.json`, `fr.json`, `it.json`, `pt.json`, `ru.json`, `uk.json`, `pl.json`, `hu.json` and `sv.json`, including the media-coverage tab and the About heading. English is the fallback for any missing key. Portuguese uses European spelling where it differs, in wording that stays clear in Brazil.
 
-A compact language dropdown in the header lists each language as a code plus its native name (EN English, DE Deutsch, ES Español, FR Français, IT Italiano, RU Русский, UK Українська, PL Polski, HU Magyar, SV Svenska). The choice is kept in `localStorage` (`harm-data-lang`), a `?lang=` URL parameter is honoured, and the page otherwise follows the browser language when it is one of the ten. Country names use `Intl.DisplayNames` (Kosovo / XKX is named by hand). Numbers, percentages and plural forms follow the active locale (`Intl.PluralRules`).
+A language dropdown in the header, with a globe icon, lists each language as a code plus its native name (EN English, DE Deutsch, ES Español, FR Français, IT Italiano, PT Português, RU Русский, UK Українська, PL Polski, HU Magyar, SV Svenska). The choice is kept in `localStorage` (`harm-data-lang`), a `?lang=` URL parameter is honoured, and the page otherwise follows the browser language when it is one of the eleven. Country names use `Intl.DisplayNames` (Kosovo / XKX is named by hand). Numbers, percentages and plural forms follow the active locale (`Intl.PluralRules`).
 
-Country notes, source descriptions and other per-country data text stay in English for now and are marked “Shown in English”. Official source titles are never translated. On the media tab the same mark is applied to the English pilot notice, data-gap list, judgement calls and BJS table titles.
+Country notes, source descriptions and other per-country data text stay in English for now and are marked “Shown in English”. Official source titles are never translated. The About page body is also English-only for now, with the same mark. On the media tab the same mark is applied to the English pilot notice, data-gap list, judgement calls and BJS table titles.
 
 ## Adding / analysing a country
 1. Make sure its ISO 3166-1 alpha-3 code is in `IN_SCOPE` (all European states except Cyprus and the dependencies already are).

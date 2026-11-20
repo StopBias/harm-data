@@ -1,11 +1,14 @@
 {
-  "title": "Explorador de datos de sesgo anti-blanco y daños a la infancia",
-  "title_lead": "Sesgo anti-blanco",
-  "title_rest": "Explorador de datos sobre daños a la infancia",
-  "subtitle": "En qué medida cada país publica la etnicidad de víctimas y perpetradores en los delitos contra la infancia",
+  "title": "Explorador de datos sobre sesgo étnico",
+  "title_lead": "Sesgo étnico",
+  "title_rest": "Explorador de datos",
+  "subtitle": "Una llamada a la transparencia de los datos en el gobierno y los medios",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Idioma",
   "shown_in_english": "Mostrado en inglés",
+  "about": {
+    "heading": "Acerca de"
+  },
   "views_aria": "Vista del mapa",
   "views": {
     "world": "Mundo",

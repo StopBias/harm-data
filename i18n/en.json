@@ -1,11 +1,14 @@
 {
-  "title": "Antiwhite Bias Child-Harm Data Explorer",
-  "title_lead": "Antiwhite Bias",
-  "title_rest": "Child-Harm Data Explorer",
-  "subtitle": "How completely each country publishes victim and perpetrator ethnicity in crimes against children",
+  "title": "Ethnic Bias Data Explorer",
+  "title_lead": "Ethnic Bias",
+  "title_rest": "Data Explorer",
+  "subtitle": "Calling for data transparency in government and media",
   "logo_alt": "Stop Bias",
   "lang_picker_aria": "Language",
   "shown_in_english": "Shown in English",
+  "about": {
+    "heading": "About"
+  },
   "views_aria": "Map view",
   "views": {
     "world": "World",
