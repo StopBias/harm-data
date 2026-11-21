@@ -2,7 +2,7 @@
  "country": "United States",
  "iso_a3": "USA",
  "completeness": 54,
- "as_of": "2026-11-18",
+ "as_of": "2026-11-20",
  "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies ethnic Europeans.",
  "groups": [
   {
@@ -272,7 +272,7 @@
   {
    "id": "sexual_abuse",
    "label": "Sexual abuse",
-   "years": "FY2024",
+   "years": "FY2024 (CPS); FY2025 (federal sentencing)",
    "intro": "Child sexual abuse is counted by child protective services (9.4% of maltreatment victims in FY2024) and by police, but no national table shows the race of child sexual-abuse victims.",
    "victims": {
     "status": "not_published",
@@ -283,16 +283,16 @@
     "status": "published",
     "source": "ussc",
     "scope": "Federal cases only",
-    "n": 1430,
+    "n": 1409,
     "n_label": "people sentenced for federal sexual-abuse offenses",
     "share": {
-     "white_nh": 55.1,
-     "hispanic": 15.2,
-     "black_nh": 13.9,
-     "aian": 13.0,
-     "other": 2.8
+     "white_nh": 55.0,
+     "hispanic": 16.0,
+     "black_nh": 15.0,
+     "aian": 11.0,
+     "other": 2.0
     },
-    "share_note": "USSC groups Asian, Pacific Islander and multiracial people as 'Other races' (2.8%). Native American share reflects federal jurisdiction over crimes on tribal lands.",
+    "share_note": "As published in USSC Quick Facts (whole percents). USSC groups Asian, Pacific Islander and multiracial people as 'Other races' (2%). Native American share reflects federal jurisdiction over crimes on tribal lands.",
     "rate": null,
     "rate_reason": "Not calculated: the source publishes shares only, for federal cases, which are a small and selected part of all cases."
    },
@@ -492,7 +492,7 @@
      "aian": 1.3,
      "asian_nhpi": 2.3
     },
-    "share_note": "Asian, Native Hawaiian and Pacific Islander are combined by BJS. Also: of 1,375 people sentenced federally for child sexual abuse material in FY2024, 71.2% were White, 18.0% Hispanic, 6.0% Black and 4.8% other races (US Sentencing Commission).",
+    "share_note": "Asian, Native Hawaiian and Pacific Islander are combined by BJS. Also: of 1,432 people sentenced federally for child sexual abuse material in FY2025, 73% were White, 16% Hispanic, 6% Black and 5% other races (US Sentencing Commission Quick Facts).",
     "rate": {
      "white_nh": 0.23,
      "black_nh": 0.2,
@@ -570,33 +570,80 @@
   {
    "id": "homicide",
    "label": "Homicide (all causes)",
-   "years": "",
-   "intro": "All killings of children, not only by caregivers.",
+   "years": "2024 (death certificates); 2025 (BJS national estimate, age only)",
+   "intro": "All killings of children, not only by caregivers. Death certificates recorded 1,959 homicide deaths of children under 18 in 2024, a rate of 2.7 per 100,000 children. BJS's 2025 national estimate is 1,480 homicide victimizations of people aged 17 or under (480 aged 11 or younger and 1,000 aged 12-17), without a race-by-age table.",
    "victims": {
-    "status": "pending",
-    "source": "wisqars",
-    "text": "Published by CDC death records (WISQARS) by race and Hispanic origin, but not yet added to this explorer."
+    "status": "published",
+    "source": "cdc_wonder_ucd",
+    "scope": "United States, resident homicide deaths aged 0-17, 2024",
+    "n": 1959,
+    "n_label": "homicide deaths of children under 18",
+    "share": {
+     "white_nh": 17.4,
+     "black_nh": 53.6,
+     "hispanic": 22.0,
+     "aian": 1.7,
+     "asian": 1.1,
+     "multi": 3.4,
+     "unknown": 0.6
+    },
+    "rate": {
+     "white_nh": 1.0,
+     "black_nh": 10.4,
+     "hispanic": 2.2,
+     "aian": 6.0,
+     "asian": 0.5,
+     "multi": 1.9
+    },
+    "rate_all": 2.7,
+    "rate_label": "homicide deaths per 100,000 children of the same group",
+    "rate_note": "CDC crude rates from WONDER, using Census population estimates. Native Hawaiian or Other Pacific Islander counts were suppressed (1-9 deaths).",
+    "share_note": "Shares of all 1,959 deaths, from CDC WONDER single race by Hispanic origin. White non-Hispanic 340, Black non-Hispanic 1,051, Hispanic (any race) 431, American Indian or Alaska Native non-Hispanic 33, Asian non-Hispanic 21, two or more races non-Hispanic 67. Hispanic origin was not stated for 11 deaths (0.6%). Native Hawaiian or Other Pacific Islander counts were suppressed and are omitted from the shares (they account for the remaining five deaths)."
    },
    "perpetrators": {
     "status": "not_published",
     "source": "shr",
-    "text": "FBI homicide reports record offender race, but no national table for people who killed children is published."
+    "text": "FBI Expanded Homicide Table 3 publishes murder offenders by race, ethnicity and age of the offender, not of the victim, so it is not a table of people who killed children. No published national table shows the race of offenders in killings of children."
    },
    "cross": {
     "status": "not_published",
     "source": "shr",
-    "text": "FBI case-level homicide files hold both, but no table is published."
+    "text": "FBI Expanded Homicide Table 6 links victim and offender race for single-victim, single-offender murders, but only for all ages. A count from the official NIBRS 2025 incident files, by victim age, is in the age-group tables, not here."
    },
    "availability": {
-    "victims": [],
+    "victims": [
+     "all",
+     "white_nh",
+     "black_nh",
+     "hispanic",
+     "aian",
+     "asian",
+     "multi"
+    ],
     "perpetrators": [],
     "by_measure": {
      "share": {
-      "victims": [],
+      "victims": [
+       "all",
+       "white_nh",
+       "black_nh",
+       "hispanic",
+       "aian",
+       "asian",
+       "multi"
+      ],
       "perpetrators": []
      },
      "rate": {
-      "victims": [],
+      "victims": [
+       "all",
+       "white_nh",
+       "black_nh",
+       "hispanic",
+       "aian",
+       "asian",
+       "multi"
+      ],
       "perpetrators": []
      },
      "linked": {
@@ -606,7 +653,7 @@
     },
     "linked_pairs": [],
     "status": {
-     "victims": "pending",
+     "victims": "published",
      "perpetrators": "not_published",
      "cross": "not_published"
     }
@@ -841,10 +888,10 @@
    "tier": "Official government statistics"
   },
   "ussc": {
-   "name": "US Sentencing Commission Quick Facts, FY2024",
+   "name": "US Sentencing Commission Quick Facts, FY2025",
    "publisher": "United States Sentencing Commission",
-   "years": "Federal fiscal year 2024; annual",
-   "records": "People sentenced in federal court, with their race and Hispanic origin. Sexual abuse: 1,430 people. Child sexual abuse material ('child pornography'): 1,375 people.",
+   "years": "Federal fiscal year 2025; published June 2026; annual",
+   "records": "People sentenced in federal court, with their race and Hispanic origin. Sexual abuse: 1,409 people. Child sexual abuse material ('child pornography'): 1,432 people.",
    "limitations": "Federal cases only, a small and selected share of all cases (most are prosecuted by states). Victim race is not recorded. The summary does not say how many sexual-abuse cases involved adult rather than child victims.",
    "url": "https://www.ussc.gov/research/quick-facts/sexual-abuse",
    "tier": "Official government statistics"
@@ -870,10 +917,10 @@
   "nibrs": {
    "name": "FBI National Incident-Based Reporting System (NIBRS)",
    "publisher": "Federal Bureau of Investigation, Uniform Crime Reporting Program",
-   "years": "Since 1991; annual; 2025 data covered 89.5% of the US population",
+   "years": "Since 1991; annual; 2025 data covered about 90% of the US population",
    "records": "Crimes reported to police, including sex offenses and homicide, with victim race, offender race (as perceived), and victim-offender relationship for each incident.",
    "limitations": "No published national table shows child victims or their offenders by race for sex offenses. Offender race is often unknown (about 40% across all offenses, per researcher Jacob Kaplan) and offender Hispanic origin is mostly unknown. Building child-specific figures needs incident-level files.",
-   "url": "https://cde.ucr.cjis.gov/",
+   "url": "https://cde.ucr.cjis.gov/LATEST/webapp/",
    "tier": "Official government statistics"
   },
   "ncmec": {
@@ -897,10 +944,19 @@
   "wisqars": {
    "name": "CDC WISQARS (death records)",
    "publisher": "Centers for Disease Control and Prevention",
-   "years": "Fatal injury data from 1981; annual",
+   "years": "Fatal injury data from 1981; latest final year 2024; annual",
    "records": "All deaths of US residents from death certificates, including homicides of children, by age, race and Hispanic origin.",
-   "limitations": "Victim side only; no information about who killed the child. Figures not yet added to this explorer.",
+   "limitations": "Victim side only; no information about who killed the child. The figures used here are taken from the same death-certificate source via CDC WONDER (see cdc_wonder_ucd).",
    "url": "https://wisqars.cdc.gov/",
+   "tier": "Official government statistics"
+  },
+  "cdc_wonder_ucd": {
+   "name": "CDC WONDER Underlying Cause of Death, 2018-2024, Single Race (NVSS death certificates)",
+   "publisher": "CDC National Center for Health Statistics",
+   "years": "2018-2024; 2024 is the latest final year as of November 2026",
+   "records": "All deaths of US residents certified as homicide (ICD-10 X85-Y09, Y87.1, U01-U02), by age, single race and Hispanic origin, with CDC crude rates.",
+   "limitations": "Victim side only; no information about who killed the child. Counts of 1-9 are suppressed. Queried from the public WONDER database (same vital-statistics records as WISQARS).",
+   "url": "https://wonder.cdc.gov/ucd-icd10-expanded.html",
    "tier": "Official government statistics"
   },
   "shr": {
@@ -909,6 +965,15 @@
    "years": "1976 onward; annual",
    "records": "Homicide victims and offenders with age, sex, race, ethnicity and relationship.",
    "limitations": "Voluntary and incomplete; offender missing for unsolved cases. No published national table for offenders who killed children; case-level files only.",
+   "url": "https://bjs.ojp.gov/library/publications/homicide-victimization-united-states-2025",
+   "tier": "Official government statistics"
+  },
+  "bjs_hvus": {
+   "name": "Homicide Victimization in the United States, 2025 (BJS, NCJ 312197)",
+   "publisher": "US Department of Justice, Bureau of Justice Statistics",
+   "years": "2025; published October 2026; annual",
+   "records": "National estimates of homicide victimizations from the NIBRS Estimation Program, including age and (separately) race and Hispanic origin. Table 1: 1,480 victimizations of people aged 17 or under.",
+   "limitations": "Age and race are published separately; no child-by-race table. Offender race is not in this table.",
    "url": "https://bjs.ojp.gov/library/publications/homicide-victimization-united-states-2025",
    "tier": "Official government statistics"
   },

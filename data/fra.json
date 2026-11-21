@@ -3,7 +3,7 @@
  "iso_a3": "FRA",
  "completeness": 24,
  "provisional": false,
- "as_of": "2026-11-18",
+ "as_of": "2026-11-20",
  "summary": "France does not collect ethnic statistics. Police data give child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality for all victims together; a government survey gives childhood violence by migration background. There are no national neglect data by origin and nothing for online exploitation.",
  "short_name": "France",
  "name_in_sentence": "France",
@@ -554,48 +554,51 @@
   {
    "id": "trafficking",
    "label": "Trafficking and exploitation",
-   "years": "2024",
-   "intro": "Police and gendarmerie recorded 2,127 victims of trafficking or exploitation in 2024, 22.9% of them minors, and 2,106 suspects. Minors were 35.4% of victims of pimping (proxénétisme). Nationality is published for all ages only.",
+   "years": "2025",
+   "intro": "Police and gendarmerie recorded 2,181 victims of trafficking or exploitation in 2025 (the report text rounds this to 2,200), 25.9% of them minors (about 560), and 2,272 suspects (rounded in the text to 2,300). Minors were 35.3% of victims of pimping (proxénétisme). Nationality is published for all ages only.",
    "victims": {
     "status": "published",
-    "source": "infostat203",
-    "scope": "France, police-recorded victims of trafficking or exploitation, all ages, 2024",
-    "n": 2127,
+    "source": "infostat210",
+    "scope": "France, police-recorded victims of trafficking or exploitation, all ages, 2025",
+    "n": 2181,
     "n_label": "victims, all ages",
     "unknown_share": null,
     "share": {
-     "french": 46.0,
-     "foreign": 54.0,
-     "africa": 27.0,
+     "french": 51.0,
+     "foreign": 49.0,
+     "africa": 17.0,
+     "asia": 13.0,
      "americas": 12.0,
-     "asia": 9.0,
-     "eu": 4.0,
-     "europe_other": 1.0
+     "eu": 5.0,
+     "europe_other": 2.0
     },
     "rate": null,
     "rate_reason": "Not child-specific; rates not calculated.",
-    "share_note": "Nationality groups as rounded in the report text (Infostat Justice 203, figure 4). Not split by age: about 490 of these victims were minors. Among victims of pimping, 65% were French and 20% from the Americas."
+    "share_note": "Nationality groups as rounded in the report text (Infostat Justice 210, figure 6). Not split by age: 25.9% of these victims were minors (about 560; the report text uses that rounded count). Among victims of pimping, 65% were French."
    },
    "perpetrators": {
     "status": "published",
-    "source": "infostat203",
-    "scope": "France, suspects of trafficking or exploitation, 2024",
-    "n": 2106,
+    "source": "infostat210",
+    "scope": "France, suspects of trafficking or exploitation, 2025",
+    "n": 2272,
     "n_label": "suspects",
     "unknown_share": null,
     "share": {
-     "french": 72.0,
-     "foreign": 28.0,
-     "eu": 5.0,
-     "asia": 6.0
+     "french": 71.8,
+     "foreign": 28.2,
+     "africa": 9.2,
+     "asia": 6.6,
+     "americas": 6.0,
+     "eu": 4.5,
+     "europe_other": 1.8
     },
     "rate": null,
     "rate_reason": "Rates not calculated.",
-    "share_note": "As rounded in the report text. 74.6% of suspects of pimping were French. Not split by the age of the victim."
+    "share_note": "Nationality groups from Infostat Justice 210, figure 12 (one decimal). The report text rounds the French share to 72%. 74.9% of suspects of pimping were French. Not split by the age of the victim."
    },
    "cross": {
     "status": "not_published",
-    "source": "infostat203",
+    "source": "infostat210",
     "text": "No table links victim and suspect nationality."
    },
    "availability": {
@@ -614,7 +617,10 @@
      "french",
      "foreign",
      "eu",
-     "asia"
+     "europe_other",
+     "africa",
+     "asia",
+     "americas"
     ],
     "by_measure": {
      "share": {
@@ -633,7 +639,10 @@
        "french",
        "foreign",
        "eu",
-       "asia"
+       "europe_other",
+       "africa",
+       "asia",
+       "americas"
       ]
      },
      "rate": {
@@ -770,7 +779,7 @@
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Trafficking victims (2,127, 23% minors) and suspects (2,106) by nationality group, 2024, all ages only.",
+    "why": "Trafficking victims (2,181, 25.9% minors) and suspects (2,272) by nationality group, 2025, all ages only.",
     "score": 23.5
    },
    {
@@ -865,8 +874,17 @@
    "publisher": "SSER (Ministère de la Justice) with SSMSI",
    "years": "2024 data; Oct 2025",
    "records": "Trafficking and exploitation victims and suspects by type, age, sex and nationality group; convictions.",
-   "limitations": "Nationality groups for all ages only; figures rounded in the text.",
+   "limitations": "Nationality groups for all ages only; figures rounded in the text. Superseded for the figures used here by Infostat Justice 210 (2025 data).",
    "url": "https://www.justice.gouv.fr/sites/default/files/2025-10/Infostat_Justice_203.pdf",
+   "tier": "Official government statistics"
+  },
+  "infostat210": {
+   "name": "Infostat Justice 210: La traite et l’exploitation des êtres humains : bilan statistique sur 10 ans (2016-2025)",
+   "publisher": "SSER (Ministère de la Justice) with SSMSI",
+   "years": "2016-2025 data; October 2026",
+   "records": "Trafficking and exploitation victims and suspects by type, age, sex and nationality group; convictions.",
+   "limitations": "Nationality groups for all ages only; headline totals are rounded in the text (2,200 victims, 2,300 suspects); unrounded figure totals are used here (2,181 and 2,272).",
+   "url": "https://www.justice.gouv.fr/sites/default/files/2026-10/Infostat_Justice_210.pdf",
    "tier": "Official government statistics"
   },
   "genese": {

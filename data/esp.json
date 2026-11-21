@@ -3,7 +3,7 @@
  "iso_a3": "ESP",
  "completeness": 21,
  "provisional": false,
- "as_of": "2026-11-19",
+ "as_of": "2026-11-20",
  "summary": "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences and victims of online sexual offences by nationality and continent, and people detained or investigated by nationality for all victims. Family maltreatment, neglect and homicide have little or no victim nationality, and trafficking nationality is published only as a ranking.",
  "short_name": "Spain",
  "name_in_sentence": "Spain",
@@ -431,21 +431,21 @@
   {
    "id": "trafficking",
    "label": "Sexual trafficking and exploitation",
-   "years": "2024",
-   "intro": "Police recorded 256 victims of trafficking for sexual exploitation (5 minors) and 376 of sexual exploitation (11 minors) in 2024, and detained 300 and 225 people. The government summary gives nationality only as a ranked list.",
+   "years": "2025",
+   "intro": "Police recorded 374 victims of trafficking for sexual exploitation (2 minors) and 397 of sexual exploitation (13 minors) in 2025, and detained 416 and 240 people. Across all forms of trafficking and exploitation there were 1,869 victims (28 of them minors) and 1,056 detainees. The government summary gives nationality only as a ranked list.",
    "victims": {
     "status": "not_published",
-    "source": "citco24",
-    "text": "Only a ranking is published: trafficking victims were mostly Colombian, Venezuelan and Paraguayan; exploitation victims Colombian, Spanish and Venezuelan. Country counts appear in a CITCO table seen only on a third-party host that could not be opened, so they are not used."
+    "source": "citco25",
+    "text": "Only a ranking is published: trafficking victims were mostly Colombian, Venezuelan and Chinese; exploitation victims Colombian, Paraguayan and Venezuelan. Country counts are not published in the official summary, so they are not used."
    },
    "perpetrators": {
     "status": "not_published",
-    "source": "citco24",
+    "source": "citco25",
     "text": "Only a ranking is published: detainees were mostly Spanish, then Colombian and Venezuelan (trafficking) or Colombian and Paraguayan (exploitation)."
    },
    "cross": {
     "status": "not_published",
-    "source": "citco24",
+    "source": "citco25",
     "text": "No table links victim and detainee nationality."
    },
    "availability": {
@@ -638,7 +638,7 @@
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "CITCO's 2024 executive summary gives 632 victims of sexual trafficking and exploitation (16 minors) and 525 detainees, but nationality only as a ranked list (Colombia, Venezuela, Paraguay; detainees Spain first). Country counts appear in a CITCO table seen only on a third-party host that could not be opened, so they are not used.",
+    "why": "CITCO's 2025 executive summary gives 771 victims of sexual trafficking and exploitation (15 minors) and 656 detainees, but nationality only as a ranked list (Colombia, Venezuela, China and Paraguay; detainees Spain first). Country counts are not published in the official summary, so they are not used.",
     "score": 18
    },
    {
@@ -737,13 +737,13 @@
    "url": "https://www.observatoriodelainfancia.es/oia/esp/descargar.aspx?id=9108&tipo=documento",
    "tier": "Official government statistics"
   },
-  "citco24": {
-   "name": "Resumen ejecutivo anual 2024 sobre la trata y la explotación de seres humanos en España",
+  "citco25": {
+   "name": "Resumen ejecutivo anual 2025 sobre la trata y la explotación de seres humanos en España",
    "publisher": "Ministerio del Interior (CITCO)",
-   "years": "2024; Apr 2025",
+   "years": "2025; published 9 June 2026",
    "records": "Victims and detainees of trafficking and sexual exploitation, minors, most frequent nationalities.",
-   "limitations": "Nationality only as a ranked list; detailed country tables not opened.",
-   "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/Documents/2025/160425-resumen-ejecutivo-anual.pdf",
+   "limitations": "Nationality only as a ranked list; detailed country counts are not published in this summary.",
+   "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/Documents/2026/090626-interior-victimas-trata.pdf",
    "tier": "Official government statistics"
   }
  },
