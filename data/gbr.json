@@ -2,7 +2,7 @@
  "country": "United Kingdom",
  "iso_a3": "GBR",
  "completeness": 53,
- "as_of": "2026-11-18",
+ "as_of": "2026-11-22",
  "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies ethnic Europeans as such.",
  "nations": {
   "england_wales": "Most data. Police, courts, child protection (England; Wales publishes separately) and homicide all carry ethnicity.",
@@ -93,16 +93,16 @@
     "status": "published",
     "source": "moj_cjs",
     "scope": "England and Wales; convictions for cruelty to or neglect of children",
-    "n": 283,
-    "n_label": "people convicted in 2025 with ethnicity known (of 444)",
+    "n": 282,
+    "n_label": "people convicted in 2025 with ethnicity known (of 443)",
     "unknown_share": 36.3,
     "share": {
-     "white": 85.9,
+     "white": 85.8,
      "mixed": 3.2,
      "other": 1.1,
      "asian": 3.5,
      "black": 6.4,
-     "white_british": 79.9,
+     "white_british": 79.8,
      "white_other": 5.7,
      "white_irish": 0.4,
      "pakistani": 0.7,
@@ -197,7 +197,7 @@
    "id": "sexual_abuse",
    "label": "Sexual abuse (police and courts)",
    "years": "2024 (police), 2025 (courts)",
-   "intro": "Police in England and Wales recorded 122,768 child sexual abuse and exploitation offences in 2024. Courts convicted 4,461 people of contact child sexual offences in 2025.",
+   "intro": "Police in England and Wales recorded 122,768 child sexual abuse and exploitation offences in 2024. Courts convicted 4,466 people of contact child sexual offences in 2025.",
    "victims": {
     "status": "published",
     "source": "vkpp",
@@ -223,8 +223,8 @@
     "status": "published",
     "source": "moj_cjs",
     "scope": "England and Wales; convictions for contact child sexual offences, 2025",
-    "n": 3481,
-    "n_label": "people convicted with ethnicity known (of 4,461)",
+    "n": 3482,
+    "n_label": "people convicted with ethnicity known (of 4,466)",
     "unknown_share": 22.0,
     "share": {
      "other": 0.9,
@@ -880,7 +880,7 @@
    "id": "online",
    "label": "Online exploitation (indecent images)",
    "years": "2025",
-   "intro": "Courts in England and Wales convicted 4,064 people of indecent image of children offences in 2025. Indecent images were the most common child sexual offence recorded by police in 2024 (29%).",
+   "intro": "Courts in England and Wales convicted 4,063 people of indecent image of children offences in 2025. Indecent images were the most common child sexual offence recorded by police in 2024 (29%).",
    "victims": {
     "status": "not_recorded",
     "source": "vkpp",
@@ -890,8 +890,8 @@
     "status": "published",
     "source": "moj_cjs",
     "scope": "England and Wales, convictions 2025",
-    "n": 3096,
-    "n_label": "people convicted with ethnicity known (of 4,064)",
+    "n": 3097,
+    "n_label": "people convicted with ethnicity known (of 4,063)",
     "unknown_share": 23.8,
     "share": {
      "white": 90.9,
@@ -1216,12 +1216,12 @@
    "tier": "Official government statistics"
   },
   "moj_cjs": {
-   "name": "Criminal Justice System statistics quarterly: December 2025 (Outcomes by Offence)",
+   "name": "Criminal Justice System statistics quarterly: June 2026 (Outcomes by Offence)",
    "publisher": "Ministry of Justice",
-   "years": "2017-2025 in the data tool; quarterly",
+   "years": "2017 to year ending June 2026 in the data tool; figures here are calendar year 2025, revised in the June 2026 release; quarterly",
    "records": "Prosecutions, convictions and sentences by detailed offence and self-identified ethnicity (18+1 groups).",
-   "limitations": "England and Wales only. 22-36% unknown ethnicity for the child offences used here. Counts people per proceeding, by principal offence. Figures calculated here from the CSV download.",
-   "url": "https://www.gov.uk/government/statistics/criminal-justice-statistics-quarterly-december-2025",
+   "limitations": "England and Wales only. 22-36% unknown ethnicity for the child offences used here. Counts people per proceeding, by principal offence. Figures calculated here from the CSV download. The June 2026 data tool is organised by year ending June; calendar-year 2025 figures were reconstructed from the month field.",
+   "url": "https://www.gov.uk/government/statistics/criminal-justice-statistics-quarterly-june-2026",
    "tier": "Official government statistics"
   },
   "moj_s95": {

@@ -3,7 +3,7 @@
  "iso_a3": "ESP",
  "completeness": 21,
  "provisional": false,
- "as_of": "2026-11-20",
+ "as_of": "2026-11-22",
  "summary": "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences and victims of online sexual offences by nationality and continent, and people detained or investigated by nationality for all victims. Family maltreatment, neglect and homicide have little or no victim nationality, and trafficking nationality is published only as a ranking.",
  "short_name": "Spain",
  "name_in_sentence": "Spain",
@@ -71,45 +71,45 @@
   {
    "id": "sexual_abuse",
    "label": "Sexual offences against children (police)",
-   "years": "2024 (report); 2025 (portal)",
-   "intro": "Police recorded 9,393 victimizations of children in sexual offences in 2024 (4,196 aged 0-13), with the victim's nationality and continent. Detentions and investigations (14,375 in 2024; 14,784 in 2025) are published by nationality only for victims of all ages.",
+   "years": "2025",
+   "intro": "Police recorded 9,785 victimizations of children in sexual offences in 2025 (5,878 aged 0-14), with the victim's nationality and continent. People detained or investigated (14,711 in 2025) are published by nationality only for victims of all ages.",
    "victims": {
     "status": "published",
-    "source": "onvios24",
-    "scope": "Spain, police-recorded victimizations of children under 18 in sexual offences, 2024",
-    "n": 9393,
+    "source": "onvios25",
+    "scope": "Spain, police-recorded victimizations of children under 18 in sexual offences, 2025",
+    "n": 9785,
     "n_label": "child victimizations",
     "unknown_share": null,
     "share": {
-     "spanish": 83.1,
-     "foreign": 16.9,
-     "africa": 2.1,
-     "americas": 8.7,
-     "asia": 0.5,
-     "europe_other": 4.7
+     "spanish": 81.3,
+     "foreign": 18.7,
+     "africa": 1.7,
+     "americas": 10.3,
+     "asia": 0.4,
+     "europe_other": 4.9
     },
     "rate": null,
     "rate_reason": "No rates by nationality are published, and population by nationality and age was not added for this review.",
-    "share_note": "Interior Ministry report, child victims by nationality. Continent shares are of all child victimizations; 79 foreign victims had an unknown country and 1 was from Oceania, so continents do not add up to the foreign total. Victimizations, not unique children. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+    "share_note": "Interior Ministry report, child victims by nationality (0-14 plus 15-17; this edition's age bands, which differ from the 0-13 band used in the 2024 report). Continent shares are of all child victimizations; 136 foreign victims were classed as 'otros países' (stateless, unknown country or infrequent nationalities) and 4 were from Oceania, so continents do not add up to the foreign total. Victimizations, not unique children. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
    },
    "perpetrators": {
     "status": "published",
-    "source": "onvios24",
-    "scope": "Spain, people detained or investigated for sexual offences, victims of all ages, 2024",
-    "n": 14375,
+    "source": "onvios25",
+    "scope": "Spain, people detained or investigated for sexual offences, victims of all ages, 2025",
+    "n": 14711,
     "n_label": "people detained or investigated",
     "unknown_share": null,
     "share": {
-     "spanish": 60.8,
-     "foreign": 39.2,
-     "africa": 12.8,
-     "americas": 16.1,
-     "asia": 2.3,
-     "europe_other": 7.8
+     "spanish": 58.5,
+     "foreign": 41.5,
+     "africa": 13.5,
+     "americas": 18.1,
+     "asia": 2.5,
+     "europe_other": 7.2
     },
     "rate": null,
     "rate_reason": "No rates by nationality are published.",
-    "share_note": "Includes 1,206 people aged 14-17. Most frequent foreign nationalities: Moroccan (1,100), Colombian (676), Romanian (327). 25 had an unknown country and 4 were from Oceania. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+    "share_note": "Includes 1,264 people aged 14-17. Most frequent foreign nationalities: Moroccan (1,222), Colombian (870), Peruvian (373). 37 were classed as 'otros países' and 2 were from Oceania. Not child-victim-specific. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
    },
    "cross": {
     "status": "not_published",
@@ -476,26 +476,26 @@
   {
    "id": "online",
    "label": "Online sexual offences",
-   "years": "2024 (report); 2025 (portal)",
-   "intro": "Police recorded 1,292 victimizations in online sexual offences in 2024, 84% of them of minors, with nationality and continent. Detentions and investigations for child-pornography offences (710 in 2025) are split Spanish or foreign.",
+   "years": "2025",
+   "intro": "Police recorded 1,557 victimizations in online sexual offences in 2025, 81% of them of minors, with nationality and continent. Detentions and investigations for child-pornography offences (710 in 2025) are split Spanish or foreign.",
    "victims": {
     "status": "published",
-    "source": "onvios24",
-    "scope": "Spain, police-recorded victimizations in online sexual offences, all ages (84% minors), 2024",
-    "n": 1292,
+    "source": "onvios25",
+    "scope": "Spain, police-recorded victimizations in online sexual offences, all ages (81% minors), 2025",
+    "n": 1557,
     "n_label": "victimizations, all ages",
     "unknown_share": null,
     "share": {
-     "spanish": 88.7,
-     "foreign": 11.3,
-     "africa": 1.2,
-     "americas": 5.9,
-     "asia": 0.2,
-     "europe_other": 3.1
+     "spanish": 88.1,
+     "foreign": 11.9,
+     "africa": 0.8,
+     "americas": 5.5,
+     "asia": 0.3,
+     "europe_other": 3.9
     },
     "rate": null,
     "rate_reason": "Not child-specific; no rates published.",
-    "share_note": "Nationality is not split by age, but 1,088 of the 1,292 victimizations were of children. The report's table prints 143 foreign victims, but its own rows add up to 146 (122 female, 23 male, 1 unknown), so 146 is used. 12 foreign victims had an unknown country. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
+    "share_note": "Nationality is not split by age, but 1,268 of the 1,557 victimizations were of children. 19 foreign victims were classed as 'otros países' (stateless, unknown country or infrequent nationalities) and 2 were from Oceania, so continents do not add up to the foreign total. Nationality, not ethnicity: Spanish statistics never record ethnic origin. 'Spanish' includes naturalised citizens; foreign nationals are grouped by continent of nationality. "
    },
    "perpetrators": {
     "status": "published",
@@ -586,7 +586,7 @@
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's 2024 sexual-offences report gives 9,393 child victimizations by nationality, by age band, with foreign victims by continent (Europe outside Spain separate). Detained or investigated people are given by nationality and continent, but only for all victims (14,375). No rates published.",
+    "why": "The Interior Ministry's 2025 sexual-offences report gives 9,785 child victimizations by nationality, by age band, with foreign victims by continent (Europe outside Spain separate). Detained or investigated people are given by nationality and continent, but only for all victims (14,711). No rates published.",
     "score": 30.5
    },
    {
@@ -651,7 +651,7 @@
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The 2024 sexual-offences report gives 1,292 cyber-sexual victimizations by nationality and continent (84% minors, not split by age). People detained or investigated for child-pornography offences split Spanish/foreign (SEC 2025).",
+    "why": "The 2025 sexual-offences report gives 1,557 cyber-sexual victimizations by nationality and continent (81% minors, not split by age). People detained or investigated for child-pornography offences split Spanish/foreign (SEC 2025).",
     "score": 23.0
    }
   ],
@@ -710,13 +710,13 @@
   }
  },
  "sources": {
-  "onvios24": {
-   "name": "Informe sobre delitos contra la libertad sexual en España 2024",
+  "onvios25": {
+   "name": "Informe sobre delitos contra la libertad sexual en España 2025",
    "publisher": "Ministerio del Interior (Gabinete de Coordinación y Estudios, ONVIOS)",
-   "years": "2024; 11 Dec 2025",
+   "years": "2025; 21 Sep 2026",
    "records": "Victimizations by age, sex and nationality (continent and country); people detained or investigated by age and nationality; online sexual offences.",
-   "limitations": "Perpetrators not split by the victim age; no rates by nationality. The PDF blocks automated downloads (Cloudflare); it was read through an ordinary public fetch.",
-   "url": "https://www.interior.gob.es/opencms/pdf/archivos-y-documentacion/documentacion-y-publicaciones/publicaciones-descargables/publicaciones-periodicas/informe-sobre-delitos-contra-la-libertad-e-indemnidad-sexual-en-Espana/Informe_DelitosSexuales24_v111225_ACC_OK.pdf",
+   "limitations": "Perpetrators not split by the victim age; no rates by nationality. The PDF blocks automated downloads (Cloudflare); it was read through an ordinary public fetch. This edition's child age bands are 0-14 and 15-17 (the 2024 report used 0-13).",
+   "url": "https://www.interior.gob.es/opencms/pdf/archivos-y-documentacion/documentacion-y-publicaciones/publicaciones-descargables/publicaciones-periodicas/informe-sobre-delitos-contra-la-libertad-e-indemnidad-sexual-en-Espana/Informe_DelitosSexuales25_v210926.pdf",
    "tier": "Official government statistics"
   },
   "sec": {
