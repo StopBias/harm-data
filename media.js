@@ -59,7 +59,7 @@
   const nav = document.createElement("nav");
   nav.className = "site-tabs";
   nav.setAttribute("aria-label", t("tabs_label"));
-  nav.innerHTML = `<button type="button" data-tab="map"></button><button type="button" data-tab="media"></button>`;
+  nav.innerHTML = `<button type="button" data-tab="map"></button><button type="button" data-tab="media"></button><button type="button" data-tab="hollywood"></button>`;
   const header = document.querySelector("header");
   header.insertAdjacentElement("afterend", nav);
   const aboutView = document.getElementById("about-view");
@@ -71,20 +71,27 @@
     nav.setAttribute("aria-label", t("tabs_label"));
     nav.querySelector('[data-tab="map"]').textContent = t("tab_map");
     nav.querySelector('[data-tab="media"]').textContent = t("tab_media");
+    const hollywoodTab = nav.querySelector('[data-tab="hollywood"]');
+    if (hollywoodTab) hollywoodTab.textContent = t("tab_hollywood");
   }
 
   function tabFromHash() {
     if (location.hash === "#media") return "media";
+    if (location.hash === "#hollywood") return "hollywood";
     if (location.hash === "#about") return "about";
     return "map";
   }
 
+  const hollywoodView = document.getElementById("hollywood-view");
+
   function show(tab) {
     const media = tab === "media";
     const about = tab === "about";
-    if (layout) layout.hidden = about;
-    if (explorer) explorer.hidden = media || about;
+    const hollywood = tab === "hollywood";
+    if (layout) layout.hidden = about || hollywood;
+    if (explorer) explorer.hidden = media || about || hollywood;
     view.hidden = !media;
+    if (hollywoodView) hollywoodView.hidden = !hollywood;
     if (aboutView) aboutView.hidden = !about;
     nav.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === tab)));
     if (aboutLink) {
@@ -94,20 +101,24 @@
     document.body.classList.toggle("media-active", media);
     document.body.classList.toggle("media-table", media && state.mode === "table");
     document.body.classList.toggle("about-active", about);
+    document.body.classList.toggle("hollywood-active", hollywood);
     const agePicker = document.getElementById("age-picker");
-    if (agePicker) agePicker.hidden = media;
+    if (agePicker) agePicker.hidden = media || hollywood;
     if (chrome) chrome.hidden = !media;
-    if (window.HarmMap) window.HarmMap.setMode(media ? "media" : "crime");
+    if (window.HarmMap && !hollywood) window.HarmMap.setMode(media ? "media" : "crime");
     if (media) load();
-    else window.dispatchEvent(new Event("resize"));
+    if (hollywood && typeof window.renderHollywoodView === "function") window.renderHollywoodView();
+    if (!media) window.dispatchEvent(new Event("resize"));
   }
 
   function go(tab) {
     if (tab === "media") {
       if (location.hash !== "#media") history.pushState(null, "", "#media");
+    } else if (tab === "hollywood") {
+      if (location.hash !== "#hollywood") history.pushState(null, "", "#hollywood");
     } else if (tab === "about") {
       if (location.hash !== "#about") history.pushState(null, "", "#about");
-    } else if (location.hash === "#media" || location.hash === "#about") {
+    } else if (location.hash === "#media" || location.hash === "#hollywood" || location.hash === "#about") {
       history.pushState(null, "", location.pathname + location.search);
     }
     show(tab);
