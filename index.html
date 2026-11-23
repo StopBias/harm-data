@@ -310,7 +310,8 @@
     html[data-i18n-pending] #explorer,
     html[data-i18n-pending] .site-tabs,
     html[data-i18n-pending] #about-link,
-    html[data-i18n-pending] #about-view { visibility: hidden; }
+    html[data-i18n-pending] #about-view,
+    html[data-i18n-pending] #hollywood-view { visibility: hidden; }
 
     header { flex-wrap: wrap; }
     header .header-text { flex: 1 1 auto; min-width: 0; }
@@ -630,6 +631,8 @@
 
   <!-- Media coverage view: markup and styles live in media.js / media.css; strings live in i18n/*.json (media.*) -->
   <section id="media-view" aria-labelledby="mv-title" hidden></section>
+  <!-- Hollywood tab: markup and styles live in hollywood.js / hollywood.css; strings live in i18n/*.json (hollywood.*) -->
+  <section id="hollywood-view" aria-labelledby="hv-title" hidden></section>
   <section id="about-view" aria-labelledby="about-title" hidden>
     <div class="about-inner">
       <div class="ex-head">
@@ -654,7 +657,9 @@
     </div>
   </section>
   <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="hollywood.css">
   <script src="media.js" defer></script>
+  <script src="hollywood.js" defer></script>
 
   <script>
 
@@ -923,6 +928,7 @@
       if (selectedId && window.showCountry) window.showCountry(selectedId, countryDisplayName(selectedId, selectedName));
       else if (window.clearSelection) window.clearSelection();
       if (typeof window.renderMediaView === "function") window.renderMediaView();
+      if (typeof window.renderHollywoodView === "function") window.renderHollywoodView();
     }
     function langMeta(code) {
       return LANG_META.find(m => m.code === code) || LANG_META[0];
@@ -1056,7 +1062,7 @@
       tabs.forEach(tb => tb.addEventListener("click", () => markAttentionSeen("tabs")));
       const start = 300;
       if (langOn && btn) for (let i = 0; i < ATTENTION_REPEATS; i++) pulse("lang", btn, start + i * ATTENTION_GAP_MS);
-      // Tabs start after the language button's first pulse and interleave with it; Map then Media 400 ms apart.
+      // Tabs start after the language button's first pulse and interleave with it; Crime, Media, then Hollywood, 400 ms apart.
       const tabStart = langOn ? start + 1500 : start;
       if (tabsOn) for (let i = 0; i < ATTENTION_REPEATS; i++) tabs.forEach((tb, j) => pulse("tabs", tb, tabStart + i * ATTENTION_GAP_MS + j * 400));
     }
@@ -2398,7 +2404,8 @@
         { name: "about", sel: ["#about-body"] },
         { name: "panel", sel: ["#panel-content", "#legend"] },
         { name: "explorer", sel: ["#explorer"] },
-        { name: "media", sel: ["#media-view"] }
+        { name: "media", sel: ["#media-view"] },
+        { name: "hollywood", sel: ["#hollywood-view"] }
       ];
       const tip = document.getElementById("term-tip");
       const tipText = document.getElementById("term-tip-text");

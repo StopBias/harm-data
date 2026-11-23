@@ -1,0 +1,3305 @@
+{
+  "version": "6.1",
+  "as_of": "2026-11-20",
+  "source": "hollywood_summary.md v6.1 (20 November 2026, 11:35 PM CST) and titles.csv in the Hollywood working files. Agreement figures from agreement_report.md v6.",
+  "provisional": true,
+  "counts": {
+    "a": {
+      "fd": 43,
+      "majority": 42,
+      "strict": 39,
+      "provisional": true
+    },
+    "e": {
+      "fd": 0,
+      "majority": 0,
+      "strict": 0
+    },
+    "holocaust": {
+      "fd": 79,
+      "majority": 65,
+      "strict": 43
+    },
+    "armenian": {
+      "fd": 5,
+      "majority": 5,
+      "strict": 4
+    },
+    "holodomor": {
+      "fd": 0,
+      "majority": 0,
+      "strict": 0
+    }
+  },
+  "agreement": {
+    "variable": "slavery_film",
+    "independent_pct": 97.1,
+    "independent_kappa": 0.94,
+    "n": 139,
+    "source": "agreement_report.md v6, independent check",
+    "note": "Mike's definitional rulings applied to both coders, using the first coder's labels from before later resolutions. The current-code kappa (0.98) is partly circular because some resolutions adopted the second coder's label. The v3 figure, from before those rulings, was 93.5%, kappa 0.87 (n = 139).",
+    "both_agree_provisional": {
+      "fd": 38,
+      "majority": 37,
+      "strict": 35
+    }
+  },
+  "definition": "A slavery film has chattel slavery as a condition or institution as its organizing subject (people held as property, traded, forced labour, escaping or resisting that system). Inclusion is based on the lived experience of enslavement as the core theme. Rescue, search, adventure, romance and abolition-campaign films are excluded. Heritage of the enslavers and the enslaved is inferred from the setting when it is not named in the plot text.",
+  "definition_rulings": "The Favorite (1989) is not a slavery film. Abolition-campaign films are out. Traces of the Trade and Descendant pass.",
+  "rules": {
+    "fd": "Financing-and-distribution rule: a US major (including specialty labels), a mini-major, a major US network or PBS, or a major streamer financed the film or handled its main US distribution. US co-productions are included.",
+    "majority": "Majority-partner rule: the same studio test, but a co-production counts only if the US is the majority partner. Proxy order: a published majority co-producer source (LUMIERE / European Audiovisual Observatory, AFI Catalog, BFI, treaty filings), then the nationality of the lead production company, otherwise minority/unclear and off the headline.",
+    "strict": "Strict US-only rule: US-only productions with a major studio, network or streamer; kept for reference."
+  },
+  "ratios": {
+    "rule": "fd",
+    "caveat": "Headline count divided by the victim baseline in millions. The baselines measure different things, so this is not a measure of fairness.",
+    "rows": [
+      {
+        "id": "a_arrivals",
+        "subject": "a",
+        "baseline": "about 388,000",
+        "baseline_source": "TSTD; H. L. Gates Jr.",
+        "count": 43,
+        "per_million": 111
+      },
+      {
+        "id": "a_cumulative",
+        "subject": "a",
+        "baseline": "9,797,728",
+        "baseline_source": "Hacker 2020",
+        "count": 43,
+        "per_million": 4.4
+      },
+      {
+        "id": "e_barbary",
+        "subject": "e",
+        "baseline": "1–1.25 million",
+        "baseline_source": "Davis 2003",
+        "count": 0,
+        "per_million": 0,
+        "note": "The v6.1 ratio table listed count 1 and 0.8–1.0 per million before The Favorite (1989) was excluded. With the current headline count of 0, the ratio is 0."
+      },
+      {
+        "id": "holocaust",
+        "subject": "holocaust",
+        "baseline": "6 million",
+        "baseline_source": "USHMM",
+        "count": 79,
+        "per_million": 13.2
+      },
+      {
+        "id": "holodomor",
+        "subject": "holodomor",
+        "baseline": "3.9 million",
+        "baseline_source": "Rudnytskyi, Levchuk et al. 2015",
+        "count": 0,
+        "per_million": 0
+      }
+    ]
+  },
+  "titles": [
+    {
+      "title": "The Pioneers",
+      "year": 1903,
+      "subject": "e",
+      "studio": "Biograph Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q30598550"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1903,
+      "subject": "a",
+      "studio": "produced by the Edison Manufacturing Company (Wikipedia lead); MPPC member",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q60840578"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1910,
+      "subject": "a",
+      "studio": "Thanhouser Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q3549210"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1910,
+      "subject": "a",
+      "studio": "Vitagraph Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "pending": [
+        "vera_blind",
+        "mike_review"
+      ],
+      "wikidata": "Q3549215"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1914,
+      "subject": "a",
+      "studio": "World Film Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "genre": "pass",
+      "pending": [
+        "vera_blind",
+        "mike_review"
+      ],
+      "wikidata": "Q3549217"
+    },
+    {
+      "title": "The Birth of a Nation",
+      "year": 1915,
+      "subject": "a",
+      "studio": "D. W. Griffith; Netflix; David W. Griffith Corp.",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q220394"
+    },
+    {
+      "title": "The Sultan's Wife",
+      "year": 1917,
+      "subject": "e",
+      "studio": "Triangle Film Corporation; Keystone Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q7767235"
+    },
+    {
+      "title": "Bound in Morocco",
+      "year": 1918,
+      "subject": "e",
+      "studio": "Famous Players-Lasky Corporation",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q4949881"
+    },
+    {
+      "title": "The Changing Woman",
+      "year": 1918,
+      "subject": "e",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q93487641"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1918,
+      "subject": "a",
+      "studio": "Paramount Pictures; Famous Players-Lasky Corporation",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q4004531"
+    },
+    {
+      "title": "Ravished Armenia",
+      "year": 1919,
+      "subject": "armenian",
+      "studio": "First National Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q17488095"
+    },
+    {
+      "title": "The Son of Tarzan",
+      "year": 1920,
+      "subject": "e",
+      "studio": "Netflix; National Film Corporation of America",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2855403"
+    },
+    {
+      "title": "The Adventures of Tarzan",
+      "year": 1921,
+      "subject": "e",
+      "studio": "Louis Weiss",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3285036"
+    },
+    {
+      "title": "The Red Rider",
+      "year": 1925,
+      "subject": "e",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q78171500"
+    },
+    {
+      "title": "Old Ironsides",
+      "year": 1926,
+      "subject": "e",
+      "studio": "Paramount Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q7084279"
+    },
+    {
+      "title": "The Love Mart",
+      "year": 1927,
+      "subject": "a",
+      "studio": "First National Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "unknown",
+      "wikidata": "Q7748942"
+    },
+    {
+      "title": "Topsy and Eva",
+      "year": 1927,
+      "subject": "a",
+      "studio": "United Artists",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q18210045"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1927,
+      "subject": "a",
+      "studio": "Universal Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q3549227"
+    },
+    {
+      "title": "The Littlest Rebel",
+      "year": 1935,
+      "subject": "a",
+      "studio": "Netflix; 20th Century Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1764674"
+    },
+    {
+      "title": "Slave Ship",
+      "year": 1937,
+      "subject": "a",
+      "studio": "20th Century Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q3222165"
+    },
+    {
+      "title": "Souls at Sea",
+      "year": 1937,
+      "subject": "a",
+      "studio": "Paramount Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "pending": [
+        "mike_review"
+      ],
+      "wikidata": "Q280470"
+    },
+    {
+      "title": "Gone with the Wind",
+      "year": 1939,
+      "subject": "a",
+      "studio": "Metro-Goldwyn-Mayer; Loews Cineplex Entertainment; Netflix; Selznick International Pictures; HBO Max",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2875"
+    },
+    {
+      "title": "The Adventures of Huckleberry Finn",
+      "year": 1939,
+      "subject": "a",
+      "studio": "Metro-Goldwyn-Mayer",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2472318"
+    },
+    {
+      "title": "Santa Fe Trail",
+      "year": 1940,
+      "subject": "a",
+      "studio": "Warner Bros. Entertainment; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1598010"
+    },
+    {
+      "title": "The Seventh Cross",
+      "year": 1944,
+      "subject": "holocaust",
+      "studio": "Metro-Goldwyn-Mayer",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q1171590"
+    },
+    {
+      "title": "Slave Girl",
+      "year": 1947,
+      "subject": "e",
+      "studio": "Universal Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3206562"
+    },
+    {
+      "title": "The Foxes of Harrow",
+      "year": 1947,
+      "subject": "a",
+      "studio": "20th Century Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3208985"
+    },
+    {
+      "title": "Unconquered",
+      "year": 1947,
+      "subject": "e",
+      "studio": "Paramount Pictures; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1217011"
+    },
+    {
+      "title": "Barbary Pirate",
+      "year": 1949,
+      "subject": "e",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q25136289"
+    },
+    {
+      "title": "Ambush",
+      "year": 1950,
+      "subject": "e",
+      "studio": "Loews Cineplex Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q138086"
+    },
+    {
+      "title": "Lydia Bailey",
+      "year": 1952,
+      "subject": "a",
+      "studio": "20th Century Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q12125918"
+    },
+    {
+      "title": "The Charge at Feather River",
+      "year": 1953,
+      "subject": "e",
+      "studio": "Warner Bros. Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3819315"
+    },
+    {
+      "title": "The Juggler",
+      "year": 1953,
+      "subject": "holocaust",
+      "studio": "Columbia Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q2048650"
+    },
+    {
+      "title": "Yankee Pasha",
+      "year": 1954,
+      "subject": "e",
+      "studio": "Universal Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q8048770"
+    },
+    {
+      "title": "Seven Angry Men",
+      "year": 1955,
+      "subject": "a",
+      "studio": "Monogram Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q7457174"
+    },
+    {
+      "title": "Comanche",
+      "year": 1956,
+      "subject": "e",
+      "studio": "United Artists",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q5150510"
+    },
+    {
+      "title": "The Searchers",
+      "year": 1956,
+      "subject": "e",
+      "studio": "Warner Bros. Entertainment; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q276769"
+    },
+    {
+      "title": "Band of Angels",
+      "year": 1957,
+      "subject": "a",
+      "studio": "Warner Bros. Entertainment; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q2856498"
+    },
+    {
+      "title": "Trooper Hook",
+      "year": 1957,
+      "subject": "e",
+      "studio": "United Artists",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3068240"
+    },
+    {
+      "title": "The Light in the Forest",
+      "year": 1958,
+      "subject": "e",
+      "studio": "The Walt Disney Company; Walt Disney Pictures; Walt Disney Studios Motion Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3266299"
+    },
+    {
+      "title": "The Diary of Anne Frank",
+      "year": 1959,
+      "subject": "holocaust",
+      "studio": "Netflix; 20th Century Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q707986"
+    },
+    {
+      "title": "The Horse Soldiers",
+      "year": 1959,
+      "subject": "a",
+      "studio": "United Artists; Netflix; The Mirisch Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q639086"
+    },
+    {
+      "title": "Comanche Station",
+      "year": 1960,
+      "subject": "e",
+      "studio": "Columbia Pictures; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1754488"
+    },
+    {
+      "title": "Judgment at Nuremberg",
+      "year": 1961,
+      "subject": "holocaust",
+      "studio": "United Artists; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q309545"
+    },
+    {
+      "title": "Two Rode Together",
+      "year": 1961,
+      "subject": "e",
+      "studio": "Columbia Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q232234"
+    },
+    {
+      "title": "Savage Sam",
+      "year": 1963,
+      "subject": "e",
+      "studio": "The Walt Disney Company; Walt Disney Studios Motion Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1762249"
+    },
+    {
+      "title": "The Pawnbroker",
+      "year": 1964,
+      "subject": "holocaust",
+      "studio": "Netflix; Monogram Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q1196202"
+    },
+    {
+      "title": "Duel at Diablo",
+      "year": 1966,
+      "subject": "e",
+      "studio": "United Artists; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1263899"
+    },
+    {
+      "title": "The Diary of Anne Frank",
+      "year": 1967,
+      "subject": "holocaust",
+      "studio": "Broadcast network: ABC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7730103"
+    },
+    {
+      "title": "Day of the Evil Gun",
+      "year": 1968,
+      "subject": "e",
+      "studio": "Metro-Goldwyn-Mayer",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q5231436"
+    },
+    {
+      "title": "The Stalking Moon",
+      "year": 1968,
+      "subject": "e",
+      "studio": "National General Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2758093"
+    },
+    {
+      "title": "Slaves",
+      "year": 1969,
+      "subject": "a",
+      "studio": "independent/other: Slaves Company; Theatre Guild; Walter Reade Organization; Continental Distributing",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q3057932"
+    },
+    {
+      "title": "A Man Called Horse",
+      "year": 1970,
+      "subject": "e",
+      "studio": "Cinema Center Films; Netflix; National General Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, MX (/movie/87326)",
+      "genre": "fail",
+      "wikidata": "Q497059"
+    },
+    {
+      "title": "Little Big Man",
+      "year": 1970,
+      "subject": "e",
+      "studio": "CBS; Cinema Center Films; Netflix; National General Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1132535"
+    },
+    {
+      "title": "Skin Game",
+      "year": 1971,
+      "subject": "a",
+      "studio": "Warner Bros. Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7535350"
+    },
+    {
+      "title": "The Trackers",
+      "year": 1971,
+      "subject": "e",
+      "studio": "Broadcast network: ABC",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q55635586"
+    },
+    {
+      "title": "The Legend of Nigger Charley",
+      "year": 1972,
+      "subject": "a",
+      "studio": "Paramount Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7746755"
+    },
+    {
+      "title": "The Soul of Nigger Charley",
+      "year": 1973,
+      "subject": "a",
+      "studio": "Paramount Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7765367"
+    },
+    {
+      "title": "The Autobiography of Miss Jane Pittman",
+      "year": 1974,
+      "subject": "a",
+      "studio": "CBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q17332817"
+    },
+    {
+      "title": "Against a Crooked Sky",
+      "year": 1975,
+      "subject": "e",
+      "studio": "independent/other: Doty-Dayton Releasing",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q4691059"
+    },
+    {
+      "title": "Mandingo",
+      "year": 1975,
+      "subject": "a",
+      "studio": "Paramount Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q745753"
+    },
+    {
+      "title": "The Wind and the Lion",
+      "year": 1975,
+      "subject": "e",
+      "studio": "Metro-Goldwyn-Mayer",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1198096"
+    },
+    {
+      "title": "Winterhawk",
+      "year": 1975,
+      "subject": "e",
+      "studio": "independent/other: United States theatrical: Howco International Pictures; Canada theatrical: Frontier Amusements",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q3667322"
+    },
+    {
+      "title": "Drum",
+      "year": 1976,
+      "subject": "a",
+      "studio": "United Artists; Dino De Laurentiis Cinematografica",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q5309040"
+    },
+    {
+      "title": "The Return of a Man Called Horse",
+      "year": 1976,
+      "subject": "a",
+      "studio": "United Artists",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited controlling company Sandy Howard Productions (US); Estudios Churubusco listed first is the studio facility",
+      "genre": "fail",
+      "wikidata": "Q820447"
+    },
+    {
+      "title": "Grayeagle",
+      "year": 1977,
+      "subject": "e",
+      "studio": "American International Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q5598305"
+    },
+    {
+      "title": "Roots",
+      "year": 1977,
+      "subject": "a",
+      "studio": "American Broadcasting Company; Warner Bros. Television Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q1247168"
+    },
+    {
+      "title": "A Woman Called Moses",
+      "year": 1978,
+      "subject": "a",
+      "studio": "NBC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q4660720"
+    },
+    {
+      "title": "Holocaust",
+      "year": 1978,
+      "subject": "holocaust",
+      "studio": "NBC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q702858"
+    },
+    {
+      "title": "The Norseman",
+      "year": 1978,
+      "subject": "e",
+      "studio": "American International Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q17114498"
+    },
+    {
+      "title": "Roots: The Next Generations",
+      "year": 1979,
+      "subject": "a",
+      "studio": "American Broadcasting Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1247494"
+    },
+    {
+      "title": "The House on Garibaldi Street",
+      "year": 1979,
+      "subject": "holocaust",
+      "studio": "Broadcast network: ABC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q12124896"
+    },
+    {
+      "title": "Playing for Time",
+      "year": 1980,
+      "subject": "holocaust",
+      "studio": "CBS; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7203418"
+    },
+    {
+      "title": "The Diary of Anne Frank",
+      "year": 1980,
+      "subject": "holocaust",
+      "studio": "NBC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q821121"
+    },
+    {
+      "title": "Skokie",
+      "year": 1981,
+      "subject": "holocaust",
+      "studio": "CBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q727583"
+    },
+    {
+      "title": "A House Divided: Denmark Vesey's Rebellion",
+      "year": 1982,
+      "subject": "a",
+      "studio": "'produced by WPBT and PBS' (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q22350701"
+    },
+    {
+      "title": "Assignment Berlin",
+      "year": 1982,
+      "subject": "armenian",
+      "studio": "no producer, distributor or network in Wikidata or the Wikipedia infobox",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; no production company in Wikidata or Wikipedia"
+    },
+    {
+      "title": "Genocide",
+      "year": 1982,
+      "subject": "holocaust",
+      "studio": "Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q5533448"
+    },
+    {
+      "title": "Remembrance of Love",
+      "year": 1982,
+      "subject": "holocaust",
+      "studio": "'It aired as an NBC Monday Movie' (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q58411763"
+    },
+    {
+      "title": "Sophie's Choice",
+      "year": 1982,
+      "subject": "holocaust",
+      "studio": "ITC Entertainment; Netflix; Universal Pictures; Associated Film Distribution",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q165627"
+    },
+    {
+      "title": "The Forty Days of Musa Dagh",
+      "year": 1982,
+      "subject": "armenian",
+      "studio": "independent/other: Examco Inc.",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q64768835"
+    },
+    {
+      "title": "Forbidden",
+      "year": 1984,
+      "subject": "holocaust",
+      "studio": "Cable network: HBO Premiere Films",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Mark Forstater Productions (UK), then HBO Premiere Films",
+      "wikidata": "Q1281134"
+    },
+    {
+      "title": "Solomon Northup's Odyssey",
+      "year": 1984,
+      "subject": "a",
+      "studio": "PBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7558718"
+    },
+    {
+      "title": "North and South",
+      "year": 1985,
+      "subject": "a",
+      "studio": "American Broadcasting Company; Warner Bros. Television Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q833578"
+    },
+    {
+      "title": "The Assisi Underground",
+      "year": 1985,
+      "subject": "holocaust",
+      "studio": "The Cannon Group",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited Golan-Globus Productions (Cannon Group, US)",
+      "wikidata": "Q3625648"
+    },
+    {
+      "title": "Wallenberg: A Hero's Story",
+      "year": 1985,
+      "subject": "holocaust",
+      "studio": "Broadcast network: NBC; Paramount: Paramount Television",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7963021"
+    },
+    {
+      "title": "War and Love",
+      "year": 1985,
+      "subject": "holocaust",
+      "studio": "The Cannon Group",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q48672538"
+    },
+    {
+      "title": "Harem",
+      "year": 1986,
+      "subject": "e",
+      "studio": "American Broadcasting Company (ABC)",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1582649"
+    },
+    {
+      "title": "Miracle at Moreaux",
+      "year": 1986,
+      "subject": "holocaust",
+      "studio": "Broadcast network: PBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q6872460"
+    },
+    {
+      "title": "Nazi Hunter: The Beate Klarsfeld Story",
+      "year": 1986,
+      "subject": "holocaust",
+      "studio": "American Broadcasting Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q6983391"
+    },
+    {
+      "title": "Uncle Tom's Cabin",
+      "year": 1987,
+      "subject": "a",
+      "studio": "Showtime; Taft Broadcasting",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "pending": [
+        "vera_blind",
+        "mike_review"
+      ],
+      "wikidata": "Q3549220"
+    },
+    {
+      "title": "A Friendship in Vienna",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "Disney: Disney Channel; Disney: Walt Disney Television",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q18602742"
+    },
+    {
+      "title": "And the Violins Stopped Playing",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "Orion Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited Roberts/David Films (US), then Zespół Filmowy Tor (Poland)",
+      "wikidata": "Q4753446"
+    },
+    {
+      "title": "Hanna's War",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "The Cannon Group",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q3492297"
+    },
+    {
+      "title": "Hôtel Terminus: The Life and Times of Klaus Barbie",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "Netflix; The Samuel Goldwyn Company",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: DE, FR, US (/movie/47199)",
+      "wikidata": "Q464088"
+    },
+    {
+      "title": "Roots: The Gift",
+      "year": 1988,
+      "subject": "a",
+      "studio": "American Broadcasting Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7366612"
+    },
+    {
+      "title": "The Attic: The Hiding of Anne Frank",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "CBS",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Telecom Entertainment Inc. (US), then Yorkshire Television",
+      "wikidata": "Q823148"
+    },
+    {
+      "title": "War and Remembrance",
+      "year": 1988,
+      "subject": "holocaust",
+      "studio": "American Broadcasting Company; Disney–ABC Domestic Television",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q245929"
+    },
+    {
+      "title": "Glory",
+      "year": 1989,
+      "subject": "a",
+      "studio": "Netflix; TriStar Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q862317"
+    },
+    {
+      "title": "Murderers Among Us: The Simon Wiesenthal Story",
+      "year": 1989,
+      "subject": "holocaust",
+      "studio": "HBO",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Citadel Entertainment (US)",
+      "wikidata": "Q1436914"
+    },
+    {
+      "title": "Music Box",
+      "year": 1989,
+      "subject": "holocaust",
+      "studio": "Netflix; TriStar Pictures; Carolco Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q1427849"
+    },
+    {
+      "title": "Roots of Resistance: A Story of the Underground Railroad",
+      "year": 1989,
+      "subject": "a",
+      "studio": "PBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q16885573"
+    },
+    {
+      "title": "The Favorite (Intimate Power)",
+      "year": 1989,
+      "subject": "e",
+      "studio": "20th Century Studios (check: Christa A6)",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, CH (/movie/87464)",
+      "genre": "fail",
+      "wikidata": "Q4419097"
+    },
+    {
+      "title": "The Rose Garden",
+      "year": 1989,
+      "subject": "holocaust",
+      "studio": "The Cannon Group",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited The Cannon Group (US)",
+      "wikidata": "Q3490459"
+    },
+    {
+      "title": "Brother Future",
+      "year": 1991,
+      "subject": "a",
+      "studio": "'originally aired on PBS as part of its WonderWorks series' (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q4975497"
+    },
+    {
+      "title": "Miracle in the Wilderness",
+      "year": 1991,
+      "subject": "e",
+      "studio": "TNT",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q4517679"
+    },
+    {
+      "title": "Never Forget",
+      "year": 1991,
+      "subject": "holocaust",
+      "studio": "TNT",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q2374877"
+    },
+    {
+      "title": "The Quest for Freedom",
+      "year": 1992,
+      "subject": "a",
+      "studio": "no producer, distributor or network in Wikidata or the Wikipedia infobox",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q23999915"
+    },
+    {
+      "title": "Alex Haley's Queen",
+      "year": 1993,
+      "subject": "a",
+      "studio": "CBS; Warner Bros. Television Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q4717117"
+    },
+    {
+      "title": "Class of '61",
+      "year": 1993,
+      "subject": "a",
+      "studio": "American Broadcasting Company; Universal Television; Amblin Television",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2975711"
+    },
+    {
+      "title": "Sankofa",
+      "year": 1993,
+      "subject": "a",
+      "studio": "independent/other: Mypheduh Films",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: BF, GH, DE, US (https://lumiere.obs.coe.int/movie/1305)",
+      "genre": "pass",
+      "wikidata": "Q7418735"
+    },
+    {
+      "title": "Schindler's List",
+      "year": 1993,
+      "subject": "holocaust",
+      "studio": "Universal Pictures; Netflix; Amblin Entertainment; Fandango",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q483941"
+    },
+    {
+      "title": "Squanto: A Warrior's Tale",
+      "year": 1994,
+      "subject": "a",
+      "studio": "Walt Disney Pictures; Walt Disney Studios Motion Pictures; Disney+",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2406987"
+    },
+    {
+      "title": "Anne Frank Remembered",
+      "year": 1995,
+      "subject": "holocaust",
+      "studio": "Netflix; Sony Pictures Classics",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited Jon Blair Film Company (UK)",
+      "wikidata": "Q466765"
+    },
+    {
+      "title": "Jefferson in Paris",
+      "year": 1995,
+      "subject": "a",
+      "studio": "Netflix; Touchstone Pictures; Walt Disney Studios Motion Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1643330"
+    },
+    {
+      "title": "Last of the Dogmen",
+      "year": 1995,
+      "subject": "e",
+      "studio": "Carolco Pictures; Savoy Pictures; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1170521"
+    },
+    {
+      "title": "One Survivor Remembers",
+      "year": 1995,
+      "subject": "holocaust",
+      "studio": "Cable network: HBO",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q5562075"
+    },
+    {
+      "title": "Nightjohn",
+      "year": 1996,
+      "subject": "a",
+      "studio": "Netflix; Sonar Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7033842"
+    },
+    {
+      "title": "The Journey of August King",
+      "year": 1996,
+      "subject": "a",
+      "studio": "Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "pending": [
+        "vera_blind",
+        "mike_review"
+      ],
+      "wikidata": "Q2554115"
+    },
+    {
+      "title": "The Man Who Captured Eichmann",
+      "year": 1996,
+      "subject": "holocaust",
+      "studio": "TNT",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q1195379"
+    },
+    {
+      "title": "Amistad",
+      "year": 1997,
+      "subject": "a",
+      "studio": "DreamWorks; HBO Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q472361"
+    },
+    {
+      "title": "Ill Gotten Gains",
+      "year": 1997,
+      "subject": "a",
+      "studio": "no producer, distributor or network in Wikidata or the Wikipedia infobox",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q30641448"
+    },
+    {
+      "title": "In the Presence of Mine Enemies",
+      "year": 1997,
+      "subject": "holocaust",
+      "studio": "Cable network: Showtime",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q17111318"
+    },
+    {
+      "title": "Stolen Women: Captured Hearts",
+      "year": 1997,
+      "subject": "e",
+      "studio": "CBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q7618639"
+    },
+    {
+      "title": "Africans in America: America's Journey Through Slavery",
+      "year": 1998,
+      "subject": "a",
+      "studio": "PBS (WGBH) documentary series",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "pending": [
+        "vera_blind",
+        "mike_review"
+      ],
+      "wikidata": "Q123678766"
+    },
+    {
+      "title": "Beloved",
+      "year": 1998,
+      "subject": "a",
+      "studio": "Netflix; Touchstone Pictures; Walt Disney Studios Motion Pictures; Disney+; Harpo Productions",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q250954"
+    },
+    {
+      "title": "Miracle at Midnight",
+      "year": 1998,
+      "subject": "holocaust",
+      "studio": "Walt Disney Television; Davis Entertainment; Disney+",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q6872458"
+    },
+    {
+      "title": "Jakob the Liar",
+      "year": 1999,
+      "subject": "holocaust",
+      "studio": "Columbia Pictures; Netflix; Sony Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, HU, FR (/movie/12418)",
+      "wikidata": "Q240894"
+    },
+    {
+      "title": "Mr. Death: The Rise and Fall of Fred A. Leuchter, Jr.",
+      "year": 1999,
+      "subject": "holocaust",
+      "studio": "Lionsgate Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q3327151"
+    },
+    {
+      "title": "Ride with the Devil",
+      "year": 1999,
+      "subject": "a",
+      "studio": "Universal Pictures; Netflix; Good Machine",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q669578"
+    },
+    {
+      "title": "The Devil's Arithmetic",
+      "year": 1999,
+      "subject": "holocaust",
+      "studio": "Showtime",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q1521349"
+    },
+    {
+      "title": "Enslavement: The True Story of Fanny Kemble",
+      "year": 2000,
+      "subject": "a",
+      "studio": "Showtime",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q15121025"
+    },
+    {
+      "title": "Into the Arms of Strangers: Stories of the Kindertransport",
+      "year": 2000,
+      "subject": "holocaust",
+      "studio": "Warner Bros. Entertainment; Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB (/movie/15692)",
+      "wikidata": "Q1225068"
+    },
+    {
+      "title": "Nuremberg",
+      "year": 2000,
+      "subject": "holocaust",
+      "studio": "TNT; Netflix; Warner Bros. Entertainment",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Alliance Atlantis (Canada)",
+      "wikidata": "Q248392"
+    },
+    {
+      "title": "Sisters in Resistance",
+      "year": 2000,
+      "subject": "holocaust",
+      "studio": "'premiered on PBS in the United States' 2003 (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7531304"
+    },
+    {
+      "title": "Anne Frank: The Whole Story",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "American Broadcasting Company; Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Milk & Honey Pictures (nationality not established), Touchstone Television (US) third",
+      "wikidata": "Q565293"
+    },
+    {
+      "title": "Conspiracy",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "HBO; British Broadcasting Corporation; HBO Films; Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited BBC (UK), then HBO Films",
+      "wikidata": "Q706367"
+    },
+    {
+      "title": "Edges of the Lord",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "Netflix; TOR film studio",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, PL (/movie/18432)",
+      "wikidata": "Q1284393"
+    },
+    {
+      "title": "The Grey Zone",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "Starz Entertainment; Netflix; Killer Films; Millennium Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q566834"
+    },
+    {
+      "title": "Uprising",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "NBC",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q686165"
+    },
+    {
+      "title": "Varian's War",
+      "year": 2001,
+      "subject": "holocaust",
+      "studio": "Showtime",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited Ardent Productions (nationality not established)",
+      "wikidata": "Q639098"
+    },
+    {
+      "title": "Prisoner of Paradise",
+      "year": 2002,
+      "subject": "holocaust",
+      "studio": "Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; Wikipedia: 'a Montreal production' (Canada)",
+      "wikidata": "Q177676"
+    },
+    {
+      "title": "The Pianist",
+      "year": 2002,
+      "subject": "holocaust",
+      "studio": "Focus Features; Canal+; RP Productions; Heritage Films; Runteam Productions; StudioCanal; Disney+; Babelsberg Studio",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: FR, GB, DE, PL (/movie/18808)",
+      "wikidata": "Q150804"
+    },
+    {
+      "title": "Nat Turner: A Troublesome Property",
+      "year": 2003,
+      "subject": "a",
+      "studio": "first US release on PBS Independent Lens (2004) after festivals (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q22350790"
+    },
+    {
+      "title": "Out of the Ashes",
+      "year": 2003,
+      "subject": "holocaust",
+      "studio": "Showtime",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7111685"
+    },
+    {
+      "title": "The Missing",
+      "year": 2003,
+      "subject": "e",
+      "studio": "Columbia Pictures; Revolution Studios; Imagine Entertainment; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q1637139"
+    },
+    {
+      "title": "Unchained Memories",
+      "year": 2003,
+      "subject": "a",
+      "studio": "HBO",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7882514"
+    },
+    {
+      "title": "Brothers of the Borderland",
+      "year": 2004,
+      "subject": "a",
+      "studio": "museum film for the National Underground Railroad Freedom Center (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q51031376"
+    },
+    {
+      "title": "C.S.A.: The Confederate States of America",
+      "year": 2004,
+      "subject": "a",
+      "studio": "Netflix; IFC Films; Hodcarrier Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q1393048"
+    },
+    {
+      "title": "Hiding and Seeking",
+      "year": 2004,
+      "subject": "holocaust",
+      "studio": "Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q5752862"
+    },
+    {
+      "title": "Paper Clips",
+      "year": 2004,
+      "subject": "holocaust",
+      "studio": "Miramax; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q16962611"
+    },
+    {
+      "title": "500 Years Later",
+      "year": 2005,
+      "subject": "a",
+      "studio": "Netflix; CodeBlack Entertainment; Halaqah Media; M. K. Asante",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited company Halaqah Media Films (London-based)",
+      "genre": "fail",
+      "wikidata": "Q4639741"
+    },
+    {
+      "title": "Everything Is Illuminated",
+      "year": 2005,
+      "subject": "holocaust",
+      "studio": "Netflix; Big Beach; Warner Independent Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q313659"
+    },
+    {
+      "title": "Slavery and the Making of America",
+      "year": 2005,
+      "subject": "a",
+      "studio": "'a 2004 PBS four-part documentary series… jointly funded by PBS' (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7539248"
+    },
+    {
+      "title": "Amazing Grace",
+      "year": 2006,
+      "subject": "a",
+      "studio": "Paramount Pictures; Netflix; Ingenious Media; Bristol Bay Productions; Walden Media; Roadside Attractions",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB (/movie/28331)",
+      "genre": "fail",
+      "wikidata": "Q456017"
+    },
+    {
+      "title": "Inheritance",
+      "year": 2006,
+      "subject": "holocaust",
+      "studio": "PBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q12125083"
+    },
+    {
+      "title": "Orphans of the Genocide",
+      "year": 2006,
+      "subject": "armenian",
+      "studio": "'shown on PBS' (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q21500187"
+    },
+    {
+      "title": "Screamers",
+      "year": 2006,
+      "subject": "armenian",
+      "studio": "Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q585415"
+    },
+    {
+      "title": "The Armenian Genocide",
+      "year": 2006,
+      "subject": "armenian",
+      "studio": "PBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q2862203"
+    },
+    {
+      "title": "El Cimarrón",
+      "year": 2007,
+      "subject": "a",
+      "studio": "independent/other: IndieFlix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q5351026"
+    },
+    {
+      "title": "Over the River...Life of Lydia Maria Child, Abolitionist for Freedom",
+      "year": 2007,
+      "subject": "a",
+      "studio": "independent: Permanent Productions, Inc. (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q7113516"
+    },
+    {
+      "title": "Comanche Moon",
+      "year": 2008,
+      "subject": "e",
+      "studio": "CBS; Sony Pictures Television; Warner Bros. Television Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q2712569"
+    },
+    {
+      "title": "Defiance",
+      "year": 2008,
+      "subject": "holocaust",
+      "studio": "Edward Zwick; Netflix; Paramount Vantage",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q842094"
+    },
+    {
+      "title": "Meeting David Wilson",
+      "year": 2008,
+      "subject": "a",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q6807879"
+    },
+    {
+      "title": "Prince Among Slaves",
+      "year": 2008,
+      "subject": "a",
+      "studio": "Spark Media",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7243810"
+    },
+    {
+      "title": "The Boy in the Striped Pajamas",
+      "year": 2008,
+      "subject": "holocaust",
+      "studio": "Miramax; BBC Film; Netflix; Fandango; Heyday Films",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB (/movie/28493)",
+      "wikidata": "Q157556"
+    },
+    {
+      "title": "The Reader",
+      "year": 2008,
+      "subject": "holocaust",
+      "studio": "The Weinstein Company; Babelsberg Film GmbH; Budapest Film",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, DE (/movie/30481)",
+      "wikidata": "Q159063"
+    },
+    {
+      "title": "Traces of the Trade: A Story from the Deep North",
+      "year": 2008,
+      "subject": "a",
+      "studio": "'shown on PBS TV' (POV) after Sundance; first US distribution (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q7831193"
+    },
+    {
+      "title": "Inglourious Basterds",
+      "year": 2009,
+      "subject": "holocaust",
+      "studio": "A Band Apart; Universal Pictures; Netflix; UIP-Dunafilm; The Weinstein Company; Babelsberg Studio",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, DE (/movie/32206)",
+      "wikidata": "Q153723"
+    },
+    {
+      "title": "The Courageous Heart of Irena Sendler",
+      "year": 2009,
+      "subject": "holocaust",
+      "studio": "Netflix; CBS",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q24520"
+    },
+    {
+      "title": "Motherland",
+      "year": 2010,
+      "subject": "a",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q6917535"
+    },
+    {
+      "title": "Abraham Lincoln: Vampire Hunter",
+      "year": 2012,
+      "subject": "a",
+      "studio": "RatPac-Dune Entertainment; 20th Century Studios; InterCom; Tim Burton Productions; Disney+; Bazelevs Company",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q587707"
+    },
+    {
+      "title": "Django Unchained",
+      "year": 2012,
+      "subject": "a",
+      "studio": "Columbia Pictures; A Band Apart; Netflix; The Weinstein Company; InterCom",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q571032"
+    },
+    {
+      "title": "Lincoln",
+      "year": 2012,
+      "subject": "a",
+      "studio": "20th Century Studios; Netflix; Amblin Entertainment; DreamWorks; InterCom; The Kennedy/Marshall Company; Reliance Entertainment; Touchstone Pictures;",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q32433"
+    },
+    {
+      "title": "No Place on Earth",
+      "year": 2012,
+      "subject": "holocaust",
+      "studio": "Hulu; Magnolia Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q7044789"
+    },
+    {
+      "title": "12 Years a Slave",
+      "year": 2013,
+      "subject": "a",
+      "studio": "Plan B Entertainment; Netflix; Summit Entertainment; Film4 Productions; ProVideo; InterCom; Regency Enterprises",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB (/movie/43665); consistent with first-credited Regency Enterprises (US), then River Road, Plan B (US), Film4 (UK)",
+      "genre": "pass",
+      "wikidata": "Q3023357"
+    },
+    {
+      "title": "50 Children: The Rescue Mission of Mr. and Mrs. Kraus",
+      "year": 2013,
+      "subject": "holocaust",
+      "studio": "Cable network: HBO",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q17507150"
+    },
+    {
+      "title": "Alone Yet Not Alone",
+      "year": 2013,
+      "subject": "e",
+      "studio": "independent/other: AYNA; Enthuse Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q16159660"
+    },
+    {
+      "title": "Savannah",
+      "year": 2013,
+      "subject": "a",
+      "studio": "Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q15609981"
+    },
+    {
+      "title": "The African Americans: Many Rivers to Cross",
+      "year": 2013,
+      "subject": "a",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q18712094"
+    },
+    {
+      "title": "The Book Thief",
+      "year": 2013,
+      "subject": "holocaust",
+      "studio": "Netflix; 20th Century Studios; InterCom; Disney+",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, DE (/movie/43657)",
+      "wikidata": "Q14511981"
+    },
+    {
+      "title": "The Lady in Number 6",
+      "year": 2013,
+      "subject": "holocaust",
+      "studio": "Netflix",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited Reed Entertainment/Bunbury Films (nationality not established)",
+      "wikidata": "Q15813405"
+    },
+    {
+      "title": "The Retrieval",
+      "year": 2013,
+      "subject": "a",
+      "studio": "Variance Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q27590475"
+    },
+    {
+      "title": "Dracula Untold",
+      "year": 2014,
+      "subject": "e",
+      "studio": "Universal Pictures; Legendary Pictures; Michael De Luca Productions; Netflix; UIP-Dunafilm",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q14512114"
+    },
+    {
+      "title": "Freedom",
+      "year": 2014,
+      "subject": "a",
+      "studio": "independent/other: Production One; ARC Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q21584247"
+    },
+    {
+      "title": "Unearthed and Understood",
+      "year": 2014,
+      "subject": "a",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q19363954"
+    },
+    {
+      "title": "1915",
+      "year": 2015,
+      "subject": "armenian",
+      "studio": "independent/other: Bloodvine Media; Strongman; Bloodvine Media",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q18701759"
+    },
+    {
+      "title": "Child 44",
+      "year": 2015,
+      "subject": "holodomor",
+      "studio": "Summit Entertainment; Netflix; Big Bang Media",
+      "origin": "US co-production",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q13806247"
+    },
+    {
+      "title": "Claude Lanzmann: Spectres of the Shoah",
+      "year": 2015,
+      "subject": "holocaust",
+      "studio": "ZDF; HBO",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE; first-credited Jet Black Iris America (US)",
+      "wikidata": "Q20203028"
+    },
+    {
+      "title": "The Book of Negroes",
+      "year": 2015,
+      "subject": "a",
+      "studio": "CBC Television; Hulu",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "not in LUMIERE (TV); first-credited CBC (Canada) / Conquering Lion Pictures (Canada); Wikipedia country: Canada",
+      "genre": "pass",
+      "wikidata": "Q18890209"
+    },
+    {
+      "title": "The Woman in Gold",
+      "year": 2015,
+      "subject": "holocaust",
+      "studio": "The Weinstein Company; Entertainment Film Distributors; Constantin Film; Origin Pictures; BBC Film",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: GB, US (/movie/63552)",
+      "wikidata": "Q17184103"
+    },
+    {
+      "title": "Armenia, My Love...",
+      "year": 2016,
+      "subject": "armenian",
+      "studio": "no producer, distributor or network in Wikidata or the Wikipedia infobox",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      }
+    },
+    {
+      "title": "Free State of Jones",
+      "year": 2016,
+      "subject": "a",
+      "studio": "STX Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q19730988"
+    },
+    {
+      "title": "Roots",
+      "year": 2016,
+      "subject": "a",
+      "studio": "Warner Bros. Television Studios; Hulu; History",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q22905755"
+    },
+    {
+      "title": "The Birth of a Nation",
+      "year": 2016,
+      "subject": "a",
+      "studio": "Netflix; Searchlight Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q20022670"
+    },
+    {
+      "title": "The North Star",
+      "year": 2016,
+      "subject": "a",
+      "studio": "independent/other: LuckPig Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q61911122"
+    },
+    {
+      "title": "The Promise",
+      "year": 2016,
+      "subject": "armenian",
+      "studio": "Open Road Flims; Vertigo Média",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q20962294"
+    },
+    {
+      "title": "They Shall Not Perish: The Story of Near East Relief",
+      "year": 2016,
+      "subject": "armenian",
+      "studio": "'released on Netflix' 1 Jan 2018 (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q27051275"
+    },
+    {
+      "title": "Underground",
+      "year": 2016,
+      "subject": "a",
+      "studio": "Hulu; Sony Pictures Television; WGN America",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q21968682"
+    },
+    {
+      "title": "Women of 1915",
+      "year": 2016,
+      "subject": "armenian",
+      "studio": "no producer, distributor or network in Wikidata or the Wikipedia infobox",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q26919613"
+    },
+    {
+      "title": "Architects of Denial",
+      "year": 2017,
+      "subject": "armenian",
+      "studio": "Fandango",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q41827903"
+    },
+    {
+      "title": "Intent To Destroy",
+      "year": 2017,
+      "subject": "armenian",
+      "studio": "independent/other: Abramorama",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q59725711"
+    },
+    {
+      "title": "The Son",
+      "year": 2017,
+      "subject": "e",
+      "studio": "AMC; Sonar Entertainment; Hulu; AMC Global Media",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q25205646"
+    },
+    {
+      "title": "The Zookeeper's Wife",
+      "year": 2017,
+      "subject": "holocaust",
+      "studio": "UIP-Dunafilm; Focus Features",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB (/movie/72634)",
+      "wikidata": "Q21528262"
+    },
+    {
+      "title": "Operation Finale",
+      "year": 2018,
+      "subject": "holocaust",
+      "studio": "Metro-Goldwyn-Mayer; Netflix; Annapurna Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q42802162"
+    },
+    {
+      "title": "Harriet",
+      "year": 2019,
+      "subject": "a",
+      "studio": "Focus Features",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q30609465"
+    },
+    {
+      "title": "Jojo Rabbit",
+      "year": 2019,
+      "subject": "holocaust",
+      "studio": "Disney+; HBO Max; Walt Disney Studios Motion Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, NZ, CZ (/movie/85055)",
+      "wikidata": "Q54862508"
+    },
+    {
+      "title": "Sons & Daughters of Thunder",
+      "year": 2019,
+      "subject": "a",
+      "studio": "independent: Fourth Wall Films (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q86753499"
+    },
+    {
+      "title": "The Devil Next Door",
+      "year": 2019,
+      "subject": "holocaust",
+      "studio": "Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q74285789"
+    },
+    {
+      "title": "Antebellum",
+      "year": 2020,
+      "subject": "a",
+      "studio": "Starz Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q63923947"
+    },
+    {
+      "title": "Emperor",
+      "year": 2020,
+      "subject": "a",
+      "studio": "independent/other: Sobini Films; Hudlin Entertainment; Briarcliff Entertainment",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q104862576"
+    },
+    {
+      "title": "Final Account",
+      "year": 2020,
+      "subject": "holocaust",
+      "studio": "Universal: Focus Features (United States); Universal: Universal Pictures (United Kingdom)",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: GB, US (/movie/94549)",
+      "wikidata": "Q104853013"
+    },
+    {
+      "title": "News of the World",
+      "year": 2020,
+      "subject": "e",
+      "studio": "Universal Pictures; Playtone; Perfect World Pictures; Pretty Pictures; Netflix",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q73537408"
+    },
+    {
+      "title": "Resistance",
+      "year": 2020,
+      "subject": "holocaust",
+      "studio": "Warner Bros. Entertainment; IFC Films; Ingenious Media; Bliss Media",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: GB, FR, DE, US (/movie/88817)",
+      "wikidata": "Q60737594"
+    },
+    {
+      "title": "The Good Lord Bird",
+      "year": 2020,
+      "subject": "a",
+      "studio": "Showtime",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q84238429"
+    },
+    {
+      "title": "The Survivor",
+      "year": 2021,
+      "subject": "holocaust",
+      "studio": "USC Shoah Foundation; Bron Studios; HBO Films",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q65079275"
+    },
+    {
+      "title": "The Underground Railroad",
+      "year": 2021,
+      "subject": "a",
+      "studio": "Plan B Entertainment; Amazon Prime Video; Amazon MGM Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q55635599"
+    },
+    {
+      "title": "Alice",
+      "year": 2022,
+      "subject": "a",
+      "studio": "Universal: Universal Pictures (International)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "pending": [
+        "mike_review"
+      ],
+      "wikidata": "Q104863970"
+    },
+    {
+      "title": "Descendant",
+      "year": 2022,
+      "subject": "a",
+      "studio": "Netflix; Higher Ground Productions; Participant",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q115819845"
+    },
+    {
+      "title": "Emancipation",
+      "year": 2022,
+      "subject": "a",
+      "studio": "Apple TV+: Apple Studios; Apple TV+: Apple TV+",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "genre": "pass",
+      "wikidata": "Q107803472"
+    },
+    {
+      "title": "Freedom's Path",
+      "year": 2022,
+      "subject": "a",
+      "studio": "Xenon Pictures",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "pass",
+      "wikidata": "Q116825558"
+    },
+    {
+      "title": "Motherland",
+      "year": 2022,
+      "subject": "armenian",
+      "studio": null,
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "wikidata": "Q118590877"
+    },
+    {
+      "title": "The Zone of Interest",
+      "year": 2023,
+      "subject": "holocaust",
+      "studio": "ADS Service; A24; BAC Films; Access Industries; Film4 Productions; Instytucja Filmowa „Silesia-Film”; Access Entertainment; House Productions",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": false,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: GB, PL (/movie/441933)",
+      "wikidata": "Q115993222"
+    },
+    {
+      "title": "UnBroken",
+      "year": 2023,
+      "subject": "holocaust",
+      "studio": "'premiered on Netflix' 2025 (Wikipedia)",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q123643519"
+    },
+    {
+      "title": "A Real Pain",
+      "year": 2024,
+      "subject": "holocaust",
+      "studio": "Topic Studios; Searchlight Pictures; Walt Disney Studios Motion Pictures",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, PL (/movie/490044)",
+      "wikidata": "Q123690368"
+    },
+    {
+      "title": "Artist at War",
+      "year": 2024,
+      "subject": "holocaust",
+      "studio": "independent/other: Brookwell McNamara Entertainment; Busy Bee Film Production; Iron Image; Republic Pictures; ShowBiz Direct",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "wikidata": "Q135454923"
+    },
+    {
+      "title": "The Commandant's Shadow",
+      "year": 2024,
+      "subject": "holocaust",
+      "studio": "Warner Bros. Pictures; Fathom Entertainment; HBO Documentary Films",
+      "origin": "US co-production",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": false
+      },
+      "coprod_source": "LUMIERE (European Audiovisual Observatory), first-listed country = majority financing: US, GB, IL, PL, DE (/movie/477849)",
+      "wikidata": "Q126189109"
+    },
+    {
+      "title": "We Were the Lucky Ones",
+      "year": 2024,
+      "subject": "holocaust",
+      "studio": "Hulu; Disney+",
+      "origin": "US-only",
+      "rules": {
+        "fd": true,
+        "majority": true,
+        "strict": true
+      },
+      "wikidata": "Q116910342"
+    },
+    {
+      "title": "Holodomor: Minnesota Memories of Genocide in Ukraine",
+      "year": 2025,
+      "subject": "holodomor",
+      "studio": "Minnesota Historical Society",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      }
+    },
+    {
+      "title": "Natchez",
+      "year": 2025,
+      "subject": "a",
+      "studio": "independent/other: ITVS; Gusto Moving Pictures; Oscilloscope",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q134979718"
+    },
+    {
+      "title": "Drummer Boy",
+      "year": 2026,
+      "subject": "a",
+      "studio": "Angel Studios",
+      "origin": "US-only",
+      "rules": {
+        "fd": false,
+        "majority": false,
+        "strict": false
+      },
+      "genre": "fail",
+      "wikidata": "Q141760245"
+    }
+  ]
+}
