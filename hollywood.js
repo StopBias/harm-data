@@ -79,8 +79,10 @@
   function findingHtml() {
     const a = countsOf("a");
     const e = countsOf("e");
-    return `<p class="hv-finding">${esc(t("finding", { a_fd: fmt(a.fd), a_mp: fmt(a.majority), e: fmt(e.fd) }))}</p>
-      <p class="hv-prov-note">${esc(t("provisional_note"))}</p>`;
+    const note = data.provisional
+      ? `\n      <p class="hv-prov-note">${esc(t("provisional_note"))}</p>`
+      : "";
+    return `<p class="hv-finding">${esc(t("finding", { a_fd: fmt(a.fd), a_mp: fmt(a.majority), e: fmt(e.fd) }))}</p>${note}`;
   }
 
   // ---------- Details ----------
@@ -170,7 +172,7 @@
 
   function renderAgreement() {
     const a = data.agreement || {};
-    const both = a.both_agree_provisional || {};
+    const both = a.both_agree || a.both_agree_provisional || {};
     return `<section class="hv-block">
       <h3 class="hv-subh">${esc(t("agreement_h"))}</h3>
       <p class="hv-desc">${esc(t("agreement", {

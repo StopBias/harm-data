@@ -1,14 +1,13 @@
 {
   "version": "6.1",
-  "as_of": "2026-11-20",
-  "source": "hollywood_summary.md v6.1 (20 November 2026, 11:35 PM CST) and titles.csv in the Hollywood working files. Agreement figures from agreement_report.md v6.",
-  "provisional": true,
+  "as_of": "2026-11-22",
+  "source": "hollywood_summary.md v6.1 (20 November 2026, 11:35 PM CST) and titles.csv in the Hollywood working files. Agreement figures from agreement_report.md v6, updated 22 November 2026 after Vera's v6 codes on the five fuller-synopsis titles.",
+  "provisional": false,
   "counts": {
     "a": {
       "fd": 43,
       "majority": 42,
-      "strict": 39,
-      "provisional": true
+      "strict": 39
     },
     "e": {
       "fd": 0,
@@ -37,11 +36,11 @@
     "independent_kappa": 0.94,
     "n": 139,
     "source": "agreement_report.md v6, independent check",
-    "note": "Mike's definitional rulings applied to both coders, using the first coder's labels from before later resolutions. The current-code kappa (0.98) is partly circular because some resolutions adopted the second coder's label. The v3 figure, from before those rulings, was 93.5%, kappa 0.87 (n = 139).",
-    "both_agree_provisional": {
-      "fd": 38,
-      "majority": 37,
-      "strict": 35
+    "note": "Mike's definitional rulings applied to both coders, using the first coder's labels from before later resolutions. After Vera's codes on the five fuller-synopsis titles, current-code agreement is 99.3%, kappa 0.99 (n = 144). The current-code kappa is partly circular because some earlier resolutions adopted the second coder's label. The v3 figure, from before those rulings, was 93.5%, kappa 0.87 (n = 139).",
+    "both_agree": {
+      "fd": 43,
+      "majority": 42,
+      "strict": 39
     }
   },
   "definition": "A slavery film has chattel slavery as a condition or institution as its organizing subject (people held as property, traded, forced labour, escaping or resisting that system). Inclusion is based on the lived experience of enslavement as the core theme. Rescue, search, adventure, romance and abolition-campaign films are excluded. Heritage of the enslavers and the enslaved is inferred from the setting when it is not named in the plot text.",
@@ -153,10 +152,6 @@
         "strict": true
       },
       "genre": "pass",
-      "pending": [
-        "vera_blind",
-        "mike_review"
-      ],
       "wikidata": "Q3549215"
     },
     {
@@ -171,10 +166,6 @@
         "strict": false
       },
       "genre": "pass",
-      "pending": [
-        "vera_blind",
-        "mike_review"
-      ],
       "wikidata": "Q3549217"
     },
     {
@@ -398,9 +389,6 @@
         "strict": false
       },
       "genre": "fail",
-      "pending": [
-        "mike_review"
-      ],
       "wikidata": "Q280470"
     },
     {
@@ -1363,10 +1351,6 @@
         "strict": true
       },
       "genre": "pass",
-      "pending": [
-        "vera_blind",
-        "mike_review"
-      ],
       "wikidata": "Q3549220"
     },
     {
@@ -1754,10 +1738,6 @@
         "strict": true
       },
       "genre": "pass",
-      "pending": [
-        "vera_blind",
-        "mike_review"
-      ],
       "wikidata": "Q2554115"
     },
     {
@@ -1840,10 +1820,6 @@
         "strict": true
       },
       "genre": "pass",
-      "pending": [
-        "vera_blind",
-        "mike_review"
-      ],
       "wikidata": "Q123678766"
     },
     {
@@ -3120,9 +3096,6 @@
         "strict": true
       },
       "genre": "pass",
-      "pending": [
-        "mike_review"
-      ],
       "wikidata": "Q104863970"
     },
     {
