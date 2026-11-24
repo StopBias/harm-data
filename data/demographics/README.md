@@ -36,17 +36,17 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 
 ## Colour scale
 
-The census bands in `scale.bands` are cut on the stored outside-pool change. The tab mirrors them onto founding-share change and keeps each colour on the same countries: red is a larger decline in the founding population’s share (−20 or below), green is a rise or a smaller decline (10+ at the far end). They are **not** the Crime tab’s even 20-point completeness bands, and they are **not** the v1 UN-D bands (0–0.5, 0.5–2, 2–5, 5–10, 10+). The UN proxy uses these same bands. `scale.estimate_bands` remains in the file and is not used for colour.
+`scale.bands` in the data file is the older outside-pool cut and is not what the tab paints. The tab colours the value as shown (census figures to 1 decimal, UN proxy figures to 3) with half-open bands in `demographics-scale.js`:
 
-| Stored band (outside-pool change, pp) | Shown as founding-share change | Colour | Census countries |
-|---|---|---|---:|
-| −10 or below | 10+ | dark green (`#1e8449`) | 5 |
-| −10 to 0 | 0–10 | light green (`#8bc34a`) | 6 |
-| 0–10 | −10 to 0 | yellow (`#f4d03f`) | 6 |
-| 10–20 | −20 to −10 | orange (`#f39c12`) | 5 |
-| 20+ | −20 or below | red (`#e74c3c`) | 3 |
+| Shown change (percentage points) | Colour |
+|---|---|
+| 0 or more | dark green (`#1e8449`) |
+| −1 up to but not including 0 | light green (`#8bc34a`) |
+| −5 up to but not including −1 | yellow (`#f4d03f`) |
+| −15 up to but not including −5 | orange (`#f39c12`) |
+| below −15 | red (`#e74c3c`) |
 
-A starting split of even 20-point steps would collapse almost all of the census scores into one or two colours. The adopted cuts spread the 25 official scores across all five steps.
+A shown 0.000 is treated as 0. Nigeria (0) and India (+0.006) are dark green. China (−0.031) is light green. The same function colours the map and the ranked bars. `scale.estimate_bands` remains in the file and is not used.
 
 ## Grouping views
 

@@ -575,14 +575,14 @@
     "group_founding_AMI": "Todos los países fundados por poblaciones amerindias",
     "group_founding_NAI": "Todos los países fundados por poblaciones indígenas de América del Norte",
     "map_h": "Cambio por país",
-    "map_desc": "El rojo indica un descenso mayor de la proporción de la población fundadora. El verde indica un aumento o un descenso menor. Donde un país no publica datos de etnicidad, los mismos colores muestran un proxy de la ONU sobre el origen de los migrantes.",
+    "map_desc": "El verde oscuro indica que no hay cambio, o que hay un aumento, en la proporción de la población fundadora. Una caída de menos de 1 punto es verde claro. Las caídas mayores pasan por amarillo y naranja hasta el rojo. Donde un país no publica datos de etnicidad, los mismos colores muestran un proxy de la ONU sobre el origen de los migrantes.",
     "legend_title": "Cambio en la proporción de la población fundadora desde el censo de referencia",
     "legend_most": "Descenso mayor",
-    "legend_least": "Aumento o descenso menor",
+    "legend_least": "Sin cambio o un aumento",
     "legend_no_score": "Sin puntuación en este conjunto de datos",
     "legend_out_of_group": "Fuera de este grupo",
     "band_label": "{from}–{to}%",
-    "scale_note": "Las bandas, como cambio en la proporción de la población fundadora, son −20 o menos, −20 a −10, −10 a 0, 0–10 y 10+. No son los tramos de 20 puntos de la pestaña de Delito ni el índice de disimilitud de la ONU. Los valores negativos significan que bajó la proporción de la población fundadora. Las mismas bandas colorean el proxy de la ONU.",
+    "scale_note": "Las bandas usan el valor tal como se muestra y no se solapan. 0 o más es verde oscuro. De −1 hasta justo antes de 0 es verde claro. De −5 hasta justo antes de −1 es amarillo. De −15 hasta justo antes de −5 es naranja. Por debajo de −15 es rojo. No son los tramos de la pestaña de Delito ni el índice de disimilitud de la ONU. Los mismos colores se usan para el proxy de la ONU.",
     "tooltip_score": "Índice de disimilitud: {score}",
     "tooltip_quality": "Calidad {quality}",
     "bar_h": "Países ordenados por cambio en la proporción de la población fundadora desde el censo de referencia",
@@ -669,6 +669,11 @@
     "tooltip_proxy": "{score}, 1990–2020. Estimación de la ONU: cambio en la proporción de residentes nacidos en otro país cuyo origen difiere de la población fundadora del país (por ejemplo, alguien nacido en la India que vive en Canadá). Quienes nacieron en el país se cuentan como población fundadora, así que esto es un límite inferior; cuando existen ambos, el cambio censal suele ser mucho mayor (Canadá: censo -27,8 frente a estimación de la ONU -9,5 puntos).",
     "selected_proxy": "{score}, 1990–2020. Estimación de la ONU: cambio en la proporción de residentes nacidos en otro país cuyo origen difiere de la población fundadora del país (por ejemplo, alguien nacido en la India que vive en Canadá). Quienes nacieron en el país se cuentan como población fundadora, así que esto es un límite inferior; cuando existen ambos, el cambio censal suele ser mucho mayor (Canadá: censo -27,8 frente a estimación de la ONU -9,5 puntos).",
     "selected_d_line": "Índice de disimilitud D de la ONU, 1990–2020: {d}.",
-    "legend_proxy_note": "Estimación de la ONU: cambio en la proporción de residentes nacidos en otro país cuyo origen difiere de la población fundadora del país (por ejemplo, alguien nacido en la India que vive en Canadá). Quienes nacieron en el país se cuentan como población fundadora, así que esto es un límite inferior; cuando existen ambos, el cambio censal suele ser mucho mayor (Canadá: censo -27,8 frente a estimación de la ONU -9,5 puntos)."
+    "legend_proxy_note": "Estimación de la ONU: cambio en la proporción de residentes nacidos en otro país cuyo origen difiere de la población fundadora del país (por ejemplo, alguien nacido en la India que vive en Canadá). Quienes nacieron en el país se cuentan como población fundadora, así que esto es un límite inferior; cuando existen ambos, el cambio censal suele ser mucho mayor (Canadá: censo -27,8 frente a estimación de la ONU -9,5 puntos).",
+    "band_gain": "0 o más",
+    "band_near": "−1 hasta justo antes de 0",
+    "band_yellow": "−5 hasta justo antes de −1",
+    "band_orange": "−15 hasta justo antes de −5",
+    "band_red": "por debajo de −15"
   }
 }

@@ -576,14 +576,14 @@
     "group_founding_AMI": "Alla länder grundade av amerindiska befolkningar",
     "group_founding_NAI": "Alla länder grundade av nordamerikanska urfolk",
     "map_h": "Förändring per land",
-    "map_desc": "Rött innebär en större minskning av grundarpopulationens andel. Grönt innebär en ökning eller en mindre minskning. Där ett land inte publicerar etnicitetsuppgifter visar samma färger en FN-proxy för migranters ursprung.",
+    "map_desc": "Mörkgrönt betyder ingen förändring, eller en ökning, av grundarpopulationens andel. En minskning på mindre än 1 poäng är ljusgrön. Större minskningar går genom gult och orange till rött. Där ett land inte publicerar etnicitetsuppgifter visar samma färger en FN-proxy för migranters ursprung.",
     "legend_title": "Förändring av grundarpopulationens andel sedan utgångsfolkräkningen",
     "legend_most": "Större minskning",
-    "legend_least": "Ökning eller mindre minskning",
+    "legend_least": "Ingen förändring eller en ökning",
     "legend_no_score": "Inget värde i det här datasetet",
     "legend_out_of_group": "Utanför den här gruppen",
     "band_label": "{from}–{to}%",
-    "scale_note": "Stegen, som förändring i grundarpopulationens andel, är −20 eller lägre, −20 till −10, −10 till 0, 0–10 och 10+. De är inte brottsflikens 20-poängssteg och inte FN:s olikhetsindex. Negativa värden betyder att grundarpopulationens andel sjönk. Samma steg färglägger FN-proxyn.",
+    "scale_note": "Stegen använder det visade värdet och överlappar inte. 0 eller mer är mörkgrönt. −1 upp till men inte inklusive 0 är ljusgrönt. −5 upp till men inte inklusive −1 är gult. −15 upp till men inte inklusive −5 är orange. Under −15 är rött. De är inte brottsflikens steg och inte FN:s olikhetsindex. Samma färger används för FN-proxyn.",
     "tooltip_score": "Olikahetsindex: {score}",
     "tooltip_quality": "Kvalitet {quality}",
     "bar_h": "Länder rangordnade efter förändring av grundarpopulationens andel sedan utgångsfolkräkningen",
@@ -670,6 +670,11 @@
     "tooltip_proxy": "{score}, 1990–2020. FN-skattning: förändringen i andelen invånare födda i ett annat land vars ursprung skiljer sig från landets grundarpopulation (till exempel någon född i Indien som bor i Kanada). Personer födda i landet räknas som grundarpopulation, så detta är en nedre gräns; där båda finns är folkräkningsförändringen oftast mycket större (Kanada: folkräkning -27,8 mot FN-skattning -9,5 punkter).",
     "selected_proxy": "{score}, 1990–2020. FN-skattning: förändringen i andelen invånare födda i ett annat land vars ursprung skiljer sig från landets grundarpopulation (till exempel någon född i Indien som bor i Kanada). Personer födda i landet räknas som grundarpopulation, så detta är en nedre gräns; där båda finns är folkräkningsförändringen oftast mycket större (Kanada: folkräkning -27,8 mot FN-skattning -9,5 punkter).",
     "selected_d_line": "FN:s olikhetsindex D, 1990–2020: {d}.",
-    "legend_proxy_note": "FN-skattning: förändringen i andelen invånare födda i ett annat land vars ursprung skiljer sig från landets grundarpopulation (till exempel någon född i Indien som bor i Kanada). Personer födda i landet räknas som grundarpopulation, så detta är en nedre gräns; där båda finns är folkräkningsförändringen oftast mycket större (Kanada: folkräkning -27,8 mot FN-skattning -9,5 punkter)."
+    "legend_proxy_note": "FN-skattning: förändringen i andelen invånare födda i ett annat land vars ursprung skiljer sig från landets grundarpopulation (till exempel någon född i Indien som bor i Kanada). Personer födda i landet räknas som grundarpopulation, så detta är en nedre gräns; där båda finns är folkräkningsförändringen oftast mycket större (Kanada: folkräkning -27,8 mot FN-skattning -9,5 punkter).",
+    "band_gain": "0 eller mer",
+    "band_near": "−1 till strax under 0",
+    "band_yellow": "−5 till strax under −1",
+    "band_orange": "−15 till strax under −5",
+    "band_red": "under −15"
   }
 }

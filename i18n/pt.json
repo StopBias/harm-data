@@ -568,14 +568,14 @@
     "group_founding_AMI": "Todos os países fundados por populações ameríndias",
     "group_founding_NAI": "Todos os países fundados por populações indígenas da América do Norte",
     "map_h": "Mudança por país",
-    "map_desc": "O vermelho indica uma descida maior da parcela da população fundadora. O verde indica uma subida ou uma descida menor. Onde um país não publica dados de etnicidade, as mesmas cores mostram um proxy da ONU sobre a origem dos migrantes.",
+    "map_desc": "Verde escuro significa nenhuma mudança, ou uma subida, na parcela da população fundadora. Uma descida de menos de 1 ponto é verde claro. Descidas maiores passam pelo amarelo e pelo laranja até ao vermelho. Onde um país não publica dados de etnicidade, as mesmas cores mostram um proxy da ONU sobre a origem dos migrantes.",
     "legend_title": "Mudança na parcela da população fundadora desde o censo de referência",
     "legend_most": "Descida maior",
-    "legend_least": "Subida ou descida menor",
+    "legend_least": "Sem mudança ou uma subida",
     "legend_no_score": "Sem pontuação neste conjunto de dados",
     "legend_out_of_group": "Fora deste grupo",
     "band_label": "{from}–{to}%",
-    "scale_note": "As faixas, como mudança na parcela da população fundadora, são −20 ou abaixo, −20 a −10, −10 a 0, 0–10 e 10+. Não são os intervalos de 20 pontos do separador de Crime nem o índice de dissimilaridade da ONU. Valores negativos significam que a parcela da população fundadora desceu. As mesmas faixas colorem o proxy da ONU.",
+    "scale_note": "As faixas usam o valor tal como é mostrado e não se sobrepõem. 0 ou mais é verde escuro. De −1 até imediatamente abaixo de 0 é verde claro. De −5 até imediatamente abaixo de −1 é amarelo. De −15 até imediatamente abaixo de −5 é laranja. Abaixo de −15 é vermelho. Não são os intervalos do separador de Crime nem o índice de dissimilaridade da ONU. As mesmas cores servem para o proxy da ONU.",
     "tooltip_score": "Índice de dissimilaridade: {score}",
     "tooltip_quality": "Qualidade {quality}",
     "bar_h": "Países ordenados por mudança na parcela da população fundadora desde o censo de referência",
@@ -662,6 +662,11 @@
     "tooltip_proxy": "{score}, 1990–2020. Estimativa da ONU: mudança na parcela de residentes nascidos noutro país cuja origem difere da população fundadora do país (por exemplo, alguém nascido na Índia a viver no Canadá). As pessoas nascidas no país contam como população fundadora, por isso isto é um limite inferior; onde existem ambos, a mudança do censo é em geral muito maior (Canadá: censo -27,8 contra estimativa da ONU -9,5 pontos).",
     "selected_proxy": "{score}, 1990–2020. Estimativa da ONU: mudança na parcela de residentes nascidos noutro país cuja origem difere da população fundadora do país (por exemplo, alguém nascido na Índia a viver no Canadá). As pessoas nascidas no país contam como população fundadora, por isso isto é um limite inferior; onde existem ambos, a mudança do censo é em geral muito maior (Canadá: censo -27,8 contra estimativa da ONU -9,5 pontos).",
     "selected_d_line": "Índice de dissimilaridade D da ONU, 1990–2020: {d}.",
-    "legend_proxy_note": "Estimativa da ONU: mudança na parcela de residentes nascidos noutro país cuja origem difere da população fundadora do país (por exemplo, alguém nascido na Índia a viver no Canadá). As pessoas nascidas no país contam como população fundadora, por isso isto é um limite inferior; onde existem ambos, a mudança do censo é em geral muito maior (Canadá: censo -27,8 contra estimativa da ONU -9,5 pontos)."
+    "legend_proxy_note": "Estimativa da ONU: mudança na parcela de residentes nascidos noutro país cuja origem difere da população fundadora do país (por exemplo, alguém nascido na Índia a viver no Canadá). As pessoas nascidas no país contam como população fundadora, por isso isto é um limite inferior; onde existem ambos, a mudança do censo é em geral muito maior (Canadá: censo -27,8 contra estimativa da ONU -9,5 pontos).",
+    "band_gain": "0 ou mais",
+    "band_near": "−1 até imediatamente abaixo de 0",
+    "band_yellow": "−5 até imediatamente abaixo de −1",
+    "band_orange": "−15 até imediatamente abaixo de −5",
+    "band_red": "abaixo de −15"
   }
 }

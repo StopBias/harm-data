@@ -428,6 +428,9 @@
     mapNote.textContent = text;
     mapNote.hidden = false;
     placeMapNote();
+    requestAnimationFrame(function () {
+      if (typeof window.refitWorldIfMin === "function") window.refitWorldIfMin();
+    });
   }
 
   function mediaTooltipHtml(iso, name) {
