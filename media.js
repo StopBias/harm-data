@@ -991,7 +991,7 @@
       const flip = state.label === "antiblack";
       return window.HarmMap.colorForL(flip ? -2 : 2);
     }
-    return state.label === "antiblack" ? "#6e0cdf" : "#0cc0df";
+    return state.label === "antiblack" ? "#a455fe" : "#0cc0df";
   }
 
   function renderLegend() {
