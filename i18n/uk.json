@@ -712,6 +712,14 @@
     "band_near": "−1 до значення безпосередньо менше 0",
     "band_yellow": "−5 до значення безпосередньо менше −1",
     "band_orange": "−15 до значення безпосередньо менше −5",
-    "band_red": "нижче −15"
+    "band_red": "нижче −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

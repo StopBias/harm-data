@@ -51,15 +51,18 @@ assertEqual(id(-15.1, 1), "dark", "census -15.1");
 assertEqual(id(-27.8, 1), "dark", "census -27.8");
 
 var labels = JSON.parse(fs.readFileSync("i18n/en.json", "utf8")).demographics;
-assertEqual(labels.band_little, "Stable or growing", "green legend name");
+assertEqual(labels.band_little, "Stable", "green legend name");
 assertEqual(labels.band_little_range, "(\u22121 pp or more)", "green legend range");
-assertEqual(labels.band_light, "Mildly endangered", "light red legend name");
+assertEqual(labels.band_light, "Declining", "light red legend name");
 assertEqual(labels.band_light_range, "(\u22125 up to but not including \u22121 pp)", "light red legend range");
-assertEqual(labels.band_medium, "Endangered", "mid red legend name");
+assertEqual(labels.band_medium, "Strongly declining", "mid red legend name");
 assertEqual(labels.band_medium_range, "(\u221215 up to but not including \u22125 pp)", "mid red legend range");
-assertEqual(labels.band_dark, "Highly endangered", "bright red legend name");
+assertEqual(labels.band_dark, "Very strongly declining", "bright red legend name");
 assertEqual(labels.band_dark_range, "(below \u221215 pp)", "bright red legend range");
-assertEqual(labels.key_stable, "Stable or growing", "title key name");
+assertEqual(labels.key_stable, "Stable", "title key name");
+assertEqual(labels.key_mild, "Declining", "light red key name");
+assertEqual(labels.key_endangered, "Strongly declining", "mid red key name");
+assertEqual(labels.key_high, "Very strongly declining", "bright red key name");
 assertEqual(labels.key_colour_green, "green", "title key colour is accessibility text only");
 assertEqual(labels.map_desc, "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.", "title paragraph");
 assertEqual(labels.map_desc.indexOf("\u2212") === -1, true, "title paragraph has no numeric range");
@@ -70,6 +73,9 @@ locales.forEach(function (name) {
   var copy = JSON.parse(fs.readFileSync("i18n/" + name, "utf8")).demographics;
   assertEqual(copy.map_desc, labels.map_desc, name + " map_desc");
   assertEqual(copy.scale_note.indexOf("\u2212") === -1, true, name + " scale_note has no numeric range");
+  ["band_little", "band_light", "band_medium", "band_dark", "key_stable", "key_mild", "key_endangered", "key_high"].forEach(function (key) {
+    assertEqual(copy[key], labels[key], name + " " + key);
+  });
 });
 var demoJs = fs.readFileSync("demographics.js", "utf8");
 assertEqual(demoJs.indexOf("(${esc(t(b.keyColour))})") === -1, true, "title key does not print the colour word");

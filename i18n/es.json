@@ -674,6 +674,14 @@
     "band_near": "−1 hasta justo antes de 0",
     "band_yellow": "−5 hasta justo antes de −1",
     "band_orange": "−15 hasta justo antes de −5",
-    "band_red": "por debajo de −15"
+    "band_red": "por debajo de −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

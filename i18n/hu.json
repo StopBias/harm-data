@@ -675,6 +675,14 @@
     "band_near": "−1-től közvetlenül 0 alattig",
     "band_yellow": "−5-től közvetlenül −1 alattig",
     "band_orange": "−15-től közvetlenül −5 alattig",
-    "band_red": "−15 alatt"
+    "band_red": "−15 alatt",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

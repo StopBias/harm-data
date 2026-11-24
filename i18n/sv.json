@@ -675,6 +675,14 @@
     "band_near": "−1 till strax under 0",
     "band_yellow": "−5 till strax under −1",
     "band_orange": "−15 till strax under −5",
-    "band_red": "under −15"
+    "band_red": "under −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }
