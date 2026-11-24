@@ -296,6 +296,11 @@
       pointer-events: none;
     }
     .country-tooltip .maplibregl-popup-tip { display: none; }
+    /* Hover cards paint above the legend (2), view buttons and notes (3), and zoom controls (4)
+       on the Crime, Media, and Demographics maps. The popup lives inside the map, and the legend
+       is a later sibling with its own z-index, so the card needs an explicit level. */
+    .map-wrap .country-tooltip,
+    .dv-map-wrap .country-tooltip { z-index: 6; }
     .tt-title { font-weight: 600; margin-bottom: 2px; }
     .tt-status { display: flex; align-items: center; gap: 6px; color: var(--muted); }
 
@@ -660,6 +665,7 @@
         <p>Around the world, ethnic European children (commonly called “White”) are being made vulnerable to physical and psychological harm by incomplete and distorted interracial crime data from governments, and by biased media coverage that inverts the reality of interracial crime rates.</p>
         <p>The Ethnic Bias Data Explorer shows what data we currently have, what it shows, where the gaps are, and where the biases lie in government statistics and in media reporting.</p>
         <p>The Ethnic Bias Data Explorer reveals the need for better data so that we can protect children from harm, make better decisions as individuals informed by accurate media, and have governments that provide and use accurate interracial crime data.</p>
+        <p>The Crime tab scores ethnic data completeness from 0 to 100. Heritage is 75 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10 points, rates 7.5 and access 7.5. Neglect is not scored. The five harms are weighted homicide 27.78%, sexual abuse 22.22%, sex trafficking 22.22%, physical abuse 16.67% and online exploitation 11.11%. A proxy such as nationality, and a published “White” category that merges Hispanic people, cannot earn full heritage marks. A country with no real ethnicity data is capped at 25%.</p>
         <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of antiwhite bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
         <!-- Social media links will be added here once handles are provided. -->
       </div>
@@ -678,8 +684,10 @@
   <script src="media.js" defer></script>
   <script src="hollywood.js" defer></script>
   <script src="demographics-scale.js" defer></script>
+  <script src="demographics-supplements.js" defer></script>
   <script src="demographics.js" defer></script>
   <script src="map-controls.js"></script>
+  <script src="crime-menu.js"></script>
 
   <script>
 
@@ -1135,31 +1143,31 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 54,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 14,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for homicide and other violent crime; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
       },
       GBR: {
-        completeness: 53,   // overwritten by data/gbr.json when it loads
+        completeness: 14,   // overwritten by data/gbr.json when it loads
         note: "England and Wales publish victim ethnicity for child protection and homicide, and offender ethnicity for court convictions, splitting White British from other White groups. Police records of child sexual abuse miss ethnicity for about two-thirds of cases, and no source identifies ethnic Europeans. Details below the map."
       },
       DEU: {
-        completeness: 25,   // overwritten by data/deu.json when it loads
-        note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, so the score is capped at 25%. Details below the map."
+        completeness: 16,   // overwritten by data/deu.json when it loads
+        note: "Police publish child victims and suspects of sexual abuse, maltreatment and homicide by nationality every year, and child-protection data record whether a parent comes from abroad. These are proxies: Germany never records ethnicity, and no published cross-table records child victim and offender heritage for the same cases, so heritage points are 0. Details below the map."
       },
       CAN: {
-        completeness: 25,   // overwritten by data/can.json when it loads
+        completeness: 13,   // overwritten by data/can.json when it loads
         note: "Police report the racialized and Indigenous identity of homicide victims and accused, but no other police-reported crime carries race or Indigenous identity yet. Official categories never separately identify White or ethnic European people. Details below the map."
       },
       FRA: {
-        completeness: 24,   // overwritten by data/fra.json when it loads
+        completeness: 15,   // overwritten by data/fra.json when it loads
         note: "France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality. These are proxies: no source identifies ethnic Europeans. Details below the map."
       },
       AUS: {
-        completeness: 20,   // overwritten by data/aus.json when it loads
+        completeness: 12,   // overwritten by data/aus.json when it loads
         note: "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, often with official rates, but everyone else is counted as 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police Indigenous victim data cover only some states. Details below the map."
       },
       NZL: {
-        completeness: 41,   // overwritten by data/nzl.json when it loads
+        completeness: 13,   // overwritten by data/nzl.json when it loads
         note: "New Zealand Police publish child sexual assault, child assault, abuse-material and grooming victims, and the people proceeded against, by ethnicity every month, with European separate from Māori, Pacific and Asian people. It is the only country reviewed so far whose official crime data separately identify ethnic European victims and offenders. Details below the map."
       },
       ZAF: {
@@ -1167,59 +1175,59 @@
         note: "South Africa's police publish counts of crimes against children with no population group for victims or suspects. Death notifications record population group, including White, but child homicide by population group is not published in the main release. Details below the map."
       },
       ITA: {
-        completeness: 24,  // overwritten by data/ita.json when it loads
+        completeness: 14,  // overwritten by data/ita.json when it loads
         note: "Italy does not collect ethnic statistics. ISTAT and the Interior Ministry split girls who are victims of sexual violence and maltreatment, child homicide victims and authors of offences against children by Italian or foreign citizenship. These are proxies: no source identifies ethnic Europeans. Details below the map."
       },
       ESP: {
-        completeness: 21,  // overwritten by data/esp.json when it loads
+        completeness: 13,  // overwritten by data/esp.json when it loads
         note: "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences by nationality and continent, and people detained by nationality for all victims. These are proxies: no source identifies ethnic Europeans. Details below the map."
       },
       POL: {
-        completeness: 9,   // overwritten by data/pol.json when it loads
+        completeness: 8,   // overwritten by data/pol.json when it loads
         note: "Poland's police and justice statistics on crimes against children give no nationality or origin of victims or suspects. Only trafficking victims are published by citizenship. Details below the map."
       },
       NLD: {
-        completeness: 16,  // overwritten by data/nld.json when it loads
+        completeness: 12,  // overwritten by data/nld.json when it loads
         note: "Statistics Netherlands publishes suspects of sexual and violent crimes by nationality and by country of birth, with rates, but never for crimes against children, and no source gives the origin of child victims. These are proxies. Details below the map."
       },
       SWE: {
-        completeness: 13,  // overwritten by data/swe.json when it loads
+        completeness: 9,  // overwritten by data/swe.json when it loads
         note: "Sweden's crime agency publishes a school survey of 15-year-olds' victimisation by migration background and a one-off study of suspects by background (2015-2018). These are proxies: no source identifies ethnic Europeans. Details below the map."
       },
       IRL: {
-        completeness: 12,  // overwritten by data/irl.json when it loads
+        completeness: 9,  // overwritten by data/irl.json when it loads
         note: "Ireland's statistics office surveyed adults on childhood sexual violence by ethnic background, with White Irish separate, but crime, child-protection and homicide statistics publish no ethnicity or nationality. Trafficking victims are given only by source country. Details below the map."
       },
       BEL: {
-        completeness: 7,  // overwritten by data/bel.json when it loads
+        completeness: 6,  // overwritten by data/bel.json when it loads
         note: "Belgium publishes police counts of sexual offences against minors but no nationality or origin of child victims or offenders for any harm. Only supported trafficking victims are given by nationality. Details below the map."
       },
       AUT: {
-        completeness: 14,  // overwritten by data/aut.json when it loads
+        completeness: 10,  // overwritten by data/aut.json when it loads
         note: "Austria's court statistics give the share of convictions for child sexual abuse and abuse material by Austrian citizens, and police list trafficking victims' nationalities. Police data on child victims have no origin. These are proxies. Details below the map."
       },
       CHE: {
-        completeness: 25,  // overwritten by data/che.json when it loads
+        completeness: 15,  // overwritten by data/che.json when it loads
         note: "Switzerland publishes child victims and accused of sexual acts with children by nationality and residence status every year, with child assault rates by nationality group. These are proxies: Switzerland never records ethnicity. Details below the map."
       },
       PRT: {
-        completeness: 13,  // overwritten by data/prt.json when it loads
+        completeness: 10,  // overwritten by data/prt.json when it loads
         note: "Portugal's police and court statistics on crimes against children give no nationality. Child-protection commissions give children with a measure by nationality, and prison statistics give prisoners by nationality and crime. These are proxies. Details below the map."
       },
       DNK: {
-        completeness: 20,  // overwritten by data/dnk.json when it loads
+        completeness: 14,  // overwritten by data/dnk.json when it loads
         note: "Denmark publishes convictions every year by herkomst (Danish origin; Western and non-Western immigrants and descendants) and country of origin, including sexual offences against children, and a homicide study links victim and perpetrator herkomst. Herkomst is a birth-country proxy and child victims are not published by it. Details below the map."
       },
       NOR: {
-        completeness: 22,  // overwritten by data/nor.json when it loads
+        completeness: 13,  // overwritten by data/nor.json when it loads
         note: "Norway has published child victims of reported sexual offences and maltreatment by immigrant background with rates, charges by immigrant background, and child-welfare measures every year by immigrant category. These are birth-country proxies, and the third generation counts as 'rest of the population'. Details below the map."
       },
       FIN: {
-        completeness: 25,  // overwritten by data/fin.json when it loads
-        note: "Finland publishes child victims of sexual, violent and abuse-material offences by origin every year, and suspects by origin and background-country region with rates. Origin is based on parents' country of birth, a proxy, so the score is capped at 25%. Details below the map."
+        completeness: 15,  // overwritten by data/fin.json when it loads
+        note: "Finland publishes child victims of sexual, violent and abuse-material offences by origin every year, and suspects by origin and background-country region with rates. Origin is based on parents' country of birth, a proxy, and no published cross-table records child victim and offender heritage for the same cases, so heritage points are 0. Details below the map."
       },
       ISL: {
-        completeness: 8,   // overwritten by data/isl.json when it loads
+        completeness: 7,   // overwritten by data/isl.json when it loads
         note: "Iceland's only origin variable is a police dashboard splitting suspects into Icelandic and foreign citizens for all victims. No child victims are published by citizenship or origin. Details below the map."
       },
       RUS: {
@@ -1227,55 +1235,55 @@
         note: "Rosstat, the Interior Ministry and the courts' statistics could not be reached from our server and were not worked around. The Prosecutor General's dashboard gives only all-offence counts of crimes by foreign citizens, to 2022. Details below the map."
       },
       UKR: {
-        completeness: 12,  // overwritten by data/ukr.json when it loads
+        completeness: 9,  // overwritten by data/ukr.json when it loads
         note: "Ukraine's Prosecutor General publishes every identified suspect's citizenship by offence, including offences against children, but child victims by citizenship only as one all-offence total. Citizenship is a proxy; occupied territories are excluded. Details below the map."
       },
       ROU: {
-        completeness: 8,   // overwritten by data/rou.json when it loads
+        completeness: 6,   // overwritten by data/rou.json when it loads
         note: "Romania's only origin data are ANITP's open records of trafficking victims, with each child's citizenship. Police, prosecution and child-protection statistics publish no citizenship or ethnicity; the census's Roma data are never linked to crime records. Details below the map."
       },
       CZE: {
-        completeness: 11,  // overwritten by data/cze.json when it loads
+        completeness: 8,  // overwritten by data/cze.json when it loads
         note: "Czech police publish, for every offence, how many cleared offences were committed by foreigners, including sexual abuse of a child and child pornography. A Czech/foreign proxy for perpetrators only; no victims by citizenship. Details below the map."
       },
       HUN: {
-        completeness: 9,   // overwritten by data/hun.json when it loads
+        completeness: 7,   // overwritten by data/hun.json when it loads
         note: "Hungary's prosecutors publish offences committed by foreign citizens for each offence type, including endangering a minor and child pornography. Victims have no citizenship, and the census's Roma and nationality data are never linked to crime records. Details below the map."
       },
       HRV: {
-        completeness: 16,   // overwritten by data/hrv.json when it loads
+        completeness: 10,   // overwritten by data/hrv.json when it loads
         note: "Croatia's Interior Ministry publishes victims and perpetrators of each offence, including child sexual abuse and child pornography, with a count of foreign citizens. Citizenship only; national minorities are never recorded in crime data. Details below the map."
       },
       SRB: {
-        completeness: 13,   // overwritten by data/srb.json when it loads
+        completeness: 9,   // overwritten by data/srb.json when it loads
         note: "Serbia publishes convicted adults by self-declared national affiliation (Serb, Roma, Hungarian and others): real ethnicity data, but perpetrators only, by broad offence chapter, unknown for almost half. Victims have no nationality. Details below the map."
       },
       SVK: {
-        completeness: 11,   // overwritten by data/svk.json when it loads
+        completeness: 9,   // overwritten by data/svk.json when it loads
         note: "Slovak police publish offenders by citizenship only for broad crime groups, and child victims without citizenship. Roma identity is never recorded in crime data. Details below the map."
       },
       GRC: {
-        completeness: 11,   // overwritten by data/grc.json when it loads
+        completeness: 9,   // overwritten by data/grc.json when it loads
         note: "The Hellenic Police yearbook gives known offenders of each offence by Greek or foreign citizenship, with no victim or child-specific tables; child trafficking victims are reported by country of origin. Details below the map."
       },
       BGR: {
-        completeness: 11,   // overwritten by data/bgr.json when it loads
+        completeness: 9,   // overwritten by data/bgr.json when it loads
         note: "Bulgaria's statistics institute publishes convicted persons by citizenship per offence and child victims without citizenship. Roma identity is recorded only in the census, never in crime data. Details below the map."
       },
       EST: {
-        completeness: 10,   // overwritten by data/est.json when it loads
+        completeness: 9,   // overwritten by data/est.json when it loads
         note: "Estonian police statistics give no citizenship for offences against children. The only group split is a school survey by questionnaire language (Estonian or Russian), a language proxy, not ethnicity. Details below the map."
       },
       LVA: {
-        completeness: 10,   // overwritten by data/lva.json when it loads
+        completeness: 9,   // overwritten by data/lva.json when it loads
         note: "Latvia's Interior Ministry reports the share of foreign citizens among suspects of sexual offences against minors, and trafficking victims by citizenship. Ethnicity, including the large Russian minority, is not recorded in crime data. Details below the map."
       },
       LTU: {
-        completeness: 11,   // overwritten by data/ltu.json when it loads
+        completeness: 9,   // overwritten by data/ltu.json when it loads
         note: "Lithuania's crime register gives citizenship of victims and suspects only for all offences together; the trafficking review splits victims and suspects by citizenship. Ethnicity is not recorded in crime data. Details below the map."
       },
       SVN: {
-        completeness: 12,   // overwritten by data/svn.json when it loads
+        completeness: 9,   // overwritten by data/svn.json when it loads
         note: "Slovenia's statistics office publishes convicted adults by citizenship (Slovenian, other EU, non-EU) for each offence, including sexual assault on a child and child pornography; trafficking victims are listed by citizenship. Citizenship only. Details below the map."
       },
       BLR: {
@@ -1283,15 +1291,15 @@
         note: "No official Belarusian child-harm data could be reached: the statistics, police, prosecutor and court sites did not respond from our server. Details below the map."
       },
       MDA: {
-        completeness: 9,   // overwritten by data/mda.json when it loads
+        completeness: 8,   // overwritten by data/mda.json when it loads
         note: "Moldova gives offenders by citizenship only for all offences together, and child and trafficking victims without citizenship. Ethnicity is recorded in the census but not in crime data. Details below the map."
       },
       BIH: {
-        completeness: 9,   // overwritten by data/bih.json when it loads
+        completeness: 8,   // overwritten by data/bih.json when it loads
         note: "Bosnia and Herzegovina's Ministry of Security reports the ethnicity (Bosniak, Serb, other) and citizenship of victims in OSCE-monitored trafficking cases, all ages together. The entity statistics offices publish no ethnicity or citizenship for other harms. Details below the map."
       },
       MKD: {
-        completeness: 14,   // overwritten by data/mkd.json when it loads
+        completeness: 9,   // overwritten by data/mkd.json when it loads
         note: "North Macedonia publishes reported adult perpetrators of every Criminal Code chapter by ethnic affiliation (Macedonian, Albanian, Turkish, Roma and others): real ethnicity data, but perpetrators only, by broad chapter. Child victims have no ethnicity. Details below the map."
       },
       ALB: {
@@ -1956,56 +1964,21 @@
     // Prefer the explicit harms[].availability map when present:
     //   { victims:[], perpetrators:[], by_measure:{ share:{victims,perpetrators}, rate:{...}, linked:{...} }, linked_pairs:[] }
     // Older files may use victim_groups / perpetrator_groups / measures. If nothing is listed, derive from the figures.
-    function explicitList(harm, who) {
-      const a = harm.availability;
-      if (!a) return null;
-      const key = who === "victims" ? "victims" : "perpetrators";
-      const old = who === "victims" ? "victim_groups" : "perpetrator_groups";
-      if (Array.isArray(a[key])) return a[key];
-      if (Array.isArray(a[old])) return a[old];
-      return null;
-    }
-    function listedIds(list) {
-      const set = new Set(["all", ...(list || [])]);
-      return D.groups.filter(g => set.has(g.id)).map(g => g.id);
-    }
+    // Share also includes linked cross-table groups (crime-menu.js). The US teen table
+    // lists White, Black and Hispanic only under "linked", and UK homicide "unknown"
+    // is a cross-table column missing from the one-sided share list.
     function baseGroups(harm, who, measure) {
-      const a = harm.availability;
-      const m = measure || null;
-      if (m && a && a.by_measure && a.by_measure[m] && Array.isArray(a.by_measure[m][who])) {
-        return listedIds(a.by_measure[m][who]);
-      }
-      const listed = explicitList(harm, who);
-      if (listed) return listedIds(listed);
-      return D.groups.filter(g => groupHasData(harm, who, g.id)).map(g => g.id);
+      return CrimeMenu.baseGroupIds(D.groups, harm, who, measure, groupHasData);
     }
     function pairIsLinked(harm, v, p) {
-      const pairs = harm.availability && Array.isArray(harm.availability.linked_pairs) ? harm.availability.linked_pairs : null;
-      if (pairs && pairs.length) return pairs.some(pair => pair[0] === v && pair[1] === p);
-      const cross = harm.cross;
-      return !!(cross && cross.status === "published" && cross.matrix && cross.matrix[v] && cross.matrix[v][p] != null);
+      return CrimeMenu.pairIsLinked(harm, v, p);
     }
     // When the other side is a specific group, only "all" and groups that can be linked stay available.
     function groupsAvailable(harm, who, otherId, measure) {
-      const base = baseGroups(harm, who, measure);
-      if (!otherId || otherId === "all") return base;
-      return base.filter(g => g === "all" || (who === "perpetrators" ? pairIsLinked(harm, otherId, g) : pairIsLinked(harm, g, otherId)));
+      return CrimeMenu.groupsAvailable(D.groups, harm, who, otherId, measure, groupHasData);
     }
     function measureOpen(harm, measure, v, p) {
-      const a = harm.availability;
-      const bm = a && a.by_measure && a.by_measure[measure];
-      if (bm) {
-        if (v !== "all" && p !== "all") {
-          if (!pairIsLinked(harm, v, p)) return false;
-          // Linked tables are almost always shares; a rate list that includes the pair's groups is also accepted.
-          if (measure === "share") return true;
-          return (bm.victims || []).includes(v) || (bm.perpetrators || []).includes(p);
-        }
-        if (v !== "all") return (bm.victims || []).includes(v);
-        if (p !== "all") return (bm.perpetrators || []).includes(p);
-        return (bm.victims || []).length > 0 || (bm.perpetrators || []).length > 0;
-      }
-      return selectionHasMeasure(harm, measure, v, p);
+      return CrimeMenu.measureOpen(harm, measure, v, p, selectionHasMeasure);
     }
     function selectionHasMeasure(harm, measure, v, p) {
       if (v !== "all" && p !== "all") {
@@ -2026,7 +1999,7 @@
       if (sides.some(s => sideHasFigures(s, group, measure))) return true;
       if (measure === "share" && harm.cross && harm.cross.status === "published" && harm.cross.matrix) {
         if (v !== "all") return !!harm.cross.matrix[v];
-        if (p !== "all") return (harm.cross.groups || []).includes(p);
+        if (p !== "all") return (harm.cross.groups || []).includes(p) || CrimeMenu.columnRows(harm.cross, p).length > 0;
         return true;
       }
       return false;
@@ -2224,10 +2197,10 @@
         } else if (ex.measure === "rate") {
           chunks.push(noDataHtml(t("nodata.no_rate"), firstSentence(cross.rate_reason)));
           if (cross.rate_reason) notes.push(`<p>${esc(cross.rate_reason)}</p>`);
-        } else if (!cross.groups.includes(v) || !cross.groups.includes(p)) {
+        } else if (CrimeMenu.matrixCell(cross, v, p) == null) {
           chunks.push(noDataRecord(t("nodata.table_only_groups", { groups: listLabels(cross.groups) })));
         } else {
-          chunks.push(`<div class="ex-big">${fmtPct(cross.matrix[v][p])}</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
+          chunks.push(`<div class="ex-big">${fmtPct(CrimeMenu.matrixCell(cross, v, p))}</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
             barsHtml(cross.matrix[v], p, "%"));
           if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
         }
@@ -2250,9 +2223,10 @@
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
         } else {
-          if (!cross.groups.includes(p)) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} offenders.`));
+          const colRows = CrimeMenu.columnRows(cross, p);
+          if (!colRows.length) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} offenders.`));
           else {
-            const col = {}; cross.groups.forEach(g => col[g] = cross.matrix[g][p]);
+            const col = {}; colRows.forEach(g => col[g] = cross.matrix[g][p]);
             chunks.push(`<p>${fill(cross.col_intro, { perp: groupLabel(p) })}${enOnlyBadge()}</p>` + barsHtml(col, null, "%"));
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
@@ -2267,8 +2241,9 @@
           chunks.push(`<h3>${esc(t("result.linked"))}</h3>`);
         }
         chunks.push(`<p>${esc(cross.overview || t("result.pick_both"))}${cross.overview ? enOnlyBadge() : ""}</p>`);
+        const offenderCols = CrimeMenu.offenderIds(cross);
         const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
-          cross.groups.map(o => esc(t("result.offender_share", { group: groupLabel(o), pct: fmtPct(cross.matrix[g][o]) }))).join(" · ") + "</p>").join("");
+          offenderCols.filter(o => cross.matrix[g] && cross.matrix[g][o] != null).map(o => esc(t("result.offender_share", { group: groupLabel(o), pct: fmtPct(cross.matrix[g][o]) }))).join(" · ") + "</p>").join("");
         chunks.push(allRows);
         if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
       } else if (v !== "all") {
@@ -2474,9 +2449,11 @@
         renderSources();
       }));
 
-    // Harm types always appear in one order for every country: by severity, matching the score weights
-    // (homicide 25, sexual abuse 20, trafficking 20, physical abuse 15, online 10, neglect 10).
-    // Country-specific extra harms keep their file order after these six. The first entry is the default.
+    // Harm types always appear in one order. Neglect stays in the list because its figures remain,
+    // but it is not part of the score. Scored weights: homicide 27.78, sexual abuse 22.22,
+    // trafficking 22.22, physical abuse 16.67, online 11.11. Heritage points require a published
+    // child victim×offender cross-table; one-sided data scores 0 for heritage.
+    // Country-specific extra harms keep their file order after these. The first entry is the default.
     const HARM_ORDER = ["homicide", "sexual_abuse", "trafficking", "physical_abuse", "online", "neglect"];
     function sortHarms(detail) {
       if (!detail || !Array.isArray(detail.harms)) return detail;

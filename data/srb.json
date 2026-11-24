@@ -1,7 +1,7 @@
 {
  "country": "Serbia",
  "iso_a3": "SRB",
- "completeness": 13,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Serbia's Statistical Office publishes convicted adults by self-declared national affiliation (Serb, Hungarian, Roma and others) for every chapter of the Criminal Code. That is real ethnicity data for perpetrators, but only by broad chapter, never by child-specific offence, and unknown for almost half. Victims are published by age and sex only; trafficking victims are listed by country of origin.",
@@ -498,91 +498,78 @@
   }
  ],
  "score": {
-  "value": 13,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 13.1,
+  "uncapped": 8.9,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 6,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "ethnicity",
-    "why": "RZS Bulletin 725 (2024 data) gives adults convicted of offences against sexual freedom (272) by self-declared national affiliation: 140 Serbs, 3 Roma, 1 other; affiliation not known or not declared for 128 (47%). The chapter mixes child and adult victims (149 of 262 victims with data were under 18); victims have age and sex but no nationality.",
-    "score": 15
+    "why": "RZS Bulletin 725 (2024 data) gives adults convicted of offences against sexual freedom (272) by self-declared national affiliation: 140 Serbs, 3 Roma, 1 other; affiliation not known or not declared for 128 (47%). The chapter mixes child and adult victims (149 of 262 victims with data were under 18); victims have age and sex but no nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
-    "perpetrator": 4,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "ethnicity",
-    "why": "Adults convicted of offences against marriage and family (3,209; includes domestic violence and neglect and abuse of a minor) by national affiliation: 1,546 Serbs, 34 Roma, 6 Hungarians, 28 other; 1,595 (50%) not known or not declared. All victim ages; no victim nationality.",
-    "score": 13
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 4,
-    "coverage": 3,
-    "rates": 0,
-    "access": 6,
-    "victim_kind": "none",
-    "perpetrator_kind": "ethnicity",
-    "why": "Neglect and abuse of a minor (Art. 193: 42 convicted, 40 of 48 victims under 14) sits in the marriage-and-family chapter, which is published by national affiliation only as a whole (50% unknown or not declared). Child-protection reports give no ethnicity of neglected children.",
-    "score": 13
+    "why": "Adults convicted of offences against marriage and family (3,209; includes domestic violence and neglect and abuse of a minor) by national affiliation: 1,546 Serbs, 34 Roma, 6 Hungarians, 28 other; 1,595 (50%) not known or not declared. All victim ages; no victim nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 4,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "ethnicity",
-    "why": "Adults convicted of offences against life and body (1,313; murders plus bodily injury) by national affiliation: 707 Serbs, 12 Roma, 4 Hungarians, 20 other; 570 (43%) not known or not declared. All victim ages; murder victims have age (4 of 96 under 14) but no nationality.",
-    "score": 13
+    "why": "Adults convicted of offences against life and body (1,313; murders plus bodily injury) by national affiliation: 707 Serbs, 12 Roma, 4 Hungarians, 20 other; 570 (43%) not known or not declared. All victim ages; murder victims have age (4 of 96 under 14) but no nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 1.5,
-    "perpetrator": 1.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "ethnicity",
-    "why": "The Centre for Protection of Victims of Trafficking identified 75 victims in 2025 (41% children) and lists them by country of origin (47 Serbia, 28 foreign), not by age and citizenship together. Convicted traffickers (11 in 2024, with 17 victims, 5 of them children) appear by national affiliation only within the crimes-against-humanity chapter (22 convicted, 16 unknown or not declared).",
-    "score": 12.0
+    "why": "The Centre for Protection of Victims of Trafficking identified 75 victims in 2025 (41% children) and lists them by country of origin (47 Serbia, 28 foreign), not by age and citizenship together. Convicted traffickers (11 in 2024, with 17 victims, 5 of them children) appear by national affiliation only within the crimes-against-humanity chapter (22 convicted, 16 unknown or not declared). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 3,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "ethnicity",
-    "why": "Child pornography offences (Art. 185: 26 convicted, 17 child victims) are inside the sexual-freedom chapter, published by national affiliation only as a whole (47% unknown or not declared). No victim nationality.",
-    "score": 11.5
+    "why": "Child pornography offences (Art. 185: 26 convicted, 17 child victims) are inside the sexual-freedom chapter, published by national affiliation only as a whole (47% unknown or not declared). No victim nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    }
   ],
   "components": [
@@ -612,18 +599,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Serbia scores 13% on the stricter scale (0-20%). It is the only batch-5 country with real ethnicity data: courts record convicted adults' self-declared national affiliation (Serb, Roma, Hungarian and others) and the Statistical Office publishes it for every chapter of the Criminal Code, so the 25% cap does not apply. Points stay low because it covers perpetrators only, by broad chapter rather than child-specific offence, with 47% unknown or not declared, and victims have no nationality at all.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Serbia scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. It is the only batch-5 country with real ethnicity data: courts record convicted adults' self-declared national affiliation (Serb, Roma, Hungarian and others) and the Statistical Office publishes it for every chapter of the Criminal Code, so the 25% cap does not apply. Points stay low because it covers perpetrators only, by broad chapter rather than child-specific offence, with 47% unknown or not declared, and victims have no nationality at all.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "rzs_b": {
@@ -658,7 +648,7 @@
    "publisher": "Republički zavod za socijalnu zaštitu (Republic Institute for Social Protection)",
    "years": "2022-2024",
    "records": "Reports of violence against children by type, sex and age; the child-marriage report gives national affiliation of child victims (117 of 177 Roma).",
-   "limitations": "No ethnicity for child victims of physical, sexual or emotional violence or neglect. Child marriage is not one of the six harms scored here.",
+   "limitations": "No ethnicity for child victims of physical, sexual or emotional violence or neglect. Child marriage is not one of the five scored harms.",
    "url": "https://www.zavodsz.gov.rs/media/3013/deca-u-sistemu-sz-u-2024-godini.pdf",
    "tier": "Official government statistics"
   }

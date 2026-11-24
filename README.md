@@ -49,6 +49,8 @@ A grouping switcher, stored in the data file rather than hardcoded, filters both
 
 Country-to-pool assignments and UN M49 subregions come from the project’s `country_pool_map.csv`. Markup lives in `demographics.js` / `demographics.css`; strings live in `i18n/*.json` under the `demographics.*` prefix. Nothing is invented: if a country has no usable official series it is shown as an estimate or as having no score. Sources and limits are in `data/demographics/README.md`.
 
+Two supplements are additional and do not change the default map colours or any country score. France, Germany and Spain show an origin series (v1.14.0) in the country panel: ethnic European share over two generations for France (89.50 in 2011 to 86.47 in 2021) and Germany (88.88 in 2023 to 87.99 in 2025, provisional, on the Census 2022 frame; the 2021 value 89.71 is a separate point labelled “Census 2011 frame, not comparable”), and first generation only for Spain (98.47 in 1998 to 84.63 in 2026). An optional control, “Change since earliest 1960–79 census”, draws the v1.15.0 baseline for countries with a published row. The number uses the same sign as the default score: a negative figure means the founding share fell. Rows marked NOT VERIFIED stay in the data file and are not shown. Armenia and Georgia carry a classification-pending note.
+
 ## Adding / analysing a country
 1. Make sure its ISO 3166-1 alpha-3 code is in `IN_SCOPE` (all European states except Cyprus and the dependencies already are).
 2. Add one entry to `tracked`:
@@ -115,7 +117,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Germany data
 - `data/deu.json` is built by `build_deu.py` (kept with the German research, outside this repo). Germany records
   nationality (citizenship) and, in child protection and surveys, migration background, never ethnicity.
-  It scores 25% on the stricter scale (capped from an uncapped 29.0%; it scored 49% on the previous rubric).
+  It scores 16% on the stricter scale. Heritage points are 0: there is no published cross-table of child victim and offender heritage for the same cases. It scored 49% on the previous rubric.
 - Proxy display fields: `proxy_note` (banner under the summary), a `proxy` kind on each group (each result is tagged
   "Proxy: nationality, not ethnicity" or "Proxy: migration background, not ethnicity"), `select_labels` (dropdown
   labels), `unknown_label` ("Nationality unknown"; a block can override it), and `score.proxy_note` in the score box.
@@ -124,23 +126,23 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   the total, and shown as their own figure when picked. "Ethnic European" stays "Not recorded".
 
 ### Canada data
-- `data/can.json` is built by `build_can.py` (kept with the Canadian research, outside this repo). Canada scores 25%.
+- `data/can.json` is built by `build_can.py` (kept with the Canadian research, outside this repo). Canada scores 13%.
   Police report the racialized and Indigenous identity of homicide victims and accused; no other police-reported crime
   carries race or Indigenous identity yet. Official "racialized" / "rest of the population" categories never separately
   identify White or ethnic European people.
 
 ### France data
-- `data/fra.json` is built by `build_fra.py` (kept with the French research, outside this repo). France scores 24%.
+- `data/fra.json` is built by `build_fra.py` (kept with the French research, outside this repo). France scores 15%.
   France does not collect ethnic statistics. Police publish child victims of sexual violence, family violence and
   homicide by French or foreign nationality, and suspects by nationality — proxies, not ethnicity.
 
 ### Australia data
-- `data/aus.json` is built by `build_aus.py` (kept with the Australian research, outside this repo). Australia scores 20%.
+- `data/aus.json` is built by `build_aus.py` (kept with the Australian research, outside this repo). Australia scores 12%.
   Police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, but everyone
   else is 'non-Indigenous', so White or ethnic European Australians are never separately identified.
 
 ### New Zealand data
-- `data/nzl.json` is built by `build_nzl.py` (kept with the New Zealand research, outside this repo). New Zealand scores 41%.
+- `data/nzl.json` is built by `build_nzl.py` (kept with the New Zealand research, outside this repo). New Zealand scores 13%.
   It is the first country reviewed whose official police data separately identify ethnic European victims and offenders,
   published monthly for child sexual assault, child assault, abuse material and grooming.
 
@@ -152,8 +154,8 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 1: Italy, Spain, Poland, Netherlands, Sweden
 - `data/ita.json`, `esp.json`, `pol.json`, `nld.json` and `swe.json` are built by `build_<iso>.py` (kept with each
   country's research, outside this repo) and scored by `score_v2_batch4.py` on the stricter scale. None of the five
-  records ethnicity, so the 25% cap rule applies to all of them: Italy 24%, Spain 21%, Netherlands 16%, Sweden 13%,
-  Poland 9% (under the 19 Nov 2026 harm weights).
+  records ethnicity, so the 25% cap rule applies to all of them. After dropping neglect from the score and setting heritage to 0 where there is no published child victim×offender cross-table: Italy 14%, Spain 13%, Netherlands 12%, Sweden 9%,
+  Poland 8%.
 - Italy and Spain publish child victims and authors by citizenship or nationality (Spain also by continent); the
   Netherlands publishes suspects by nationality and by country of birth with rates, but nothing for child victims;
   Sweden has a school survey and a one-off suspect study by migration background; Poland publishes origin only for
@@ -164,8 +166,8 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 2: Ireland, Belgium, Austria, Switzerland, Portugal
 - `data/irl.json`, `bel.json`, `aut.json`, `che.json` and `prt.json` are built by `build_<iso>.py` (kept with each
   country's research, outside this repo) and scored by `score_v2_batch5.py` on the stricter scale with the 19 Nov 2026
-  harm weights (`score.weights`; new files have no `previous_weights`). Switzerland 25%, Austria 14%, Portugal 13%,
-  Ireland 12%, Belgium 7%.
+  harm weights (`score.weights`; new files have no `previous_weights`). After the paired-data rule, Switzerland 15%, Austria 10%, Portugal 10%,
+  Ireland 9%, Belgium 6%.
 - Ireland is the only one with real ethnicity data: the CSO Sexual Violence Survey 2022 gives childhood sexual violence
   by ethnic background with White Irish separate, so the 25% cap rule does not apply; its crime, child-protection and
   homicide statistics carry no ethnicity or nationality. The other four record nationality or residence status only,
@@ -179,7 +181,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 3: Denmark, Norway, Finland, Iceland
 - `data/dnk.json`, `nor.json`, `fin.json` and `isl.json` are built by `build_<iso>.py` (kept with each country's
   research, outside this repo) and scored by `score_v2_batch6.py` on the stricter scale with the 19 Nov 2026 harm
-  weights. Finland 25% (capped from 26.4%), Norway 22%, Denmark 20%, Iceland 8%.
+  weights. After the paired-data rule, Finland 15%, Norway 13%, Denmark 14%, Iceland 7%. Heritage points are 0, so the 25% cap does not set these scores.
 - Denmark's herkomst (Danish origin; Western and non-Western immigrants and descendants), Norway's immigrant background
   and country groups, and Finland's origin and background country are all built from the birth country (and, in Denmark,
   citizenship) of the person and their parents, so they are scored as proxies like the Dutch and Swedish groups, and
@@ -201,7 +203,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 4: Russia, Ukraine, Romania, Czechia, Hungary
 - `data/rus.json`, `ukr.json`, `rou.json`, `cze.json` and `hun.json` are built by `build_<iso>.py` (kept with each
   country's research, outside this repo) and scored by `score_v2_batch7.py` on the stricter scale with the 19 Nov 2026
-  harm weights. Ukraine 12%, Czechia 11%, Hungary 9%, Romania 8%, Russia 2%, all red; none reaches the 25% cap.
+  harm weights. After the paired-data rule, Ukraine 9%, Czechia 8%, Hungary 7%, Romania 6%, Russia 2%, all red; none reaches the 25% cap.
 - Every origin variable found is citizenship (Czech/foreign offences, Hungarian/foreign offences, Ukrainian/foreign/
   stateless suspects, Romanian/foreign trafficking victims), so all heritage points are proxies. Romania's and Hungary's
   censuses record ethnicity or nationality (including Roma), but no crime, victim or child-protection statistic does, so
@@ -217,12 +219,12 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 5: Croatia, Serbia, Slovakia, Greece, Bulgaria
 - `data/hrv.json`, `srb.json`, `svk.json`, `grc.json` and `bgr.json` are built by `build_<iso>.py` (kept with each
   country's research, outside this repo) and scored by `score_v2_batch8.py` on the stricter scale with the 19 Nov 2026
-  harm weights. Croatia 16%, Serbia 13%, Slovakia 11%, Greece 11%, Bulgaria 11%, all red.
+  harm weights. After the paired-data rule, Croatia 10%, Serbia 9%, Slovakia 9%, Greece 9%, Bulgaria 9%, all red.
 - Serbia is the only one with real ethnicity data: the Statistical Office's bulletin tabulates convicted adults by
   self-declared national affiliation (Serb, Montenegrin, Albanian, Hungarian, Muslim, Roma, Romanian, other) for each
   Criminal Code chapter, so the 25% cap does not apply. It covers perpetrators only, by chapter rather than child-specific
   offence, with 47% not declared or not known, and victims have no nationality, so the points are low. Serbia's
-  child-marriage report also records Roma children, but child marriage is not one of the six harms.
+  child-marriage report also records Roma children, but child marriage is not one of the five scored harms.
 - Croatia, Slovakia, Greece and Bulgaria record citizenship only (Croatian/foreign victims and perpetrators per article;
   Slovak/foreign offenders per crime group; Greek/foreign known offenders per offence; Bulgarian/other convicted persons
   per offence), so all their heritage points are proxies and the cap rule applies (none reaches it).
@@ -233,7 +235,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 6a: Estonia, Latvia, Lithuania, Slovenia, Belarus, Moldova
 - `data/est.json`, `lva.json`, `ltu.json`, `svn.json`, `blr.json` and `mda.json` are built by `build_<iso>.py` (kept with
   each country's research, outside this repo) and scored by `score_v2_batch9.py` on the stricter scale with the 19 Nov 2026
-  harm weights. Slovenia 12%, Lithuania 11%, Estonia 10%, Latvia 10%, Moldova 9%, Belarus 2%, all red.
+  harm weights. After the paired-data rule, Slovenia 9%, Lithuania 9%, Estonia 9%, Latvia 9%, Moldova 8%, Belarus 2%, all red.
 - None records ethnicity in crime data, so all heritage points are proxies and the 25% cap rule applies (none reaches it).
   Slovenia publishes convicted adults by citizenship (Slovenian / other EU / non-EU) per offence; Latvia gives the foreign
   share of suspects of sexual offences against minors; Lithuania and Moldova give citizenship only for all offences;
@@ -246,7 +248,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 ### Europe batch 6b: Bosnia and Herzegovina, North Macedonia, Albania, Montenegro, Kosovo
 - `data/bih.json`, `mkd.json`, `alb.json`, `mne.json` and `xkx.json` are built by `build_<iso>.py` (kept with each
   country's research, outside this repo) and scored by `score_v2_batch10.py` on the stricter scale with the 19 Nov 2026
-  harm weights. North Macedonia 14%, Bosnia and Herzegovina 9%, Albania 8%, Montenegro 7%, Kosovo 7%, all red.
+  harm weights. After the paired-data rule, North Macedonia 9%, Bosnia and Herzegovina 8%, Albania 8%, Montenegro 7%, Kosovo 7%, all red.
 - Real ethnicity data: North Macedonia's statistics office tabulates reported adult perpetrators of every Criminal Code
   chapter by ethnic affiliation (about 3% unknown), so the cap does not apply; points stay moderate because it is
   perpetrators only, by chapter. Bosnia and Herzegovina's Ministry of Security bulletin gives the ethnicity (Bosniak, Serb,
@@ -270,7 +272,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 
 ### US data
 - `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
-  sets the USA score (59) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
+  sets the USA score (14) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
   share % vs rate per 100,000), the explanation panel, the expandable source list and the "How the score works" box.
 - Each harm has `victims`, `perpetrators` and `cross` (victim × perpetrator) blocks with a `status`:
   `published`, `not_published` (recorded but no public table), `not_recorded`, or `pending` (published, not yet added).
@@ -280,19 +282,20 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   population estimates (denominators for the federal-defendant rates). Sources and limitations are in the `sources` block.
 - Scoring standard (shown in "How the score works"): 100% = published data that separately identifies
   ethnic Europeans as both victims and perpetrators, alongside every other group, linked victim to perpetrator, for
-  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator; full marks only when ethnic Europeans
-  are identified separately). Coverage, rates and access together are 25 points. Proxies such as nationality or
-  migration background earn at most one quarter of the heritage points. A published “White” category that
+  every harm. Per harm, heritage is 75 points (37.5 victim + 37.5 perpetrator) and is awarded only for a published
+  cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0
+  for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or
+  migration background earn at most one quarter of the heritage points, and only when that pair is published. A published “White” category that
   merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is also scored as a proxy
   under the same cap. A country with no real ethnicity data is
-  capped at 25%. The country score is a weighted average of the six harms: homicide 25%, sexual abuse 20%,
-  sex trafficking 20%, physical abuse 15%, online exploitation 10%, neglect 10% (approved 19 Nov 2026; before that,
-  sexual abuse 25% and the other five 15% each). Each file's `score.weights` holds the weights in use and
-  `score.previous_weights` the score under the earlier weights. Current published scores: United States 54% (59% before the heritage-conflation demerit),
-  United Kingdom 53%, Germany 25% (capped from an uncapped 29.0%; 49% on the previous rubric), Canada 25%,
-  France 24%, Australia 20%, New Zealand 41%, South Africa 7%, Italy 24%, Spain 21%, Netherlands 16%, Sweden 13%,
-  Poland 9%, Switzerland 25%, Austria 14%, Portugal 13%, Ireland 12%, Belgium 7%, Finland 25% (capped from an
-  uncapped 26.4%), Norway 22%, Denmark 20%, Iceland 8%. To change a country's displayed score, edit
+  capped at 25%. Neglect is not part of the score. The country score is a weighted average of five harms: homicide 27.78%, sexual abuse 22.22%,
+  sex trafficking 22.22%, physical abuse 16.67% and online exploitation 11.11% (in use from 24 Nov 2026; the 19 Nov 2026
+  weights were homicide 25%, sexual abuse 20%, sex trafficking 20%, physical abuse 15%, online exploitation 10% and
+  neglect 10%; before that, sexual abuse 25% and the other five 15% each). Each file's `score.weights` holds the weights in use and
+  `score.previous_weights` the score under the pre-19-Nov weights. The United States scores 14%: heritage points are 0 under the paired-data rule, neglect is not scored, and the total is coverage, rates and access. The official White category merges Hispanic people. Current published scores: United States 14%,
+  United Kingdom 14%, Germany 16%, Canada 13%,
+  France 15%, Australia 12%, New Zealand 13%, South Africa 7%, Italy 14%, Spain 13%, Netherlands 12%, Sweden 9%,
+  Poland 8%, Switzerland 15%, Austria 10%, Portugal 10%, Ireland 9%, Belgium 6%, Finland 15%, Norway 13%, Denmark 14%, Iceland 7%. To change a country's displayed score, edit
   `completeness` in `data/<iso3>.json` (keep `score.value` in step with it); the map, badge and method box all read
   that one number.
 - `us-data.json` and `us.geojson` at the repo root are from the earlier version and are not used by `index.html`.

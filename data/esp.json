@@ -1,7 +1,7 @@
 {
  "country": "Spain",
  "iso_a3": "ESP",
- "completeness": 21,
+ "completeness": 13,
  "provisional": false,
  "as_of": "2026-11-22",
  "summary": "Spain does not collect ethnic statistics. The Interior Ministry publishes child victims of sexual offences and victims of online sexual offences by nationality and continent, and people detained or investigated by nationality for all victims. Family maltreatment, neglect and homicide have little or no victim nationality, and trafficking nationality is published only as a ranking.",
@@ -568,91 +568,78 @@
   }
  ],
  "score": {
-  "value": 21,
-  "band": "20-40%",
+  "value": 13,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 20.7,
+  "uncapped": 13.1,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 8.5,
-    "perpetrator": 6,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 1.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's 2025 sexual-offences report gives 9,785 child victimizations by nationality, by age band, with foreign victims by continent (Europe outside Spain separate). Detained or investigated people are given by nationality and continent, but only for all victims (14,711). No rates published.",
-    "score": 30.5
+    "why": "The Interior Ministry's 2025 sexual-offences report gives 9,785 child victimizations by nationality, by age band, with foreign victims by continent (Europe outside Spain separate). Detained or investigated people are given by nationality and continent, but only for all victims (14,711). No rates published. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 16
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 4,
-    "perpetrator": 4.5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 0.5,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Police victim tables give child victims of family maltreatment by age only, with no nationality. The child-protection register RUMI (28,550 notifications in 2024) gives Spanish/foreign for all types combined, with clear regional coding problems. Detained or investigated for family maltreatment by Spanish/foreign status, all victims (SEC 2025).",
-    "score": 20.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 3.5,
-    "perpetrator": 0,
-    "coverage": 4,
-    "rates": 0,
-    "access": 6,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "none",
-    "why": "Neglect is the largest RUMI maltreatment type (19,699 of 46,549 types recorded in 2024); RUMI nationality is published only for all notifications combined. No data on the people responsible.",
-    "score": 13.5
+    "why": "Police victim tables give child victims of family maltreatment by age only, with no nationality. The child-protection register RUMI (28,550 notifications in 2024) gives Spanish/foreign for all types combined, with clear regional coding problems. Detained or investigated for family maltreatment by Spanish/foreign status, all victims (SEC 2025). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 4.5,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 0.5,
     "access": 7,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Police victim tables give child homicide victims by age only (17 victims of completed homicide under 18 in 2025, 72 including attempts). People detained or investigated for homicide are split Spanish/foreign for all victims.",
-    "score": 17.0
+    "why": "Police victim tables give child homicide victims by age only (17 victims of completed homicide under 18 in 2025, 72 including attempts). People detained or investigated for homicide are split Spanish/foreign for all victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 3,
-    "perpetrator": 3,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "CITCO's 2025 executive summary gives 771 victims of sexual trafficking and exploitation (15 minors) and 656 detainees, but nationality only as a ranked list (Colombia, Venezuela, China and Paraguay; detainees Spain first). Country counts are not published in the official summary, so they are not used.",
-    "score": 18
+    "why": "CITCO's 2025 executive summary gives 771 victims of sexual trafficking and exploitation (15 minors) and 656 detainees, but nationality only as a ranked list (Colombia, Venezuela, China and Paraguay; detainees Spain first). Country counts are not published in the official summary, so they are not used. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 6,
-    "perpetrator": 4.5,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 0.5,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The 2025 sexual-offences report gives 1,557 cyber-sexual victimizations by nationality and continent (81% minors, not split by age). People detained or investigated for child-pornography offences split Spanish/foreign (SEC 2025).",
-    "score": 23.0
+    "why": "The 2025 sexual-offences report gives 1,557 cyber-sexual victimizations by nationality and continent (81% minors, not split by age). People detained or investigated for child-pornography offences split Spanish/foreign (SEC 2025). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12.5
    }
   ],
   "components": [
@@ -682,18 +669,17 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Spain scores 21% on the stricter scale (20-40%). The Interior Ministry publishes child victims of sexual offences by nationality and continent, people detained or investigated by nationality, and online sexual-crime victims by nationality, but nationality is a proxy and perpetrators are not split by the victim's age. Physical abuse, neglect and homicide have little or no victim origin data, and trafficking nationality is published only as a ranking.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Spain scores 13% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The Interior Ministry publishes child victims of sexual offences by nationality and continent, people detained or investigated by nationality, and online sexual-crime victims by nationality, but nationality is a proxy and perpetrators are not split by the victim's age. Physical abuse, neglect and homicide have little or no victim origin data, and trafficking nationality is published only as a ranking.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 21,
    "band": "20-40%",
@@ -707,6 +693,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {

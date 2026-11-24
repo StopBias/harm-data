@@ -1,7 +1,7 @@
 {
  "country": "Netherlands",
  "iso_a3": "NLD",
- "completeness": 16,
+ "completeness": 12,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "The Netherlands does not record ethnicity. CBS publishes suspects of sexual and violent crimes by nationality and by country of birth and origin, with rates, but never for crimes against children, and no national statistics give the origin of child victims. Trafficking figures give victims and suspects by nationality; neglect, homicide and online abuse have no origin data.",
@@ -533,56 +533,43 @@
   }
  ],
  "score": {
-  "value": 16,
+  "value": 12,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 15.7,
+  "uncapped": 12.3,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 5,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 1,
     "access": 7.5,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "CBS gives registrations of suspects of sexual offences by nationality (3,740 in 2025; Dutch 2,880), all victims and rounded to tens. The National Rapporteur's monitor of sexual violence against children has no origin variable for victims or suspects.",
-    "score": 18.5
+    "why": "CBS gives registrations of suspects of sexual offences by nationality (3,740 in 2025; Dutch 2,880), all victims and rounded to tens. The National Rapporteur's monitor of sexual violence against children has no origin variable for victims or suspects. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 13.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
-    "perpetrator": 6.5,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 2.5,
     "access": 7.5,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "No victim origin. CBS gives assault suspects by nationality and suspects of violent crime by origin (born in the Netherlands, rest of Europe, Turkey, Morocco, Suriname, ...) with rates per 10,000 residents, all victims.",
-    "score": 21.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 1.5,
-    "rates": 0,
-    "access": 3,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "Veilig Thuis and youth-protection statistics publish no usable origin variable (CBS has discontinued the migration-background breakdown).",
-    "score": 4.5
+    "why": "No victim origin. CBS gives assault suspects by nationality and suspects of violent crime by origin (born in the Netherlands, rest of Europe, Turkey, Morocco, Suriname, ...) with rates per 10,000 residents, all victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 4,
@@ -590,25 +577,25 @@
     "access": 7,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "CBS gives homicide victims by age only; no origin of victims or suspects is published in current tables.",
+    "why": "CBS gives homicide victims by age only; no origin of victims or suspects is published in current tables. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 12
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 5,
-    "perpetrator": 6,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 1,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The National Rapporteur's 2025 figures give possible victims by nationality group (952; 224 Dutch; 90 minors) from CoMensha (an NGO) registrations, police and KMar suspects by nationality (202; 150 Dutch) and people tried by country of birth. All forms of trafficking.",
-    "score": 24.5
+    "why": "The National Rapporteur's 2025 figures give possible victims by nationality group (952; 224 Dutch; 90 minors) from CoMensha (an NGO) registrations, police and KMar suspects by nationality (202; 150 Dutch) and people tried by country of birth. All forms of trafficking. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 13.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1.5,
@@ -616,7 +603,7 @@
     "access": 3,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "Police identify victims of child sexual abuse material (1,595 over 2020-2024) but publish no origin of victims or suspects.",
+    "why": "Police identify victims of child sexual abuse material (1,595 over 2020-2024) but publish no origin of victims or suspects. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 4.5
    }
   ],
@@ -647,18 +634,17 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "The Netherlands scores 16% on the stricter scale (0-20%). CBS publishes suspects of sexual and violent crimes by nationality and by origin (born in the Netherlands, rest of Europe and other regions), with rates, but never for crimes against children and never for victims. Trafficking figures give victims and suspects by nationality; other child harms have no origin data.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "The Netherlands scores 12% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. CBS publishes suspects of sexual and violent crimes by nationality and by origin (born in the Netherlands, rest of Europe and other regions), with rates, but never for crimes against children and never for victims. Trafficking figures give victims and suspects by nationality; other child harms have no origin data.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 15,
    "band": "0-20%",
@@ -672,6 +658,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {

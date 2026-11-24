@@ -1,7 +1,7 @@
 {
  "country": "Australia",
  "iso_a3": "AUS",
- "completeness": 20,
+ "completeness": 12,
  "provisional": false,
  "as_of": "2026-11-18",
  "summary": "Australia records whether victims and offenders are Aboriginal or Torres Strait Islander, with official rates, but everyone else is 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police victim data by Indigenous status cover only NSW, Queensland and South Australia; offenders are not linked to child victims; trafficking and online exploitation have no heritage data.",
@@ -636,69 +636,56 @@
   }
  ],
  "score": {
-  "value": 20,
-  "band": "20-40%",
+  "value": 12,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 20.3,
+  "uncapped": 11.5,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 9,
-    "perpetrator": 5,
-    "coverage": 5,
-    "rates": 3,
-    "access": 7,
-    "victim_kind": "ethnicity",
-    "perpetrator_kind": "ethnicity",
-    "why": "ABS police data give child sexual-assault victims who are Aboriginal or Torres Strait Islander, with official rates, for NSW, Qld and SA only; offenders by Indigenous status for five jurisdictions, but not split by victim age. AIHW child protection gives substantiated sexual abuse rates by Indigenous status nationally. 'Non-Indigenous' lumps White Australians with every other group, so ethnic Europeans are never identified.",
-    "score": 29
-   },
-   {
-    "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 9,
-    "perpetrator": 4,
-    "coverage": 5,
-    "rates": 3,
-    "access": 7,
-    "victim_kind": "ethnicity",
-    "perpetrator_kind": "ethnicity",
-    "why": "Child assault victims by Indigenous status (NSW, Qld, SA, official rates) and national AIHW physical-abuse substantiation rates; offenders only for all assaults (acts intended to cause injury). Binary Indigenous / non-Indigenous only.",
-    "score": 28
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 8,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 5,
     "rates": 3,
-    "access": 6,
+    "access": 7,
     "victim_kind": "ethnicity",
-    "perpetrator_kind": "none",
-    "why": "AIHW substantiated neglect rates for Indigenous and non-Indigenous children (national, 2023-24). No heritage of the people responsible.",
-    "score": 22
+    "perpetrator_kind": "ethnicity",
+    "why": "ABS police data give child sexual-assault victims who are Aboriginal or Torres Strait Islander, with official rates, for NSW, Qld and SA only; offenders by Indigenous status for five jurisdictions, but not split by victim age. AIHW child protection gives substantiated sexual abuse rates by Indigenous status nationally. 'Non-Indigenous' lumps White Australians with every other group, so ethnic Europeans are never identified. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
+   },
+   {
+    "harm": "Physical abuse",
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
+    "coverage": 5,
+    "rates": 3,
+    "access": 7,
+    "victim_kind": "ethnicity",
+    "perpetrator_kind": "ethnicity",
+    "why": "Child assault victims by Indigenous status (NSW, Qld, SA, official rates) and national AIHW physical-abuse substantiation rates; offenders only for all assaults (acts intended to cause injury). Binary Indigenous / non-Indigenous only. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 7,
-    "perpetrator": 5,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 2.5,
     "access": 6,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "First Nations child filicide victims (AIC homicide monitoring, via AIHW) and Indigenous homicide victims of all ages (NSW, SA); homicide offenders by Indigenous status for five jurisdictions, all victims. The AIC homicide report could not be opened from the review machine.",
-    "score": 24.5
+    "why": "First Nations child filicide victims (AIC homicide monitoring, via AIHW) and Indigenous homicide victims of all ages (NSW, SA); homicide offenders by Indigenous status for five jurisdictions, all victims. The AIC homicide report could not be opened from the review machine. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
@@ -706,12 +693,12 @@
     "access": 4,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "AFP publishes counts of trafficking reports (420 in 2024-25, 36 of child trafficking) with no heritage of victims or offenders.",
+    "why": "AFP publishes counts of trafficking reports (420 in 2024-25, 36 of child trafficking) with no heritage of victims or offenders. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 6.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
@@ -719,7 +706,7 @@
     "access": 4,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "The ACCCE publishes counts of reports (82,764 in 2024-25) with no heritage of victims or offenders.",
+    "why": "The ACCCE publishes counts of reports (82,764 in 2024-25) with no heritage of victims or offenders. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 6.5
    }
   ],
@@ -750,19 +737,18 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Australia scores 20% on the stricter scale (20-40%). Its police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, often with official rates, but everyone else is counted as 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police Indigenous data cover only some states, offenders are not linked to child victims, and trafficking and online exploitation carry no heritage at all.",
-  "judgement_notes": "Indigenous status is real ethnicity data, so the 25% cap does not apply, but every side is binary and lumps White Australians with all other non-Indigenous people, so heritage credit is kept low (at most 9 of 37.5). Police data cover only NSW, Qld and SA for victims. If Indigenous-only data were treated as no ethnic European data and capped, Australia would still score about 20%, because it is already below the cap.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Australia scores 12% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Its police and child-protection data identify Aboriginal and Torres Strait Islander children and offenders, often with official rates, but everyone else is counted as 'non-Indigenous', so White or ethnic European Australians are never separately identified. Police Indigenous data cover only some states, offenders are not linked to child victims, and trafficking and online exploitation carry no heritage at all.",
+  "judgement_notes": "Indigenous status is real ethnicity data, so the 25% cap does not apply, but every side is binary and lumps White Australians with all other non-Indigenous people, so heritage credit is kept low (at most 9 of 37.5). Police data cover only NSW, Qld and SA for victims. If Indigenous-only data were treated as no ethnic European data and capped, Australia would still score about 20%, because it is already below the cap. Under the paired-data rule now in use, heritage points are 0 unless a published cross-table records child victim and offender heritage for the same cases. This earlier note does not set the published score.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 20,
    "band": "20-40%",
@@ -776,6 +762,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No paired child table. Published tables link child victims to the relationship with the offender, not to the offender's Indigenous status."
   }
  },
  "sources": {

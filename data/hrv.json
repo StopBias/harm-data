@@ -1,7 +1,7 @@
 {
  "country": "Croatia",
  "iso_a3": "HRV",
- "completeness": 16,
+ "completeness": 10,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Croatia's Interior Ministry publishes victims and perpetrators of every Criminal Code article, including child sexual abuse, child pornography and violation of a child's rights, with a count of foreign citizens, and the statistics bureau publishes convictions by citizenship. That is a citizenship proxy on both sides; no ethnicity or national minority is recorded in crime data.",
@@ -572,91 +572,78 @@
   }
  ],
  "score": {
-  "value": 16,
+  "value": 10,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 15.8,
+  "uncapped": 10.4,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 4,
-    "perpetrator": 4,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's 2025 statistical review gives, for sexual abuse of a child under 15 (Art. 158), 313 victims of whom 8 were foreign citizens and 129 perpetrators of whom 11 were foreigners. DZS convictions by citizenship: 121 adults convicted of child sexual abuse and exploitation, 9 with other citizenship. Croatian/foreign citizenship only.",
-    "score": 19
+    "why": "The Interior Ministry's 2025 statistical review gives, for sexual abuse of a child under 15 (Art. 158), 313 victims of whom 8 were foreign citizens and 129 perpetrators of whom 11 were foreigners. DZS convictions by citizenship: 121 adults convicted of child sexual abuse and exploitation, 9 with other citizenship. Croatian/foreign citizenship only. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 2.5,
-    "perpetrator": 2.5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3.5,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Violation of a child's rights (Art. 177, abuse and neglect by carers): 3,190 victims (2,132 under 14), 70 foreign; 848 perpetrators, 37 foreigners. Domestic violence (Art. 179a): 2,600 victims (55 children), 88 foreign. Foreign victims are not split by age.",
-    "score": 15.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 3,
-    "perpetrator": 3,
-    "coverage": 3.5,
-    "rates": 0,
-    "access": 7,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "proxy",
-    "why": "Art. 177 (violation of a child's rights, which covers neglect) and Art. 176 (abandoning a child: 8 victims, 1 foreign) give victims and perpetrators with a foreign-citizen count. Child-welfare statistics publish no citizenship.",
-    "score": 16.5
+    "why": "Violation of a child's rights (Art. 177, abuse and neglect by carers): 3,190 victims (2,132 under 14), 70 foreign; 848 perpetrators, 37 foreigners. Domestic violence (Art. 179a): 2,600 victims (55 children), 88 foreign. Foreign victims are not split by age. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 1.5,
-    "perpetrator": 2,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Murder and aggravated murder: 103 victims (13 foreign; 5 under 14) and 97 perpetrators (13 foreigners) in 2025. Child victims are not split by citizenship.",
-    "score": 13.5
+    "why": "Murder and aggravated murder: 103 victims (13 foreign; 5 under 14) and 97 perpetrators (13 foreigners) in 2025. Child victims are not split by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 2,
-    "perpetrator": 2,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Trafficking in human beings (Art. 106): 21 victims (3 aged 14-17; 12 foreign citizens of all ages) and 22 perpetrators (8 foreigners) in 2025.",
-    "score": 14
+    "why": "Trafficking in human beings (Art. 106): 21 victims (3 aged 14-17; 12 foreign citizens of all ages) and 22 perpetrators (8 foreigners) in 2025. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 4,
-    "perpetrator": 4,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Exploiting children for pornography (Art. 163): 275 child victims, 12 foreign; 176 perpetrators, 24 foreigners. Grooming (Art. 161): 16 victims.",
-    "score": 19
+    "why": "Exploiting children for pornography (Art. 163): 275 child victims, 12 foreign; 176 perpetrators, 24 foreigners. Grooming (Art. 161): 16 victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    }
   ],
   "components": [
@@ -686,18 +673,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Croatia scores 16% on the stricter scale (0-20%). The Interior Ministry publishes victims and perpetrators of each offence, including child sexual abuse and child pornography, with a count of foreign citizens, and DZS publishes convictions by citizenship. That is a citizenship proxy only; no ethnicity is recorded.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Croatia scores 10% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The Interior Ministry publishes victims and perpetrators of each offence, including child sexual abuse and child pornography, with a count of foreign citizens, and DZS publishes convictions by citizenship. That is a citizenship proxy only; no ethnicity is recorded.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "mup": {

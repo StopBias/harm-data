@@ -1,7 +1,7 @@
 {
  "country": "United States",
  "iso_a3": "USA",
- "completeness": 54,
+ "completeness": 14,
  "as_of": "2026-11-20",
  "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies ethnic Europeans.",
  "groups": [
@@ -36,6 +36,10 @@
   {
    "id": "multi",
    "label": "Two or more races"
+  },
+  {
+   "id": "other",
+   "label": "Other races"
   },
   {
    "id": "european",
@@ -661,10 +665,10 @@
   }
  ],
  "score": {
-  "value": 54,
-  "band": "40-60%",
+  "value": 14,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 54.1,
+  "uncapped": 13.9,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": {
@@ -675,9 +679,9 @@
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 30.0,
-    "perpetrator": 9.4,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 6.0,
     "rates": 4.0,
     "access": 5.0,
@@ -691,14 +695,14 @@
      "e": 10,
      "total": 62
     },
-    "why": "NIBRS and NCANDS record victim race; offender race is perceived with high unknowns and Hispanic ethnicity is sparse, so White is often not separable from Hispanic (lumped). That perpetrator item is scored as a proxy (capped at 9.4 of 37.5 heritage points).",
-    "score": 54.4
+    "why": "NIBRS and NCANDS record victim race; offender race is perceived with high unknowns and Hispanic ethnicity is sparse, so White is often not separable from Hispanic (lumped). That perpetrator item is scored as a proxy (capped at 9.4 of 37.5 heritage points). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 31.5,
-    "perpetrator": 21.0,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 6.0,
     "rates": 4.5,
     "access": 5.0,
@@ -712,35 +716,14 @@
      "e": 10,
      "total": 66
     },
-    "why": "NCANDS publishes victim and perpetrator race with White non-Hispanic separate; harm-specific cross-tabs need restricted microdata.",
-    "score": 68.0
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 30.0,
-    "perpetrator": 19.5,
-    "coverage": 5.5,
-    "rates": 4.0,
-    "access": 5.0,
-    "victim_kind": "ethnicity",
-    "perpetrator_kind": "ethnicity",
-    "old": {
-     "a": 20,
-     "b": 13,
-     "c": 11,
-     "d": 8,
-     "e": 10,
-     "total": 62
-    },
-    "why": "CPS-only coverage; same NCANDS structure as physical abuse.",
-    "score": 64.0
+    "why": "NCANDS publishes victim and perpetrator race with White non-Hispanic separate; harm-specific cross-tabs need restricted microdata. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 36.0,
-    "perpetrator": 9.4,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7.5,
     "rates": 5.5,
     "access": 5.5,
@@ -754,14 +737,14 @@
      "e": 11,
      "total": 75
     },
-    "why": "Complete victim data with Hispanic origin from death certificates; offender race only where solved and reported. FBI White includes Hispanic people and Hispanic origin is often unreported, so offender heritage is scored as a proxy (capped at 9.4 of 37.5 heritage points).",
-    "score": 63.9
+    "why": "Complete victim data with Hispanic origin from death certificates; offender race only where solved and reported. FBI White includes Hispanic people and Hispanic origin is often unreported, so offender heritage is scored as a proxy (capped at 9.4 of 37.5 heritage points). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 18.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 15.0,
-    "perpetrator": 16.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3.0,
     "rates": 2.0,
     "access": 4.0,
@@ -775,14 +758,14 @@
      "e": 8,
      "total": 39
     },
-    "why": "Small, enforcement-driven counts; offender race mainly from federal prosecutions.",
-    "score": 40.5
+    "why": "Small, enforcement-driven counts; offender race mainly from federal prosecutions. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 3.0,
-    "perpetrator": 15.0,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 1.0,
     "access": 4.0,
@@ -796,8 +779,8 @@
      "e": 8,
      "total": 27
     },
-    "why": "NCMEC publishes no demographics; offender race only for federal sentencing.",
-    "score": 25.5
+    "why": "NCMEC publishes no demographics; offender race only for federal sentencing. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 7.5
    }
   ],
   "components": [
@@ -827,19 +810,18 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "The US scores 54% on the stricter scale (40-60%), down from 59% after a heritage-conflation demerit. It is still the only country reviewed whose official data separate White non-Hispanic children from Hispanic and other children for abuse, neglect and child deaths, so those sources keep most of their heritage points. FBI police and homicide data often leave Hispanic origin unreported, so a published “White” category merges Hispanic people and cannot isolate ethnic European offenders; those perpetrator items are scored as a proxy (at most 9.4 of 37.5 points). The US also loses points where offender race is perceived, and where online exploitation and trafficking carry almost no demographics.",
-  "judgement_notes": "Under the approved rule, “White” published separately from Hispanic (for example White non-Hispanic in NCANDS and death certificates) still counts as identifying ethnic Europeans and is scored as ethnicity. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is now scored as a proxy under the existing one-quarter heritage cap. That applies here to sexual-abuse and homicide offenders in FBI data (Hispanic origin often unreported). The US federal “White” category also includes Middle Eastern and North African origins; that residual limitation is noted but is not scored as the same conflation. Before this rule the US scored 59% (uncapped 58.7%).",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "The United States scores 14% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Neglect is not scored. The score is coverage, rates and access only. The official White category merges Hispanic people, so ethnic European offenders cannot be isolated where Hispanic origin is unreported.",
+  "judgement_notes": "The official White category merges Hispanic people where Hispanic origin is unreported, so ethnic Europeans cannot be isolated. That applies to sexual-abuse and homicide offenders in FBI data. White published separately from Hispanic, for example White non-Hispanic in child-welfare and death-certificate data, still counts as identifying ethnic Europeans. Before the heritage-conflation rule the United States scored 59% (uncapped 58.7%) under the earlier weights. Under the paired-data rule now in use, heritage points are 0, so that earlier figure does not set the published score.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 57,
    "band": "40-60%",
@@ -875,7 +857,11 @@
     }
    ]
   },
-  "conflation_note": "Some official US “White” figures merge Hispanic people, because Hispanic origin is often unreported (especially in FBI police and homicide data). That prevents isolating ethnic European victims or offenders. Those items are scored as a proxy under the existing rule: at most one quarter of the heritage points (9.4 of 37.5). Child-welfare and death-certificate data that publish White non-Hispanic separately keep their heritage marks. This reduces the United States score from 59% to 54%."
+  "conflation_note": "Some official US “White” figures merge Hispanic people, because Hispanic origin is often unreported (especially in FBI police and homicide data). That prevents isolating ethnic European victims or offenders. Under the paired-data rule, heritage points are 0, so this does not change the published score.",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "ncands": {

@@ -1,7 +1,7 @@
 {
  "country": "Austria",
  "iso_a3": "AUT",
- "completeness": 14,
+ "completeness": 10,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Austria publishes the share of convictions for child sexual abuse and abuse material by Austrian citizens, and trafficking victims by nationality, but no citizenship of child victims in police statistics. Other origin figures appear only in parliamentary answers that count foreign suspects without Austrian totals.",
@@ -453,91 +453,78 @@
   }
  ],
  "score": {
-  "value": 14,
+  "value": 10,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 13.9,
+  "uncapped": 9.6,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 6,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 1,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Statistik Austria's court statistics give the share of convictions by citizenship: 76.9% of delicts of sexual abuse of children under 14 (sections 206-207) convicted in 2024 were by Austrian citizens (the report cites 163 delicts). Police statistics give foreign suspects only (112 for section 206 in 2024) through parliamentary answers, and victims by age and sex only.",
-    "score": 18
+    "why": "Statistik Austria's court statistics give the share of convictions by citizenship: 76.9% of delicts of sexual abuse of children under 14 (sections 206-207) convicted in 2024 were by Austrian citizens (the report cites 163 delicts). Police statistics give foreign suspects only (112 for section 206 in 2024) through parliamentary answers, and victims by age and sex only. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 2.5,
-    "perpetrator": 1,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0.5,
     "access": 5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "No national victim origin. A study commissioned by the Land Salzburg from its own child-welfare records gives child-protection assessments 2019-2023 by the child's citizenship (63.5% Austrian, 13.5% EU, 23% third-country), one state only, all concerns combined. Foreign suspects of torment or neglect of children (section 92) are counted only in a parliamentary answer.",
-    "score": 12.0
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 2.5,
-    "perpetrator": 0.5,
-    "coverage": 3,
-    "rates": 0.5,
-    "access": 5,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "proxy",
-    "why": "The national child and youth welfare statistics count 53,162 child-protection assessments in 2024 with no citizenship; the Salzburg study is the only origin data. Foreign suspects of neglect (section 199) appear only in a parliamentary answer.",
-    "score": 11.5
+    "why": "No national victim origin. A study commissioned by the Land Salzburg from its own child-welfare records gives child-protection assessments 2019-2023 by the child's citizenship (63.5% Austrian, 13.5% EU, 23% third-country), one state only, all concerns combined. Foreign suspects of torment or neglect of children (section 92) are counted only in a parliamentary answer. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 2,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0.5,
     "access": 5,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Police statistics give 76 victims of reported murder offences in 2024 by sex and relationship, with no child victims by citizenship. Court statistics give Austrian citizens' share of convicted murder delicts (49.5% in 2024), all victims; a parliamentary answer counts 18 foreign suspects of completed murder.",
-    "score": 10.5
+    "why": "Police statistics give 76 victims of reported murder offences in 2024 by sex and relationship, with no child victims by citizenship. Court statistics give Austrian citizens' share of convicted murder delicts (49.5% in 2024), all victims; a parliamentary answer counts 18 foreign suspects of completed murder. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 6,
-    "perpetrator": 1,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Bundeskriminalamt 2024 situation report lists the nationalities of the 45 trafficking victims (none of the adults Austrian) and of the 6 minor victims (2 Austrian girls), and gives suspects by sex only; foreign suspects are counted in a parliamentary answer.",
-    "score": 17
+    "why": "The Bundeskriminalamt 2024 situation report lists the nationalities of the 45 trafficking victims (none of the adults Austrian) and of the 6 minor victims (2 Austrian girls), and gives suspects by sex only; foreign suspects are counted in a parliamentary answer. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 5,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0.5,
     "access": 5,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Court statistics give 83.2% of child sexual abuse material delicts (section 207a) convicted in 2024 as committed by Austrian citizens (the report cites 499 delicts). No victim data by origin.",
-    "score": 13.0
+    "why": "Court statistics give 83.2% of child sexual abuse material delicts (section 207a) convicted in 2024 as committed by Austrian citizens (the report cites 499 delicts). No victim data by origin. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8
    }
   ],
   "components": [
@@ -567,18 +554,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Austria scores 14% on the stricter scale (0-20%). Statistik Austria gives the share of convictions for child sexual abuse and abuse material by Austrian citizens, and the police trafficking report lists victims' nationalities, but citizenship is a proxy, police data on child victims have no origin, and other figures appear only in parliamentary answers.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Austria scores 10% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Statistik Austria gives the share of convictions for child sexual abuse and abuse material by Austrian citizens, and the police trafficking report lists victims' nationalities, but citizenship is a proxy, police data on child victims have no origin, and other figures appear only in parliamentary answers.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "gks24": {

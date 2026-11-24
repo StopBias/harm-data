@@ -1,0 +1,2013 @@
+{
+ "dataset": "ethnic_pools baseline 1960-1979 (earliest census in window)",
+ "file": "baseline_1960_1979.json",
+ "version": "1.15.0",
+ "version_type": "standalone; core v1.13.0 files unchanged; UN rows stay 1990-2020",
+ "created": "2026-11-24",
+ "rule": "For each country, the earliest census from 1960 to 1979 with a usable origin measure for the founding pool; the actual year is shown. Founding share = share in the country's primary pool (country_pool_map.csv); \"ethnic European\" = EUR pool.",
+ "change_note": "change_pp_baseline_to_latest is given only where the baseline and the core latest value use a comparable definition; otherwise null (see flags).",
+ "rows": [
+  {
+   "country": "New Zealand",
+   "iso3": "NZL",
+   "order": 1,
+   "core_name": "New Zealand",
+   "founding_pool": "EUR",
+   "baseline_year": 1961,
+   "baseline_founding_pct": 91.8,
+   "measure": "ethnic origin by fractions of descent (European = not half or more of any other origin)",
+   "counts": {
+    "total": 2414984,
+    "European": 2216886,
+    "Maori_half_or_more": 167086,
+    "Pacific_Islanders": 14340,
+    "Chinese": 8524,
+    "Indian": 4179,
+    "Fijian": 746,
+    "Syrian_Lebanese_Arab": 1101,
+    "other": 2122
+   },
+   "pools_pct": {
+    "EUR": 91.8,
+    "PAC": 7.54,
+    "EAS": 0.35,
+    "SAS": 0.17,
+    "MENA": 0.05,
+    "unmapped": 0.09
+   },
+   "alternates": {
+    "1966": 90.64,
+    "1971": 89.47,
+    "1976_usually_resident": 86.13,
+    "1981_usually_resident": 85.79
+   },
+   "sources": [
+    {
+     "publisher": "Stats NZ (Department of Statistics)",
+     "title": "New Zealand Official Yearbook 1977, Population: Ethnic groups (censuses 1961, 1966, 1971)",
+     "url": "https://www3.stats.govt.nz/New_Zealand_Official_Yearbooks/1977/NZOYB_1977.html"
+    },
+    {
+     "publisher": "Stats NZ",
+     "title": "New Zealand Official Yearbook 1986-87, table 6.29 (1976, 1981) and Maori by degree of origin (1971: half-or-more 227,414 vs any Maori descent 290,501)",
+     "url": "https://www3.stats.govt.nz/New_Zealand_Official_Yearbooks/1986-87/NZOYB_1986-87.html"
+    }
+   ],
+   "verification": "verified: all counts matched in the Yearbook text on 2026-11-24",
+   "flags": [
+    "DEFINITION BREAK: 1916-1981 fractions of descent; 1986 ticked group; 1991+ self-identified; 2013-2023 total responses (multi-count). The latest core value (67.8, 2023) is total responses.",
+    "European in 1961-71 includes people with less than half Maori descent (1971: about 63,000 people, 2.2% of the population), so it is inflated relative to self-identification.",
+    "1976 Maori includes those who did not state a degree; not like-for-like with 1971."
+   ],
+   "comparable_to_latest": false,
+   "note_vs_christa": "Christa used 1971 (89.5%). The earliest census in the window is 1961 (91.80%). 1971 = 89.47% is kept as an alternate.",
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2023,
+   "latest_founding_pct_core": 67.8,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -24.0
+  },
+  {
+   "country": "United Kingdom (England and Wales)",
+   "iso3": "GBR",
+   "order": 2,
+   "core_name": "United Kingdom",
+   "founding_pool": "EUR",
+   "baseline_year": 1971,
+   "baseline_founding_pct": 97.1,
+   "baseline_range": [
+    96.95,
+    97.33
+   ],
+   "measure": "ESTIMATE: 100 minus the population of New Commonwealth and Pakistani (NCWP) ethnic origin (OPCS, from 1971 parents' birthplace plus surname screening)",
+   "counts": {
+    "NCWP_origin_England_1971": 1453000,
+    "NCWP_origin_GB_1971": 1486000,
+    "coloured_GB_1971": 1331000,
+    "EW_population_1971": 48749575
+   },
+   "sources": [
+    {
+     "publisher": "UK Parliament (Hansard), quoting OPCS Population Trends 2 (1975)",
+     "title": "HC Deb 28 July 1976 vol 916 cc315-6W, Immigrants",
+     "url": "https://api.parliament.uk/historic-hansard/written-answers/1976/jul/28/immigrants"
+    },
+    {
+     "publisher": "INED, Population 1976 (summary of OPCS \"Country of birth and colour 1971-74\")",
+     "title": "Persée record",
+     "url": "https://www.persee.fr/doc/pop_0032-4663_1976_num_31_6_16149"
+    },
+    {
+     "publisher": "ONS census counts via GB Historical GIS (Vision of Britain)",
+     "title": "England and Wales total population 1971",
+     "url": "https://www.visionofbritain.org.uk/unit/10001043/cube/TOT_POP"
+    }
+   ],
+   "verification": "verified: 1,453,000 (England) and 1,486,000 (GB) in Hansard; 1,331,000 coloured (2.5% of GB) in the INED summary. E&W denominator 48,749,575 not opened directly (site timed out); matches search-index copy of the same table. The E&W numerator is not published; the range uses the England and GB figures.",
+   "flags": [
+    "ESTIMATE, not a census ethnicity question (first ethnic question 1991).",
+    "England figure used for an England and Wales row; Wales numerator unknown (at most 33,000 on the GB-England gap).",
+    "Misses third-generation and pre-war minorities and non-Commonwealth non-Europeans; 1971 under-enumeration of West Indian and Asian residents; OPCS called the margin wide.",
+    "Northern Ireland excluded.",
+    "1961 census asked birthplace only (no parents' birthplace), so 1971 is the earliest usable year."
+   ],
+   "comparable_to_latest": false,
+   "earlier_in_window_not_used": "1961 (birthplace only)",
+   "alternates": {},
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 81.7,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -15.4
+  },
+  {
+   "country": "Russian Federation (RSFSR)",
+   "iso3": "RUS",
+   "order": 3,
+   "core_name": "Russian Federation",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 86.73,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "matched to the core series group list: Russians+Ukrainians+Belarusians+Germans (same groups as the core 2002-2021 series)",
+   "counts": {
+    "total": 130079210,
+    "top_groups": [
+     [
+      "Russians",
+      107747630,
+      82.83
+     ],
+     [
+      "Tatars",
+      4755061,
+      3.66
+     ],
+     [
+      "Ukrainians",
+      3345885,
+      2.57
+     ],
+     [
+      "Chuvash",
+      1637028,
+      1.26
+     ],
+     [
+      "Bashkirs",
+      1180913,
+      0.91
+     ],
+     [
+      "Mordvins",
+      1177492,
+      0.91
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 87.45,
+    "EAS": 0.53,
+    "MENA": 0.72,
+    "unmapped": 11.29,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 87.45,
+    "finnic_peoples_of_russia_pct (not in founding)": 2.35
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=1"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Latest core value (2021, 81.8) excludes the 11.3% who did not state a nationality; 2021 includes Crimea/Sevastopol."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 81.8,
+   "change_pp_baseline_to_latest": -4.93,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Ukraine",
+   "iso3": "UKR",
+   "order": 4,
+   "core_name": "Ukraine",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 97.61,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "matched to the core series group list: Ukrainians, Russians, Belarusians, Moldovans, Bulgarians, Hungarians, Romanians, Poles, Greeks, Germans (same groups as the core 1989-2001 series)",
+   "counts": {
+    "total": 47126517,
+    "top_groups": [
+     [
+      "Ukrainians",
+      35283857,
+      74.87
+     ],
+     [
+      "Russians",
+      9126331,
+      19.37
+     ],
+     [
+      "Jews",
+      775993,
+      1.65
+     ],
+     [
+      "Belarusians",
+      385847,
+      0.82
+     ],
+     [
+      "Poles",
+      295107,
+      0.63
+     ],
+     [
+      "Moldovans",
+      265902,
+      0.56
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 97.82,
+    "EAS": 0.06,
+    "MENA": 1.68,
+    "unmapped": 0.43,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 97.82,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.06
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=2"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2001,
+   "latest_founding_pct_core": 97.8,
+   "change_pp_baseline_to_latest": 0.19,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Lithuania",
+   "iso3": "LTU",
+   "order": 5,
+   "core_name": "Lithuania",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 98.63,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "matched to the core series group list: Lithuanians, Poles, Russians, Belarusians, Ukrainians (same groups as the core 2001-2021 series)",
+   "counts": {
+    "total": 3128236,
+    "top_groups": [
+     [
+      "Lithuanians",
+      2506751,
+      80.13
+     ],
+     [
+      "Russians",
+      267989,
+      8.57
+     ],
+     [
+      "Poles",
+      240203,
+      7.68
+     ],
+     [
+      "Belarusians",
+      45412,
+      1.45
+     ],
+     [
+      "Ukrainians",
+      25099,
+      0.8
+     ],
+     [
+      "Jews",
+      23538,
+      0.75
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 98.96,
+    "EAS": 0.02,
+    "MENA": 0.78,
+    "unmapped": 0.24,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 98.96,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.02
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=8"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 97.6,
+   "change_pp_baseline_to_latest": -1.03,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Belarus",
+   "iso3": "BLR",
+   "order": 6,
+   "core_name": null,
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 98.0,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 9002338,
+    "top_groups": [
+     [
+      "Belarusians",
+      7289610,
+      80.97
+     ],
+     [
+      "Russians",
+      938161,
+      10.42
+     ],
+     [
+      "Poles",
+      382600,
+      4.25
+     ],
+     [
+      "Ukrainians",
+      190839,
+      2.12
+     ],
+     [
+      "Jews",
+      147991,
+      1.64
+     ],
+     [
+      "Tatars",
+      9992,
+      0.11
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 98.0,
+    "EAS": 0.05,
+    "MENA": 1.66,
+    "unmapped": 0.28,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 98.0,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.04
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=3"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Uzbekistan",
+   "iso3": "UZB",
+   "order": 7,
+   "core_name": null,
+   "founding_pool": "EAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 74.19,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 11959582,
+    "top_groups": [
+     [
+      "Uzbeks",
+      7733541,
+      64.66
+     ],
+     [
+      "Russians",
+      1495556,
+      12.51
+     ],
+     [
+      "Kazakhs",
+      549312,
+      4.59
+     ],
+     [
+      "Tajiks",
+      457356,
+      3.82
+     ],
+     [
+      "Tatars",
+      442331,
+      3.7
+     ],
+     [
+      "Karakalpaks",
+      230273,
+      1.93
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 14.75,
+    "EAS": 74.19,
+    "MENA": 5.2,
+    "unmapped": 5.86,
+    "SAS": 0.01
+   },
+   "alternates": {
+    "full_map_founding_pct": 74.19,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.16
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=4"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Kazakhstan",
+   "iso3": "KAZ",
+   "order": 8,
+   "core_name": "Kazakhstan",
+   "founding_pool": "EAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 35.2,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "core v1.13.0 1970 value from the national statistics office (kept); Demoscope reprint used as a cross-check",
+   "counts": {
+    "total": 12848573,
+    "top_groups": [
+     [
+      "Russians",
+      5499826,
+      42.8
+     ],
+     [
+      "Kazakhs",
+      4161164,
+      32.39
+     ],
+     [
+      "Ukrainians",
+      930158,
+      7.24
+     ],
+     [
+      "Germans",
+      839649,
+      6.53
+     ],
+     [
+      "Tatars",
+      281849,
+      2.19
+     ],
+     [
+      "Uzbeks",
+      207514,
+      1.62
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 59.54,
+    "EAS": 35.82,
+    "MENA": 0.83,
+    "unmapped": 3.81,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 35.82,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.49
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=5"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Demoscope gives 34.94 (Kazakh+Uzbek+Uyghur) vs the Bureau's 35.2; small difference not resolved."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 75.1,
+   "change_pp_baseline_to_latest": 39.9,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Georgia",
+   "iso3": "GEO",
+   "order": 9,
+   "core_name": null,
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 88.29,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 4686358,
+    "top_groups": [
+     [
+      "Georgians",
+      3130741,
+      66.81
+     ],
+     [
+      "Armenians",
+      452309,
+      9.65
+     ],
+     [
+      "Russians",
+      396694,
+      8.46
+     ],
+     [
+      "Azerbaijanis",
+      217758,
+      4.65
+     ],
+     [
+      "Ossetians",
+      150185,
+      3.2
+     ],
+     [
+      "Greeks",
+      89246,
+      1.9
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 88.29,
+    "EAS": 0.05,
+    "MENA": 6.4,
+    "unmapped": 5.26,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 88.29,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.02
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=6"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Armenians and Georgians are counted as ethnic European per the country map (editorial; Caucasus has no separate pool)."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Azerbaijan",
+   "iso3": "AZE",
+   "order": 10,
+   "core_name": null,
+   "founding_pool": "MENA",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 74.92,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 5117081,
+    "top_groups": [
+     [
+      "Azerbaijanis",
+      3776778,
+      73.81
+     ],
+     [
+      "Russians",
+      510059,
+      9.97
+     ],
+     [
+      "Armenians",
+      483520,
+      9.45
+     ],
+     [
+      "Lezgins",
+      137250,
+      2.68
+     ],
+     [
+      "Tatars",
+      31353,
+      0.61
+     ],
+     [
+      "Avars",
+      30735,
+      0.6
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 20.5,
+    "EAS": 0.06,
+    "MENA": 74.92,
+    "unmapped": 4.52,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 74.92,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.03
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=7"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Republic of Moldova",
+   "iso3": "MDA",
+   "order": 11,
+   "core_name": null,
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 93.3,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 3568873,
+    "top_groups": [
+     [
+      "Moldovans",
+      2303916,
+      64.56
+     ],
+     [
+      "Ukrainians",
+      506560,
+      14.19
+     ],
+     [
+      "Russians",
+      414444,
+      11.61
+     ],
+     [
+      "Gagauz",
+      124902,
+      3.5
+     ],
+     [
+      "Jews",
+      98001,
+      2.75
+     ],
+     [
+      "Bulgarians",
+      73776,
+      2.07
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 93.3,
+    "EAS": 0.03,
+    "MENA": 2.76,
+    "unmapped": 3.91,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 93.3,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.04
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=9"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Latvia",
+   "iso3": "LVA",
+   "order": 12,
+   "core_name": "Latvia",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 97.6,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "core v1.13.0 1970 value from the national statistics office (kept); Demoscope reprint used as a cross-check",
+   "counts": {
+    "total": 2364127,
+    "top_groups": [
+     [
+      "Latvians",
+      1341805,
+      56.76
+     ],
+     [
+      "Russians",
+      704599,
+      29.8
+     ],
+     [
+      "Belarusians",
+      94898,
+      4.01
+     ],
+     [
+      "Poles",
+      63045,
+      2.67
+     ],
+     [
+      "Ukrainians",
+      53461,
+      2.26
+     ],
+     [
+      "Lithuanians",
+      40589,
+      1.72
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 97.85,
+    "EAS": 0.06,
+    "MENA": 1.58,
+    "unmapped": 0.51,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 97.85,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.07
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=10"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 95.9,
+   "change_pp_baseline_to_latest": -1.7,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Kyrgyzstan",
+   "iso3": "KGZ",
+   "order": 13,
+   "core_name": "Kyrgyzstan",
+   "founding_pool": "EAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 55.15,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "matched to the core series group list: Kyrgyz+Uzbeks (same groups as the core 1989-2022 series)",
+   "counts": {
+    "total": 2932805,
+    "top_groups": [
+     [
+      "Kyrgyz",
+      1284773,
+      43.81
+     ],
+     [
+      "Russians",
+      855935,
+      29.18
+     ],
+     [
+      "Uzbeks",
+      332638,
+      11.34
+     ],
+     [
+      "Ukrainians",
+      120081,
+      4.09
+     ],
+     [
+      "Germans",
+      89834,
+      3.06
+     ],
+     [
+      "Tatars",
+      68827,
+      2.35
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 36.94,
+    "EAS": 57.78,
+    "MENA": 1.72,
+    "unmapped": 3.55,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 57.78,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.24
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=11"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2022,
+   "latest_founding_pct_core": 91.8,
+   "change_pp_baseline_to_latest": 36.65,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Tajikistan",
+   "iso3": "TJK",
+   "order": 14,
+   "core_name": null,
+   "founding_pool": "MENA",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 56.8,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 2899602,
+    "top_groups": [
+     [
+      "Tajiks",
+      1629920,
+      56.21
+     ],
+     [
+      "Uzbeks",
+      665662,
+      22.96
+     ],
+     [
+      "Russians",
+      344109,
+      11.87
+     ],
+     [
+      "Tatars",
+      68280,
+      2.35
+     ],
+     [
+      "Germans",
+      37712,
+      1.3
+     ],
+     [
+      "Kyrgyz",
+      35485,
+      1.22
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 14.7,
+    "EAS": 25.17,
+    "MENA": 56.8,
+    "unmapped": 3.28,
+    "SAS": 0.05
+   },
+   "alternates": {
+    "full_map_founding_pct": 56.8,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.28
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=12"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Armenia",
+   "iso3": "ARM",
+   "order": 15,
+   "core_name": null,
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 92.08,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 2491873,
+    "top_groups": [
+     [
+      "Armenians",
+      2208327,
+      88.62
+     ],
+     [
+      "Azerbaijanis",
+      148189,
+      5.95
+     ],
+     [
+      "Russians",
+      66108,
+      2.65
+     ],
+     [
+      "Kurds",
+      37486,
+      1.5
+     ],
+     [
+      "Ukrainians",
+      8390,
+      0.34
+     ],
+     [
+      "Greeks",
+      5690,
+      0.23
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 92.08,
+    "EAS": 0.05,
+    "MENA": 7.74,
+    "unmapped": 0.13,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 92.08,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.02
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=13"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Armenians and Georgians are counted as ethnic European per the country map (editorial; Caucasus has no separate pool)."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Turkmenistan",
+   "iso3": "TKM",
+   "order": 16,
+   "core_name": null,
+   "founding_pool": "EAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 77.46,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "counts": {
+    "total": 2158880,
+    "top_groups": [
+     [
+      "Turkmens",
+      1416700,
+      65.62
+     ],
+     [
+      "Russians",
+      313079,
+      14.5
+     ],
+     [
+      "Uzbeks",
+      179498,
+      8.31
+     ],
+     [
+      "Kazakhs",
+      68519,
+      3.17
+     ],
+     [
+      "Tatars",
+      36453,
+      1.69
+     ],
+     [
+      "Ukrainians",
+      35398,
+      1.64
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 17.88,
+    "EAS": 77.46,
+    "MENA": 1.37,
+    "unmapped": 3.25,
+    "SAS": 0.04
+   },
+   "alternates": {
+    "full_map_founding_pct": 77.46,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.19
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=14"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Estonia",
+   "iso3": "EST",
+   "order": 17,
+   "core_name": "Estonia",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 98.9,
+   "measure": "nationality (USSR census 1970)",
+   "basis": "core v1.13.0 1970 value from the national statistics office (kept); Demoscope reprint used as a cross-check",
+   "counts": {
+    "total": 1356079,
+    "top_groups": [
+     [
+      "Estonians",
+      925157,
+      68.22
+     ],
+     [
+      "Russians",
+      334620,
+      24.68
+     ],
+     [
+      "Ukrainians",
+      28086,
+      2.07
+     ],
+     [
+      "Belarusians",
+      18732,
+      1.38
+     ],
+     [
+      "Финны",
+      18537,
+      1.37
+     ],
+     [
+      "Germans",
+      7850,
+      0.58
+     ]
+    ]
+   },
+   "pools_pct_full_map": {
+    "EUR": 99.06,
+    "EAS": 0.06,
+    "MENA": 0.41,
+    "unmapped": 0.47,
+    "SAS": 0.0
+   },
+   "alternates": {
+    "full_map_founding_pct": 99.06,
+    "finnic_peoples_of_russia_pct (not in founding)": 0.14
+   },
+   "sources": [
+    {
+     "publisher": "Demoscope Weekly (reprint of USSR Central Statistical Office, Itogi Vsesoyuznoi perepisi naseleniya 1970 goda, vol. IV)",
+     "title": "Natsional'nyi sostav naseleniya po respublikam SSSR, 1970",
+     "url": "https://www.demoscope.ru/weekly/ssp/sng_nac_70.php?reg=15"
+    }
+   ],
+   "verification": "verified: table parsed 2026-11-24; group counts sum exactly to the republic total; Christa's figure reproduced exactly with the core group list",
+   "flags": [
+    "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
+    "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
+    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+   ],
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 97.1,
+   "change_pp_baseline_to_latest": -1.8,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Canada",
+   "iso3": "CAN",
+   "core_name": "Canada",
+   "founding_pool": "EUR",
+   "baseline_year": 1961,
+   "baseline_founding_pct": 96.8,
+   "measure": "ethnic origin (paternal line); EUR = British + other European (incl. French and Jewish, as StatCan groups them)",
+   "counts": {
+    "total": 18238247,
+    "British": 7996669,
+    "other_European": 9657195,
+    "of_which_Jewish": 173344,
+    "Asiatic": 121753,
+    "Negro": 32127,
+    "other_origins_incl_Native_Indian": 462630,
+    "not_stated": 210382
+   },
+   "alternates": {
+    "1971_same_definition": 96.27,
+    "1961_excl_Jewish_origin": 95.85
+   },
+   "sources": [
+    {
+     "publisher": "Statistics Canada",
+     "title": "Historical Statistics of Canada, Series A125-163, Origins of the population, census dates, 1871 to 1971",
+     "url": "https://www150.statcan.gc.ca/n1/pub/11-516-x/sectiona/A125_163-eng.csv"
+    }
+   ],
+   "verification": "verified: CSV opened 2026-11-24; 1971 on the same definition = 96.27, matching core 96.3",
+   "flags": [
+    "CONCEPT BREAK: paternal ethnic origin (1961/1971) vs visible minority and Indigenous identity (core latest 2021).",
+    "Jewish origin is inside StatCan's European total (as in the core 1971 value); excluding it gives 95.84."
+   ],
+   "comparable_to_latest": false,
+   "order": 18,
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2021,
+   "latest_founding_pct_core": 68.5,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -28.3
+  },
+  {
+   "country": "United States of America",
+   "iso3": "USA",
+   "core_name": "United States of America",
+   "founding_pool": "EUR",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 83.2,
+   "measure": "race + Hispanic origin (non-Hispanic White)",
+   "sources": [
+    {
+     "publisher": "US Census Bureau",
+     "title": "Gibson & Jung 2002, Working Paper 56 (core v1.13.0)",
+     "url": "https://www.census.gov/library/working-papers/2002/demo/POP-twps0056.html"
+    }
+   ],
+   "verification": "core v1.13.0 value (verified in an earlier batch)",
+   "flags": [
+    "1970 Hispanic origin from the 15% sample."
+   ],
+   "earlier_in_window_not_used": "1960: race only, no Hispanic-origin question, so non-Hispanic White cannot be formed",
+   "order": 19,
+   "alternates": {},
+   "latest_year_core": 2020,
+   "latest_founding_pct_core": 57.8,
+   "change_pp_baseline_to_latest": -25.4,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Brazil",
+   "iso3": "BRA",
+   "core_name": "Brazil",
+   "founding_pool": "EUR",
+   "baseline_year": 1960,
+   "baseline_founding_pct": 61.03,
+   "measure": "colour (cor), population present",
+   "pools_pct": {
+    "EUR (branca)": 61.03,
+    "SSA (preta)": 8.71,
+    "EAS (amarela)": 0.69,
+    "unmapped (parda)": 29.5,
+    "not stated": 0.07
+   },
+   "sources": [
+    {
+     "publisher": "IBGE",
+     "title": "Anuário Estatístico do Brasil 1982, cap. 8 table 8, Distribuição da população presente segundo a cor, 1940-1980",
+     "url": "https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1982/populacao_m_1982aeb_043_1.pdf"
+    }
+   ],
+   "verification": "verified: scanned IBGE table read 2026-11-24 (1960 branca 61.03)",
+   "flags": [
+    "1970 census had no colour question.",
+    "Parda included Indigenous people until 1991.",
+    "Same IBGE table gives 1980 branca 54.77 (preliminary sample), vs 54.2 in the core 1980 row (different source); not reconciled."
+   ],
+   "order": 20,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2022,
+   "latest_founding_pct_core": 43.5,
+   "change_pp_baseline_to_latest": -17.53,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "South Africa",
+   "iso3": "ZAF",
+   "core_name": "South Africa",
+   "founding_pool": "SSA",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 70.4,
+   "measure": "population group",
+   "sources": [
+    {
+     "publisher": "Stats SA",
+     "title": "South African Statistics 2002, table 1.2 (core v1.13.0)",
+     "url": "https://www.statssa.gov.za/"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "1970 boundaries include the TBVC homelands."
+   ],
+   "earlier_in_window_not_used": "1960 census (race) exists; official table not retrieved in this pass",
+   "order": 21,
+   "alternates": {},
+   "latest_year_core": 2022,
+   "latest_founding_pct_core": 81.4,
+   "change_pp_baseline_to_latest": 11.0,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Singapore",
+   "iso3": "SGP",
+   "core_name": "Singapore",
+   "founding_pool": "EAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 77.0,
+   "measure": "ethnic group, residents",
+   "sources": [
+    {
+     "publisher": "Singapore Department of Statistics",
+     "title": "Table M810011 (core v1.13.0)",
+     "url": "https://tablebuilder.singstat.gov.sg/table/TS/M810011"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "Residents only."
+   ],
+   "order": 22,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2020,
+   "latest_founding_pct_core": 74.3,
+   "change_pp_baseline_to_latest": -2.7,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Malaysia",
+   "iso3": "MYS",
+   "core_name": "Malaysia",
+   "founding_pool": "SEA",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 55.8,
+   "measure": "ethnic group",
+   "sources": [
+    {
+     "publisher": "Department of Statistics Malaysia",
+     "title": "Statistik Subnasional table 2.0 (core v1.13.0)",
+     "url": "https://www.dosm.gov.my/"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "CONCEPT BREAK: whole population in 1970; citizens only from 1991."
+   ],
+   "comparable_to_latest": false,
+   "order": 23,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2020,
+   "latest_founding_pct_core": 69.4,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 13.6
+  },
+  {
+   "country": "Fiji",
+   "iso3": "FJI",
+   "core_name": "Fiji",
+   "founding_pool": "PAC",
+   "baseline_year": 1966,
+   "baseline_founding_pct": 44.9,
+   "measure": "ethnicity",
+   "sources": [
+    {
+     "publisher": "Fiji Bureau of Statistics",
+     "title": "Key Statistics June 2012, table 1.1 (core v1.13.0)",
+     "url": "https://www.statsfiji.gov.fj/"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "order": 24,
+   "flags": [],
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2007,
+   "latest_founding_pct_core": 59.9,
+   "change_pp_baseline_to_latest": 15.0,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Suriname",
+   "iso3": "SUR",
+   "core_name": "Suriname",
+   "founding_pool": "SAS",
+   "baseline_year": 1972,
+   "baseline_founding_pct": 37.6,
+   "measure": "ethnic group",
+   "sources": [
+    {
+     "publisher": "ABS Suriname via CARICOM CCDP",
+     "title": "Suriname in Cijfers 215 (core v1.13.0)",
+     "url": "https://statistics-suriname.org/"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "Creole category narrowed later."
+   ],
+   "earlier_in_window_not_used": "1964 census (ethnic group) exists; not retrieved",
+   "order": 25,
+   "alternates": {},
+   "latest_year_core": 2012,
+   "latest_founding_pct_core": 27.4,
+   "change_pp_baseline_to_latest": -10.2,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Sri Lanka",
+   "iso3": "LKA",
+   "core_name": "Sri Lanka",
+   "founding_pool": "SAS",
+   "baseline_year": 1963,
+   "baseline_founding_pct": 99.07,
+   "measure": "ethnicity",
+   "pools_pct": {
+    "SAS": 99.07,
+    "EUR (Burgher & Eurasian)": 0.43,
+    "SEA (Malay)": 0.32,
+    "unmapped (Other)": 0.18
+   },
+   "alternates": {
+    "1971_core": 99.18
+   },
+   "sources": [
+    {
+     "publisher": "Department of Census and Statistics Sri Lanka",
+     "title": "Census of Population and Housing 2012 Final Report, table 9.2 (1911-2012, from Statistical Abstract 2013)",
+     "url": "http://www.statistics.gov.lk/",
+     "link_status": "HTTP 500 on 2026-11-24; PDF on file at raw/dcs_srilanka_census2012_final_report.pdf"
+    }
+   ],
+   "verification": "verified from the DCS PDF already on file (raw/dcs_srilanka_census2012_final_report.pdf); Veddas (0.4 thousand) counted as SAS, as in the core rows up to 1963",
+   "flags": [
+    "Latest core value (2012) is after the 2001 partial-coverage census."
+   ],
+   "order": 26,
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2012,
+   "latest_founding_pct_core": 99.5,
+   "change_pp_baseline_to_latest": 0.43,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Israel",
+   "iso3": "ISR",
+   "core_name": null,
+   "founding_pool": "MENA",
+   "baseline_year": 1970,
+   "baseline_founding_pct": "country-only (Arab 14.6%, Jews and others 85.4%)",
+   "measure": "population group (end of year)",
+   "sources": [
+    {
+     "publisher": "Central Bureau of Statistics Israel",
+     "title": "Statistical Abstract of Israel 2024, table 2.1 (core v1.13.0)",
+     "url": "https://www.cbs.gov.il/"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "Not cross-pool: Jews and Arabs are both in MENA."
+   ],
+   "earlier_in_window_not_used": "1961 census / end-1960 estimate not retrieved",
+   "order": 27,
+   "alternates": {},
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Australia",
+   "iso3": "AUS",
+   "core_name": null,
+   "founding_pool": "EUR",
+   "baseline_year": 1971,
+   "baseline_founding_pct": "not pool-mapped (overseas-born 20.0%)",
+   "measure": "birthplace only",
+   "sources": [
+    {
+     "publisher": "ABS",
+     "title": "Cultural diversity of Australia (2022) (core v1.13.0)",
+     "url": "https://www.abs.gov.au/articles/cultural-diversity-australia"
+    }
+   ],
+   "verification": "core v1.13.0 value",
+   "flags": [
+    "Birthplace-only; no ethnicity question."
+   ],
+   "earlier_in_window_not_used": "1961/1966 birthplace not retrieved",
+   "order": 28,
+   "alternates": {},
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Ireland",
+   "iso3": "IRL",
+   "core_name": "Ireland",
+   "founding_pool": "EUR",
+   "baseline_year": 1961,
+   "baseline_founding_pct": ">=99.4 (ESTIMATE)",
+   "measure": "birthplace only: born outside Ireland and Great Britain 0.6% (1961), 0.9% (1971)",
+   "counts": {
+    "1961_thousands": {
+     "total": 2818,
+     "born_Republic": 2719,
+     "Northern_Ireland": 27,
+     "Great_Britain": 54,
+     "elsewhere": 18
+    },
+    "1971_thousands": {
+     "total": 2978,
+     "born_Republic": 2841,
+     "Northern_Ireland": 26,
+     "Great_Britain": 84,
+     "elsewhere": 27
+    }
+   },
+   "sources": [
+    {
+     "publisher": "Central Statistics Office Ireland",
+     "title": "Census 1971 Volume 11, Commentary, Table H Birthplaces 1946/1961/1971",
+     "url": "https://www.cso.ie/en/media/csoie/census/census1971results/volume11/C_1971_VOL_11_comm.pdf"
+    }
+   ],
+   "verification": "verified: OCR of the CSO commentary (Table H) 2026-11-24",
+   "flags": [
+    "ESTIMATE: birthplace-only, first generation; assumes every person born outside Ireland and GB is non-European (upper bound on non-European).",
+    "No ethnicity question until 2006."
+   ],
+   "comparable_to_latest": false,
+   "order": 29,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2022,
+   "latest_founding_pct_core": 87.4,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Mexico",
+   "iso3": "MEX",
+   "core_name": "Mexico",
+   "founding_pool": "AMI",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 7.77,
+   "measure": "speakers of an Indigenous language, aged 5+ (WEAK proxy)",
+   "counts": {
+    "indigenous_language_speakers_5plus": 3111415,
+    "population_total": 48225238,
+    "population_0_4": 8167510
+   },
+   "sources": [
+    {
+     "publisher": "INEGI (DGE)",
+     "title": "IX Censo General de Población 1970, Resumen general abreviado, cuadros 3 and 10",
+     "url": "https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/historicos/1290/702825413156/702825413156_2.pdf"
+    }
+   ],
+   "verification": "verified: 3,111,415 in cuadro 10 (part 2 PDF); 0-4 population 8,167,510 read from OCR of cuadro 3 (male 4,151,517 + female 4,015,993)",
+   "flags": [
+    "WEAK proxy (language, not identity).",
+    "Age universe 5+ in 1970 vs 3+ in the core 2020 value.",
+    "Keep off the main ranking (agreed earlier)."
+   ],
+   "comparable_to_latest": false,
+   "order": 30,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2020,
+   "latest_founding_pct_core": 6.1,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -1.67
+  },
+  {
+   "country": "Peru",
+   "iso3": "PER",
+   "core_name": "Peru",
+   "founding_pool": "AMI",
+   "baseline_year": 1961,
+   "baseline_founding_pct": 38.7,
+   "measure": "mother tongue Quechua, Aymara or other native, aged 5+ (WEAK proxy)",
+   "alternates": {
+    "1972_all_ages": 30.6
+   },
+   "sources": [
+    {
+     "publisher": "INEI",
+     "title": "Estadísticas del Bicentenario (2021), Perú: población censada por idioma o lengua materna 1961-2017",
+     "url": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1806/libro.pdf"
+    }
+   ],
+   "verification": "verified: 1961 Quechua 32.6 + Aymara 3.5 + other native 2.6 = 38.7; 1972 26.6+2.9+1.1 = 30.6",
+   "flags": [
+    "WEAK proxy.",
+    "Age universe: 5+ in 1961, 1981, 1993; all ages in 1972; 3+ in 2007/2017. INEI 1981 value (Quechua 9.3) looks anomalous.",
+    "Keep off the main ranking (agreed earlier)."
+   ],
+   "comparable_to_latest": false,
+   "order": 31,
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2017,
+   "latest_founding_pct_core": 16.33,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -22.37
+  },
+  {
+   "country": "Panama",
+   "iso3": "PAN",
+   "core_name": "Panama",
+   "founding_pool": "AMI",
+   "baseline_year": 1960,
+   "baseline_founding_pct": 5.78,
+   "measure": "Indigenous population (geographic criterion)",
+   "counts": {
+    "1960": {
+     "total": 1075541,
+     "indigenous": 62187
+    },
+    "1970": {
+     "total": 1428082,
+     "indigenous": 75738
+    }
+   },
+   "alternates": {
+    "1970": 5.3
+   },
+   "sources": [
+    {
+     "publisher": "CEPAL (2005) reproducing Dirección de Estadística y Censo, Contraloría General de Panamá",
+     "title": "Los pueblos indígenas de Panamá: diagnóstico sociodemográfico a partir del censo del 2000, cuadros III.1 and III.4",
+     "url": "https://repositorio.cepal.org/server/api/core/bitstreams/1cbb3c67-d43a-48b9-ba97-49a307d4313c/content"
+    }
+   ],
+   "verification": "verified in the CEPAL document (official census counts as reproduced by CEPAL with DEC); DEC volumes not opened",
+   "flags": [
+    "DEFINITION BREAK: geographic/area criterion before 1990, self-identification later (core 2023 = 17.2)."
+   ],
+   "comparable_to_latest": false,
+   "note_vs_christa": "Christa used 1970 (5.3%); earliest in window is 1960 (5.78%).",
+   "order": 32,
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2023,
+   "latest_founding_pct_core": 17.2,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 11.42
+  },
+  {
+   "country": "Guatemala",
+   "iso3": "GTM",
+   "core_name": "Guatemala",
+   "founding_pool": "AMI",
+   "baseline_year": 1964,
+   "baseline_founding_pct": 42.2,
+   "measure": "Indigenous (enumerator-assigned)",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "CEPAL, Guatemala: población indígena (Christa's note)",
+     "url": "https://hdl.handle.net/11362/8398"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "Enumerator-assigned in 1964/1973; self-identification later.",
+    "1973 = 43.8 (Christa)."
+   ],
+   "comparable_to_latest": false,
+   "order": 33,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2018,
+   "latest_founding_pct_core": 43.4,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 1.2
+  },
+  {
+   "country": "Kenya",
+   "iso3": "KEN",
+   "core_name": "Kenya",
+   "founding_pool": "SSA",
+   "baseline_year": 1969,
+   "baseline_founding_pct": 98.1,
+   "measure": "tribe/race",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "Kenya Population Census 1969 vol. I as tabulated in Ndegwa 1982 (thesis)",
+     "url": "https://digitalcommons.unomaha.edu/cgi/viewcontent.cgi?article=1439&context=studentwork"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "Secondary tabulation; KNBS 1969 microdata exist (statistics.knbs.or.ke/nada catalog 72)."
+   ],
+   "comparable_to_latest": false,
+   "order": 34,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2019,
+   "latest_founding_pct_core": 99.13,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 1.03
+  },
+  {
+   "country": "Viet Nam",
+   "iso3": "VNM",
+   "core_name": "Viet Nam",
+   "founding_pool": "SEA",
+   "baseline_year": 1979,
+   "baseline_founding_pct": 98.2,
+   "measure": "ethnicity (Hoa 1.77%)",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "Census 1979 (1983) p.104, as cited by Amer 2013",
+     "url": "https://ejournal.newera.edu.my/mjcs/article/download/160/147"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "Secondary citation; official GSO 1979 volume not opened."
+   ],
+   "comparable_to_latest": false,
+   "order": 35,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2019,
+   "latest_founding_pct_core": 99.22,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 1.02
+  },
+  {
+   "country": "Zimbabwe",
+   "iso3": "ZWE",
+   "core_name": "Zimbabwe",
+   "founding_pool": "SSA",
+   "baseline_year": 1969,
+   "baseline_founding_pct": 95.1,
+   "measure": "race (Rhodesia 1969 census interim report)",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "Patel 2021 / Kay, citing the 1969 census",
+     "url": "http://hdl.handle.net/10822/1062355"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "ESTIMATE: Coloured count (~15,000) is preliminary."
+   ],
+   "comparable_to_latest": false,
+   "order": 36,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2022,
+   "latest_founding_pct_core": 99.6,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": 4.5
+  },
+  {
+   "country": "Guyana",
+   "iso3": "GUY",
+   "core_name": "Guyana",
+   "founding_pool": "SAS",
+   "baseline_year": 1970,
+   "baseline_founding_pct": 51.8,
+   "measure": "race (1970 Commonwealth Caribbean census)",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "Ryan, citing UWI 1976 (via DocsLib)",
+     "url": "https://docslib.org/doc/8095895/guyana-at-the-cross-roads-beyond-ethnic-paramountcy"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "Secondary; official table not retrieved. 1960 British Guiana census (race) also exists."
+   ],
+   "comparable_to_latest": false,
+   "order": 37,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": 2012,
+   "latest_founding_pct_core": 39.8,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": -12.0
+  },
+  {
+   "country": "Bolivia (Plurinational State of)",
+   "iso3": "BOL",
+   "core_name": null,
+   "founding_pool": "AMI",
+   "baseline_year": 1976,
+   "baseline_founding_pct": "Quechua ~35 + Aymara ~26 mother tongue",
+   "measure": "mother tongue (WEAK)",
+   "sources": [
+    {
+     "publisher": "secondary",
+     "title": "secondary; INE ANDA 1976 microdata",
+     "url": "https://anda.ine.gob.bo/index.php/catalog/46"
+    }
+   ],
+   "verification": "NOT VERIFIED against an official table (Christa's secondary figure; listed for completeness, do not publish without the official table)",
+   "flags": [
+    "Language is not self-identification; not comparable with the 2024 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 38,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Trinidad and Tobago",
+   "iso3": "TTO",
+   "core_name": null,
+   "founding_pool": null,
+   "baseline_year": null,
+   "baseline_founding_pct": null,
+   "measure": "1960/1970 race asked; figures conflict (East Indian 36.5 vs ~40); official CSO table needed",
+   "sources": [],
+   "verification": "no baseline value",
+   "flags": [
+    "No usable verified 1960-79 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 39,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Belize",
+   "iso3": "BLZ",
+   "core_name": null,
+   "founding_pool": null,
+   "baseline_year": null,
+   "baseline_founding_pct": null,
+   "measure": "1970 Race and Religion volume exists (SIB); not retrieved",
+   "sources": [],
+   "verification": "no baseline value",
+   "flags": [
+    "No usable verified 1960-79 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 40,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Colombia",
+   "iso3": "COL",
+   "core_name": null,
+   "founding_pool": null,
+   "baseline_year": null,
+   "baseline_founding_pct": null,
+   "measure": "no ethnicity question until 1993 (birthplace only)",
+   "sources": [],
+   "verification": "no baseline value",
+   "flags": [
+    "No usable verified 1960-79 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 41,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Ecuador",
+   "iso3": "ECU",
+   "core_name": null,
+   "founding_pool": null,
+   "baseline_year": null,
+   "baseline_founding_pct": null,
+   "measure": "no ethnicity question until 2001 (birthplace only)",
+   "sources": [],
+   "verification": "no baseline value",
+   "flags": [
+    "No usable verified 1960-79 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 42,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  },
+  {
+   "country": "Indonesia",
+   "iso3": "IDN",
+   "core_name": null,
+   "founding_pool": null,
+   "baseline_year": null,
+   "baseline_founding_pct": null,
+   "measure": "1971 census had no ethnicity question",
+   "sources": [],
+   "verification": "no baseline value",
+   "flags": [
+    "No usable verified 1960-79 value."
+   ],
+   "comparable_to_latest": false,
+   "order": 43,
+   "alternates": {},
+   "earlier_in_window_not_used": null,
+   "latest_year_core": null,
+   "latest_founding_pct_core": null,
+   "change_pp_baseline_to_latest": null,
+   "indicative_change_pp_across_definition_break": null
+  }
+ ]
+}

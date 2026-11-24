@@ -1,7 +1,7 @@
 {
  "country": "Denmark",
  "iso_a3": "DNK",
- "completeness": 20,
+ "completeness": 14,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Danmarks Statistik publishes convictions every year by herkomst (Danish origin; immigrants and descendants from Western and non-Western countries) and by country of origin, including sexual offences against children, and the Justice Ministry's homicide study links victim and perpetrator herkomst. Herkomst is a birth-country and citizenship proxy, not ethnicity, and no child victims are published by herkomst outside homicide.",
@@ -747,91 +747,78 @@
   }
  ],
  "score": {
-  "value": 20,
-  "band": "20-40%",
+  "value": 14,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 19.6,
+  "uncapped": 13.5,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 8,
+    "perpetrator": 0,
     "coverage": 6,
     "rates": 2,
     "access": 7,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Danmarks Statistik gives persons found guilty of sexual offences against children under 12 and under 15 every year by herkomst (Danish origin, Western and non-Western immigrants and descendants; 36 and 81 in 2025) and by 75 countries of origin. Residents only, convictions not victims; no child victims by herkomst.",
-    "score": 23
+    "why": "Danmarks Statistik gives persons found guilty of sexual offences against children under 12 and under 15 every year by herkomst (Danish origin, Western and non-Western immigrants and descendants; 36 and 81 in 2025) and by 75 countries of origin. Residents only, convictions not victims; no child victims by herkomst. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
-    "perpetrator": 3,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 1.5,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Persons guilty of violence (5,953 in 2025) by herkomst and country of origin, all victims; the Justice Ministry publishes age-standardised indices by herkomst. No child victims of violence by herkomst (victim tables give age and sex only).",
-    "score": 14.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 1,
-    "coverage": 3,
-    "rates": 0,
-    "access": 5,
-    "victim_kind": "none",
-    "perpetrator_kind": "proxy",
-    "why": "Only 'offences against family relations' (58 persons guilty 2021-2025) by herkomst, not specific to neglect; child-protection statistics publish no herkomst for neglect.",
-    "score": 9
+    "why": "Persons guilty of violence (5,953 in 2025) by herkomst and country of origin, all victims; the Justice Ministry publishes age-standardised indices by herkomst. No child victims of violence by herkomst (victim tables give age and sex only). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 6,
-    "perpetrator": 7,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 5,
     "access": 5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Justice Ministry's 'Drab i Danmark 2017-2021' gives the 223 victims and 248 perpetrators by herkomst with Western/non-Western splits, population shares and victim-perpetrator linkage (83% same group for Danish-origin victims); child homicides (19) are described only in a sentence. Persons guilty of homicide are published annually by herkomst and country of origin.",
-    "score": 30
+    "why": "The Justice Ministry's 'Drab i Danmark 2017-2021' gives the 223 victims and 248 perpetrators by herkomst with Western/non-Western splits, population shares and victim-perpetrator linkage (83% same group for Danish-origin victims); child homicides (19) are described only in a sentence. Persons guilty of homicide are published annually by herkomst and country of origin. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 17
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 5,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "Center mod Menneskehandel lists the 101 people identified as trafficked in 2025 by nationality (31 countries, no Danes; 1 minor; 55 sexual exploitation). No trafficker nationality.",
-    "score": 16
+    "why": "Center mod Menneskehandel lists the 101 people identified as trafficked in 2025 by nationality (31 countries, no Danes; 1 minor; 55 sexual exploitation). No trafficker nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 3,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0.5,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Only grooming convictions by herkomst (3 in 2025, all Danish origin); child sexual abuse material is not separated in the herkomst tables. No victims by herkomst.",
-    "score": 12.5
+    "why": "Only grooming convictions by herkomst (3 in 2025, all Danish origin); child sexual abuse material is not separated in the herkomst tables. No victims by herkomst. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9.5
    }
   ],
   "components": [
@@ -861,18 +848,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Denmark scores 20% on the stricter scale (20-40%). Danmarks Statistik publishes convictions every year by herkomst (Danish origin, immigrants and descendants from Western and non-Western countries) and by country of origin, including for sexual offences against children, and the Justice Ministry's homicide study links victim and perpetrator herkomst. But herkomst is built from parents' birth country and citizenship, a proxy, there are no child victims by herkomst outside homicide, and grandchildren of immigrants count as Danish origin.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Denmark scores 14% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Danmarks Statistik publishes convictions every year by herkomst (Danish origin, immigrants and descendants from Western and non-Western countries) and by country of origin, including for sexual offences against children, and the Justice Ministry's homicide study links victim and perpetrator herkomst. But herkomst is built from parents' birth country and citizenship, a proxy, there are no child victims by herkomst outside homicide, and grandchildren of immigrants count as Danish origin.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No paired child table. The homicide study publishes two linkage percentages for all ages, not a child cross-table."
+  }
  },
  "sources": {
   "dst_strfna10": {

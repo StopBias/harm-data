@@ -1,7 +1,7 @@
 {
  "country": "Iceland",
  "iso_a3": "ISL",
- "completeness": 8,
+ "completeness": 7,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Iceland's only origin variable in crime data is a two-way split of suspects into Icelandic and foreign citizens on a police dashboard, for all victims. No child victims are published by citizenship or origin for any harm, and trafficking victims' nationality comes only from a US government report.",
@@ -396,56 +396,43 @@
   }
  ],
  "score": {
-  "value": 8,
+  "value": 7,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 7.8,
+  "uncapped": 6.6,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 2,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "The police dashboard of suspects 2019-2025 gives the Icelandic-citizen share of sexual-offence suspects aged 15+ (71% in 2025), all victims; the police report on sexual offences (124 against children in 2024, 94 in January-September 2025) gives no citizenship.",
-    "score": 11
+    "why": "The police dashboard of suspects 2019-2025 gives the Icelandic-citizen share of sexual-offence suspects aged 15+ (71% in 2025), all victims; the police report on sexual offences (124 against children in 2024, 94 in January-September 2025) gives no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 0.5,
-    "perpetrator": 1.5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The police dashboard gives the Icelandic-citizen share of violence suspects (about 69% in 2025), all victims. Reykjavík child protection publishes origin only for its team for children of foreign origin, which is not a population figure.",
-    "score": 9.0
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0.5,
-    "perpetrator": 0,
-    "coverage": 1.5,
-    "rates": 0,
-    "access": 4,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "none",
-    "why": "National child-protection figures (18,429 notifications in 2025, most for neglect) give no citizenship or origin; Reykjavík's team for children of foreign origin lists its cases by country.",
-    "score": 6.0
+    "why": "The police dashboard gives the Icelandic-citizen share of violence suspects (about 69% in 2025), all victims. Reykjavík child protection publishes origin only for its team for children of foreign origin, which is not a population figure. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 7
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1.5,
@@ -453,25 +440,25 @@
     "access": 3,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "No official homicide victims or perpetrators by citizenship or origin were found.",
+    "why": "No official homicide victims or perpetrators by citizenship or origin were found. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 4.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 3,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 5,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "No Icelandic official statistics; the US State Department's 2025 report (a foreign-government source) says the 37 victims identified in 2024 were all foreign nationals, 6 of them children.",
-    "score": 10
+    "why": "No Icelandic official statistics; the US State Department's 2025 report (a foreign-government source) says the 37 victims identified in 2024 were all foreign nationals, 6 of them children. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 7
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1.5,
@@ -479,7 +466,7 @@
     "access": 4,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "Police count child sexual abuse material offences (40 in 2024 and 40 in January-September 2025) with no citizenship.",
+    "why": "Police count child sexual abuse material offences (40 in 2024 and 40 in January-September 2025) with no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 5.5
    }
   ],
@@ -510,18 +497,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Iceland scores 8% on the stricter scale (0-20%). The only origin variable in Icelandic crime data is a two-way split of suspects into Icelandic and foreign citizens, with no child victims by origin for any harm; trafficking victims' nationality comes only from a US government report.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Iceland scores 7% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The only origin variable in Icelandic crime data is a two-way split of suspects into Icelandic and foreign citizens, with no child victims by origin for any harm; trafficking victims' nationality comes only from a US government report.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "pol_dash": {
