@@ -613,7 +613,7 @@
     "group_founding_AMI": "Wszystkie kraje założone przez ludność amerindiańską",
     "group_founding_NAI": "Wszystkie kraje założone przez rdzenną ludność Ameryki Północnej",
     "map_h": "Zmiana według kraju",
-    "map_desc": "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.",
+    "map_desc": "Dark green countries have growing founding populations; green have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.",
     "legend_title": "Percent change in founding population share since the baseline census",
     "legend_most": "Większy spadek",
     "legend_least": "Bez zmiany albo wzrost",
@@ -721,9 +721,14 @@
     "key_mild": "Declining",
     "key_endangered": "Strongly declining",
     "key_high": "Very strongly declining",
-    "band_little_range": "(−1% or more)",
-    "band_light_range": "(−5% up to but not including −1%)",
-    "band_medium_range": "(−15% up to but not including −5%)",
-    "band_dark_range": "(below −15%)"
+    "band_little_range": "(−2% to +2%)",
+    "band_light_range": "(−7% up to but not including −2%)",
+    "band_medium_range": "(−15% up to but not including −7%)",
+    "band_dark_range": "(below −15%)",
+    "method_p5": "The colour bands use the percent change as shown and do not overlap. Above +2% is dark green, −2% to +2% is green, −7% up to but not including −2% is light red, −15% up to but not including −7% is mid red, and below −15% is bright red. They are not the Crime tab’s steps and not the UN dissimilarity index. A grouping view shows whether a country has census ethnic data, an official series that cannot be turned into a cross-pool score, a UN proxy only, or no score. Territories with fewer than 100,000 people stay in the ranked list and are flagged. Australia and Israel have official series that cannot be mapped to a founding-pool score without inventing a mapping; they are shown with the UN proxy and labelled separately. This tab is not a published finding.",
+    "band_growing": "Growing",
+    "band_growing_range": "(above +2%)",
+    "key_growing": "Growing",
+    "key_colour_dark_green": "dark green"
   }
 }

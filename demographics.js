@@ -513,7 +513,7 @@
     const bands = (window.ShareScale && window.ShareScale.BANDS) || [];
     if (isAvailabilityView() || !bands.length) { el.hidden = true; el.innerHTML = ""; return; }
     el.hidden = false;
-    const order = ["little", "light", "medium", "dark"];
+    const order = ["growing", "little", "light", "medium", "dark"];
     el.innerHTML = order.map(id => {
       const b = bands.filter(x => x.id === id)[0];
       if (!b) return "";
