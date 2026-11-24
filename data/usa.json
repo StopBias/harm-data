@@ -38,6 +38,10 @@
    "label": "Two or more races"
   },
   {
+   "id": "other",
+   "label": "Other races"
+  },
+  {
    "id": "european",
    "label": "Ethnic European",
    "not_recorded": true
