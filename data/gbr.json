@@ -27,6 +27,10 @@
    "label": "White Irish"
   },
   {
+   "id": "gypsy_traveller",
+   "label": "White Gypsy or Irish Traveller"
+  },
+  {
    "id": "white_other",
    "label": "Any other White background"
   },
@@ -49,6 +53,10 @@
   {
    "id": "other",
    "label": "Other ethnic group"
+  },
+  {
+   "id": "unknown",
+   "label": "Unknown / not recorded"
   },
   {
    "id": "european",
@@ -1325,7 +1333,7 @@
   "pakistani": "asian"
  },
  "extra_group_labels": {
-  "unknown": "Unknown",
+  "unknown": "Unknown / not recorded",
   "gypsy_traveller": "White Gypsy or Irish Traveller"
  },
  "european_title": "Not recorded by any UK source",

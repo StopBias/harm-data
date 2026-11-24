@@ -296,6 +296,11 @@
       pointer-events: none;
     }
     .country-tooltip .maplibregl-popup-tip { display: none; }
+    /* Hover cards paint above the legend (2), view buttons and notes (3), and zoom controls (4)
+       on the Crime, Media, and Demographics maps. The popup lives inside the map, and the legend
+       is a later sibling with its own z-index, so the card needs an explicit level. */
+    .map-wrap .country-tooltip,
+    .dv-map-wrap .country-tooltip { z-index: 6; }
     .tt-title { font-weight: 600; margin-bottom: 2px; }
     .tt-status { display: flex; align-items: center; gap: 6px; color: var(--muted); }
 
@@ -680,6 +685,7 @@
   <script src="demographics-scale.js" defer></script>
   <script src="demographics.js" defer></script>
   <script src="map-controls.js"></script>
+  <script src="crime-menu.js"></script>
 
   <script>
 
@@ -1956,56 +1962,21 @@
     // Prefer the explicit harms[].availability map when present:
     //   { victims:[], perpetrators:[], by_measure:{ share:{victims,perpetrators}, rate:{...}, linked:{...} }, linked_pairs:[] }
     // Older files may use victim_groups / perpetrator_groups / measures. If nothing is listed, derive from the figures.
-    function explicitList(harm, who) {
-      const a = harm.availability;
-      if (!a) return null;
-      const key = who === "victims" ? "victims" : "perpetrators";
-      const old = who === "victims" ? "victim_groups" : "perpetrator_groups";
-      if (Array.isArray(a[key])) return a[key];
-      if (Array.isArray(a[old])) return a[old];
-      return null;
-    }
-    function listedIds(list) {
-      const set = new Set(["all", ...(list || [])]);
-      return D.groups.filter(g => set.has(g.id)).map(g => g.id);
-    }
+    // Share also includes linked cross-table groups (crime-menu.js). The US teen table
+    // lists White, Black and Hispanic only under "linked", and UK homicide "unknown"
+    // is a cross-table column missing from the one-sided share list.
     function baseGroups(harm, who, measure) {
-      const a = harm.availability;
-      const m = measure || null;
-      if (m && a && a.by_measure && a.by_measure[m] && Array.isArray(a.by_measure[m][who])) {
-        return listedIds(a.by_measure[m][who]);
-      }
-      const listed = explicitList(harm, who);
-      if (listed) return listedIds(listed);
-      return D.groups.filter(g => groupHasData(harm, who, g.id)).map(g => g.id);
+      return CrimeMenu.baseGroupIds(D.groups, harm, who, measure, groupHasData);
     }
     function pairIsLinked(harm, v, p) {
-      const pairs = harm.availability && Array.isArray(harm.availability.linked_pairs) ? harm.availability.linked_pairs : null;
-      if (pairs && pairs.length) return pairs.some(pair => pair[0] === v && pair[1] === p);
-      const cross = harm.cross;
-      return !!(cross && cross.status === "published" && cross.matrix && cross.matrix[v] && cross.matrix[v][p] != null);
+      return CrimeMenu.pairIsLinked(harm, v, p);
     }
     // When the other side is a specific group, only "all" and groups that can be linked stay available.
     function groupsAvailable(harm, who, otherId, measure) {
-      const base = baseGroups(harm, who, measure);
-      if (!otherId || otherId === "all") return base;
-      return base.filter(g => g === "all" || (who === "perpetrators" ? pairIsLinked(harm, otherId, g) : pairIsLinked(harm, g, otherId)));
+      return CrimeMenu.groupsAvailable(D.groups, harm, who, otherId, measure, groupHasData);
     }
     function measureOpen(harm, measure, v, p) {
-      const a = harm.availability;
-      const bm = a && a.by_measure && a.by_measure[measure];
-      if (bm) {
-        if (v !== "all" && p !== "all") {
-          if (!pairIsLinked(harm, v, p)) return false;
-          // Linked tables are almost always shares; a rate list that includes the pair's groups is also accepted.
-          if (measure === "share") return true;
-          return (bm.victims || []).includes(v) || (bm.perpetrators || []).includes(p);
-        }
-        if (v !== "all") return (bm.victims || []).includes(v);
-        if (p !== "all") return (bm.perpetrators || []).includes(p);
-        return (bm.victims || []).length > 0 || (bm.perpetrators || []).length > 0;
-      }
-      return selectionHasMeasure(harm, measure, v, p);
+      return CrimeMenu.measureOpen(harm, measure, v, p, selectionHasMeasure);
     }
     function selectionHasMeasure(harm, measure, v, p) {
       if (v !== "all" && p !== "all") {
@@ -2026,7 +1997,7 @@
       if (sides.some(s => sideHasFigures(s, group, measure))) return true;
       if (measure === "share" && harm.cross && harm.cross.status === "published" && harm.cross.matrix) {
         if (v !== "all") return !!harm.cross.matrix[v];
-        if (p !== "all") return (harm.cross.groups || []).includes(p);
+        if (p !== "all") return (harm.cross.groups || []).includes(p) || CrimeMenu.columnRows(harm.cross, p).length > 0;
         return true;
       }
       return false;
@@ -2224,10 +2195,10 @@
         } else if (ex.measure === "rate") {
           chunks.push(noDataHtml(t("nodata.no_rate"), firstSentence(cross.rate_reason)));
           if (cross.rate_reason) notes.push(`<p>${esc(cross.rate_reason)}</p>`);
-        } else if (!cross.groups.includes(v) || !cross.groups.includes(p)) {
+        } else if (CrimeMenu.matrixCell(cross, v, p) == null) {
           chunks.push(noDataRecord(t("nodata.table_only_groups", { groups: listLabels(cross.groups) })));
         } else {
-          chunks.push(`<div class="ex-big">${fmtPct(cross.matrix[v][p])}</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
+          chunks.push(`<div class="ex-big">${fmtPct(CrimeMenu.matrixCell(cross, v, p))}</div><p>${fill(cross.pair_sentence, { victim: groupLabel(v), perp: groupLabel(p) })}</p>` +
             barsHtml(cross.matrix[v], p, "%"));
           if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
         }
@@ -2250,9 +2221,10 @@
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
         } else {
-          if (!cross.groups.includes(p)) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} offenders.`));
+          const colRows = CrimeMenu.columnRows(cross, p);
+          if (!colRows.length) chunks.push(noDataRecord(`This table includes only ${listLabels(cross.groups)} offenders.`));
           else {
-            const col = {}; cross.groups.forEach(g => col[g] = cross.matrix[g][p]);
+            const col = {}; colRows.forEach(g => col[g] = cross.matrix[g][p]);
             chunks.push(`<p>${fill(cross.col_intro, { perp: groupLabel(p) })}${enOnlyBadge()}</p>` + barsHtml(col, null, "%"));
             if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
           }
@@ -2267,8 +2239,9 @@
           chunks.push(`<h3>${esc(t("result.linked"))}</h3>`);
         }
         chunks.push(`<p>${esc(cross.overview || t("result.pick_both"))}${cross.overview ? enOnlyBadge() : ""}</p>`);
+        const offenderCols = CrimeMenu.offenderIds(cross);
         const allRows = cross.groups.map(g => `<p class="ex-small"><strong>${esc(groupLabel(g))} victims:</strong> ` +
-          cross.groups.map(o => esc(t("result.offender_share", { group: groupLabel(o), pct: fmtPct(cross.matrix[g][o]) }))).join(" · ") + "</p>").join("");
+          offenderCols.filter(o => cross.matrix[g] && cross.matrix[g][o] != null).map(o => esc(t("result.offender_share", { group: groupLabel(o), pct: fmtPct(cross.matrix[g][o]) }))).join(" · ") + "</p>").join("");
         chunks.push(allRows);
         if (cross.note) notes.push(`<p>${esc(cross.note)}</p>`);
       } else if (v !== "all") {
