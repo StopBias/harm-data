@@ -42,8 +42,8 @@ function labelOf(detail, id) {
 var usa = load("USA");
 var gbr = load("GBR");
 
-assert(usa.completeness === 54 && usa.score.value === 54, "US score unchanged");
-assert(gbr.completeness === 53 && gbr.score.value === 53, "UK score unchanged");
+assert(usa.completeness === 14 && usa.score.value === 14, "US score is the paired-rule total");
+assert(gbr.completeness === 14 && gbr.score.value === 14, "UK score is the paired-rule total");
 assert(usa.harms.some(function (h) { return h.id === "maltreatment"; }), "US maltreatment figures stay in the file");
 assert(usa.harms.some(function (h) { return h.id === "fatalities"; }), "US fatality figures stay in the file");
 assert(harm(usa, "teen_violence").cross.matrix.white_nh.black_nh === 9.8, "US teen White victim × Black offender value unchanged");
