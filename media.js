@@ -179,20 +179,6 @@
   </div>`;
   nav.insertAdjacentElement("afterend", chrome);
 
-  const mapNote = document.createElement("p");
-  mapNote.id = "media-map-note";
-  mapNote.className = "media-map-note";
-  mapNote.hidden = true;
-  const mapWrap = document.querySelector(".map-wrap");
-  if (mapWrap) mapWrap.appendChild(mapNote);
-  function placeMapNote() {
-    if (!mapNote || !mapNote.isConnected) return;
-    const views = document.getElementById("views");
-    if (!views || !window.matchMedia("(max-width: 768px)").matches) { mapNote.style.top = ""; return; }
-    mapNote.style.top = (views.offsetTop + views.offsetHeight + 6) + "px";
-  }
-  window.addEventListener("resize", placeMapNote);
-
   function labelSubviews(tab) {
     const group = document.getElementById("media-subviews");
     if (!group) return;
@@ -418,19 +404,19 @@
   }
 
   function updateMapNote() {
-    if (!mapNote) return;
+    const note = document.getElementById("media-map-h-note");
+    if (!note) return;
     const media = document.body.classList.contains("media-active") && state.mode === "map";
-    if (!media || !data) { mapNote.hidden = true; return; }
+    if (!media || !data) { note.hidden = true; note.textContent = ""; return; }
     const isos = measuredIsos();
-    if (!isos.length) { mapNote.hidden = true; return; }
+    if (!isos.length) { note.hidden = true; note.textContent = ""; return; }
     const names = isos.map(subjectCountryName);
     const n = isos.length;
     const text = window.tPlural
       ? window.tPlural("media.map_note", n, { country: names[0], list: listNames(names) })
       : t(n === 1 ? "map_note_one" : "map_note_other", { country: names[0], list: listNames(names), n });
-    mapNote.textContent = text;
-    mapNote.hidden = false;
-    placeMapNote();
+    note.textContent = "(" + text + ")";
+    note.hidden = false;
     requestAnimationFrame(function () {
       if (typeof window.refitWorldIfMin === "function") window.refitWorldIfMin();
     });

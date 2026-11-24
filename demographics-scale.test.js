@@ -2,6 +2,7 @@
 // Run: node demographics-scale.test.js
 "use strict";
 
+var fs = require("fs");
 var scale = require("./demographics-scale.js");
 var id = scale.bandIdForChange;
 
@@ -48,5 +49,18 @@ assertEqual(id(-14.96, 1), "medium", "census -14.96 displays as -15.0");
 assertEqual(id(-15.0006, 3), "dark", "-15.0006 displays as -15.001");
 assertEqual(id(-15.1, 1), "dark", "census -15.1");
 assertEqual(id(-27.8, 1), "dark", "census -27.8");
+
+var labels = JSON.parse(fs.readFileSync("i18n/en.json", "utf8")).demographics;
+assertEqual(labels.band_little, "Stable or growing", "green legend name");
+assertEqual(labels.band_little_range, "(\u22121 pp or more)", "green legend range");
+assertEqual(labels.band_light, "Mildly endangered", "light red legend name");
+assertEqual(labels.band_light_range, "(\u22125 up to but not including \u22121 pp)", "light red legend range");
+assertEqual(labels.band_medium, "Endangered", "mid red legend name");
+assertEqual(labels.band_medium_range, "(\u221215 up to but not including \u22125 pp)", "mid red legend range");
+assertEqual(labels.band_dark, "Highly endangered", "bright red legend name");
+assertEqual(labels.band_dark_range, "(below \u221215 pp)", "bright red legend range");
+assertEqual(labels.key_stable, "Stable or growing", "title key name");
+assertEqual(labels.key_colour_green, "green", "title key colour");
+assertEqual(scale.BANDS[3].rangeKey, "band_little_range", "green band range key");
 
 if (!process.exitCode) console.log("demographics-scale: boundary checks passed");

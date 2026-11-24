@@ -64,7 +64,20 @@ body.demographics-active .layout { display: none !important; }
 .dv-legend-title { font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .dv-legend-ends { display: flex; justify-content: space-between; gap: 12px; font-size: 0.7rem; margin-bottom: 4px; color: var(--muted); }
 .dv-legend-items { display: flex; flex-wrap: wrap; gap: 4px 12px; }
-.dv-legend-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.dv-legend-item { display: flex; align-items: flex-start; gap: 5px; white-space: normal; }
+.dv-legend-range { font-size: 0.68rem; color: var(--muted); font-weight: normal; }
+.dv-map-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 2px 0 10px;
+  max-width: 860px;
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.dv-map-key-item { display: inline-flex; align-items: center; gap: 5px; }
 .dv-legend-note {
   flex: 1 0 100%;
   white-space: normal;
