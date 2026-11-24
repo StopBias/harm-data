@@ -62,6 +62,31 @@
     return String(Math.round(Number(n)));
   }
 
+  function formatYearSpan(first, latest) {
+    if (first == null || latest == null || first === "" || latest === "") return "";
+    const a = Number(first);
+    const b = Number(latest);
+    if (!Number.isFinite(a) || !Number.isFinite(b)) return "";
+    return fmtYear(a) + "–" + fmtYear(b);
+  }
+
+  // Years shown beside a bar. Census rows use census.first_year–latest_year.
+  // Hatched UN rows use the window named by score_id (D_YYYY_YYYY) only when
+  // the displayed score is that same un_d_YYYY_YYYY field. Otherwise blank.
+  function rowYearLabel(c) {
+    if (!c) return "";
+    if (isCensus(c)) {
+      const ce = c.census;
+      return ce ? formatYearSpan(ce.first_year, ce.latest_year) : "";
+    }
+    if (!isEstimate(c) || c.score == null || typeof c.score_id !== "string") return "";
+    const m = c.score_id.match(/^D_(\d{4})_(\d{4})$/);
+    if (!m) return "";
+    const field = "un_d_" + m[1] + "_" + m[2];
+    if (c[field] == null || Number(c.score) !== Number(c[field])) return "";
+    return formatYearSpan(m[1], m[2]);
+  }
+
   function views() {
     return (data && Array.isArray(data.views)) ? data.views : [];
   }
@@ -229,6 +254,24 @@
   // ---------- Shell ----------
   function mountShell() {
     view.innerHTML = `<div class="dv-inner">
+      <section class="dv-section" aria-labelledby="dv-map-h">
+        <h3 class="dv-h" id="dv-map-h"></h3>
+        <p class="dv-desc" id="dv-map-desc"></p>
+        <div class="dv-switcher-wrap">
+          <div class="dv-switcher" id="dv-switcher" role="group"></div>
+          <label class="dv-filter-lab" id="dv-group-lab">
+            <span id="dv-group-lbl"></span>
+            <select id="dv-group"></select>
+          </label>
+        </div>
+        <div class="dv-map-wrap">
+          <div id="dv-map" role="img"></div>
+          <div class="dv-map-error" id="dv-map-error" hidden></div>
+          <div class="dv-legend" id="dv-legend"></div>
+        </div>
+        <p class="dv-scale-note" id="dv-scale-note"></p>
+        <div class="dv-selected" id="dv-selected" hidden></div>
+      </section>
       <div class="dv-head">
         <h2 id="dv-title"></h2>
         <div class="dv-banner" id="dv-banner" hidden></div>
@@ -242,24 +285,6 @@
         <p class="dv-desc" id="dv-records-p3"></p>
         <p class="dv-desc" id="dv-records-p4"></p>
         <div class="dv-avail-legend" id="dv-avail-legend"></div>
-      </section>
-      <div class="dv-switcher-wrap">
-        <div class="dv-switcher" id="dv-switcher" role="group"></div>
-        <label class="dv-filter-lab" id="dv-group-lab">
-          <span id="dv-group-lbl"></span>
-          <select id="dv-group"></select>
-        </label>
-      </div>
-      <section class="dv-section" aria-labelledby="dv-map-h">
-        <h3 class="dv-h" id="dv-map-h"></h3>
-        <p class="dv-desc" id="dv-map-desc"></p>
-        <div class="dv-map-wrap">
-          <div id="dv-map" role="img"></div>
-          <div class="dv-map-error" id="dv-map-error" hidden></div>
-          <div class="dv-legend" id="dv-legend"></div>
-        </div>
-        <p class="dv-scale-note" id="dv-scale-note"></p>
-        <div class="dv-selected" id="dv-selected" hidden></div>
       </section>
       <section class="dv-section" aria-labelledby="dv-bar-h">
         <h3 class="dv-h" id="dv-bar-h"></h3>
@@ -885,12 +910,14 @@
       const title = c.score == null
         ? t("legend_no_score")
         : (isCensus(c) ? t("tooltip_census", { score: fmtScore(c.score) }) : t("tooltip_estimate", { score: fmtScore(c.score) }));
+      const years = rowYearLabel(c);
       const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${est ? " is-estimate" : ""}`;
       return `<li class="${cls}" data-id="${esc(c.id)}">
-        <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}">
+        <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
           <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${estMark}${smallMark}</span>
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill${est ? " is-estimate" : ""}" style="${fillStyle}"></span></span>
           <span class="dv-bar-n">${esc(fmtScore(c.score))}</span>
+          <span class="dv-bar-years">${esc(years || "—")}</span>
         </button>
       </li>`;
     }).join("");

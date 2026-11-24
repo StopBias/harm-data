@@ -4,11 +4,12 @@ body.demographics-active .layout { display: none !important; }
 
 #demographics-view { padding: 22px 18px 40px; }
 .dv-inner { max-width: 1100px; margin: 0 auto; }
-.dv-head { margin: 0 0 18px; }
+.dv-head { margin: 26px 0 18px; }
 .dv-head h2 { margin: 0 0 6px; font-size: 1.35rem; }
 .dv-h { font-size: 1.05rem; margin: 0 0 4px; }
 .dv-desc { font-size: 0.86rem; line-height: 1.5; color: var(--muted); margin: 0 0 12px; max-width: 860px; }
 .dv-section { margin-top: 26px; }
+.dv-inner > .dv-section:first-child { margin-top: 0; }
 
 .dv-switcher-wrap { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; margin: 0 0 18px; }
 .dv-switcher {
@@ -102,7 +103,7 @@ body.demographics-active .layout { display: none !important; }
 .dv-bar-item:first-child { border-top: 0; }
 .dv-bar-btn {
   display: grid;
-  grid-template-columns: minmax(7.5rem, 18%) minmax(0, 1fr) 4.2rem;
+  grid-template-columns: minmax(7.5rem, 18%) minmax(0, 1fr) 4.2rem minmax(4.75rem, max-content);
   gap: 8px;
   align-items: center;
   width: 100%;
@@ -123,6 +124,14 @@ body.demographics-active .layout { display: none !important; }
 .dv-bar-track { display: block; height: 14px; background: #f3f5f6; border-radius: 2px; box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
 .dv-bar-fill { display: block; height: 100%; border-radius: 2px; }
 .dv-bar-n { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.82rem; text-align: right; }
+.dv-bar-years {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  color: var(--muted);
+  text-align: right;
+  min-width: 0;
+}
 .dv-small-flag {
   flex: 0 0 auto;
   font-size: 0.68rem;
@@ -154,7 +163,9 @@ body.demographics-active .layout { display: none !important; }
   .dv-map-wrap { height: 320px; }
   .dv-search-lab input, .dv-filter-lab select { min-width: 0; width: 100%; }
   .dv-list-count { margin-left: 0; }
-  .dv-bar-btn { grid-template-columns: minmax(5.5rem, 28%) minmax(0, 1fr) 3.4rem; gap: 6px; padding: 6px 8px; }
+  .dv-bar-btn { grid-template-columns: minmax(5.6rem, 1.5fr) minmax(1.4rem, 1fr) auto auto; gap: 4px; padding: 6px 6px; }
+  .dv-bar-years { font-size: 0.68rem; line-height: 1.15; white-space: nowrap; }
+  .dv-bar-n { font-size: 0.78rem; }
   .dv-legend { left: 8px; right: 8px; bottom: 8px; max-width: none; }
   .dv-switcher { width: 100%; }
   .dv-switcher button { flex: 1 1 0; padding: 8px 6px; font-size: 0.78rem; white-space: normal; }
