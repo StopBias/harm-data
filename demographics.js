@@ -15,7 +15,8 @@
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
   const BASELINE_URL = "data/demographics/baseline_1960_1979.json";
   const Supplements = window.HarmDemographicsSupplements || null;
-  const WORLD_BOUNDS = [[-180, -56], [180, 80]];
+  const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
+  let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
@@ -27,6 +28,7 @@
   };
 
   let data = null, originData = null, baselineData = null, baselineByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
 
@@ -75,20 +77,15 @@
   }
 
   // Years shown beside a bar. Census rows use census.first_year–latest_year.
-  // Hatched UN rows use the window named by score_id (D_YYYY_YYYY) only when
-  // the displayed score is that same un_d_YYYY_YYYY field. Otherwise blank.
+  // UN proxy rows are the 1990–2020 migrant-origin window.
   function rowYearLabel(c) {
     if (!c) return "";
-    if (isCensus(c)) {
+    if (isCensusScore(c)) {
       const ce = c.census;
       return ce ? formatYearSpan(ce.first_year, ce.latest_year) : "";
     }
-    if (!isEstimate(c) || c.score == null || typeof c.score_id !== "string") return "";
-    const m = c.score_id.match(/^D_(\d{4})_(\d{4})$/);
-    if (!m) return "";
-    const field = "un_d_" + m[1] + "_" + m[2];
-    if (c[field] == null || Number(c.score) !== Number(c[field])) return "";
-    return formatYearSpan(m[1], m[2]);
+    if (displayValue(c) != null) return formatYearSpan(1990, 2020);
+    return "";
   }
 
   function views() {
@@ -139,14 +136,6 @@
     return state.viewId === "availability";
   }
 
-  function bands() {
-    return (data && data.scale && Array.isArray(data.scale.bands)) ? data.scale.bands : [];
-  }
-
-  function estimateBands() {
-    return (data && data.scale && Array.isArray(data.scale.estimate_bands)) ? data.scale.estimate_bands : [];
-  }
-
   function noScoreColor() {
     return (data && data.scale && data.scale.no_score_color) || DEFAULT_NO_SCORE;
   }
@@ -160,18 +149,11 @@
     return mapCols[kind] || AVAIL_DEFAULTS[kind] || noScoreColor();
   }
 
-  function bandIn(score, list) {
-    for (let i = 0; i < list.length; i++) {
-      const b = list[i];
-      if (score >= b.from && (score < b.to || (i === list.length - 1 && score <= b.to))) return b;
-    }
-    return null;
-  }
-
   function bandFor(c) {
-    if (!c || c.score == null) return null;
-    if (c.score_kind === "census") return bandIn(c.score, bands());
-    return bandIn(c.score, estimateBands());
+    const shown = displayValue(c);
+    if (shown == null || !window.ShareScale) return null;
+    // Census rows show 1 decimal; UN proxy rows show 3. Band the rounded figure.
+    return window.ShareScale.bandForChange(shown, isProxyRow(c) ? 3 : 1);
   }
 
   function colorForCountry(c, inGroup) {
@@ -179,7 +161,6 @@
     if (state.baselineView) return colorForBaseline(c);
     if (!c) return noScoreColor();
     if (isAvailabilityView()) return availColor(c.availability || "none");
-    if (c.score == null) return noScoreColor();
     const b = bandFor(c);
     return b ? b.color : noScoreColor();
   }
@@ -190,10 +171,10 @@
   }
 
   function colorForBaseline(c) {
-    if (!c || !Supplements) return noScoreColor();
+    if (!c || !Supplements || !window.ShareScale) return noScoreColor();
     const scored = Supplements.colourScore(true, baselineRow(c));
-    if (scored.useExisting || scored.value == null) return noScoreColor();
-    const b = bandIn(scored.value, bands());
+    if (!scored || scored.useExisting || scored.value == null) return noScoreColor();
+    const b = window.ShareScale.bandForChange(scored.value, 1);
     return b ? b.color : noScoreColor();
   }
 
@@ -203,6 +184,79 @@
 
   function isCensus(c) {
     return !!(c && c.score_kind === "census");
+  }
+
+  function tidyNum(n) {
+    const v = Number(n);
+    if (!Number.isFinite(v)) return null;
+    return v === 0 ? 0 : v;
+  }
+
+  function roundTo(n, digits) {
+    const v = tidyNum(n);
+    if (v == null) return null;
+    const f = Math.pow(10, digits);
+    return tidyNum(Math.round(v * f) / f);
+  }
+
+  // Change in founding population share. The file stores the change OUTSIDE
+  // the founding pool; the tab shows the opposite sign. Prefer the share
+  // difference when both endpoints exist.
+  function censusFoundingChange(c) {
+    if (!isCensus(c)) return null;
+    const ce = c.census;
+    if (!ce) return null;
+    if (ce.latest_share_in_founding_pool != null && ce.first_share_in_founding_pool != null) {
+      return roundTo(Number(ce.latest_share_in_founding_pool) - Number(ce.first_share_in_founding_pool), 1);
+    }
+    if (ce.change_outside_founding_pool != null) return roundTo(-Number(ce.change_outside_founding_pool), 1);
+    if (c.score != null) return roundTo(-Number(c.score), 1);
+    return null;
+  }
+
+  // UN migrant-origin proxy: change in the foreign-born share from outside
+  // the founding pool, 1990–2020, flipped so a fall in the founding share is negative.
+  function proxyChange(c) {
+    if (!c || c.score_change_pp_1990_2020 == null || c.score_change_pp_1990_2020 === "") return null;
+    return roundTo(-Number(c.score_change_pp_1990_2020), 3);
+  }
+
+  function isCensusScore(c) {
+    return censusFoundingChange(c) != null;
+  }
+
+  function isProxyRow(c) {
+    return !isCensusScore(c) && proxyChange(c) != null;
+  }
+
+  function displayValue(c) {
+    if (isCensusScore(c)) return censusFoundingChange(c);
+    return proxyChange(c);
+  }
+
+  function rowGroup(c) {
+    if (isCensusScore(c)) return 0;
+    if (displayValue(c) != null) return 1;
+    return 2;
+  }
+
+  function fmtSigned(n, digits) {
+    if (n == null || n === "" || !Number.isFinite(Number(n))) return "—";
+    const v = Number(n) === 0 ? 0 : Number(n);
+    return v.toLocaleString(locale(), {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+      signDisplay: "exceptZero"
+    });
+  }
+
+  function fmtChange(n, proxy) {
+    return fmtSigned(n, proxy ? 3 : 1);
+  }
+
+  function fmtIndex(n) {
+    if (n == null || !Number.isFinite(Number(n))) return "—";
+    return fmtSigned(n, Math.abs(Number(n)) >= 0.1 ? 1 : 3);
   }
 
   function countryName(c) {
@@ -232,13 +286,6 @@
 
   function isSmall(c) {
     return !!(c && c.small_population);
-  }
-
-  function bandLabel(b) {
-    if (!b) return "";
-    if (b.label) return b.label;
-    if (b.open_ended) return String(b.from) + "+";
-    return b.from + "–" + b.to;
   }
 
   function destroyMap() {
@@ -466,10 +513,11 @@
     const el = view.querySelector("#dv-legend");
     if (!el) return;
     if (state.baselineView) {
-      const list = bands().slice().reverse();
+      const list = (window.ShareScale && window.ShareScale.BANDS) || [];
       el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
+        <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
         <div class="dv-legend-items">${list.map(b =>
-          `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(bandLabel(b))}</span>`
+          `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
         ).join("")}
         <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("baseline_none"))}</span>
         </div>`;
@@ -490,14 +538,14 @@
         </div>`;
       return;
     }
-    const list = bands().slice().reverse();
+    const list = (window.ShareScale && window.ShareScale.BANDS) || [];
     const items = list.map(b =>
-      `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(bandLabel(b))}</span>`
+      `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
     ).join("");
     el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
       <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
       <div class="dv-legend-items">${items}
-        <span class="dv-legend-item"><span class="swatch swatch-hatch" style="background:${esc((estimateBands()[estimateBands().length - 1] || {}).color || noScoreColor())}"></span>${esc(t("legend_estimate"))}</span>
+        <span class="dv-legend-note">${esc(t("legend_proxy_note"))}</span>
         <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("legend_no_score"))}</span>
         <span class="dv-legend-item subtle"><span class="swatch" style="background:${esc(outGroupColor())}; box-shadow: inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_out_of_group"))}</span>
       </div>`;
@@ -524,19 +572,8 @@
   }
 
   function hatchFilter() {
-    if (isAvailabilityView() || state.baselineView) return ["==", ["get", "iso_a3"], ""];
-    const inG = memberSet();
-    const isos = [];
-    const seen = new Set();
-    Object.keys(byId).forEach(id => {
-      const c = byId[id];
-      if (!c.iso3 || seen.has(c.iso3)) return;
-      seen.add(c.iso3);
-      if (isEstimate(c) && (inG.has(c.id) || inG.has(c.iso3))) isos.push(c.iso3);
-    });
-    return isos.length
-      ? ["in", ["get", "iso_a3"], ["literal", isos]]
-      : ["==", ["get", "iso_a3"], ""];
+    // Proxy countries use the same colours as census countries, with no hatch.
+    return ["==", ["get", "iso_a3"], ""];
   }
 
   function ensureHatchPattern() {
@@ -584,6 +621,23 @@
     });
   }
 
+  function demoFitPadding() {
+    const mapEl = document.getElementById("dv-map");
+    if (!mapEl || !window.HarmMapControls) return { top: 12, right: 16, bottom: 16, left: 12 };
+    return window.HarmMapControls.overlayPadding(mapEl, [view.querySelector("#dv-legend")]);
+  }
+
+  function fitDemoWorld(animate) {
+    if (!map || !window.HarmMapControls) return;
+    try { map.resize(); } catch (e) {}
+    window.HarmMapControls.fitExtent(map, featureBounds, demoFitPadding());
+    demoAtWorld = true;
+    if (demoControls) demoControls.sync();
+    if (animate) {
+      // fitExtent jumps. A second pass picks up legend size after the first paint.
+    }
+  }
+
   function ensureMap() {
     if (view.hidden) return;
     const container = document.getElementById("dv-map");
@@ -599,6 +653,7 @@
     if (map) {
       try {
         map.resize();
+        if (demoAtWorld) fitDemoWorld(false);
         refreshFill();
         showMapMessage("");
       } catch (err) {
@@ -635,16 +690,28 @@
       map.touchZoomRotate.disableRotation();
       map.keyboard.disableRotation();
     } catch (e) {}
+    // MapLibre otherwise refuses to zoom out past the point where the world
+    // fills the canvas width, which clips Greenland and the far south.
+    map.setTransformConstrain((lngLat, zoom) => ({
+      center: lngLat,
+      zoom: Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), zoom))
+    }));
+    if (window.HarmMapControls) {
+      demoControls = window.HarmMapControls.attach(map, {
+        onReset: function () { fitDemoWorld(true); }
+      });
+      window.syncDemoMapControls = function () { if (demoControls) demoControls.sync(); };
+    }
+    map.on("zoomend", () => {
+      if (!map) return;
+      demoAtWorld = map.getZoom() <= map.getMinZoom() + 0.05;
+    });
     map.on("error", ev => { console.error(ev && ev.error ? ev.error : ev); });
     const hover = ["boolean", ["feature-state", "hover"], false];
     const selected = ["boolean", ["feature-state", "selected"], false];
     map.on("load", () => {
       try {
-        map.resize();
-        map.fitBounds(WORLD_BOUNDS, { padding: 16, animate: false });
-        const z = map.getZoom();
-        map.setMinZoom(z);
-        map.setMaxZoom(z + 4);
+        fitDemoWorld(false);
         ensureHatchPattern();
       } catch (err) {
         console.error(err);
@@ -657,6 +724,8 @@
         .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
         .then(gj => {
           if (!map) return;
+          featureBounds = window.HarmMapControls.boundsFromCountries(gj);
+          fitDemoWorld(false);
           map.addSource("countries", { type: "geojson", data: gj, promoteId: "iso_a3" });
           map.addLayer({
             id: "countries-fill", type: "fill", source: "countries",
@@ -716,17 +785,19 @@
     if (isAvailabilityView()) {
       return `<strong>${esc(name)}</strong><br>${esc(availLabel(c))}`;
     }
-    if (c.score == null) {
+    const shown = displayValue(c);
+    if (shown == null) {
       return `<strong>${esc(name)}</strong><br>${esc(t("legend_no_score"))}`;
     }
-    const badge = isEstimate(c)
-      ? ` <span class="dv-pill dv-pill-prov">${esc(t("flag_estimate"))}</span>`
+    const proxy = isProxyRow(c);
+    const badge = proxy
+      ? ` <span class="dv-pill dv-pill-proxy">${esc(t("flag_proxy"))}</span>`
       : ` <span class="dv-pill">${esc(t("flag_census"))}</span>`;
-    const label = isCensus(c)
-      ? t("tooltip_census", { score: fmtScore(c.score) })
-      : t("tooltip_estimate", { score: fmtScore(c.score) });
+    const label = proxy
+      ? t("tooltip_proxy", { score: fmtChange(shown, true) })
+      : t("tooltip_census", { score: fmtChange(shown, false) });
     return `<strong>${esc(name)}</strong><br>
-      <span class="swatch${isEstimate(c) ? " swatch-hatch" : ""}" style="background:${esc(colorForCountry(c, true))}"></span>
+      <span class="swatch" style="background:${esc(colorForCountry(c, true))}"></span>
       ${esc(label)}${badge}`;
   }
 
@@ -791,6 +862,8 @@
     const years = Object.keys(rows);
     if (!years.length) return "";
     const pool = c.census.founding_pool;
+    const anyShare = years.some(y => pool && rows[y] && rows[y][pool] != null);
+    if (!anyShare) return "";
     const body = years.map(y => {
       const row = rows[y] || {};
       const yearLab = y === "latest" ? (c.census.latest_year != null ? fmtYear(c.census.latest_year) : "latest") : y;
@@ -816,7 +889,7 @@
     if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
     if (c.availability === "census") pills.push(`<span class="dv-pill">${esc(t("flag_census"))}</span>`);
     if (c.availability === "census_limited") pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_limited"))}</span>`);
-    if (isEstimate(c)) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_estimate"))}</span>`);
+    if (isProxyRow(c)) pills.push(`<span class="dv-pill dv-pill-proxy">${esc(t("flag_proxy"))}</span>`);
     if (c.census && c.census.weak_proxy) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_weak"))}</span>`);
     if (c.census && c.census.concept_break) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`);
     if (isEstimate(c) && c.quality) pills.push(`<span class="dv-pill" title="${esc(qualityLabel(c.quality))}">${esc(t("tooltip_quality", { quality: c.quality }))}</span>`);
@@ -826,11 +899,12 @@
 
     const lines = [];
     const ce = c.census;
-    if (isCensus(c) && ce) {
+    const shown = displayValue(c);
+    if (isCensusScore(c) && ce) {
       lines.push(`<p>${esc(t("selected_census_score", {
         first: fmtYear(ce.first_year),
         latest: fmtYear(ce.latest_year),
-        score: fmtScore(ce.change_outside_founding_pool)
+        score: fmtChange(shown, false)
       }))}</p>`);
       if (ce.first_share_in_founding_pool != null && ce.latest_share_in_founding_pool != null) {
         lines.push(`<p class="dv-meta">${esc(t("selected_shares", {
@@ -842,17 +916,16 @@
       }
       if (c.un_d_1990_2020 != null) {
         lines.push(`<p class="dv-meta">${esc(t("selected_gap", {
-          census: fmtScore(ce.change_outside_founding_pool),
-          d: fmtScore(c.un_d_1990_2020)
+          census: fmtChange(shown, false),
+          d: fmtIndex(c.un_d_1990_2020)
         }))}</p>`);
       }
-    } else if (c.availability === "census_limited") {
-      lines.push(`<p>${esc(t("selected_limited"))}</p>`);
-      if (c.score != null) {
-        lines.push(`<p class="dv-meta">${esc(t("selected_estimate_score", { score: fmtScore(c.score) }))}</p>`);
+    } else if (shown != null) {
+      if (c.availability === "census_limited") lines.push(`<p>${esc(t("selected_limited"))}</p>`);
+      lines.push(`<p>${esc(t("selected_proxy", { score: fmtChange(shown, true) }))}</p>`);
+      if (c.un_d_1990_2020 != null) {
+        lines.push(`<p class="dv-meta">${esc(t("selected_d_line", { d: fmtIndex(c.un_d_1990_2020) }))}</p>`);
       }
-    } else if (isEstimate(c)) {
-      lines.push(`<p>${esc(t("selected_estimate_score", { score: fmtScore(c.score) }))}</p>`);
     } else {
       lines.push(`<p>${esc(t("legend_no_score"))}</p>`);
     }
@@ -933,11 +1006,32 @@
       const detached = old
         ? `<p class="dv-meta">${esc(fmtYear(old.year))}: ${esc(share2(old.value))}. ${esc(t("origin_detached"))}</p>`
         : "";
-      return `<p>${esc(span)}</p>${detached}`;
+      return `<p>${esc(span)}</p>${detached}${originChangeLines(model)}`;
     }
     const ends = endpointSpan(model);
     if (!ends) return "";
-    return `<p>${esc(t("origin_span", ends))}</p>`;
+    return `<p>${esc(t("origin_span", ends))}</p>${originChangeLines(model)}`;
+  }
+
+  function fmtSigned2(n) {
+    return Number(n).toLocaleString(locale(), {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      signDisplay: "exceptZero"
+    });
+  }
+
+  function originChangeLines(model) {
+    return (model.tracks || []).map(track => {
+      if (track.change == null || !track.points || track.points.length < 2) return "";
+      const a = track.points[0];
+      const b = track.points[track.points.length - 1];
+      return `<p>${esc(t("origin_change", {
+        first_year: fmtYear(a.year),
+        latest_year: fmtYear(b.year),
+        change: fmtSigned2(track.change)
+      }))}</p>`;
+    }).join("");
   }
 
   function endpointSpan(model) {
@@ -1105,12 +1199,6 @@
     </section>`;
   }
 
-  function kindRank(c) {
-    if (isCensus(c)) return 0;
-    if (isEstimate(c)) return 1;
-    return 2;
-  }
-
   function filteredCountries() {
     const q = state.query.trim().toLocaleLowerCase(locale());
     let list = currentMembers().map(id => byId[id]).filter(Boolean);
@@ -1122,19 +1210,30 @@
     }
     const loc = locale();
     list.sort((a, b) => {
+      const gr = rowGroup(a) - rowGroup(b);
+      if (gr) return gr;
       if (state.sortKey === "name") {
         return countryName(a).localeCompare(countryName(b), loc);
       }
-      const kr = kindRank(a) - kindRank(b);
-      if (kr) return kr;
-      const sa = a.score, sb = b.score;
+      const sa = displayValue(a), sb = displayValue(b);
       if (sa == null && sb == null) return countryName(a).localeCompare(countryName(b), loc);
       if (sa == null) return 1;
       if (sb == null) return -1;
-      const diff = state.sortKey === "low" ? sa - sb : sb - sa;
+      // "High" is the largest decline in founding share (the most negative figure).
+      const diff = state.sortKey === "low" ? sb - sa : sa - sb;
       return diff || countryName(a).localeCompare(countryName(b), loc);
     });
     return list;
+  }
+
+  function barHead(kind) {
+    const change = kind === "proxy" ? t("col_proxy") : t("col_change");
+    const years = kind === "proxy" ? t("col_proxy_years") : t("col_years");
+    return `<li class="dv-bar-head${kind === "proxy" ? " is-proxy" : ""}">
+      <span class="dv-bar-name">${esc(t("col_country"))}</span>
+      <span class="dv-col-change">${esc(change)}</span>
+      <span class="dv-bar-years">${esc(years)}</span>
+    </li>`;
   }
 
   function renderBars() {
@@ -1143,52 +1242,59 @@
     const count = view.querySelector("#dv-list-count");
     if (!ul) return;
     const list = filteredCountries();
-    const censusVals = list.filter(c => isCensus(c) && c.score != null).map(c => c.score);
-    const estVals = list.filter(c => isEstimate(c) && c.score != null).map(c => Math.abs(c.score));
-    const cMin = censusVals.length ? Math.min(0, ...censusVals) : 0;
-    const cMax = censusVals.length ? Math.max(0, ...censusVals) : 1;
+    const vals = list.map(displayValue).filter(v => v != null);
+    const cMin = vals.length ? Math.min(0, ...vals) : 0;
+    const cMax = vals.length ? Math.max(0, ...vals) : 1;
     const cSpan = Math.max(1, cMax - cMin);
-    const eMax = Math.max(1, ...estVals, 0);
     if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
     if (!list.length) {
       ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
       return;
     }
+    let seenCensusHead = false;
+    let seenProxyHead = false;
     ul.innerHTML = list.map(c => {
+      const shown = displayValue(c);
+      const proxy = isProxyRow(c);
+      const heads = [];
+      if (!proxy && isCensusScore(c) && !seenCensusHead) {
+        seenCensusHead = true;
+        heads.push(barHead("census"));
+      }
+      if (proxy && !seenProxyHead) {
+        seenProxyHead = true;
+        heads.push(barHead("proxy"));
+      }
       const color = colorForCountry(c, true);
       const sel = c.id === state.selected ? " is-selected" : "";
       const small = isSmall(c);
-      const est = isEstimate(c);
       const smallMark = small
         ? ` <span class="dv-small-flag" title="${esc(t("flag_small"))}">${esc(t("flag_small_short"))}</span>`
         : "";
-      const estMark = est
-        ? ` <span class="dv-small-flag dv-est-flag" title="${esc(t("flag_estimate"))}">${esc(t("flag_estimate_short"))}</span>`
+      const proxyMark = proxy
+        ? ` <span class="dv-proxy-flag" title="${esc(t("legend_proxy_note"))}">${esc(t("flag_proxy_short"))}</span>`
         : "";
-      let fillStyle = `background:${esc(color)};`;
+      let fillStyle = `background:${esc(noScoreColor())};width:0`;
       let zeroPad = "";
-      if (isCensus(c) && c.score != null) {
-        const left = ((Math.min(c.score, 0) - cMin) / cSpan) * 100;
-        const width = (Math.abs(c.score) / cSpan) * 100;
-        fillStyle = `background:${esc(color)};margin-left:${left}%;width:${width}%;`;
+      if (shown != null) {
+        const left = ((Math.min(shown, 0) - cMin) / cSpan) * 100;
+        const width = (Math.abs(shown) / cSpan) * 100;
+        fillStyle = `background:${esc(color)};margin-left:${left}%;width:${Math.max(width, shown === 0 ? 0 : 0.4)}%;`;
         const zero = ((0 - cMin) / cSpan) * 100;
         zeroPad = `<span class="dv-bar-zero" style="left:${zero}%"></span>`;
-      } else if (est && c.score != null) {
-        const width = Math.max(0, Math.min(100, (Math.abs(c.score) / eMax) * 100));
-        fillStyle = `background:${esc(color)};width:${width}%;`;
-      } else {
-        fillStyle = `background:${esc(noScoreColor())};width:0`;
       }
-      const title = c.score == null
+      const title = shown == null
         ? t("legend_no_score")
-        : (isCensus(c) ? t("tooltip_census", { score: fmtScore(c.score) }) : t("tooltip_estimate", { score: fmtScore(c.score) }));
+        : (proxy
+          ? t("tooltip_proxy", { score: fmtChange(shown, true) })
+          : t("tooltip_census", { score: fmtChange(shown, false) }));
       const years = rowYearLabel(c);
-      const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${est ? " is-estimate" : ""}`;
-      return `<li class="${cls}" data-id="${esc(c.id)}">
+      const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${proxy ? " is-proxy" : ""}`;
+      return heads.join("") + `<li class="${cls}" data-id="${esc(c.id)}">
         <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
-          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${estMark}${smallMark}</span>
-          <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill${est ? " is-estimate" : ""}" style="${fillStyle}"></span></span>
-          <span class="dv-bar-n">${esc(fmtScore(c.score))}</span>
+          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${proxyMark}${smallMark}</span>
+          <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>
+          <span class="dv-bar-n">${esc(shown == null ? "—" : fmtChange(shown, proxy))}</span>
           <span class="dv-bar-years">${esc(years || "—")}</span>
         </button>
       </li>`;
@@ -1214,7 +1320,8 @@
       const rb = baselineRank(b);
       if (ra.tier !== rb.tier) return ra.tier - rb.tier;
       if (ra.value == null && rb.value == null) return countryName(a).localeCompare(countryName(b), loc);
-      const diff = state.sortKey === "low" ? ra.value - rb.value : rb.value - ra.value;
+      // "High" is the largest decline in the founding share (the most negative figure).
+      const diff = state.sortKey === "low" ? rb.value - ra.value : ra.value - rb.value;
       return diff || countryName(a).localeCompare(countryName(b), loc);
     });
     const vals = list.map(c => baselineRank(c).value).filter(v => v != null);
@@ -1467,8 +1574,12 @@
   });
   window.addEventListener("resize", () => {
     if (view.hidden) return;
-    if (map) { try { map.resize(); } catch (e) {} }
-    else scheduleMap();
+    if (map) {
+      try {
+        map.resize();
+        if (demoAtWorld) fitDemoWorld(false);
+      } catch (e) {}
+    } else scheduleMap();
   });
 
   window.renderDemographicsView = function () {

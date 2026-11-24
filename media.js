@@ -86,8 +86,11 @@
     if (hash === "#media/hollywood") return "hollywood";
     if (hash === "#media" || hash === "#media/news") return "media";
     if (hash === "#demographics") return "demographics";
-    if (hash === "#crime" || hash === "#map") return "map";
+    // #crime/USA/maltreatment and similar deep links stay on Crime. A removed
+    // category is then ignored by the explorer, which falls back to its default.
+    if (hash === "#crime" || hash === "#map" || hash.startsWith("#crime/") || hash.startsWith("#map/") || hash.startsWith("#crime?") || hash.startsWith("#map?")) return "map";
     if (hash === "#about") return "about";
+    if (!hash && /[?&](harm|category|offence|offense)=/i.test(location.search)) return "map";
     return "demographics";
   }
 
@@ -428,6 +431,9 @@
     mapNote.textContent = text;
     mapNote.hidden = false;
     placeMapNote();
+    requestAnimationFrame(function () {
+      if (typeof window.refitWorldIfMin === "function") window.refitWorldIfMin();
+    });
   }
 
   function mediaTooltipHtml(iso, name) {

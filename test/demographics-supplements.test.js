@@ -63,22 +63,21 @@ hidden.forEach(iso => {
   assert.strictEqual(api.colourScore(true, row(iso)).value, null);
 });
 
-// Same sign as the existing score: a fall in the founding share is positive.
+// Live sign: founding-share change, a fall is negative. The file already stores that.
 const usa = api.displayChange(row("USA"));
 assert.strictEqual(usa.indicative, false);
-assert.strictEqual(usa.value, 25.4);
-assert.strictEqual(api.colourScore(true, row("USA")).value, 25.4);
-assert.strictEqual(bandId(usa.value), "red");
+assert.strictEqual(usa.value, -25.4);
+assert.strictEqual(api.colourScore(true, row("USA")).value, -25.4);
 
 const nz = api.displayChange(row("NZL"));
 assert.strictEqual(nz.indicative, true);
-assert.strictEqual(nz.value, 24);
+assert.strictEqual(nz.value, -24);
 assert.strictEqual(row("NZL").change_pp_baseline_to_latest, null);
 assert.ok(api.baselineBadges(row("NZL")).includes("definition_break"));
 
 const uk = api.displayChange(row("GBR"));
 assert.strictEqual(uk.indicative, true);
-assert.strictEqual(uk.value, 15.4);
+assert.strictEqual(uk.value, -15.4);
 assert.ok(api.baselineBadges(row("GBR")).includes("estimate"));
 
 assert.ok(api.baselineBadges(row("MEX")).includes("weak_proxy"));
@@ -94,11 +93,12 @@ assert.strictEqual(api.isPublishableBaseline(row("FRA")), false);
 
 const ukr = api.displayChange(row("UKR"));
 assert.strictEqual(ukr.indicative, false);
-assert.ok(Math.abs(ukr.value - (-0.19)) < 1e-9);
+assert.ok(Math.abs(ukr.value - 0.19) < 1e-9);
 
 // France, Germany, Spain series.
 const fra = api.originModel(origin.countries.FRA);
 assert.deepStrictEqual(fra.tracks[0].points.map(p => [p.year, p.value]), [[2011, 89.5], [2021, 86.47]]);
+assert.strictEqual(fra.tracks[0].change, -3.03);
 assert.strictEqual(fra.detached.length, 0);
 assert.strictEqual(fra.generations, "two");
 
@@ -109,6 +109,7 @@ assert.deepStrictEqual(deu.tracks[0].points.map(p => [p.year, p.value, p.provisi
   [2025, 87.99, true]
 ]);
 assert.deepStrictEqual(deu.detached.map(p => [p.year, p.value]), [[2021, 89.71]]);
+assert.strictEqual(deu.tracks[0].change, -0.89);
 assert.strictEqual(deu.sensitivity[2021], 89.99);
 assert.strictEqual(deu.sensitivity[2023], 89.16);
 assert.strictEqual(deu.sensitivity[2024], 88.6);
@@ -123,6 +124,8 @@ assert.strictEqual(esp.tracks[0].points[0].year, 1998);
 assert.strictEqual(esp.tracks[0].points[0].value, 98.47);
 assert.strictEqual(esp.tracks[1].points[esp.tracks[1].points.length - 1].year, 2026);
 assert.strictEqual(esp.tracks[1].points[esp.tracks[1].points.length - 1].value, 84.63);
+assert.ok(esp.tracks[0].change < 0);
+assert.ok(esp.tracks[1].change < 0);
 const espPairs = api.connectedPairs(esp);
 assert.ok(espPairs.some(pair => pair[2] === "padron"));
 assert.ok(espPairs.some(pair => pair[2] === "table68525"));
@@ -180,7 +183,22 @@ assert.ok(copy.origin_gen_esp.indexOf("misses the second generation") !== -1);
 assert.ok(copy.origin_deu_sensitivity.indexOf("North America") !== -1);
 assert.ok(copy.origin_gen_fra.indexOf("ethnic European") === -1 || copy.origin_gen_deu.indexOf("ethnic European") !== -1);
 assert.ok(!/anti-white| anti white/i.test(JSON.stringify(copy)));
-assert.ok(copy.baseline_scale_note.indexOf("positive figure means the founding share fell") !== -1);
+assert.ok(copy.baseline_scale_note.indexOf("negative figure means the founding share fell") !== -1);
+assert.ok(copy.origin_change.indexOf("negative figure means that share fell") !== -1);
+
+const scale = require("../demographics-scale.js");
+assert.strictEqual(scale.bandIdForChange(-27.8, 1), "red");
+assert.strictEqual(scale.bandIdForChange(-25.4, 1), "red");
+assert.strictEqual(scale.bandIdForChange(-24, 1), "red");
+assert.strictEqual(scale.bandIdForChange(-4.9, 1), "yellow");
+assert.strictEqual(scale.bandIdForChange(0.2, 1), "dark_green");
+
+const can = country("CAN");
+assert.strictEqual(can.score, 27.8);
+assert.strictEqual(
+  Math.round((can.census.latest_share_in_founding_pool - can.census.first_share_in_founding_pool) * 10) / 10,
+  -27.8
+);
 
 // Every publishable row can be scored without throwing, and hidden rows never are.
 baseline.rows.forEach(r => {

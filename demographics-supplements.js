@@ -1,9 +1,7 @@
 // Pure helpers for the Demographics supplements.
 // origin series v1.14.0 (France, Germany, Spain) and the 1960–79 baseline v1.15.0.
-// The baseline file stores latest founding share minus baseline founding share,
-// so a fall is negative. The Demographics tab scores a fall as positive
-// (change outside the founding pool). displayChange uses that sign, which is
-// how the existing map and colour bands already read.
+// The baseline file stores latest founding share minus the baseline share.
+// A fall is negative. That is the sign the live Demographics tab displays.
 (function (root, factory) {
   const api = factory();
   if (typeof module !== "undefined" && module.exports) module.exports = api;
@@ -34,9 +32,9 @@
   function displayChange(row) {
     if (!isPublishableBaseline(row)) return null;
     const direct = finite(row.change_pp_baseline_to_latest);
-    if (direct != null) return { value: -direct, indicative: false, raw: direct };
+    if (direct != null) return { value: direct, indicative: false, raw: direct };
     const indicative = finite(row.indicative_change_pp_across_definition_break);
-    if (indicative != null) return { value: -indicative, indicative: true, raw: indicative };
+    if (indicative != null) return { value: indicative, indicative: true, raw: indicative };
     return { value: null, indicative: false, raw: null };
   }
 
@@ -91,6 +89,12 @@
       .filter(s => /^https?:\/\//i.test(s.url));
   }
 
+  function seriesChange(points, explicit) {
+    if (explicit != null && explicit !== "" && Number.isFinite(Number(explicit))) return Number(explicit);
+    if (!points || points.length < 2) return null;
+    return Math.round((points[points.length - 1].value - points[0].value) * 100) / 100;
+  }
+
   function sharePoint(p) {
     const value = finite(p && p.ethnic_european_founding_pct);
     if (!p || value == null) return null;
@@ -113,9 +117,10 @@
     };
     if (iso === "FRA") {
       const points = (country.series || []).map(sharePoint).filter(Boolean);
+      const filed = country.change_2011_2021_pp && country.change_2011_2021_pp.ethnic_european_founding;
       return Object.assign(base, {
         generations: "two",
-        tracks: [{ id: "main", connect: true, points: points }],
+        tracks: [{ id: "main", connect: true, points: points, change: seriesChange(points, filed) }],
         detached: [],
         sensitivity: null,
         unchained: false,
@@ -140,7 +145,7 @@
       });
       return Object.assign(base, {
         generations: "two",
-        tracks: [{ id: "census2022", connect: true, points: chained }],
+        tracks: [{ id: "census2022", connect: true, points: chained, change: seriesChange(chained) }],
         detached: detached,
         sensitivity: sensitivity,
         unchained: true,
@@ -148,12 +153,17 @@
       });
     }
     if (iso === "ESP") {
-      const mapSeries = arr => (arr || []).map(sharePoint).filter(Boolean);
+      const mapSeries = arr => {
+        const points = (arr || []).map(sharePoint).filter(Boolean);
+        return { points: points, change: seriesChange(points) };
+      };
+      const padron = mapSeries(country.series_padron_1998_2022);
+      const table = mapSeries(country.series_stock_68525_2021_2026);
       return Object.assign(base, {
         generations: "first",
         tracks: [
-          { id: "padron", connect: true, points: mapSeries(country.series_padron_1998_2022) },
-          { id: "table68525", connect: true, points: mapSeries(country.series_stock_68525_2021_2026) }
+          { id: "padron", connect: true, points: padron.points, change: padron.change },
+          { id: "table68525", connect: true, points: table.points, change: table.change }
         ],
         detached: [],
         sensitivity: null,
