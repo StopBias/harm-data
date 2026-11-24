@@ -77,3 +77,10 @@ The Channel Islands appear as a UN DESA aggregate (M49 830) and are not a single
 - Eight scored areas are not in the 1:50m map (for example Tokelau, Réunion, Gibraltar) and appear only in the ranked list.
 - Small-population territories can show a high UN D because a small migrant stock moves the shares a long way. Areas with fewer than 100,000 people stay in the ranked list and are flagged visually (`small_population` in the JSON). They are not dropped.
 - Census and UN-D scores measure different things and must not be compared as if they were the same quantity. The tab lists census rows first and hatches estimates.
+
+## Supplements that do not change the score
+
+Two standalone releases sit beside this file. They do not alter `score`, the colour bands, or the default map.
+
+- `origin_series_FR_DE_ES.json` (v1.14.0) is an extra block on France, Germany and Spain. France and Germany cover two generations. Spain is first generation only, so the Spain-born children of immigrants stay inside the ethnic European share. Germany’s 2021 point is the Census 2011 frame and is not joined to the Census 2022 series. A footnote gives the sensitivity case that excludes North America.
+- `baseline_1960_1979.json` (v1.15.0), with `baseline_1960_1979.csv`, is the optional “Change since earliest 1960–79 census” view. The file stores the change in the founding share, so a fall is negative. The tab shows the same sign as the existing scores: a positive figure means the founding share fell. Rows whose `verification` contains `NOT VERIFIED` (Guatemala, Kenya, Viet Nam, Zimbabwe, Guyana, Bolivia) stay in the file and are not shown. Armenia and Georgia are counted as ethnic European, with a visible classification-pending note. A country with no published row says “no 1960–79 census baseline”.
