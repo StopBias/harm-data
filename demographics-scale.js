@@ -1,7 +1,7 @@
 // Colour bands for the change in founding population share, in percentage points.
 // Round to the digits the row actually shows, then use half-open cuts.
-// One red hue. Census and UN-proxy values use the same cuts.
-//   v >= -1           near-white   little or no decline, including a gain
+// Green for little or no decline, then three reds. Census and UN-proxy values use the same cuts.
+//   v >= -1           green        little or no decline, including a gain
 //   -5 <= v < -1      light red
 //   -15 <= v < -5     medium red
 //   v < -15           dark red
@@ -13,19 +13,19 @@
   "use strict";
 
   var COLOURS = {
-    little: "#fdf0ee",
+    little: "#8bc34a",
     light: "#f5b7b1",
     medium: "#e74c3c",
     dark: "#922b21"
   };
 
   // Same order as the legend: largest decline first.
-  // The near-white swatch needs an outline so it stays distinct from no-data grey.
+  // The green for little-or-no decline is COLOURS.little only, so it can be swapped in one place.
   var BANDS = [
     { id: "dark", color: COLOURS.dark, labelKey: "band_dark" },
     { id: "medium", color: COLOURS.medium, labelKey: "band_medium" },
     { id: "light", color: COLOURS.light, labelKey: "band_light" },
-    { id: "little", color: COLOURS.little, labelKey: "band_little", outline: true }
+    { id: "little", color: COLOURS.little, labelKey: "band_little" }
   ];
 
   function roundDisplayed(value, digits) {

@@ -12,14 +12,15 @@ function assertEqual(actual, expected, label) {
   }
 }
 
-assertEqual(scale.COLOURS.little, "#fdf0ee", "near-white");
+assertEqual(scale.COLOURS.little, "#8bc34a", "green");
 assertEqual(scale.COLOURS.light, "#f5b7b1", "light red");
 assertEqual(scale.COLOURS.medium, "#e74c3c", "medium red");
 assertEqual(scale.COLOURS.dark, "#922b21", "dark red");
 assertEqual(scale.BANDS.length, 4, "four bands");
-assertEqual(scale.BANDS[3].outline, true, "near-white legend outline");
+assertEqual(scale.BANDS[3].color, scale.COLOURS.little, "green comes from one constant");
+assertEqual(scale.BANDS[3].outline, undefined, "green swatch has no outline");
 
-// >= -1, including gains and a shown zero, is the near-white band.
+// >= -1, including gains and a shown zero, is the green band.
 assertEqual(id(0, 3), "little", "0");
 assertEqual(id(-0, 3), "little", "-0");
 assertEqual(id(-0.0001, 3), "little", "-0.0001 rounds to 0.000");
