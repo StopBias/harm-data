@@ -1,7 +1,7 @@
 {
  "country": "Latvia",
  "iso_a3": "LVA",
- "completeness": 10,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Latvia's Interior Ministry reports child victims by offence and sex, and says 4% of identified suspects of sexual offences against minors were foreign citizens; trafficking victims are split into Latvian and third-country nationals. That is a citizenship proxy only. Ethnicity (tautība), including the large Russian minority, is not recorded in crime data.",
@@ -364,30 +364,30 @@
   }
  ],
  "score": {
-  "value": 10,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 9.5,
+  "uncapped": 9.0,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 2,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0.5,
     "access": 6.5,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's 2025 report on juvenile crime and child victims says 4% of identified suspects of sexual offences against minors were citizens of other countries (Uzbekistan, Russia, Lithuania, Ukraine); the number of suspects is not given. Child victims (40 of rape, 118 of sexual violence) have sex but no citizenship.",
-    "score": 12.0
+    "why": "The Interior Ministry's 2025 report on juvenile crime and child victims says 4% of identified suspects of sexual offences against minors were citizens of other countries (Uzbekistan, Russia, Lithuania, Ukraine); the number of suspects is not given. Child victims (40 of rape, 118 of sexual violence) have sex but no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -395,25 +395,12 @@
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "The same report counts 184 child victims of cruelty and violence against a minor (Art. 174) and 663 child victims of all offences in 2025, by sex and municipality only. The Interior Ministry's digital centre (IDC) tables of victims and accused give sex and age, no citizenship.",
+    "why": "The same report counts 184 child victims of cruelty and violence against a minor (Art. 174) and 663 child victims of all offences in 2025, by sex and municipality only. The Interior Ministry's digital centre (IDC) tables of victims and accused give sex and age, no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 9.5
    },
    {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 2,
-    "rates": 0.5,
-    "access": 5,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "Children's-rights violations (2,994 administrative cases in 2025) are counted without citizenship or ethnicity.",
-    "score": 7.5
-   },
-   {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2.5,
@@ -421,34 +408,34 @@
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "Child victims of murder (2) and aggravated murder (8) in 2025 have sex only; no citizenship.",
-    "score": 9.0
+    "why": "Child victims of murder (2) and aggravated murder (8) in 2025 have sex only; no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 1,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 5.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "The Interior Ministry identified 22 trafficking victims in 2025: 11 Latvian nationals and 11 third-country nationals (all ages). The child-victim table records no child victims of trafficking (Art. 154.1) in 2025. No trafficker citizenship.",
-    "score": 8.5
+    "why": "The Interior Ministry identified 22 trafficking victims in 2025: 11 Latvian nationals and 11 third-country nationals (all ages). The child-victim table records no child victims of trafficking (Art. 154.1) in 2025. No trafficker citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 7.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 1,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0.5,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Child pornography offences (Art. 166) are inside the sexual offences against minors for which 4% of identified suspects were foreign citizens. No victims by citizenship.",
-    "score": 10.0
+    "why": "Child pornography offences (Art. 166) are inside the sexual offences against minors for which 4% of identified suspects were foreign citizens. No victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    }
   ],
   "components": [
@@ -478,18 +465,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Latvia scores 10% on the stricter scale (0-20%). The Interior Ministry gives the share of foreign citizens among suspects of sexual offences against minors (4%) and trafficking victims as Latvian or third-country nationals. Child victims have no citizenship, and no ethnicity is recorded.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Latvia scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The Interior Ministry gives the share of foreign citizens among suspects of sexual offences against minors (4%) and trafficking victims as Latvian or third-country nationals. Child victims have no citizenship, and no ethnicity is recorded.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "iem": {

@@ -1,7 +1,7 @@
 {
  "country": "Ukraine",
  "iso_a3": "UKR",
- "completeness": 12,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Ukraine's Prosecutor General publishes the citizenship of every identified suspect by offence, including offences against children, but child victims by citizenship only as one all-offence total. Citizenship is a proxy, ethnicity is not recorded, and the data exclude occupied territories.",
@@ -522,91 +522,78 @@
   }
  ],
  "score": {
-  "value": 12,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 11.6,
+  "uncapped": 8.7,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 1,
-    "perpetrator": 2.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Prosecutor General's Form 2 report (2025) gives persons identified for each offence by citizenship (Ukrainian, foreign, stateless): sexual offences 327 (3 foreign, 2 stateless), corruption of minors 54 (none foreign), all offences against children 3,008 (12 foreign). Form 1 gives only an all-offence count of foreign child victims (10 of 7,437).",
-    "score": 12.5
+    "why": "The Prosecutor General's Form 2 report (2025) gives persons identified for each offence by citizenship (Ukrainian, foreign, stateless): sexual offences 327 (3 foreign, 2 stateless), corruption of minors 54 (none foreign), all offences against children 3,008 (12 foreign). Form 1 gives only an all-offence count of foreign child victims (10 of 7,437). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 1,
-    "perpetrator": 2,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Form 2 gives persons identified for domestic violence (1,448; 7 foreign) and for all offences against children (3,008; 12 foreign). Victims by citizenship only as an all-offence total.",
-    "score": 12
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 1,
-    "perpetrator": 1.5,
-    "coverage": 2.5,
-    "rates": 0,
-    "access": 6,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "proxy",
-    "why": "Neglect is covered only by the all-offences-against-children row (3,008 persons, 12 foreign); no child-welfare statistics by citizenship.",
-    "score": 11.0
+    "why": "Form 2 gives persons identified for domestic violence (1,448; 7 foreign) and for all offences against children (3,008; 12 foreign). Victims by citizenship only as an all-offence total. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 1,
-    "perpetrator": 2.5,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Form 2 gives persons identified for murder of a young child or a pregnant woman (Art. 115(2)(2): 15, all Ukrainian citizens) and all intentional murder (669; 7 foreign, 1 stateless). Child victims by citizenship only as the all-offence total.",
-    "score": 12.5
+    "why": "Form 2 gives persons identified for murder of a young child or a pregnant woman (Art. 115(2)(2): 15, all Ukrainian citizens) and all intentional murder (669; 7 foreign, 1 stateless). Child victims by citizenship only as the all-offence total. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 1,
-    "perpetrator": 1.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Form 2 gives 47 persons identified for trafficking (5 foreign), all victim ages; Form 1 gives 113 trafficking victims (16 children) with no citizenship split.",
-    "score": 10.5
+    "why": "Form 2 gives 47 persons identified for trafficking (5 foreign), all victim ages; Form 1 gives 113 trafficking victims (16 children) with no citizenship split. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 0.5,
-    "perpetrator": 1.5,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Form 2 gives pornography offences (Art. 301: 119 persons, 2 foreign, 1 stateless) without separating child abuse material; no victims by citizenship.",
-    "score": 10.0
+    "why": "Form 2 gives pornography offences (Art. 301: 119 persons, 2 foreign, 1 stateless) without separating child abuse material; no victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8
    }
   ],
   "components": [
@@ -636,18 +623,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Ukraine scores 12% on the stricter scale (0-20%). The Prosecutor General's monthly reports give every identified suspect's citizenship (Ukrainian, foreign or stateless) by offence, including a row for all offences against children and for the murder of a young child or pregnant woman, but child victims by citizenship only as one all-offence total. Figures exclude occupied territories and are collected under martial law.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Ukraine scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The Prosecutor General's monthly reports give every identified suspect's citizenship (Ukrainian, foreign or stateless) by offence, including a row for all offences against children and for the murder of a young child or pregnant woman, but child victims by citizenship only as one all-offence total. Figures exclude occupied territories and are collected under martial law.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "gp2": {

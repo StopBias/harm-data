@@ -1,7 +1,7 @@
 {
  "country": "New Zealand",
  "iso_a3": "NZL",
- "completeness": 41,
+ "completeness": 13,
  "provisional": false,
  "as_of": "2026-11-18",
  "summary": "New Zealand Police publish child sexual assault, child assault, abuse-material and grooming victims, and the people proceeded against, by ethnicity every month, with European separate from Māori, Pacific and Asian people. It is the only country reviewed so far whose official crime data separately identify ethnic European victims and offenders. Gaps: many child victims have no recorded ethnicity, offenders are not split by victim age outside child-specific offences, there is no victim-by-offender ethnicity table, and child-protection data lump NZ European with Other.",
@@ -929,91 +929,78 @@
   }
  ],
  "score": {
-  "value": 41,
-  "band": "40-60%",
+  "value": 13,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 41.4,
+  "uncapped": 12.9,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 26,
-    "perpetrator": 28,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 3,
     "access": 7.5,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "NZ Police publish victims of 'sexual assault of a child' and people proceeded against for it by ethnicity, with European separate from Māori, Pacific, Asian and other groups, updated monthly. Victim ethnicity is not stated for about a quarter of victimisations; offender ethnicity unknown for about 13%. Police record one ethnicity per person and the method is not fully documented. No victim-by-offender ethnicity table.",
-    "score": 71.5
+    "why": "NZ Police publish victims of 'sexual assault of a child' and people proceeded against for it by ethnicity, with European separate from Māori, Pacific, Asian and other groups, updated monthly. Victim ethnicity is not stated for about a quarter of victimisations; offender ethnicity unknown for about 13%. Police record one ethnicity per person and the method is not fully documented. No victim-by-offender ethnicity table. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 17.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 20,
-    "perpetrator": 6,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 2,
     "access": 7.5,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "Assault victims aged 0-14 by ethnicity (European separate), including assaults by a family member; ethnicity not stated for 46% of child assault victimisations. Offender ethnicity exists only for all assaults, not split by the victim's age.",
-    "score": 40.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 6,
-    "perpetrator": 12,
-    "coverage": 3,
-    "rates": 1.5,
-    "access": 6,
-    "victim_kind": "ethnicity",
-    "perpetrator_kind": "ethnicity",
-    "why": "People proceeded against for neglect or ill-treatment of a person under care by ethnicity (European separate; includes vulnerable adults). Victims: only Oranga Tamariki's count of children harmed in state care, which lumps 'NZ European & Other'.",
-    "score": 28.5
+    "why": "Assault victims aged 0-14 by ethnicity (European separate), including assaults by a family member; ethnicity not stated for 46% of child assault victimisations. Offender ethnicity exists only for all assaults, not split by the victim's age. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 14.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 17,
-    "perpetrator": 15,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 2.5,
     "access": 5,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "Police homicide victims report gives victims by ethnicity (European separate) and by age, but not ethnicity by age; final data end in 2022. People proceeded against for murder and manslaughter by ethnicity (2025), all victims. No rates or victim-offender ethnicity link published.",
-    "score": 46.5
+    "why": "Police homicide victims report gives victims by ethnicity (European separate) and by age, but not ethnicity by age; final data end in 2022. People proceeded against for murder and manslaughter by ethnicity (2025), all victims. No rates or victim-offender ethnicity link published. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 14.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 4,
+    "perpetrator": 0,
     "coverage": 1,
     "rates": 0,
     "access": 4,
     "victim_kind": "none",
     "perpetrator_kind": "ethnicity",
-    "why": "No victim data. 45 police proceedings for human trafficking or slavery since mid-2014 by offender ethnicity, all forms and ages.",
-    "score": 9
+    "why": "No victim data. 45 police proceedings for human trafficking or slavery since mid-2014 by offender ethnicity, all forms and ages. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 12,
-    "perpetrator": 22,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 2,
     "access": 7,
     "victim_kind": "ethnicity",
     "perpetrator_kind": "ethnicity",
-    "why": "Victims and offenders of child abuse material and child grooming offences by ethnicity (European separate). Most victims in abuse material are unidentified (41% of victimisations have no ethnicity), and cases prosecuted by Internal Affairs or Customs are not in police data.",
-    "score": 47
+    "why": "Victims and offenders of child abuse material and child grooming offences by ethnicity (European separate). Most victims in abuse material are unidentified (41% of victimisations have no ethnicity), and cases prosecuted by Internal Affairs or Customs are not in police data. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 13
    }
   ],
   "components": [
@@ -1043,19 +1030,18 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "New Zealand scores 41% on the stricter scale (40-60%), the first country reviewed whose police data separately identify European victims and European offenders. NZ Police publish child sexual assault victims and the people proceeded against for it by ethnicity every month. It loses points because a quarter to half of child victims have no recorded ethnicity, offenders are not split by the victim's age outside child-specific offences, there is no victim-by-offender ethnicity table, and child-protection data lump NZ European with Other.",
-  "judgement_notes": "Police ethnicity is treated as real ethnicity data with ethnic Europeans separately identified, even though police record a single ethnicity and the method (self-identified or officer-recorded) is not documented in the release. If police ethnicity were treated as perceived and docked like US offender race, NZ would score about 36% (every police-based heritage score cut by a fifth).",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "New Zealand scores 13% on the stricter scale (0-20%), the first country reviewed whose police data separately identify European victims and European offenders. Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. NZ Police publish child sexual assault victims and the people proceeded against for it by ethnicity every month. It loses points because a quarter to half of child victims have no recorded ethnicity, offenders are not split by the victim's age outside child-specific offences, there is no victim-by-offender ethnicity table, and child-protection data lump NZ European with Other.",
+  "judgement_notes": "Police ethnicity is treated as real ethnicity data with ethnic Europeans separately identified, even though police record a single ethnicity and the method (self-identified or officer-recorded) is not documented in the release. If police ethnicity were treated as perceived and docked like US offender race, NZ would score about 36% (every police-based heritage score cut by a fifth). Under the paired-data rule now in use, heritage points are 0 unless a published cross-table records child victim and offender heritage for the same cases. This earlier note does not set the published score.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 44,
    "band": "40-60%",
@@ -1069,6 +1055,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No paired child table. Police publish child-victim ethnicity and offender ethnicity separately, with no victim-by-offender ethnicity table."
   }
  },
  "sources": {

@@ -1,7 +1,7 @@
 {
  "country": "Czechia",
  "iso_a3": "CZE",
- "completeness": 11,
+ "completeness": 8,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Czech police publish every year, for each offence, how many cleared offences were committed by foreigners, including sexual abuse of a child, child pornography, grooming and endangering a child's upbringing. That is a two-way citizenship proxy for perpetrators only; no victims are published by citizenship and ethnicity is never recorded.",
@@ -422,91 +422,78 @@
   }
  ],
  "score": {
-  "value": 11,
+  "value": 8,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 10.8,
+  "uncapped": 8.4,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 3,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "The Police of the Czech Republic's annual crime table (TSK, 2025) gives, for sexual abuse of a child (§187: 645 registered, 376 cleared), the number of cleared offences committed by foreigners (13). Czech/foreign only, offences not persons, no nationality, no victims by citizenship.",
-    "score": 12
+    "why": "The Police of the Czech Republic's annual crime table (TSK, 2025) gives, for sexual abuse of a child (§187: 645 registered, 376 cleared), the number of cleared offences committed by foreigners (13). Czech/foreign only, offences not persons, no nationality, no victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
-    "perpetrator": 2,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "TSK gives cleared offences and those by foreigners for maltreatment of a person in care (§198: 162 / 23) and in a shared home (§199: 394 / 55), all victim ages. The MPSV child-protection report (V20-01) counts physical abuse cases with no citizenship.",
-    "score": 11
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 2,
-    "coverage": 3,
-    "rates": 0,
-    "access": 6,
-    "victim_kind": "none",
-    "perpetrator_kind": "proxy",
-    "why": "TSK gives endangering a child's upbringing (§201: 1,116 cleared, 138 by foreigners). The MPSV child-protection report records neglect cases but only flags foreign children with registered residence and unaccompanied foreign minors, not the nationality of neglected children.",
-    "score": 11
+    "why": "TSK gives cleared offences and those by foreigners for maltreatment of a person in care (§198: 162 / 23) and in a shared home (§199: 394 / 55), all victim ages. The MPSV child-protection report (V20-01) counts physical abuse cases with no citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 1.5,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "TSK gives all murders (§140: 148 cleared, 28 by foreigners), all victim ages; no child homicide breakdown and no victims by citizenship.",
-    "score": 10.0
+    "why": "TSK gives all murders (§140: 148 cleared, 28 by foreigners), all victim ages; no child homicide breakdown and no victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 1,
-    "perpetrator": 1.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "TSK gives trafficking (§168: 22 cleared, 2 by foreigners). The Interior Ministry's support programme lists its 31 new victims in 2025 by citizenship (27 Czech), but it admits adults only; its 2024 report gives 28 people prosecuted (26 Czech citizens).",
-    "score": 9.5
+    "why": "TSK gives trafficking (§168: 22 cleared, 2 by foreigners). The Interior Ministry's support programme lists its 31 new victims in 2025 by citizenship (27 Czech), but it admits adults only; its 2024 report gives 28 people prosecuted (26 Czech citizens). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 7
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 3,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "TSK gives child pornography (§192/193: 705 cleared, 32 by foreigners) and grooming (§193b: 45 cleared, 4 by foreigners). No victims by citizenship.",
-    "score": 12
+    "why": "TSK gives child pornography (§192/193: 705 cleared, 32 by foreigners) and grooming (§193b: 45 cleared, 4 by foreigners). No victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    }
   ],
   "components": [
@@ -536,18 +523,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Czechia scores 11% on the stricter scale (0-20%). The police publish an annual table of every offence with the number of cleared offences committed by foreigners, including sexual abuse of a child, child pornography, grooming and endangering a child's upbringing. That is a two-way Czech/foreign citizenship proxy for perpetrators only, counted in offences, with no nationality detail and no victims by citizenship.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Czechia scores 8% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The police publish an annual table of every offence with the number of cleared offences committed by foreigners, including sexual abuse of a child, child pornography, grooming and endangering a child's upbringing. That is a two-way Czech/foreign citizenship proxy for perpetrators only, counted in offences, with no nationality detail and no victims by citizenship.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "pcr": {

@@ -1,7 +1,7 @@
 {
  "country": "France",
  "iso_a3": "FRA",
- "completeness": 24,
+ "completeness": 15,
  "provisional": false,
  "as_of": "2026-11-20",
  "summary": "France does not collect ethnic statistics. Police data give child victims of sexual violence, family violence and homicide by French or foreign nationality, and suspects by nationality for all victims together; a government survey gives childhood violence by migration background. There are no national neglect data by origin and nothing for online exploitation.",
@@ -709,82 +709,69 @@
   }
  ],
  "score": {
-  "value": 24,
-  "band": "20-40%",
+  "value": 15,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 23.8,
+  "uncapped": 15.2,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 7,
-    "perpetrator": 5.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 3.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "SSMSI open data: 76,167 child victims of sexual violence in 2025 by French/foreign nationality; suspects by nationality for all victim ages only. Binary nationality proxy; ethnic statistics are not collected.",
-    "score": 30.5
+    "why": "SSMSI open data: 76,167 child victims of sexual violence in 2025 by French/foreign nationality; suspects by nationality for all victim ages only. Binary nationality proxy; ethnic statistics are not collected. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 18
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 7.5,
-    "perpetrator": 5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 3.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "63,059 child victims of intra-family physical violence by French/foreign nationality (2025); the official Genese survey gives parental violence by migration background. Suspects only for all victims of intra-family violence.",
-    "score": 30.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 1,
-    "rates": 0,
-    "access": 2,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "No national neglect statistics by any origin variable; the ONPE notes there is no homogeneous national count of reasons for protection.",
-    "score": 3
+    "why": "63,059 child victims of intra-family physical violence by French/foreign nationality (2025); the official Genese survey gives parental violence by migration background. Suspects only for all victims of intra-family violence. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 18
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 7.5,
-    "perpetrator": 5.5,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 3.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "95 child homicide victims in 2025 by French/foreign nationality (child-specific, unlike Germany); suspects by nationality for all ages.",
-    "score": 31.0
+    "why": "95 child homicide victims in 2025 by French/foreign nationality (child-specific, unlike Germany); suspects by nationality for all ages. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 18
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 5.5,
-    "perpetrator": 5.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 1.5,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Trafficking victims (2,181, 25.9% minors) and suspects (2,272) by nationality group, 2025, all ages only.",
-    "score": 23.5
+    "why": "Trafficking victims (2,181, 25.9% minors) and suspects (2,272) by nationality group, 2025, all ages only. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 2,
@@ -792,7 +779,7 @@
     "access": 2,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "No nationality or origin published for online child sexual exploitation victims or suspects.",
+    "why": "No nationality or origin published for online child sexual exploitation victims or suspects. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 4
    }
   ],
@@ -823,18 +810,17 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "France scores 24% on the stricter scale (20-40%). France does not collect ethnic statistics. The police publish child victims of sexual violence, intra-family violence and homicide by French or foreign nationality, and suspects by nationality for all ages, all as a capped proxy. There are no national neglect data by origin and nothing for online exploitation. The 25% cap for countries without ethnicity data would apply, but France is already below it.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "France scores 15% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. France does not collect ethnic statistics. The police publish child victims of sexual violence, intra-family violence and homicide by French or foreign nationality, and suspects by nationality for all ages, all as a capped proxy. There are no national neglect data by origin and nothing for online exploitation. The 25% cap for countries without ethnicity data would apply, but France is already below it.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 21,
    "band": "20-40%",
@@ -848,6 +834,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {

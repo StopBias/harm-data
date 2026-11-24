@@ -1,7 +1,7 @@
 {
  "country": "Sweden",
  "iso_a3": "SWE",
- "completeness": 13,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Sweden does not record ethnicity. Brå's school survey gives grade-9 pupils' experience of sexual offences and assault by migration background, and a one-off 2021 study gave suspects of sexual offences, assault and lethal violence by background with rates for 2015-2018. No regular statistics give the background of child victims or offenders; neglect, trafficking and online abuse have none.",
@@ -520,82 +520,69 @@
   }
  ],
  "score": {
-  "value": 13,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 13.4,
+  "uncapped": 9.2,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 5,
-    "perpetrator": 5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 3,
     "access": 3,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Brå's 2025 school survey gives the share of grade-9 pupils subjected to a sexual offence by migration background (10.8% Swedish-born with a Swedish-born parent, 11.5% foreign-born); age 15 only. Brå's one-off 2021 study gives suspects of sexual offences 2015-2018 by background with rates per 1,000, all victims.",
-    "score": 21
+    "why": "Brå's 2025 school survey gives the share of grade-9 pupils subjected to a sexual offence by migration background (10.8% Swedish-born with a Swedish-born parent, 11.5% foreign-born); age 15 only. Brå's one-off 2021 study gives suspects of sexual offences 2015-2018 by background with rates per 1,000, all victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 5,
-    "perpetrator": 5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 5,
     "rates": 3,
     "access": 3,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The same school survey gives assault victimization by background (18.8% vs 21.7%); the 2021 study gives assault suspects by background with rates, all victims, 2015-2018.",
-    "score": 21
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 1,
-    "rates": 0,
-    "access": 2,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "No national neglect statistics by any origin variable were found.",
-    "score": 3
+    "why": "The same school survey gives assault victimization by background (18.8% vs 21.7%); the 2021 study gives assault suspects by background with rates, all victims, 2015-2018. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 4,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 2,
     "access": 3,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Brå's confirmed lethal violence statistics give 4 child victims in 2025 with no background. The 2021 study gives suspects of lethal violence (including attempts) by background with rates, all victims, 2015-2018.",
-    "score": 13
+    "why": "Brå's confirmed lethal violence statistics give 4 child victims in 2025 with no background. The 2021 study gives suspects of lethal violence (including attempts) by background with rates, all victims, 2015-2018. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 1.5,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "The Police situation report for 2024 gives 430 identified victims (22 children) and only a ranked list of origin countries (Thailand, Ukraine, Romania, Sweden, ...), with no counts and no suspect nationality.",
-    "score": 10.5
+    "why": "The Police situation report for 2024 gives 430 identified victims (22 children) and only a ranked list of origin countries (Thailand, Ukraine, Romania, Sweden, ...), with no counts and no suspect nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1,
@@ -603,7 +590,7 @@
     "access": 3,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "No statistics on online child sexual exploitation by any origin variable were found.",
+    "why": "No statistics on online child sexual exploitation by any origin variable were found. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 4
    }
   ],
@@ -634,18 +621,17 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Sweden scores 13% on the stricter scale (0-20%). Brå's school survey shows grade-9 pupils' experience of sexual offences and assault by migration background, and a one-off 2021 study gave suspects by background with rates for 2015-2018. No regular statistics give the origin of child victims or offenders, and neglect, online abuse and trafficking have almost none.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Sweden scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Brå's school survey shows grade-9 pupils' experience of sexual offences and assault by migration background, and a one-off 2021 study gave suspects by background with rates for 2015-2018. No regular statistics give the origin of child victims or offenders, and neglect, online abuse and trafficking have almost none.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 13,
    "band": "0-20%",
@@ -659,6 +645,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {

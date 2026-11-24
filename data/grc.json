@@ -1,7 +1,7 @@
 {
  "country": "Greece",
  "iso_a3": "GRC",
- "completeness": 11,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Greece's police yearbook gives known offenders of each offence by Greek or foreign citizenship (rape, homicide, domestic violence), but no victim tables and no child-specific offences. EKKA's referral mechanism reports child trafficking victims by country of origin. No crime statistic records ethnicity or Roma identity.",
@@ -425,91 +425,78 @@
   }
  ],
  "score": {
-  "value": 11,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 11.0,
+  "uncapped": 8.9,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
-    "perpetrator": 2,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "The Hellenic Police 2025 statistical yearbook (table 26) gives known offenders by Greek/foreign citizenship: rape 417 (148 foreign); offences against sexual freedom 1,443 (427 foreign). All victim ages; no child-specific offence and no victim tables.",
-    "score": 10.5
+    "why": "The Hellenic Police 2025 statistical yearbook (table 26) gives known offenders by Greek/foreign citizenship: rape 417 (148 foreign); offences against sexual freedom 1,443 (427 foreign). All victim ages; no child-specific offence and no victim tables. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
-    "perpetrator": 1.5,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Offenders under the domestic violence law: 23,248 known offenders (3,697 foreign); bodily harm 6,981 (1,557 foreign). All victim ages; no child victims.",
-    "score": 10.0
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0.5,
-    "coverage": 1.5,
-    "rates": 0,
-    "access": 6,
-    "victim_kind": "none",
-    "perpetrator_kind": "proxy",
-    "why": "No neglect offence is published; only the domestic violence law total (all family members) by citizenship.",
-    "score": 8.0
+    "why": "Offenders under the domestic violence law: 23,248 known offenders (3,697 foreign); bodily harm 6,981 (1,557 foreign). All victim ages; no child victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
-    "perpetrator": 1.5,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Intentional homicide: 370 known offenders, 92 foreign citizens, all victim ages. No victims by age or citizenship.",
-    "score": 10.0
+    "why": "Intentional homicide: 370 known offenders, 92 foreign citizens, all victim ages. No victims by age or citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 5,
-    "perpetrator": 0.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "EKKA's National Referral Mechanism 2025 report gives 881 new presumed victims, 108 of them children, by country of origin: 24 Greek, 71 from African and 13 from Asian countries. Traffickers appear only within the personal-liberty chapter of the police yearbook (1,525 of 10,533 offenders foreign).",
-    "score": 16.0
+    "why": "EKKA's National Referral Mechanism 2025 report gives 881 new presumed victims, 108 of them children, by country of origin: 24 Greek, 71 from African and 13 from Asian countries. Traffickers appear only within the personal-liberty chapter of the police yearbook (1,525 of 10,533 offenders foreign). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
-    "perpetrator": 1,
+    "perpetrator": 0,
     "coverage": 2,
     "rates": 0,
     "access": 6,
     "victim_kind": "none",
     "perpetrator_kind": "proxy",
-    "why": "Child pornography is inside the sexual-freedom chapter (427 of 1,443 offenders foreign). No victims by citizenship.",
-    "score": 9
+    "why": "Child pornography is inside the sexual-freedom chapter (427 of 1,443 offenders foreign). No victims by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8
    }
   ],
   "components": [
@@ -539,18 +526,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Greece scores 11% on the stricter scale (0-20%). The Hellenic Police yearbook gives known offenders of each offence by Greek/foreign citizenship but has no victim or child-specific tables; EKKA reports child trafficking victims by country of origin. No ethnicity is recorded.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Greece scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. The Hellenic Police yearbook gives known offenders of each offence by Greek/foreign citizenship but has no victim or child-specific tables; EKKA reports child trafficking victims by country of origin. No ethnicity is recorded.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "yb": {

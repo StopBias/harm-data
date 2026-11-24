@@ -1,7 +1,7 @@
 {
  "country": "United Kingdom",
  "iso_a3": "GBR",
- "completeness": 53,
+ "completeness": 14,
  "as_of": "2026-11-22",
  "summary": "The UK publishes child-harm data by ethnicity mainly for England and Wales: child-protection plans by the child's ethnicity, homicide victims and suspects by officer-assessed ethnicity, and court convictions for child sexual offences by the offender's self-identified ethnicity, split into White British, White Irish and Any other White. Police records of child sexual abuse still miss ethnicity for about two-thirds of victims and suspects, Scotland and Northern Ireland publish almost nothing by ethnicity, and no source identifies ethnic Europeans as such.",
  "nations": {
@@ -1011,10 +1011,10 @@
   }
  ],
  "score": {
-  "value": 53,
-  "band": "40-60%",
+  "value": 14,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 52.9,
+  "uncapped": 14.0,
   "cap_applied": false,
   "cap_rule_applies": false,
   "previous": {
@@ -1025,9 +1025,9 @@
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 22.5,
-    "perpetrator": 21.0,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 4.0,
     "rates": 3.0,
     "access": 5.5,
@@ -1041,14 +1041,14 @@
      "e": 11,
      "total": 54
     },
-    "why": "Courts publish offender self-identified ethnicity by detailed group incl. White British (22% unknown); police record victim and suspect ethnicity for only 34%; a survey gives victim prevalence by sub-group. Scotland and Northern Ireland publish nothing by ethnicity.",
-    "score": 56.0
+    "why": "Courts publish offender self-identified ethnicity by detailed group incl. White British (22% unknown); police record victim and suspect ethnicity for only 34%; a survey gives victim prevalence by sub-group. Scotland and Northern Ireland publish nothing by ethnicity. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 12.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 27.0,
-    "perpetrator": 15.0,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 6.0,
     "rates": 3.5,
     "access": 6.0,
@@ -1062,35 +1062,14 @@
      "e": 12,
      "total": 59
     },
-    "why": "Child protection plans by ethnicity (England, 2.5% unknown, 5 groups, White separate); offenders only via child cruelty convictions (36% unknown).",
-    "score": 57.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 27.0,
-    "perpetrator": 13.5,
-    "coverage": 6.0,
-    "rates": 3.5,
-    "access": 6.0,
-    "victim_kind": "ethnicity",
-    "perpetrator_kind": "ethnicity",
-    "old": {
-     "a": 18,
-     "b": 9,
-     "c": 12,
-     "d": 7,
-     "e": 12,
-     "total": 58
-    },
-    "why": "Same child protection structure; neglect convictions are combined with cruelty.",
-    "score": 56.0
+    "why": "Child protection plans by ethnicity (England, 2.5% unknown, 5 groups, White separate); offenders only via child cruelty convictions (36% unknown). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 30.0,
-    "perpetrator": 24.0,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7.5,
     "rates": 6.0,
     "access": 6.5,
@@ -1104,14 +1083,14 @@
      "e": 13,
      "total": 76
     },
-    "why": "Homicide Index publishes child victims and suspects by officer-identified ethnicity, rates and a victim-by-suspect table (all ages).",
-    "score": 74.0
+    "why": "Homicide Index publishes child victims and suspects by officer-identified ethnicity, rates and a victim-by-suspect table (all ages). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 20
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 5.5,
-    "perpetrator": 13.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 1.5,
     "access": 4.5,
@@ -1125,14 +1104,14 @@
      "e": 9,
      "total": 33
     },
-    "why": "Victims: NRM records nationality only (proxy, capped). Perpetrators: police group-based CSE data have suspect ethnicity for 31%.",
-    "score": 27.5
+    "why": "Victims: NRM records nationality only (proxy, capped). Perpetrators: police group-based CSE data have suspect ethnicity for 31%. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 8.5
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 4.5,
-    "perpetrator": 19.5,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3.5,
     "rates": 1.5,
     "access": 5.5,
@@ -1146,8 +1125,8 @@
      "e": 11,
      "total": 37
     },
-    "why": "Indecent-image convictions by self-identified ethnicity (24% unknown); victims usually unidentified.",
-    "score": 34.5
+    "why": "Indecent-image convictions by self-identified ethnicity (24% unknown); victims usually unidentified. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 10.5
    }
   ],
   "components": [
@@ -1177,19 +1156,18 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "The UK scores 53% on the stricter scale (40-60%). England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
-  "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "The UK scores 14% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. England and Wales record ethnicity, often splitting White British from other White groups, for child protection, homicide and court convictions. Police child-abuse records miss ethnicity for about two-thirds of cases, trafficking victims are recorded by nationality only (a capped proxy), and Scotland and Northern Ireland publish almost nothing.",
+  "judgement_notes": "Trafficking victims are recorded by nationality only (NRM), so that cell is scored as a proxy capped at a quarter of the heritage points. Under the paired-data rule now in use, heritage points are 0 unless a published cross-table records child victim and offender heritage for the same cases. This earlier note does not set the published score.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 51,
    "band": "40-60%",
@@ -1203,6 +1181,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No paired child table. ONS homicide Table 32 pairs victim and suspect ethnicity for all ages only, not for child victims."
   }
  },
  "sources": {

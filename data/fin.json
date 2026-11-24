@@ -1,7 +1,7 @@
 {
  "country": "Finland",
  "iso_a3": "FIN",
- "completeness": 25,
+ "completeness": 15,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Statistics Finland publishes, every year, child victims of sexual, violent and abuse-material offences by origin (Finnish or foreign background) and suspects by origin and background-country region with rates per 10,000. Origin is based on parents' country of birth, a proxy, never ethnicity.",
@@ -1093,91 +1093,78 @@
   }
  ],
  "score": {
-  "value": 25,
-  "band": "20-40%",
+  "value": 15,
+  "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 26.4,
-  "cap_applied": true,
+  "uncapped": 15.3,
+  "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 9,
-    "perpetrator": 9.375,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 8,
     "rates": 3,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Statistics Finland publishes 2025 child victims (0-17) of rape and sexual abuse of a child by origin (Finnish or foreign background, born in Finland or abroad) and suspects of the same offences by origin and background-country region with rates per 10,000. Origin is based on parents' birth country, a proxy; victims and suspects not linked.",
-    "score": 36.9
+    "why": "Statistics Finland publishes 2025 child victims (0-17) of rape and sexual abuse of a child by origin (Finnish or foreign background, born in Finland or abroad) and suspects of the same offences by origin and background-country region with rates per 10,000. Origin is based on parents' birth country, a proxy; victims and suspects not linked. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 18.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 8,
-    "perpetrator": 7,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 7,
     "rates": 2.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Child assault victims (11,304 in 2025) and child victims of domestic violence by a parent (2,761) by origin; assault suspects by origin and background region with rates, all victims.",
-    "score": 32.0
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 2,
-    "rates": 0,
-    "access": 4,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "No neglect statistics by origin were found; THL child-welfare statistics have no origin variable.",
-    "score": 6
+    "why": "Child assault victims (11,304 in 2025) and child victims of domestic violence by a parent (2,761) by origin; assault suspects by origin and background region with rates, all victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 17
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 6,
-    "perpetrator": 7,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 6,
     "rates": 2,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Child victims of offences against life (5 in 2025, all Finnish background) and of attempts (26) by origin; suspects of offences against life (74) by origin and background region, all victims.",
-    "score": 28
+    "why": "Child victims of offences against life (5 in 2025, all Finnish background) and of attempts (26) by origin; suspects of offences against life (74) by origin and background region, all victims. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 15
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 6,
+    "weight": 22.22,
+    "victim": 0,
     "perpetrator": 0,
     "coverage": 4,
     "rates": 0,
     "access": 7,
     "victim_kind": "proxy",
     "perpetrator_kind": "none",
-    "why": "Police statistics give 16 child trafficking victims in 2025 by origin; the National Assistance System gives its 271 new clients by nationality (18 Finns, 10 minors). No trafficker origin.",
-    "score": 17
+    "why": "Police statistics give 16 child trafficking victims in 2025 by origin; the National Assistance System gives its 271 new clients by nationality (18 Finns, 10 minors). No trafficker origin. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 11
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 7,
-    "perpetrator": 9,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 6,
     "rates": 2.5,
     "access": 7.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Child victims of child sexual abuse material offences (187 in 2025) by origin; suspects of online child sexual offences and online abuse-material offences by origin and background region with rates.",
-    "score": 32.0
+    "why": "Child victims of child sexual abuse material offences (187 in 2025) by origin; suspects of online child sexual offences and online abuse-material offences by origin and background region with rates. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 16
    }
   ],
   "components": [
@@ -1207,18 +1194,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Finland scores 25% on the stricter scale (20-40%), the best data in this batch. Statistics Finland publishes, every year, child victims of sexual, violent and abuse-material offences by origin and suspects by origin and background-country region with rates, so Finnish-background and European-background groups can be told apart from others. Origin is still based on parents' birth country, a proxy, so the no-ethnicity cap applies.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Finland scores 15% on the stricter scale (0-20%), the best data in this batch. Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Statistics Finland publishes, every year, child victims of sexual, violent and abuse-material offences by origin and suspects by origin and background-country region with rates, so Finnish-background and European-background groups can be told apart from others. Origin is still based on parents' birth country, a proxy. The 25% cap is not what sets this score, because heritage points are already 0.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "sf_141k": {

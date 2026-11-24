@@ -1,7 +1,7 @@
 {
  "country": "Lithuania",
  "iso_a3": "LTU",
- "completeness": 11,
+ "completeness": 9,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Lithuania's crime register publishes suspects and victims of every offence, with sex and whether they are minors, but gives citizenship only for all offences together. The national trafficking review gives victims and suspects by citizenship. That is a citizenship proxy only; ethnicity (tautybė), including the Polish and Russian minorities, is not recorded in crime data.",
@@ -600,91 +600,78 @@
   }
  ],
  "score": {
-  "value": 11,
+  "value": 9,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 11.0,
+  "uncapped": 9.2,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
-    "victim": 0.5,
-    "perpetrator": 0.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's IT department (IRD) publishes suspects and victims for each Criminal Code article with sex and minors (sexual-freedom chapter 2025: 186 suspects, 268 child victims), but citizenship only for all offences together (2025, natural persons: 989 foreign, 74 stateless of 21,782 suspects; 1,362 foreign, 278 stateless of 23,009 victims).",
-    "score": 10.5
+    "why": "The Interior Ministry's IT department (IRD) publishes suspects and victims for each Criminal Code article with sex and minors (sexual-freedom chapter 2025: 186 suspects, 268 child victims), but citizenship only for all offences together (2025, natural persons: 989 foreign, 74 stateless of 21,782 suspects; 1,362 foreign, 278 stateless of 23,009 victims). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
-    "victim": 0.5,
-    "perpetrator": 0.5,
+    "weight": 16.67,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "IRD's child-victim form gives 471 children who suffered physical violence in 2025, with no citizenship; citizenship exists only in the all-offence totals.",
-    "score": 10.5
-   },
-   {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0.5,
-    "perpetrator": 0.5,
-    "coverage": 2.5,
-    "rates": 0,
-    "access": 6.5,
-    "victim_kind": "proxy",
-    "perpetrator_kind": "proxy",
-    "why": "3 children recorded as suffering neglect in 2025 (IRD child-victim form) and 22 offences of abuse of parental authority, with no citizenship; only all-offence totals by citizenship.",
-    "score": 10.0
+    "why": "IRD's child-victim form gives 471 children who suffered physical violence in 2025, with no citizenship; citizenship exists only in the all-offence totals. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9.5
    },
    {
     "harm": "Homicide",
-    "weight": 25,
-    "victim": 0.5,
-    "perpetrator": 0.5,
+    "weight": 27.78,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Murder (Art. 129: 70 registered in 2025) has suspects and victims by sex and minors only; citizenship only in all-offence totals.",
-    "score": 10.0
+    "why": "Murder (Art. 129: 70 registered in 2025) has suspects and victims by sex and minors only; citizenship only in all-offence totals. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 2.5,
-    "perpetrator": 2.5,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The 2025 national trafficking review (Seimas Ombudsmen, from IRD, prosecutor and police data) gives 62 victims, 1 of them a child; 92% were foreign citizens (mostly Sri Lanka and Uzbekistan). Of 19 suspects, 16 were Lithuanian citizens and 3 foreign (Ukraine, Belarus, Saint Barthelemy).",
-    "score": 14.0
+    "why": "The 2025 national trafficking review (Seimas Ombudsmen, from IRD, prosecutor and police data) gives 62 victims, 1 of them a child; 92% were foreign citizens (mostly Sri Lanka and Uzbekistan). Of 19 suspects, 16 were Lithuanian citizens and 3 foreign (Ukraine, Belarus, Saint Barthelemy). Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
-    "victim": 0.5,
-    "perpetrator": 0.5,
+    "weight": 11.11,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 2.5,
     "rates": 0,
     "access": 6.5,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "Child pornography offences (Art. 309 part 2: 353 registered in 2025) have no citizenship; only all-offence totals by citizenship.",
-    "score": 10.0
+    "why": "Child pornography offences (Art. 309 part 2: 353 registered in 2025) have no citizenship; only all-offence totals by citizenship. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    }
   ],
   "components": [
@@ -714,18 +701,21 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Lithuania scores 11% on the stricter scale (0-20%). Its crime register publishes child victims and suspects for every offence, but citizenship only for all offences together; trafficking victims and suspects are given by citizenship. No ethnicity is recorded.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Lithuania scores 9% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Its crime register publishes child victims and suspects for every offence, but citizenship only for all offences together; trafficking victims and suspects are given by citizenship. No ethnicity is recorded.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)"
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
+  }
  },
  "sources": {
   "ird": {

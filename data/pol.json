@@ -1,7 +1,7 @@
 {
  "country": "Poland",
  "iso_a3": "POL",
- "completeness": 9,
+ "completeness": 8,
  "provisional": false,
  "as_of": "2026-11-19",
  "summary": "Poland publishes counts of crimes against children from police and court statistics, but no nationality or origin of victims or suspects for any child harm. The only origin data are trafficking victims by citizenship.",
@@ -353,17 +353,17 @@
   }
  ],
  "score": {
-  "value": 9,
+  "value": 8,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
-  "uncapped": 8.6,
+  "uncapped": 8.1,
   "cap_applied": false,
   "cap_rule_applies": true,
   "previous": null,
   "breakdown": [
    {
     "harm": "Sexual abuse",
-    "weight": 20,
+    "weight": 22.22,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -371,12 +371,12 @@
     "access": 5,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "Police data compiled by the Justice Ministry's research institute (IWS) give 2,959 child victims of sexual offences in 2024 with no nationality. A parliamentary answer reported to give the foreign share of suspects could not be opened (site blocks automated access), so it is not used.",
+    "why": "Police data compiled by the Justice Ministry's research institute (IWS) give 2,959 child victims of sexual offences in 2024 with no nationality. A parliamentary answer reported to give the foreign share of suspects could not be opened (site blocks automated access), so it is not used. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 8.5
    },
    {
     "harm": "Physical abuse",
-    "weight": 15,
+    "weight": 16.67,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -384,25 +384,12 @@
     "access": 5,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "IWS gives 4,216 child victims of abuse (art. 207) in 2024 with no nationality of victims or suspects.",
+    "why": "IWS gives 4,216 child victims of abuse (art. 207) in 2024 with no nationality of victims or suspects. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 8.5
    },
    {
-    "harm": "Neglect",
-    "weight": 10,
-    "victim": 0,
-    "perpetrator": 0,
-    "coverage": 1,
-    "rates": 0,
-    "access": 2,
-    "victim_kind": "none",
-    "perpetrator_kind": "none",
-    "why": "No national neglect statistics by any origin variable were found.",
-    "score": 3
-   },
-   {
     "harm": "Homicide",
-    "weight": 25,
+    "weight": 27.78,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 3,
@@ -410,25 +397,25 @@
     "access": 5,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "IWS gives 43 child victims of homicide recorded by police in 2024, with no nationality.",
+    "why": "IWS gives 43 child victims of homicide recorded by police in 2024, with no nationality. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 8.5
    },
    {
     "harm": "Sex trafficking",
-    "weight": 20,
-    "victim": 4,
-    "perpetrator": 1,
+    "weight": 22.22,
+    "victim": 0,
+    "perpetrator": 0,
     "coverage": 3,
     "rates": 0,
     "access": 6,
     "victim_kind": "proxy",
     "perpetrator_kind": "proxy",
-    "why": "The Interior Ministry's 2024 trafficking report gives victims in prosecutors' proceedings by citizenship (316, 4 minors; 72 Polish, 103 Colombian) and police-identified victims (9 Polish, 14 foreign). The only perpetrator data are recruiters' citizenship from the KCIK support centre, run by the NGO La Strada.",
-    "score": 14
+    "why": "The Interior Ministry's 2024 trafficking report gives victims in prosecutors' proceedings by citizenship (316, 4 minors; 72 Polish, 103 Colombian) and police-identified victims (9 Polish, 14 foreign). The only perpetrator data are recruiters' citizenship from the KCIK support centre, run by the NGO La Strada. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
+    "score": 9
    },
    {
     "harm": "Online exploitation",
-    "weight": 10,
+    "weight": 11.11,
     "victim": 0,
     "perpetrator": 0,
     "coverage": 1,
@@ -436,7 +423,7 @@
     "access": 3,
     "victim_kind": "none",
     "perpetrator_kind": "none",
-    "why": "No national statistics on online child sexual exploitation by any origin variable were found.",
+    "why": "No national statistics on online child sexual exploitation by any origin variable were found. Heritage points are 0 under the paired-data rule: no published cross-table of child victim and offender heritage for the same cases.",
     "score": 4
    }
   ],
@@ -467,18 +454,17 @@
     "full": "Public, annual, under 2 years old"
    }
   ],
-  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm.",
-  "rules": "Heritage is 75 of every 100 points (victims 37.5, perpetrators 37.5); coverage, rates and access share the other 25. Proxies such as nationality or migration background earn at most a quarter of the heritage points. A country with no real ethnicity data for victims or perpetrators is capped at 25%.",
-  "why": "Poland scores 9% on the stricter scale (0-20%). Police and Justice Ministry statistics on crimes against children give no nationality or origin of victims or suspects for any harm. The only origin data are trafficking victims by citizenship and recruiters' citizenship from an NGO-run centre.",
+  "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
+  "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
+  "why": "Poland scores 8% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Police and Justice Ministry statistics on crimes against children give no nationality or origin of victims or suspects for any harm. The only origin data are trafficking victims by citizenship and recruiters' citizenship from an NGO-run centre.",
   "weights": {
-   "Sexual abuse": 20,
-   "Physical abuse": 15,
-   "Neglect": 10,
-   "Homicide": 25,
-   "Sex trafficking": 20,
-   "Online exploitation": 10
+   "Sexual abuse": 22.22,
+   "Physical abuse": 16.67,
+   "Homicide": 27.78,
+   "Sex trafficking": 22.22,
+   "Online exploitation": 11.11
   },
-  "weights_id": "harm weights of 19 Nov 2026 (homicide 25, sexual abuse 20, sex trafficking 20, physical abuse 15, online exploitation 10, neglect 10)",
+  "weights_id": "harm weights of 24 Nov 2026 (homicide 27.78, sexual abuse 22.22, sex trafficking 22.22, physical abuse 16.67, online exploitation 11.11); paired-data rule: heritage points only for a published child victim×offender cross-table",
   "previous_weights": {
    "value": 8,
    "band": "0-20%",
@@ -492,6 +478,10 @@
     "Online exploitation": 15
    },
    "changed": "2026-11-19"
+  },
+  "paired_child": {
+   "exists": false,
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {
