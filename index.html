@@ -1347,15 +1347,15 @@
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
     const MEDIA_PENDING_COLOR = "#e6e8eb";
-    // Log-symmetric PuOr scale, L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
+    // Log-symmetric purple-to-cyan scale, L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
     const MEDIA_SCALE = [
       [-2, [0x54, 0x27, 0x88]],
       [-4 / 3, [0x80, 0x73, 0xac]],
       [-2 / 3, [0xb2, 0xab, 0xd2]],
       [0, [0xf7, 0xf7, 0xf7]],
-      [2 / 3, [0xfd, 0xb8, 0x63]],
-      [4 / 3, [0xe0, 0x82, 0x14]],
-      [2, [0xb3, 0x58, 0x06]]
+      [2 / 3, [0x9f, 0xe3, 0xef]],
+      [4 / 3, [0x2b, 0xb4, 0xcc]],
+      [2, [0x07, 0x71, 0x83]]
     ];
     const rgbHex = c => "#" + c.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, "0")).join("");
     const colorForL = L => {
