@@ -321,6 +321,7 @@
     view.innerHTML = `<div class="dv-inner">
       <section class="dv-section" aria-labelledby="dv-map-h">
         <h3 class="dv-h" id="dv-map-h"></h3>
+        <div class="dv-map-key" id="dv-map-key"></div>
         <p class="dv-desc" id="dv-map-desc"></p>
         <div class="dv-switcher-wrap">
           <div class="dv-switcher" id="dv-switcher" role="group"></div>
@@ -408,6 +409,7 @@
     const p4 = view.querySelector("#dv-records-p4");
     if (p4) p4.textContent = t("records_p4", worldContextVars());
     set("#dv-map-h", t("map_h"));
+    renderMapKey();
     set("#dv-map-desc", state.baselineView ? t("baseline_map_desc") : t("map_desc"));
     set("#dv-scale-note", state.baselineView ? t("baseline_scale_note") : (isAvailabilityView() ? t("avail_scale_note") : t("scale_note")));
     set("#dv-bar-h", state.baselineView ? t("baseline_bar_h") : t("bar_h"));
@@ -509,9 +511,30 @@
     sel.value = state.sortKey;
   }
 
-  function bandSwatch(b) {
+  function bandSwatch(b, colourName) {
     const edge = b && b.outline ? "; box-shadow: inset 0 0 0 1px #d5d8da" : "";
-    return `<span class="swatch" style="background:${esc(b.color)}${edge}"></span>`;
+    const access = colourName
+      ? ` role="img" aria-label="${esc(colourName)}" title="${esc(colourName)}"`
+      : "";
+    return `<span class="swatch"${access} style="background:${esc(b.color)}${edge}"></span>`;
+  }
+
+  function bandItem(b) {
+    return `<span class="dv-legend-item">${bandSwatch(b)}<span class="dv-legend-name">${esc(t(b.labelKey))} <span class="dv-legend-range">${esc(t(b.rangeKey))}</span></span></span>`;
+  }
+
+  function renderMapKey() {
+    const el = view.querySelector("#dv-map-key");
+    if (!el) return;
+    const bands = (window.ShareScale && window.ShareScale.BANDS) || [];
+    if (isAvailabilityView() || !bands.length) { el.hidden = true; el.innerHTML = ""; return; }
+    el.hidden = false;
+    const order = ["little", "light", "medium", "dark"];
+    el.innerHTML = order.map(id => {
+      const b = bands.filter(x => x.id === id)[0];
+      if (!b) return "";
+      return `<span class="dv-map-key-item">${bandSwatch(b, t(b.keyColour))}<span>${esc(t(b.keyLabel))}</span></span>`;
+    }).join("");
   }
 
   function renderLegend() {
@@ -521,9 +544,7 @@
       const list = (window.ShareScale && window.ShareScale.BANDS) || [];
       el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
         <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
-        <div class="dv-legend-items">${list.map(b =>
-          `<span class="dv-legend-item">${bandSwatch(b)}${esc(t(b.labelKey))}</span>`
-        ).join("")}
+        <div class="dv-legend-items">${list.map(bandItem).join("")}
         <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("baseline_none"))}</span>
         </div>`;
       return;
@@ -544,9 +565,7 @@
       return;
     }
     const list = (window.ShareScale && window.ShareScale.BANDS) || [];
-    const items = list.map(b =>
-      `<span class="dv-legend-item">${bandSwatch(b)}${esc(t(b.labelKey))}</span>`
-    ).join("");
+    const items = list.map(bandItem).join("");
     el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
       <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
       <div class="dv-legend-items">${items}

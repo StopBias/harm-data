@@ -22,10 +22,10 @@
   // Same order as the legend: largest decline first.
   // The green for little-or-no decline is COLOURS.little only, so it can be swapped in one place.
   var BANDS = [
-    { id: "dark", color: COLOURS.dark, labelKey: "band_dark" },
-    { id: "medium", color: COLOURS.medium, labelKey: "band_medium" },
-    { id: "light", color: COLOURS.light, labelKey: "band_light" },
-    { id: "little", color: COLOURS.little, labelKey: "band_little" }
+    { id: "dark", color: COLOURS.dark, labelKey: "band_dark", rangeKey: "band_dark_range", keyLabel: "key_high", keyColour: "key_colour_bright" },
+    { id: "medium", color: COLOURS.medium, labelKey: "band_medium", rangeKey: "band_medium_range", keyLabel: "key_endangered", keyColour: "key_colour_mid" },
+    { id: "light", color: COLOURS.light, labelKey: "band_light", rangeKey: "band_light_range", keyLabel: "key_mild", keyColour: "key_colour_light" },
+    { id: "little", color: COLOURS.little, labelKey: "band_little", rangeKey: "band_little_range", keyLabel: "key_stable", keyColour: "key_colour_green" }
   ];
 
   function roundDisplayed(value, digits) {

@@ -613,14 +613,14 @@
     "group_founding_AMI": "Wszystkie kraje założone przez ludność amerindiańską",
     "group_founding_NAI": "Wszystkie kraje założone przez rdzenną ludność Ameryki Północnej",
     "map_h": "Zmiana według kraju",
-    "map_desc": "Ciemna zieleń oznacza brak zmiany albo wzrost udziału populacji założycielskiej. Spadek o mniej niż 1 punkt jest jasnozielony. Większe spadki idą przez żółty i pomarańczowy do czerwieni. Tam, gdzie kraj nie publikuje danych etnicznych, te same kolory pokazują przybliżenie ONZ dotyczące pochodzenia migrantów.",
+    "map_desc": "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.",
     "legend_title": "Zmiana udziału ludności założycielskiej od spisu bazowego",
     "legend_most": "Większy spadek",
     "legend_least": "Bez zmiany albo wzrost",
     "legend_no_score": "Brak wyniku w tym zbiorze danych",
     "legend_out_of_group": "Poza tą grupą",
     "band_label": "{from}–{to}%",
-    "scale_note": "Pasma używają pokazanej wartości i nie zachodzą na siebie. 0 lub więcej jest ciemnozielone. Od −1 do tuż poniżej 0 jest jasnozielone. Od −5 do tuż poniżej −1 jest żółte. Od −15 do tuż poniżej −5 jest pomarańczowe. Poniżej −15 jest czerwone. To nie są przedziały karty Przestępczość ani wskaźnik odmienności ONZ. Te same kolory dotyczą przybliżenia ONZ.",
+    "scale_note": "Bands use the value as shown, and they do not overlap. These are not the Crime tab’s steps and not the UN dissimilarity index. The same colours are used for the UN proxy.",
     "tooltip_score": "Indeks odmienności: {score}",
     "tooltip_quality": "Jakość {quality}",
     "bar_h": "Kraje uporządkowane według zmiany udziału ludności założycielskiej od spisu bazowego",
@@ -712,6 +712,14 @@
     "band_near": "−1 do tuż poniżej 0",
     "band_yellow": "−5 do tuż poniżej −1",
     "band_orange": "−15 do tuż poniżej −5",
-    "band_red": "poniżej −15"
+    "band_red": "poniżej −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

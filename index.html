@@ -125,7 +125,20 @@
     }
     body.media-active #crime-map-h,
     body:not(.media-active) #media-map-h { display: none; }
-    body.media-active #media-map-h { display: table; }
+    body.media-active #media-map-h {
+      display: block;
+      width: max-content;
+      max-width: 100%;
+    }
+    #media-map-h .media-map-h-title,
+    #media-map-h .media-map-h-note { display: block; }
+    #media-map-h .media-map-h-note {
+      margin: 2px 0 0;
+      font-weight: normal;
+      font-size: 0.85rem; /* same as .site-tabs button */
+      color: var(--muted);
+      line-height: 1.35;
+    }
     .views {
       display: flex; gap: 0; background: #fff; border-radius: 4px;
       box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(0,0,0,0.06); overflow: hidden;
@@ -614,7 +627,7 @@
       <div id="map"></div>
       <div class="views-wrap">
         <h3 class="dv-h" id="crime-map-h">How complete is ethnic crime data by country?</h3>
-        <h3 class="dv-h" id="media-map-h">In which countries is antiwhite or anti-Black bias stronger in media?</h3>
+        <h3 class="dv-h" id="media-map-h"><span class="media-map-h-title" id="media-map-h-title">In which countries is antiwhite or anti-Black bias stronger in media?</span><span class="media-map-h-note" id="media-map-h-note" hidden></span></h3>
         <div class="views" id="views" role="group" aria-label="Map view"></div>
       </div>
       <div class="legend" id="legend"></div>
@@ -938,7 +951,7 @@
       setTxt("opt-rate", "explorer.measure_rate");
       setTxt("ex-planned", "explorer.planned");
       setTxt("crime-map-h", "crime_map_h");
-      setTxt("media-map-h", "media.map_h");
+      setTxt("media-map-h-title", "media.map_h");
       const notesK = document.getElementById("ex-notes-kicker");
       if (notesK) notesK.innerHTML = esc(t("explorer.notes")) + enOnlyBadge();
     }
@@ -1443,7 +1456,7 @@
       return window.HarmMapControls.overlayPadding(map.getContainer(), [
         document.getElementById("views"),
         document.querySelector(".legend"),
-        document.getElementById("media-map-note"),
+        document.querySelector(".views-wrap"),
         document.getElementById("age-picker")
       ]);
     }

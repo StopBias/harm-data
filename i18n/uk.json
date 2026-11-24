@@ -613,14 +613,14 @@
     "group_founding_AMI": "Усі країни, засновані америндським населенням",
     "group_founding_NAI": "Усі країни, засновані корінним населенням Північної Америки",
     "map_h": "Зміни за країнами",
-    "map_desc": "Темно-зелений колір означає відсутність зміни або зростання частки населення-засновника. Зменшення менше ніж на 1 пункт — світло-зелене. Більше зменшення йде через жовтий і помаранчевий до червоного. Там, де країна не публікує етнічних даних, ті самі кольори показують проксі ООН щодо походження мігрантів.",
+    "map_desc": "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.",
     "legend_title": "Зміна частки населення-засновника від базового перепису",
     "legend_most": "Більше зменшення",
     "legend_least": "Без зміни або зростання",
     "legend_no_score": "Немає оцінки в цьому наборі даних",
     "legend_out_of_group": "Поза цією групою",
     "band_label": "{from}–{to}%",
-    "scale_note": "Діапазони використовують показане значення і не перетинаються. 0 або більше — темно-зелений. Від −1 до значення безпосередньо менше 0 — світло-зелений. Від −5 до значення безпосередньо менше −1 — жовтий. Від −15 до значення безпосередньо менше −5 — помаранчевий. Нижче −15 — червоний. Це не кроки вкладки «Злочинність» і не індекс несхожості ООН. Ті самі кольори використовуються для проксі ООН.",
+    "scale_note": "Bands use the value as shown, and they do not overlap. These are not the Crime tab’s steps and not the UN dissimilarity index. The same colours are used for the UN proxy.",
     "tooltip_score": "Індекс несхожості: {score}",
     "tooltip_quality": "Якість {quality}",
     "bar_h": "Країни за зміною частки населення-засновника від базового перепису",
@@ -712,6 +712,14 @@
     "band_near": "−1 до значення безпосередньо менше 0",
     "band_yellow": "−5 до значення безпосередньо менше −1",
     "band_orange": "−15 до значення безпосередньо менше −5",
-    "band_red": "нижче −15"
+    "band_red": "нижче −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

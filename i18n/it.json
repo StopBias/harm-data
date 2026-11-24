@@ -613,14 +613,14 @@
     "group_founding_AMI": "Tutti i paesi fondati da popolazioni amerindie",
     "group_founding_NAI": "Tutti i paesi fondati da popolazioni indigene nordamericane",
     "map_h": "Cambiamento per paese",
-    "map_desc": "Il verde scuro indica nessun cambiamento, o un aumento, della quota della popolazione fondatrice. Un calo di meno di 1 punto è verde chiaro. I cali maggiori passano dal giallo e dall’arancione fino al rosso. Dove un paese non pubblica dati sull’etnia, gli stessi colori mostrano un proxy ONU sull’origine dei migranti.",
+    "map_desc": "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.",
     "legend_title": "Variazione della quota della popolazione fondatrice dal censimento di riferimento",
     "legend_most": "Calo maggiore",
     "legend_least": "Nessun cambiamento o un aumento",
     "legend_no_score": "Nessun punteggio in questo insieme di dati",
     "legend_out_of_group": "Fuori da questo gruppo",
     "band_label": "{from}–{to}%",
-    "scale_note": "Le fasce usano il valore mostrato e non si sovrappongono. 0 o più è verde scuro. Da −1 fino a poco sotto 0 è verde chiaro. Da −5 fino a poco sotto −1 è giallo. Da −15 fino a poco sotto −5 è arancione. Sotto −15 è rosso. Non sono gli scaglioni della scheda Reati né l’indice di dissomiglianza dell’ONU. Gli stessi colori valgono per il proxy ONU.",
+    "scale_note": "Bands use the value as shown, and they do not overlap. These are not the Crime tab’s steps and not the UN dissimilarity index. The same colours are used for the UN proxy.",
     "tooltip_score": "Indice di dissimiglianza: {score}",
     "tooltip_quality": "Qualità {quality}",
     "bar_h": "Paesi ordinati per variazione della quota della popolazione fondatrice dal censimento di riferimento",
@@ -712,6 +712,14 @@
     "band_near": "−1 fino a poco sotto 0",
     "band_yellow": "−5 fino a poco sotto −1",
     "band_orange": "−15 fino a poco sotto −5",
-    "band_red": "sotto −15"
+    "band_red": "sotto −15",
+    "band_little": "Stable",
+    "band_light": "Declining",
+    "band_medium": "Strongly declining",
+    "band_dark": "Very strongly declining",
+    "key_stable": "Stable",
+    "key_mild": "Declining",
+    "key_endangered": "Strongly declining",
+    "key_high": "Very strongly declining"
   }
 }

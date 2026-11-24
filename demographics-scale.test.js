@@ -2,6 +2,7 @@
 // Run: node demographics-scale.test.js
 "use strict";
 
+var fs = require("fs");
 var scale = require("./demographics-scale.js");
 var id = scale.bandIdForChange;
 
@@ -48,5 +49,37 @@ assertEqual(id(-14.96, 1), "medium", "census -14.96 displays as -15.0");
 assertEqual(id(-15.0006, 3), "dark", "-15.0006 displays as -15.001");
 assertEqual(id(-15.1, 1), "dark", "census -15.1");
 assertEqual(id(-27.8, 1), "dark", "census -27.8");
+
+var labels = JSON.parse(fs.readFileSync("i18n/en.json", "utf8")).demographics;
+assertEqual(labels.band_little, "Stable", "green legend name");
+assertEqual(labels.band_little_range, "(\u22121 pp or more)", "green legend range");
+assertEqual(labels.band_light, "Declining", "light red legend name");
+assertEqual(labels.band_light_range, "(\u22125 up to but not including \u22121 pp)", "light red legend range");
+assertEqual(labels.band_medium, "Strongly declining", "mid red legend name");
+assertEqual(labels.band_medium_range, "(\u221215 up to but not including \u22125 pp)", "mid red legend range");
+assertEqual(labels.band_dark, "Very strongly declining", "bright red legend name");
+assertEqual(labels.band_dark_range, "(below \u221215 pp)", "bright red legend range");
+assertEqual(labels.key_stable, "Stable", "title key name");
+assertEqual(labels.key_mild, "Declining", "light red key name");
+assertEqual(labels.key_endangered, "Strongly declining", "mid red key name");
+assertEqual(labels.key_high, "Very strongly declining", "bright red key name");
+assertEqual(labels.key_colour_green, "green", "title key colour is accessibility text only");
+assertEqual(labels.map_desc, "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.", "title paragraph");
+assertEqual(labels.map_desc.indexOf("\u2212") === -1, true, "title paragraph has no numeric range");
+assertEqual(labels.scale_note.indexOf("\u2212") === -1, true, "numeric ranges are not repeated below the map");
+assertEqual(labels.band_dark_range.indexOf("\u221215") !== -1, true, "numeric range stays in the inset legend");
+var locales = fs.readdirSync("i18n").filter(function (name) { return name.endsWith(".json"); });
+locales.forEach(function (name) {
+  var copy = JSON.parse(fs.readFileSync("i18n/" + name, "utf8")).demographics;
+  assertEqual(copy.map_desc, labels.map_desc, name + " map_desc");
+  assertEqual(copy.scale_note.indexOf("\u2212") === -1, true, name + " scale_note has no numeric range");
+  ["band_little", "band_light", "band_medium", "band_dark", "key_stable", "key_mild", "key_endangered", "key_high"].forEach(function (key) {
+    assertEqual(copy[key], labels[key], name + " " + key);
+  });
+});
+var demoJs = fs.readFileSync("demographics.js", "utf8");
+assertEqual(demoJs.indexOf("(${esc(t(b.keyColour))})") === -1, true, "title key does not print the colour word");
+assertEqual(demoJs.indexOf("aria-label=\"${esc(colourName)}\"") !== -1, true, "colour name is an accessible label");
+assertEqual(scale.BANDS[3].rangeKey, "band_little_range", "green band range key");
 
 if (!process.exitCode) console.log("demographics-scale: boundary checks passed");
