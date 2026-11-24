@@ -16,7 +16,7 @@
     "learn_more": "Learn more"
   },
   "views_aria": "Map view",
-  "crime_map_h": "Ethnic crime data by country",
+  "crime_map_h": "How complete is ethnic crime data by country?",
   "views": {
     "world": "World",
     "europe": "Europe",
@@ -24,7 +24,7 @@
     "oceania": "Oceania"
   },
   "legend": {
-    "title": "Ethnic crime data by country",
+    "title": "How complete is ethnic crime data by country?",
     "incomplete": "Incomplete",
     "not_analyzed": "Not yet analyzed",
     "out_of_scope": "Outside current scope"
@@ -719,8 +719,8 @@
     "selected_d_line": "UN dissimilarity index D, 1990–2020: {d}.",
     "legend_proxy_note": "UN estimate: change in the share of residents born in another country whose origin differs from the country’s founding population (for example, someone born in India living in Canada). People born in the country are counted as founding population, so this is a lower bound; where both exist, census change is usually much larger (Canada: census -27.8 vs UN estimate -9.5 points).",
     "band_little": "Founding population safe?",
-    "band_light": "−5 to −1",
-    "band_medium": "−15 to −5",
-    "band_dark": "Below −15"
+    "band_light": "Mildly endangered founding populations",
+    "band_medium": "Endangered founding populations",
+    "band_dark": "Most endangered founding populations"
   }
 }

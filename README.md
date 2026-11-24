@@ -13,7 +13,7 @@ Data related to bias harms at the global, national, and regional levels.
 - `build-boundaries.sh` — regenerates that file.
 
 ## Colours
-Heading above the geography selector, and the legend title: "Ethnic crime data by country".
+Heading above the geography selector, and the legend title: "How complete is ethnic crime data by country?".
 
 Every scored country is drawn in `#e74c3c` red, the red end of the completeness scale, because ethnic crime data is incomplete. The legend is that one red swatch, labelled "Incomplete", plus the unchanged no-data swatches. Tooltips and the country panel still show the numeric completeness score and its band (0–20%, 20–40%, and so on). Those other colours are not drawn.
 
