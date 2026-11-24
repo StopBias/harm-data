@@ -59,7 +59,7 @@
   const nav = document.createElement("nav");
   nav.className = "site-tabs";
   nav.setAttribute("aria-label", t("tabs_label"));
-  nav.innerHTML = `<button type="button" data-tab="map"></button><button type="button" data-tab="media"></button><button type="button" data-tab="hollywood"></button><button type="button" data-tab="demographics"></button>`;
+  nav.innerHTML = `<button type="button" data-tab="demographics"></button><button type="button" data-tab="map"></button><button type="button" data-tab="media"></button>`;
   const header = document.querySelector("header");
   header.insertAdjacentElement("afterend", nav);
   const aboutView = document.getElementById("about-view");
@@ -69,38 +69,57 @@
 
   function labelTabs() {
     nav.setAttribute("aria-label", t("tabs_label"));
+    nav.querySelector('[data-tab="demographics"]').textContent = t("tab_demographics");
     nav.querySelector('[data-tab="map"]').textContent = t("tab_map");
     nav.querySelector('[data-tab="media"]').textContent = t("tab_media");
-    const hollywoodTab = nav.querySelector('[data-tab="hollywood"]');
-    if (hollywoodTab) hollywoodTab.textContent = t("tab_hollywood");
-    const demographicsTab = nav.querySelector('[data-tab="demographics"]');
-    if (demographicsTab) demographicsTab.textContent = t("tab_demographics");
+  }
+
+  function canonicalHash() {
+    if (location.hash === "#hollywood") {
+      history.replaceState(null, "", "#media/hollywood");
+    }
+    return location.hash;
   }
 
   function tabFromHash() {
-    if (location.hash === "#media") return "media";
-    if (location.hash === "#hollywood") return "hollywood";
-    if (location.hash === "#demographics") return "demographics";
-    if (location.hash === "#about") return "about";
-    return "map";
+    const hash = canonicalHash();
+    if (hash === "#media/hollywood") return "hollywood";
+    if (hash === "#media" || hash === "#media/news") return "media";
+    if (hash === "#demographics") return "demographics";
+    if (hash === "#crime" || hash === "#map") return "map";
+    if (hash === "#about") return "about";
+    return "demographics";
   }
 
   const hollywoodView = document.getElementById("hollywood-view");
   const demographicsView = document.getElementById("demographics-view");
+
+  function hashFor(tab) {
+    if (tab === "media") return "#media";
+    if (tab === "hollywood") return "#media/hollywood";
+    if (tab === "demographics") return "#demographics";
+    if (tab === "about") return "#about";
+    if (tab === "map") return "#crime";
+    return "";
+  }
 
   function show(tab) {
     const media = tab === "media";
     const about = tab === "about";
     const hollywood = tab === "hollywood";
     const demographics = tab === "demographics";
-    const standalone = about || hollywood || demographics;
-    if (layout) layout.hidden = standalone;
-    if (explorer) explorer.hidden = media || standalone;
+    const mediaSection = media || hollywood;
+    const standalone = about || demographics;
+    if (layout) layout.hidden = standalone || hollywood;
+    if (explorer) explorer.hidden = mediaSection || standalone;
     view.hidden = !media;
     if (hollywoodView) hollywoodView.hidden = !hollywood;
     if (demographicsView) demographicsView.hidden = !demographics;
     if (aboutView) aboutView.hidden = !about;
-    nav.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === tab)));
+    nav.querySelectorAll("button").forEach(b => {
+      const on = b.dataset.tab === tab || (b.dataset.tab === "media" && mediaSection);
+      b.setAttribute("aria-pressed", String(on));
+    });
     if (aboutLink) {
       if (about) aboutLink.setAttribute("aria-current", "page");
       else aboutLink.removeAttribute("aria-current");
@@ -111,8 +130,11 @@
     document.body.classList.toggle("hollywood-active", hollywood);
     document.body.classList.toggle("demographics-active", demographics);
     const agePicker = document.getElementById("age-picker");
-    if (agePicker) agePicker.hidden = media || hollywood || demographics;
-    if (chrome) chrome.hidden = !media;
+    if (agePicker) agePicker.hidden = mediaSection || demographics;
+    if (chrome) chrome.hidden = !mediaSection;
+    const modes = document.getElementById("media-modes");
+    if (modes) modes.hidden = !media;
+    labelSubviews(tab);
     if (window.HarmMap && !hollywood && !demographics) window.HarmMap.setMode(media ? "media" : "crime");
     if (media) load();
     if (hollywood && typeof window.renderHollywoodView === "function") window.renderHollywoodView();
@@ -121,17 +143,8 @@
   }
 
   function go(tab) {
-    if (tab === "media") {
-      if (location.hash !== "#media") history.pushState(null, "", "#media");
-    } else if (tab === "hollywood") {
-      if (location.hash !== "#hollywood") history.pushState(null, "", "#hollywood");
-    } else if (tab === "demographics") {
-      if (location.hash !== "#demographics") history.pushState(null, "", "#demographics");
-    } else if (tab === "about") {
-      if (location.hash !== "#about") history.pushState(null, "", "#about");
-    } else if (location.hash === "#media" || location.hash === "#hollywood" || location.hash === "#demographics" || location.hash === "#about") {
-      history.pushState(null, "", location.pathname + location.search);
-    }
+    const next = hashFor(tab);
+    if (location.hash !== next) history.pushState(null, "", next || (location.pathname + location.search));
     show(tab);
   }
 
@@ -149,11 +162,15 @@
   window.addEventListener("popstate", () => show(tabFromHash()));
   window.addEventListener("hashchange", () => show(tabFromHash()));
 
-  // ---------- Map/Table switch (sits on the map, hidden on the Crime tab) ----------
+  // ---------- Media sub-views and Map/Table switch (hidden outside the Media tab) ----------
   const chrome = document.createElement("div");
   chrome.id = "media-chrome";
   chrome.hidden = true;
-  chrome.innerHTML = `<div class="media-modes" role="group" aria-label="" id="media-modes">
+  chrome.innerHTML = `<div class="media-modes" role="group" aria-label="" id="media-subviews">
+    <button type="button" data-sub="news"></button>
+    <button type="button" data-sub="hollywood"></button>
+  </div>
+  <div class="media-modes" role="group" aria-label="" id="media-modes">
     <button type="button" data-mode="map"></button>
     <button type="button" data-mode="table"></button>
   </div>`;
@@ -173,6 +190,18 @@
   }
   window.addEventListener("resize", placeMapNote);
 
+  function labelSubviews(tab) {
+    const group = document.getElementById("media-subviews");
+    if (!group) return;
+    group.setAttribute("aria-label", t("sub_aria"));
+    group.querySelector('[data-sub="news"]').textContent = t("sub_news");
+    group.querySelector('[data-sub="hollywood"]').textContent = t("tab_hollywood");
+    const current = tab == null ? tabFromHash() : tab;
+    group.querySelectorAll("button").forEach(b => {
+      b.setAttribute("aria-pressed", String((b.dataset.sub === "hollywood") === (current === "hollywood")));
+    });
+  }
+
   function labelModes() {
     const group = document.getElementById("media-modes");
     if (!group) return;
@@ -180,8 +209,14 @@
     group.querySelector('[data-mode="map"]').textContent = t("mode_map");
     group.querySelector('[data-mode="table"]').textContent = t("mode_table");
     group.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode)));
+    labelSubviews();
   }
   chrome.addEventListener("click", e => {
+    const sub = e.target.closest("button[data-sub]");
+    if (sub) {
+      go(sub.dataset.sub === "hollywood" ? "hollywood" : "media");
+      return;
+    }
     const b = e.target.closest("button[data-mode]");
     if (!b) return;
     state.mode = b.dataset.mode;

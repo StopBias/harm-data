@@ -9,10 +9,12 @@
 .site-tabs button[aria-pressed="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--accent); }
 
 #media-chrome {
-  display: flex; gap: 8px; align-items: center; justify-content: flex-end;
+  display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap;
   padding: 8px 18px 0; background: var(--bg);
 }
 #media-chrome[hidden] { display: none !important; }
+#media-chrome #media-subviews { margin-right: auto; }
+#media-chrome #media-modes[hidden] { display: none !important; }
 .media-modes {
   display: flex; gap: 0; border: 1px solid var(--io); border-radius: 4px; overflow: hidden; background: #fff;
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
@@ -150,6 +152,8 @@ body.media-table .media-map-note { display: none !important; }
   .site-tabs button { flex: 1 1 0; padding: 8px 6px 7px; }
   #media-view { padding: 16px 12px 40px; }
   #media-chrome { padding: 8px 8px 0; }
+  #media-chrome #media-subviews { flex: 1 1 auto; }
+  #media-chrome #media-subviews button { flex: 1 1 0; }
   .mv-stat-value { font-size: 1.55rem; }
   .mv-table-wrap { border: 0; overflow: visible; }
   .mv-table thead { display: none; }

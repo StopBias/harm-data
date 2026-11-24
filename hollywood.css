@@ -1,4 +1,4 @@
-/* Hollywood tab; reuses the site's variables and Media tab table patterns. */
+/* Hollywood view (under the Media tab); reuses the site's variables and Media tab table patterns. */
 body.hollywood-active #explorer,
 body.hollywood-active .layout { display: none !important; }
 
