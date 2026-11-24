@@ -1,4 +1,4 @@
-// Hollywood tab. Reads data/hollywood.json.
+// Hollywood view (under the Media tab). Reads data/hollywood.json.
 // User-facing text lives in i18n/*.json under the hollywood.* prefix.
 (function () {
   "use strict";
