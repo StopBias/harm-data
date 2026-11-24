@@ -1806,7 +1806,7 @@
   },
   {
    "topic": "Countries other than the United States",
-   "reason": "No media coding has been done outside the U.S. 2023 keyword pilot. Those countries show pending / not yet measured for the index; Ethnic data completeness is still the shared crime-map score where it exists."
+   "reason": "No media coding has been done outside the U.S. 2023 keyword pilot. Those countries show pending / not yet measured for the index; the crime-map completeness score is still shared where it exists."
   },
   {
    "topic": "stories_2023.csv conversion",

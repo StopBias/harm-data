@@ -461,7 +461,7 @@
     const stories = st.stories || {};
     const fill = (window.HarmMap && typeof window.HarmMap.colorFor === "function")
       ? window.HarmMap.colorFor(iso)
-      : "#b35806";
+      : "#0cc0df";
     const lines = [
       `<div class="tt-title">${display}</div>`,
       `<div class="tt-status"><span class="swatch hatch" style="background-color:${esc(fill)}"></span>${esc(boundLine)}</div>`,
@@ -991,7 +991,7 @@
       const flip = state.label === "antiblack";
       return window.HarmMap.colorForL(flip ? -2 : 2);
     }
-    return state.label === "antiblack" ? "#542788" : "#b35806";
+    return state.label === "antiblack" ? "#a455fe" : "#0cc0df";
   }
 
   function renderLegend() {

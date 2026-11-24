@@ -187,11 +187,14 @@ assert.ok(copy.baseline_scale_note.indexOf("negative figure means the founding s
 assert.ok(copy.origin_change.indexOf("negative figure means that share fell") !== -1);
 
 const scale = require("../demographics-scale.js");
-assert.strictEqual(scale.bandIdForChange(-27.8, 1), "red");
-assert.strictEqual(scale.bandIdForChange(-25.4, 1), "red");
-assert.strictEqual(scale.bandIdForChange(-24, 1), "red");
-assert.strictEqual(scale.bandIdForChange(-4.9, 1), "yellow");
-assert.strictEqual(scale.bandIdForChange(0.2, 1), "dark_green");
+assert.strictEqual(scale.bandIdForChange(-27.8, 1), "dark");
+assert.strictEqual(scale.bandIdForChange(-25.4, 1), "dark");
+assert.strictEqual(scale.bandIdForChange(-24, 1), "dark");
+assert.strictEqual(scale.bandIdForChange(-15, 1), "medium");
+assert.strictEqual(scale.bandIdForChange(-5, 1), "light");
+assert.strictEqual(scale.bandIdForChange(-4.9, 1), "light");
+assert.strictEqual(scale.bandIdForChange(-1, 1), "little");
+assert.strictEqual(scale.bandIdForChange(0.2, 1), "little");
 
 const can = country("CAN");
 assert.strictEqual(can.score, 27.8);

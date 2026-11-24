@@ -509,6 +509,11 @@
     sel.value = state.sortKey;
   }
 
+  function bandSwatch(b) {
+    const edge = b && b.outline ? "; box-shadow: inset 0 0 0 1px #d5d8da" : "";
+    return `<span class="swatch" style="background:${esc(b.color)}${edge}"></span>`;
+  }
+
   function renderLegend() {
     const el = view.querySelector("#dv-legend");
     if (!el) return;
@@ -517,7 +522,7 @@
       el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
         <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
         <div class="dv-legend-items">${list.map(b =>
-          `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
+          `<span class="dv-legend-item">${bandSwatch(b)}${esc(t(b.labelKey))}</span>`
         ).join("")}
         <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("baseline_none"))}</span>
         </div>`;
@@ -540,7 +545,7 @@
     }
     const list = (window.ShareScale && window.ShareScale.BANDS) || [];
     const items = list.map(b =>
-      `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
+      `<span class="dv-legend-item">${bandSwatch(b)}${esc(t(b.labelKey))}</span>`
     ).join("");
     el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
       <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>

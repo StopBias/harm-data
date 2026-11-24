@@ -13,19 +13,15 @@ Data related to bias harms at the global, national, and regional levels.
 - `build-boundaries.sh` — regenerates that file.
 
 ## Colours
-Legend title: "Ethnic data completeness".
+Heading above the geography selector, and the legend title: "How complete is ethnic crime data by country?".
 
-| Tier | Colour | Legend label |
+Every scored country is drawn in `#e74c3c` red, the red end of the completeness scale, because ethnic crime data is incomplete. The legend is that one red swatch, labelled "Incomplete", plus the unchanged no-data swatches. Tooltips and the country panel still show the numeric completeness score and its band (0–20%, 20–40%, and so on). Those other colours are not drawn.
+
+| State | Colour | Legend label |
 | --- | --- | --- |
-| Analysed, score 0–20 | `#e74c3c` red | 0–20% |
-| Analysed, score 20–40 | `#f39c12` orange | 20–40% |
-| Analysed, score 40–60 | `#f4d03f` yellow | 40–60% |
-| Analysed, score 60–80 | `#8bc34a` light green | 60–80% |
-| Analysed, score 80–100 | `#1e8449` dark green | 80–100% |
+| Analysed (any score) | `#e74c3c` red | Incomplete |
 | In scope, not yet analysed (`IN_SCOPE` but not `tracked`) | `#b9bfc4` darker grey | Not yet analyzed |
 | Outside the project | `#eceeef` very light grey | Outside current scope (faded) |
-
-Bands include the lower bound and exclude the upper (20 → orange), except 100 → dark green.
 
 
 ## Languages
@@ -43,7 +39,7 @@ Counts, the title list and the agreement figures come from `data/hollywood.json`
 ## Demographics tab
 The Demographics tab (`#demographics`) is **provisional** (`0.2.0-provisional`) and is not a published finding. It is census first. For countries that publish ethnicity, race, ancestry or migration-background data, the score shown is the change in the founding population’s share, from the earliest comparable official figure (around 1970 where possible) to the latest. A negative figure means that share fell. The data file still stores the opposite quantity, the change outside the founding pool; the tab flips the sign when it draws. Where those records are missing, the same signed scale shows a UN migrant-origin proxy for 1990–2020 (the change in the foreign-born share from outside the founding pool, sign flipped). Census figures are listed first. Proxy rows carry a small tag and are not hatched. A “Why accurate records matter” section states the Canada gap (the founding share of ethnic Europeans fell 27.8 percentage points, 1971–2021, versus UN dissimilarity index D 9.6) and urges statistics offices to publish accurate ethnic data.
 
-The colour bands use the value as shown and do not overlap: 0 or more is dark green, −1 up to but not including 0 is light green, −5 up to but not including −1 is yellow, −15 up to but not including −5 is orange, and below −15 is red. A shown 0.000 counts as 0. The same colours are used for the UN proxy. Territories with fewer than 100,000 people stay in the ranked list and are flagged.
+The colour bands use the value as shown and do not overlap: −1 or more is green (`#8bc34a`), −5 up to but not including −1 is light red (`#f5b7b1`), −15 up to but not including −5 is mid red (`#ec7165`), and below −15 is bright red (`#e74c3c`). A shown 0.000 counts as 0. The same colours are used for the UN proxy. Territories with fewer than 100,000 people stay in the ranked list and are flagged.
 
 A grouping switcher, stored in the data file rather than hardcoded, filters both the map and the list. The views are: geographic region (UN M49 continents and subregions, for example Northern America); founding population (for example “All countries founded by ethnic Europeans”); the Anglosphere (the United States, the United Kingdom, Canada, Australia, New Zealand and Ireland); and data availability (census ethnic data, official series without a cross-pool score, UN estimate only, or no score). Further groups can be added in `data/demographics.json` without changing the tab code.
 
