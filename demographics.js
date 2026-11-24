@@ -229,6 +229,24 @@
   // ---------- Shell ----------
   function mountShell() {
     view.innerHTML = `<div class="dv-inner">
+      <section class="dv-section" aria-labelledby="dv-map-h">
+        <h3 class="dv-h" id="dv-map-h"></h3>
+        <p class="dv-desc" id="dv-map-desc"></p>
+        <div class="dv-switcher-wrap">
+          <div class="dv-switcher" id="dv-switcher" role="group"></div>
+          <label class="dv-filter-lab" id="dv-group-lab">
+            <span id="dv-group-lbl"></span>
+            <select id="dv-group"></select>
+          </label>
+        </div>
+        <div class="dv-map-wrap">
+          <div id="dv-map" role="img"></div>
+          <div class="dv-map-error" id="dv-map-error" hidden></div>
+          <div class="dv-legend" id="dv-legend"></div>
+        </div>
+        <p class="dv-scale-note" id="dv-scale-note"></p>
+        <div class="dv-selected" id="dv-selected" hidden></div>
+      </section>
       <div class="dv-head">
         <h2 id="dv-title"></h2>
         <div class="dv-banner" id="dv-banner" hidden></div>
@@ -242,24 +260,6 @@
         <p class="dv-desc" id="dv-records-p3"></p>
         <p class="dv-desc" id="dv-records-p4"></p>
         <div class="dv-avail-legend" id="dv-avail-legend"></div>
-      </section>
-      <div class="dv-switcher-wrap">
-        <div class="dv-switcher" id="dv-switcher" role="group"></div>
-        <label class="dv-filter-lab" id="dv-group-lab">
-          <span id="dv-group-lbl"></span>
-          <select id="dv-group"></select>
-        </label>
-      </div>
-      <section class="dv-section" aria-labelledby="dv-map-h">
-        <h3 class="dv-h" id="dv-map-h"></h3>
-        <p class="dv-desc" id="dv-map-desc"></p>
-        <div class="dv-map-wrap">
-          <div id="dv-map" role="img"></div>
-          <div class="dv-map-error" id="dv-map-error" hidden></div>
-          <div class="dv-legend" id="dv-legend"></div>
-        </div>
-        <p class="dv-scale-note" id="dv-scale-note"></p>
-        <div class="dv-selected" id="dv-selected" hidden></div>
       </section>
       <section class="dv-section" aria-labelledby="dv-bar-h">
         <h3 class="dv-h" id="dv-bar-h"></h3>

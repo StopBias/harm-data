@@ -4,11 +4,12 @@ body.demographics-active .layout { display: none !important; }
 
 #demographics-view { padding: 22px 18px 40px; }
 .dv-inner { max-width: 1100px; margin: 0 auto; }
-.dv-head { margin: 0 0 18px; }
+.dv-head { margin: 26px 0 18px; }
 .dv-head h2 { margin: 0 0 6px; font-size: 1.35rem; }
 .dv-h { font-size: 1.05rem; margin: 0 0 4px; }
 .dv-desc { font-size: 0.86rem; line-height: 1.5; color: var(--muted); margin: 0 0 12px; max-width: 860px; }
 .dv-section { margin-top: 26px; }
+.dv-inner > .dv-section:first-child { margin-top: 0; }
 
 .dv-switcher-wrap { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; margin: 0 0 18px; }
 .dv-switcher {
