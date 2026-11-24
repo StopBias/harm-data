@@ -203,6 +203,61 @@ assert.strictEqual(
   -27.8
 );
 
+const zaf = country("ZAF");
+assert.strictEqual(zaf.primary_pool, "EUR");
+assert.deepStrictEqual(zaf.straddles, ["SSA"]);
+assert.strictEqual(zaf.score, 13.5);
+assert.strictEqual(zaf.census.founding_pool, "EUR");
+assert.strictEqual(zaf.census.first_year, 1946);
+assert.strictEqual(zaf.census.latest_year, 2022);
+assert.strictEqual(zaf.census.first_share_in_founding_pool, 20.8);
+assert.strictEqual(zaf.census.latest_share_in_founding_pool, 7.3);
+assert.strictEqual(zaf.census.change_outside_founding_pool, 13.5);
+assert.strictEqual(zaf.score, zaf.census.change_outside_founding_pool);
+const zafShown = Math.round((zaf.census.latest_share_in_founding_pool - zaf.census.first_share_in_founding_pool) * 10) / 10;
+assert.strictEqual(zafShown, -13.5);
+assert.strictEqual(scale.bandIdForChange(zafShown, 1), "medium");
+assert.strictEqual(scale.COLOURS.medium, "#ec7165");
+assert.ok(copy.band_medium.includes("Endangered"));
+assert.deepStrictEqual(Object.keys(zaf.census.rows), ["1946", "1951", "1960", "1970", "1996", "2001", "2011", "2022"]);
+assert.deepStrictEqual(Object.keys(zaf.census.rows).map(y => zaf.census.rows[y].EUR), [20.8, 20.9, 19.3, 17.3, 11.0, 9.6, 8.9, 7.3]);
+["1980", "1985", "1991", "2026"].forEach(y => assert.ok(!zaf.census.rows[y]));
+const zafNotes = zaf.census.notes;
+[
+  "No 1945 census",
+  "1946 Union census is the earliest",
+  "TBVC homelands included",
+  "Namibia",
+  "Walvis Bay",
+  "1980, 1985 and 1991",
+  "sample-based",
+  "2.37 million",
+  "4.50 million",
+  "net migration",
+  "2,372,000/11,415,000",
+  "4,504,252/61,988,314"
+].forEach(phrase => assert.ok(zafNotes.includes(phrase), phrase));
+assert.ok(zafNotes.includes("13.4") && zafNotes.includes("not used as the latest"));
+assert.ok(zafNotes.includes("7.1") && zafNotes.includes("not used as the latest"));
+assert.ok(zaf.mapping_note.includes("ethnic European (White)"));
+assert.ok(zaf.mapping_note.includes("SSA"));
+const founding = demo.views.find(v => v.id === "founding");
+assert.ok(founding.groups.find(g => g.id === "EUR").members.includes("ZAF"));
+assert.ok(!founding.groups.find(g => g.id === "SSA").members.includes("ZAF"));
+
+const zafBase = row("ZAF");
+assert.strictEqual(zafBase.founding_pool, "EUR");
+assert.strictEqual(zafBase.baseline_year, 1960);
+assert.strictEqual(zafBase.baseline_founding_pct, 19.3);
+assert.strictEqual(zafBase.latest_year_core, 2022);
+assert.strictEqual(zafBase.latest_founding_pct_core, 7.3);
+assert.strictEqual(zafBase.change_pp_baseline_to_latest, -12.0);
+assert.strictEqual(api.displayChange(zafBase).value, -12.0);
+assert.strictEqual(zafBase.earlier_in_window_not_used, null);
+const zafCsv = fs.readFileSync(path.join(root, "data/demographics/baseline_1960_1979.csv"), "utf8");
+assert.ok(zafCsv.includes("21,South Africa,ZAF,EUR,1960,19.3,"));
+assert.ok(zafCsv.includes(",2022,7.3,-12.0,"));
+
 // Every publishable row can be scored without throwing, and hidden rows never are.
 baseline.rows.forEach(r => {
   if (api.isNotVerified(r)) return;

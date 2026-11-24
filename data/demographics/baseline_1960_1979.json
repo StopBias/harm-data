@@ -1357,28 +1357,37 @@
    "country": "South Africa",
    "iso3": "ZAF",
    "core_name": "South Africa",
-   "founding_pool": "SSA",
-   "baseline_year": 1970,
-   "baseline_founding_pct": 70.4,
-   "measure": "population group",
+   "founding_pool": "EUR",
+   "baseline_year": 1960,
+   "baseline_founding_pct": 19.3,
+   "measure": "population group (White)",
    "sources": [
     {
      "publisher": "Stats SA",
-     "title": "South African Statistics 2002, table 1.2 (core v1.13.0)",
+     "title": "South African Statistics 2002, tables 1.2-1.3 (1946-1970 White series; 1960 is the earliest census inside 1960-1979)",
      "url": "https://www.statssa.gov.za/"
     }
    ],
-   "verification": "core v1.13.0 value",
+   "verification": "White share 3,088,000 / 16,002,000 = 19.3; 1970 on the same series is 17.3",
    "flags": [
-    "1970 boundaries include the TBVC homelands."
+    "1960 and 1970 African counts were sample-based.",
+    "1970 boundaries include the TBVC homelands. Namibia and Walvis Bay are excluded.",
+    "1946 (20.8) and 1951 (20.9) are before the 1960-1979 window."
    ],
-   "earlier_in_window_not_used": "1960 census (race) exists; official table not retrieved in this pass",
+   "earlier_in_window_not_used": null,
    "order": 21,
    "alternates": {},
    "latest_year_core": 2022,
-   "latest_founding_pct_core": 81.4,
-   "change_pp_baseline_to_latest": 11.0,
-   "indicative_change_pp_across_definition_break": null
+   "latest_founding_pct_core": 7.3,
+   "change_pp_baseline_to_latest": -12.0,
+   "indicative_change_pp_across_definition_break": null,
+   "counts": {
+    "white": 3088000,
+    "total": 16002000
+   },
+   "pools_pct": {
+    "EUR": 19.3
+   }
   },
   {
    "country": "Singapore",
