@@ -60,7 +60,13 @@ assertEqual(labels.band_medium_range, "(\u221215 up to but not including \u22125
 assertEqual(labels.band_dark, "Highly endangered", "bright red legend name");
 assertEqual(labels.band_dark_range, "(below \u221215 pp)", "bright red legend range");
 assertEqual(labels.key_stable, "Stable or growing", "title key name");
-assertEqual(labels.key_colour_green, "green", "title key colour");
+assertEqual(labels.key_colour_green, "green", "title key colour is accessibility text only");
+assertEqual(labels.map_desc.indexOf("Green is") === -1, true, "numbered colour sentence is not under the title");
+assertEqual(labels.map_desc.indexOf("UN migrant-origin proxy") !== -1, true, "proxy sentence stays");
+assertEqual(labels.scale_note.indexOf("Below \u221215 is bright red") !== -1, true, "detailed bands stay below the map");
+var demoJs = fs.readFileSync("demographics.js", "utf8");
+assertEqual(demoJs.indexOf("(${esc(t(b.keyColour))})") === -1, true, "title key does not print the colour word");
+assertEqual(demoJs.indexOf("aria-label=\"${esc(colourName)}\"") !== -1, true, "colour name is an accessible label");
 assertEqual(scale.BANDS[3].rangeKey, "band_little_range", "green band range key");
 
 if (!process.exitCode) console.log("demographics-scale: boundary checks passed");

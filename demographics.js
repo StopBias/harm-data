@@ -511,9 +511,12 @@
     sel.value = state.sortKey;
   }
 
-  function bandSwatch(b) {
+  function bandSwatch(b, colourName) {
     const edge = b && b.outline ? "; box-shadow: inset 0 0 0 1px #d5d8da" : "";
-    return `<span class="swatch" style="background:${esc(b.color)}${edge}"></span>`;
+    const access = colourName
+      ? ` role="img" aria-label="${esc(colourName)}" title="${esc(colourName)}"`
+      : "";
+    return `<span class="swatch"${access} style="background:${esc(b.color)}${edge}"></span>`;
   }
 
   function bandItem(b) {
@@ -530,7 +533,7 @@
     el.innerHTML = order.map(id => {
       const b = bands.filter(x => x.id === id)[0];
       if (!b) return "";
-      return `<span class="dv-map-key-item">${bandSwatch(b)}<span>${esc(t(b.keyLabel))} (${esc(t(b.keyColour))})</span></span>`;
+      return `<span class="dv-map-key-item">${bandSwatch(b, t(b.keyColour))}<span>${esc(t(b.keyLabel))}</span></span>`;
     }).join("");
   }
 

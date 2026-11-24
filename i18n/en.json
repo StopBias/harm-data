@@ -571,7 +571,7 @@
     "group_founding_AMI": "All countries founded by Amerindian populations",
     "group_founding_NAI": "All countries founded by North American Indigenous populations",
     "map_h": "Which countries have seen declines in their founding populations?",
-    "map_desc": "Green is −1 or more. Light red is −5 up to but not including −1. Mid red is −15 up to but not including −5. Bright red is below −15. Where a country publishes no ethnicity data, the same colours show a UN migrant-origin proxy.",
+    "map_desc": "Where a country publishes no ethnicity data, the same colours show a UN migrant-origin proxy.",
     "legend_title": "Change in founding population share since the baseline census",
     "legend_most": "Larger decline",
     "legend_least": "No change or a gain",
