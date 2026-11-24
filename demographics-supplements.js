@@ -1,7 +1,8 @@
 // Pure helpers for the Demographics supplements.
 // origin series v1.14.0 (France, Germany, Spain) and the 1960–79 baseline v1.15.0.
-// The baseline file stores latest founding share minus the baseline share.
-// A fall is negative. That is the sign the live Demographics tab displays.
+// The baseline file stores the founding shares and the old percentage-point difference.
+// The toggle shows the relative percent change, (latest - baseline) / baseline * 100.
+// A fall is negative. A row without both shares is left unscored.
 (function (root, factory) {
   const api = factory();
   if (typeof module !== "undefined" && module.exports) module.exports = api;
@@ -29,13 +30,21 @@
     return true;
   }
 
+  function relativePercent(latest, first, digits) {
+    const api = (typeof module === "object" && module.exports)
+      ? require("./demographics-scale.js")
+      : root.ShareScale;
+    if (!api || !api.relativeChange) return null;
+    return api.relativeChange(latest, first, digits);
+  }
+
   function displayChange(row) {
     if (!isPublishableBaseline(row)) return null;
-    const direct = finite(row.change_pp_baseline_to_latest);
-    if (direct != null) return { value: direct, indicative: false, raw: direct };
-    const indicative = finite(row.indicative_change_pp_across_definition_break);
-    if (indicative != null) return { value: indicative, indicative: true, raw: indicative };
-    return { value: null, indicative: false, raw: null };
+    const value = relativePercent(row.latest_founding_pct_core, row.baseline_founding_pct, 1);
+    if (value == null) return { value: null, indicative: false, raw: null };
+    const indicative = finite(row.change_pp_baseline_to_latest) == null
+      && finite(row.indicative_change_pp_across_definition_break) != null;
+    return { value: value, indicative: indicative, raw: value };
   }
 
   // When the optional baseline view is off, the caller keeps the existing score.

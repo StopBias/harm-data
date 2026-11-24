@@ -6,7 +6,7 @@
 
 The map and ranked list are **census first**.
 
-When a country publishes ethnicity, race, ancestry or migration-background data that can be mapped to its founding (primary) pool, `score` in this file is the change, in percentage points, in the share of the population **outside that pool**, from the earliest comparable official figure (around 1970 where possible) to the latest. The field is `census.change_outside_founding_pool`. A positive stored figure means the founding pool’s share fell; a negative stored figure means it rose. `score_kind` is `census` and `availability` is `census`.
+When a country publishes ethnicity, race, ancestry or migration-background data that can be mapped to its founding (primary) pool, `score` in this file is the change, in percentage points, in the share of the population **outside that pool**, from the earliest comparable official figure (around 1970 where possible) to the latest. The field is `census.change_outside_founding_pool`. A positive stored figure means the founding pool’s share fell; a negative stored figure means it rose. `score_kind` is `census` and `availability` is `census`. The tab does not paint that stored score. It paints the percent change in the founding share, (latest share − first share) / first share × 100, and only when both shares are present.
 
 The tab does not display that stored figure. It shows the change in the founding population’s share, which is `latest_share_in_founding_pool − first_share_in_founding_pool` where both shares exist, otherwise `−(change_outside_founding_pool)`. Canada is −27.8, the United States −25.4, Kazakhstan +39.9. The values in this file are left as stored.
 
@@ -18,7 +18,7 @@ Every country record stores the source, years and metric used. No scores in this
 
 ## Why accurate records matter
 
-Most countries do not record ethnicity, race or ancestry in their census. Without those records, the public cannot see how the ethnic composition of a country has changed. First-generation migrant-origin counts miss later generations and understate change. In Canada, the founding population’s share of ethnic Europeans fell by 27.8 percentage points from 1971 to 2021 (Statistics Canada), while the UN-based dissimilarity index is 9.6. The file stores the outside-pool change as +27.8. Statistics offices are urged to publish accurate, comparable ethnic data so this change can be measured rather than hidden by incomplete records.
+Most countries do not record ethnicity, race or ancestry in their census. Without those records, the public cannot see how the ethnic composition of a country has changed. First-generation migrant-origin counts miss later generations and understate change. In Canada, the founding population’s share of ethnic Europeans fell by 28.9% from 1971 to 2021 (96.3% to 68.5%; Statistics Canada), while the UN-based dissimilarity index is 9.6. The file stores the outside-pool change as +27.8 percentage points. Statistics offices are urged to publish accurate, comparable ethnic data so this change can be measured rather than hidden by incomplete records.
 
 `world_context` holds a geographic series, not an ethnicity series: UN World Population Prospects 2024, showing Europe, Northern America and Oceania together as a share of world population (29.26% in 1950, 14.41% in 2024). It is context about where people live, not a substitute for ethnic records.
 
@@ -36,14 +36,14 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 
 ## Colour scale
 
-`scale.bands` in the data file is the older outside-pool cut and is not what the tab paints. The tab colours the value as shown (census figures to 1 decimal, UN proxy figures to 3) with half-open bands in `demographics-scale.js`:
+`scale.bands` in the data file is the older outside-pool cut and is not what the tab paints. The tab colours the percent change as shown (census figures to 1 decimal, UN proxy figures to 2) with half-open bands in `demographics-scale.js`:
 
-| Shown change (percentage points) | Colour |
+| Shown percent change | Colour |
 |---|---|
-| −1 or more | green (`#8bc34a`) |
-| −5 up to but not including −1 | light red (`#f5b7b1`) |
-| −15 up to but not including −5 | mid red (`#ec7165`) |
-| below −15 | bright red (`#e74c3c`) |
+| −1% or more | green (`#8bc34a`) |
+| −5% up to but not including −1% | light red (`#f5b7b1`) |
+| −15% up to but not including −5% | mid red (`#ec7165`) |
+| below −15% | bright red (`#e74c3c`) |
 
 A shown 0.000 is treated as 0. Nigeria (0), India (+0.006) and China (−0.031) are green. The same function colours the map and the ranked bars. `scale.estimate_bands` remains in the file and is not used. No-score grey stays `#b9bfc4` and out-of-group grey stays `#eceeef`.
 

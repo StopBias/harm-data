@@ -52,13 +52,13 @@ assertEqual(id(-27.8, 1), "dark", "census -27.8");
 
 var labels = JSON.parse(fs.readFileSync("i18n/en.json", "utf8")).demographics;
 assertEqual(labels.band_little, "Stable", "green legend name");
-assertEqual(labels.band_little_range, "(\u22121 pp or more)", "green legend range");
+assertEqual(labels.band_little_range, "(\u22121% or more)", "green legend range");
 assertEqual(labels.band_light, "Declining", "light red legend name");
-assertEqual(labels.band_light_range, "(\u22125 up to but not including \u22121 pp)", "light red legend range");
+assertEqual(labels.band_light_range, "(\u22125% up to but not including \u22121%)", "light red legend range");
 assertEqual(labels.band_medium, "Strongly declining", "mid red legend name");
-assertEqual(labels.band_medium_range, "(\u221215 up to but not including \u22125 pp)", "mid red legend range");
+assertEqual(labels.band_medium_range, "(\u221215% up to but not including \u22125%)", "mid red legend range");
 assertEqual(labels.band_dark, "Very strongly declining", "bright red legend name");
-assertEqual(labels.band_dark_range, "(below \u221215 pp)", "bright red legend range");
+assertEqual(labels.band_dark_range, "(below \u221215%)", "bright red legend range");
 assertEqual(labels.key_stable, "Stable", "title key name");
 assertEqual(labels.key_mild, "Declining", "light red key name");
 assertEqual(labels.key_endangered, "Strongly declining", "mid red key name");
@@ -67,13 +67,23 @@ assertEqual(labels.key_colour_green, "green", "title key colour is accessibility
 assertEqual(labels.map_desc, "Green countries have stable founding populations; light red have declining founding populations; medium red have strongly declining founding populations; dark red have very strongly declining founding populations.", "title paragraph");
 assertEqual(labels.map_desc.indexOf("\u2212") === -1, true, "title paragraph has no numeric range");
 assertEqual(labels.scale_note.indexOf("\u2212") === -1, true, "numeric ranges are not repeated below the map");
-assertEqual(labels.band_dark_range.indexOf("\u221215") !== -1, true, "numeric range stays in the inset legend");
+assertEqual(labels.band_dark_range.indexOf("\u221215%") !== -1, true, "numeric range stays in the inset legend");
+assertEqual(labels.band_little_range.indexOf("pp") === -1, true, "legend range uses percent");
+assertEqual(scale.relativeChange(7.3, 20.8, 1), -64.9, "South Africa relative decline");
+assertEqual(scale.bandIdForChange(scale.relativeChange(7.3, 20.8, 1), 1), "dark", "South Africa band");
+assertEqual(scale.relativeChange(100 - 7.615, 100 - 2.623, 2), -5.13, "Belgium relative decline");
+assertEqual(scale.bandIdForChange(scale.relativeChange(100 - 7.615, 100 - 2.623, 2), 2), "medium", "Belgium band");
+assertEqual(scale.relativeChange(68.5, 96.3, 1), -28.9, "Canada relative decline");
+assertEqual(scale.relativeChange(1, 0, 1), null, "zero first share is unscored");
+assertEqual(scale.relativeChange(null, 92.08, 1), null, "missing latest share is unscored");
 var locales = fs.readdirSync("i18n").filter(function (name) { return name.endsWith(".json"); });
 locales.forEach(function (name) {
   var copy = JSON.parse(fs.readFileSync("i18n/" + name, "utf8")).demographics;
   assertEqual(copy.map_desc, labels.map_desc, name + " map_desc");
   assertEqual(copy.scale_note.indexOf("\u2212") === -1, true, name + " scale_note has no numeric range");
-  ["band_little", "band_light", "band_medium", "band_dark", "key_stable", "key_mild", "key_endangered", "key_high"].forEach(function (key) {
+  ["band_little", "band_light", "band_medium", "band_dark", "key_stable", "key_mild", "key_endangered", "key_high",
+    "band_little_range", "band_light_range", "band_medium_range", "band_dark_range",
+    "col_change", "col_proxy", "bar_desc"].forEach(function (key) {
     assertEqual(copy[key], labels[key], name + " " + key);
   });
 });

@@ -63,21 +63,22 @@ hidden.forEach(iso => {
   assert.strictEqual(api.colourScore(true, row(iso)).value, null);
 });
 
-// Live sign: founding-share change, a fall is negative. The file already stores that.
+// Live sign: relative percent change in the founding share. A fall is negative.
 const usa = api.displayChange(row("USA"));
 assert.strictEqual(usa.indicative, false);
-assert.strictEqual(usa.value, -25.4);
-assert.strictEqual(api.colourScore(true, row("USA")).value, -25.4);
+assert.strictEqual(usa.value, -30.5);
+assert.strictEqual(api.colourScore(true, row("USA")).value, -30.5);
+assert.strictEqual(row("USA").change_pp_baseline_to_latest, -25.4);
 
 const nz = api.displayChange(row("NZL"));
 assert.strictEqual(nz.indicative, true);
-assert.strictEqual(nz.value, -24);
+assert.strictEqual(nz.value, -26.1);
 assert.strictEqual(row("NZL").change_pp_baseline_to_latest, null);
 assert.ok(api.baselineBadges(row("NZL")).includes("definition_break"));
 
 const uk = api.displayChange(row("GBR"));
 assert.strictEqual(uk.indicative, true);
-assert.strictEqual(uk.value, -15.4);
+assert.strictEqual(uk.value, -15.9);
 assert.ok(api.baselineBadges(row("GBR")).includes("estimate"));
 
 assert.ok(api.baselineBadges(row("MEX")).includes("weak_proxy"));
@@ -93,7 +94,7 @@ assert.strictEqual(api.isPublishableBaseline(row("FRA")), false);
 
 const ukr = api.displayChange(row("UKR"));
 assert.strictEqual(ukr.indicative, false);
-assert.ok(Math.abs(ukr.value - 0.19) < 1e-9);
+assert.strictEqual(ukr.value, 0.2);
 
 // France, Germany, Spain series.
 const fra = api.originModel(origin.countries.FRA);
@@ -214,11 +215,15 @@ assert.strictEqual(zaf.census.first_share_in_founding_pool, 20.8);
 assert.strictEqual(zaf.census.latest_share_in_founding_pool, 7.3);
 assert.strictEqual(zaf.census.change_outside_founding_pool, 13.5);
 assert.strictEqual(zaf.score, zaf.census.change_outside_founding_pool);
-const zafShown = Math.round((zaf.census.latest_share_in_founding_pool - zaf.census.first_share_in_founding_pool) * 10) / 10;
-assert.strictEqual(zafShown, -13.5);
-assert.strictEqual(scale.bandIdForChange(zafShown, 1), "medium");
+const zafPp = Math.round((zaf.census.latest_share_in_founding_pool - zaf.census.first_share_in_founding_pool) * 10) / 10;
+assert.strictEqual(zafPp, -13.5);
+const zafShown = scale.relativeChange(zaf.census.latest_share_in_founding_pool, zaf.census.first_share_in_founding_pool, 1);
+assert.strictEqual(zafShown, -64.9);
+assert.strictEqual(scale.bandIdForChange(zafShown, 1), "dark");
+const bel = country("BEL");
+assert.strictEqual(scale.relativeChange(100 - bel.cross_pool_fb_pct_2020, 100 - bel.cross_pool_fb_pct_1990, 2), -5.13);
 assert.strictEqual(scale.COLOURS.medium, "#ec7165");
-assert.ok(copy.band_medium.includes("Endangered"));
+assert.strictEqual(copy.band_medium, "Strongly declining");
 assert.deepStrictEqual(Object.keys(zaf.census.rows), ["1946", "1951", "1960", "1970", "1996", "2001", "2011", "2022"]);
 assert.deepStrictEqual(Object.keys(zaf.census.rows).map(y => zaf.census.rows[y].EUR), [20.8, 20.9, 19.3, 17.3, 11.0, 9.6, 8.9, 7.3]);
 ["1980", "1985", "1991", "2026"].forEach(y => assert.ok(!zaf.census.rows[y]));
@@ -252,7 +257,7 @@ assert.strictEqual(zafBase.baseline_founding_pct, 19.3);
 assert.strictEqual(zafBase.latest_year_core, 2022);
 assert.strictEqual(zafBase.latest_founding_pct_core, 7.3);
 assert.strictEqual(zafBase.change_pp_baseline_to_latest, -12.0);
-assert.strictEqual(api.displayChange(zafBase).value, -12.0);
+assert.strictEqual(api.displayChange(zafBase).value, -62.2);
 assert.strictEqual(zafBase.earlier_in_window_not_used, null);
 const zafCsv = fs.readFileSync(path.join(root, "data/demographics/baseline_1960_1979.csv"), "utf8");
 assert.ok(zafCsv.includes("21,South Africa,ZAF,EUR,1960,19.3,"));

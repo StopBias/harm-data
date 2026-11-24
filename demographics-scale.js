@@ -1,4 +1,4 @@
-// Colour bands for the change in founding population share, in percentage points.
+// Colour bands for the percent change in founding population share.
 // Round to the digits the row actually shows, then use half-open cuts.
 // Green for little or no decline, then three reds. Census and UN-proxy values use the same cuts.
 //   v >= -1           green        little or no decline, including a gain
@@ -54,11 +54,22 @@
     return null;
   }
 
+  // Percent change in the founding share: (latest - first) / first * 100.
+  // A zero first share cannot be a base, so the row is left unscored.
+  function relativeChange(latest, first, digits) {
+    if (latest == null || latest === "" || first == null || first === "") return null;
+    var a = Number(latest);
+    var b = Number(first);
+    if (!isFinite(a) || !isFinite(b) || b === 0) return null;
+    return roundDisplayed((a - b) / b * 100, digits == null ? 1 : digits);
+  }
+
   return {
     COLOURS: COLOURS,
     BANDS: BANDS,
     roundDisplayed: roundDisplayed,
     bandIdForChange: bandIdForChange,
-    bandForChange: bandForChange
+    bandForChange: bandForChange,
+    relativeChange: relativeChange
   };
 });
