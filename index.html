@@ -1347,11 +1347,11 @@
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
     const MEDIA_PENDING_COLOR = "#e6e8eb";
-    // Log-symmetric purple-to-cyan scale, L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
+    // Log-symmetric purple-to-cyan scale. Anti-Black end is #6e0cdf. L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
     const MEDIA_SCALE = [
-      [-2, [0x54, 0x27, 0x88]],
-      [-4 / 3, [0x80, 0x73, 0xac]],
-      [-2 / 3, [0xb2, 0xab, 0xd2]],
+      [-2, [0x6e, 0x0c, 0xdf]],
+      [-4 / 3, [0xa7, 0x69, 0xe9]],
+      [-2 / 3, [0xd2, 0xb0, 0xf1]],
       [0, [0xf7, 0xf7, 0xf7]],
       [2 / 3, [0xa9, 0xe5, 0xef]],
       [4 / 3, [0x5a, 0xd2, 0xe7]],
