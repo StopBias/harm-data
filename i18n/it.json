@@ -172,9 +172,7 @@
     "comp_perp": "Origine dell'autore",
     "comp_perp_full": "Lo stesso criterio per gli autori. Lo stesso criterio abbinato. I dati sul solo autore valgono 0.",
     "comp_other": "Copertura, tassi e accesso",
-    "comp_other_full": "Ampia copertura, una bassa quota di casi sconosciuti, tassi per 100.000, collegamento tra vittima e autore, e una pubblicazione pubblica e tempestiva.",
-    "paired_total": "Totale con la regola dei dati abbinati",
-    "published_override": "Punteggio pubblicato (deroga)"
+    "comp_other_full": "Ampia copertura, una bassa quota di casi sconosciuti, tassi per 100.000, collegamento tra vittima e autore, e una pubblicazione pubblica e tempestiva."
   },
   "nations": {
     "england_wales": "Inghilterra e Galles",

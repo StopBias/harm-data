@@ -172,9 +172,7 @@
     "comp_perp": "Herkunft der Täter",
     "comp_perp_full": "Derselbe Maßstab für Täter. Diese Punkte gibt es nur innerhalb dieser gepaarten Kreuztabelle für kindliche Opfer. Einseitige Täterdaten ergeben 0.",
     "comp_other": "Abdeckung, Raten und Zugang",
-    "comp_other_full": "Breite Abdeckung, ein geringer Anteil Unbekannter, Raten je 100.000, Verknüpfung von Opfer und Täter sowie eine öffentliche, zeitnahe Veröffentlichung.",
-    "paired_total": "Summe nach der Paarregel",
-    "published_override": "Veröffentlichte Bewertung (Sonderfestsetzung)"
+    "comp_other_full": "Breite Abdeckung, ein geringer Anteil Unbekannter, Raten je 100.000, Verknüpfung von Opfer und Täter sowie eine öffentliche, zeitnahe Veröffentlichung."
   },
   "nations": {
     "england_wales": "England und Wales",

@@ -172,9 +172,7 @@
     "comp_perp": "Origine de l’auteur",
     "comp_perp_full": "Le même critère pour les auteurs. Ces points ne sont attribués qu’à l’intérieur de ce tableau croisé pour les affaires concernant des enfants. Les données sur le seul auteur valent 0.",
     "comp_other": "Couverture, taux et accès",
-    "comp_other_full": "Une couverture large, une faible part de cas inconnus, des taux pour 100 000, le lien entre victime et auteur, et une publication publique et rapide.",
-    "paired_total": "Total selon la règle des données appariées",
-    "published_override": "Score publié (dérogation)"
+    "comp_other_full": "Une couverture large, une faible part de cas inconnus, des taux pour 100 000, le lien entre victime et auteur, et une publication publique et rapide."
   },
   "nations": {
     "england_wales": "Angleterre et pays de Galles",

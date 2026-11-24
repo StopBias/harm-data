@@ -172,9 +172,7 @@
     "comp_perp": "Perpetrator heritage",
     "comp_perp_full": "The same standard for perpetrators. These points are awarded only inside that paired child cross-table. One-sided perpetrator data scores 0.",
     "comp_other": "Coverage, rates and access",
-    "comp_other_full": "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release.",
-    "paired_total": "Total under the paired rule",
-    "published_override": "Published score (override)"
+    "comp_other_full": "Broad coverage, a low share of unknowns, rates per 100,000, victim–perpetrator linkage, and public, timely release."
   },
   "nations": {
     "england_wales": "England and Wales",

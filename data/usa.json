@@ -1,9 +1,7 @@
 {
  "country": "United States",
  "iso_a3": "USA",
- "completeness": 0,
- "completeness_override": 0,
- "completeness_override_reason": "no paired child victim×offender ethnic data; official White category merges Hispanic people",
+ "completeness": 14,
  "as_of": "2026-11-20",
  "summary": "The US publishes more child-harm data by race than any other country reviewed, mostly for victims. Perpetrator race is published for abuse and neglect and for federal cases, but is often perceived or unknown, and no source separately identifies ethnic Europeans.",
  "groups": [
@@ -663,7 +661,7 @@
   }
  ],
  "score": {
-  "value": 0,
+  "value": 14,
   "band": "0-20%",
   "scale": "v2 (stricter scale, 18 Nov 2026)",
   "uncapped": 13.9,
@@ -810,8 +808,8 @@
   ],
   "gold_standard": "100% means a country publishes data that separately identifies ethnic Europeans, both as perpetrators (so one can tell when they disproportionately harm a group) and as child victims (so one can tell when ethnic European children are disproportionately harmed), alongside every other group, linked victim to perpetrator, for every harm. Heritage points require that link as a published cross-table for the same child cases. One-sided data scores 0 for heritage.",
   "rules": "Heritage is 75 of every 100 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10, rates 7.5 and access 7.5. Proxies such as nationality or migration background earn at most a quarter of the heritage points, and only when that pair is published. A published “White” category that merges Hispanic people or another group, so ethnic Europeans cannot be isolated, is scored as a proxy under the same cap. A country with no real ethnicity data is capped at 25%. Neglect is not part of the score.",
-  "why": "The United States scores 0% on the stricter scale (0-20%). The published score is an explicit override: no paired child victim×offender ethnic data; official White category merges Hispanic people. Under the paired-data rule, heritage points are 0 and neglect is not scored, so coverage, rates and access alone would total 13.9% (14% if that total were published). That total is not used. Tables in this repository that pair victim and offender race do not change this 0.",
-  "judgement_notes": "Published completeness is an override of 0. Reason: no paired child victim×offender ethnic data; official White category merges Hispanic people. Counter-evidence, which does not change the 0: FBI Expanded Homicide Table 6 (2025) pairs victim race and offender race for single-victim, single-offender murders, all ages only, and White includes Hispanic people. A StopBias tabulation of NIBRS 2025 incident files (not a published FBI table) crosses victim race and offender race by victim age for homicide, sexual abuse, trafficking and physical assault, including ages 0–17. The NCVS cross-table for violent crime against teens aged 12–17 (2012–2015) pairs White non-Hispanic, Black non-Hispanic and Hispanic victims with perceived offender race. NCVS pooled 2020–2024 rape and assault cross-tables include a 13–17 band. None of these is used to raise the score. Before the heritage-conflation rule the United States scored 59% (uncapped 58.7%) under the earlier weights.",
+  "why": "The United States scores 14% on the stricter scale (0-20%). Heritage points are 0 because there is no published cross-table of child victim and offender heritage for the same cases. One-sided data earns no heritage credit. Neglect is not scored. The score is coverage, rates and access only. The official White category merges Hispanic people, so ethnic European offenders cannot be isolated where Hispanic origin is unreported.",
+  "judgement_notes": "The official White category merges Hispanic people where Hispanic origin is unreported, so ethnic Europeans cannot be isolated. That applies to sexual-abuse and homicide offenders in FBI data. White published separately from Hispanic, for example White non-Hispanic in child-welfare and death-certificate data, still counts as identifying ethnic Europeans. Before the heritage-conflation rule the United States scored 59% (uncapped 58.7%) under the earlier weights. Under the paired-data rule now in use, heritage points are 0, so that earlier figure does not set the published score.",
   "weights": {
    "Sexual abuse": 22.22,
    "Physical abuse": 16.67,
@@ -855,11 +853,10 @@
     }
    ]
   },
-  "conflation_note": "Some official US “White” figures merge Hispanic people, because Hispanic origin is often unreported (especially in FBI police and homicide data). That prevents isolating ethnic European victims or offenders. Those perpetrator items were scored as a proxy (at most 9.4 of 37.5) before the paired-data rule. The published completeness score is an override of 0: no paired child victim×offender ethnic data; official White category merges Hispanic people. Pairing tables in this repository do not change that 0.",
-  "override_applied": true,
+  "conflation_note": "Some official US “White” figures merge Hispanic people, because Hispanic origin is often unreported (especially in FBI police and homicide data). That prevents isolating ethnic European victims or offenders. Under the paired-data rule, heritage points are 0, so this does not change the published score.",
   "paired_child": {
    "exists": false,
-   "basis": "Override to 0. No scored harm has a published child victim×offender cross-table accepted for credit. FBI Expanded Homicide Table 6 (all ages; White includes Hispanic people), the NIBRS age cross-tabs tabulated in this repository, and the NCVS teen and 13–17 cross-tables are counter-evidence and do not change the 0."
+   "basis": "No published cross-table of child victim and offender heritage for the same cases. One-sided data scores 0 for heritage."
   }
  },
  "sources": {

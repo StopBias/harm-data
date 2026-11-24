@@ -172,9 +172,7 @@
     "comp_perp": "Origen del perpetrador",
     "comp_perp_full": "El mismo criterio para los perpetradores. El mismo criterio emparejado. Los datos solo del autor puntúan 0.",
     "comp_other": "Cobertura, tasas y acceso",
-    "comp_other_full": "Cobertura amplia, una baja proporción de casos desconocidos, tasas por 100.000, vinculación entre víctima y perpetrador, y una publicación pública y oportuna.",
-    "paired_total": "Total con la regla de datos emparejados",
-    "published_override": "Puntuación publicada (excepción)"
+    "comp_other_full": "Cobertura amplia, una baja proporción de casos desconocidos, tasas por 100.000, vinculación entre víctima y perpetrador, y una publicación pública y oportuna."
   },
   "nations": {
     "england_wales": "Inglaterra y Gales",

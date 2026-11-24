@@ -1136,7 +1136,7 @@
     // Fallback scores before data/<iso>.json loads. Change the published score in that file's `completeness`.
     const tracked = {
       USA: {
-        completeness: 0,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
+        completeness: 14,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
         note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
       },
       GBR: {
@@ -2183,17 +2183,10 @@
         ? `<p class="ex-small">${esc(t("method.previous_weights", { date: weightsDate, score: fmt(pw.value) }))}</p>`
         : "";
       const hundred = fmtPct(100);
-      const overrideOn = D.completeness_override != null;
-      const totalRows = overrideOn
-        ? `<tr><td>${esc(t("method.paired_total"))}</td><td class="num">${hundred}</td><td class="num">${esc(fmt(sc.uncapped))}</td></tr>` +
-          `<tr><td><strong>${esc(t("method.published_override"))}</strong></td><td class="num">${hundred}</td><td class="num"><strong>${esc(fmt(value))}</strong></td></tr>`
-        : (sc.cap_applied && sc.uncapped != null)
+      const totalRows = (sc.cap_applied && sc.uncapped != null)
         ? `<tr><td>${esc(t("method.weighted_uncapped"))}</td><td class="num">${hundred}</td><td class="num">${esc(fmt(sc.uncapped))}</td></tr>` +
           `<tr><td><strong>${esc(t("method.published_capped"))}</strong></td><td class="num">${hundred}</td><td class="num"><strong>${esc(fmt(value))}</strong></td></tr>`
         : `<tr><td><strong>${esc(t("method.weighted_total"))}</strong></td><td class="num">${hundred}</td><td class="num"><strong>${esc(fmt(value))}</strong></td></tr>`;
-      const overrideBox = overrideOn
-        ? `<div class="gold"><strong>${esc(t("method.published_override"))}.</strong> ${esc(D.completeness_override_reason || "")}${enOnlyBadge()}</div>`
-        : "";
       const comps = [
         { name: t("method.comp_victim"), points: 37.5, full: t("method.comp_victim_full") },
         { name: t("method.comp_perp"), points: 37.5, full: t("method.comp_perp_full") },
@@ -2225,7 +2218,7 @@
         `<p>${esc(t("method.cap"))}</p>` +
         `<p>${esc(t("method.weights"))}</p>` +
         `<h3>${esc(t("method.why", { country: whyCountry, score: fmt(value) }))}${enOnlyBadge()}</h3><p>${esc(sc.why || "")}</p>` +
-        conflationBox + overrideBox + capBox + hist + weightsHist +
+        conflationBox + capBox + hist + weightsHist +
         (sc.breakdown && sc.breakdown.length ? `<h3>${esc(t("method.by_harm"))}${enOnlyBadge()}</h3><table><thead><tr><th>${esc(t("method.harm"))}</th><th class="num">${esc(t("method.weight"))}</th><th class="num">${esc(t("method.score"))}</th></tr></thead><tbody>` +
         sc.breakdown.map(b => `<tr><td>${esc(b.harm)}</td><td class="num">${fmtPct(b.weight)}</td><td class="num">${esc(fmt(b.score))}</td></tr>`).join("") +
         totalRows + `</tbody></table>` : "") +

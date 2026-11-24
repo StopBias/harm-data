@@ -172,9 +172,7 @@
     "comp_perp": "Förövarens härkomst",
     "comp_perp_full": "Samma mått för förövare. Samma kopplade mått. Uppgifter om enbart förövaren ger 0.",
     "comp_other": "Täckning, tal och tillgång",
-    "comp_other_full": "Bred täckning, en låg andel okända, tal per 100 000, koppling mellan offer och förövare samt en offentlig, aktuell publicering.",
-    "paired_total": "Summa enligt parregeln",
-    "published_override": "Publicerad poäng (undantag)"
+    "comp_other_full": "Bred täckning, en låg andel okända, tal per 100 000, koppling mellan offer och förövare samt en offentlig, aktuell publicering."
   },
   "nations": {
     "england_wales": "England och Wales",

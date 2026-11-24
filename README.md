@@ -270,7 +270,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
 
 ### US data
 - `data/usa.json` holds every US figure, source and the score, kept apart from the code. `index.html` loads it,
-  sets the USA score (0, an explicit override) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
+  sets the USA score (14) on the map, and builds the dropdowns (harm, victim's heritage, perpetrator's heritage,
   share % vs rate per 100,000), the explanation panel, the expandable source list and the "How the score works" box.
 - Each harm has `victims`, `perpetrators` and `cross` (victim × perpetrator) blocks with a `status`:
   `published`, `not_published` (recorded but no public table), `not_recorded`, or `pending` (published, not yet added).
@@ -290,9 +290,7 @@ Natural Earth codes to know: Kosovo = XKX, Northern Cyprus = CYN, Somaliland = S
   sex trafficking 22.22%, physical abuse 16.67% and online exploitation 11.11% (in use from 24 Nov 2026; the 19 Nov 2026
   weights were homicide 25%, sexual abuse 20%, sex trafficking 20%, physical abuse 15%, online exploitation 10% and
   neglect 10%; before that, sexual abuse 25% and the other five 15% each). Each file's `score.weights` holds the weights in use and
-  `score.previous_weights` the score under the pre-19-Nov weights. The United States published score is an override of 0
-  (`completeness_override`), because there is no paired child victim×offender ethnic data and the official White category
-  merges Hispanic people. Pairing tables in the repository do not change that 0. Current published scores: United States 0%,
+  `score.previous_weights` the score under the pre-19-Nov weights. The United States scores 14%: heritage points are 0 under the paired-data rule, neglect is not scored, and the total is coverage, rates and access. The official White category merges Hispanic people. Current published scores: United States 14%,
   United Kingdom 14%, Germany 16%, Canada 13%,
   France 15%, Australia 12%, New Zealand 13%, South Africa 7%, Italy 14%, Spain 13%, Netherlands 12%, Sweden 9%,
   Poland 8%, Switzerland 15%, Austria 10%, Portugal 10%, Ireland 9%, Belgium 6%, Finland 15%, Norway 13%, Denmark 14%, Iceland 7%. To change a country's displayed score, edit

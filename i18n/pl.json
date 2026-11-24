@@ -172,9 +172,7 @@
     "comp_perp": "Pochodzenie sprawcy",
     "comp_perp_full": "Ten sam standard wobec sprawców. Ten sam standard sparowanych danych. Dane tylko o sprawcy dają 0.",
     "comp_other": "Zakres, wskaźniki i dostęp",
-    "comp_other_full": "Szeroki zakres, niski udział przypadków nieznanych, wskaźniki na 100 000, powiązanie ofiary i sprawcy oraz publiczna, terminowa publikacja.",
-    "paired_total": "Suma według reguły danych sparowanych",
-    "published_override": "Opublikowany wynik (wyjątek)"
+    "comp_other_full": "Szeroki zakres, niski udział przypadków nieznanych, wskaźniki na 100 000, powiązanie ofiary i sprawcy oraz publiczna, terminowa publikacja."
   },
   "nations": {
     "england_wales": "Anglia i Walia",

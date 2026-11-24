@@ -172,9 +172,7 @@
     "comp_perp": "Az elkövető származása",
     "comp_perp_full": "Ugyanez a mérce az elkövetőkre. Ugyanez a párosított mérce. A csak az elkövetőre vonatkozó adatok 0 pontot érnek.",
     "comp_other": "Lefedettség, arányszámok és hozzáférés",
-    "comp_other_full": "Széles lefedettség, alacsony arányú ismeretlen eset, 100 000 lakosra jutó arányszám, áldozat és elkövető összekapcsolása, valamint nyilvános, időszerű közzététel.",
-    "paired_total": "Összesen a párosítási szabály szerint",
-    "published_override": "Közzétett pontszám (felülírás)"
+    "comp_other_full": "Széles lefedettség, alacsony arányú ismeretlen eset, 100 000 lakosra jutó arányszám, áldozat és elkövető összekapcsolása, valamint nyilvános, időszerű közzététel."
   },
   "nations": {
     "england_wales": "Anglia és Wales",

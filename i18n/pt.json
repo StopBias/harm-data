@@ -172,9 +172,7 @@
     "comp_perp": "Origem do autor",
     "comp_perp_full": "O mesmo critério para os autores. O mesmo critério emparelhado. Dados só do autor valem 0.",
     "comp_other": "Cobertura, taxas e acesso",
-    "comp_other_full": "Cobertura ampla, uma baixa percentagem de desconhecidos, taxas por 100 000, cruzamento entre vítima e autor, e divulgação pública e atempada.",
-    "paired_total": "Total pela regra dos dados emparelhados",
-    "published_override": "Pontuação publicada (exceção)"
+    "comp_other_full": "Cobertura ampla, uma baixa percentagem de desconhecidos, taxas por 100 000, cruzamento entre vítima e autor, e divulgação pública e atempada."
   },
   "nations": {
     "england_wales": "Inglaterra e País de Gales",
