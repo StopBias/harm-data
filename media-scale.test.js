@@ -19,12 +19,13 @@ function assertEqual(actual, expected, label) {
   }
 }
 
-assertEqual(api.colorForL(2), "#077183", "antiwhite end");
+assertEqual(api.colorForL(2), "#0cc0df", "antiwhite end");
 assertEqual(api.colorForL(-2), "#542788", "antiblack end");
 assertEqual(api.colorForL(0), "#f7f7f7", "centre");
 
 var css = fs.readFileSync("media.css", "utf8");
 assertEqual(css.indexOf("#fdb863") === -1 && css.indexOf("#e08214") === -1 && css.indexOf("#b35806") === -1, true, "legend bar has no brown stops");
-assertEqual(css.indexOf("#9fe3ef, #2bb4cc, #077183") !== -1, true, "legend bar cyan stops");
+assertEqual(css.indexOf("#9fe3ef") === -1 && css.indexOf("#2bb4cc") === -1 && css.indexOf("#077183") === -1, true, "legend bar has no previous cyan stops");
+assertEqual(css.indexOf("#a9e5ef, #5ad2e7, #0cc0df") !== -1, true, "legend bar cyan stops");
 
 if (!process.exitCode) console.log("media-scale: endpoint checks passed");
