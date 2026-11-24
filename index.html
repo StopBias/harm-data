@@ -311,7 +311,8 @@
     html[data-i18n-pending] .site-tabs,
     html[data-i18n-pending] #about-link,
     html[data-i18n-pending] #about-view,
-    html[data-i18n-pending] #hollywood-view { visibility: hidden; }
+    html[data-i18n-pending] #hollywood-view,
+    html[data-i18n-pending] #demographics-view { visibility: hidden; }
 
     header { flex-wrap: wrap; }
     header .header-text { flex: 1 1 auto; min-width: 0; }
@@ -633,6 +634,8 @@
   <section id="media-view" aria-labelledby="mv-title" hidden></section>
   <!-- Hollywood tab: markup and styles live in hollywood.js / hollywood.css; strings live in i18n/*.json (hollywood.*) -->
   <section id="hollywood-view" aria-labelledby="hv-title" hidden></section>
+  <!-- Demographics tab: markup and styles live in demographics.js / demographics.css; strings live in i18n/*.json (demographics.*) -->
+  <section id="demographics-view" aria-labelledby="dv-title" hidden></section>
   <section id="about-view" aria-labelledby="about-title" hidden>
     <div class="about-inner">
       <div class="ex-head">
@@ -658,8 +661,10 @@
   </section>
   <link rel="stylesheet" href="media.css">
   <link rel="stylesheet" href="hollywood.css">
+  <link rel="stylesheet" href="demographics.css">
   <script src="media.js" defer></script>
   <script src="hollywood.js" defer></script>
+  <script src="demographics.js" defer></script>
 
   <script>
 
@@ -929,6 +934,7 @@
       else if (window.clearSelection) window.clearSelection();
       if (typeof window.renderMediaView === "function") window.renderMediaView();
       if (typeof window.renderHollywoodView === "function") window.renderHollywoodView();
+      if (typeof window.renderDemographicsView === "function") window.renderDemographicsView();
     }
     function langMeta(code) {
       return LANG_META.find(m => m.code === code) || LANG_META[0];
@@ -1062,7 +1068,7 @@
       tabs.forEach(tb => tb.addEventListener("click", () => markAttentionSeen("tabs")));
       const start = 300;
       if (langOn && btn) for (let i = 0; i < ATTENTION_REPEATS; i++) pulse("lang", btn, start + i * ATTENTION_GAP_MS);
-      // Tabs start after the language button's first pulse and interleave with it; Crime, Media, then Hollywood, 400 ms apart.
+      // Tabs start after the language button's first pulse and interleave with it; Crime, Media, Hollywood, then Demographics, 400 ms apart.
       const tabStart = langOn ? start + 1500 : start;
       if (tabsOn) for (let i = 0; i < ATTENTION_REPEATS; i++) tabs.forEach((tb, j) => pulse("tabs", tb, tabStart + i * ATTENTION_GAP_MS + j * 400));
     }
@@ -2405,7 +2411,8 @@
         { name: "panel", sel: ["#panel-content", "#legend"] },
         { name: "explorer", sel: ["#explorer"] },
         { name: "media", sel: ["#media-view"] },
-        { name: "hollywood", sel: ["#hollywood-view"] }
+        { name: "hollywood", sel: ["#hollywood-view"] },
+        { name: "demographics", sel: ["#demographics-view"] }
       ];
       const tip = document.getElementById("term-tip");
       const tipText = document.getElementById("term-tip-text");

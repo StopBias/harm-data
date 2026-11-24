@@ -59,7 +59,7 @@
   const nav = document.createElement("nav");
   nav.className = "site-tabs";
   nav.setAttribute("aria-label", t("tabs_label"));
-  nav.innerHTML = `<button type="button" data-tab="map"></button><button type="button" data-tab="media"></button><button type="button" data-tab="hollywood"></button>`;
+  nav.innerHTML = `<button type="button" data-tab="map"></button><button type="button" data-tab="media"></button><button type="button" data-tab="hollywood"></button><button type="button" data-tab="demographics"></button>`;
   const header = document.querySelector("header");
   header.insertAdjacentElement("afterend", nav);
   const aboutView = document.getElementById("about-view");
@@ -73,25 +73,32 @@
     nav.querySelector('[data-tab="media"]').textContent = t("tab_media");
     const hollywoodTab = nav.querySelector('[data-tab="hollywood"]');
     if (hollywoodTab) hollywoodTab.textContent = t("tab_hollywood");
+    const demographicsTab = nav.querySelector('[data-tab="demographics"]');
+    if (demographicsTab) demographicsTab.textContent = t("tab_demographics");
   }
 
   function tabFromHash() {
     if (location.hash === "#media") return "media";
     if (location.hash === "#hollywood") return "hollywood";
+    if (location.hash === "#demographics") return "demographics";
     if (location.hash === "#about") return "about";
     return "map";
   }
 
   const hollywoodView = document.getElementById("hollywood-view");
+  const demographicsView = document.getElementById("demographics-view");
 
   function show(tab) {
     const media = tab === "media";
     const about = tab === "about";
     const hollywood = tab === "hollywood";
-    if (layout) layout.hidden = about || hollywood;
-    if (explorer) explorer.hidden = media || about || hollywood;
+    const demographics = tab === "demographics";
+    const standalone = about || hollywood || demographics;
+    if (layout) layout.hidden = standalone;
+    if (explorer) explorer.hidden = media || standalone;
     view.hidden = !media;
     if (hollywoodView) hollywoodView.hidden = !hollywood;
+    if (demographicsView) demographicsView.hidden = !demographics;
     if (aboutView) aboutView.hidden = !about;
     nav.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === tab)));
     if (aboutLink) {
@@ -102,12 +109,14 @@
     document.body.classList.toggle("media-table", media && state.mode === "table");
     document.body.classList.toggle("about-active", about);
     document.body.classList.toggle("hollywood-active", hollywood);
+    document.body.classList.toggle("demographics-active", demographics);
     const agePicker = document.getElementById("age-picker");
-    if (agePicker) agePicker.hidden = media || hollywood;
+    if (agePicker) agePicker.hidden = media || hollywood || demographics;
     if (chrome) chrome.hidden = !media;
-    if (window.HarmMap && !hollywood) window.HarmMap.setMode(media ? "media" : "crime");
+    if (window.HarmMap && !hollywood && !demographics) window.HarmMap.setMode(media ? "media" : "crime");
     if (media) load();
     if (hollywood && typeof window.renderHollywoodView === "function") window.renderHollywoodView();
+    if (demographics && typeof window.renderDemographicsView === "function") window.renderDemographicsView();
     if (!media) window.dispatchEvent(new Event("resize"));
   }
 
@@ -116,9 +125,11 @@
       if (location.hash !== "#media") history.pushState(null, "", "#media");
     } else if (tab === "hollywood") {
       if (location.hash !== "#hollywood") history.pushState(null, "", "#hollywood");
+    } else if (tab === "demographics") {
+      if (location.hash !== "#demographics") history.pushState(null, "", "#demographics");
     } else if (tab === "about") {
       if (location.hash !== "#about") history.pushState(null, "", "#about");
-    } else if (location.hash === "#media" || location.hash === "#hollywood" || location.hash === "#about") {
+    } else if (location.hash === "#media" || location.hash === "#hollywood" || location.hash === "#demographics" || location.hash === "#about") {
       history.pushState(null, "", location.pathname + location.search);
     }
     show(tab);
