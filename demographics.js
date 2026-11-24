@@ -650,7 +650,7 @@
 
   function render() {
     if (!data) return;
-    if (!view.querySelector(".dv-inner")) mountShell();
+    if (!view.querySelector("#dv-map")) mountShell();
     if (!state.viewId) defaultViewState();
     labelStatic();
     renderSwitcher();
@@ -690,8 +690,22 @@
     }
   });
 
+  function showLoadError(err) {
+    console.error(err);
+    loading = null;
+    if (map) {
+      try { map.remove(); } catch (e) {}
+      map = null;
+      mapReady = false;
+    }
+    view.innerHTML = `<div class="dv-inner"><p class="pending-note">${esc(t("load_error"))}</p></div>`;
+  }
+
   function load() {
-    if (data) return render();
+    if (data) {
+      try { render(); } catch (err) { showLoadError(err); }
+      return;
+    }
     if (loading) return;
     view.innerHTML = `<div class="dv-inner"><p class="ex-lede">${esc(t("loading"))}</p></div>`;
     loading = fetch(DATA_URL)
@@ -706,17 +720,17 @@
         defaultViewState();
         render();
       })
-      .catch(err => {
-        console.error(err);
-        loading = null;
-        view.innerHTML = `<div class="dv-inner"><p class="pending-note">${esc(t("load_error"))}</p></div>`;
-      });
+      .catch(err => showLoadError(err));
   }
 
   window.renderDemographicsView = function () {
     if (view.hidden) return;
-    if (data) render();
-    else load();
+    try {
+      if (data) render();
+      else load();
+    } catch (err) {
+      showLoadError(err);
+    }
   };
 
   function start() {
