@@ -62,6 +62,31 @@
     return String(Math.round(Number(n)));
   }
 
+  function formatYearSpan(first, latest) {
+    if (first == null || latest == null || first === "" || latest === "") return "";
+    const a = Number(first);
+    const b = Number(latest);
+    if (!Number.isFinite(a) || !Number.isFinite(b)) return "";
+    return fmtYear(a) + "–" + fmtYear(b);
+  }
+
+  // Years shown beside a bar. Census rows use census.first_year–latest_year.
+  // Hatched UN rows use the window named by score_id (D_YYYY_YYYY) only when
+  // the displayed score is that same un_d_YYYY_YYYY field. Otherwise blank.
+  function rowYearLabel(c) {
+    if (!c) return "";
+    if (isCensus(c)) {
+      const ce = c.census;
+      return ce ? formatYearSpan(ce.first_year, ce.latest_year) : "";
+    }
+    if (!isEstimate(c) || c.score == null || typeof c.score_id !== "string") return "";
+    const m = c.score_id.match(/^D_(\d{4})_(\d{4})$/);
+    if (!m) return "";
+    const field = "un_d_" + m[1] + "_" + m[2];
+    if (c[field] == null || Number(c.score) !== Number(c[field])) return "";
+    return formatYearSpan(m[1], m[2]);
+  }
+
   function views() {
     return (data && Array.isArray(data.views)) ? data.views : [];
   }
@@ -885,12 +910,14 @@
       const title = c.score == null
         ? t("legend_no_score")
         : (isCensus(c) ? t("tooltip_census", { score: fmtScore(c.score) }) : t("tooltip_estimate", { score: fmtScore(c.score) }));
+      const years = rowYearLabel(c);
       const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${est ? " is-estimate" : ""}`;
       return `<li class="${cls}" data-id="${esc(c.id)}">
-        <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}">
+        <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
           <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${estMark}${smallMark}</span>
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill${est ? " is-estimate" : ""}" style="${fillStyle}"></span></span>
           <span class="dv-bar-n">${esc(fmtScore(c.score))}</span>
+          <span class="dv-bar-years">${esc(years || "—")}</span>
         </button>
       </li>`;
     }).join("");
