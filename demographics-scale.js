@@ -1,10 +1,10 @@
 // Colour bands for the change in founding population share, in percentage points.
 // Round to the digits the row actually shows, then use half-open cuts.
-//   v >= 0            dark green   no change or a gain
-//   -1 <= v < 0       light green  within 1 point
-//   -5 <= v < -1      yellow
-//   -15 <= v < -5     orange
-//   v < -15           red
+// One red hue. Census and UN-proxy values use the same cuts.
+//   v >= -1           near-white   little or no decline, including a gain
+//   -5 <= v < -1      light red
+//   -15 <= v < -5     medium red
+//   v < -15           dark red
 (function (root, factory) {
   var api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -13,20 +13,19 @@
   "use strict";
 
   var COLOURS = {
-    dark_green: "#1e8449",
-    light_green: "#8bc34a",
-    yellow: "#f4d03f",
-    orange: "#f39c12",
-    red: "#e74c3c"
+    little: "#fdf0ee",
+    light: "#f5b7b1",
+    medium: "#e74c3c",
+    dark: "#922b21"
   };
 
   // Same order as the legend: largest decline first.
+  // The near-white swatch needs an outline so it stays distinct from no-data grey.
   var BANDS = [
-    { id: "red", color: COLOURS.red, labelKey: "band_red" },
-    { id: "orange", color: COLOURS.orange, labelKey: "band_orange" },
-    { id: "yellow", color: COLOURS.yellow, labelKey: "band_yellow" },
-    { id: "light_green", color: COLOURS.light_green, labelKey: "band_near" },
-    { id: "dark_green", color: COLOURS.dark_green, labelKey: "band_gain" }
+    { id: "dark", color: COLOURS.dark, labelKey: "band_dark" },
+    { id: "medium", color: COLOURS.medium, labelKey: "band_medium" },
+    { id: "light", color: COLOURS.light, labelKey: "band_light" },
+    { id: "little", color: COLOURS.little, labelKey: "band_little", outline: true }
   ];
 
   function roundDisplayed(value, digits) {
@@ -40,11 +39,10 @@
   function bandIdForChange(value, digits) {
     var v = roundDisplayed(value, digits);
     if (v == null) return null;
-    if (v >= 0) return "dark_green";
-    if (v >= -1) return "light_green";
-    if (v >= -5) return "yellow";
-    if (v >= -15) return "orange";
-    return "red";
+    if (v >= -1) return "little";
+    if (v >= -5) return "light";
+    if (v >= -15) return "medium";
+    return "dark";
   }
 
   function bandForChange(value, digits) {

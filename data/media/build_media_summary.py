@@ -489,7 +489,7 @@ def main():
         {"topic": "Query asymmetry", "reason": "the story frame was built from keyword queries, most of them anti-Black framings (\"white supremacist\", \"anti-Black\", \"racially motivated\", \"hate crime\"); only \"anti-white\" and \"Black supremacist\" target the reverse framing. Black-on-White crime stories that use none of these phrases are not in the frame, so the pilot frame is expected to under-sample them. This is a pre-registered alternative explanation (label convention, query misfire)."},
         {"topic": "Inter-coder agreement", "reason": "single coder (joseph-a) so far; the method requires a second coder and an agreement rate before results are reported as findings."},
         {"topic": "NCVS 2018", "reason": "BJS published only percentages (Table 14) for 2018, not counts; count is null and not derived."},
-        {"topic": "Countries other than the United States", "reason": "No media coding has been done outside the U.S. 2023 keyword pilot. Those countries show pending / not yet measured for the index; Ethnic data completeness is still the shared crime-map score where it exists."},
+        {"topic": "Countries other than the United States", "reason": "No media coding has been done outside the U.S. 2023 keyword pilot. Those countries show pending / not yet measured for the index; The crime-map completeness score is still shared where it exists."},
     ]
     years_status = {s["year"]: s for s in baseline.get("years_status", [])}
     st = years_status.get(year)

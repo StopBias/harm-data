@@ -112,8 +112,19 @@
     .legend-items { display: flex; flex-wrap: wrap; gap: 4px 12px; }
     .legend-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
     /* ---------- View buttons ---------- */
-    .views {
+    .views-wrap {
       position: absolute; top: 12px; left: 12px; z-index: 3;
+      max-width: calc(100% - 24px);
+    }
+    /* Same type style as the Demographics map heading (.dv-h). A white chip keeps it readable on the map. */
+    .views-wrap .dv-h {
+      background: rgba(255,255,255,0.92);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: table;
+    }
+    body.media-active #crime-map-h { display: none; }
+    .views {
       display: flex; gap: 0; background: #fff; border-radius: 4px;
       box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(0,0,0,0.06); overflow: hidden;
     }
@@ -126,7 +137,8 @@
     .views button:hover { background: #f3f5f6; }
     .views button[aria-pressed="true"] { background: var(--brand-dark); color: #fff; }
     @media (max-width: 768px) {
-      .views { top: 8px; left: 8px; right: 8px; justify-content: stretch; }
+      .views-wrap { top: 8px; left: 8px; right: 8px; max-width: none; }
+      .views { justify-content: stretch; }
       .views button { flex: 1 1 0; padding: 7px 4px; font-size: 0.74rem; }
     }
     .legend-item.subtle { opacity: 0.75; }
@@ -321,6 +333,7 @@
 
     html[data-i18n-pending] header h1,
     html[data-i18n-pending] header .sub,
+    html[data-i18n-pending] .views-wrap,
     html[data-i18n-pending] .views,
     html[data-i18n-pending] .legend,
     html[data-i18n-pending] #panel,
@@ -597,7 +610,10 @@
   <div class="layout">
     <div class="map-wrap">
       <div id="map"></div>
-      <div class="views" id="views" role="group" aria-label="Map view"></div>
+      <div class="views-wrap">
+        <h3 class="dv-h" id="crime-map-h">Ethnic crime data by country</h3>
+        <div class="views" id="views" role="group" aria-label="Map view"></div>
+      </div>
       <div class="legend" id="legend"></div>
     </div>
 
@@ -665,7 +681,7 @@
         <p>Around the world, ethnic European children (commonly called “White”) are being made vulnerable to physical and psychological harm by incomplete and distorted interracial crime data from governments, and by biased media coverage that inverts the reality of interracial crime rates.</p>
         <p>The Ethnic Bias Data Explorer shows what data we currently have, what it shows, where the gaps are, and where the biases lie in government statistics and in media reporting.</p>
         <p>The Ethnic Bias Data Explorer reveals the need for better data so that we can protect children from harm, make better decisions as individuals informed by accurate media, and have governments that provide and use accurate interracial crime data.</p>
-        <p>The Crime tab scores ethnic data completeness from 0 to 100. Heritage is 75 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10 points, rates 7.5 and access 7.5. Neglect is not scored. The five harms are weighted homicide 27.78%, sexual abuse 22.22%, sex trafficking 22.22%, physical abuse 16.67% and online exploitation 11.11%. A proxy such as nationality, and a published “White” category that merges Hispanic people, cannot earn full heritage marks. A country with no real ethnicity data is capped at 25%.</p>
+        <p>The Crime tab scores ethnic crime data from 0 to 100. Heritage is 75 points and is awarded only for a published cross-table that records child victim heritage and offender heritage for the same cases. One-sided data scores 0 for heritage. Coverage is 10 points, rates 7.5 and access 7.5. Neglect is not scored. The five harms are weighted homicide 27.78%, sexual abuse 22.22%, sex trafficking 22.22%, physical abuse 16.67% and online exploitation 11.11%. A proxy such as nationality, and a published “White” category that merges Hispanic people, cannot earn full heritage marks. A country with no real ethnicity data is capped at 25%.</p>
         <p>For more information about the StopBias.org campaign to protect ethnic European children from the harms of antiwhite bias, please visit <a href="https://stopbias.org" target="_blank" rel="noopener">our website</a> and follow us on social media.</p>
         <!-- Social media links will be added here once handles are provided. -->
       </div>
@@ -918,6 +934,7 @@
       setTxt("opt-share", "explorer.measure_share");
       setTxt("opt-rate", "explorer.measure_rate");
       setTxt("ex-planned", "explorer.planned");
+      setTxt("crime-map-h", "crime_map_h");
       const notesK = document.getElementById("ex-notes-kicker");
       if (notesK) notesK.innerHTML = esc(t("explorer.notes")) + enOnlyBadge();
     }
@@ -928,8 +945,7 @@
       }
       document.getElementById("legend").innerHTML =
         `<div class="legend-title">${esc(t("legend.title"))}</div><div class="legend-items">` +
-        SCALE.map(b =>
-          `<span class="legend-item"><span class="swatch" style="background:${b.color}"></span>${esc(bandLabel(b))}</span>`).join("") +
+        `<span class="legend-item"><span class="swatch" style="background:${SCALE[0].color}"></span>${esc(t("legend.incomplete"))}</span>` +
         `<span class="legend-item"><span class="swatch" style="background:${NOT_ANALYZED_COLOR}"></span>${esc(t("legend.not_analyzed"))}</span>` +
         `<span class="legend-item subtle"><span class="swatch" style="background:${OUT_OF_SCOPE_COLOR}; box-shadow: inset 0 0 0 1px #d5d8da"></span>${esc(t("legend.out_of_scope"))}</span>` +
         "</div>";
@@ -1101,7 +1117,8 @@
 
     // ==================================================================
     // DATA
-    // 1) SCALE: 5 bands of data completeness (0-100 %). A country's colour is the band its score falls in.
+    // 1) SCALE: 5 bands of data completeness (0-100 %). Tooltip text still names the band.
+    //    Every scored country is painted with the red end of SCALE (SCALE[0]). No score keeps the grey styles.
     // 2) IN_SCOPE: every country that is part of the project (ISO 3166-1 alpha-3).
     //    In scope but not in `tracked` = darker grey, "Not yet analyzed".
     // 3) tracked: analysed countries keyed by ISO code, with a numeric score `completeness` (0-100).
@@ -1362,8 +1379,8 @@
         if (st && st.status === "out") return OUT_OF_SCOPE_COLOR;
         return MEDIA_PENDING_COLOR;
       }
-      return tracked[iso] ? ((bandFor(tracked[iso].completeness) || {}).color || NOT_ANALYZED_COLOR)
-                          : inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
+      if (tracked[iso] && bandFor(tracked[iso].completeness)) return SCALE[0].color;
+      return inScope.has(iso) ? NOT_ANALYZED_COLOR : OUT_OF_SCOPE_COLOR;
     };
 
     const statusText = info => {

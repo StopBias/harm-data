@@ -40,13 +40,12 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 
 | Shown change (percentage points) | Colour |
 |---|---|
-| 0 or more | dark green (`#1e8449`) |
-| −1 up to but not including 0 | light green (`#8bc34a`) |
-| −5 up to but not including −1 | yellow (`#f4d03f`) |
-| −15 up to but not including −5 | orange (`#f39c12`) |
-| below −15 | red (`#e74c3c`) |
+| −1 or more | near-white (`#fdf0ee`) |
+| −5 up to but not including −1 | light red (`#f5b7b1`) |
+| −15 up to but not including −5 | medium red (`#e74c3c`) |
+| below −15 | dark red (`#922b21`) |
 
-A shown 0.000 is treated as 0. Nigeria (0) and India (+0.006) are dark green. China (−0.031) is light green. The same function colours the map and the ranked bars. `scale.estimate_bands` remains in the file and is not used.
+A shown 0.000 is treated as 0. Nigeria (0), India (+0.006) and China (−0.031) are near-white. The same function colours the map and the ranked bars. `scale.estimate_bands` remains in the file and is not used. No-score grey stays `#b9bfc4` and out-of-group grey stays `#eceeef`.
 
 ## Grouping views
 
