@@ -152,8 +152,8 @@
   function bandFor(c) {
     const shown = displayValue(c);
     if (shown == null || !window.ShareScale) return null;
-    // Census rows show 1 decimal; UN proxy rows show 3. Band the rounded figure.
-    return window.ShareScale.bandForChange(shown, isProxyRow(c) ? 3 : 1);
+    // Census rows show 1 decimal; UN proxy rows show 2. Band the rounded figure.
+    return window.ShareScale.bandForChange(shown, isProxyRow(c) ? 2 : 1);
   }
 
   function colorForCountry(c, inGroup) {
@@ -186,39 +186,23 @@
     return !!(c && c.score_kind === "census");
   }
 
-  function tidyNum(n) {
-    const v = Number(n);
-    if (!Number.isFinite(v)) return null;
-    return v === 0 ? 0 : v;
-  }
-
-  function roundTo(n, digits) {
-    const v = tidyNum(n);
-    if (v == null) return null;
-    const f = Math.pow(10, digits);
-    return tidyNum(Math.round(v * f) / f);
-  }
-
-  // Change in founding population share. The file stores the change OUTSIDE
-  // the founding pool; the tab shows the opposite sign. Prefer the share
-  // difference when both endpoints exist.
+  // Relative percent change in the founding share.
+  // (latest share - first share) / first share * 100.
+  // Both shares are required. A stored percentage-point score is not used in their place.
   function censusFoundingChange(c) {
-    if (!isCensus(c)) return null;
+    if (!isCensus(c) || !c.census || !window.ShareScale) return null;
     const ce = c.census;
-    if (!ce) return null;
-    if (ce.latest_share_in_founding_pool != null && ce.first_share_in_founding_pool != null) {
-      return roundTo(Number(ce.latest_share_in_founding_pool) - Number(ce.first_share_in_founding_pool), 1);
-    }
-    if (ce.change_outside_founding_pool != null) return roundTo(-Number(ce.change_outside_founding_pool), 1);
-    if (c.score != null) return roundTo(-Number(c.score), 1);
-    return null;
+    return window.ShareScale.relativeChange(ce.latest_share_in_founding_pool, ce.first_share_in_founding_pool, 1);
   }
 
-  // UN migrant-origin proxy: change in the foreign-born share from outside
-  // the founding pool, 1990–2020, flipped so a fall in the founding share is negative.
+  // UN proxy: founding share in a year is 100 minus the cross-pool foreign-born share.
   function proxyChange(c) {
-    if (!c || c.score_change_pp_1990_2020 == null || c.score_change_pp_1990_2020 === "") return null;
-    return roundTo(-Number(c.score_change_pp_1990_2020), 3);
+    if (!c || !window.ShareScale) return null;
+    if (c.cross_pool_fb_pct_1990 == null || c.cross_pool_fb_pct_1990 === "") return null;
+    if (c.cross_pool_fb_pct_2020 == null || c.cross_pool_fb_pct_2020 === "") return null;
+    const first = 100 - Number(c.cross_pool_fb_pct_1990);
+    const latest = 100 - Number(c.cross_pool_fb_pct_2020);
+    return window.ShareScale.relativeChange(latest, first, 2);
   }
 
   function isCensusScore(c) {
@@ -251,7 +235,7 @@
   }
 
   function fmtChange(n, proxy) {
-    return fmtSigned(n, proxy ? 3 : 1);
+    return fmtSigned(n, proxy ? 2 : 1);
   }
 
   function fmtIndex(n) {
@@ -529,7 +513,7 @@
     const bands = (window.ShareScale && window.ShareScale.BANDS) || [];
     if (isAvailabilityView() || !bands.length) { el.hidden = true; el.innerHTML = ""; return; }
     el.hidden = false;
-    const order = ["little", "light", "medium", "dark"];
+    const order = ["growing", "little", "light", "medium", "dark"];
     el.innerHTML = order.map(id => {
       const b = bands.filter(x => x.id === id)[0];
       if (!b) return "";
