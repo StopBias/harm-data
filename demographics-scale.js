@@ -3,8 +3,8 @@
 // Green for little or no decline, then three reds. Census and UN-proxy values use the same cuts.
 //   v >= -1           green        little or no decline, including a gain
 //   -5 <= v < -1      light red
-//   -15 <= v < -5     medium red
-//   v < -15           dark red
+//   -15 <= v < -5     mid red
+//   v < -15           bright red
 (function (root, factory) {
   var api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
@@ -15,8 +15,8 @@
   var COLOURS = {
     little: "#8bc34a",
     light: "#f5b7b1",
-    medium: "#e74c3c",
-    dark: "#922b21"
+    medium: "#ec7165",
+    dark: "#e74c3c"
   };
 
   // Same order as the legend: largest decline first.

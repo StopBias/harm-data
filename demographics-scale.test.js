@@ -14,8 +14,8 @@ function assertEqual(actual, expected, label) {
 
 assertEqual(scale.COLOURS.little, "#8bc34a", "green");
 assertEqual(scale.COLOURS.light, "#f5b7b1", "light red");
-assertEqual(scale.COLOURS.medium, "#e74c3c", "medium red");
-assertEqual(scale.COLOURS.dark, "#922b21", "dark red");
+assertEqual(scale.COLOURS.medium, "#ec7165", "mid red");
+assertEqual(scale.COLOURS.dark, "#e74c3c", "bright red");
 assertEqual(scale.BANDS.length, 4, "four bands");
 assertEqual(scale.BANDS[3].color, scale.COLOURS.little, "green comes from one constant");
 assertEqual(scale.BANDS[3].outline, undefined, "green swatch has no outline");
@@ -40,7 +40,7 @@ assertEqual(id(-5, 1), "light", "census -5");
 assertEqual(id(-5.0001, 3), "light", "-5.0001 displays as -5.000");
 assertEqual(id(-5.0006, 3), "medium", "-5.0006 displays as -5.001");
 
-// -15 <= v < -5 is medium red. -15 itself stays medium.
+// -15 <= v < -5 is mid red. -15 itself stays mid red.
 assertEqual(id(-15, 3), "medium", "-15");
 assertEqual(id(-15, 1), "medium", "census -15");
 assertEqual(id(-15.0001, 3), "medium", "-15.0001 displays as -15.000");
