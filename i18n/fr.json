@@ -613,14 +613,14 @@
     "group_founding_AMI": "Tous les pays fondés par des populations amérindiennes",
     "group_founding_NAI": "Tous les pays fondés par des populations autochtones d’Amérique du Nord",
     "map_h": "Changement par pays",
-    "map_desc": "Le rouge indique une baisse plus forte de la part de la population fondatrice. Le vert indique une hausse ou une baisse plus faible. Lorsqu’un pays ne publie pas de données d’ethnicité, les mêmes couleurs montrent un proxy de l’ONU sur l’origine des migrants.",
+    "map_desc": "Le vert foncé indique l’absence de changement, ou une hausse, de la part de la population fondatrice. Une baisse de moins d’un point est en vert clair. Les baisses plus fortes passent par le jaune et l’orange jusqu’au rouge. Lorsqu’un pays ne publie pas de données d’ethnicité, les mêmes couleurs montrent un proxy de l’ONU sur l’origine des migrants.",
     "legend_title": "Variation de la part de la population fondatrice depuis le recensement de référence",
     "legend_most": "Baisse plus forte",
-    "legend_least": "Hausse ou baisse plus faible",
+    "legend_least": "Pas de changement ou une hausse",
     "legend_no_score": "Pas de score dans ce jeu de données",
     "legend_out_of_group": "Hors de ce groupe",
     "band_label": "{from}–{to}%",
-    "scale_note": "Les bandes, lues comme variation de la part de la population fondatrice, sont −20 ou moins, −20 à −10, −10 à 0, 0–10 et 10+. Ce ne sont pas les paliers de 20 points de l’onglet Criminalité, ni l’indice de dissimilarité de l’ONU. Une valeur négative signifie que la part de la population fondatrice a baissé. Les mêmes bandes colorent le proxy de l’ONU.",
+    "scale_note": "Les bandes utilisent la valeur affichée et ne se chevauchent pas. 0 ou plus est vert foncé. De −1 jusqu’à juste sous 0 est vert clair. De −5 jusqu’à juste sous −1 est jaune. De −15 jusqu’à juste sous −5 est orange. En dessous de −15 est rouge. Ce ne sont pas les paliers de l’onglet Criminalité ni l’indice de dissimilarité de l’ONU. Les mêmes couleurs servent au proxy de l’ONU.",
     "tooltip_score": "Indice de dissimilarité : {score}",
     "tooltip_quality": "Qualité {quality}",
     "bar_h": "Pays classés selon la variation de la part de la population fondatrice depuis le recensement de référence",
@@ -707,6 +707,11 @@
     "tooltip_proxy": "{score}, 1990–2020. Estimation de l’ONU : variation de la part des résidents nés dans un autre pays et dont l’origine diffère de la population fondatrice du pays (par exemple, une personne née en Inde vivant au Canada). Les personnes nées dans le pays sont comptées dans la population fondatrice ; c’est donc une borne inférieure. Lorsque les deux existent, la variation du recensement est en général bien plus grande (Canada : recensement -27,8 contre estimation de l’ONU -9,5 points).",
     "selected_proxy": "{score}, 1990–2020. Estimation de l’ONU : variation de la part des résidents nés dans un autre pays et dont l’origine diffère de la population fondatrice du pays (par exemple, une personne née en Inde vivant au Canada). Les personnes nées dans le pays sont comptées dans la population fondatrice ; c’est donc une borne inférieure. Lorsque les deux existent, la variation du recensement est en général bien plus grande (Canada : recensement -27,8 contre estimation de l’ONU -9,5 points).",
     "selected_d_line": "Indice de dissimilarité D de l’ONU, 1990–2020 : {d}.",
-    "legend_proxy_note": "Estimation de l’ONU : variation de la part des résidents nés dans un autre pays et dont l’origine diffère de la population fondatrice du pays (par exemple, une personne née en Inde vivant au Canada). Les personnes nées dans le pays sont comptées dans la population fondatrice ; c’est donc une borne inférieure. Lorsque les deux existent, la variation du recensement est en général bien plus grande (Canada : recensement -27,8 contre estimation de l’ONU -9,5 points)."
+    "legend_proxy_note": "Estimation de l’ONU : variation de la part des résidents nés dans un autre pays et dont l’origine diffère de la population fondatrice du pays (par exemple, une personne née en Inde vivant au Canada). Les personnes nées dans le pays sont comptées dans la population fondatrice ; c’est donc une borne inférieure. Lorsque les deux existent, la variation du recensement est en général bien plus grande (Canada : recensement -27,8 contre estimation de l’ONU -9,5 points).",
+    "band_gain": "0 ou plus",
+    "band_near": "−1 jusqu’à juste sous 0",
+    "band_yellow": "−5 jusqu’à juste sous −1",
+    "band_orange": "−15 jusqu’à juste sous −5",
+    "band_red": "en dessous de −15"
   }
 }

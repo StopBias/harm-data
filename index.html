@@ -677,6 +677,7 @@
   <link rel="stylesheet" href="demographics.css">
   <script src="media.js" defer></script>
   <script src="hollywood.js" defer></script>
+  <script src="demographics-scale.js" defer></script>
   <script src="demographics.js" defer></script>
   <script src="map-controls.js"></script>
 
@@ -1404,27 +1405,18 @@
       if (typeof window.syncDemoMapControls === "function") window.syncDemoMapControls();
     };
 
-    // Fitted world view (Antarctica hidden); allow only modest zoom (~3 levels in) and panning near the world
-    // Fitted world view (Antarctica hidden). West edge at -180 so the Chatham Islands (NZ, about -176.5) are not clipped;
-    // east edge at 180, the edge of the map (renderWorldCopies is off, so nothing can be shown east of 180).
-    const WORLD_BOUNDS = [[-180, -56], [180, 80]];
+    // World extent is replaced with the country-feature extent once the GeoJSON loads.
+    // The fallback already reaches Greenland (83.6°N) and the antimeridian.
+    let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
+    const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
     const PAN_SLACK = 0.2;               // pan up to 20% of the fitted world's width/height past each edge
-    // Padding that keeps a fitted region clear of the view buttons (top) and, on desktop, the legend overlay (bottom)
     function fitPadding() {
-      const viewsEl = document.getElementById("views"), legend = document.querySelector(".legend");
-      const mapRect = map.getContainer().getBoundingClientRect();
-      const top = viewsEl ? Math.max(12, viewsEl.getBoundingClientRect().bottom - mapRect.top + 8) : 48;
-      let bottom = 12;
-      if (legend && getComputedStyle(legend).position === "absolute") bottom = Math.max(12, mapRect.bottom - legend.getBoundingClientRect().top + 8);
-      let right = 12;
-      const ctrls = map.getContainer().querySelector(".maplibregl-ctrl-top-right");
-      if (ctrls) {
-        const r = ctrls.getBoundingClientRect();
-        if (r.width && r.top < mapRect.bottom - 40 && r.bottom > mapRect.top) {
-          right = Math.max(12, mapRect.right - r.left + 8);
-        }
-      }
-      return { top, bottom, left: 12, right };
+      return window.HarmMapControls.overlayPadding(map.getContainer(), [
+        document.getElementById("views"),
+        document.querySelector(".legend"),
+        document.getElementById("media-map-note"),
+        document.getElementById("age-picker")
+      ]);
     }
     // Pan limits as a Web Mercator box (x 0..1 west to east, y 0..1 north to south), applied by our own camera constraint
     // instead of setMaxBounds: MapLibre's maxBounds cannot extend past +/-180 and zooms the camera in when the box is
@@ -1446,13 +1438,11 @@
     }
     map.setTransformConstrain(constrainCamera);
     function fitWorld() {
-      panBox = null; map.setMinZoom(-2); map.setMaxZoom(22);
-      map.fitBounds(WORLD_BOUNDS, { padding: fitPadding(), animate: false });
-      const z = map.getZoom();
-      map.setMinZoom(z);                 // can't zoom out past the fitted world
-      map.setMaxZoom(z + 4);             // modest zoom-in (enough for the Europe view on phones)
+      panBox = null;
+      window.HarmMapControls.fitExtent(map, featureBounds, fitPadding());
       if (mapControls) mapControls.sync();
       // the fitted view's own box, widened by 20% of its width and height on each side
+      const z = map.getZoom();
       const c = map.getCanvas(), ws = 512 * Math.pow(2, z), ctr = map.getCenter();
       const cx = mercX(ctr.lng), cy = mercY(ctr.lat), w = c.clientWidth / ws, h = c.clientHeight / ws;
       panBox = { x0: cx - w / 2 - w * PAN_SLACK, x1: cx + w / 2 + w * PAN_SLACK,
@@ -1502,6 +1492,8 @@
       fetch(COUNTRIES_URL)
         .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
         .then(data => {
+          featureBounds = window.HarmMapControls.boundsFromCountries(data);
+          if (currentView === "world") fitWorld();
           map.addSource("countries", { type: "geojson", data, promoteId: "iso_a3" });
           map.addLayer({
             id: "countries-fill", type: "fill", source: "countries",
@@ -2374,6 +2366,11 @@
     window.panBox = panBox;
     window.mercX = mercX;
     window.mercY = mercY;
+    window.refitWorldIfMin = function () {
+      if (currentView !== "world") return;
+      if (map.getZoom() > map.getMinZoom() + 0.08) return;
+      fitWorld();
+    };
     window.goToView = goToView;
     window.t = t;
     window.__i18nTest = () => ({

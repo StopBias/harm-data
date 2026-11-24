@@ -12,7 +12,8 @@
 
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
-  const WORLD_BOUNDS = [[-180, -56], [180, 80]];
+  const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
+  let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
@@ -131,10 +132,6 @@
     return state.viewId === "availability";
   }
 
-  function bands() {
-    return (data && data.scale && Array.isArray(data.scale.bands)) ? data.scale.bands : [];
-  }
-
   function noScoreColor() {
     return (data && data.scale && data.scale.no_score_color) || DEFAULT_NO_SCORE;
   }
@@ -148,26 +145,17 @@
     return mapCols[kind] || AVAIL_DEFAULTS[kind] || noScoreColor();
   }
 
-  function bandIn(score, list) {
-    for (let i = 0; i < list.length; i++) {
-      const b = list[i];
-      if (score >= b.from && (score < b.to || (i === list.length - 1 && score <= b.to))) return b;
-    }
-    return null;
-  }
-
   function bandFor(c) {
     const shown = displayValue(c);
-    if (shown == null) return null;
-    // Look up the negated value so the file's outside-pool bands keep their colours.
-    return bandIn(-shown, bands());
+    if (shown == null || !window.ShareScale) return null;
+    // Census rows show 1 decimal; UN proxy rows show 3. Band the rounded figure.
+    return window.ShareScale.bandForChange(shown, isProxyRow(c) ? 3 : 1);
   }
 
   function colorForCountry(c, inGroup) {
     if (!inGroup) return outGroupColor();
     if (!c) return noScoreColor();
     if (isAvailabilityView()) return availColor(c.availability || "none");
-    if (c.score == null) return noScoreColor();
     const b = bandFor(c);
     return b ? b.color : noScoreColor();
   }
@@ -251,25 +239,6 @@
   function fmtIndex(n) {
     if (n == null || !Number.isFinite(Number(n))) return "—";
     return fmtSigned(n, Math.abs(Number(n)) >= 0.1 ? 1 : 3);
-  }
-
-  // Bands in the file are cut on the outside-pool change. Mirror the label
-  // onto founding-share change. Colours stay with the same countries: a
-  // larger decline in the founding share keeps the stronger change colour.
-  function censusBandLabel(b) {
-    if (!b) return "";
-    const from = Number(b.from);
-    const to = Number(b.to);
-    if (b.open_ended && from > 0) return "−" + from + " or below";
-    if (from <= -50) return String(Math.abs(to)) + "+";
-    const lo = -to;
-    const hi = -from;
-    const mag = n => (Number(n) < 0 ? "−" + Math.abs(n) : String(n));
-    if (lo < 0 && hi === 0) return mag(lo) + " to 0";
-    if (lo < 0 && hi < 0) return mag(lo) + " to " + mag(hi);
-    if (lo === 0 && hi > 0) return "0–" + hi;
-    if (lo > 0 && hi > lo) return lo + "–" + hi;
-    return mag(lo) + "–" + mag(hi);
   }
 
   function countryName(c) {
@@ -532,9 +501,9 @@
         </div>`;
       return;
     }
-    const list = bands().slice().reverse();
+    const list = (window.ShareScale && window.ShareScale.BANDS) || [];
     const items = list.map(b =>
-      `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(censusBandLabel(b))}</span>`
+      `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
     ).join("");
     el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
       <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
@@ -616,38 +585,20 @@
   }
 
   function demoFitPadding() {
-    const legend = view.querySelector("#dv-legend");
     const mapEl = document.getElementById("dv-map");
-    const pad = { top: 12, bottom: 16, left: 12, right: 16 };
-    if (!mapEl) return pad;
-    const mapRect = mapEl.getBoundingClientRect();
-    if (legend) {
-      const r = legend.getBoundingClientRect();
-      if (r.height && r.top < mapRect.bottom) pad.bottom = Math.max(16, mapRect.bottom - r.top + 8);
-    }
-    const ctrls = mapEl.querySelector(".maplibregl-ctrl-top-right");
-    if (ctrls) {
-      const r = ctrls.getBoundingClientRect();
-      if (r.width) pad.right = Math.max(16, mapRect.right - r.left + 8);
-    }
-    return pad;
+    if (!mapEl || !window.HarmMapControls) return { top: 12, right: 16, bottom: 16, left: 12 };
+    return window.HarmMapControls.overlayPadding(mapEl, [view.querySelector("#dv-legend")]);
   }
 
   function fitDemoWorld(animate) {
-    if (!map) return;
+    if (!map || !window.HarmMapControls) return;
     try { map.resize(); } catch (e) {}
-    map.setMinZoom(0);
-    map.setMaxZoom(22);
-    map.fitBounds(WORLD_BOUNDS, {
-      padding: demoFitPadding(),
-      animate: !!animate,
-      duration: animate ? 400 : 0
-    });
-    const z = map.getZoom();
-    map.setMinZoom(z);
-    map.setMaxZoom(z + 4);
+    window.HarmMapControls.fitExtent(map, featureBounds, demoFitPadding());
     demoAtWorld = true;
     if (demoControls) demoControls.sync();
+    if (animate) {
+      // fitExtent jumps. A second pass picks up legend size after the first paint.
+    }
   }
 
   function ensureMap() {
@@ -702,6 +653,12 @@
       map.touchZoomRotate.disableRotation();
       map.keyboard.disableRotation();
     } catch (e) {}
+    // MapLibre otherwise refuses to zoom out past the point where the world
+    // fills the canvas width, which clips Greenland and the far south.
+    map.setTransformConstrain((lngLat, zoom) => ({
+      center: lngLat,
+      zoom: Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), zoom))
+    }));
     if (window.HarmMapControls) {
       demoControls = window.HarmMapControls.attach(map, {
         onReset: function () { fitDemoWorld(true); }
@@ -730,6 +687,8 @@
         .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
         .then(gj => {
           if (!map) return;
+          featureBounds = window.HarmMapControls.boundsFromCountries(gj);
+          fitDemoWorld(false);
           map.addSource("countries", { type: "geojson", data: gj, promoteId: "iso_a3" });
           map.addLayer({
             id: "countries-fill", type: "fill", source: "countries",

@@ -613,14 +613,14 @@
     "group_founding_AMI": "Wszystkie kraje założone przez ludność amerindiańską",
     "group_founding_NAI": "Wszystkie kraje założone przez rdzenną ludność Ameryki Północnej",
     "map_h": "Zmiana według kraju",
-    "map_desc": "Czerwień oznacza większy spadek udziału populacji założycielskiej. Zieleń oznacza wzrost albo mniejszy spadek. Tam, gdzie kraj nie publikuje danych etnicznych, te same kolory pokazują przybliżenie ONZ dotyczące pochodzenia migrantów.",
+    "map_desc": "Ciemna zieleń oznacza brak zmiany albo wzrost udziału populacji założycielskiej. Spadek o mniej niż 1 punkt jest jasnozielony. Większe spadki idą przez żółty i pomarańczowy do czerwieni. Tam, gdzie kraj nie publikuje danych etnicznych, te same kolory pokazują przybliżenie ONZ dotyczące pochodzenia migrantów.",
     "legend_title": "Zmiana udziału ludności założycielskiej od spisu bazowego",
     "legend_most": "Większy spadek",
-    "legend_least": "Wzrost albo mniejszy spadek",
+    "legend_least": "Bez zmiany albo wzrost",
     "legend_no_score": "Brak wyniku w tym zbiorze danych",
     "legend_out_of_group": "Poza tą grupą",
     "band_label": "{from}–{to}%",
-    "scale_note": "Pasma, jako zmiana udziału populacji założycielskiej, to −20 lub mniej, −20 do −10, −10 do 0, 0–10 i 10+. To nie są przedziały co 20 punktów z karty Przestępczość ani wskaźnik odmienności ONZ. Wartości ujemne oznaczają, że udział populacji założycielskiej spadł. Te same pasma kolorują przybliżenie ONZ.",
+    "scale_note": "Pasma używają pokazanej wartości i nie zachodzą na siebie. 0 lub więcej jest ciemnozielone. Od −1 do tuż poniżej 0 jest jasnozielone. Od −5 do tuż poniżej −1 jest żółte. Od −15 do tuż poniżej −5 jest pomarańczowe. Poniżej −15 jest czerwone. To nie są przedziały karty Przestępczość ani wskaźnik odmienności ONZ. Te same kolory dotyczą przybliżenia ONZ.",
     "tooltip_score": "Indeks odmienności: {score}",
     "tooltip_quality": "Jakość {quality}",
     "bar_h": "Kraje uporządkowane według zmiany udziału ludności założycielskiej od spisu bazowego",
@@ -707,6 +707,11 @@
     "tooltip_proxy": "{score}, 1990–2020. Szacunek ONZ: zmiana udziału mieszkańców urodzonych w innym kraju, których pochodzenie różni się od populacji założycielskiej kraju (na przykład osoba urodzona w Indiach i mieszkająca w Kanadzie). Osoby urodzone w kraju liczy się do populacji założycielskiej, więc jest to dolna granica; tam, gdzie są obie liczby, zmiana spisowa jest zwykle znacznie większa (Kanada: spis -27,8 wobec szacunku ONZ -9,5 punktu).",
     "selected_proxy": "{score}, 1990–2020. Szacunek ONZ: zmiana udziału mieszkańców urodzonych w innym kraju, których pochodzenie różni się od populacji założycielskiej kraju (na przykład osoba urodzona w Indiach i mieszkająca w Kanadzie). Osoby urodzone w kraju liczy się do populacji założycielskiej, więc jest to dolna granica; tam, gdzie są obie liczby, zmiana spisowa jest zwykle znacznie większa (Kanada: spis -27,8 wobec szacunku ONZ -9,5 punktu).",
     "selected_d_line": "Wskaźnik odmienności D ONZ, 1990–2020: {d}.",
-    "legend_proxy_note": "Szacunek ONZ: zmiana udziału mieszkańców urodzonych w innym kraju, których pochodzenie różni się od populacji założycielskiej kraju (na przykład osoba urodzona w Indiach i mieszkająca w Kanadzie). Osoby urodzone w kraju liczy się do populacji założycielskiej, więc jest to dolna granica; tam, gdzie są obie liczby, zmiana spisowa jest zwykle znacznie większa (Kanada: spis -27,8 wobec szacunku ONZ -9,5 punktu)."
+    "legend_proxy_note": "Szacunek ONZ: zmiana udziału mieszkańców urodzonych w innym kraju, których pochodzenie różni się od populacji założycielskiej kraju (na przykład osoba urodzona w Indiach i mieszkająca w Kanadzie). Osoby urodzone w kraju liczy się do populacji założycielskiej, więc jest to dolna granica; tam, gdzie są obie liczby, zmiana spisowa jest zwykle znacznie większa (Kanada: spis -27,8 wobec szacunku ONZ -9,5 punktu).",
+    "band_gain": "0 lub więcej",
+    "band_near": "−1 do tuż poniżej 0",
+    "band_yellow": "−5 do tuż poniżej −1",
+    "band_orange": "−15 do tuż poniżej −5",
+    "band_red": "poniżej −15"
   }
 }
