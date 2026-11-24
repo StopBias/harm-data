@@ -679,6 +679,7 @@
   <script src="media.js" defer></script>
   <script src="hollywood.js" defer></script>
   <script src="demographics-scale.js" defer></script>
+  <script src="demographics-supplements.js" defer></script>
   <script src="demographics.js" defer></script>
   <script src="map-controls.js"></script>
 
@@ -1137,7 +1138,7 @@
     const tracked = {
       USA: {
         completeness: 14,   // overwritten by data/usa.json when it loads (detailed files set the exact score)
-        note: "Victim race is published for abuse, neglect and deaths; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
+        note: "Victim race is published for homicide and other violent crime; perpetrator race only partly. No source identifies ethnic Europeans separately. Details below the map."
       },
       GBR: {
         completeness: 14,   // overwritten by data/gbr.json when it loads
@@ -1485,6 +1486,30 @@
       map.fitBounds(VIEWS[name], { padding: fitPadding(), duration: animate ? 900 : 0, essential: true });
     }
 
+    let mapCountriesReady = false;
+    function syncHarmFromUrl() {
+      if (!D) return;
+      const tokens = harmTokensFromLocation();
+      if (!tokens.length) return;
+      const next = pickHarmId(D);
+      if (!next || next === ex.harm) return;
+      ex.harm = next;
+      fillHarmSelect(D);
+      renderExplorer();
+      document.dispatchEvent(new CustomEvent("harm:explorer", { detail: { iso: D.iso_a3 } }));
+    }
+    function applyCrimeDeepLink() {
+      if (!mapCountriesReady || !crimeDeepLinkActive()) return;
+      const iso = countryFromLocation();
+      if (iso && (iso !== selectedId || shownIso !== iso)) {
+        try { showCountry(iso, countryDisplayName(iso)); }
+        catch (err) { console.error(err); }
+        return;
+      }
+      syncHarmFromUrl();
+    }
+    window.addEventListener("hashchange", applyCrimeDeepLink);
+
     map.on("load", () => {
       fitWorld();
       updateAttribution();
@@ -1527,6 +1552,8 @@
             }, "countries-line");
           }
           refreshHatch();
+          mapCountriesReady = true;
+          applyCrimeDeepLink();
           /* FUTURE: sub-national layer (Natural Earth admin-1), see README.
           map.addSource("admin1", { type: "geojson", data: "data/admin1-<country>.geojson", promoteId: "iso_3166_2" });
           map.addLayer({ id: "admin1-fill", type: "fill", source: "admin1", minzoom: 2.5,
@@ -1702,7 +1729,131 @@
 
     const groupLabel = id => ((D.groups.find(g => g.id === id) || {}).label) || (D.extra_group_labels || {})[id] || id;
     const listLabels = ids => localeAndJoin(ids.map(groupLabel));
-    const currentHarm = () => (D && D.harms.find(h => h.id === ex.harm)) || (D && D.harms[0]);
+
+    // Child abuse and neglect is hidden on the United States Crime view only.
+    // It does not help read ethnic bias in interracial violence. Homicide, sexual
+    // abuse, violent crime (assault and robbery), and the other crime categories stay.
+    // The figures remain in data/usa.json and data/age/usa.json.
+    const US_HIDDEN_HARM_TOKENS = [
+      "maltreatment",
+      "fatalities",
+      "neglect",
+      "abuse and neglect",
+      "abuse and neglect all types",
+      "deaths from abuse and neglect",
+      "child abuse and neglect",
+      "child abuse",
+      "child neglect"
+    ];
+    function normHarmToken(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[_+/]+/g, " ")
+        .replace(/-/g, " ")
+        .replace(/[()]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+    function usHarmHidden(iso, harmOrToken) {
+      if (iso !== "USA") return false;
+      const id = harmOrToken && typeof harmOrToken === "object" ? harmOrToken.id : harmOrToken;
+      const label = harmOrToken && typeof harmOrToken === "object" ? harmOrToken.label : harmOrToken;
+      const idN = normHarmToken(id);
+      const labelN = normHarmToken(label);
+      return US_HIDDEN_HARM_TOKENS.some(tok => idN === tok || labelN === tok);
+    }
+    function visibleHarms(detail) {
+      if (!detail || !Array.isArray(detail.harms)) return [];
+      return detail.harms.filter(h => !usHarmHidden(detail.iso_a3, h));
+    }
+    function harmTokensFromLocation() {
+      const tokens = [];
+      let hash = "";
+      let params = null;
+      try {
+        const u = new URL(location.href);
+        params = u.searchParams;
+        hash = decodeURIComponent((u.hash || "").replace(/^#/, ""));
+      } catch (e) {
+        return tokens;
+      }
+      ["harm", "category", "offence", "offense"].forEach(k => {
+        const v = params.get(k);
+        if (v) tokens.push(v);
+      });
+      hash.split(/[/?&]/).filter(Boolean).forEach(seg => {
+        const eq = seg.split("=");
+        if (eq.length === 2 && ["harm", "category", "offence", "offense"].includes(eq[0].toLowerCase())) {
+          tokens.push(eq[1]);
+          return;
+        }
+        const n = normHarmToken(seg);
+        if (!n || n === "crime" || n === "map") return;
+        if (US_HIDDEN_HARM_TOKENS.includes(n)) { tokens.push(seg); return; }
+        const known = Object.keys(DETAIL).some(iso => {
+          const harms = DETAIL[iso] && DETAIL[iso].harms;
+          return Array.isArray(harms) && harms.some(h => normHarmToken(h.id) === n || normHarmToken(h.label) === n);
+        });
+        if (known) tokens.push(seg);
+      });
+      return tokens;
+    }
+    function countryFromLocation() {
+      try {
+        const u = new URL(location.href);
+        const named = u.searchParams.get("country") || u.searchParams.get("iso");
+        if (named && inScope.has(named.toUpperCase())) return named.toUpperCase();
+        const hash = decodeURIComponent((u.hash || "").replace(/^#/, ""));
+        const segs = hash.split(/[/?&]/).filter(Boolean);
+        for (let i = 0; i < segs.length; i++) {
+          const eq = segs[i].split("=");
+          if (eq.length === 2 && (eq[0].toLowerCase() === "country" || eq[0].toLowerCase() === "iso")) {
+            const iso = eq[1].toUpperCase();
+            if (inScope.has(iso)) return iso;
+          }
+          if (/^[A-Za-z]{3}$/.test(segs[i]) && inScope.has(segs[i].toUpperCase())) return segs[i].toUpperCase();
+        }
+      } catch (e) {}
+      return null;
+    }
+    function crimeDeepLinkActive() {
+      const hash = (location.hash || "").toLowerCase();
+      if (hash.startsWith("#media") || hash.startsWith("#about") || hash.startsWith("#demographics") || hash.startsWith("#hollywood")) return false;
+      if (hash === "#crime" || hash === "#map" || hash.startsWith("#crime/") || hash.startsWith("#map/") || hash.startsWith("#crime?") || hash.startsWith("#map?")) return true;
+      return harmTokensFromLocation().length > 0;
+    }
+    // Hidden or unknown category links fall back to the first remaining harm
+    // (homicide for the United States). A link to a category that is still shown is kept.
+    function pickHarmId(detail) {
+      const vis = visibleHarms(detail);
+      if (!vis.length) return null;
+      const tokens = harmTokensFromLocation();
+      if (tokens.some(tok => usHarmHidden(detail.iso_a3, tok))) return vis[0].id;
+      for (let i = 0; i < tokens.length; i++) {
+        const n = normHarmToken(tokens[i]);
+        const match = vis.find(h => normHarmToken(h.id) === n || normHarmToken(h.label) === n);
+        if (match) return match.id;
+      }
+      return vis[0].id;
+    }
+    function fillHarmSelect(detail) {
+      const harms = visibleHarms(detail);
+      const sel = $("sel-harm");
+      sel.innerHTML = harms.map(h => `<option value="${esc(h.id)}">${esc(h.label)}</option>`).join("");
+      if (!harms.some(h => h.id === ex.harm)) ex.harm = harms.length ? harms[0].id : null;
+      if (ex.harm) sel.value = ex.harm;
+      if (ex.harm && sel.value !== ex.harm && harms[0]) {
+        ex.harm = harms[0].id;
+        sel.value = ex.harm;
+      }
+    }
+    const currentHarm = () => {
+      if (!D) return null;
+      const vis = visibleHarms(D);
+      return vis.find(h => h.id === ex.harm) || vis[0] || null;
+    };
+    window.harmHiddenFromUi = usHarmHidden;
 
     // Value for a group; falls back to a combined figure where a source merges groups (e.g. Asian + Pacific Islander)
     function pick(obj, group) {
@@ -2051,6 +2202,11 @@
 
     function renderResult() {
       const harm = currentHarm();
+      if (!harm) {
+        $("ex-result").innerHTML = "";
+        $("ex-notes").hidden = true;
+        return;
+      }
       const notes = [];
       const chunks = [];
       const v = ex.victim, p = ex.perp, cross = harm.cross;
@@ -2146,6 +2302,7 @@
 
     function renderSources() {
       const harm = currentHarm();
+      if (!harm) { $("ex-sources").innerHTML = ""; return; }
       const ids = [harm.victims.source, harm.perpetrators.source, harm.cross.source, ...(harm.also || []).map(a => a.data.source), ...(harm.extra_sources || [])];
       if (ex.measure === "rate") ids.push(...(harm.rate_sources || []));
       const uniq = [...new Set(ids)].filter(id => D.sources[id]);
@@ -2229,6 +2386,11 @@
 
     function renderExplorer() {
       if (!D) return;
+      const vis = visibleHarms(D);
+      if (vis.length && !vis.some(h => h.id === ex.harm)) {
+        ex.harm = pickHarmId(D);
+        fillHarmSelect(D);
+      }
       applyAvailability();
       renderResult();
       renderSources();
@@ -2290,12 +2452,15 @@
       const customP = (detail.select_labels || {}).perpetrator;
       $("lbl-victim").innerHTML = customV ? (esc(customV) + enOnlyBadge()) : esc(t("explorer.victim_heritage"));
       $("lbl-perp").innerHTML = customP ? (esc(customP) + enOnlyBadge()) : esc(t("explorer.perp_heritage"));
-      $("ex-lede").innerHTML = esc(detail.summary) + enOnlyBadge();
+      const lede = detail.iso_a3 === "USA"
+        ? "The US publishes more crime data by race than any other country reviewed, mostly for victims. Perpetrator race for violent crime is often perceived or unknown, and no source separately identifies ethnic Europeans."
+        : detail.summary;
+      $("ex-lede").innerHTML = esc(lede || "") + enOnlyBadge();
       if (shownIso === iso && D === detail) return;   // same country: keep the reader's selections
       shownIso = iso; D = detail;
-      Object.assign(ex, { harm: detail.harms[0].id, victim: "all", perp: "all", measure: "share" });
-      $("sel-harm").innerHTML = detail.harms.map(h => `<option value="${h.id}">${esc(h.label)}</option>`).join("");
-      $("sel-harm").value = ex.harm;
+      Object.assign(ex, { harm: null, victim: "all", perp: "all", measure: "share" });
+      ex.harm = pickHarmId(detail);
+      fillHarmSelect(detail);
       renderMethod();
       renderExplorer();
     }
@@ -2304,6 +2469,8 @@
       $(id).addEventListener("change", e => {
         if (!D) return;
         ex[key] = e.target.value;
+        if (key === "harm" && usHarmHidden(D.iso_a3, ex.harm)) ex.harm = pickHarmId(D);
+        fillHarmSelect(D);
         applyAvailability(key);
         renderResult();
         renderSources();
@@ -2421,6 +2588,7 @@
       .then(() => {
         refreshFill();
         if (selectedId) showCountry(selectedId, selectedName);
+        applyCrimeDeepLink();
         if (mapMode === "media" && typeof window.renderMediaView === "function") window.renderMediaView();
       })
       .catch(err => console.error(err));

@@ -210,7 +210,7 @@
       return;
     }
     const eh = explorerHarm();
-    const keys = Object.keys(d.harms);
+    const keys = Object.keys(d.harms).filter(k => !(window.harmHiddenFromUi && window.harmHiddenFromUi(iso, k)));
     let primary = keys.filter(k => (d.harms[k].explorer_harms || []).includes(eh));
     if (!primary.length) primary = keys.slice(0, 1);
     const rest = keys.filter(k => !primary.includes(k));

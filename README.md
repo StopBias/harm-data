@@ -49,6 +49,8 @@ A grouping switcher, stored in the data file rather than hardcoded, filters both
 
 Country-to-pool assignments and UN M49 subregions come from the project’s `country_pool_map.csv`. Markup lives in `demographics.js` / `demographics.css`; strings live in `i18n/*.json` under the `demographics.*` prefix. Nothing is invented: if a country has no usable official series it is shown as an estimate or as having no score. Sources and limits are in `data/demographics/README.md`.
 
+Two supplements are additional and do not change the default map colours or any country score. France, Germany and Spain show an origin series (v1.14.0) in the country panel: ethnic European share over two generations for France (89.50 in 2011 to 86.47 in 2021) and Germany (88.88 in 2023 to 87.99 in 2025, provisional, on the Census 2022 frame; the 2021 value 89.71 is a separate point labelled “Census 2011 frame, not comparable”), and first generation only for Spain (98.47 in 1998 to 84.63 in 2026). An optional control, “Change since earliest 1960–79 census”, draws the v1.15.0 baseline for countries with a published row. The number uses the same sign as the default score: a negative figure means the founding share fell. Rows marked NOT VERIFIED stay in the data file and are not shown. Armenia and Georgia carry a classification-pending note.
+
 ## Adding / analysing a country
 1. Make sure its ISO 3166-1 alpha-3 code is in `IN_SCOPE` (all European states except Cyprus and the dependencies already are).
 2. Add one entry to `tracked`:

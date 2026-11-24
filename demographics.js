@@ -12,6 +12,9 @@
 
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
+  const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
+  const BASELINE_URL = "data/demographics/baseline_1960_1979.json";
+  const Supplements = window.HarmDemographicsSupplements || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
@@ -24,7 +27,7 @@
     none: "#eceeef"
   };
 
-  let data = null, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let data = null, originData = null, baselineData = null, baselineByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
   let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
@@ -35,7 +38,8 @@
     query: "",
     sortKey: "high",
     details: false,
-    selected: null
+    selected: null,
+    baselineView: false
   };
 
   function enOnlyBadge() {
@@ -154,9 +158,23 @@
 
   function colorForCountry(c, inGroup) {
     if (!inGroup) return outGroupColor();
+    if (state.baselineView) return colorForBaseline(c);
     if (!c) return noScoreColor();
     if (isAvailabilityView()) return availColor(c.availability || "none");
     const b = bandFor(c);
+    return b ? b.color : noScoreColor();
+  }
+
+  function baselineRow(c) {
+    if (!c) return null;
+    return baselineByIso[c.iso3] || baselineByIso[c.id] || null;
+  }
+
+  function colorForBaseline(c) {
+    if (!c || !Supplements || !window.ShareScale) return noScoreColor();
+    const scored = Supplements.colourScore(true, baselineRow(c));
+    if (!scored || scored.useExisting || scored.value == null) return noScoreColor();
+    const b = window.ShareScale.bandForChange(scored.value, 1);
     return b ? b.color : noScoreColor();
   }
 
@@ -311,6 +329,10 @@
             <select id="dv-group"></select>
           </label>
         </div>
+        <label class="dv-baseline-lab" id="dv-baseline-lab">
+          <input type="checkbox" id="dv-baseline">
+          <span id="dv-baseline-lbl"></span>
+        </label>
         <div class="dv-map-wrap">
           <div id="dv-map" role="img"></div>
           <div class="dv-map-error" id="dv-map-error" hidden></div>
@@ -386,10 +408,14 @@
     const p4 = view.querySelector("#dv-records-p4");
     if (p4) p4.textContent = t("records_p4", worldContextVars());
     set("#dv-map-h", t("map_h"));
-    set("#dv-map-desc", t("map_desc"));
-    set("#dv-scale-note", isAvailabilityView() ? t("avail_scale_note") : t("scale_note"));
-    set("#dv-bar-h", t("bar_h"));
-    set("#dv-bar-desc", t("bar_desc"));
+    set("#dv-map-desc", state.baselineView ? t("baseline_map_desc") : t("map_desc"));
+    set("#dv-scale-note", state.baselineView ? t("baseline_scale_note") : (isAvailabilityView() ? t("avail_scale_note") : t("scale_note")));
+    set("#dv-bar-h", state.baselineView ? t("baseline_bar_h") : t("bar_h"));
+    set("#dv-bar-desc", state.baselineView ? t("baseline_bar_desc") : t("bar_desc"));
+    set("#dv-baseline-lbl", t("baseline_toggle"));
+    const baselineBox = view.querySelector("#dv-baseline");
+    if (baselineBox) baselineBox.checked = !!state.baselineView;
+    view.setAttribute("data-baseline-view", state.baselineView ? "on" : "off");
     set("#dv-search-lbl", t("search"));
     const search = view.querySelector("#dv-search");
     if (search) {
@@ -486,6 +512,17 @@
   function renderLegend() {
     const el = view.querySelector("#dv-legend");
     if (!el) return;
+    if (state.baselineView) {
+      const list = (window.ShareScale && window.ShareScale.BANDS) || [];
+      el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
+        <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
+        <div class="dv-legend-items">${list.map(b =>
+          `<span class="dv-legend-item"><span class="swatch" style="background:${esc(b.color)}"></span>${esc(t(b.labelKey))}</span>`
+        ).join("")}
+        <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("baseline_none"))}</span>
+        </div>`;
+      return;
+    }
     if (isAvailabilityView()) {
       const items = [
         ["census", t("legend_census")],
@@ -744,6 +781,7 @@
 
   function tooltipHtml(c) {
     const name = countryName(c);
+    if (state.baselineView) return baselineTooltip(c, name);
     if (isAvailabilityView()) {
       return `<strong>${esc(name)}</strong><br>${esc(availLabel(c))}`;
     }
@@ -903,7 +941,262 @@
       lines.push(`<p class="dv-meta">${esc(c.mapping_note)}${enOnlyBadge()}</p>`);
     }
     el.hidden = false;
-    el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p>${lines.join("")}${ce ? checkpointTable(c) : ""}`;
+    el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p>${lines.join("")}${ce ? checkpointTable(c) : ""}${originBlock(c)}${baselineBlock(c)}`;
+  }
+
+  function share2(n) {
+    return fmt(n, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function formatBaselineShare(v) {
+    if (typeof v === "number" && Number.isFinite(v)) {
+      return fmt(v, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+    if (typeof v === "string" && v.trim()) return v;
+    return "—";
+  }
+
+  function originBlock(c) {
+    if (!Supplements || !originData || !originData.countries || !c) return "";
+    const model = Supplements.originModel(originData.countries[c.iso3] || originData.countries[c.id]);
+    if (!model) return "";
+    const version = originData.version ? t("baseline_version", { version: originData.version }) : "";
+    const genKey = model.generations === "first" ? "origin_gen_esp" : (model.iso === "DEU" ? "origin_gen_deu" : "origin_gen_fra");
+    const headline = originHeadline(model);
+    const svg = Supplements.originChartSvg(model, share2);
+    const legend = originLegend(model);
+    const tables = originTables(model);
+    const sensitivity = originSensitivity(model);
+    const snapshot = model.snapshotNote
+      ? `<p class="dv-footnote">${esc(model.snapshotNote)}${enOnlyBadge()}</p>`
+      : "";
+    const breakNote = model.iso === "ESP"
+      ? `<p class="dv-footnote">${esc(t("origin_esp_break"))}${enOnlyBadge()}</p>`
+      : "";
+    const sources = sourceLinks(model.sources, t("origin_sources"));
+    return `<section class="dv-extra" aria-label="${esc(t("origin_h"))}">
+      <h4>${esc(t("origin_h"))}${version ? " (" + esc(version) + ")" : ""}</h4>
+      <p class="dv-meta">${esc(model.label)}</p>
+      <p>${esc(t("origin_note"))}${enOnlyBadge()}</p>
+      <p>${esc(t(genKey))}${enOnlyBadge()}</p>
+      ${headline}
+      <div class="dv-chart-wrap">${svg}</div>
+      ${legend}
+      ${breakNote}
+      ${tables}
+      ${sensitivity}
+      ${snapshot}
+      ${sources}
+    </section>`;
+  }
+
+  function originHeadline(model) {
+    if (model.iso === "DEU") {
+      const line = (model.tracks[0] && model.tracks[0].points) || [];
+      const old = model.detached[0];
+      if (!line.length) return "";
+      const a = line[0];
+      const b = line[line.length - 1];
+      const span = t("origin_span_prov", {
+        first: share2(a.value),
+        first_year: fmtYear(a.year),
+        latest: share2(b.value),
+        latest_year: fmtYear(b.year)
+      });
+      const detached = old
+        ? `<p class="dv-meta">${esc(fmtYear(old.year))}: ${esc(share2(old.value))}. ${esc(t("origin_detached"))}</p>`
+        : "";
+      return `<p>${esc(span)}</p>${detached}${originChangeLines(model)}`;
+    }
+    const ends = endpointSpan(model);
+    if (!ends) return "";
+    return `<p>${esc(t("origin_span", ends))}</p>${originChangeLines(model)}`;
+  }
+
+  function fmtSigned2(n) {
+    return Number(n).toLocaleString(locale(), {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      signDisplay: "exceptZero"
+    });
+  }
+
+  function originChangeLines(model) {
+    return (model.tracks || []).map(track => {
+      if (track.change == null || !track.points || track.points.length < 2) return "";
+      const a = track.points[0];
+      const b = track.points[track.points.length - 1];
+      return `<p>${esc(t("origin_change", {
+        first_year: fmtYear(a.year),
+        latest_year: fmtYear(b.year),
+        change: fmtSigned2(track.change)
+      }))}</p>`;
+    }).join("");
+  }
+
+  function endpointSpan(model) {
+    const tracks = model.tracks || [];
+    const firstTrack = tracks[0];
+    const lastTrack = tracks[tracks.length - 1];
+    if (!firstTrack || !firstTrack.points.length || !lastTrack || !lastTrack.points.length) return null;
+    const a = firstTrack.points[0];
+    const b = lastTrack.points[lastTrack.points.length - 1];
+    return {
+      first: share2(a.value),
+      first_year: fmtYear(a.year),
+      latest: share2(b.value),
+      latest_year: fmtYear(b.year)
+    };
+  }
+
+  function originLegend(model) {
+    if (model.iso !== "ESP") return "";
+    return `<p class="dv-chart-key">
+      <span><i class="dv-key-line"></i>${esc(t("origin_series_register"))}</span>
+      <span><i class="dv-key-line dv-key-dash"></i>${esc(t("origin_series_68525"))}</span>
+    </p>`;
+  }
+
+  function pointNote(model, track, point) {
+    if (point.provisional) return t("origin_provisional");
+    if (model.iso === "ESP" && track) {
+      return track.id === "table68525" ? t("origin_series_68525") : t("origin_series_register");
+    }
+    if (model.iso === "DEU" && track && track.id === "census2022") return t("origin_series_main");
+    return "";
+  }
+
+  function originTables(model) {
+    const chunks = [];
+    (model.detached || []).forEach(point => {
+      chunks.push(shareTable([{
+        year: point.year,
+        value: point.value,
+        note: t("origin_detached")
+      }], ""));
+    });
+    (model.tracks || []).forEach(track => {
+      const rows = (track.points || []).map(point => ({
+        year: point.year,
+        value: point.value,
+        note: pointNote(model, track, point)
+      }));
+      const caption = model.iso === "ESP"
+        ? (track.id === "table68525" ? t("origin_series_68525") : t("origin_series_register"))
+        : (model.iso === "DEU" ? t("origin_series_main") : "");
+      chunks.push(shareTable(rows, caption));
+    });
+    return chunks.join("");
+  }
+
+  function shareTable(rows, caption) {
+    if (!rows.length) return "";
+    const body = rows.map(row => `<tr><th scope="row">${esc(fmtYear(row.year))}</th><td>${esc(share2(row.value))}</td><td>${esc(row.note || "")}</td></tr>`).join("");
+    const cap = caption ? `<caption>${esc(caption)}</caption>` : "";
+    return `<div class="dv-table-wrap"><table class="dv-mini">${cap}
+      <thead><tr><th>${esc(t("origin_col_year"))}</th><th>${esc(t("origin_col_share"))}</th><th>${esc(t("origin_col_note"))}</th></tr></thead>
+      <tbody>${body}</tbody></table></div>`;
+  }
+
+  function originSensitivity(model) {
+    if (!model.sensitivity) return "";
+    const s = model.sensitivity;
+    if (s[2021] == null || s[2023] == null || s[2024] == null || s[2025] == null) return "";
+    return `<p class="dv-footnote">${esc(t("origin_deu_sensitivity", {
+      y2021: share2(s[2021]),
+      y2023: share2(s[2023]),
+      y2024: share2(s[2024]),
+      y2025: share2(s[2025])
+    }))}${enOnlyBadge()}</p>`;
+  }
+
+  function sourceLinks(sources, heading) {
+    if (!sources || !sources.length) return "";
+    const items = sources.map(s => {
+      const label = [s.publisher, s.title].filter(Boolean).join(" — ") || s.url;
+      return `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(label)}</a></li>`;
+    }).join("");
+    return `<p class="dv-meta">${esc(heading)}</p><ul class="dv-src-list">${items}</ul>`;
+  }
+
+  function baselineTooltip(c, name) {
+    const row = baselineRow(c);
+    if (!row || !Supplements) {
+      return `<strong>${esc(name)}</strong><br>${esc(t("baseline_none"))}`;
+    }
+    const change = Supplements.displayChange(row);
+    const year = fmtYear(row.baseline_year);
+    if (!change || change.value == null) {
+      return `<strong>${esc(name)}</strong><br>${esc(t("baseline_year", { year: year }))}`;
+    }
+    const key = change.indicative ? "baseline_tooltip_indicative" : "baseline_tooltip";
+    return `<strong>${esc(name)}</strong><br>
+      <span class="swatch" style="background:${esc(colorForBaseline(c))}"></span>
+      ${esc(t(key, { year: year, change: fmtScore(change.value) }))}`;
+  }
+
+  function baselineBadgesHtml(row) {
+    if (!Supplements) return "";
+    const labels = {
+      definition_break: t("badge_definition_break"),
+      estimate: t("badge_estimate"),
+      weak_proxy: t("badge_weak"),
+      demoscope: t("badge_demoscope")
+    };
+    return Supplements.baselineBadges(row).map(id =>
+      `<span class="dv-pill dv-pill-prov">${esc(labels[id] || id)}</span>`
+    ).join(" ");
+  }
+
+  function baselineBlock(c) {
+    if (!state.baselineView || !c) return "";
+    const version = baselineData && baselineData.version ? t("baseline_version", { version: baselineData.version }) : "";
+    const row = baselineRow(c);
+    if (!row || !Supplements) {
+      return `<section class="dv-extra" aria-label="${esc(t("baseline_h"))}">
+        <h4>${esc(t("baseline_h"))}${version ? " (" + esc(version) + ")" : ""}</h4>
+        <p>${esc(t("baseline_none"))}</p>
+      </section>`;
+    }
+    const change = Supplements.displayChange(row);
+    const year = fmtYear(row.baseline_year);
+    const share = formatBaselineShare(row.baseline_founding_pct);
+    const lines = [];
+    lines.push(`<p>${esc(t("baseline_year", { year: year }))}</p>`);
+    lines.push(`<p>${esc(t("baseline_share", { year: year, share: share }))}</p>`);
+    if (row.latest_founding_pct_core != null && row.latest_year_core != null) {
+      lines.push(`<p class="dv-meta">${esc(t("baseline_latest", {
+        share: formatBaselineShare(row.latest_founding_pct_core),
+        year: fmtYear(row.latest_year_core)
+      }))}</p>`);
+    }
+    if (change && change.value != null) {
+      const label = t("baseline_change", { year: year, change: fmtScore(change.value) });
+      const mark = change.indicative ? ` <span class="dv-pill dv-pill-prov">${esc(t("baseline_indicative"))}</span>` : "";
+      lines.push(`<p>${esc(label)}${mark}</p>`);
+      if (change.indicative) lines.push(`<p class="dv-footnote">${esc(t("baseline_indicative_note"))}${enOnlyBadge()}</p>`);
+    } else {
+      lines.push(`<p>${esc(t("baseline_no_change"))}</p>`);
+    }
+    if (Supplements.classificationPending(row.iso3)) {
+      lines.push(`<p class="dv-pending">${esc(t("baseline_pending", { country: countryName(c) }))}</p>`);
+    }
+    if (row.measure) {
+      lines.push(`<p class="dv-meta">${esc(t("baseline_measure", { measure: Supplements.groupWording(row.measure) }))}${enOnlyBadge()}</p>`);
+    }
+    const flags = Array.isArray(row.flags) ? row.flags : [];
+    const flagList = flags.length
+      ? `<p class="dv-meta">${esc(t("baseline_flags"))}</p><ul class="dv-src-list">${flags.map(flag =>
+          `<li>${esc(Supplements.groupWording(flag))}</li>`
+        ).join("")}</ul>`
+      : "";
+    return `<section class="dv-extra" aria-label="${esc(t("baseline_h"))}">
+      <h4>${esc(t("baseline_h"))}${version ? " (" + esc(version) + ")" : ""}</h4>
+      <p>${baselineBadgesHtml(row)}</p>
+      ${lines.join("")}
+      ${flagList}
+      ${sourceLinks(Supplements.sourceList(row), t("baseline_sources"))}
+    </section>`;
   }
 
   function filteredCountries() {
@@ -944,6 +1237,7 @@
   }
 
   function renderBars() {
+    if (state.baselineView) { renderBaselineBars(); return; }
     const ul = view.querySelector("#dv-bars");
     const count = view.querySelector("#dv-list-count");
     if (!ul) return;
@@ -1002,6 +1296,84 @@
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>
           <span class="dv-bar-n">${esc(shown == null ? "—" : fmtChange(shown, proxy))}</span>
           <span class="dv-bar-years">${esc(years || "—")}</span>
+        </button>
+      </li>`;
+    }).join("");
+  }
+
+  function baselineRank(c) {
+    const row = baselineRow(c);
+    if (!row || !Supplements) return { tier: 2, value: null };
+    const change = Supplements.displayChange(row);
+    if (change && change.value != null) return { tier: 0, value: change.value };
+    return { tier: 1, value: null };
+  }
+
+  function renderBaselineBars() {
+    const ul = view.querySelector("#dv-bars");
+    const count = view.querySelector("#dv-list-count");
+    if (!ul) return;
+    const loc = locale();
+    const list = filteredCountries().slice().sort((a, b) => {
+      if (state.sortKey === "name") return countryName(a).localeCompare(countryName(b), loc);
+      const ra = baselineRank(a);
+      const rb = baselineRank(b);
+      if (ra.tier !== rb.tier) return ra.tier - rb.tier;
+      if (ra.value == null && rb.value == null) return countryName(a).localeCompare(countryName(b), loc);
+      // "High" is the largest decline in the founding share (the most negative figure).
+      const diff = state.sortKey === "low" ? rb.value - ra.value : ra.value - rb.value;
+      return diff || countryName(a).localeCompare(countryName(b), loc);
+    });
+    const vals = list.map(c => baselineRank(c).value).filter(v => v != null);
+    const cMin = vals.length ? Math.min(0, ...vals) : 0;
+    const cMax = vals.length ? Math.max(0, ...vals) : 1;
+    const cSpan = Math.max(1, cMax - cMin);
+    if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
+    if (!list.length) {
+      ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
+      return;
+    }
+    ul.innerHTML = list.map(c => {
+      const row = baselineRow(c);
+      const rank = baselineRank(c);
+      const sel = c.id === state.selected ? " is-selected" : "";
+      if (!row || rank.value == null) {
+        const missing = !row;
+        const year = row ? fmtYear(row.baseline_year) : "";
+        const note = missing ? t("baseline_none") : t("baseline_no_change");
+        const badges = row ? baselineBadgesHtml(row) : "";
+        const pending = row && Supplements && Supplements.classificationPending(row.iso3)
+          ? ` <span class="dv-pill dv-pill-prov">${esc(t("baseline_pending_short"))}</span>`
+          : "";
+        return `<li class="dv-bar-item${sel}" data-id="${esc(c.id)}">
+          <button type="button" class="dv-bar-btn is-baseline-none" aria-label="${esc(countryName(c))}, ${esc(note)}">
+            <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${pending}</span>
+            <span class="dv-bar-missing">${badges ? badges + " " : ""}${esc(year ? year + " · " + note : note)}</span>
+          </button>
+        </li>`;
+      }
+      const color = colorForBaseline(c);
+      const change = Supplements.displayChange(row);
+      const left = ((Math.min(rank.value, 0) - cMin) / cSpan) * 100;
+      const width = (Math.abs(rank.value) / cSpan) * 100;
+      const zero = ((0 - cMin) / cSpan) * 100;
+      const indicative = change && change.indicative
+        ? ` <span class="dv-small-flag" title="${esc(t("baseline_indicative_note"))}">${esc(t("baseline_indicative"))}</span>`
+        : "";
+      const badges = baselineBadgesHtml(row);
+      const years = row.latest_year_core != null
+        ? formatYearSpan(row.baseline_year, row.latest_year_core)
+        : fmtYear(row.baseline_year);
+      const title = t(change && change.indicative ? "baseline_tooltip_indicative" : "baseline_tooltip", {
+        year: fmtYear(row.baseline_year),
+        change: fmtScore(rank.value)
+      });
+      return `<li class="dv-bar-item${sel}" data-id="${esc(c.id)}">
+        <button type="button" class="dv-bar-btn is-baseline" aria-label="${esc(countryName(c))}, ${esc(title)}">
+          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${indicative}${badges ? " " + badges : ""}</span>
+          <span class="dv-bar-track"><span class="dv-bar-zero" style="left:${zero}%"></span><span class="dv-bar-fill" style="background:${esc(color)};margin-left:${left}%;width:${width}%;"></span></span>
+          <span class="dv-bar-n">${esc(fmtScore(rank.value))}</span>
+          <span class="dv-bar-years">${esc(years)}</span>
         </button>
       </li>`;
     }).join("");
@@ -1114,6 +1486,19 @@
     }
   }
 
+  function ingestSupplements(origin, baseline) {
+    originData = origin && origin.countries ? origin : null;
+    baselineData = baseline && Array.isArray(baseline.rows) ? baseline : null;
+    baselineByIso = {};
+    if (baselineData && Supplements) {
+      baselineData.rows.forEach(row => {
+        if (row && row.iso3 && Supplements.isPublishableBaseline(row) && !baselineByIso[row.iso3]) {
+          baselineByIso[row.iso3] = row;
+        }
+      });
+    }
+  }
+
   function ingest(json) {
     if (!json || typeof json !== "object" || !Array.isArray(json.countries)) {
       throw new Error("demographics.json is missing countries");
@@ -1133,10 +1518,16 @@
     showStatus("loading", t("loading"));
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), FETCH_MS);
-    loading = fetch(DATA_URL, { signal: ctrl.signal, cache: "no-cache" })
-      .then(r => { if (!r.ok) throw new Error(DATA_URL + ": HTTP " + r.status); return r.json(); })
-      .then(json => {
+    const fetchJson = url => fetch(url, { signal: ctrl.signal, cache: "no-cache" })
+      .then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
+    loading = Promise.all([
+      fetchJson(DATA_URL),
+      fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; }),
+      fetchJson(BASELINE_URL).catch(err => { console.error(err); return null; })
+    ])
+      .then(([json, origin, baseline]) => {
         ingest(json);
+        ingestSupplements(origin, baseline);
         safeRender();
       })
       .catch(err => {
@@ -1163,6 +1554,15 @@
     }
   });
   view.addEventListener("change", e => {
+    if (e.target && e.target.id === "dv-baseline") {
+      state.baselineView = !!e.target.checked;
+      labelStatic();
+      renderLegend();
+      renderBars();
+      renderSelected();
+      refreshFill();
+      return;
+    }
     if (e.target && e.target.id === "dv-group") setGroup(e.target.value);
     else if (e.target && e.target.id === "dv-sort") { state.sortKey = e.target.value; renderBars(); }
   });
