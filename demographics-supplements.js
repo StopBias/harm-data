@@ -11,7 +11,9 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
 
-  const PENDING_ISO = { ARM: true, GEO: true };
+  // Armenia and Georgia were a provisional ethnic European assignment.
+  // They are the Caucasus pool now, so no country is classification-pending.
+  const PENDING_ISO = {};
 
   function finite(v) {
     if (v == null || v === "") return null;

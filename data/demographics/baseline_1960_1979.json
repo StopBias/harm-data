@@ -4,7 +4,7 @@
  "version": "1.15.0",
  "version_type": "standalone; core v1.13.0 files unchanged; UN rows stay 1990-2020",
  "created": "2026-11-24",
- "rule": "For each country, the earliest census from 1960 to 1979 with a usable origin measure for the founding pool; the actual year is shown. Founding share = share in the country's primary pool (country_pool_map.csv); \"ethnic European\" = EUR pool.",
+ "rule": "For each country, the earliest census from 1960 to 1979 with a usable origin measure for the founding pool; the actual year is shown. Founding share = share in the country's primary pool (country_pool_map.csv); \"ethnic European\" = EUR pool. Armenia and Georgia are pool CAU. Their baseline_founding_pct is null so the former ethnic European full-map share is not read as a Caucasus share; that former share is in alternates.former_ethnic_european_full_map_pct. Stored pool percentages in other rows were computed while Armenians and Georgians counted as ethnic European and North Caucasus peoples were unmapped. They are not recast. Current ethnic codes are in caucasus_ethnic_groups.json.",
  "change_note": "change_pp_baseline_to_latest is given only where the baseline and the core latest value use a comparable definition; otherwise null (see flags).",
  "rows": [
   {
@@ -186,7 +186,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA.",
     "Latest core value (2021, 81.8) excludes the 11.3% who did not state a nationality; 2021 includes Crimea/Sevastopol."
    ],
    "earlier_in_window_not_used": null,
@@ -262,7 +262,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": 2001,
@@ -337,7 +337,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": 2021,
@@ -412,7 +412,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -487,7 +487,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -562,7 +562,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA.",
     "Demoscope gives 34.94 (Kazakh+Uzbek+Uyghur) vs the Bureau's 35.2; small difference not resolved."
    ],
    "earlier_in_window_not_used": null,
@@ -576,11 +576,11 @@
    "iso3": "GEO",
    "order": 9,
    "core_name": null,
-   "founding_pool": "EUR",
+   "founding_pool": "CAU",
    "baseline_year": 1970,
-   "baseline_founding_pct": 88.29,
+   "baseline_founding_pct": null,
    "measure": "nationality (USSR census 1970)",
-   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "basis": "full nationality-to-pool map as computed when Georgia was ethnic European (no core census series). Founding percentage blanked when the country moved to CAU.",
    "counts": {
     "total": 4686358,
     "top_groups": [
@@ -625,6 +625,7 @@
    },
    "alternates": {
     "full_map_founding_pct": 88.29,
+    "former_ethnic_european_full_map_pct": 88.29,
     "finnic_peoples_of_russia_pct (not in founding)": 0.02
    },
    "sources": [
@@ -638,8 +639,8 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
-    "Armenians and Georgians are counted as ethnic European per the country map (editorial; Caucasus has no separate pool)."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA.",
+    "Retired: Armenians and Georgians were counted as ethnic European because there was no Caucasus pool. They are pool CAU now. baseline_founding_pct is blank so the old ethnic European full-map share is not read as the Caucasus share. That old share is in alternates.former_ethnic_european_full_map_pct. Named top groups are not summed into a new founding share, because other Caucasus peoples are not separately counted in this file."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -714,7 +715,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -789,7 +790,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -864,7 +865,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": 2021,
@@ -939,7 +940,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": 2022,
@@ -1014,7 +1015,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -1027,11 +1028,11 @@
    "iso3": "ARM",
    "order": 15,
    "core_name": null,
-   "founding_pool": "EUR",
+   "founding_pool": "CAU",
    "baseline_year": 1970,
-   "baseline_founding_pct": 92.08,
+   "baseline_founding_pct": null,
    "measure": "nationality (USSR census 1970)",
-   "basis": "full nationality-to-pool map (no core census series for this country)",
+   "basis": "full nationality-to-pool map as computed when Armenia was ethnic European (no core census series). Founding percentage blanked when the country moved to CAU.",
    "counts": {
     "total": 2491873,
     "top_groups": [
@@ -1076,6 +1077,7 @@
    },
    "alternates": {
     "full_map_founding_pct": 92.08,
+    "former_ethnic_european_full_map_pct": 92.08,
     "finnic_peoples_of_russia_pct (not in founding)": 0.02
    },
    "sources": [
@@ -1089,8 +1091,8 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped.",
-    "Armenians and Georgians are counted as ethnic European per the country map (editorial; Caucasus has no separate pool)."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA.",
+    "Retired: Armenians and Georgians were counted as ethnic European because there was no Caucasus pool. They are pool CAU now. baseline_founding_pct is blank so the old ethnic European full-map share is not read as the Caucasus share. That old share is in alternates.former_ethnic_european_full_map_pct. Named top groups are not summed into a new founding share, because other Caucasus peoples are not separately counted in this file."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -1165,7 +1167,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": null,
@@ -1240,7 +1242,7 @@
    "flags": [
     "USSR 1970 census, de facto (present) population, self-declared nationality (natsional'nost').",
     "Source is the Demoscope Weekly reprint of the official census volume IV (HSE Institute of Demography), not a statistics-office site.",
-    "Nationality-to-pool assignment follows the country map (titular nation -> that country's primary pool; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others are unmapped."
+    "Stored percentages follow the 2026-11-24 country map (titular nation -> that country's primary pool at that time, when Armenia and Georgia were ethnic European; Jews, Tajiks, Azerbaijanis, Persians, Kurds, Assyrians, Arabs, Tats -> MENA; Turkic Central Asian peoples, Uyghurs, Koreans, Chinese, Dungans -> EAS). Tatars, Bashkirs, Chuvash, Finno-Ugric, North Caucasus and Siberian peoples, Gagauz, Roma and others were unmapped. Those stored percentages are not recast. Current assignment: Armenians, Georgians and the North Caucasus peoples in caucasus_ethnic_groups.json are pool CAU; Azerbaijanis stay MENA."
    ],
    "earlier_in_window_not_used": null,
    "latest_year_core": 2021,
