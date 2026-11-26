@@ -1,9 +1,12 @@
-// Media coverage view. Reads data/media/summary.json, baseline_ncvs.json and baseline_shr.json.
-// User-facing text lives in i18n/*.json under the media.* prefix.
+// Media coverage view. Reads data/media/summary.json (2023 keyword pilot),
+// summary_audit_homicide_draft.json (draft homicide audit), baseline_ncvs.json
+// and baseline_shr.json. User-facing text lives in i18n/*.json under media.*.
 (function () {
   "use strict";
 
   const t = (key, vars) => (window.t ? window.t("media." + key, vars) : key);
+  // Same neutral grey as MEDIA_DRAFT_COLOR in index.html. Not an index colour.
+  const DRAFT_MAP_COLOR = "#c5c9cc";
   const locale = () => (window.currentLocale ? window.currentLocale() : (document.documentElement.lang || "en"));
   const esc = v => String(v == null ? "" : v).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const fmt = n => (n == null ? "—" : Number(n).toLocaleString(locale()));
@@ -221,6 +224,7 @@
     return u && u.rule_sets && u.rule_sets[state.rule];
   }
   function pref() { return usa() && usa().preferred_inference; }
+  function audit() { return data && data.audit; }
 
   function fmtMult(value, { flip, asBound } = {}) {
     if (value == null || !isFinite(value)) return null;
@@ -259,7 +263,64 @@
     return "";
   }
 
-  function headline() {
+  function locFixed(value, digits) {
+    return Number(value).toLocaleString(locale(), { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  }
+
+  function auditMultiplier() {
+    const a = audit();
+    if (!a) return "";
+    const flip = state.label === "antiblack";
+    if (a.rate_ratio != null && Math.abs(Number(a.rate_ratio) - 1) < 1e-9) {
+      return t("multiplier", { sign: "", value: locFixed(1, 2) });
+    }
+    const showMinus = a.signed_lean === "antiblack" ? !flip : flip;
+    return t("multiplier", { sign: showMinus ? MINUS : "+", value: locFixed(a.signed_magnitude, 2) });
+  }
+
+  function auditSignedInterval() {
+    const a = audit();
+    if (!a) return "";
+    const flip = state.label === "antiblack";
+    const piece = (sign, mag) => t("multiplier", {
+      sign: sign === "-" ? MINUS : "+",
+      value: locFixed(mag, 2)
+    });
+    const low = a.ci95_signed_low_magnitude;
+    const high = a.ci95_signed_high_magnitude;
+    if (!flip) return "[" + piece("-", low) + ", " + piece("+", high) + "]";
+    return "[" + piece("-", high) + ", " + piece("+", low) + "]";
+  }
+
+  function auditSig() {
+    const a = audit();
+    if (!a) return "";
+    return t("sig_draft_not_significant", { p: locFixed(a.p_two_sided_headline, 2) });
+  }
+
+  function auditCountsLine() {
+    const a = audit();
+    if (!a) return "";
+    return t("audit_counts", {
+      w: fmt(a.n_covered_W),
+      b: fmt(a.n_covered_B),
+      m: fmt(a.n_sampled_W)
+    });
+  }
+
+  function auditHeadline() {
+    return {
+      status: "draft",
+      text: auditMultiplier(),
+      sub: auditSig(),
+      zero: null,
+      interval: auditSignedInterval(),
+      counts: auditCountsLine(),
+      draft: true
+    };
+  }
+
+  function keywordHeadline() {
     const p = pref();
     if (!p) return { status: "pending", text: t("pending"), sub: t("pending_hint") };
     const flip = state.label === "antiblack";
@@ -286,6 +347,11 @@
       return { status: "point", text: fmtMult(p.cdi, { flip, asBound: false }), sub: sig };
     }
     return { status: "pending", text: t("pending"), sub: t("pending_hint") };
+  }
+
+  function headline() {
+    if (audit()) return auditHeadline();
+    return keywordHeadline();
   }
 
   function completenessOf(iso) {
@@ -326,6 +392,30 @@
   }
 
   function mediaStateFor(iso) {
+    if (iso === "USA" && audit()) {
+      const a = audit();
+      return {
+        status: "draft",
+        draft: true,
+        index_defined: true,
+        finding_published: false,
+        significant: false,
+        significance_label: a.significance_label,
+        p_two_sided: a.p_two_sided,
+        p_one_sided: a.p_one_sided,
+        test: a.test,
+        L: null,
+        bound: null,
+        incidents: a.n_sampled,
+        start: a.date_start,
+        end: a.date_end,
+        completeness: completenessOf(iso),
+        n_covered_W: a.n_covered_W,
+        n_covered_B: a.n_covered_B,
+        n_sampled_W: a.n_sampled_W,
+        n_sampled_B: a.n_sampled_B
+      };
+    }
     const rec = countryRecord(iso);
     const flip = state.label === "antiblack";
     if (rec) {
@@ -376,7 +466,7 @@
     if (!data || !data.summary || !data.summary.countries) return [];
     return Object.keys(data.summary.countries).filter(iso => {
       const st = mediaStateFor(iso);
-      return st && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point");
+      return st && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point" || st.status === "draft");
     });
   }
 
@@ -432,6 +522,23 @@
       const comp = st.completeness != null
         ? `<div style="margin-top:4px">${esc(t("tt_completeness", { score: fmt(st.completeness) }))}</div>` : "";
       return `<div class="tt-title">${display}</div><div class="tt-status"><span class="swatch" style="background:#e6e8eb"></span>${esc(t("tt_pending"))}</div>${comp}`;
+    }
+    if (st.status === "draft" && audit()) {
+      const a = audit();
+      const label = state.label === "antiblack" ? t("index_antiblack") : t("index_antiwhite");
+      const lines = [
+        `<div class="tt-title">${display}</div>`,
+        `<div class="tt-status"><span class="swatch" style="background:${DRAFT_MAP_COLOR}"></span>${esc(t("tt_draft_index", { label, m: auditMultiplier(), sig: auditSig() }))}</div>`,
+        `<div style="margin-top:4px">${esc(t("tt_draft_interval", { interval: auditSignedInterval() }))}</div>`,
+        `<div style="margin-top:4px">${esc(t("tt_draft_counts", {
+          w: fmt(a.n_covered_W), mw: fmt(a.n_sampled_W),
+          b: fmt(a.n_covered_B), mb: fmt(a.n_sampled_B),
+          pooled: fmt(a.n_covered), n: fmt(a.n_sampled)
+        }))}</div>`,
+        `<div style="margin-top:4px">${esc(t("tt_draft_sample", { n: fmt(a.n_sampled), start: a.date_start, end: a.date_end }))}</div>`,
+        st.completeness != null ? `<div style="margin-top:4px">${esc(t("tt_completeness", { score: fmt(st.completeness) }))}</div>` : ""
+      ];
+      return lines.join("");
     }
     const flip = state.label === "antiblack";
     const m = fmtMult(st.bound, { flip, asBound: true });
@@ -506,34 +613,70 @@
     if (!state.selected) {
       return `<p class="hint">${esc(t("map_hint"))}</p>`;
     }
-    const name = countryName(state.selected);
     const st = mediaStateFor(state.selected);
-    const h = state.selected === "USA" ? headline() : { text: t("pending"), sub: t("pending_hint"), zero: null };
     const indexLabel = state.label === "antiblack" ? t("index_antiblack") : t("index_antiwhite");
     const toggleLabel = state.label === "antiblack" ? t("toggle_to_antiwhite") : t("toggle_to_antiblack");
     const signHint = state.label === "antiblack" ? t("signed_minus_hint") : t("signed_plus_hint");
     const score = st.completeness;
     const scoreText = score != null ? fmt(score) : t("completeness_none");
-    const zeroLine = h.zero ? `<div class="mv-stat-sub">${esc(h.zero)}</div>` : "";
-    const rec = usa() || {};
-    const ciLine = state.selected === "USA" && rec.ci95_low != null
-      ? `<div class="mv-stat-sub" id="mv-ci95">${esc(ciText(rec))}</div>` : "";
     const eeRow = `<div class="mv-stat-ee" id="mv-ee-stat">
-        <div class="mv-stat-label">${esc(t("col_ee_index"))}</div>
+        <div class="mv-stat-label">${esc(t("col_ee_index"))}${approxBadge(state.selected)}</div>
         <p class="mv-stat-value mv-stat-value-sm">${esc(t("pending"))}</p>
         <p class="mv-stat-hint">${esc(t("ee_row_desc"))}</p>
       </div>`;
-    return `<div class="mv-results" id="mv-results">
-      <div class="mv-stat" id="mv-index-stat">
+    const usaAudit = state.selected === "USA" && audit();
+    let indexBlock;
+    if (usaAudit) {
+      const h = auditHeadline();
+      const pilot = keywordHeadline();
+      const pilotCi = ciText(usa() || {});
+      indexBlock = `<div class="mv-index-col">
+        <h3 class="mv-h mv-audit-head" id="mv-audit-h">${esc(t("audit_h"))}</h3>
+        <p class="mv-desc" id="mv-audit-desc">${esc(t("audit_desc", { n: fmt(audit().n_sampled_W) }))}</p>
+        <div class="mv-stat" id="mv-index-stat">
+          <div class="mv-stat-label" id="mv-index-label">${esc(indexLabel)}</div>
+          <p class="mv-stat-value" id="mv-index-value">${esc(h.text)} <span class="badge mv-badge mv-badge-draft" id="mv-draft-badge">${esc(t("badge_draft"))}</span></p>
+          <div class="mv-stat-sub" id="mv-audit-counts">${esc(h.counts)}</div>
+          <div class="mv-stat-sub" id="mv-ci95">${esc(t("audit_ci_signed", { interval: h.interval }))}</div>
+          <div class="mv-stat-sub" id="mv-audit-sig">${esc(h.sub)}</div>
+          <p class="mv-stat-hint">${esc(signHint)}</p>
+          <button type="button" class="mv-toggle" id="mv-sign-toggle">${esc(toggleLabel)}</button>
+          <div class="mv-earlier" id="mv-pilot-earlier">
+            <h3 class="mv-h" id="mv-pilot-h">${esc(t("pilot_earlier_h"))}</h3>
+            <p class="mv-desc">${esc(t("pilot_earlier_desc"))}</p>
+            <p class="mv-stat-value mv-stat-value-sm" id="mv-pilot-value">${esc(pilot.text)}</p>
+            ${pilot.zero ? `<div class="mv-stat-sub" id="mv-pilot-zero">${esc(pilot.zero)}</div>` : ""}
+            ${pilotCi ? `<div class="mv-stat-sub" id="mv-pilot-ci">${esc(pilotCi)}</div>` : ""}
+            ${pilot.sub ? `<div class="mv-stat-sub" id="mv-pilot-sig">${esc(pilot.sub)}</div>` : ""}
+          </div>
+          ${eeRow}
+        </div>
+      </div>`;
+    } else if (state.selected === "USA") {
+      const h = keywordHeadline();
+      const rec = usa() || {};
+      const zeroLine = h.zero ? `<div class="mv-stat-sub">${esc(h.zero)}</div>` : "";
+      const ciLine = rec.ci95_low != null ? `<div class="mv-stat-sub" id="mv-ci95">${esc(ciText(rec))}</div>` : "";
+      indexBlock = `<div class="mv-stat" id="mv-index-stat">
         <div class="mv-stat-label" id="mv-index-label">${esc(indexLabel)}</div>
-        <p class="mv-stat-value" id="mv-index-value">${esc(h.text)}${approxBadge(state.selected)}</p>
+        <p class="mv-stat-value" id="mv-index-value">${esc(h.text)}</p>
         ${zeroLine}
         ${ciLine}
         ${h.sub && h.sub !== h.zero ? `<div class="mv-stat-sub">${esc(h.sub)}</div>` : ""}
-        ${state.selected === "USA" ? `<p class="mv-stat-hint">${esc(signHint)}</p>
-        <button type="button" class="mv-toggle" id="mv-sign-toggle">${esc(toggleLabel)}</button>` : `<p class="mv-stat-hint">${esc(t("pending_hint"))}</p>`}
+        <p class="mv-stat-hint">${esc(signHint)}</p>
+        <button type="button" class="mv-toggle" id="mv-sign-toggle">${esc(toggleLabel)}</button>
         ${eeRow}
-      </div>
+      </div>`;
+    } else {
+      indexBlock = `<div class="mv-stat" id="mv-index-stat">
+        <div class="mv-stat-label" id="mv-index-label">${esc(indexLabel)}</div>
+        <p class="mv-stat-value" id="mv-index-value">${esc(t("pending"))}</p>
+        <p class="mv-stat-hint">${esc(t("pending_hint"))}</p>
+        ${eeRow}
+      </div>`;
+    }
+    return `<div class="mv-results" id="mv-results">
+      ${indexBlock}
       <div class="mv-stat" id="mv-completeness-stat">
         <div class="mv-stat-label">${esc(t("completeness"))}</div>
         <p class="mv-stat-value" id="mv-completeness-value">${esc(scoreText)}</p>
@@ -732,13 +875,110 @@
       </table></div>`;
   }
 
+  function auditOutletTable(a) {
+    const head = `<tr>
+      <th scope="col">${esc(t("col_outlet"))}</th>
+      <th scope="col" class="num">${esc(t("col_stories_wb"))}</th>
+      <th scope="col" class="num">${esc(t("col_stories_bw"))}</th>
+      <th scope="col" class="num">${esc(t("col_cases_wb"))}</th>
+      <th scope="col" class="num">${esc(t("col_cases_bw"))}</th>
+      <th scope="col">${esc(t("col_index_outlet"))}</th>
+      <th scope="col">${esc(t("col_zero"))}</th></tr>`;
+    const body = (a.outlets || []).map(r => {
+      const casesW = t("of", { a: fmt(r.cases_W_on_B), b: fmt(r.n_sampled) });
+      const casesB = t("of", { a: fmt(r.cases_B_on_W), b: fmt(r.n_sampled) });
+      const zero = r.zero_cell
+        ? `<span id="mv-zero-${esc(r.outlet)}">${esc(r.zero_of_n)}</span><span class="mv-why">${esc(t("cp_upper", { pct: r.coverage_upper_display }))}</span>`
+        : "—";
+      return `<tr data-outlet="${esc(r.outlet)}">
+        <th scope="row" data-label="${esc(t("col_outlet"))}">${esc(r.outlet_name)}</th>
+        <td class="num" data-label="${esc(t("col_stories_wb"))}">${fmt(r.stories_W_on_B)}</td>
+        <td class="num" data-label="${esc(t("col_stories_bw"))}">${fmt(r.stories_B_on_W)}</td>
+        <td class="num" data-label="${esc(t("col_cases_wb"))}">${esc(casesW)}</td>
+        <td class="num" data-label="${esc(t("col_cases_bw"))}">${esc(casesB)}</td>
+        <td data-label="${esc(t("col_index_outlet"))}"><span class="mv-null">${esc(t("pending_outlet"))}</span></td>
+        <td data-label="${esc(t("col_zero"))}">${zero}</td>
+      </tr>`;
+    }).join("");
+    return `<div class="mv-table-wrap"><table class="mv-table" id="mv-audit-outlets"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function sensTable(a) {
+    const body = (a.sensitivities || []).map(r => `<tr>
+      <th scope="row" data-label="${esc(t("col_pairing"))}">${esc(t("sens_" + r.id))}</th>
+      <td class="num" data-label="${esc(t("dir_wb"))}">${esc(r.w)}</td>
+      <td class="num" data-label="${esc(t("dir_bw"))}">${esc(r.b)}</td>
+    </tr>`).join("");
+    return `<div class="mv-table-wrap"><table class="mv-table" id="mv-sens"><thead><tr>
+      <th scope="col">${esc(t("col_pairing"))}</th>
+      <th scope="col" class="num">${esc(t("dir_wb"))}</th>
+      <th scope="col" class="num">${esc(t("dir_bw"))}</th>
+    </tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function auditDetailsHtml(a) {
+    const stats = t("audit_stats", {
+      qw: a.q_W_display,
+      qb: a.q_B_display,
+      ratio: a.rate_ratio_display,
+      odds: a.odds_ratio_display,
+      p2: a.p_two_sided_detail,
+      p1: a.p_one_sided_detail,
+      or_low: a.ci95_low_display,
+      or_high: a.ci95_high_display,
+      or_low_r: a.ci95_low_rounded,
+      or_high_r: a.ci95_high_rounded,
+      signed: auditSignedInterval()
+    });
+    return `<h3 class="mv-h" id="mv-audit-method-h">${esc(t("audit_method_h"))}</h3>
+      <p class="mv-desc">${esc(t("audit_method_desc"))}</p>
+      <h3 class="mv-h" id="mv-audit-sample-h">${esc(t("audit_sample_h"))}</h3>
+      <p class="mv-desc" id="mv-audit-sample">${esc(t("audit_sample_desc", {
+        n: fmt(a.n_sampled),
+        mw: fmt(a.n_sampled_W),
+        mb: fmt(a.n_sampled_B),
+        stories: fmt(a.stories_n),
+        sw: fmt(a.stories_W_on_B),
+        sb: fmt(a.stories_B_on_W),
+        dom: fmt(a.dominant_case_stories)
+      }))}</p>
+      <p class="ex-small" id="mv-audit-stats">${esc(stats)}</p>
+      <h3 class="mv-h ex-kicker" id="mv-audit-outlets-h">${esc(t("audit_outlets_h"))}</h3>
+      <p class="mv-desc">${esc(t("audit_outlets_desc"))}</p>
+      ${auditOutletTable(a)}
+      <h3 class="mv-h ex-kicker mv-section" id="mv-sens-h">${esc(t("sens_h"))}</h3>
+      <p class="mv-desc">${esc(t("sens_desc"))}</p>
+      ${sensTable(a)}`;
+  }
+
   function detailsHtml() {
     if (!state.details || state.selected !== "USA" || !data) return "";
     const s = data.summary;
     const rb = ruleBlock();
     const badge = enOnlyBadge();
     const mixed = rb && rb.mixed_vs_ncvs;
+    const a = audit();
+    const notice = s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}${badge}</p>` : "";
+    const gaps = (s.data_gaps || []).map(g => {
+      if (a && g.topic === "Incident-based sample") {
+        return `<li><b>${esc(t("gap_audit_topic"))}:</b> ${esc(t("gap_audit_reason"))}</li>`;
+      }
+      return `<li><b>${esc(g.topic)}:</b> ${esc(g.reason)}</li>`;
+    }).join("");
     return `<section id="mv-details">
+      ${a ? auditDetailsHtml(a) : ""}
+      <h3 class="mv-h ex-kicker mv-section">${esc(t("baseline_shr_h"))}</h3>
+      <p class="mv-desc">${esc(t("baseline_shr_desc"))}</p>
+      ${a ? `<p class="ex-small" id="mv-audit-shr-note">${esc(t("audit_shr_note"))}</p>` : ""}
+      ${shrTable()}
+      <h3 class="mv-h ex-kicker mv-section">${esc(t("baseline_ncvs_h"))}</h3>
+      <p class="mv-desc">${esc(t("baseline_ncvs_desc"))}</p>
+      ${ncvsTable(data.baseline)}
+      <p class="ex-small">${esc(t("baseline_comp"))}</p>
+      ${eeBaselineHtml()}
+      ${a ? `<h3 class="mv-h ex-kicker mv-section" id="mv-pilot-details-h">${esc(t("pilot_earlier_h"))}</h3>
+      <p class="mv-desc">${esc(t("pilot_earlier_desc"))}</p>
+      ${notice}` : notice}
       <h3 class="mv-h" id="mv-method-note-h">${esc(t("method_note_h"))}</h3>
       <p class="mv-desc">${esc(t("method_note_desc"))}</p>
       <p class="ex-small">${esc(t("pairing"))}</p>
@@ -753,15 +993,7 @@
       <h3 class="mv-h ex-kicker">${esc(t("outlets_h"))}</h3>
       <p class="mv-desc">${esc(t("outlets_desc"))}</p>
       ${outletTable()}
-      <h3 class="mv-h ex-kicker mv-section">${esc(t("baseline_shr_h"))}</h3>
-      <p class="mv-desc">${esc(t("baseline_shr_desc"))}</p>
-      ${shrTable()}
       ${homicideBlock()}
-      <h3 class="mv-h ex-kicker mv-section">${esc(t("baseline_ncvs_h"))}</h3>
-      <p class="mv-desc">${esc(t("baseline_ncvs_desc"))}</p>
-      ${ncvsTable(data.baseline)}
-      <p class="ex-small">${esc(t("baseline_comp"))}</p>
-      ${eeBaselineHtml()}
       <h3 class="mv-h ex-kicker mv-section">${esc(t("disclosure_h"))}</h3>
       <p class="mv-desc">${esc(t("disclosure_desc"))}</p>
       <p>${esc(t("disclosure_pending"))}</p>
@@ -769,12 +1001,13 @@
       <p class="mv-desc">${esc(t("stories_desc"))}</p>
       ${storiesTable()}
       <h3 class="ex-kicker mv-section" id="mv-gaps-h">${esc(t("gaps_h"))}${badge}</h3>
-      <ul class="mv-gaps" id="mv-gaps">${(s.data_gaps || []).map(g => `<li><b>${esc(g.topic)}:</b> ${esc(g.reason)}</li>`).join("")}</ul>
+      <ul class="mv-gaps" id="mv-gaps">${gaps}</ul>
       <details class="method" open><summary>${esc(t("method_h"))}${badge}</summary>
         <h4 class="mv-explain" style="margin-top:12px">${esc(t("methods_cdi_h"))}</h4>
         <p>${esc(t("methods_cdi"))}</p>
-        <ul>${(s.judgement_calls || []).map(j => `<li>${esc(j)}</li>`).join("")}</ul>
+        <ul>${(s.judgement_calls || []).filter(j => j.indexOf("29.4") === -1 && j.indexOf("16.3") === -1).map(j => `<li>${esc(j)}</li>`).join("")}</ul>
         <p class="ex-small">${esc(t("generated", { d: s.generated, s: s.script }))}</p>
+        ${a ? `<p class="ex-small">${esc(t("audit_generated", { d: a.computed_at, s: a.script }))}</p>` : ""}
       </details>
       ${sourcesHtml()}
     </section>`;
@@ -792,6 +1025,7 @@
     return `<div class="mv-sources" id="mv-sources"><h3>${esc(t("sources_h"))}</h3><ul>
       ${storyLinks}
       <li><a href="${REPO_BLOB}summary.json" target="_blank" rel="noopener">${esc(t("src_summary"))}</a></li>
+      ${audit() ? `<li><a href="${REPO_BLOB}summary_audit_homicide_draft.json" target="_blank" rel="noopener">${esc(t("src_audit"))}</a></li>` : ""}
       <li><a href="${REPO_BLOB}baseline_ncvs.json" target="_blank" rel="noopener">${esc(t("src_baseline"))}</a></li>
       <li><a href="${REPO_BLOB}baseline_shr.json" target="_blank" rel="noopener">${esc(t("src_baseline_shr"))}</a></li>
       <li><a href="${REPO_BLOB}incidents_2023.json" target="_blank" rel="noopener">${esc(t("src_incidents"))}</a></li>
@@ -806,8 +1040,13 @@
       const st = mediaStateFor(iso);
       const name = countryName(iso);
       let indexText, indexSort, indexHtml;
-      if (iso === "USA" && usa()) {
-        const h = headline();
+      if (iso === "USA" && audit()) {
+        const h = auditHeadline();
+        indexText = [h.text, t("badge_draft"), h.sub, h.interval].filter(Boolean).join(" · ");
+        indexHtml = esc(indexText);
+        indexSort = Number(audit().rate_ratio) || 0;
+      } else if (iso === "USA" && usa()) {
+        const h = keywordHeadline();
         indexText = [h.zero, h.text, significanceText(Object.assign({}, pref(), usa() || {}))].filter(Boolean).join(" · ");
         indexHtml = esc(indexText) + approxBadge(iso);
         indexSort = (pref() && pref().index_lower_display) || 0;
@@ -816,9 +1055,12 @@
         indexHtml = esc(indexText);
         indexSort = -1;
       }
+      const aud = iso === "USA" ? audit() : null;
       const rb = iso === "USA" ? ruleBlock() : null;
       const stories = rb && rb.mixed_vs_ncvs && rb.mixed_vs_ncvs.stories;
-      const dirs = stories ? `${stories.W_on_B} / ${stories.B_on_W} / ${stories.other}` : "—";
+      const dirs = aud
+        ? `${aud.n_covered_W} / ${aud.n_covered_B}`
+        : (stories ? `${stories.W_on_B} / ${stories.B_on_W} / ${stories.other}` : "—");
       return {
         iso, name,
         indexText, indexSort,
@@ -826,11 +1068,12 @@
         completeness: st.completeness,
         dates: (st.start && st.end) ? `${st.start} – ${st.end}` : "—",
         dirs,
-        baseline: iso === "USA" ? "NCVS 2023; FBI SHR Table 6 2023" : "—",
+        baseline: aud ? t("audit_sources_baseline") : (iso === "USA" ? "NCVS 2023; FBI SHR Table 6 2023" : "—"),
         outlets: iso === "USA" ? (usa().outlet_names || []).join(", ") : "—",
-        rule: iso === "USA" ? t(state.rule === "broad" ? "rule_broad" : "rule_strict") : "—",
-        pairing: iso === "USA" ? t("pairing") : "—",
+        rule: aud ? t("audit_sources_rule") : (iso === "USA" ? t(state.rule === "broad" ? "rule_broad" : "rule_strict") : "—"),
+        pairing: aud ? t("audit_sources_pairing") : (iso === "USA" ? t("pairing") : "—"),
         eeText: t("pending"),
+        eeHtml: esc(t("pending")) + (iso === "USA" ? approxBadge(iso) : ""),
         indexHtml
       };
     });
@@ -864,7 +1107,7 @@
         <td data-label="${esc(t("col_index"))}">${r.indexHtml}</td>
         <td class="num" data-label="${esc(t("col_sample"))}">${r.sample != null ? fmt(r.sample) : "—"}</td>
         <td class="num" data-label="${esc(t("col_completeness"))}">${r.completeness != null ? fmt(r.completeness) : esc(t("completeness_none"))}</td>
-        <td data-label="${esc(t("col_ee_index"))}">${esc(r.eeText)}</td>
+        <td data-label="${esc(t("col_ee_index"))}">${r.eeHtml}</td>
         <td data-label="${esc(t("col_dates"))}">${esc(r.dates)}</td>
         <td data-label="${esc(t("col_directions"))}">${esc(r.dirs)}</td>
       </tr>`).join("");
@@ -872,7 +1115,7 @@
       head = `<tr>${th("country", t("col_country"))}<th scope="col">${esc(t("col_baseline"))}</th><th scope="col">${esc(t("col_outlets"))}</th><th scope="col">${esc(t("col_ruleset"))}</th><th scope="col">${esc(t("col_pairing"))}</th></tr>`;
       body = rows.map(r => `<tr data-iso="${esc(r.iso)}" class="${r.iso === state.selected ? "is-selected" : ""}">
         <th scope="row" data-label="${esc(t("col_country"))}">${esc(r.name)}</th>
-        <td data-label="${esc(t("col_baseline"))}">${esc(r.baseline)}${r.iso === "USA" ? enOnlyBadge() : ""}</td>
+        <td data-label="${esc(t("col_baseline"))}">${esc(r.baseline)}${r.iso === "USA" && !audit() ? enOnlyBadge() : ""}</td>
         <td data-label="${esc(t("col_outlets"))}">${esc(r.outlets)}</td>
         <td data-label="${esc(t("col_ruleset"))}">${esc(r.rule)}</td>
         <td data-label="${esc(t("col_pairing"))}">${esc(r.pairing)}</td>
@@ -984,6 +1227,13 @@
     const el = document.getElementById("legend");
     if (!el || !document.body.classList.contains("media-active")) return;
     const hatchColor = hatchFillColor();
+    const showHatch = measuredIsos().some(iso => {
+      const st = mediaStateFor(iso);
+      return st && (st.status === "bound" || st.status === "insufficient_data");
+    });
+    const hatchNote = showHatch
+      ? `<div class="legend-note"><span class="swatch hatch large" style="background-color:${esc(hatchColor)}"></span><span>${esc(t("legend_hatch_note"))}</span></div>`
+      : "";
     el.innerHTML =
       `<div class="legend-title">${esc(t("legend_title"))}</div>
        <div class="legend-scale"><span class="ex-small">${esc(t("legend_minus"))}</span>
@@ -991,7 +1241,8 @@
          <span class="ex-small">${esc(t("legend_plus"))}</span></div>
        <div class="legend-scale-center"><span class="swatch" style="background:#f7f7f7;box-shadow:inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_center"))}</div>
        <div class="legend-scale-notes">
-         <div class="legend-note"><span class="swatch hatch large" style="background-color:${esc(hatchColor)}"></span><span>${esc(t("legend_hatch_note"))}</span></div>
+         ${hatchNote}
+         <div class="legend-note" id="mv-legend-draft"><span class="swatch large" style="background:${DRAFT_MAP_COLOR};box-shadow:inset 0 0 0 1px #d5d8da"></span><span>${esc(t("legend_draft"))}</span></div>
          <div class="legend-note"><span class="swatch large" style="background:#e6e8eb;box-shadow:inset 0 0 0 1px #d5d8da"></span><span>${esc(t("legend_pending"))}</span></div>
        </div>
        <div class="legend-items">
@@ -1021,7 +1272,10 @@
     labelModes();
     if (!data) return;
     const s = data.summary;
-    const badge = s.pilot_notice ? `<span class="badge mv-badge">${esc(t("badge_pilot"))}</span>` : "";
+    const badge = data.audit
+      ? `<span class="badge mv-badge mv-badge-draft">${esc(t("badge_draft"))}</span>`
+      : (s.pilot_notice ? `<span class="badge mv-badge">${esc(t("badge_pilot"))}</span>` : "");
+    const draftNote = data.audit ? `<p class="mv-pilot" id="mv-draft-note" role="note">${esc(t("draft_note"))}</p>` : "";
     const tableBlock = state.mode === "table" ? `
       <h3 class="mv-h" id="mv-table-h">${esc(t("table_h"))}</h3>
       <p class="mv-desc">${esc(t("table_desc"))}</p>
@@ -1030,7 +1284,8 @@
     view.innerHTML = `<div class="mv-inner">
       <div class="ex-head"><h2 id="mv-title">${esc(t("title"))}</h2>${badge}</div>
       <p class="ex-lede">${esc(t("lede"))}</p>
-      ${s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}${enOnlyBadge()}</p>` : ""}
+      ${draftNote}
+      ${!data.audit && s.pilot_notice ? `<p class="mv-pilot" id="mv-pilot" role="note">${esc(s.pilot_notice)}${enOnlyBadge()}</p>` : ""}
       ${findingsHtml()}
       ${resultsInView}
       ${tableBlock}
@@ -1061,10 +1316,11 @@
       get("data/media/summary.json"),
       get("data/media/baseline_ncvs.json"),
       get("data/media/baseline_shr.json"),
-      get("data/index.json")
-    ]).then(([summary, baseline, shr, index]) => {
+      get("data/index.json"),
+      get("data/media/summary_audit_homicide_draft.json")
+    ]).then(([summary, baseline, shr, index, auditFile]) => {
       detailed = Array.isArray(index && index.detailed) ? index.detailed.slice() : [];
-      data = { summary, baseline, shr };
+      data = { summary, baseline, shr, audit: auditFile };
       render();
     })
       .catch(err => {
