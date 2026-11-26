@@ -5,8 +5,8 @@
   "version_type": "standalone; data and documentation only; core files, scores, map colours, and default views are unchanged",
   "created": "2026-11-26",
   "memo": "review/pre1950_european_share_8countries_2026-11-24.md",
-  "rule": "Official census or national-statistics publications only. Seven verified rows plus Italy as an explicit unverified/null row. These figures are not wired to the map, scoring, or any on-site view; putting them on the map waits on a separate go-ahead.",
-  "comparability": "These early figures are not strictly comparable across countries: Australia 1911 and New Zealand 1936 are official race tabulations (with different Aboriginal/Māori and mixed-race rules), whereas Germany, France, Spain, the United Kingdom (Great Britain) and Ireland are constructed residuals from nationality or birthplace on different territories, and Italy still has no verified ethnic-European share from an official stranieri-by-citizenship table.",
+  "rule": "Official census or national-statistics publications only. Eight verified rows. These figures are not wired to the map, scoring, or any on-site view; putting them on the map waits on a separate go-ahead.",
+  "comparability": "These early figures are not strictly comparable across countries: Australia 1911 and New Zealand 1936 are official race tabulations (with different Aboriginal/Māori and mixed-race rules), whereas Germany, France, Spain, Italy, the United Kingdom (Great Britain) and Ireland are constructed residuals from nationality or birthplace on different territories. Italy 1936 is a citizenship residual, not an ethnicity count: the census had no birthplace or ethnicity question, so naturalised or born-abroad Italians count as Italian.",
   "rows": [
     {
       "country": "Germany",
@@ -366,46 +366,39 @@
       "baseline_year": 1936,
       "census_date": "1936-04-21",
       "territory": "Regno, official 1936 boundaries",
-      "concept": "unverified",
-      "measure": "ISTAT VIII Censimento, Vol. III Regno — popolazione presente/residente and stranieri by state of allegiance (no metropolitan race question)",
-      "ethnic_european_count": null,
-      "total": null,
-      "founding_share_pct": null,
-      "counts": null,
-      "official_denominators_not_used_for_share": {
-        "source": "ISTAT, L’Italia in 150 anni. Sommario di statistiche storiche 1861–2010, Tavola 2.1",
-        "url": "https://www.istat.it/it/files/2019/03/cap_2.pdf",
-        "unit": "thousands",
-        "popolazione_residente_ai_confini_dell_epoca_1936": 42994,
-        "popolazione_residente_ai_confini_dell_epoca_1931": 41652,
-        "popolazione_presente_1936": 42919,
-        "popolazione_presente_1931": 41177,
-        "note": "These official denominators exist but were not used for a share, because no verified national stranieri-by-citizenship numerator was opened."
+      "concept": "nationality residual",
+      "measure": "Constructed ethnic European: official popolazione presente minus citizens of American, Asian, African and Oceanian states",
+      "ethnic_european_count": 42435744,
+      "total": 42444588,
+      "founding_share_pct": 99.98,
+      "counts": {
+        "total": 42444588,
+        "ethnic_european": 42435744,
+        "foreign_nationals_total": 108597,
+        "foreign_european_states": 99753,
+        "foreign_american": 6773,
+        "foreign_asian": 1574,
+        "foreign_african": 369,
+        "foreign_oceanian": 128,
+        "non_european_citizenship_sum_subtracted": 8844,
+        "europe_country_columns_above_printed_total": 90
       },
-      "excluded_unofficial_figures": [
-        "Secondary “about 108,000 foreigners in 1936” was not used as a numerator.",
-        "Encyclopedic present/resident counts of 42,444,588 / 42,993,602 were not used."
-      ],
       "sources": [
         {
           "publisher": "ISTAT",
-          "title": "8. Censimento generale della popolazione: 21 aprile 1936, Vol. III Regno — Popolazione, territorio, famiglie, convivenze, sesso, stato civile, età, stranieri (1938), catalogue IST00006497 / series IST0069132. Volume exists; a national stranieri-by-citizenship table was not opened in this pass.",
-          "table": "Vol. III Regno (not opened for a verified nationals table)",
-          "url": "https://ebiblio.istat.it/SebinaOpac/resource/IST00006497"
-        },
-        {
-          "publisher": "ISTAT",
-          "title": "L’Italia in 150 anni. Sommario di statistiche storiche 1861–2010, Tavola 2.1 (official denominators only; not used for a share)",
-          "table": "Tavola 2.1",
-          "url": "https://www.istat.it/it/files/2019/03/cap_2.pdf"
+          "title": "VIII Censimento generale della popolazione, 21 aprile 1936, Vol. III Parte 2, Tavola XV A, pp. 146-153 (popolazione presente and stranieri by citizenship)",
+          "table": "Tavola XV A",
+          "url": "https://ebiblio.istat.it/digibib/Censimenti%20popolazione/censpop1936/IST0005813vol3RegnoParte2_Tavole/IST0005813_vol3_Regno_Parte_2_Tavole+OCR_ottimizzato.pdf"
         }
       ],
-      "verification": "NOT VERIFIED: no official national stranieri-by-citizenship table was opened; no ethnic-European share is reported",
+      "verification": "verified: official ISTAT Censimento 1936 Vol. III Parte 2, Tavola XV A figures for popolazione presente and stranieri by citizenship",
       "flags": [
-        "No metropolitan race question.",
-        "Alternate routes tried (Annuario statistico italiano 1937/38, Compendio, ISTAT Sommario, ebiblio) did not produce a verified national stranieri-by-cittadinanza table.",
-        "Secondary or encyclopedic foreigner and population counts were not used as a numerator.",
-        "No ethnic-European share is reported until an official national stranieri table is read."
+        "No birthplace or ethnicity question. This is a citizenship residual, not an ethnicity count. The method mirrors Germany 1933.",
+        "Foreigners from European states remain ethnic European and are not subtracted.",
+        "Naturalised Italians and Italians born abroad count as Italian, because the census records citizenship rather than birthplace or ethnicity.",
+        "American, Asian, African and Oceanian citizenship may include ethnic Europeans, so 99.98% is a slight lower bound on this construction.",
+        "European country columns sum 90 above the printed Europe total of 99,753; the printed total is used.",
+        "Citizenship is not ethnicity (Italian citizens of non-European origin are inside the total)."
       ]
     }
   ]

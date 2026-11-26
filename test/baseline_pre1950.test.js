@@ -29,11 +29,12 @@ const expectedVerified = {
   GBR: { year: 1931, count: 44338092, total: 44795357, share: 98.98, concept: "birthplace residual" },
   IRL: { year: 1936, count: 2953322, total: 2968420, share: 99.49, concept: "birthplace residual" },
   AUS: { year: 1911, count: 4402662, total: 4455005, share: 98.83, concept: "race" },
-  NZL: { year: 1936, count: 1484508, total: 1573810, share: 94.33, concept: "race" }
+  NZL: { year: 1936, count: 1484508, total: 1573810, share: 94.33, concept: "race" },
+  ITA: { year: 1936, count: 42435744, total: 42444588, share: 99.98, concept: "nationality residual" }
 };
 
 assert.deepStrictEqual(
-  data.rows.filter(r => r.iso3 !== "ITA").map(r => r.iso3).sort(),
+  data.rows.map(r => r.iso3).sort(),
   Object.keys(expectedVerified).sort()
 );
 
@@ -60,28 +61,30 @@ for (const [iso, exp] of Object.entries(expectedVerified)) {
 
 const ita = byIso.ITA;
 assert.ok(ita);
-assert.strictEqual(ita.baseline_year, 1936);
-assert.strictEqual(ita.concept, "unverified");
-assert.strictEqual(ita.ethnic_european_count, null);
-assert.strictEqual(ita.total, null);
-assert.strictEqual(ita.founding_share_pct, null);
-assert.ok(ita.verification.includes("NOT VERIFIED"));
-assert.ok((ita.sources || []).some(s => s.url && s.url.startsWith("https://")));
-assert.ok(ita.official_denominators_not_used_for_share);
-assert.ok(Array.isArray(ita.excluded_unofficial_figures) && ita.excluded_unofficial_figures.length >= 2);
-// Secondary unofficial figures must not be used as a numerator or share.
+assert.strictEqual(ita.counts.foreign_nationals_total, 108597);
+assert.strictEqual(ita.counts.foreign_european_states, 99753);
+assert.strictEqual(ita.counts.foreign_american, 6773);
+assert.strictEqual(ita.counts.foreign_asian, 1574);
+assert.strictEqual(ita.counts.foreign_african, 369);
+assert.strictEqual(ita.counts.foreign_oceanian, 128);
+assert.strictEqual(ita.counts.non_european_citizenship_sum_subtracted, 8844);
+assert.strictEqual(ita.counts.europe_country_columns_above_printed_total, 90);
+assert.strictEqual(ita.ethnic_european_count, ita.total - ita.counts.non_european_citizenship_sum_subtracted);
+assert.ok(ita.sources.some(s => s.url === "https://ebiblio.istat.it/digibib/Censimenti%20popolazione/censpop1936/IST0005813vol3RegnoParte2_Tavole/IST0005813_vol3_Regno_Parte_2_Tavole+OCR_ottimizzato.pdf"));
+assert.ok(ita.flags.some(f => /no birthplace or ethnicity question/i.test(f)));
+assert.ok(ita.flags.some(f => /naturalised Italians/i.test(f)));
+assert.ok(ita.flags.some(f => /printed Europe total/i.test(f)));
+assert.ok(!ita.official_denominators_not_used_for_share);
+assert.ok(!ita.excluded_unofficial_figures);
 const blob = JSON.stringify(ita);
-assert.ok(!blob.includes("108000") && !blob.includes("108,000") || /not used/i.test(blob));
-assert.strictEqual(ita.ethnic_european_count, null);
-const csvRows = csv.trim().split(/\n/).slice(1).map(line => {
-  // parse enough to check Italy's count/total/share are blank
-  return line;
-});
+assert.ok(!blob.includes("108000") && !blob.includes("108,000"));
+assert.ok(!/NOT VERIFIED/i.test(blob));
 assert.ok(csv.includes("Italy,ITA,"));
 const itaCsv = csv.split(/\n/).find(l => l.includes(",ITA,"));
 assert.ok(itaCsv);
-assert.ok(itaCsv.includes(",unverified,,"));
-assert.ok(/NOT VERIFIED/.test(itaCsv));
+assert.ok(itaCsv.includes(",nationality residual,42435744,42444588,99.98,"));
+assert.ok(!/NOT VERIFIED/.test(itaCsv));
+assert.ok(!itaCsv.includes(",unverified,"));
 
 // Existing scores and colours are untouched by this data file.
 function country(id) {

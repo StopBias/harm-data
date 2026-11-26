@@ -7,13 +7,15 @@
   "use strict";
 
 // Resolve official pre-1950 baselines into a relative-% change for the
-// Demographics map. Italy is never scored from this file. Australia is
-// not scored from it either: there is no official comparable latest
-// founding-pool share in the core data (2021 ancestry is a concept break
-// with no unique-person recode). Latest shares come from the existing
-// census fields or, for France, Germany and Spain, from the already
-// verified origin-series supplement. A fall in the founding share is
-// negative. Callers should treat every scored row as a definition break.
+// Demographics map. Australia is not scored from this file: there is no
+// official comparable latest founding-pool share in the core data (2021
+// ancestry is a concept break with no unique-person recode). Italy has
+// no census or origin-series latest share, so its latest point is the
+// UN 2020 ethnic European share the map already uses
+// (100 minus cross_pool_fb_pct_2020). Other latest shares come from the
+// existing census fields or, for France, Germany and Spain, from the
+// already verified origin-series supplement. A fall in the founding share
+// is negative. Callers should treat every scored row as a definition break.
 
 function finite(n) {
   return n != null && n !== "" && Number.isFinite(Number(n));
@@ -21,7 +23,7 @@ function finite(n) {
 
 function verifiedRow(row) {
   if (!row) return null;
-  if (row.iso3 === "ITA" || row.concept === "unverified") return null;
+  if (row.concept === "unverified") return null;
   if (row.verification && /NOT VERIFIED/i.test(row.verification)) return null;
   if (!finite(row.founding_share_pct) || !finite(row.baseline_year)) return null;
   return row;
@@ -73,10 +75,29 @@ function officialLatest(country, originData) {
   return censusLatest(country) || originLatest(iso, originData);
 }
 
+// The site's existing Italy endpoint: ethnic European share in 2020 is
+// 100 minus the UN cross-pool foreign-born share. Used only when a
+// verified pre-1950 row has no census or origin-series latest share.
+function unProxyLatest(country) {
+  if (!country || !finite(country.cross_pool_fb_pct_2020)) return null;
+  return {
+    year: 2020,
+    share: 100 - Number(country.cross_pool_fb_pct_2020),
+    source: "un_proxy"
+  };
+}
+
+function latestPoint(row, country, originData) {
+  const official = officialLatest(country, originData);
+  if (official) return official;
+  if (row && row.iso3 === "ITA") return unProxyLatest(country);
+  return null;
+}
+
 function resolve(row, country, originData, scale) {
   const base = verifiedRow(row);
   if (!base) return { use: false, reason: "no_verified_pre1950_row" };
-  const latest = officialLatest(country, originData);
+  const latest = latestPoint(base, country, originData);
   if (!latest) {
     return {
       use: false,

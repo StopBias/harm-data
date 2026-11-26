@@ -51,7 +51,8 @@ const expectedAfter = {
   ESP: { change: -15.3, band: "Very strongly declining", first_year: 1930, latest_year: 2026, first: 99.94, latest: 84.63 },
   GBR: { change: -17.5, band: "Very strongly declining", first_year: 1931, latest_year: 2021, first: 98.98, latest: 81.7 },
   IRL: { change: -12.2, band: "Strongly declining", first_year: 1936, latest_year: 2022, first: 99.49, latest: 87.4 },
-  NZL: { change: -28.1, band: "Very strongly declining", first_year: 1936, latest_year: 2023, first: 94.33, latest: 67.8 }
+  NZL: { change: -28.1, band: "Very strongly declining", first_year: 1936, latest_year: 2023, first: 94.33, latest: 67.8 },
+  ITA: { change: -4.5, band: "Declining", first_year: 1936, latest_year: 2020, first: 99.98, latest: 95.498 }
 };
 
 const before = {};
@@ -86,11 +87,14 @@ assert.strictEqual(after.AUS.indicator.share, 98.83);
 assert.strictEqual(before.AUS.change, -11.8);
 assert.strictEqual(before.AUS.band, "Strongly declining");
 
-assert.strictEqual(after.ITA.use, false);
-assert.strictEqual(after.ITA.reason, "no_verified_pre1950_row");
-assert.strictEqual(after.ITA.indicator, undefined);
+assert.strictEqual(after.ITA.use, true);
+assert.strictEqual(after.ITA.latest_source, "un_proxy");
+assert.strictEqual(after.ITA.change, -4.5);
+assert.strictEqual(bandName[after.ITA.band_id], "Declining");
 assert.strictEqual(before.ITA.change, -3.88);
 assert.strictEqual(before.ITA.band, "Declining");
+assert.strictEqual(before.ITA.latest_year, 2020);
+assert.strictEqual(before.ITA.latest, after.ITA.latest_share);
 
 // Existing scores of other countries are not this module's job; a USA check
 // just confirms we do not invent a pre-1950 row for them.

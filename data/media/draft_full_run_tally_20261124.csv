@@ -1,0 +1,48 @@
+metric,value,note
+label,DRAFT pending Vera agreement and Mike spot-check review,recomputed after S0202–S0204 (HOM-WB-276) added to stories.csv
+computed_at,2026-11-26 12:12 PM America/Edmonton,"after AP stories S0202–S0204; headline case counts unchanged; AP W-on-B cases 2→3"
+sample_verified,304,152 W-on-B + 152 B-on-W
+stories_n,203,"S0001, S0003–S0204 (S0002 excluded as affiliate)"
+cases_covered,26,unchanged; HOM-WB-276 already covered by Fox/WaPo
+yW_covered,9,W-on-B cases with >=1 story
+mW,152,
+qW,0.059211,
+yB_covered,17,B-on-W cases with >=1 story
+mB,152,
+qB,0.111842,
+pooled_covered,26,26/304
+rate_ratio_qW_over_qB,0.529412,design (b) point estimate
+draft_index_signed,-1.8889,"antiblack lean, shown as −1.89×"
+odds_ratio,0.499794,(yW/(mW-yW))/(yB/(mB-yB))
+fisher_minlike_p_OR1,0.149995,"two-sided, matches scipy fisher_exact"
+fisher_one_sided_less,0.074997,
+fisher_or_ci95_low,0.206633,"minlike inversion, Fay 2010, log grid np.logspace(-3, 1, 20001)"
+fisher_or_ci95_high,1.185223,interval includes 1
+fisher_or_ci95_signed,"[−4.84×, +1.19×]",same interval on signed-OR scale
+ap_B_on_W_zero,0 of 152,CP one-sided 95% upper 1.95%
+wright_stories,142,unchanged this pass
+wapo_fulltext_needed_n,15,all marked status=coded
+stories_Fox_W_on_B,101,
+stories_Fox_B_on_W,27,
+cases_Fox_W_on_B,9,of 152
+cases_Fox_B_on_W,15,of 152
+stories_CNN_W_on_B,26,
+stories_CNN_B_on_W,9,
+cases_CNN_W_on_B,2,of 152
+cases_CNN_B_on_W,3,of 152
+stories_NYT_W_on_B,8,
+stories_NYT_B_on_W,4,
+cases_NYT_W_on_B,1,of 152
+cases_NYT_B_on_W,3,of 152
+stories_WaPo_W_on_B,13,
+stories_WaPo_B_on_W,4,
+cases_WaPo_W_on_B,2,of 152
+cases_WaPo_B_on_W,4,of 152
+stories_AP_W_on_B,11,was 8; S0202–S0204 added
+stories_AP_B_on_W,0,
+cases_AP_W_on_B,3,of 152; was 2; HOM-WB-276 is new AP case
+cases_AP_B_on_W,0,of 152
+sens_exclude_vehicular,9 of 143 vs 17 of 149,exclude vehicular
+sens_exclude_white_hispanic,7 of 102 vs 14 of 128,exclude white-Hispanic
+sens_exclude_both,7 of 94 vs 14 of 125,exclude both flags
+sens_official_record_only,1 of 1 vs 1 of 1,official_record only
