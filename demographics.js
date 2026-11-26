@@ -14,6 +14,7 @@
   const DATA_URL = "data/demographics.json";
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
   const Supplements = window.HarmDemographicsSupplements || null;
+  const Rank = window.HarmDemographicsRank || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
@@ -190,6 +191,15 @@
     if (isCensusScore(c)) return 0;
     if (displayValue(c) != null) return 1;
     return 2;
+  }
+
+  // Same split as rowYearLabel. A census score is the census block.
+  // Anything else that still shows a figure is the UN block, including
+  // census-limited rows that display the UN figure.
+  function rankedKind(c) {
+    if (isCensusScore(c)) return "census";
+    if (displayValue(c) != null) return "proxy";
+    return "none";
   }
 
   function fmtSigned(n, digits) {
@@ -1106,9 +1116,11 @@
       });
     }
     const loc = locale();
-    list.sort((a, b) => {
-      const gr = rowGroup(a) - rowGroup(b);
-      if (gr) return gr;
+    // Group by score kind first (census, then UN proxy, then no score) so
+    // the two kinds stay in blocks when a sort would otherwise interleave
+    // them. The comparison below is the existing sort inside each block.
+    // Header rows are added later and are not part of this list.
+    const withinBlock = (a, b) => {
       if (state.sortKey === "name") {
         return countryName(a).localeCompare(countryName(b), loc);
       }
@@ -1119,6 +1131,12 @@
       // "High" is the largest decline in founding share (the most negative figure).
       const diff = state.sortKey === "low" ? sb - sa : sa - sb;
       return diff || countryName(a).localeCompare(countryName(b), loc);
+    };
+    if (Rank) return Rank.sortGrouped(list, rankedKind, withinBlock);
+    list.sort((a, b) => {
+      const gr = rowGroup(a) - rowGroup(b);
+      if (gr) return gr;
+      return withinBlock(a, b) || 0;
     });
     return list;
   }
@@ -1147,20 +1165,16 @@
       ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
       return;
     }
-    let seenCensusHead = false;
-    let seenProxyHead = false;
-    ul.innerHTML = list.map(c => {
+    const entries = Rank
+      ? Rank.withGroupHeaders(list, rankedKind)
+      : list.map(c => ({ type: "row", country: c, kind: rankedKind(c) }));
+    ul.innerHTML = entries.map(entry => {
+      if (entry.type === "header") {
+        return Rank.groupHeaderMarkup(entry.kind, t(entry.key)) + barHead(entry.kind);
+      }
+      const c = entry.country;
       const shown = displayValue(c);
       const proxy = isProxyRow(c);
-      const heads = [];
-      if (!proxy && isCensusScore(c) && !seenCensusHead) {
-        seenCensusHead = true;
-        heads.push(barHead("census"));
-      }
-      if (proxy && !seenProxyHead) {
-        seenProxyHead = true;
-        heads.push(barHead("proxy"));
-      }
       const color = colorForCountry(c, true);
       const sel = c.id === state.selected ? " is-selected" : "";
       const small = isSmall(c);
@@ -1186,7 +1200,7 @@
           : t("tooltip_census", { score: fmtChange(shown, false) }));
       const years = rowYearLabel(c);
       const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${proxy ? " is-proxy" : ""}`;
-      return heads.join("") + `<li class="${cls}" data-id="${esc(c.id)}">
+      return `<li class="${cls}" data-id="${esc(c.id)}">
         <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
           <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${proxyMark}${smallMark}</span>
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>

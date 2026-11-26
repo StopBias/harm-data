@@ -670,6 +670,8 @@
     "origin_series_register": "Population register",
     "origin_series_68525": "Table 68525",
     "origin_series_main": "Census 2022 frame",
+    "group_census": "Verified census baselines: hard counts from national census records",
+    "group_proxy": "Modeled estimates: UN interpolated share where a direct census baseline isn't in hand",
     "col_country": "Country",
     "col_change": "Change (percent decline)",
     "col_years": "Census years",
