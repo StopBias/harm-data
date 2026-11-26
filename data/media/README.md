@@ -2,7 +2,7 @@
 
 Format: `media-data-format.md` v1.2. Every file here is built by a committed script; nothing is
 hand-edited. The site's **Media** tab (`index.html#media`, code in `media.js` / `media.css`) reads
-`summary.json`, `baseline_ncvs.json` and `baseline_shr.json`.
+`summary.json`, `summary_audit_homicide_draft.json`, `baseline_ncvs.json` and `baseline_shr.json`.
 
 The public name of the index is the **Antiwhite media bias index** (toggle: **Antiblack media bias
 index**). Coverage Distortion Index (CDI) is the methods name for the same calculation and is not
@@ -33,6 +33,8 @@ carry an Approximate badge because White non-Hispanic is a proxy for ethnic Euro
 | `stories_2023_broad.csv` | The same frame with the **broad** rule-set coding overlaid | `convert_pilot_stories.py` |
 | `stories_2023_conversion.json` / `stories_2023_broad_conversion.json` | What the converter dropped, checked and counted | `convert_pilot_stories.py` |
 | `summary.json` | Country- and outlet-level counts, bounds, rates, gaps and judgement calls (method_version 3.0) | `build_media_summary.py` |
+| `draft_full_run_tally_20261124.csv` | Draft tally of the 2020–2024 US homicide audit, recomputed 26 Nov 2026. Aggregate figures only; no names | source for the audit builder |
+| `summary_audit_homicide_draft.json` | Draft design (b) homicide audit for the United States. `finding_published` is false. Not a final index | `build_audit_homicide_draft.py` |
 
 Rebuild everything (from the repo root; needs Python 3, curl and `pdftotext` from poppler-utils):
 
@@ -42,7 +44,14 @@ python3 data/media/build_baseline_shr.py --generated YYYY-MM-DD
 python3 data/media/convert_pilot_stories.py --frame <pilot>/stories_2023.csv \
     --coded-strict <pilot>/coded_2023_pass1.csv --coded-broad <pilot>/coded_2023_pass1b.csv
 python3 data/media/build_media_summary.py --generated YYYY-MM-DD
+python3 data/media/build_audit_homicide_draft.py
 ```
+
+## Draft homicide audit
+
+`summary_audit_homicide_draft.json` is the United States figure on the Media tab until it is marked final. It is a draft. The public label is the **Antiwhite media bias index** (toggle: **Antiblack media bias index**). The `cdi` field stores the coverage-rate ratio and is a methods name only. Outlet point-estimate index cells stay pending. A zero cell is 0 of N plus a Clopper-Pearson exact one-sided 95% upper bound on that coverage rate (Associated Press, Black-on-White: 0 of 152, upper bound 1.95%). Per-capita rates are null. The 2023 keyword-sample files are not replaced.
+
+The builder reads only `draft_full_run_tally_20261124.csv` in this directory. It does not read coder files, story rows or names. Do not hand-edit the JSON.
 
 ## 1. Crime baseline (`baseline_ncvs.json`)
 
