@@ -12,7 +12,7 @@ The tab does not display that stored figure. It shows the change in the founding
 
 Where no such series exists, the file still holds the UN DESA International Migrant Stock 2024 dissimilarity index between 1990 and 2020 (`un_d_1990_2020`, `score_id`: `D_1990_2020`) and `score_change_pp_1990_2020`, the change in the foreign-born share from outside the founding pool. D = 0.5 × sum over pools of |share_2020 − share_1990| × 100. The tab’s displayed proxy is `−(score_change_pp_1990_2020)`, on the same signed founding-share scale and the same colours as the census rows. D stays in the country pop-up as a secondary line. These rows are labelled `score_kind`: `estimate` and `availability`: `estimate`. They are not hatched.
 
-Australia and Israel have official statistical-office series that cannot be turned into a cross-pool founding-pool score without inventing a mapping (Australia has no ethnicity/race question; Israel’s Jews and Arabs both sit in the Semitic / Middle East and North Africa pool). They are stored as `availability`: `census_limited`, keep the official series and notes in `census`, and the tab shows the UN proxy above because they have no founding-share figure.
+Australia and Israel have official statistical-office series that cannot be turned into a cross-pool founding-pool score without inventing a mapping (Australia has no ethnicity/race question; Israel’s Jews and Arabs both sit in the Semitic / Middle East and North Africa pool). Peru’s Indigenous mother-tongue series is a weak proxy held off the ranked list pending a ruling, the same way Mexico’s language-speaker proxy is already an open question. Indonesia (2010) and Zimbabwe (2022) are single official census points with no comparable earlier figure, so they have no change score. All five are stored as `availability`: `census_limited`, keep the official series and notes in `census`, and the tab shows the UN proxy on the map and ranked list.
 
 Every country record stores the source, years and metric used. No scores in this file were invented.
 
@@ -28,9 +28,9 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 
 | Availability | Meaning | Countries |
 |---|---|---:|
-| `census` | Official ethnicity, race, ancestry or migration-background series, with a computed change outside the founding pool | 25 |
-| `census_limited` | Official series that cannot support a cross-pool score (Australia, Israel) | 2 |
-| `estimate` | UN migrant-origin D only | 204 |
+| `census` | Official ethnicity, race, ancestry or migration-background series, with a computed change outside the founding pool | 30 |
+| `census_limited` | Official series not used as a founding-share headline (Australia, Israel, Peru, Indonesia, Zimbabwe) | 5 |
+| `estimate` | UN migrant-origin D only | 196 |
 | `none` | No score | 0 |
 | **Total** | UN DESA areas in the source manifest | **231** |
 
@@ -59,7 +59,7 @@ The `views` array in `../demographics.json` defines the groupings used by both t
 
 ## Sources
 
-- Census scores, official notes, checkpoints, flags (weak proxy, concept break) and the 25 + 2 country supplement: StopBias ethnic-pools global dataset **v1.7.0** (24 November 2026; the VERSION file is dated 2026-11-24). Compiled from official statistical-office census and population-register series. No figures were invented.
+- Census scores, official notes, checkpoints, flags (weak proxy, concept break) and the 30 + 5 country supplement: StopBias ethnic-pools global dataset **v1.13.0** (23 November 2026). The standalone v1.14.0 (France, Germany and Spain origin series) and v1.15.0 (1960–79 baselines) supplements are already in this folder and are unchanged here. Compiled from official statistical-office census and population-register series. No figures were invented.
 - Fallback scores and quality flags: the same dataset, built from the UN Department of Economic and Social Affairs, Population Division, *International Migrant Stock 2024* (POP/DB/MIG/Stock/Rev.2024).
 - Regional averages: `regional_averages.csv` in that dataset (UN migrant-origin estimates, labelled as such).
 - World population shares: `world_context.csv` in that dataset, from UN DESA *World Population Prospects 2024* (2024 is the medium-variant projection year). Geographic regions, not ethnicity.
@@ -72,8 +72,8 @@ The Channel Islands appear as a UN DESA aggregate (M49 830) and are not a single
 
 ## Known limits
 
-- This file is provisional. The country-to-pool mapping and several census series are still under review.
-- Several census series have a concept break or a weak-proxy flag in `census.notes` (for example New Zealand’s switch from prioritised ethnicity to total responses; Mexico’s use of Indigenous-language speakers; Bolivia’s 2024 figure, which comes from press reports of INE results). Those flags are preserved; the headline figure is still Adi’s published change, not a recast invented here.
+- This file is provisional. The country-to-pool mapping and several census series are still under review. Fifteen primary-pool assignments (listed in `mapping_diff.csv`) and whether Nepal’s Tibeto-Burman groups and Laos’s Hmong count as East Asian remain provisional; this fold-in keeps the existing project map (ethnic European pool; Turkey locked to the Middle East; South Africa scored on its ethnic European population).
+- Several census series have a concept break or a weak-proxy flag in `census.notes` (for example New Zealand’s switch from prioritised ethnicity to total responses; Mexico’s use of Indigenous-language speakers; Bolivia’s 2024 figure, now taken from the official INE Anuario Estadístico 2024 workbook). Those flags are preserved; the headline figure is still Adi’s published change, not a recast invented here.
 - Aboriginal Australians are handled only for Australia and are not a pool.
 - There is no Turkic, Central Asian or Caucasus pool; those countries are assigned the closest of the nine pools and flagged in the mapping notes.
 - Eight scored areas are not in the 1:50m map (for example Tokelau, Réunion, Gibraltar) and appear only in the ranked list.
