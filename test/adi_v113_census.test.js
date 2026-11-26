@@ -25,9 +25,15 @@ function display(c) {
 
 assert.strictEqual(demo.adi_dataset, "v1.13.0");
 assert.strictEqual(demo.counts.countries, 231);
-assert.strictEqual(demo.counts.census, 30);
+assert.strictEqual(demo.counts.stored.census, 30);
+assert.strictEqual(demo.counts.stored.census_limited, 5);
+assert.strictEqual(demo.counts.stored.estimate, 196);
+assert.strictEqual(demo.counts.census, 25);
 assert.strictEqual(demo.counts.census_limited, 5);
-assert.strictEqual(demo.counts.estimate, 196);
+assert.strictEqual(demo.counts.estimate, 164);
+assert.strictEqual(demo.counts.not_scored, 37);
+assert.strictEqual(demo.counts.scored, 194);
+assert.strictEqual(demo.countries.filter(c => c.availability === "census").length, 30);
 assert.strictEqual(demo.countries.length, 231);
 
 // Existing headline figures are unchanged.

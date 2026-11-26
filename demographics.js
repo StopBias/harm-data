@@ -13,6 +13,7 @@
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
+  const NOT_SCORED_URL = "data/demographics/not_scored.json";
   const Supplements = window.HarmDemographicsSupplements || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
@@ -20,7 +21,7 @@
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
 
-  let data = null, originData = null, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let data = null, originData = null, notScored = null, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
   let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
@@ -140,10 +141,16 @@
   }
 
   function colorForCountry(c, inGroup) {
+    const b = c && !(notScored && notScored.isNotScored(c)) ? bandFor(c) : null;
+    const scored = b ? b.color : null;
+    if (notScored) {
+      return notScored.mapColor(c, inGroup, scored, {
+        noScore: noScoreColor(),
+        outOfGroup: outGroupColor()
+      });
+    }
     if (!inGroup) return outGroupColor();
-    if (!c) return noScoreColor();
-    const b = bandFor(c);
-    return b ? b.color : noScoreColor();
+    return scored || noScoreColor();
   }
 
   function isEstimate(c) {
@@ -182,6 +189,7 @@
   }
 
   function displayValue(c) {
+    if (notScored && notScored.isNotScored(c)) return null;
     if (isCensusScore(c)) return censusFoundingChange(c);
     return proxyChange(c);
   }
@@ -778,6 +786,9 @@
 
   function tooltipHtml(c) {
     const name = countryName(c);
+    if (notScored && notScored.isNotScored(c)) {
+      return `<strong>${esc(name)}</strong><br>${esc(notScored.popupText(c))}`;
+    }
     const shown = displayValue(c);
     if (shown == null) {
       return `<strong>${esc(name)}</strong><br>${esc(t("legend_no_score"))}`;
@@ -870,6 +881,13 @@
       return;
     }
     const inG = memberSet().has(c.id);
+    if (notScored && notScored.isNotScored(c)) {
+      const pills = [];
+      if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
+      el.hidden = false;
+      el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p><p>${esc(notScored.popupText(c))}${enOnlyBadge()}</p>`;
+      return;
+    }
     const pills = [];
     if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
     if (c.availability === "census") pills.push(`<span class="dv-pill">${esc(t("flag_census"))}</span>`);
@@ -1099,6 +1117,7 @@
   function filteredCountries() {
     const q = state.query.trim().toLocaleLowerCase(locale());
     let list = currentMembers().map(id => byId[id]).filter(Boolean);
+    if (notScored) list = notScored.ranked(list);
     if (q) {
       list = list.filter(c => {
         const names = [c.name, countryName(c), c.iso3, c.id].filter(Boolean);
@@ -1307,6 +1326,11 @@
     originData = origin && origin.countries ? origin : null;
   }
 
+  function ingestNotScored(list) {
+    if (!window.DemographicsNotScored) throw new Error("demographics-not-scored.js did not load");
+    notScored = window.DemographicsNotScored.open(list);
+  }
+
   function ingest(json) {
     if (!json || typeof json !== "object" || !Array.isArray(json.countries)) {
       throw new Error("demographics.json is missing countries");
@@ -1330,10 +1354,12 @@
       .then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
     loading = Promise.all([
       fetchJson(DATA_URL),
+      fetchJson(NOT_SCORED_URL),
       fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; })
     ])
-      .then(([json, origin]) => {
+      .then(([json, notScoredList, origin]) => {
         ingest(json);
+        ingestNotScored(notScoredList);
         ingestSupplements(origin);
         safeRender();
       })

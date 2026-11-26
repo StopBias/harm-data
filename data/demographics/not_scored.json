@@ -1,0 +1,517 @@
+{
+  "id": "not_scored",
+  "approved": "2026-11-26",
+  "approved_by": "Mike",
+  "no_score_color": "#b9bfc4",
+  "population": {
+    "field": "pop_2024",
+    "year": 2024,
+    "date": "1 July 2024",
+    "threshold": 100000,
+    "comparison": "strictly_below",
+    "source": "UN DESA Population Division, World Population Prospects 2024, medium variant, 1 July 2024 (WPP2024_TotalPopulationBySex.csv). Stored as pop_2024 on each country in data/demographics.json. The same series is cited for world_context. small_population is true exactly when pop_2024 is under 100,000."
+  },
+  "note": "The tab reads areas and no_score_color only. named and stay_scored record how this list was built. They are not a second set of conditions in the page.",
+  "named": [
+    {
+      "iso3": "QAT",
+      "name": "Qatar",
+      "pop_2024": 3048423
+    },
+    {
+      "iso3": "ABW",
+      "name": "Aruba",
+      "pop_2024": 108066
+    },
+    {
+      "iso3": "BHR",
+      "name": "Bahrain",
+      "pop_2024": 1607049
+    },
+    {
+      "iso3": "ARE",
+      "name": "United Arab Emirates",
+      "pop_2024": 11027129
+    },
+    {
+      "iso3": "OMN",
+      "name": "Oman",
+      "pop_2024": 5281538
+    },
+    {
+      "iso3": "NIU",
+      "name": "Niue",
+      "pop_2024": 1819
+    },
+    {
+      "iso3": "PLW",
+      "name": "Palau",
+      "pop_2024": 17695
+    },
+    {
+      "iso3": "KWT",
+      "name": "Kuwait",
+      "pop_2024": 4934507
+    },
+    {
+      "iso3": "MTQ",
+      "name": "Martinique",
+      "pop_2024": 343195
+    },
+    {
+      "iso3": "SUR",
+      "name": "Suriname",
+      "pop_2024": 634431
+    },
+    {
+      "iso3": "GUY",
+      "name": "Guyana",
+      "pop_2024": 831087
+    },
+    {
+      "iso3": "TTO",
+      "name": "Trinidad and Tobago",
+      "pop_2024": 1507782
+    },
+    {
+      "iso3": "MEX",
+      "name": "Mexico",
+      "pop_2024": 130861007
+    },
+    {
+      "iso3": "BOL",
+      "name": "Bolivia (Plurinational State of)",
+      "pop_2024": 12413315
+    },
+    {
+      "iso3": "GRL",
+      "name": "Greenland",
+      "pop_2024": 55840
+    },
+    {
+      "iso3": "SPM",
+      "name": "Saint Pierre and Miquelon",
+      "pop_2024": 5628
+    }
+  ],
+  "stay_scored": [
+    {
+      "iso3": "FLK",
+      "name": "Falkland Islands (Malvinas)",
+      "pop_2024": 3470,
+      "why": "Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "FRO",
+      "name": "Faroe Islands",
+      "pop_2024": 55400,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "IMN",
+      "name": "Isle of Man",
+      "pop_2024": 84160,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "AND",
+      "name": "Andorra",
+      "pop_2024": 81938,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "LIE",
+      "name": "Liechtenstein",
+      "pop_2024": 39870,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "MCO",
+      "name": "Monaco",
+      "pop_2024": 38631,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    },
+    {
+      "iso3": "SMR",
+      "name": "San Marino",
+      "pop_2024": 33581,
+      "why": "European micro-territory. Stays scored. The 2024 population is under 100,000."
+    }
+  ],
+  "areas": [
+    {
+      "iso3": "ABW",
+      "name": "Aruba",
+      "pop_2024": 108066,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "AIA",
+      "name": "Anguilla",
+      "pop_2024": 14598,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "ARE",
+      "name": "United Arab Emirates",
+      "pop_2024": 11027129,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "ASM",
+      "name": "American Samoa",
+      "pop_2024": 46765,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "ATG",
+      "name": "Antigua and Barbuda",
+      "pop_2024": 93772,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "BHR",
+      "name": "Bahrain",
+      "pop_2024": 1607049,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "BMU",
+      "name": "Bermuda",
+      "pop_2024": 64636,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "BOL",
+      "name": "Bolivia (Plurinational State of)",
+      "pop_2024": 12413315,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "COK",
+      "name": "Cook Islands",
+      "pop_2024": 13729,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "CYM",
+      "name": "Cayman Islands",
+      "pop_2024": 74457,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "DMA",
+      "name": "Dominica",
+      "pop_2024": 66205,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "GIB",
+      "name": "Gibraltar",
+      "pop_2024": 39329,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "GRL",
+      "name": "Greenland",
+      "pop_2024": 55840,
+      "basis": [
+        "population",
+        "named"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "GUY",
+      "name": "Guyana",
+      "pop_2024": 831087,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "KNA",
+      "name": "Saint Kitts and Nevis",
+      "pop_2024": 46843,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "KWT",
+      "name": "Kuwait",
+      "pop_2024": 4934507,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "MEX",
+      "name": "Mexico",
+      "pop_2024": 130861007,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "MHL",
+      "name": "Marshall Islands",
+      "pop_2024": 37548,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "MNP",
+      "name": "Northern Mariana Islands",
+      "pop_2024": 44278,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "MSR",
+      "name": "Montserrat",
+      "pop_2024": 4389,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "MTQ",
+      "name": "Martinique",
+      "pop_2024": 343195,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "NIU",
+      "name": "Niue",
+      "pop_2024": 1819,
+      "basis": [
+        "population",
+        "named"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "NRU",
+      "name": "Nauru",
+      "pop_2024": 11947,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "OMN",
+      "name": "Oman",
+      "pop_2024": 5281538,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "PLW",
+      "name": "Palau",
+      "pop_2024": 17695,
+      "basis": [
+        "population",
+        "named"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "QAT",
+      "name": "Qatar",
+      "pop_2024": 3048423,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "SHN",
+      "name": "Saint Helena",
+      "pop_2024": 5237,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "SPM",
+      "name": "Saint Pierre and Miquelon",
+      "pop_2024": 5628,
+      "basis": [
+        "population",
+        "named"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "SUR",
+      "name": "Suriname",
+      "pop_2024": 634431,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "SXM",
+      "name": "Sint Maarten (Dutch part)",
+      "pop_2024": 43350,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "TCA",
+      "name": "Turks and Caicos Islands",
+      "pop_2024": 46535,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "TKL",
+      "name": "Tokelau",
+      "pop_2024": 2506,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "TTO",
+      "name": "Trinidad and Tobago",
+      "pop_2024": 1507782,
+      "basis": [
+        "named"
+      ],
+      "reason": "On the approved not-scored list.",
+      "popup": "Not scored. On the approved not-scored list."
+    },
+    {
+      "iso3": "TUV",
+      "name": "Tuvalu",
+      "pop_2024": 9646,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "VGB",
+      "name": "British Virgin Islands",
+      "pop_2024": 39471,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "VIR",
+      "name": "United States Virgin Islands",
+      "pop_2024": 84905,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    },
+    {
+      "iso3": "WLF",
+      "name": "Wallis and Futuna Islands",
+      "pop_2024": 11277,
+      "basis": [
+        "population"
+      ],
+      "reason": "Population under 100,000 in 2024.",
+      "popup": "Not scored. Population under 100,000 in 2024."
+    }
+  ]
+}
