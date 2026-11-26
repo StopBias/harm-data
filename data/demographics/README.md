@@ -53,9 +53,7 @@ A shown 0.000 is treated as 0. Nigeria (0), India (+0.006) and China (−0.031) 
 The `views` array in `../demographics.json` defines the groupings used by both the map and the ranked list. The tab code only reads that array; new groups should be added there, not in the JavaScript. The current views are:
 
 1. **Geographic region.** UN M49 continents and official geoscheme subregions (for example Northern America), taken from the `region` column of `country_pool_map.csv`.
-2. **Founding population.** Countries grouped by `primary_pool` from the same mapping file, for example “All countries founded by ethnic Europeans”.
-3. **Anglosphere.** The United States, the United Kingdom, Canada, Australia, New Zealand and Ireland.
-4. **Data availability.** Census ethnic data, official series without a cross-pool score, UN estimate only, or no score.
+2. **Founding populations.** Countries grouped by `primary_pool` from the same mapping file, for example “All countries founded by ethnic Europeans”. The dropdown keeps the EUR, MENA, SAS, EAS, SEA and SSA pools, and includes the Anglosphere (the United States, the United Kingdom, Canada, Australia, New Zealand and Ireland) as an option in that same list. North American Indigenous, Amerindian and Pacific Islander are not shown as filter options. There is no separate Data availability view.
 
 ## Sources
 
@@ -82,7 +80,8 @@ The Channel Islands appear as a UN DESA aggregate (M49 830) and are not a single
 
 ## Supplements that do not change the score
 
-Two standalone releases sit beside this file. They do not alter `score`, the colour bands, or the default map.
+Three standalone releases sit beside this file. They do not alter `score`, the colour bands, or the default map.
 
 - `origin_series_FR_DE_ES.json` (v1.14.0) is an extra block on France, Germany and Spain. France and Germany cover two generations. Spain is first generation only, so the Spain-born children of immigrants stay inside the ethnic European share. Germany’s 2021 point is the Census 2011 frame and is not joined to the Census 2022 series. A footnote gives the sensitivity case that excludes North America. Each connected series also shows the change in the ethnic European share, and a fall is negative.
-- `baseline_1960_1979.json` (v1.15.0), with `baseline_1960_1979.csv`, is the optional “Change since earliest 1960–79 census” view. The file stores the change in the founding share, and the tab shows that sign: a negative figure means the founding share fell. Rows whose `verification` contains `NOT VERIFIED` (Guatemala, Kenya, Viet Nam, Zimbabwe, Guyana, Bolivia) stay in the file and are not shown. Armenia and Georgia are counted as ethnic European, with a visible classification-pending note. A country with no published row says “no 1960–79 census baseline”.
+- `baseline_1960_1979.json` (v1.15.0), with `baseline_1960_1979.csv`, remains as a data release only. The file stores the change in the founding share (a negative figure means the founding share fell). It is not wired to a toggle or any other view on the tab. Rows whose `verification` contains `NOT VERIFIED` (Guatemala, Kenya, Viet Nam, Zimbabwe, Guyana, Bolivia) stay in the file. Armenia and Georgia are counted as ethnic European, with a classification-pending note in the file.
+- `baseline_pre1950.json` (v1.16.0), with `baseline_pre1950.csv`, stores official pre-1950 ethnic European census baselines for seven countries, plus Italy as an explicit unverified/null row. This is a data-and-documentation release only: it is not wired to the map, scoring, or any view, and it does not change existing country scores or colours. Putting these baselines on the map waits on a separate go-ahead. Australia 1911 and New Zealand 1936 are official race tabulations; Germany 1933, France 1931 and Spain 1930 are nationality residuals; the United Kingdom 1931 figure is a birthplace residual for Great Britain only; Ireland 1936 is a birthplace residual for Saorstát Éireann. These early figures are not strictly comparable across countries, or with later ethnicity or ancestry series. Italy has official historical population totals but no verified national stranieri-by-citizenship table in this pass, so the share is null.

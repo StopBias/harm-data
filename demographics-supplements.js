@@ -1,7 +1,8 @@
 // Pure helpers for the Demographics supplements.
-// origin series v1.14.0 (France, Germany, Spain) and the 1960–79 baseline v1.15.0.
+// origin series v1.14.0 (France, Germany, Spain), used by the country panel,
+// and the stored 1960–79 baseline v1.15.0 (data files only; not a live toggle).
 // The baseline file stores the founding shares and the old percentage-point difference.
-// The toggle shows the relative percent change, (latest - baseline) / baseline * 100.
+// displayChange is the relative percent change, (latest - baseline) / baseline * 100.
 // A fall is negative. A row without both shares is left unscored.
 (function (root, factory) {
   const api = factory();
@@ -47,8 +48,9 @@
     return { value: value, indicative: indicative, raw: value };
   }
 
-  // When the optional baseline view is off, the caller keeps the existing score.
-  // When it is on, a null value means "no 1960–79 change to colour", not the old score.
+  // colourScore is kept for the stored 1960–79 baseline files and their tests.
+  // When baselineOn is false, the caller keeps the existing score.
+  // When it is true, a null value means "no 1960–79 change to colour", not the old score.
   function colourScore(baselineOn, row) {
     if (!baselineOn) return { useExisting: true, value: null };
     const change = row ? displayChange(row) : null;
