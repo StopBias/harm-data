@@ -1,8 +1,8 @@
 // Demographics tab. Reads data/demographics.json.
 // User-facing text lives in i18n/*.json under the demographics.* prefix.
-// Group lists (geographic region, founding population, Anglosphere,
-// data availability) come from the data file so new groups can be added
-// without changing this file.
+// Group lists (geographic region and founding populations, including
+// the Anglosphere option) come from the data file so new groups can
+// be added without changing this file.
 (function () {
   "use strict";
 
@@ -13,21 +13,14 @@
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
-  const BASELINE_URL = "data/demographics/baseline_1960_1979.json";
   const Supplements = window.HarmDemographicsSupplements || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
-  const AVAIL_DEFAULTS = {
-    census: "#077183",
-    census_limited: "#7eb8c2",
-    estimate: "#b9bfc4",
-    none: "#eceeef"
-  };
 
-  let data = null, originData = null, baselineData = null, baselineByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let data = null, originData = null, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
   let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
@@ -38,8 +31,7 @@
     query: "",
     sortKey: "high",
     details: false,
-    selected: null,
-    baselineView: false
+    selected: null
   };
 
   function enOnlyBadge() {
@@ -132,21 +124,12 @@
     return new Set(currentMembers());
   }
 
-  function isAvailabilityView() {
-    return state.viewId === "availability";
-  }
-
   function noScoreColor() {
     return (data && data.scale && data.scale.no_score_color) || DEFAULT_NO_SCORE;
   }
 
   function outGroupColor() {
     return (data && data.scale && data.scale.out_of_group_color) || DEFAULT_OUT_GROUP;
-  }
-
-  function availColor(kind) {
-    const mapCols = (data && data.scale && data.scale.availability_colors) || {};
-    return mapCols[kind] || AVAIL_DEFAULTS[kind] || noScoreColor();
   }
 
   function bandFor(c) {
@@ -158,23 +141,8 @@
 
   function colorForCountry(c, inGroup) {
     if (!inGroup) return outGroupColor();
-    if (state.baselineView) return colorForBaseline(c);
     if (!c) return noScoreColor();
-    if (isAvailabilityView()) return availColor(c.availability || "none");
     const b = bandFor(c);
-    return b ? b.color : noScoreColor();
-  }
-
-  function baselineRow(c) {
-    if (!c) return null;
-    return baselineByIso[c.iso3] || baselineByIso[c.id] || null;
-  }
-
-  function colorForBaseline(c) {
-    if (!c || !Supplements || !window.ShareScale) return noScoreColor();
-    const scored = Supplements.colourScore(true, baselineRow(c));
-    if (!scored || scored.useExisting || scored.value == null) return noScoreColor();
-    const b = window.ShareScale.bandForChange(scored.value, 1);
     return b ? b.color : noScoreColor();
   }
 
@@ -309,15 +277,14 @@
         <p class="dv-desc" id="dv-map-desc"></p>
         <div class="dv-switcher-wrap">
           <div class="dv-switcher" id="dv-switcher" role="group"></div>
-          <label class="dv-filter-lab" id="dv-group-lab">
+          <div class="dv-filter-lab" id="dv-group-lab">
             <span id="dv-group-lbl"></span>
-            <select id="dv-group"></select>
-          </label>
+            <div class="dv-dropdown" id="dv-group-dropdown">
+              <button type="button" class="dv-dropdown-btn" id="dv-group-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="dv-group-menu"></button>
+              <div class="dv-dropdown-menu" id="dv-group-menu" role="listbox" hidden></div>
+            </div>
+          </div>
         </div>
-        <label class="dv-baseline-lab" id="dv-baseline-lab">
-          <input type="checkbox" id="dv-baseline">
-          <span id="dv-baseline-lbl"></span>
-        </label>
         <div class="dv-map-wrap">
           <div id="dv-map" role="img"></div>
           <div class="dv-map-error" id="dv-map-error" hidden></div>
@@ -338,7 +305,6 @@
         <p class="dv-desc" id="dv-records-p2"></p>
         <p class="dv-desc" id="dv-records-p3"></p>
         <p class="dv-desc" id="dv-records-p4"></p>
-        <div class="dv-avail-legend" id="dv-avail-legend"></div>
       </section>
       <section class="dv-section" aria-labelledby="dv-bar-h">
         <h3 class="dv-h" id="dv-bar-h"></h3>
@@ -394,14 +360,10 @@
     if (p4) p4.textContent = t("records_p4", worldContextVars());
     set("#dv-map-h", t("map_h"));
     renderMapKey();
-    set("#dv-map-desc", state.baselineView ? t("baseline_map_desc") : t("map_desc"));
-    set("#dv-scale-note", state.baselineView ? t("baseline_scale_note") : (isAvailabilityView() ? t("avail_scale_note") : t("scale_note")));
-    set("#dv-bar-h", state.baselineView ? t("baseline_bar_h") : t("bar_h"));
-    set("#dv-bar-desc", state.baselineView ? t("baseline_bar_desc") : t("bar_desc"));
-    set("#dv-baseline-lbl", t("baseline_toggle"));
-    const baselineBox = view.querySelector("#dv-baseline");
-    if (baselineBox) baselineBox.checked = !!state.baselineView;
-    view.setAttribute("data-baseline-view", state.baselineView ? "on" : "off");
+    set("#dv-map-desc", t("map_desc"));
+    set("#dv-scale-note", t("scale_note"));
+    set("#dv-bar-h", t("bar_h"));
+    set("#dv-bar-desc", t("bar_desc"));
     set("#dv-search-lbl", t("search"));
     const search = view.querySelector("#dv-search");
     if (search) {
@@ -426,22 +388,6 @@
     if (btn) btn.textContent = state.details ? t("details_hide") : t("details_btn");
   }
 
-  function renderAvailLegend() {
-    const el = view.querySelector("#dv-avail-legend");
-    if (!el) return;
-    const counts = (data && data.counts) || {};
-    const items = [
-      ["census", t("legend_census"), counts.census],
-      ["census_limited", t("legend_limited"), counts.census_limited],
-      ["estimate", t("legend_estimate_only"), counts.estimate],
-      ["none", t("legend_none"), counts.none]
-    ].filter(row => row[2] != null);
-    el.innerHTML = `<div class="dv-legend-title">${esc(t("avail_legend_h"))}</div>
-      <div class="dv-legend-items">${items.map(([k, lab, n]) =>
-        `<span class="dv-legend-item"><span class="swatch" style="background:${esc(availColor(k))}"></span>${esc(lab)} (${esc(fmt(n, { maximumFractionDigits: 0 }))})</span>`
-      ).join("")}</div>`;
-  }
-
   function renderSwitcher() {
     const box = view.querySelector("#dv-switcher");
     if (!box) return;
@@ -453,35 +399,102 @@
     renderGroupSelect();
   }
 
+  function groupOptions(v) {
+    const groups = (v && v.groups) || [];
+    const items = [];
+    const continents = groups.filter(g => g.level === "continent");
+    if (continents.length) {
+      const all = groups.find(g => g.id === "all");
+      if (all) items.push({ type: "option", id: all.id, label: groupLabel(all) });
+      continents.forEach(cont => {
+        items.push({ type: "label", label: groupLabel(cont) });
+        items.push({ type: "option", id: cont.id, label: t("geo_continent_all", { name: groupLabel(cont) }) });
+        groups.filter(g => g.parent === cont.id).forEach(g => {
+          items.push({ type: "option", id: g.id, label: groupLabel(g) });
+        });
+      });
+      return items;
+    }
+    return groups.map(g => ({ type: "option", id: g.id, label: groupLabel(g) }));
+  }
+
+  function closeGroupMenu() {
+    const menu = view.querySelector("#dv-group-menu");
+    const btn = view.querySelector("#dv-group-btn");
+    if (menu) menu.hidden = true;
+    if (btn) btn.setAttribute("aria-expanded", "false");
+  }
+
+  function positionGroupMenu() {
+    const menu = view.querySelector("#dv-group-menu");
+    const btn = view.querySelector("#dv-group-btn");
+    if (!menu || !btn || menu.hidden) return;
+    menu.classList.remove("is-below");
+    const rect = btn.getBoundingClientRect();
+    const width = Math.max(menu.offsetWidth, 220);
+    if (window.innerWidth - rect.right < width + 8) menu.classList.add("is-below");
+  }
+
+  function openGroupMenu() {
+    const menu = view.querySelector("#dv-group-menu");
+    const btn = view.querySelector("#dv-group-btn");
+    if (!menu || !btn || menu.hidden === false) return;
+    menu.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    positionGroupMenu();
+    const selected = menu.querySelector('[aria-selected="true"]') || menu.querySelector('[role="option"]');
+    if (selected) selected.focus();
+  }
+
+  function toggleGroupMenu() {
+    const menu = view.querySelector("#dv-group-menu");
+    if (!menu) return;
+    if (menu.hidden) openGroupMenu();
+    else {
+      closeGroupMenu();
+      const btn = view.querySelector("#dv-group-btn");
+      if (btn) btn.focus();
+    }
+  }
+
   function renderGroupSelect() {
     const lab = view.querySelector("#dv-group-lab");
-    const sel = view.querySelector("#dv-group");
-    if (!lab || !sel) return;
+    const btn = view.querySelector("#dv-group-btn");
+    const menu = view.querySelector("#dv-group-menu");
+    if (!lab || !btn || !menu) return;
     const v = viewDef(state.viewId);
     const groups = (v && v.groups) || [];
     const hide = groups.length <= 1;
     lab.hidden = hide;
+    closeGroupMenu();
     if (hide) return;
-    const continents = groups.filter(g => g.level === "continent");
-    if (continents.length) {
-      const all = groups.find(g => g.id === "all");
-      let html = all ? `<option value="${esc(all.id)}">${esc(groupLabel(all))}</option>` : "";
-      continents.forEach(cont => {
-        const kids = groups.filter(g => g.parent === cont.id);
-        html += `<optgroup label="${esc(groupLabel(cont))}">`;
-        html += `<option value="${esc(cont.id)}">${esc(t("geo_continent_all", { name: groupLabel(cont) }))}</option>`;
-        kids.forEach(g => { html += `<option value="${esc(g.id)}">${esc(groupLabel(g))}</option>`; });
-        html += `</optgroup>`;
-      });
-      sel.innerHTML = html;
-    } else {
-      sel.innerHTML = groups.map(g => `<option value="${esc(g.id)}">${esc(groupLabel(g))}</option>`).join("");
-    }
-    if (![...sel.options].some(o => o.value === state.groupId)) {
+    const items = groupOptions(v);
+    const ids = items.filter(it => it.type === "option").map(it => it.id);
+    if (ids.indexOf(state.groupId) === -1) {
       state.groupId = v.default_group || (groups[0] && groups[0].id);
     }
-    sel.value = state.groupId;
+    const current = items.find(it => it.type === "option" && it.id === state.groupId);
+    btn.textContent = current ? current.label : "";
+    btn.setAttribute("aria-label", t("group_filter") + ": " + (current ? current.label : ""));
+    menu.innerHTML = items.map(it => {
+      if (it.type === "label") {
+        return `<div class="dv-optgroup-label">${esc(it.label)}</div>`;
+      }
+      const sel = it.id === state.groupId;
+      return `<button type="button" role="option" class="dv-dropdown-option" data-group="${esc(it.id)}" aria-selected="${sel}">${esc(it.label)}</button>`;
+    }).join("");
   }
+
+  function focusGroupOption(from, dir) {
+    const menu = view.querySelector("#dv-group-menu");
+    if (!menu) return;
+    const opts = [...menu.querySelectorAll('[role="option"]')];
+    if (!opts.length) return;
+    const i = opts.indexOf(from);
+    const next = opts[Math.max(0, Math.min(opts.length - 1, (i === -1 ? 0 : i) + dir))];
+    if (next) next.focus();
+  }
+
 
   function renderSort() {
     const sel = view.querySelector("#dv-sort");
@@ -511,7 +524,7 @@
     const el = view.querySelector("#dv-map-key");
     if (!el) return;
     const bands = (window.ShareScale && window.ShareScale.BANDS) || [];
-    if (isAvailabilityView() || !bands.length) { el.hidden = true; el.innerHTML = ""; return; }
+    if (!bands.length) { el.hidden = true; el.innerHTML = ""; return; }
     el.hidden = false;
     const order = ["growing", "little", "light", "medium", "dark"];
     el.innerHTML = order.map(id => {
@@ -524,30 +537,6 @@
   function renderLegend() {
     const el = view.querySelector("#dv-legend");
     if (!el) return;
-    if (state.baselineView) {
-      const list = (window.ShareScale && window.ShareScale.BANDS) || [];
-      el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
-        <div class="dv-legend-ends"><span>${esc(t("legend_most"))}</span><span>${esc(t("legend_least"))}</span></div>
-        <div class="dv-legend-items">${list.map(bandItem).join("")}
-        <span class="dv-legend-item"><span class="swatch" style="background:${esc(noScoreColor())}"></span>${esc(t("baseline_none"))}</span>
-        </div>`;
-      return;
-    }
-    if (isAvailabilityView()) {
-      const items = [
-        ["census", t("legend_census")],
-        ["census_limited", t("legend_limited")],
-        ["estimate", t("legend_estimate_only")],
-        ["none", t("legend_none")]
-      ].map(([k, lab]) =>
-        `<span class="dv-legend-item"><span class="swatch" style="background:${esc(availColor(k))}"></span>${esc(lab)}</span>`
-      ).join("");
-      el.innerHTML = `<div class="dv-legend-title">${esc(t("avail_legend_h"))}</div>
-        <div class="dv-legend-items">${items}
-          <span class="dv-legend-item subtle"><span class="swatch" style="background:${esc(outGroupColor())}; box-shadow: inset 0 0 0 1px #d5d8da"></span>${esc(t("legend_out_of_group"))}</span>
-        </div>`;
-      return;
-    }
     const list = (window.ShareScale && window.ShareScale.BANDS) || [];
     const items = list.map(bandItem).join("");
     el.innerHTML = `<div class="dv-legend-title">${esc(t("legend_title"))}</div>
@@ -789,10 +778,6 @@
 
   function tooltipHtml(c) {
     const name = countryName(c);
-    if (state.baselineView) return baselineTooltip(c, name);
-    if (isAvailabilityView()) {
-      return `<strong>${esc(name)}</strong><br>${esc(availLabel(c))}`;
-    }
     const shown = displayValue(c);
     if (shown == null) {
       return `<strong>${esc(name)}</strong><br>${esc(t("legend_no_score"))}`;
@@ -807,14 +792,6 @@
     return `<strong>${esc(name)}</strong><br>
       <span class="swatch" style="background:${esc(colorForCountry(c, true))}"></span>
       ${esc(label)}${badge}`;
-  }
-
-  function availLabel(c) {
-    const k = c.availability || "none";
-    if (k === "census") return t("legend_census");
-    if (k === "census_limited") return t("legend_limited");
-    if (k === "estimate") return t("legend_estimate_only");
-    return t("legend_none");
   }
 
   function bindMapEvents() {
@@ -949,26 +926,18 @@
       lines.push(`<p class="dv-meta">${esc(c.mapping_note)}${enOnlyBadge()}</p>`);
     }
     el.hidden = false;
-    el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p>${lines.join("")}${ce ? checkpointTable(c) : ""}${originBlock(c)}${baselineBlock(c)}`;
+    el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p>${lines.join("")}${ce ? checkpointTable(c) : ""}${originBlock(c)}`;
   }
 
   function share2(n) {
     return fmt(n, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
-  function formatBaselineShare(v) {
-    if (typeof v === "number" && Number.isFinite(v)) {
-      return fmt(v, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-    }
-    if (typeof v === "string" && v.trim()) return v;
-    return "—";
-  }
-
   function originBlock(c) {
     if (!Supplements || !originData || !originData.countries || !c) return "";
     const model = Supplements.originModel(originData.countries[c.iso3] || originData.countries[c.id]);
     if (!model) return "";
-    const version = originData.version ? t("baseline_version", { version: originData.version }) : "";
+    const version = originData.version ? "v" + originData.version : "";
     const genKey = model.generations === "first" ? "origin_gen_esp" : (model.iso === "DEU" ? "origin_gen_deu" : "origin_gen_fra");
     const headline = originHeadline(model);
     const svg = Supplements.originChartSvg(model, share2);
@@ -1127,86 +1096,6 @@
     return `<p class="dv-meta">${esc(heading)}</p><ul class="dv-src-list">${items}</ul>`;
   }
 
-  function baselineTooltip(c, name) {
-    const row = baselineRow(c);
-    if (!row || !Supplements) {
-      return `<strong>${esc(name)}</strong><br>${esc(t("baseline_none"))}`;
-    }
-    const change = Supplements.displayChange(row);
-    const year = fmtYear(row.baseline_year);
-    if (!change || change.value == null) {
-      return `<strong>${esc(name)}</strong><br>${esc(t("baseline_year", { year: year }))}`;
-    }
-    const key = change.indicative ? "baseline_tooltip_indicative" : "baseline_tooltip";
-    return `<strong>${esc(name)}</strong><br>
-      <span class="swatch" style="background:${esc(colorForBaseline(c))}"></span>
-      ${esc(t(key, { year: year, change: fmtScore(change.value) }))}`;
-  }
-
-  function baselineBadgesHtml(row) {
-    if (!Supplements) return "";
-    const labels = {
-      definition_break: t("badge_definition_break"),
-      estimate: t("badge_estimate"),
-      weak_proxy: t("badge_weak"),
-      demoscope: t("badge_demoscope")
-    };
-    return Supplements.baselineBadges(row).map(id =>
-      `<span class="dv-pill dv-pill-prov">${esc(labels[id] || id)}</span>`
-    ).join(" ");
-  }
-
-  function baselineBlock(c) {
-    if (!state.baselineView || !c) return "";
-    const version = baselineData && baselineData.version ? t("baseline_version", { version: baselineData.version }) : "";
-    const row = baselineRow(c);
-    if (!row || !Supplements) {
-      return `<section class="dv-extra" aria-label="${esc(t("baseline_h"))}">
-        <h4>${esc(t("baseline_h"))}${version ? " (" + esc(version) + ")" : ""}</h4>
-        <p>${esc(t("baseline_none"))}</p>
-      </section>`;
-    }
-    const change = Supplements.displayChange(row);
-    const year = fmtYear(row.baseline_year);
-    const share = formatBaselineShare(row.baseline_founding_pct);
-    const lines = [];
-    lines.push(`<p>${esc(t("baseline_year", { year: year }))}</p>`);
-    lines.push(`<p>${esc(t("baseline_share", { year: year, share: share }))}</p>`);
-    if (row.latest_founding_pct_core != null && row.latest_year_core != null) {
-      lines.push(`<p class="dv-meta">${esc(t("baseline_latest", {
-        share: formatBaselineShare(row.latest_founding_pct_core),
-        year: fmtYear(row.latest_year_core)
-      }))}</p>`);
-    }
-    if (change && change.value != null) {
-      const label = t("baseline_change", { year: year, change: fmtScore(change.value) });
-      const mark = change.indicative ? ` <span class="dv-pill dv-pill-prov">${esc(t("baseline_indicative"))}</span>` : "";
-      lines.push(`<p>${esc(label)}${mark}</p>`);
-      if (change.indicative) lines.push(`<p class="dv-footnote">${esc(t("baseline_indicative_note"))}${enOnlyBadge()}</p>`);
-    } else {
-      lines.push(`<p>${esc(t("baseline_no_change"))}</p>`);
-    }
-    if (Supplements.classificationPending(row.iso3)) {
-      lines.push(`<p class="dv-pending">${esc(t("baseline_pending", { country: countryName(c) }))}</p>`);
-    }
-    if (row.measure) {
-      lines.push(`<p class="dv-meta">${esc(t("baseline_measure", { measure: Supplements.groupWording(row.measure) }))}${enOnlyBadge()}</p>`);
-    }
-    const flags = Array.isArray(row.flags) ? row.flags : [];
-    const flagList = flags.length
-      ? `<p class="dv-meta">${esc(t("baseline_flags"))}</p><ul class="dv-src-list">${flags.map(flag =>
-          `<li>${esc(Supplements.groupWording(flag))}</li>`
-        ).join("")}</ul>`
-      : "";
-    return `<section class="dv-extra" aria-label="${esc(t("baseline_h"))}">
-      <h4>${esc(t("baseline_h"))}${version ? " (" + esc(version) + ")" : ""}</h4>
-      <p>${baselineBadgesHtml(row)}</p>
-      ${lines.join("")}
-      ${flagList}
-      ${sourceLinks(Supplements.sourceList(row), t("baseline_sources"))}
-    </section>`;
-  }
-
   function filteredCountries() {
     const q = state.query.trim().toLocaleLowerCase(locale());
     let list = currentMembers().map(id => byId[id]).filter(Boolean);
@@ -1245,7 +1134,6 @@
   }
 
   function renderBars() {
-    if (state.baselineView) { renderBaselineBars(); return; }
     const ul = view.querySelector("#dv-bars");
     const count = view.querySelector("#dv-list-count");
     if (!ul) return;
@@ -1304,84 +1192,6 @@
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>
           <span class="dv-bar-n">${esc(shown == null ? "—" : fmtChange(shown, proxy))}</span>
           <span class="dv-bar-years">${esc(years || "—")}</span>
-        </button>
-      </li>`;
-    }).join("");
-  }
-
-  function baselineRank(c) {
-    const row = baselineRow(c);
-    if (!row || !Supplements) return { tier: 2, value: null };
-    const change = Supplements.displayChange(row);
-    if (change && change.value != null) return { tier: 0, value: change.value };
-    return { tier: 1, value: null };
-  }
-
-  function renderBaselineBars() {
-    const ul = view.querySelector("#dv-bars");
-    const count = view.querySelector("#dv-list-count");
-    if (!ul) return;
-    const loc = locale();
-    const list = filteredCountries().slice().sort((a, b) => {
-      if (state.sortKey === "name") return countryName(a).localeCompare(countryName(b), loc);
-      const ra = baselineRank(a);
-      const rb = baselineRank(b);
-      if (ra.tier !== rb.tier) return ra.tier - rb.tier;
-      if (ra.value == null && rb.value == null) return countryName(a).localeCompare(countryName(b), loc);
-      // "High" is the largest decline in the founding share (the most negative figure).
-      const diff = state.sortKey === "low" ? rb.value - ra.value : ra.value - rb.value;
-      return diff || countryName(a).localeCompare(countryName(b), loc);
-    });
-    const vals = list.map(c => baselineRank(c).value).filter(v => v != null);
-    const cMin = vals.length ? Math.min(0, ...vals) : 0;
-    const cMax = vals.length ? Math.max(0, ...vals) : 1;
-    const cSpan = Math.max(1, cMax - cMin);
-    if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
-    if (!list.length) {
-      ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
-      return;
-    }
-    ul.innerHTML = list.map(c => {
-      const row = baselineRow(c);
-      const rank = baselineRank(c);
-      const sel = c.id === state.selected ? " is-selected" : "";
-      if (!row || rank.value == null) {
-        const missing = !row;
-        const year = row ? fmtYear(row.baseline_year) : "";
-        const note = missing ? t("baseline_none") : t("baseline_no_change");
-        const badges = row ? baselineBadgesHtml(row) : "";
-        const pending = row && Supplements && Supplements.classificationPending(row.iso3)
-          ? ` <span class="dv-pill dv-pill-prov">${esc(t("baseline_pending_short"))}</span>`
-          : "";
-        return `<li class="dv-bar-item${sel}" data-id="${esc(c.id)}">
-          <button type="button" class="dv-bar-btn is-baseline-none" aria-label="${esc(countryName(c))}, ${esc(note)}">
-            <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${pending}</span>
-            <span class="dv-bar-missing">${badges ? badges + " " : ""}${esc(year ? year + " · " + note : note)}</span>
-          </button>
-        </li>`;
-      }
-      const color = colorForBaseline(c);
-      const change = Supplements.displayChange(row);
-      const left = ((Math.min(rank.value, 0) - cMin) / cSpan) * 100;
-      const width = (Math.abs(rank.value) / cSpan) * 100;
-      const zero = ((0 - cMin) / cSpan) * 100;
-      const indicative = change && change.indicative
-        ? ` <span class="dv-small-flag" title="${esc(t("baseline_indicative_note"))}">${esc(t("baseline_indicative"))}</span>`
-        : "";
-      const badges = baselineBadgesHtml(row);
-      const years = row.latest_year_core != null
-        ? formatYearSpan(row.baseline_year, row.latest_year_core)
-        : fmtYear(row.baseline_year);
-      const title = t(change && change.indicative ? "baseline_tooltip_indicative" : "baseline_tooltip", {
-        year: fmtYear(row.baseline_year),
-        change: fmtScore(rank.value)
-      });
-      return `<li class="dv-bar-item${sel}" data-id="${esc(c.id)}">
-        <button type="button" class="dv-bar-btn is-baseline" aria-label="${esc(countryName(c))}, ${esc(title)}">
-          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${indicative}${badges ? " " + badges : ""}</span>
-          <span class="dv-bar-track"><span class="dv-bar-zero" style="left:${zero}%"></span><span class="dv-bar-fill" style="background:${esc(color)};margin-left:${left}%;width:${width}%;"></span></span>
-          <span class="dv-bar-n">${esc(fmtScore(rank.value))}</span>
-          <span class="dv-bar-years">${esc(years)}</span>
         </button>
       </li>`;
     }).join("");
@@ -1473,7 +1283,6 @@
     }
     if (!state.viewId) defaultViewState();
     labelStatic();
-    renderAvailLegend();
     renderSwitcher();
     renderSort();
     renderLegend();
@@ -1494,17 +1303,8 @@
     }
   }
 
-  function ingestSupplements(origin, baseline) {
+  function ingestSupplements(origin) {
     originData = origin && origin.countries ? origin : null;
-    baselineData = baseline && Array.isArray(baseline.rows) ? baseline : null;
-    baselineByIso = {};
-    if (baselineData && Supplements) {
-      baselineData.rows.forEach(row => {
-        if (row && row.iso3 && Supplements.isPublishableBaseline(row) && !baselineByIso[row.iso3]) {
-          baselineByIso[row.iso3] = row;
-        }
-      });
-    }
   }
 
   function ingest(json) {
@@ -1530,12 +1330,11 @@
       .then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
     loading = Promise.all([
       fetchJson(DATA_URL),
-      fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; }),
-      fetchJson(BASELINE_URL).catch(err => { console.error(err); return null; })
+      fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; })
     ])
-      .then(([json, origin, baseline]) => {
+      .then(([json, origin]) => {
         ingest(json);
-        ingestSupplements(origin, baseline);
+        ingestSupplements(origin);
         safeRender();
       })
       .catch(err => {
@@ -1551,6 +1350,16 @@
   view.addEventListener("click", e => {
     const retry = e.target.closest("#dv-retry");
     if (retry) { load(); return; }
+    const opt = e.target.closest("#dv-group-menu [data-group]");
+    if (opt) {
+      setGroup(opt.getAttribute("data-group"));
+      renderGroupSelect();
+      const btn = view.querySelector("#dv-group-btn");
+      if (btn) btn.focus();
+      return;
+    }
+    if (e.target.closest("#dv-group-btn")) { toggleGroupMenu(); return; }
+    closeGroupMenu();
     const vb = e.target.closest("#dv-switcher button[data-view]");
     if (vb) { setView(vb.getAttribute("data-view")); return; }
     const detailsBtn = e.target.closest("#dv-details-btn");
@@ -1561,18 +1370,51 @@
       if (li) selectCountry(li.getAttribute("data-id"));
     }
   });
-  view.addEventListener("change", e => {
-    if (e.target && e.target.id === "dv-baseline") {
-      state.baselineView = !!e.target.checked;
-      labelStatic();
-      renderLegend();
-      renderBars();
-      renderSelected();
-      refreshFill();
+  document.addEventListener("click", e => {
+    if (!view.contains(e.target)) closeGroupMenu();
+  });
+  view.addEventListener("keydown", e => {
+    const inMenu = e.target.closest && e.target.closest("#dv-group-menu");
+    const onBtn = e.target && e.target.id === "dv-group-btn";
+    if (onBtn && (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      openGroupMenu();
       return;
     }
-    if (e.target && e.target.id === "dv-group") setGroup(e.target.value);
-    else if (e.target && e.target.id === "dv-sort") { state.sortKey = e.target.value; renderBars(); }
+    if (!inMenu) return;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeGroupMenu();
+      const btn = view.querySelector("#dv-group-btn");
+      if (btn) btn.focus();
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusGroupOption(e.target, 1);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusGroupOption(e.target, -1);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      focusGroupOption(null, 0);
+      const first = view.querySelector("#dv-group-menu [role='option']");
+      if (first) first.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      const opts = view.querySelectorAll("#dv-group-menu [role='option']");
+      if (opts.length) opts[opts.length - 1].focus();
+    } else if (e.key === "Enter" || e.key === " ") {
+      const option = e.target.closest("[data-group]");
+      if (option) {
+        e.preventDefault();
+        setGroup(option.getAttribute("data-group"));
+        renderGroupSelect();
+        const btn = view.querySelector("#dv-group-btn");
+        if (btn) btn.focus();
+      }
+    }
+  });
+  view.addEventListener("change", e => {
+    if (e.target && e.target.id === "dv-sort") { state.sortKey = e.target.value; renderBars(); }
   });
   view.addEventListener("input", e => {
     if (e.target && e.target.id === "dv-search") {

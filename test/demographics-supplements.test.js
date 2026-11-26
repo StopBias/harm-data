@@ -163,29 +163,44 @@ assert.strictEqual(api.groupWording("Europe"), "Europe");
   "origin_gen_deu",
   "origin_gen_esp",
   "origin_detached",
-  "origin_deu_sensitivity",
-  "baseline_toggle",
-  "baseline_none",
-  "baseline_indicative",
-  "baseline_pending",
-  "baseline_pending_short",
-  "badge_definition_break",
-  "badge_estimate",
-  "badge_weak",
-  "badge_demoscope"
+  "origin_deu_sensitivity"
 ].forEach(key => assert.strictEqual(typeof copy[key], "string", key));
 
 assert.strictEqual(copy.origin_detached, "Census 2011 frame, not comparable");
-assert.strictEqual(copy.baseline_none, "no 1960–79 census baseline");
-assert.strictEqual(copy.baseline_indicative, "indicative");
-assert.ok(copy.baseline_pending.indexOf("Classification pending") === 0);
-assert.ok(copy.baseline_pending.indexOf("ethnic European") !== -1);
 assert.ok(copy.origin_gen_esp.indexOf("misses the second generation") !== -1);
 assert.ok(copy.origin_deu_sensitivity.indexOf("North America") !== -1);
 assert.ok(copy.origin_gen_fra.indexOf("ethnic European") === -1 || copy.origin_gen_deu.indexOf("ethnic European") !== -1);
 assert.ok(!/anti-white| anti white/i.test(JSON.stringify(copy)));
-assert.ok(copy.baseline_scale_note.indexOf("negative figure means the founding share fell") !== -1);
 assert.ok(copy.origin_change.indexOf("negative figure means that share fell") !== -1);
+
+assert.strictEqual(copy.view_founding, "Founding populations");
+assert.strictEqual(copy.bar_h, "UN estimate, 1990-2020 (% change)");
+assert.strictEqual(copy.group_anglosphere, "Anglosphere");
+[
+  "view_availability",
+  "view_anglosphere",
+  "avail_legend_h",
+  "avail_scale_note",
+  "baseline_toggle",
+  "baseline_bar_h",
+  "baseline_map_desc",
+  "baseline_scale_note"
+].forEach(key => assert.strictEqual(copy[key], undefined, "removed " + key));
+
+const viewIds = demo.views.map(v => v.id);
+assert.deepStrictEqual(viewIds, ["geographic", "founding"]);
+const foundingView = demo.views.find(v => v.id === "founding");
+assert.strictEqual(foundingView.label, "Founding populations");
+assert.deepStrictEqual(foundingView.groups.map(g => g.id), ["all", "EUR", "MENA", "SAS", "EAS", "SEA", "SSA", "anglosphere"]);
+const anglo = foundingView.groups.find(g => g.id === "anglosphere");
+assert.deepStrictEqual(anglo.members, ["USA", "GBR", "CAN", "AUS", "NZL", "IRL"]);
+
+const demoJs = fs.readFileSync(path.join(root, "demographics.js"), "utf8");
+assert.ok(demoJs.indexOf("dv-baseline") === -1);
+assert.ok(demoJs.indexOf("view_availability") === -1);
+assert.ok(demoJs.indexOf("isAvailabilityView") === -1);
+assert.ok(demoJs.indexOf("BASELINE_URL") === -1);
+assert.ok(demoJs.indexOf("dv-dropdown-menu") !== -1);
 
 const scale = require("../demographics-scale.js");
 assert.strictEqual(scale.bandIdForChange(-27.8, 1), "dark");
