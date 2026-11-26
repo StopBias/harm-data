@@ -5,6 +5,7 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const scale = require("../demographics-scale.js");
+const preApi = require("../pre1950-baselines.js");
 
 const root = path.join(__dirname, "..");
 const read = rel => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
@@ -12,9 +13,13 @@ const read = rel => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 const demo = read("data/demographics.json");
 const groups = read("data/demographics/caucasus_ethnic_groups.json");
 const en = read("i18n/en.json");
+const preBy = preApi.indexRows(read("data/demographics/baseline_pre1950.json"));
+const origin = read("data/demographics/origin_series_FR_DE_ES.json");
 const byId = Object.fromEntries(demo.countries.map(c => [c.iso3, c]));
 
 function display(c) {
+  const pre = preApi.resolve(preBy[c.iso3], c, origin, scale);
+  if (pre && pre.use) return { v: pre.change, band: pre.band_id, kind: "pre1950" };
   if (c.score_kind === "census" && c.census
       && c.census.first_share_in_founding_pool != null
       && c.census.latest_share_in_founding_pool != null) {
@@ -86,7 +91,8 @@ const shown = {
   GEO: { v: 3.76, band: "growing" },
   ARM: { v: 2.71, band: "growing" },
   AZE: { v: 3.16, band: "growing" },
-  FRA: { v: -2.35, band: "light" },
+  FRA: { v: -13.1, band: "medium" },
+  ITA: { v: -4.5, band: "light" },
   GRC: { v: -1.58, band: "little" },
   USA: { v: -30.5, band: "dark" },
   LBN: { v: -0.16, band: "little" },

@@ -717,6 +717,7 @@
   <script src="hollywood.js" defer></script>
   <script src="demographics-scale.js" defer></script>
   <script src="demographics-supplements.js" defer></script>
+  <script src="pre1950-baselines.js" defer></script>
   <script src="demographics.js" defer></script>
   <script src="map-controls.js"></script>
   <script src="crime-menu.js"></script>
@@ -1360,6 +1361,8 @@
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
     const inScope = new Set(IN_SCOPE.concat(Object.keys(tracked)));
     const MEDIA_PENDING_COLOR = "#e6e8eb";
+    // Neutral fill for a draft index that is not statistically significant. Not on the purple-to-cyan scale.
+    const MEDIA_DRAFT_COLOR = "#c5c9cc";
     // Log-symmetric purple-to-cyan scale. Anti-Black end is #a455fe. L = log2(index). Ends at ±4× (L = ±2), matching the legend bar.
     const MEDIA_SCALE = [
       [-2, [0xa4, 0x55, 0xfe]],
@@ -1390,6 +1393,7 @@
       if (mapMode === "media") {
         if (!inScope.has(iso)) return OUT_OF_SCOPE_COLOR;
         const st = window.mediaCountryState ? window.mediaCountryState(iso) : null;
+        if (st && st.status === "draft") return MEDIA_DRAFT_COLOR;
         if (st && st.L != null && (st.status === "insufficient_data" || st.status === "bound" || st.status === "point")) {
           return colorForL(st.L);
         }
