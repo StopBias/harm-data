@@ -47,6 +47,8 @@ Country-to-pool assignments and UN M49 subregions come from the project’s `cou
 
 Two supplements are additional and do not change the default map colours or any country score. France, Germany and Spain show an origin series (v1.14.0) in the country panel: ethnic European share over two generations for France (89.50 in 2011 to 86.47 in 2021) and Germany (88.88 in 2023 to 87.99 in 2025, provisional, on the Census 2022 frame; the 2021 value 89.71 is a separate point labelled “Census 2011 frame, not comparable”), and first generation only for Spain (98.47 in 1998 to 84.63 in 2026). The v1.15.0 1960–79 baseline files remain in `data/demographics/` (`baseline_1960_1979.json` and `.csv`) but are not wired to the tab: there is no “Change since earliest 1960–79 census” toggle.
 
+The pre-1950 baselines in `data/demographics/baseline_pre1950.json` (v1.16.0) are the first point of that same percent change on the default map for Germany, France, Spain, the United Kingdom, Ireland, New Zealand and Italy. Italy runs from the 1936 citizenship residual (99.98% ethnic European) to the UN estimate the map already used (95.498% in 2020). Australia’s 1911 official race figure is an indicator in the country popup only and does not change Australia’s map score. There is no separate control for this, and it does not use the 1960–79 file. Each scored row has a concept or territory break against its latest point. Germany, France and Spain use the latest verified origin-series share, so their default score is no longer the UN proxy. Italy’s latest point remains that UN estimate.
+
 ## Adding / analysing a country
 1. Make sure its ISO 3166-1 alpha-3 code is in `IN_SCOPE` (all European states except Cyprus and the dependencies already are).
 2. Add one entry to `tracked`:
