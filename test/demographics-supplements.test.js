@@ -293,4 +293,82 @@ baseline.rows.forEach(r => {
   }
 });
 
+const CENSUS_HEAD = "Verified census baselines: hard counts from national census records";
+const PROXY_HEAD = "Modeled estimates: UN interpolated share where a direct census baseline isn't in hand";
+assert.strictEqual(copy.list_section_census, CENSUS_HEAD);
+assert.strictEqual(copy.list_section_proxy, PROXY_HEAD);
+fs.readdirSync(path.join(root, "i18n")).filter(name => name.endsWith(".json")).forEach(name => {
+  const loc = read("i18n/" + name).demographics;
+  assert.strictEqual(loc.list_section_census, CENSUS_HEAD, name + " list_section_census");
+  assert.strictEqual(loc.list_section_proxy, PROXY_HEAD, name + " list_section_proxy");
+});
+
+const vm = require("vm");
+function noop() {}
+const viewEl = {
+  hidden: true,
+  addEventListener: noop,
+  contains() { return false; },
+  querySelector() { return null; },
+  querySelectorAll() { return []; },
+  classList: { toggle: noop, add: noop, remove: noop }
+};
+global.document = {
+  getElementById(id) { return id === "demographics-view" ? viewEl : null; },
+  documentElement: { lang: "en" },
+  addEventListener: noop
+};
+global.window = global;
+global.addEventListener = noop;
+global.ShareScale = scale;
+global.t = (key, vars) => {
+  if (!String(key).startsWith("demographics.")) return key;
+  let s = copy[key.slice("demographics.".length)];
+  if (s == null || s === "") return key;
+  if (vars) Object.keys(vars).forEach(k => { s = String(s).split("{" + k + "}").join(String(vars[k])); });
+  return s;
+};
+vm.runInThisContext(fs.readFileSync(path.join(root, "demographics.js"), "utf8"), { filename: "demographics.js" });
+const rank = global.HarmDemographicsRank;
+assert.ok(rank && typeof rank.barsHtml === "function");
+rank.ingest(demo);
+const rows = rank.rankedRows();
+const censusRows = rows.filter(r => r.group === 0);
+const proxyRows = rows.filter(r => r.group === 1);
+assert.strictEqual(rows[0].id, "ZAF");
+assert.strictEqual(censusRows[censusRows.length - 1].id, "KAZ");
+assert.ok(proxyRows.length > 0);
+assert.strictEqual(rows[censusRows.length].id, proxyRows[0].id);
+for (let i = 1; i < rows.length; i++) {
+  assert.ok(rows[i].group >= rows[i - 1].group, rows[i].id);
+}
+for (let i = 1; i < censusRows.length; i++) {
+  assert.ok(censusRows[i].value >= censusRows[i - 1].value, censusRows[i].id);
+}
+const html = rank.barsHtml();
+const censusAt = html.indexOf(CENSUS_HEAD);
+const proxyAt = html.indexOf(PROXY_HEAD);
+const zafAt = html.indexOf('data-id="ZAF"');
+const kazAt = html.indexOf('data-id="KAZ"');
+const firstProxyAt = html.indexOf('data-id="' + proxyRows[0].id + '"');
+assert.ok(censusAt !== -1 && censusAt < zafAt && zafAt < kazAt && kazAt < proxyAt && proxyAt < firstProxyAt);
+const censusHeader = html.slice(html.indexOf('class="dv-bar-head"'), html.indexOf('class="dv-bar-head is-proxy"'));
+assert.ok(censusHeader.indexOf("Country") < censusHeader.indexOf("Change (percent decline)"));
+assert.ok(censusHeader.indexOf("Change (percent decline)") < censusHeader.indexOf("Census years"));
+assert.ok(html.indexOf("UN proxy (percent decline)") > proxyAt);
+assert.ok(html.indexOf(">Years<") > proxyAt);
+
+const moved = JSON.parse(JSON.stringify(demo));
+const kaz = moved.countries.find(c => c.id === "KAZ");
+assert.ok(kaz.cross_pool_fb_pct_1990 != null && kaz.cross_pool_fb_pct_2020 != null);
+kaz.census.latest_share_in_founding_pool = null;
+rank.ingest(moved);
+const movedRows = rank.rankedRows();
+assert.strictEqual(movedRows.find(r => r.id === "KAZ").group, 1);
+assert.ok(movedRows.filter(r => r.group === 0).every(r => r.id !== "KAZ"));
+const movedHtml = rank.barsHtml();
+assert.ok(movedHtml.indexOf(CENSUS_HEAD) < movedHtml.indexOf(PROXY_HEAD));
+assert.ok(movedHtml.indexOf('data-id="KAZ"') > movedHtml.indexOf(PROXY_HEAD));
+assert.strictEqual(movedRows.find(r => r.id === "ZAF").value, rows.find(r => r.id === "ZAF").value);
+
 console.log("demographics supplement checks passed");

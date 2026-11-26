@@ -1105,22 +1105,36 @@
         return names.some(n => String(n).toLocaleLowerCase(locale()).indexOf(q) !== -1);
       });
     }
-    const loc = locale();
-    list.sort((a, b) => {
-      const gr = rowGroup(a) - rowGroup(b);
-      if (gr) return gr;
-      if (state.sortKey === "name") {
-        return countryName(a).localeCompare(countryName(b), loc);
-      }
-      const sa = displayValue(a), sb = displayValue(b);
-      if (sa == null && sb == null) return countryName(a).localeCompare(countryName(b), loc);
-      if (sa == null) return 1;
-      if (sb == null) return -1;
-      // "High" is the largest decline in founding share (the most negative figure).
-      const diff = state.sortKey === "low" ? sb - sa : sa - sb;
-      return diff || countryName(a).localeCompare(countryName(b), loc);
+    // Census-scored rows, then UN proxy rows, then unscored rows.
+    // The split follows the data (isCensusScore / proxy), so a country that
+    // moves between those groups stays in the right block. The existing
+    // sort applies inside each block only.
+    const buckets = [[], [], []];
+    list.forEach(c => {
+      const g = rowGroup(c);
+      (buckets[g] || buckets[2]).push(c);
     });
-    return list;
+    buckets.forEach(bucket => bucket.sort(compareWithinGroup));
+    return buckets[0].concat(buckets[1], buckets[2]);
+  }
+
+  function compareWithinGroup(a, b) {
+    const loc = locale();
+    if (state.sortKey === "name") {
+      return countryName(a).localeCompare(countryName(b), loc);
+    }
+    const sa = displayValue(a), sb = displayValue(b);
+    if (sa == null && sb == null) return countryName(a).localeCompare(countryName(b), loc);
+    if (sa == null) return 1;
+    if (sb == null) return -1;
+    // "High" is the largest decline in founding share (the most negative figure).
+    const diff = state.sortKey === "low" ? sb - sa : sa - sb;
+    return diff || countryName(a).localeCompare(countryName(b), loc);
+  }
+
+  function sectionHead(kind) {
+    const key = kind === "proxy" ? "list_section_proxy" : "list_section_census";
+    return `<li class="dv-section-head${kind === "proxy" ? " is-proxy" : ""}">${esc(t(key))}</li>`;
   }
 
   function barHead(kind) {
@@ -1133,32 +1147,26 @@
     </li>`;
   }
 
-  function renderBars() {
-    const ul = view.querySelector("#dv-bars");
-    const count = view.querySelector("#dv-list-count");
-    if (!ul) return;
-    const list = filteredCountries();
+  function barsMarkup(list) {
+    if (!list.length) return `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
     const vals = list.map(displayValue).filter(v => v != null);
     const cMin = vals.length ? Math.min(0, ...vals) : 0;
     const cMax = vals.length ? Math.max(0, ...vals) : 1;
     const cSpan = Math.max(1, cMax - cMin);
-    if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
-    if (!list.length) {
-      ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
-      return;
-    }
     let seenCensusHead = false;
     let seenProxyHead = false;
-    ul.innerHTML = list.map(c => {
+    return list.map(c => {
       const shown = displayValue(c);
       const proxy = isProxyRow(c);
       const heads = [];
       if (!proxy && isCensusScore(c) && !seenCensusHead) {
         seenCensusHead = true;
+        heads.push(sectionHead("census"));
         heads.push(barHead("census"));
       }
       if (proxy && !seenProxyHead) {
         seenProxyHead = true;
+        heads.push(sectionHead("proxy"));
         heads.push(barHead("proxy"));
       }
       const color = colorForCountry(c, true);
@@ -1195,6 +1203,15 @@
         </button>
       </li>`;
     }).join("");
+  }
+
+  function renderBars() {
+    const ul = view.querySelector("#dv-bars");
+    const count = view.querySelector("#dv-list-count");
+    if (!ul) return;
+    const list = filteredCountries();
+    if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
+    ul.innerHTML = barsMarkup(list);
   }
 
   function highlightBar() {
@@ -1436,6 +1453,21 @@
     if (view.hidden) return;
     if (data) safeRender();
     else load();
+  };
+
+  window.HarmDemographicsRank = {
+    ingest: ingest,
+    rankedRows: function () {
+      return filteredCountries().map(c => ({
+        id: c.id,
+        name: c.name,
+        group: rowGroup(c),
+        value: displayValue(c)
+      }));
+    },
+    barsHtml: function () {
+      return barsMarkup(filteredCountries());
+    }
   };
 
   function start() {

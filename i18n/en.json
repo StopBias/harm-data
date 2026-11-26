@@ -675,6 +675,8 @@
     "col_years": "Census years",
     "col_proxy": "UN proxy (percent decline)",
     "col_proxy_years": "Years",
+    "list_section_census": "Verified census baselines: hard counts from national census records",
+    "list_section_proxy": "Modeled estimates: UN interpolated share where a direct census baseline isn't in hand",
     "flag_proxy": "UN estimate",
     "flag_proxy_short": "Proxy",
     "tooltip_proxy": "{score}%, 1990–2020. UN estimate: percent change in the founding share, where that share is 100 minus the share of residents born in another country whose origin differs from the country’s founding population (for example, someone born in India living in Canada). People born in the country are counted as founding population, so this is a lower bound; where both exist, the census percent decline is usually much larger (Canada: census −28.9% vs UN estimate −10.07%).",
