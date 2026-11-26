@@ -164,6 +164,75 @@ body.demographics-active .layout { display: none !important; }
   max-height: 640px; overflow-y: auto;
   border: 2px solid var(--io); border-radius: 4px; background: #fff;
 }
+.dv-rank-wrap {
+  max-height: 640px;
+  overflow: auto;
+  border: 2px solid var(--io);
+  border-radius: 4px;
+  background: #fff;
+}
+.dv-rank {
+  width: 100%;
+  min-width: 52rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.82rem;
+}
+.dv-rank th, .dv-rank td {
+  padding: 6px 8px;
+  border-top: 1px solid var(--line);
+  text-align: right;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.dv-rank thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f7f8f9;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: normal;
+  text-align: right;
+}
+.dv-rank thead th:first-child { text-align: left; z-index: 3; }
+.dv-rank-name {
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: #fff;
+  min-width: 11rem;
+  max-width: 16rem;
+  white-space: normal;
+}
+.dv-rank thead th:first-child { left: 0; background: #f7f8f9; }
+.dv-rank-label { white-space: normal; }
+.dv-rank-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 2px;
+  vertical-align: baseline;
+}
+.dv-rank-section th {
+  text-align: left;
+  background: #e7f4f6;
+  color: var(--brand-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  position: static;
+}
+.dv-rank-section.is-proxy th { background: #eef1f3; color: #243038; }
+.dv-rank-row { cursor: pointer; }
+.dv-rank-row:hover td, .dv-rank-row:hover .dv-rank-name,
+.dv-rank-row:focus-visible td, .dv-rank-row:focus-visible .dv-rank-name { background: #f3f5f6; }
+.dv-rank-row.is-selected td, .dv-rank-row.is-selected .dv-rank-name { background: #e8f6f8; }
+.dv-rank-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .dv-bar-item { border-top: 1px solid var(--line); }
 .dv-bar-head {
   display: grid;
@@ -284,6 +353,9 @@ body.demographics-active .layout { display: none !important; }
   .dv-search-lab input, .dv-filter-lab select, .dv-dropdown, .dv-dropdown-btn { min-width: 0; width: 100%; }
   .dv-list-count { margin-left: 0; }
   .dv-bar-btn, .dv-bar-head, .dv-group-head { grid-template-columns: minmax(4.2rem, 1.05fr) minmax(0, 1fr) 4.5rem 5.6rem; gap: 4px; padding: 6px 6px; }
+  .dv-rank { min-width: 44rem; font-size: 0.75rem; }
+  .dv-rank th, .dv-rank td { padding: 5px 6px; }
+  .dv-rank-name { min-width: 8.5rem; }
   .dv-bar-head { font-size: 0.62rem; align-items: end; }
   .dv-group-head { font-size: 0.72rem; }
   .dv-bar-head .dv-col-change { line-height: 1.15; }

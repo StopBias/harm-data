@@ -15,6 +15,17 @@
     proxy: "group_proxy"
   };
 
+  // Exact column order of the ranked table.
+  const COLUMN_KEYS = [
+    "col_country",
+    "col_first_year",
+    "col_first_count",
+    "col_first_share",
+    "col_latest_year",
+    "col_latest_count",
+    "col_rel_change"
+  ];
+
   function kindRank(kind) {
     if (kind === "census") return 0;
     if (kind === "proxy") return 1;
@@ -60,17 +71,117 @@
     return out;
   }
 
-  // Full-width group label. The label cell spans every column of the
-  // ranked-list grid (see .dv-group-head .dv-group-label).
-  function groupHeaderMarkup(kind, text) {
+  // A count already stored on the row. Missing, blank, or non-numeric
+  // values stay empty so the table can show a dash. Nothing is derived
+  // from a share or from total population.
+  function storedCount(v) {
+    if (v == null || v === "" || typeof v === "boolean") return null;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  // One ranked-table record. pre wins over a census score, then a UN proxy.
+  // preCount / latestCount are used only when they are already numbers.
+  function rankedEndpoint(spec) {
+    const src = spec || {};
+    if (src.pre) {
+      return {
+        kind: "census",
+        firstYear: src.pre.first_year,
+        firstShare: src.pre.first_share,
+        firstCount: storedCount(src.preCount),
+        latestYear: src.pre.latest_year,
+        latestShare: src.pre.latest_share,
+        latestCount: storedCount(src.latestCount),
+        change: src.pre.change,
+        proxy: false
+      };
+    }
+    if (src.census) {
+      return {
+        kind: "census",
+        firstYear: src.census.first_year,
+        firstShare: src.census.first_share,
+        firstCount: storedCount(src.census.first_count),
+        latestYear: src.census.latest_year,
+        latestShare: src.census.latest_share,
+        latestCount: storedCount(src.census.latest_count),
+        change: src.census.change,
+        proxy: false
+      };
+    }
+    if (src.proxy) {
+      return {
+        kind: "proxy",
+        firstYear: 1990,
+        firstShare: src.proxy.firstShare,
+        firstCount: storedCount(src.proxy.first_count),
+        latestYear: 2020,
+        latestShare: src.proxy.latestShare,
+        latestCount: storedCount(src.proxy.latest_count),
+        change: src.proxy.change,
+        proxy: true
+      };
+    }
+    return {
+      kind: "none",
+      firstYear: null,
+      firstShare: null,
+      firstCount: null,
+      latestYear: null,
+      latestShare: null,
+      latestCount: null,
+      change: null,
+      proxy: false
+    };
+  }
+
+  function dash(v, format) {
+    if (v == null || v === "") return "\u2014";
+    return esc(typeof format === "function" ? format(v) : String(v));
+  }
+
+  function columnHeadMarkup(labels) {
+    const cells = (labels || []).map(label => `<th scope="col">${esc(label)}</th>`);
+    return `<tr class="dv-rank-cols">${cells.join("")}</tr>`;
+  }
+
+  // Section title spans every column. It is not a country row.
+  function sectionRowMarkup(kind, text) {
     const proxy = kind === "proxy" ? " is-proxy" : "";
-    return `<li class="dv-group-head${proxy}" role="presentation"><span class="dv-group-label">${esc(text)}</span></li>`;
+    return `<tr class="dv-rank-section${proxy}"><th colspan="7" scope="colgroup">${esc(text)}</th></tr>`;
+  }
+
+  // Country name is its own cell, in full. No concept-break pill is drawn.
+  function countryRowMarkup(row, format) {
+    const fmt = format || {};
+    const name = esc(row && row.name || "");
+    const color = esc(row && row.color || "transparent");
+    const small = row && row.small
+      ? ` <span class="dv-small-flag">${esc(row.smallLabel || "")}</span>`
+      : "";
+    const end = rankedEndpoint(row);
+    const shareDigits = end.proxy ? (fmt.shareProxy || fmt.share) : fmt.share;
+    return `<tr class="dv-rank-row${row && row.selected ? " is-selected" : ""}" data-id="${esc(row && row.id || "")}" tabindex="0">
+      <th scope="row" class="dv-rank-name"><span class="dv-rank-swatch" style="background:${color}" aria-hidden="true"></span><span class="dv-rank-label">${name}</span>${small}</th>
+      <td>${dash(end.firstYear, fmt.year)}</td>
+      <td>${dash(end.firstCount, fmt.count)}</td>
+      <td>${dash(end.firstShare, shareDigits)}</td>
+      <td>${dash(end.latestYear, fmt.year)}</td>
+      <td>${dash(end.latestCount, fmt.count)}</td>
+      <td>${dash(end.change, end.proxy ? fmt.changeProxy : fmt.change)}</td>
+    </tr>`;
   }
 
   return {
     HEADER_KEYS: HEADER_KEYS,
+    COLUMN_KEYS: COLUMN_KEYS,
     sortGrouped: sortGrouped,
     withGroupHeaders: withGroupHeaders,
-    groupHeaderMarkup: groupHeaderMarkup
+    storedCount: storedCount,
+    rankedEndpoint: rankedEndpoint,
+    columnHeadMarkup: columnHeadMarkup,
+    sectionRowMarkup: sectionRowMarkup,
+    countryRowMarkup: countryRowMarkup
   };
 });
