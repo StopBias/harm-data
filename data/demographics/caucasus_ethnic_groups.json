@@ -13,8 +13,8 @@
     "GEO": "CAU",
     "AZE": "MENA",
     "rule": "A UN DESA migrant whose origin country is Armenia or Georgia counts as CAU, so that person is outside the ethnic European pool for a country founded by ethnic Europeans. An origin in Azerbaijan stays MENA.",
-    "recast_cross_pool_shares": false,
-    "reason": "cross_pool_fb_pct_1990 and cross_pool_fb_pct_2020 in demographics.json were computed while Armenia and Georgia were EUR. The UN bilateral migrant stock is not in this repository, so those shares are not recast and no displayed score is changed."
+    "recast_cross_pool_shares": true,
+    "reason": "cross_pool_fb_pct_1990, cross_pool_fb_pct_2020, score_change_pp_1990_2020, un_d_1990_2020 and score_D_1990_2024 are recomputed from UN DESA International Migrant Stock 2024 (Table 1, both sexes, and Table 2 total population). Cross-pool foreign-born percent is 100 times known-origin migrants from outside the founding pool, divided by total population; origin code 2003 (Others) is unknown and is not in that numerator. D is 0.5 times the sum of absolute changes in pool shares of the population excluding those unknown-origin migrants, with the native-born counted in the founding pool. The ethnic European basis of the previously stored shares is reproduced exactly when Armenia and Georgia are EUR, South African origins are SSA, the Holy See (M49 336) is EUR and Bonaire, Sint Eustatius and Saba (M49 535) are SSA. The published figures use Armenia and Georgia as CAU."
   },
   "groups": [
     {"code": "GEO", "name": "Georgians", "pool": "CAU", "judgement": false},

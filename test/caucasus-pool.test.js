@@ -67,7 +67,7 @@ assert.strictEqual(groups.not_cau.find(g => g.code === "TAT").pool, "MENA");
 assert.strictEqual(groups.origin_pool.ARM, "CAU");
 assert.strictEqual(groups.origin_pool.GEO, "CAU");
 assert.strictEqual(groups.origin_pool.AZE, "MENA");
-assert.strictEqual(groups.origin_pool.recast_cross_pool_shares, false);
+assert.strictEqual(groups.origin_pool.recast_cross_pool_shares, true);
 assert.strictEqual(groups.country_primary_pool.AZE, "MENA");
 
 // Russia headline series: Caucasus peoples were unmapped, not inside ethnic European.
@@ -83,10 +83,11 @@ assert.ok(!rus.census.rows["2002"].CAU);
 // Displayed scores are the figures already stored. No share was invented.
 const shown = {
   RUS: { v: -2.3, band: "light" },
-  GEO: { v: 0.62, band: "little" },
-  ARM: { v: 2.19, band: "growing" },
+  GEO: { v: 3.76, band: "growing" },
+  ARM: { v: 2.71, band: "growing" },
   AZE: { v: 3.16, band: "growing" },
-  FRA: { v: -2.29, band: "light" },
+  FRA: { v: -2.35, band: "light" },
+  GRC: { v: -1.58, band: "little" },
   USA: { v: -30.5, band: "dark" },
   LBN: { v: -0.16, band: "little" },
   UKR: { v: -0.4, band: "little" },
@@ -98,12 +99,26 @@ for (const [iso, exp] of Object.entries(shown)) {
   assert.strictEqual(d.band, exp.band, iso);
 }
 assert.strictEqual(byId.RUS.score, 1.9);
-assert.strictEqual(byId.GEO.score, 0.626);
-assert.strictEqual(byId.ARM.score, 2.17);
-assert.strictEqual(byId.GEO.cross_pool_fb_pct_1990, 0.884);
-assert.strictEqual(byId.GEO.cross_pool_fb_pct_2020, 0.265);
-assert.strictEqual(byId.ARM.cross_pool_fb_pct_1990, 5.889);
-assert.strictEqual(byId.ARM.cross_pool_fb_pct_2020, 3.825);
+assert.strictEqual(byId.RUS.primary_pool, "EUR");
+assert.strictEqual(byId.USA.primary_pool, "EUR");
+assert.strictEqual(byId.FRA.primary_pool, "EUR");
+assert.strictEqual(byId.GRC.primary_pool, "EUR");
+assert.strictEqual(byId.UKR.primary_pool, "EUR");
+assert.strictEqual(byId.GEO.score, 3.579);
+assert.strictEqual(byId.GEO.cross_pool_fb_pct_1990, 5.233);
+assert.strictEqual(byId.GEO.cross_pool_fb_pct_2020, 1.672);
+assert.strictEqual(byId.GEO.score_change_pp_1990_2020, -3.561);
+assert.strictEqual(byId.GEO.score_D_1990_2024, 3.538);
+assert.strictEqual(byId.ARM.score, 2.648);
+assert.strictEqual(byId.ARM.cross_pool_fb_pct_1990, 7.176);
+assert.strictEqual(byId.ARM.cross_pool_fb_pct_2020, 4.657);
+assert.strictEqual(byId.ARM.score_change_pp_1990_2020, -2.519);
+assert.strictEqual(byId.ARM.score_D_1990_2024, 0.998);
+assert.strictEqual(byId.USA.cross_pool_fb_pct_1990, 5.111);
+assert.strictEqual(byId.USA.cross_pool_fb_pct_2020, 10.565);
+assert.strictEqual(byId.RUS.cross_pool_fb_pct_1990, 4.418);
+assert.strictEqual(byId.RUS.cross_pool_fb_pct_2020, 3.107);
+assert.strictEqual(byId.RUS.un_d_1990_2020, 1.311);
 
 const readme = fs.readFileSync(path.join(root, "data/demographics/README.md"), "utf8");
 assert.ok(!/no Turkic, Central Asian or Caucasus pool/.test(readme));

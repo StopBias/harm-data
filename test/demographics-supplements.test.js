@@ -41,9 +41,9 @@ assert.ok(baseline.rows[0].sources[0].url.startsWith("https://"));
 // Existing scores and colours are untouched.
 assert.strictEqual(country("CAN").score, 27.8);
 assert.strictEqual(country("USA").score, 25.4);
-assert.strictEqual(country("FRA").score, 2.272);
+assert.strictEqual(country("FRA").score, 2.324);
 assert.strictEqual(country("DEU").score, 3.259);
-assert.strictEqual(country("ESP").score, 7.708);
+assert.strictEqual(country("ESP").score, 7.745);
 assert.strictEqual(country("NZL").score, 13.4);
 assert.strictEqual(demo.scale.bands[4].color, "#e74c3c");
 assert.strictEqual(demo.scale.bands[0].color, "#1e8449");
@@ -245,7 +245,7 @@ const zafShown = scale.relativeChange(zaf.census.latest_share_in_founding_pool, 
 assert.strictEqual(zafShown, -64.9);
 assert.strictEqual(scale.bandIdForChange(zafShown, 1), "dark");
 const bel = country("BEL");
-assert.strictEqual(scale.relativeChange(100 - bel.cross_pool_fb_pct_2020, 100 - bel.cross_pool_fb_pct_1990, 2), -5.13);
+assert.strictEqual(scale.relativeChange(100 - bel.cross_pool_fb_pct_2020, 100 - bel.cross_pool_fb_pct_1990, 2), -5.14);
 assert.strictEqual(scale.COLOURS.medium, "#ec7165");
 assert.strictEqual(copy.band_medium, "Strongly declining");
 assert.deepStrictEqual(Object.keys(zaf.census.rows), ["1946", "1951", "1960", "1970", "1996", "2001", "2011", "2022"]);
