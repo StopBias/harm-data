@@ -1,0 +1,412 @@
+{
+  "dataset": "ethnic European pre-1950 census baselines (eight-country memo, 24 November 2026)",
+  "file": "baseline_pre1950.json",
+  "version": "1.16.0",
+  "version_type": "standalone; data and documentation only; core files, scores, map colours, and default views are unchanged",
+  "created": "2026-11-26",
+  "memo": "review/pre1950_european_share_8countries_2026-11-24.md",
+  "rule": "Official census or national-statistics publications only. Seven verified rows plus Italy as an explicit unverified/null row. These figures are not wired to the map, scoring, or any on-site view; putting them on the map waits on a separate go-ahead.",
+  "comparability": "These early figures are not strictly comparable across countries: Australia 1911 and New Zealand 1936 are official race tabulations (with different Aboriginal/Māori and mixed-race rules), whereas Germany, France, Spain, the United Kingdom (Great Britain) and Ireland are constructed residuals from nationality or birthplace on different territories, and Italy still has no verified ethnic-European share from an official stranieri-by-citizenship table.",
+  "rows": [
+    {
+      "country": "Germany",
+      "iso3": "DEU",
+      "order": 1,
+      "founding_pool": "EUR",
+      "baseline_year": 1933,
+      "census_date": "1933-06-16",
+      "territory": "altes Reichsgebiet without Saarland",
+      "concept": "nationality residual",
+      "measure": "Constructed ethnic European: official Wohnbevölkerung, altes Reichsgebiet without Saarland, minus foreign nationals of Asian, American, African and Australian states",
+      "ethnic_european_count": 65207383,
+      "total": 65219324,
+      "founding_share_pct": 99.98,
+      "counts": {
+        "total": 65219324,
+        "ethnic_european": 65207383,
+        "foreign_nationals_total": 756760,
+        "foreign_european_states": 655713,
+        "foreign_turkey_inside_european_states": 1673,
+        "foreign_asian": 2254,
+        "foreign_american": 9297,
+        "foreign_usa_inside_american": 6860,
+        "foreign_african": 344,
+        "foreign_australian": 46,
+        "non_european_nationality_sum_subtracted": 11941,
+        "stateless": 88612,
+        "nationality_undetermined": 494
+      },
+      "sources": [
+        {
+          "publisher": "Statistisches Reichsamt",
+          "title": "Wirtschaft und Statistik 1939 Nr. 13, table of population since 1910 in the old Reich (ohne Saarland), 1933 (16. Juni) = 65,219,324",
+          "table": "Bevölkerung seit 1910 im alten Reich (ohne Saarland)",
+          "url": "https://www.statistischebibliothek.de/mir/servlets/MCRFileNodeServlet/DEAusgabe_derivate_00001193/Wirtschaft_und_Statistik-1939-13.pdf"
+        },
+        {
+          "publisher": "Statistisches Reichsamt",
+          "title": "Statistisches Jahrbuch für das Deutsche Reich 1936, table “14. Die Ausländer im Deutschen Reich 1933” (from Volks- und Berufszählung 16 June 1933; underlying Statistik des Deutschen Reichs Band 451 Heft 4)",
+          "table": "14. Die Ausländer im Deutschen Reich 1933",
+          "url": "https://digi.bib.uni-mannheim.de/fileadmin/statjahrb/514401303_1936/pdf/514401303_0069.pdf"
+        }
+      ],
+      "verification": "verified: official totals and foreigner table matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "No race question. This is a nationality residual, not an ethnicity count.",
+        "Foreigners from European states remain ethnic European and are not subtracted.",
+        "USA/Latin America nationality may include ethnic Europeans, so 99.98% is a slight lower bound on this construction.",
+        "Stateless persons (88,612) and nationality undetermined (494) are not classified as non-European.",
+        "If Turkey is treated as non-European (project mapping), subtract a further 1,673; the share is still 99.98%.",
+        "Saarland is excluded from both the 1933 total and this foreigners table (Saar 25 June 1935: 7,319 foreigners, of whom 51 non-European, not added here).",
+        "Nationality is not ethnicity (German citizens of non-European origin are inside the total)."
+      ]
+    },
+    {
+      "country": "France",
+      "iso3": "FRA",
+      "order": 2,
+      "founding_pool": "EUR",
+      "baseline_year": 1931,
+      "census_date": "1931-03-08",
+      "territory": "metropolitan France, 90 départements, population présente",
+      "concept": "nationality residual",
+      "measure": "Constructed ethnic European: official metropolitan population présente (90 départements) minus foreign nationals tabulated as Turcs, Arméniens, other Asian, and other African (the last two columns include the official coloniaux / “sujets français ou protégés”)",
+      "ethnic_european_count": 41037900,
+      "total": 41229000,
+      "founding_share_pct": 99.54,
+      "counts": {
+        "unit_note": "Official table is in thousands (0.1 thousand = 100 persons); counts below are those figures expressed in persons.",
+        "total": 41229000,
+        "ethnic_european": 41037900,
+        "francais_de_naissance": 38153000,
+        "naturalises": 361200,
+        "etrangers": 2714700,
+        "subtracted_turcs": 36100,
+        "subtracted_armeniens": 29200,
+        "subtracted_autres_nationalites_dasie": 20700,
+        "subtracted_autres_nationalites_dasie_including_sujets": 7900,
+        "subtracted_autres_nationalites_dafrique": 105100,
+        "subtracted_autres_nationalites_dafrique_including_sujets": 102000,
+        "coloniaux_in_asian_and_african_footnotes": 109900,
+        "not_subtracted_americains_des_etats_unis": 16800,
+        "not_subtracted_other_american_nationalities": 15300,
+        "not_subtracted_divers": 6200,
+        "not_subtracted_sans_nationalite_or_undeclared": 33100
+      },
+      "sources": [
+        {
+          "publisher": "INSEE / Statistique générale de la France",
+          "title": "Annuaire statistique de la France 1951, vol. 58, Résumé rétrospectif, Tableau VII, p. 29*, “Population présente par nationalité (en milliers),” reprinting the official SGF census series",
+          "table": "Tableau VII, p. 29*, Population présente par nationalité (en milliers), 1931",
+          "url": "https://archive.org/details/annuaire-statistique-de-la-france_1951_58"
+        },
+        {
+          "publisher": "Statistique générale de la France",
+          "title": "Recensement général de la population du 8 mars 1931, Tome I, 5e partie Étrangers et naturalisés (SGF, 1936). Underlying census volume; the Annuaire table above is the official extract used here.",
+          "table": "Tome I, 5e partie, Étrangers et naturalisés",
+          "url": "https://www.bnsp.insee.fr/ark:/12148/bc6p06xvxts"
+        }
+      ],
+      "verification": "verified: official Annuaire 1951 Tableau VII figures matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "Official table is in thousands (0.1 thousand = 100 persons); count and total are those figures expressed in persons.",
+        "Population présente, not population légale. No race question.",
+        "French-born and naturalised persons of any origin remain in the total (nationality is not ethnicity).",
+        "Coloniaux are already inside the African and Asian foreigner columns and are not subtracted twice.",
+        "Américains des États-Unis (16.8 thousand), other American nationalities (15.3), “Divers” (6.2) and “sans nationalité ou de nationalité non déclarée” (33.1) were not subtracted.",
+        "Armenians (29.2 thousand) are subtracted as a West-Asian nationality; if they were instead left in the European count, the share would be 41,067,100 / 41,229,000 = 99.61%.",
+        "Do not subtract all 2,714,700 foreigners (most were European: Italians 808.1 thousand, Poles 507.8, Spaniards 351.9, Belgians 253.7, etc.)."
+      ]
+    },
+    {
+      "country": "Spain",
+      "iso3": "ESP",
+      "order": 3,
+      "founding_pool": "EUR",
+      "baseline_year": 1930,
+      "census_date": "1930",
+      "territory": "Península, Baleares y Canarias, población de hecho",
+      "concept": "nationality residual",
+      "measure": "Constructed ethnic European: official población de hecho (Península, Baleares y Canarias) minus foreign nationals of non-European states in Censo 1930 Tomo IV",
+      "ethnic_european_count": 23550700,
+      "total": 23563867,
+      "founding_share_pct": 99.94,
+      "counts": {
+        "total": 23563867,
+        "ethnic_european": 23550700,
+        "foreign_nationals_total": 83791,
+        "non_european_state_nationalities_subtracted": 13167,
+        "of_which_american_nationalities": 11934,
+        "of_which_africa_asia_turkey_armenia_oceania": 1233
+      },
+      "sources": [
+        {
+          "publisher": "Instituto Nacional de Estadística (INE)",
+          "title": "Censo de Población de 1930, Tomo IV Extranjeros, “Total de extranjeros inscritos en el Censo, por países de su nacionalidad” / “Total por capitales y provincias,” TOTALES 83,791 (44,823 males + 38,968 females)",
+          "table": "Tomo IV Extranjeros, total por países de su nacionalidad",
+          "url": "https://www.ine.es/inebaseweb/pdfDispacher.do?ext=.pdf&td=100348"
+        },
+        {
+          "publisher": "Instituto Nacional de Estadística (INE)",
+          "title": "Anuario Estadístico 1985, “Población censal (Habitantes de hecho),” 1930, Península, Baleares y Canarias = 23,563,867",
+          "table": "Población censal (Habitantes de hecho), 1930",
+          "url": "https://www.ine.es/inebaseweb/pdfDispacher.do?td=38382"
+        }
+      ],
+      "verification": "verified: official INE census and yearbook figures matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "No race question. This is a slight lower bound: 11,934 of the 13,167 are American nationalities (Argentina, Cuba, Mexico, USA, etc.) who may be ethnic European; subtracting only Africa/Asia/Turkey/Armenia/Oceania (1,233) would raise the count to 23,562,634 and the share to 99.99%.",
+        "Spanish citizens of non-European origin are inside the total (especially relevant if Ceuta, Melilla y plazas menores, 113,630, are brought into the denominator).",
+        "The alternative official total “Población de España” 23,677,497 also yields 99.94% after the same 13,167 subtraction; Tomo IV’s exact coverage of the North African plazas was not independently confirmed, so the peninsula-and-islands total is used as the primary denominator.",
+        "The 71 nationality rows as read sum to 83,691, a 100-person shortfall versus the official 83,791 total; the shortfall was not located in any checked non-European row and is left in the European residual (it does not change the share at two decimals).",
+        "Largest European-state foreign groups (not subtracted): Portugal 25,445; France 16,722; Germany 8,917; England 8,263; Italy 4,133; Switzerland 2,400.",
+        "Turkey is subtracted (project mapping)."
+      ]
+    },
+    {
+      "country": "United Kingdom",
+      "iso3": "GBR",
+      "order": 4,
+      "founding_pool": "EUR",
+      "baseline_year": 1931,
+      "census_date": "1931-04-26",
+      "territory": "Great Britain (England and Wales + Scotland); Northern Ireland is not included",
+      "concept": "birthplace residual",
+      "measure": "Constructed ethnic European (birthplace): persons born in England, Wales, Scotland, Ireland, the Isle of Man and Channel Islands, British Dominions in Europe, or foreign countries in Europe (British or alien nationality). Religion not used.",
+      "ethnic_european_count": 44338092,
+      "total": 44795357,
+      "founding_share_pct": 98.98,
+      "counts": {
+        "great_britain_total": 44795357,
+        "ethnic_european": 44338092,
+        "england_and_wales_total": 39952377,
+        "england_and_wales_european_birthplace": 39529505,
+        "scotland_total": 4842980,
+        "scotland_european_birthplace": 4808587,
+        "northern_ireland_1937_not_added": 1279745
+      },
+      "sources": [
+        {
+          "publisher": "Board of Trade, with the Ministry of Labour and the Registrars-General",
+          "title": "Statistical Abstract for the United Kingdom 1934–1938, 83rd number, Table No. 18, “Birthplaces of the Population of each Division of the United Kingdom at each Census from 1871 to 1931,” pp. 22–23",
+          "table": "Table No. 18, Birthplaces of the Population, 1931, England and Wales and Scotland",
+          "url": "https://archive.org/details/annual-abstract-of-statistics-gb_1934-1938_83"
+        },
+        {
+          "publisher": "Registrars General / Annual Abstract of Statistics",
+          "title": "Annual Abstract of Statistics 1938, no. 87, Table 12, “Birthplaces of the population,” cross-check in thousands (E&W total 39,952.4; Scotland 4,843.0)",
+          "table": "Table 12, Birthplaces of the population, 1931",
+          "url": "https://archive.org/details/annual-abstract-of-statistics-gb_1938_87"
+        }
+      ],
+      "verification": "verified: official Abstract Table 18 figures matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "No UK-wide race table; this is a birthplace construction for Great Britain, not the full United Kingdom.",
+        "Northern Ireland’s next census in this Abstract is 1937 (total 1,279,745), a different date, and is not added.",
+        "Birthplace is not ethnicity: Dominion, Indian Empire and American birthplaces (E&W Dominions total 225,684, of which Asia 101,642 and America 43,333; India in the 1938 Abstract 87.0 thousand) include large ethnic-European groups and were not placed in the numerator, so 98.98% is a lower bound.",
+        "Non-Europeans born in Britain are inside the Britain-born total.",
+        "“Birthplace not stated” (E&W 139,248; Scotland 902) is not treated as non-European.",
+        "The E&W 1931 residual rows in Table 18 as added here fall 180 persons short of 39,952,377; that sliver is in the non-numerator residual and does not change the share at two decimals."
+      ]
+    },
+    {
+      "country": "Ireland",
+      "iso3": "IRL",
+      "order": 5,
+      "founding_pool": "EUR",
+      "baseline_year": 1936,
+      "census_date": "1936-04-26",
+      "territory": "Saorstát Éireann",
+      "concept": "birthplace residual",
+      "measure": "Constructed ethnic European (birthplace proxy): persons born in Ireland (Saorstát + Northern Ireland), England and Wales, Scotland, the Isle of Man and Channel Islands, British possessions in Europe, or other European countries (Census 1936 Vol. 3, Table 1A). Religion not used.",
+      "ethnic_european_count": 2953322,
+      "total": 2968420,
+      "founding_share_pct": 99.49,
+      "counts": {
+        "total": 2968420,
+        "ethnic_european": 2953322,
+        "born_ireland": 2902924,
+        "born_saorstat": 2867785,
+        "born_northern_ireland": 35139,
+        "born_england_and_wales": 35659,
+        "born_scotland": 11089,
+        "born_isle_of_man_and_channel_islands": 225,
+        "born_british_possessions_in_europe": 315,
+        "born_other_european_countries": 3110,
+        "extra_european_birthplace_residual": 15098,
+        "of_which_usa": 10111,
+        "of_which_india": 1757
+      },
+      "sources": [
+        {
+          "publisher": "Central Statistics Office (CSO)",
+          "title": "Census of Population, 1936, Volume III Religion and Birthplaces, Part II, Table 1A “Birthplaces of persons residing in Saorstát Éireann on 26th April, 1936,” p. 143",
+          "table": "Volume III, Part II, Table 1A, p. 143",
+          "url": "https://www.cso.ie/en/media/csoie/census/census1936results/volume3/C_1936_VOL_3_pt2_T1abc.pdf"
+        },
+        {
+          "publisher": "Central Statistics Office (CSO)",
+          "title": "Census of Population, 1936, Volume III entire volume",
+          "table": "Volume III, Religion and Birthplaces",
+          "url": "https://www.cso.ie/en/media/csoie/census/census1936results/volume3/C_1936_Vol_3_entire.pdf"
+        },
+        {
+          "publisher": "Central Statistics Office (CSO)",
+          "title": "Census 1936 Volume 3 — Religion and Birthplaces, historical reports landing page",
+          "table": null,
+          "url": "https://www-cloud.cso.ie/en/census/censusvolumes1926to1991/historicalreports/census1936reports/census1936volume3-religionandbirthplaces/"
+        }
+      ],
+      "verification": "verified: official Census 1936 Table 1A figures matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "No race question. This is a lower bound for ethnic European stock: the residual 15,098 includes USA 10,111 and other extra-European birthplaces (India 1,757, Canada, Australia, South Africa, etc.) of mixed ethnicity, many of whom were of European descent.",
+        "India-born and colonial-born were not classified as European or non-European (the census does not say).",
+        "Religion tables in the same volume were not used as an ethnic proxy.",
+        "Territory is Saorstát Éireann, not the whole island as a political unit; Northern Ireland–born residents of the Saorstát are included in the Ireland-born count."
+      ]
+    },
+    {
+      "country": "Australia",
+      "iso3": "AUS",
+      "order": 6,
+      "founding_pool": "EUR",
+      "baseline_year": 1911,
+      "census_date": "1911-04-03",
+      "territory": "Commonwealth of Australia, official total exclusive of full-blood Aboriginals",
+      "concept": "race",
+      "measure": "Official race: European persons as published, exclusive of full-blood Aboriginals",
+      "ethnic_european_count": 4402662,
+      "total": 4455005,
+      "founding_share_pct": 98.83,
+      "counts": {
+        "total_exclusive_of_full_blood_aboriginals": 4455005,
+        "european": 4402662,
+        "non_european": 52343,
+        "non_european_full_blood": 37789,
+        "non_european_half_caste": 14554,
+        "aboriginal_half_caste_inside_official_total": 10113,
+        "enumerated_full_blood_aboriginals_in_settled_areas_not_in_official_total": 19939,
+        "official_residual_aboriginal_estimate_addback": 74414
+      },
+      "sources": [
+        {
+          "publisher": "Commonwealth Bureau of Census and Statistics / Australian Bureau of Statistics",
+          "title": "Census of the Commonwealth of Australia, 1911, Volume II, Part VIII Non-European Races",
+          "table": "Volume II, Part VIII, Non-European Races",
+          "url": "https://www.ausstats.abs.gov.au/ausstats/free.nsf/0/F8A631CD75497EA6CA25783900132215/$File/1911%20Census%20-%20Volume%20II%20-%20Part%20VIII%20Non-European%20Races.pdf"
+        },
+        {
+          "publisher": "Commonwealth Bureau of Census and Statistics / Australian Bureau of Statistics",
+          "title": "Census of the Commonwealth of Australia, 1911, Volume III, Part XIV Summary, Tables 1, 2, 71–75",
+          "table": "Volume III, Part XIV, Tables 1, 2, 71–75",
+          "url": "https://www.ausstats.abs.gov.au/ausstats/free.nsf/0/2DB1C328DD893466CA257839001412DE/$File/1911%20Census%20-%20Volume%20III%20-%20Part%20XIV%20Summary.pdf"
+        },
+        {
+          "publisher": "Commonwealth Bureau of Census and Statistics / Australian Bureau of Statistics",
+          "title": "Official Year Book of the Commonwealth of Australia, 1912, Section IV (published share 98.83%; 11.75 non-Europeans per 1,000)",
+          "table": "Section IV, Persons of Non-European Race in the Commonwealth, 3rd April, 1911",
+          "url": "https://www.ausstats.abs.gov.au/ausstats/free.nsf/0/ED453454A83D1B58CA257AEE0013637B/$File/13010_1901_1911%20section%204.pdf"
+        }
+      ],
+      "verification": "verified: official 1911 Census and Year Book 1912 figures reused from the Australia early-composition memo and confirmed in the 24 November 2026 eight-country memo",
+      "flags": [
+        "Official race tabulation, not a nationality residual.",
+        "Published denominator excludes full-blood Aboriginals under s.127; half-caste Aboriginals (10,113) are already inside the official total and are not in the European count.",
+        "Adding enumerated full-blood Aboriginals in settled areas (19,939) lowers the share to 98.38%; adding the official residual estimate (84,527 − 10,113 = 74,414) lowers it to 97.20%.",
+        "1911 race is not comparable with 2021 ancestry."
+      ]
+    },
+    {
+      "country": "New Zealand",
+      "iso3": "NZL",
+      "order": 7,
+      "founding_pool": "EUR",
+      "baseline_year": 1936,
+      "census_date": "1936",
+      "territory": "New Zealand",
+      "concept": "race",
+      "measure": "Official race: Europeans, as published in the census race classification",
+      "ethnic_european_count": 1484508,
+      "total": 1573810,
+      "founding_share_pct": 94.33,
+      "counts": {
+        "total": 1573810,
+        "europeans": 1484508,
+        "maori": 82326,
+        "race_aliens": 6976
+      },
+      "sources": [
+        {
+          "publisher": "Stats NZ (Census and Statistics Department)",
+          "title": "New Zealand Official Yearbook 1946, “Racial Origins,” 1936 comparison column (interim 1945 results with 1936)",
+          "table": "Racial Origins, 1936 comparison column",
+          "url": "https://www3.stats.govt.nz/New_Zealand_Official_Yearbooks/1946/NZOYB_1946.html"
+        },
+        {
+          "publisher": "Census and Statistics Department",
+          "title": "1936 Population Census, Vol. IX Race (1945). Underlying census volume cited by the Yearbook.",
+          "table": "Vol. IX, Race",
+          "url": null
+        }
+      ],
+      "verification": "verified: official Yearbook 1946 Racial Origins figures matched in the 24 November 2026 eight-country memo",
+      "flags": [
+        "Official race table, not a nationality residual.",
+        "The Yearbook itself says a true ethnological survey is “definitely impossible” from census terms, and that “European” covers a variety of races.",
+        "From 1926, half-caste European–Māori were classed as Māori; race-alien mixed-blood has European as the second race.",
+        "“Exclusive of Maoris” in ordinary population tables is not an ethnic-European total (it still includes Chinese and other race aliens).",
+        "1936 is preferred to 1945 as the last complete pre-1945 official race census (1945, 25 Sep: Europeans 1,592,876 / 1,702,298 = 93.57%, excluding 45,381 Armed Forces still overseas)."
+      ]
+    },
+    {
+      "country": "Italy",
+      "iso3": "ITA",
+      "order": 8,
+      "founding_pool": "EUR",
+      "baseline_year": 1936,
+      "census_date": "1936-04-21",
+      "territory": "Regno, official 1936 boundaries",
+      "concept": "unverified",
+      "measure": "ISTAT VIII Censimento, Vol. III Regno — popolazione presente/residente and stranieri by state of allegiance (no metropolitan race question)",
+      "ethnic_european_count": null,
+      "total": null,
+      "founding_share_pct": null,
+      "counts": null,
+      "official_denominators_not_used_for_share": {
+        "source": "ISTAT, L’Italia in 150 anni. Sommario di statistiche storiche 1861–2010, Tavola 2.1",
+        "url": "https://www.istat.it/it/files/2019/03/cap_2.pdf",
+        "unit": "thousands",
+        "popolazione_residente_ai_confini_dell_epoca_1936": 42994,
+        "popolazione_residente_ai_confini_dell_epoca_1931": 41652,
+        "popolazione_presente_1936": 42919,
+        "popolazione_presente_1931": 41177,
+        "note": "These official denominators exist but were not used for a share, because no verified national stranieri-by-citizenship numerator was opened."
+      },
+      "excluded_unofficial_figures": [
+        "Secondary “about 108,000 foreigners in 1936” was not used as a numerator.",
+        "Encyclopedic present/resident counts of 42,444,588 / 42,993,602 were not used."
+      ],
+      "sources": [
+        {
+          "publisher": "ISTAT",
+          "title": "8. Censimento generale della popolazione: 21 aprile 1936, Vol. III Regno — Popolazione, territorio, famiglie, convivenze, sesso, stato civile, età, stranieri (1938), catalogue IST00006497 / series IST0069132. Volume exists; a national stranieri-by-citizenship table was not opened in this pass.",
+          "table": "Vol. III Regno (not opened for a verified nationals table)",
+          "url": "https://ebiblio.istat.it/SebinaOpac/resource/IST00006497"
+        },
+        {
+          "publisher": "ISTAT",
+          "title": "L’Italia in 150 anni. Sommario di statistiche storiche 1861–2010, Tavola 2.1 (official denominators only; not used for a share)",
+          "table": "Tavola 2.1",
+          "url": "https://www.istat.it/it/files/2019/03/cap_2.pdf"
+        }
+      ],
+      "verification": "NOT VERIFIED: no official national stranieri-by-citizenship table was opened; no ethnic-European share is reported",
+      "flags": [
+        "No metropolitan race question.",
+        "Alternate routes tried (Annuario statistico italiano 1937/38, Compendio, ISTAT Sommario, ebiblio) did not produce a verified national stranieri-by-cittadinanza table.",
+        "Secondary or encyclopedic foreigner and population counts were not used as a numerator.",
+        "No ethnic-European share is reported until an official national stranieri table is read."
+      ]
+    }
+  ]
+}
