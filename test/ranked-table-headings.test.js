@@ -8,11 +8,14 @@ const fs = require("fs");
 const path = require("path");
 const rank = require("../demographics-rank.js");
 const scale = require("../demographics-scale.js");
+const pre1950 = require("../pre1950-baselines.js");
 
 const root = path.join(__dirname, "..");
 const read = rel => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 const en = read("i18n/en.json").demographics;
 const demo = read("data/demographics.json");
+const origin = read("data/demographics/origin_series_FR_DE_ES.json");
+const preBy = pre1950.indexRows(read("data/demographics/baseline_pre1950.json"));
 
 const CENSUS_HEADER = "Verified census baselines: hard counts from national census records";
 const PROXY_HEADER = "Modeled estimates: UN interpolated share where a direct census baseline isn't in hand";
@@ -22,27 +25,35 @@ assert.strictEqual(en.group_proxy, PROXY_HEADER);
 assert.strictEqual(rank.HEADER_KEYS.census, "group_census");
 assert.strictEqual(rank.HEADER_KEYS.proxy, "group_proxy");
 
-// Same split as rowYearLabel / rankedKind: a census score, otherwise a
-// displayed UN figure. Census-limited rows with no census score that still
-// have a UN figure are "proxy".
+// Same split as rankedKind. A pre-1950 baseline the map uses, or a census
+// score, is the census block. Anything else that still shows a figure is
+// the UN block, including census-limited rows that display the UN figure.
+function preUsed(c) {
+  if (!c) return null;
+  const resolved = pre1950.resolve(preBy[c.iso3] || preBy[c.id], c, origin, scale);
+  return resolved && resolved.use ? resolved : null;
+}
+
 function displayValue(c) {
+  const pre = preUsed(c);
+  if (pre) return { kind: "census", value: pre.change, pre: pre };
   if (c && c.score_kind === "census" && c.census) {
     const census = scale.relativeChange(
       c.census.latest_share_in_founding_pool,
       c.census.first_share_in_founding_pool,
       1
     );
-    if (census != null) return { kind: "census", value: census };
+    if (census != null) return { kind: "census", value: census, pre: null };
   }
-  if (!c || c.cross_pool_fb_pct_1990 == null || c.cross_pool_fb_pct_1990 === "") return { kind: "none", value: null };
-  if (c.cross_pool_fb_pct_2020 == null || c.cross_pool_fb_pct_2020 === "") return { kind: "none", value: null };
+  if (!c || c.cross_pool_fb_pct_1990 == null || c.cross_pool_fb_pct_1990 === "") return { kind: "none", value: null, pre: null };
+  if (c.cross_pool_fb_pct_2020 == null || c.cross_pool_fb_pct_2020 === "") return { kind: "none", value: null, pre: null };
   const proxy = scale.relativeChange(
     100 - Number(c.cross_pool_fb_pct_2020),
     100 - Number(c.cross_pool_fb_pct_1990),
     2
   );
-  if (proxy == null) return { kind: "none", value: null };
-  return { kind: "proxy", value: proxy };
+  if (proxy == null) return { kind: "none", value: null, pre: null };
+  return { kind: "proxy", value: proxy, pre: null };
 }
 
 function kindOf(c) {
@@ -151,6 +162,20 @@ nonDecreasing(proxyIds.map(id => countries.find(c => c.id === id)));
   assert.ok(proxyIds.includes(id), id + " stays in the UN block");
 });
 
+["DEU", "FRA", "ESP", "ITA", "GBR", "IRL", "NZL"].forEach(id => {
+  const c = countries.find(row => row.id === id);
+  const shown = displayValue(c);
+  assert.ok(shown.pre && shown.pre.use, id + " uses a pre-1950 census baseline");
+  assert.strictEqual(shown.kind, "census", id);
+  assert.ok(censusIds.includes(id), id + " sits under the census heading");
+});
+const italy = displayValue(countries.find(row => row.id === "ITA"));
+assert.strictEqual(italy.pre.first_year, 1936);
+assert.strictEqual(italy.pre.latest_year, 2020);
+assert.strictEqual(italy.value, -4.5);
+const australia = pre1950.resolve(preBy.AUS, countries.find(row => row.id === "AUS"), origin, scale);
+assert.strictEqual(australia.use, false);
+
 const html = rows.map(r => {
   if (r.type === "header") return rank.groupHeaderMarkup(r.kind, en[r.key]);
   return `<li class="dv-bar-item" data-id="${r.country.id}"></li>`;
@@ -168,7 +193,7 @@ const page = fs.readFileSync(path.join(root, "demographics.js"), "utf8");
 const css = fs.readFileSync(path.join(root, "demographics.css"), "utf8");
 const htmlPage = fs.readFileSync(path.join(root, "index.html"), "utf8");
 assert.ok(page.includes("function rankedKind"));
-assert.ok(page.includes('if (isCensusScore(c)) return "census"'));
+assert.ok(page.includes('if (pre1950Used(c) || isCensusScore(c)) return "census"'));
 assert.ok(page.includes('if (displayValue(c) != null) return "proxy"'));
 assert.ok(page.includes("Rank.sortGrouped"));
 assert.ok(page.includes("Rank.withGroupHeaders"));
@@ -183,9 +208,10 @@ assert.ok(!filterFn.includes("withGroupHeaders"));
 assert.ok(!filterFn.includes("groupHeaderMarkup"));
 
 assert.ok(/\.dv-group-head \.dv-group-label\s*\{[^}]*grid-column:\s*1\s*\/\s*-1/.test(css));
+const preTag = htmlPage.indexOf('src="pre1950-baselines.js"');
 const rankTag = htmlPage.indexOf('src="demographics-rank.js"');
 const pageTag = htmlPage.indexOf('src="demographics.js"');
-assert.ok(rankTag > 0 && pageTag > rankTag);
+assert.ok(preTag > 0 && rankTag > preTag && pageTag > rankTag);
 
 console.log("ranked-table-headings.test.js: ok");
 console.log("census block " + censusIds[0] + " .. " + censusIds[censusIds.length - 1] + " (" + censusIds.length + ")");

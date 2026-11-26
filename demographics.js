@@ -13,7 +13,9 @@
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
+  const PRE1950_URL = "data/demographics/baseline_pre1950.json";
   const Supplements = window.HarmDemographicsSupplements || null;
+  const Pre1950 = window.Pre1950Baselines || null;
   const Rank = window.HarmDemographicsRank || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
@@ -21,7 +23,7 @@
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
 
-  let data = null, originData = null, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let data = null, originData = null, pre1950ByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
   let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
@@ -69,10 +71,13 @@
     return fmtYear(a) + "–" + fmtYear(b);
   }
 
-  // Years shown beside a bar. Census rows use census.first_year–latest_year.
+  // Years shown beside a bar. A pre-1950 score uses that baseline year.
+  // Other census rows use census.first_year–latest_year.
   // UN proxy rows are the 1990–2020 migrant-origin window.
   function rowYearLabel(c) {
     if (!c) return "";
+    const pre = pre1950Used(c);
+    if (pre) return formatYearSpan(pre.first_year, pre.latest_year);
     if (isCensusScore(c)) {
       const ce = c.census;
       return ce ? formatYearSpan(ce.first_year, ce.latest_year) : "";
@@ -174,30 +179,54 @@
     return window.ShareScale.relativeChange(latest, first, 2);
   }
 
+  // Default map baseline. Not a toggle, and not the 1960–79 file.
+  // Australia returns an indicator only. Italy uses the UN 2020 endpoint
+  // the map already used, because Italy has no census or origin-series latest share.
+  function pre1950Resolution(c) {
+    if (!Pre1950 || !window.ShareScale || !c) return null;
+    const row = pre1950ByIso[c.iso3] || pre1950ByIso[c.id];
+    if (!row) return null;
+    return Pre1950.resolve(row, c, originData, window.ShareScale);
+  }
+
+  function pre1950Used(c) {
+    const resolved = pre1950Resolution(c);
+    return resolved && resolved.use ? resolved : null;
+  }
+
+  function pre1950Indicator(c) {
+    const resolved = pre1950Resolution(c);
+    if (!resolved || resolved.use || !resolved.indicator) return null;
+    return resolved.indicator;
+  }
+
   function isCensusScore(c) {
     return censusFoundingChange(c) != null;
   }
 
   function isProxyRow(c) {
+    if (pre1950Used(c)) return false;
     return !isCensusScore(c) && proxyChange(c) != null;
   }
 
   function displayValue(c) {
+    const pre = pre1950Used(c);
+    if (pre) return pre.change;
     if (isCensusScore(c)) return censusFoundingChange(c);
     return proxyChange(c);
   }
 
   function rowGroup(c) {
-    if (isCensusScore(c)) return 0;
+    if (pre1950Used(c) || isCensusScore(c)) return 0;
     if (displayValue(c) != null) return 1;
     return 2;
   }
 
-  // Same split as rowYearLabel. A census score is the census block.
-  // Anything else that still shows a figure is the UN block, including
-  // census-limited rows that display the UN figure.
+  // Census block: a census score, or a pre-1950 census baseline the map
+  // actually uses. Anything else that still shows a figure is the UN
+  // block, including census-limited rows that display the UN figure.
   function rankedKind(c) {
-    if (isCensusScore(c)) return "census";
+    if (pre1950Used(c) || isCensusScore(c)) return "census";
     if (displayValue(c) != null) return "proxy";
     return "none";
   }
@@ -214,6 +243,10 @@
 
   function fmtChange(n, proxy) {
     return fmtSigned(n, proxy ? 2 : 1);
+  }
+
+  function fmtShare(n) {
+    return fmt(n, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   }
 
   function fmtIndex(n) {
@@ -786,11 +819,35 @@
     if (map) map.getCanvas().style.cursor = "";
   }
 
+  function pre1950IndicatorText(c) {
+    const ind = pre1950Indicator(c);
+    if (!ind) return "";
+    return t("pre1950_indicator", {
+      year: fmtYear(ind.year),
+      share: fmtShare(ind.share),
+      concept: ind.concept || "",
+      territory: ind.territory || ""
+    });
+  }
+
   function tooltipHtml(c) {
     const name = countryName(c);
     const shown = displayValue(c);
+    const pre = pre1950Used(c);
+    const indicator = pre1950IndicatorText(c);
     if (shown == null) {
-      return `<strong>${esc(name)}</strong><br>${esc(t("legend_no_score"))}`;
+      const extra = indicator ? `<br>${esc(indicator)}` : "";
+      return `<strong>${esc(name)}</strong><br>${esc(t("legend_no_score"))}${extra}`;
+    }
+    if (pre) {
+      const label = t(pre.latest_source === "un_proxy" ? "pre1950_tooltip_un" : "pre1950_tooltip", {
+        score: fmtChange(shown, false),
+        first: fmtYear(pre.first_year),
+        latest: fmtYear(pre.latest_year)
+      });
+      return `<strong>${esc(name)}</strong><br>
+        <span class="swatch" style="background:${esc(colorForCountry(c, true))}"></span>
+        ${esc(label)} <span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`;
     }
     const proxy = isProxyRow(c);
     const badge = proxy
@@ -884,10 +941,11 @@
     if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
     if (c.availability === "census") pills.push(`<span class="dv-pill">${esc(t("flag_census"))}</span>`);
     if (c.availability === "census_limited") pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_limited"))}</span>`);
+    const preScore = pre1950Used(c);
     if (isProxyRow(c)) pills.push(`<span class="dv-pill dv-pill-proxy">${esc(t("flag_proxy"))}</span>`);
     if (c.census && c.census.weak_proxy) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_weak"))}</span>`);
-    if (c.census && c.census.concept_break) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`);
-    if (isEstimate(c) && c.quality) pills.push(`<span class="dv-pill" title="${esc(qualityLabel(c.quality))}">${esc(t("tooltip_quality", { quality: c.quality }))}</span>`);
+    if ((c.census && c.census.concept_break) || preScore) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`);
+    if (isEstimate(c) && c.quality && !preScore) pills.push(`<span class="dv-pill" title="${esc(qualityLabel(c.quality))}">${esc(t("tooltip_quality", { quality: c.quality }))}</span>`);
     if (!c.on_map) pills.push(`<span class="dv-pill">${esc(t("not_on_map"))}</span>`);
     if (isSmall(c)) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_small"))}</span>`);
     if (!inG) pills.push(`<span class="dv-pill">${esc(t("outside_group"))}</span>`);
@@ -895,7 +953,46 @@
     const lines = [];
     const ce = c.census;
     const shown = displayValue(c);
-    if (isCensusScore(c) && ce) {
+    const pre = pre1950Used(c);
+    if (pre) {
+      lines.push(`<p>${esc(t("pre1950_score", {
+        first: fmtYear(pre.first_year),
+        latest: fmtYear(pre.latest_year),
+        score: fmtChange(shown, false)
+      }))}</p>`);
+      lines.push(`<p class="dv-meta">${esc(t("pre1950_shares", {
+        first_share: fmtShare(pre.first_share),
+        first: fmtYear(pre.first_year),
+        latest_share: fmtShare(pre.latest_share),
+        latest: fmtYear(pre.latest_year)
+      }))}</p>`);
+      if (pre.latest_source === "un_proxy") {
+        lines.push(`<p class="dv-footnote">${esc(t("pre1950_break_un", {
+          concept: pre.concept || "",
+          territory: pre.territory || ""
+        }))}${enOnlyBadge()}</p>`);
+        lines.push(`<p class="dv-footnote">${esc(t("pre1950_un_latest", {
+          year: fmtYear(pre.latest_year),
+          share: fmtShare(pre.latest_share)
+        }))}${enOnlyBadge()}</p>`);
+      } else {
+        lines.push(`<p class="dv-footnote">${esc(t("pre1950_break", {
+          concept: pre.concept || "",
+          territory: pre.territory || ""
+        }))}${enOnlyBadge()}</p>`);
+        if (pre.latest_source === "origin_series") {
+          lines.push(`<p class="dv-footnote">${esc(t("pre1950_origin_latest", {
+            year: fmtYear(pre.latest_year)
+          }))}${enOnlyBadge()}</p>`);
+        }
+      }
+      if (c.un_d_1990_2020 != null) {
+        lines.push(`<p class="dv-meta">${esc(t("selected_gap", {
+          census: fmtChange(shown, false),
+          d: fmtIndex(c.un_d_1990_2020)
+        }))}</p>`);
+      }
+    } else if (isCensusScore(c) && ce) {
       lines.push(`<p>${esc(t("selected_census_score", {
         first: fmtYear(ce.first_year),
         latest: fmtYear(ce.latest_year),
@@ -923,6 +1020,10 @@
       }
     } else {
       lines.push(`<p>${esc(t("legend_no_score"))}</p>`);
+    }
+    const indicator = pre1950IndicatorText(c);
+    if (indicator) {
+      lines.push(`<p class="dv-meta">${esc(indicator)}${enOnlyBadge()}</p>`);
     }
     lines.push(`<p class="dv-meta">${esc(t("selected_pool", { pool: poolLabel((ce && ce.founding_pool) || c.primary_pool) }))}</p>`);
     if (ce && ce.source) {
@@ -1174,6 +1275,7 @@
       }
       const c = entry.country;
       const shown = displayValue(c);
+      const pre = pre1950Used(c);
       const proxy = isProxyRow(c);
       const color = colorForCountry(c, true);
       const sel = c.id === state.selected ? " is-selected" : "";
@@ -1183,6 +1285,9 @@
         : "";
       const proxyMark = proxy
         ? ` <span class="dv-proxy-flag" title="${esc(t("legend_proxy_note"))}">${esc(t("flag_proxy_short"))}</span>`
+        : "";
+      const breakMark = pre
+        ? ` <span class="dv-small-flag" title="${esc(t(pre.latest_source === "un_proxy" ? "pre1950_break_un" : "pre1950_break", { concept: pre.concept || "", territory: pre.territory || "" }))}">${esc(t("flag_concept"))}</span>`
         : "";
       let fillStyle = `background:${esc(noScoreColor())};width:0`;
       let zeroPad = "";
@@ -1195,14 +1300,16 @@
       }
       const title = shown == null
         ? t("legend_no_score")
-        : (proxy
-          ? t("tooltip_proxy", { score: fmtChange(shown, true) })
-          : t("tooltip_census", { score: fmtChange(shown, false) }));
+        : (pre
+          ? t(pre.latest_source === "un_proxy" ? "pre1950_tooltip_un" : "pre1950_tooltip", { score: fmtChange(shown, false), first: fmtYear(pre.first_year), latest: fmtYear(pre.latest_year) })
+          : (proxy
+            ? t("tooltip_proxy", { score: fmtChange(shown, true) })
+            : t("tooltip_census", { score: fmtChange(shown, false) })));
       const years = rowYearLabel(c);
       const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${proxy ? " is-proxy" : ""}`;
       return `<li class="${cls}" data-id="${esc(c.id)}">
         <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
-          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${proxyMark}${smallMark}</span>
+          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${proxyMark}${breakMark}${smallMark}</span>
           <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>
           <span class="dv-bar-n">${esc(shown == null ? "—" : fmtChange(shown, proxy))}</span>
           <span class="dv-bar-years">${esc(years || "—")}</span>
@@ -1321,6 +1428,10 @@
     originData = origin && origin.countries ? origin : null;
   }
 
+  function ingestPre1950(dataset) {
+    pre1950ByIso = Pre1950 ? Pre1950.indexRows(dataset) : {};
+  }
+
   function ingest(json) {
     if (!json || typeof json !== "object" || !Array.isArray(json.countries)) {
       throw new Error("demographics.json is missing countries");
@@ -1344,11 +1455,13 @@
       .then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
     loading = Promise.all([
       fetchJson(DATA_URL),
-      fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; })
+      fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; }),
+      fetchJson(PRE1950_URL).catch(err => { console.error(err); return null; })
     ])
-      .then(([json, origin]) => {
+      .then(([json, origin, pre1950]) => {
         ingest(json);
         ingestSupplements(origin);
+        ingestPre1950(pre1950);
         safeRender();
       })
       .catch(err => {
