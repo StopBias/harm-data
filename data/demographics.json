@@ -105,10 +105,18 @@
   },
   "counts": {
     "countries": 231,
-    "census": 30,
+    "census": 25,
     "census_limited": 5,
-    "estimate": 196,
+    "estimate": 164,
     "none": 0,
+    "not_scored": 37,
+    "scored": 194,
+    "stored": {
+      "census": 30,
+      "census_limited": 5,
+      "estimate": 196,
+      "none": 0
+    },
     "census_bands": {
       "20+": 3,
       "10–20": 6,

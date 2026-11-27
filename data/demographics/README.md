@@ -12,7 +12,7 @@ The tab does not display that stored figure. It shows the change in the founding
 
 Where no such series exists, the file still holds the UN DESA International Migrant Stock 2024 dissimilarity index between 1990 and 2020 (`un_d_1990_2020`, `score_id`: `D_1990_2020`) and `score_change_pp_1990_2020`, the change in the foreign-born share from outside the founding pool. D = 0.5 × sum over pools of |share_2020 − share_1990| × 100. The tab’s displayed proxy is `−(score_change_pp_1990_2020)`, on the same signed founding-share scale and the same colours as the census rows. D stays in the country pop-up as a secondary line. These rows are labelled `score_kind`: `estimate` and `availability`: `estimate`. They are not hatched.
 
-Australia and Israel have official statistical-office series that cannot be turned into a cross-pool founding-pool score without inventing a mapping (Australia has no ethnicity/race question; Israel’s Jews and Arabs both sit in the Semitic / Middle East and North Africa pool). Peru’s Indigenous mother-tongue series is a weak proxy held off the ranked list pending a ruling, the same way Mexico’s language-speaker proxy is already an open question. Indonesia (2010) and Zimbabwe (2022) are single official census points with no comparable earlier figure, so they have no change score. All five are stored as `availability`: `census_limited`, keep the official series and notes in `census`, and the tab shows the UN proxy on the map and ranked list.
+Australia and Israel have official statistical-office series that cannot be turned into a cross-pool founding-pool score without inventing a mapping (Australia has no ethnicity/race question; Israel’s Jews and Arabs both sit in the Semitic / Middle East and North Africa pool). Peru’s Indigenous mother-tongue series is a weak proxy held off the ranked list pending a ruling; the tab shows Peru’s UN proxy. Indonesia (2010) and Zimbabwe (2022) are single official census points with no comparable earlier figure, so they have no change score. All five are stored as `availability`: `census_limited`, keep the official series and notes in `census`, and the tab shows the UN proxy on the map and ranked list. Mexico’s language-speaker census rows stay in the file. Mexico is on the not-scored list, so the tab does not show a Mexico score.
 
 Every country record stores the source, years and metric used. No scores in this file were invented.
 
@@ -26,13 +26,18 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 
 ## Counts in this file
 
-| Availability | Meaning | Countries |
-|---|---|---:|
-| `census` | Official ethnicity, race, ancestry or migration-background series, with a computed change outside the founding pool | 30 |
-| `census_limited` | Official series not used as a founding-share headline (Australia, Israel, Peru, Indonesia, Zimbabwe) | 5 |
-| `estimate` | UN migrant-origin D only | 196 |
-| `none` | No score | 0 |
-| **Total** | UN DESA areas in the source manifest | **231** |
+Country rows stay in the file. The scored roster is what the tab paints, ranks and counts. Areas in `not_scored.json` are left out of that roster.
+
+| Availability | Meaning | In the file | Scored |
+|---|---|---:|---:|
+| `census` | Official ethnicity, race, ancestry or migration-background series, with a computed change outside the founding pool | 30 | 25 |
+| `census_limited` | Official series not used as a founding-share headline (Australia, Israel, Peru, Indonesia, Zimbabwe) | 5 | 5 |
+| `estimate` | UN migrant-origin D only | 196 | 164 |
+| `none` | No score stored | 0 | 0 |
+| **Not scored** | On `not_scored.json`. The map is no-score grey and the ranked table omits them. | 37 | 0 |
+| **Total** | UN DESA areas in the source manifest | **231** | **194** |
+
+Mexico, Bolivia, Guyana, Suriname and Trinidad and Tobago keep census rows and are not scored. The other 32 not-scored areas are UN estimates. `counts` in `../demographics.json` stores the scored roster (`census` 25, `estimate` 164, `not_scored` 37, `scored` 194). `counts.stored` is the file composition above (30 census, 196 estimates).
 
 ## Colour scale
 
@@ -47,6 +52,17 @@ Most countries do not record ethnicity, race or ancestry in their census. Withou
 | below −15% | bright red (`#e74c3c`), Very strongly declining |
 
 A shown 0.000 is treated as 0. Nigeria (0), India (+0.006) and China (−0.031) are green. The same function colours the map and the ranked bars. `scale.estimate_bands` remains in the file and is not used. No-score grey stays `#b9bfc4` and out-of-group grey stays `#eceeef`.
+
+## Not scored
+
+`not_scored.json` is the only list the tab reads. The page does not apply a population cutoff of its own. The list was approved by Mike on 26 November 2026. It is the union of two sets:
+
+1. Every area whose `pop_2024` is strictly under 100,000, except the Falkland Islands (FLK) and the European micro-territories Faroe Islands (FRO), Isle of Man (IMN), Andorra (AND), Liechtenstein (LIE), Monaco (MCO) and San Marino (SMR). Those seven stay scored. A scored area under 100,000 is still flagged (`small_population`).
+2. A named set: Qatar (QAT), Aruba (ABW), Bahrain (BHR), United Arab Emirates (ARE), Oman (OMN), Niue (NIU), Palau (PLW), Kuwait (KWT), Martinique (MTQ), Suriname (SUR), Guyana (GUY), Trinidad and Tobago (TTO), Mexico (MEX), Bolivia (BOL), Greenland (GRL) and Saint Pierre and Miquelon (SPM). Niue, Palau, Greenland and Saint Pierre and Miquelon are also under 100,000.
+
+`pop_2024` is the 1 July 2024 population, medium variant, from UN DESA *World Population Prospects 2024* (`WPP2024_TotalPopulationBySex.csv`). That is the series already cited for `world_context`. `small_population` is true on a row exactly when `pop_2024` is under 100,000.
+
+When a listed area is in the current group, the map uses no-score grey `#b9bfc4`. The ranked table omits it, and it is not in the scored roster counts. The pop-up says “Not scored” and the short reason stored on that area: “Population under 100,000 in 2024.” or “On the approved not-scored list.” Census rows, including Mexico and Bolivia, stay in `../demographics.json`.
 
 ## Grouping views
 
@@ -74,8 +90,8 @@ The Channel Islands appear as a UN DESA aggregate (M49 830) and are not a single
 - Several census series have a concept break or a weak-proxy flag in `census.notes` (for example New Zealand’s switch from prioritised ethnicity to total responses; Mexico’s use of Indigenous-language speakers; Bolivia’s 2024 figure, now taken from the official INE Anuario Estadístico 2024 workbook). Those flags are preserved; the headline figure is still Adi’s published change, not a recast invented here.
 - Aboriginal Australians are handled only for Australia and are not a pool.
 - There is no Turkic, Central Asian or Caucasus pool; those countries are assigned the closest of the nine pools and flagged in the mapping notes.
-- Eight scored areas are not in the 1:50m map (for example Tokelau, Réunion, Gibraltar) and appear only in the ranked list.
-- Small-population territories can show a high UN D because a small migrant stock moves the shares a long way. Areas with fewer than 100,000 people stay in the ranked list and are flagged visually (`small_population` in the JSON). They are not dropped.
+- Five scored areas are not in the 1:50m map (French Guiana, Guadeloupe, Réunion, Mayotte, and the Channel Islands aggregate) and appear only in the ranked list. Tokelau, Gibraltar and Martinique are not in that map and are not scored, so they are absent from the ranked list as well.
+- Small-population territories can show a high UN D because a small migrant stock moves the shares a long way. Areas with fewer than 100,000 people are not scored, except the Falkland Islands and six European micro-territories (Faroe Islands, Isle of Man, Andorra, Liechtenstein, Monaco and San Marino), which stay scored and are flagged. The full list, including the named areas at or above 100,000, is `not_scored.json`.
 - Census founding-share changes and the UN migrant-origin proxy measure different things. The tab lists census rows first, tags the proxy, and keeps the dissimilarity index D as a secondary line in the pop-up.
 
 ## Supplements

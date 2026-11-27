@@ -13,6 +13,7 @@
   const COUNTRIES_URL = "data/countries-ne50m.geojson";
   const DATA_URL = "data/demographics.json";
   const ORIGIN_URL = "data/demographics/origin_series_FR_DE_ES.json";
+  const NOT_SCORED_URL = "data/demographics/not_scored.json";
   const PRE1950_URL = "data/demographics/baseline_pre1950.json";
   const Supplements = window.HarmDemographicsSupplements || null;
   const Pre1950 = window.Pre1950Baselines || null;
@@ -23,7 +24,7 @@
   const DEFAULT_OUT_GROUP = "#eceeef";
   const FETCH_MS = 20000;
 
-  let data = null, originData = null, pre1950ByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
+  let data = null, originData = null, notScored = null, pre1950ByIso = {}, loading = null, byId = {}, map = null, mapReady = false, mapWait = 0, hoveredIso = null;
   let demoControls = null, demoAtWorld = true;
   const view = document.getElementById("demographics-view");
   if (!view) return;
@@ -146,10 +147,16 @@
   }
 
   function colorForCountry(c, inGroup) {
+    const b = c && !(notScored && notScored.isNotScored(c)) ? bandFor(c) : null;
+    const scored = b ? b.color : null;
+    if (notScored) {
+      return notScored.mapColor(c, inGroup, scored, {
+        noScore: noScoreColor(),
+        outOfGroup: outGroupColor()
+      });
+    }
     if (!inGroup) return outGroupColor();
-    if (!c) return noScoreColor();
-    const b = bandFor(c);
-    return b ? b.color : noScoreColor();
+    return scored || noScoreColor();
   }
 
   function isEstimate(c) {
@@ -210,6 +217,7 @@
   }
 
   function displayValue(c) {
+    if (notScored && notScored.isNotScored(c)) return null;
     const pre = pre1950Used(c);
     if (pre) return pre.change;
     if (isCensusScore(c)) return censusFoundingChange(c);
@@ -832,6 +840,9 @@
 
   function tooltipHtml(c) {
     const name = countryName(c);
+    if (notScored && notScored.isNotScored(c)) {
+      return `<strong>${esc(name)}</strong><br>${esc(notScored.popupText(c))}`;
+    }
     const shown = displayValue(c);
     const pre = pre1950Used(c);
     const indicator = pre1950IndicatorText(c);
@@ -937,6 +948,13 @@
       return;
     }
     const inG = memberSet().has(c.id);
+    if (notScored && notScored.isNotScored(c)) {
+      const pills = [];
+      if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
+      el.hidden = false;
+      el.innerHTML = `<h3>${esc(countryName(c))}</h3><p>${pills.join(" ")}</p><p>${esc(notScored.popupText(c))}${enOnlyBadge()}</p>`;
+      return;
+    }
     const pills = [];
     if (data && data.provisional) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("provisional_badge"))}</span>`);
     if (c.availability === "census") pills.push(`<span class="dv-pill">${esc(t("flag_census"))}</span>`);
@@ -1210,6 +1228,9 @@
   function filteredCountries() {
     const q = state.query.trim().toLocaleLowerCase(locale());
     let list = currentMembers().map(id => byId[id]).filter(Boolean);
+    // The ranked table draws this list, including a later two-section table.
+    // Drop not-scored areas before search, sort, or section headers.
+    if (notScored) list = notScored.ranked(list);
     if (q) {
       list = list.filter(c => {
         const names = [c.name, countryName(c), c.iso3, c.id].filter(Boolean);
@@ -1440,6 +1461,11 @@
     originData = origin && origin.countries ? origin : null;
   }
 
+  function ingestNotScored(list) {
+    if (!window.DemographicsNotScored) throw new Error("demographics-not-scored.js did not load");
+    notScored = window.DemographicsNotScored.open(list);
+  }
+
   function ingestPre1950(dataset) {
     pre1950ByIso = Pre1950 ? Pre1950.indexRows(dataset) : {};
   }
@@ -1467,11 +1493,13 @@
       .then(r => { if (!r.ok) throw new Error(url + ": HTTP " + r.status); return r.json(); });
     loading = Promise.all([
       fetchJson(DATA_URL),
+      fetchJson(NOT_SCORED_URL),
       fetchJson(ORIGIN_URL).catch(err => { console.error(err); return null; }),
       fetchJson(PRE1950_URL).catch(err => { console.error(err); return null; })
     ])
-      .then(([json, origin, pre1950]) => {
+      .then(([json, notScoredList, origin, pre1950]) => {
         ingest(json);
+        ingestNotScored(notScoredList);
         ingestSupplements(origin);
         ingestPre1950(pre1950);
         safeRender();
