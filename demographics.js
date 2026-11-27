@@ -16,6 +16,7 @@
   const PRE1950_URL = "data/demographics/baseline_pre1950.json";
   const Supplements = window.HarmDemographicsSupplements || null;
   const Pre1950 = window.Pre1950Baselines || null;
+  const Rank = window.HarmDemographicsRank || null;
   const WORLD_BOUNDS = [[-180, -56.2], [180, 84.2]];
   let featureBounds = { west: -180, south: -56.2, east: 180, north: 84.2 };
   const DEFAULT_NO_SCORE = "#b9bfc4";
@@ -221,6 +222,15 @@
     return 2;
   }
 
+  // Census block: a census score, or a pre-1950 census baseline the map
+  // actually uses. Anything else that still shows a figure is the UN
+  // block, including census-limited rows that display the UN figure.
+  function rankedKind(c) {
+    if (pre1950Used(c) || isCensusScore(c)) return "census";
+    if (displayValue(c) != null) return "proxy";
+    return "none";
+  }
+
   function fmtSigned(n, digits) {
     if (n == null || n === "" || !Number.isFinite(Number(n))) return "—";
     const v = Number(n) === 0 ? 0 : Number(n);
@@ -353,7 +363,7 @@
           </label>
           <p class="dv-list-count" id="dv-list-count"></p>
         </div>
-        <ul class="dv-bars" id="dv-bars"></ul>
+        <div class="dv-rank-wrap" id="dv-bars"></div>
       </section>
       <section class="dv-section" aria-labelledby="dv-regional-h">
         <h3 class="dv-h" id="dv-regional-h"></h3>
@@ -395,8 +405,8 @@
     renderMapKey();
     set("#dv-map-desc", t("map_desc"));
     set("#dv-scale-note", t("scale_note"));
-    set("#dv-bar-h", t("bar_h"));
-    set("#dv-bar-desc", t("bar_desc"));
+    set("#dv-bar-h", t("ranked_h"));
+    set("#dv-bar-desc", t("ranked_desc"));
     set("#dv-search-lbl", t("search"));
     const search = view.querySelector("#dv-search");
     if (search) {
@@ -837,7 +847,7 @@
       });
       return `<strong>${esc(name)}</strong><br>
         <span class="swatch" style="background:${esc(colorForCountry(c, true))}"></span>
-        ${esc(label)} <span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`;
+        ${esc(label)}`;
     }
     const proxy = isProxyRow(c);
     const badge = proxy
@@ -893,7 +903,7 @@
     renderSelected();
     highlightBar();
     if (opts && opts.scrollBar) {
-      const row = view.querySelector(".dv-bar-item.is-selected");
+      const row = view.querySelector(".dv-rank-row.is-selected");
       if (row) row.scrollIntoView({ block: "nearest" });
     }
   }
@@ -934,7 +944,7 @@
     const preScore = pre1950Used(c);
     if (isProxyRow(c)) pills.push(`<span class="dv-pill dv-pill-proxy">${esc(t("flag_proxy"))}</span>`);
     if (c.census && c.census.weak_proxy) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_weak"))}</span>`);
-    if ((c.census && c.census.concept_break) || preScore) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`);
+    if (c.census && c.census.concept_break) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_concept"))}</span>`);
     if (isEstimate(c) && c.quality && !preScore) pills.push(`<span class="dv-pill" title="${esc(qualityLabel(c.quality))}">${esc(t("tooltip_quality", { quality: c.quality }))}</span>`);
     if (!c.on_map) pills.push(`<span class="dv-pill">${esc(t("not_on_map"))}</span>`);
     if (isSmall(c)) pills.push(`<span class="dv-pill dv-pill-prov">${esc(t("flag_small"))}</span>`);
@@ -1207,9 +1217,11 @@
       });
     }
     const loc = locale();
-    list.sort((a, b) => {
-      const gr = rowGroup(a) - rowGroup(b);
-      if (gr) return gr;
+    // Group by score kind first (census, then UN proxy, then no score) so
+    // the two kinds stay in blocks when a sort would otherwise interleave
+    // them. The comparison below is the existing sort inside each block.
+    // Header rows are added later and are not part of this list.
+    const withinBlock = (a, b) => {
       if (state.sortKey === "name") {
         return countryName(a).localeCompare(countryName(b), loc);
       }
@@ -1220,93 +1232,107 @@
       // "High" is the largest decline in founding share (the most negative figure).
       const diff = state.sortKey === "low" ? sb - sa : sa - sb;
       return diff || countryName(a).localeCompare(countryName(b), loc);
+    };
+    if (Rank) return Rank.sortGrouped(list, rankedKind, withinBlock);
+    list.sort((a, b) => {
+      const gr = rowGroup(a) - rowGroup(b);
+      if (gr) return gr;
+      return withinBlock(a, b) || 0;
     });
     return list;
   }
 
-  function barHead(kind) {
-    const change = kind === "proxy" ? t("col_proxy") : t("col_change");
-    const years = kind === "proxy" ? t("col_proxy_years") : t("col_years");
-    return `<li class="dv-bar-head${kind === "proxy" ? " is-proxy" : ""}">
-      <span class="dv-bar-name">${esc(t("col_country"))}</span>
-      <span class="dv-col-change">${esc(change)}</span>
-      <span class="dv-bar-years">${esc(years)}</span>
-    </li>`;
+  // Counts are copied only from fields that already store an absolute
+  // founding population. A share times a total is not a count.
+  function rankSpec(c) {
+    const pre = pre1950Used(c);
+    const base = {
+      id: c.id,
+      name: countryName(c),
+      color: colorForCountry(c, true),
+      selected: c.id === state.selected,
+      small: isSmall(c),
+      smallLabel: isSmall(c) ? t("flag_small_short") : ""
+    };
+    if (pre) {
+      const row = pre1950ByIso[c.iso3] || pre1950ByIso[c.id] || {};
+      return Object.assign(base, {
+        pre: pre,
+        preCount: row.ethnic_european_count,
+        latestCount: null
+      });
+    }
+    if (isCensusScore(c) && c.census) {
+      const ce = c.census;
+      return Object.assign(base, {
+        census: {
+          first_year: ce.first_year,
+          latest_year: ce.latest_year,
+          first_share: ce.first_share_in_founding_pool,
+          latest_share: ce.latest_share_in_founding_pool,
+          change: censusFoundingChange(c)
+        }
+      });
+    }
+    const change = proxyChange(c);
+    if (change != null) {
+      return Object.assign(base, {
+        proxy: {
+          firstShare: 100 - Number(c.cross_pool_fb_pct_1990),
+          latestShare: 100 - Number(c.cross_pool_fb_pct_2020),
+          change: change
+        }
+      });
+    }
+    return base;
+  }
+
+  function rankFormats() {
+    const count = n => fmt(n, { maximumFractionDigits: 0 });
+    const share = n => fmt(n, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    return {
+      year: fmtYear,
+      count: count,
+      share: share,
+      shareProxy: share,
+      change: n => fmtChange(n, false),
+      changeProxy: n => fmtChange(n, true)
+    };
   }
 
   function renderBars() {
-    const ul = view.querySelector("#dv-bars");
+    const el = view.querySelector("#dv-bars");
     const count = view.querySelector("#dv-list-count");
-    if (!ul) return;
+    if (!el) return;
     const list = filteredCountries();
-    const vals = list.map(displayValue).filter(v => v != null);
-    const cMin = vals.length ? Math.min(0, ...vals) : 0;
-    const cMax = vals.length ? Math.max(0, ...vals) : 1;
-    const cSpan = Math.max(1, cMax - cMin);
     if (count) count.textContent = t("list_count", { n: fmt(list.length, { maximumFractionDigits: 0 }) });
     if (!list.length) {
-      ul.innerHTML = `<li class="dv-empty">${esc(t("no_matches"))}</li>`;
+      el.innerHTML = `<p class="dv-empty">${esc(t("no_matches"))}</p>`;
       return;
     }
-    let seenCensusHead = false;
-    let seenProxyHead = false;
-    ul.innerHTML = list.map(c => {
-      const shown = displayValue(c);
-      const pre = pre1950Used(c);
-      const proxy = isProxyRow(c);
-      const heads = [];
-      if (!proxy && (pre || isCensusScore(c)) && !seenCensusHead) {
-        seenCensusHead = true;
-        heads.push(barHead("census"));
+    const entries = Rank
+      ? Rank.withGroupHeaders(list, rankedKind)
+      : list.map(c => ({ type: "row", country: c, kind: rankedKind(c) }));
+    const head = Rank
+      ? Rank.columnHeadMarkup(Rank.COLUMN_KEYS.map(key => t(key)))
+      : "";
+    const formats = rankFormats();
+    const body = entries.map(entry => {
+      if (entry.type === "header") {
+        return Rank ? Rank.sectionRowMarkup(entry.kind, t(entry.key)) : "";
       }
-      if (proxy && !seenProxyHead) {
-        seenProxyHead = true;
-        heads.push(barHead("proxy"));
-      }
-      const color = colorForCountry(c, true);
-      const sel = c.id === state.selected ? " is-selected" : "";
-      const small = isSmall(c);
-      const smallMark = small
-        ? ` <span class="dv-small-flag" title="${esc(t("flag_small"))}">${esc(t("flag_small_short"))}</span>`
-        : "";
-      const proxyMark = proxy
-        ? ` <span class="dv-proxy-flag" title="${esc(t("legend_proxy_note"))}">${esc(t("flag_proxy_short"))}</span>`
-        : "";
-      const breakMark = pre
-        ? ` <span class="dv-small-flag" title="${esc(t(pre.latest_source === "un_proxy" ? "pre1950_break_un" : "pre1950_break", { concept: pre.concept || "", territory: pre.territory || "" }))}">${esc(t("flag_concept"))}</span>`
-        : "";
-      let fillStyle = `background:${esc(noScoreColor())};width:0`;
-      let zeroPad = "";
-      if (shown != null) {
-        const left = ((Math.min(shown, 0) - cMin) / cSpan) * 100;
-        const width = (Math.abs(shown) / cSpan) * 100;
-        fillStyle = `background:${esc(color)};margin-left:${left}%;width:${Math.max(width, shown === 0 ? 0 : 0.4)}%;`;
-        const zero = ((0 - cMin) / cSpan) * 100;
-        zeroPad = `<span class="dv-bar-zero" style="left:${zero}%"></span>`;
-      }
-      const title = shown == null
-        ? t("legend_no_score")
-        : (pre
-          ? t(pre.latest_source === "un_proxy" ? "pre1950_tooltip_un" : "pre1950_tooltip", { score: fmtChange(shown, false), first: fmtYear(pre.first_year), latest: fmtYear(pre.latest_year) })
-          : (proxy
-            ? t("tooltip_proxy", { score: fmtChange(shown, true) })
-            : t("tooltip_census", { score: fmtChange(shown, false) })));
-      const years = rowYearLabel(c);
-      const cls = `dv-bar-item${sel}${small ? " is-small" : ""}${proxy ? " is-proxy" : ""}`;
-      return heads.join("") + `<li class="${cls}" data-id="${esc(c.id)}">
-        <button type="button" class="dv-bar-btn" aria-label="${esc(countryName(c))}, ${esc(title)}${years ? ", " + esc(years) : ""}">
-          <span class="dv-bar-name"><span class="dv-bar-label">${esc(countryName(c))}</span>${proxyMark}${breakMark}${smallMark}</span>
-          <span class="dv-bar-track">${zeroPad}<span class="dv-bar-fill" style="${fillStyle}"></span></span>
-          <span class="dv-bar-n">${esc(shown == null ? "—" : fmtChange(shown, proxy))}</span>
-          <span class="dv-bar-years">${esc(years || "—")}</span>
-        </button>
-      </li>`;
+      const spec = rankSpec(entry.country);
+      return Rank ? Rank.countryRowMarkup(spec, formats) : "";
     }).join("");
+    el.innerHTML = `<table class="dv-rank">
+      <thead>${head}</thead>
+      <tbody>${body}</tbody>
+    </table>`;
   }
 
   function highlightBar() {
-    view.querySelectorAll(".dv-bar-item").forEach(li => {
-      li.classList.toggle("is-selected", li.getAttribute("data-id") === state.selected);
+    view.querySelectorAll(".dv-rank-row").forEach(row => {
+      row.classList.toggle("is-selected", row.getAttribute("data-id") === state.selected);
     });
   }
 
@@ -1477,16 +1503,19 @@
     if (vb) { setView(vb.getAttribute("data-view")); return; }
     const detailsBtn = e.target.closest("#dv-details-btn");
     if (detailsBtn) { state.details = !state.details; renderDetails(); return; }
-    const barBtn = e.target.closest(".dv-bar-btn");
-    if (barBtn) {
-      const li = barBtn.closest("[data-id]");
-      if (li) selectCountry(li.getAttribute("data-id"));
-    }
+    const rankRow = e.target.closest(".dv-rank-row");
+    if (rankRow) selectCountry(rankRow.getAttribute("data-id"));
   });
   document.addEventListener("click", e => {
     if (!view.contains(e.target)) closeGroupMenu();
   });
   view.addEventListener("keydown", e => {
+    const rankRow = e.target.closest && e.target.closest(".dv-rank-row");
+    if (rankRow && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      selectCountry(rankRow.getAttribute("data-id"));
+      return;
+    }
     const inMenu = e.target.closest && e.target.closest("#dv-group-menu");
     const onBtn = e.target && e.target.id === "dv-group-btn";
     if (onBtn && (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ")) {
