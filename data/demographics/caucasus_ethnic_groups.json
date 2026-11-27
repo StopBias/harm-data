@@ -1,0 +1,51 @@
+{
+  "pool_id": "CAU",
+  "pool_label": "Caucasus",
+  "separate_from": ["EUR", "MENA"],
+  "description": "Tenth founding pool. Separate from ethnic European (EUR) and from Semitic / Middle East and North Africa (MENA). Country primary pools for Georgia (GEO) and Armenia (ARM) are CAU. Azerbaijan (AZE) and Azerbaijanis stay MENA. Codes below are the assignment used by the census notes. Published pool-aggregate rows are not split: this repository does not contain a separate official count for each people in the Russia 2002–2021 headline series, and those peoples were inside the unmapped residual, not inside EUR.",
+  "country_primary_pool": {
+    "ARM": "CAU",
+    "GEO": "CAU",
+    "AZE": "MENA"
+  },
+  "origin_pool": {
+    "ARM": "CAU",
+    "GEO": "CAU",
+    "AZE": "MENA",
+    "rule": "A UN DESA migrant whose origin country is Armenia or Georgia counts as CAU, so that person is outside the ethnic European pool for a country founded by ethnic Europeans. An origin in Azerbaijan stays MENA.",
+    "recast_cross_pool_shares": true,
+    "reason": "cross_pool_fb_pct_1990, cross_pool_fb_pct_2020, score_change_pp_1990_2020, un_d_1990_2020 and score_D_1990_2024 are recomputed from UN DESA International Migrant Stock 2024 (Table 1, both sexes, and Table 2 total population). Cross-pool foreign-born percent is 100 times known-origin migrants from outside the founding pool, divided by total population; origin code 2003 (Others) is unknown and is not in that numerator. D is 0.5 times the sum of absolute changes in pool shares of the population excluding those unknown-origin migrants, with the native-born counted in the founding pool. The ethnic European basis of the previously stored shares is reproduced exactly when Armenia and Georgia are EUR, South African origins are SSA, the Holy See (M49 336) is EUR and Bonaire, Sint Eustatius and Saba (M49 535) are SSA. The published figures use Armenia and Georgia as CAU."
+  },
+  "groups": [
+    {"code": "GEO", "name": "Georgians", "pool": "CAU", "judgement": false},
+    {"code": "ARM", "name": "Armenians", "pool": "CAU", "judgement": false},
+    {"code": "CHE", "name": "Chechens", "pool": "CAU", "judgement": false},
+    {"code": "ING", "name": "Ingush", "pool": "CAU", "judgement": false},
+    {"code": "AVR", "name": "Avars", "pool": "CAU", "judgement": false, "note": "When a census folds Andi-Dido peoples into Avars, they stay AVR. Separate codes are not assigned: this repository has no separate official count for those subgroups."},
+    {"code": "DAR", "name": "Dargins", "pool": "CAU", "judgement": false, "note": "Includes Kaitag and Kubachi when the census folds them into Dargins."},
+    {"code": "LEZ", "name": "Lezgins", "pool": "CAU", "judgement": false},
+    {"code": "LAK", "name": "Laks", "pool": "CAU", "judgement": false},
+    {"code": "TAB", "name": "Tabasarans", "pool": "CAU", "judgement": false},
+    {"code": "AGU", "name": "Aguls", "pool": "CAU", "judgement": false, "note": "Other Dagestani people (Northeast Caucasian), named in the Russian census and not in the request's examples."},
+    {"code": "RUT", "name": "Rutuls", "pool": "CAU", "judgement": false, "note": "Other Dagestani people (Northeast Caucasian), named in the Russian census and not in the request's examples."},
+    {"code": "TSA", "name": "Tsakhurs", "pool": "CAU", "judgement": false, "note": "Other Dagestani people (Northeast Caucasian), named in the Russian census and not in the request's examples."},
+    {"code": "KAB", "name": "Kabardians", "pool": "CAU", "judgement": false},
+    {"code": "ADY", "name": "Adyghe", "pool": "CAU", "judgement": false, "note": "Circassians/Adyghe. The Russian census splits this from Cherkes and Kabardians."},
+    {"code": "CHR", "name": "Cherkes", "pool": "CAU", "judgement": false, "note": "Circassians/Adyghe. Census line separate from Adyghe and Kabardians."},
+    {"code": "ABA", "name": "Abazins", "pool": "CAU", "judgement": false},
+    {"code": "BAL", "name": "Balkars", "pool": "CAU", "judgement": false, "note": "Turkic, but named in the request as a North Caucasus people, so not left with other Turkic peoples."},
+    {"code": "KRC", "name": "Karachays", "pool": "CAU", "judgement": false, "note": "Turkic, but named in the request as a North Caucasus people, so not left with other Turkic peoples."},
+    {"code": "OSS", "name": "Ossetians", "pool": "CAU", "judgement": true, "note": "Judgement: Iranian-speaking people of the North and South Caucasus (Iron and Digor, including South Ossetians). Not ethnic European and not MENA."},
+    {"code": "NOG", "name": "Nogais", "pool": "CAU", "judgement": true, "note": "Judgement: Kipchak Turkic people of the North Caucasus steppe. Not moved to EAS with Central Asian Turkic peoples, and not MENA."},
+    {"code": "KUM", "name": "Kumyks", "pool": "CAU", "judgement": true, "note": "Judgement: Turkic people of Dagestan. Included as one of the other Dagestani peoples, on the same basis as Nogais. Not MENA and not EAS."},
+    {"code": "SHP", "name": "Shapsugs", "pool": "CAU", "judgement": true, "note": "Judgement: Circassian people listed separately in the Russian census. Same pool as Adyghe, Cherkes and Kabardians."},
+    {"code": "ABK", "name": "Abkhazians", "pool": "CAU", "judgement": true, "note": "Judgement: Northwest Caucasian people, closely related to Abazins, not named in the request and not counted as Georgians."},
+    {"code": "UDI", "name": "Udis", "pool": "CAU", "judgement": true, "note": "Judgement: Northeast Caucasian people (historically Caucasian Albanian), living mainly in Azerbaijan. Not Azerbaijanis and not Tats."}
+  ],
+  "not_cau": [
+    {"code": "AZE", "name": "Azerbaijanis", "pool": "MENA", "note": "Stay in the Semitic / Middle East and North Africa pool. Not CAU."},
+    {"code": "TAT", "name": "Tats", "pool": "MENA", "note": "Existing country-map rule sends Tats to MENA, including Tats in Dagestan. Not moved to CAU."},
+    {"code": "JEW", "name": "Jews", "pool": "MENA", "note": "Country-map rule sends Jews to MENA. Mountain Jews, Georgian Jews and Central Asian Jews are not CAU. The Russia headline rows still leave those three lines inside unmapped, as published, and that residual is not split."},
+    {"code": "TUR", "name": "Turks (including Meskhetian Turks)", "pool": null, "note": "Not CAU. Kazakhstan's published row leaves Turks inside unmapped. No pool is invented for them."}
+  ]
+}

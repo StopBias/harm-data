@@ -91,8 +91,8 @@ assertEqual(labels.band_dark_range.indexOf("\u221215%") !== -1, true, "numeric r
 assertEqual(labels.band_little_range.indexOf("pp") === -1, true, "legend range uses percent");
 assertEqual(scale.relativeChange(7.3, 20.8, 1), -64.9, "South Africa relative decline");
 assertEqual(scale.bandIdForChange(scale.relativeChange(7.3, 20.8, 1), 1), "dark", "South Africa band");
-assertEqual(scale.relativeChange(100 - 7.615, 100 - 2.623, 2), -5.13, "Belgium relative decline");
-assertEqual(scale.bandIdForChange(scale.relativeChange(100 - 7.615, 100 - 2.623, 2), 2), "light", "Belgium band");
+assertEqual(scale.relativeChange(100 - 7.633, 100 - 2.624, 2), -5.14, "Belgium relative decline");
+assertEqual(scale.bandIdForChange(scale.relativeChange(100 - 7.633, 100 - 2.624, 2), 2), "light", "Belgium band");
 assertEqual(scale.relativeChange(68.5, 96.3, 1), -28.9, "Canada relative decline");
 assertEqual(scale.relativeChange(1, 0, 1), null, "zero first share is unscored");
 assertEqual(scale.relativeChange(null, 92.08, 1), null, "missing latest share is unscored");

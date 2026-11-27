@@ -92,9 +92,9 @@ function country(id) {
 }
 assert.strictEqual(country("CAN").score, 27.8);
 assert.strictEqual(country("USA").score, 25.4);
-assert.strictEqual(country("FRA").score, 2.272);
+assert.strictEqual(country("FRA").score, 2.324);
 assert.strictEqual(country("DEU").score, 3.259);
-assert.strictEqual(country("ESP").score, 7.708);
+assert.strictEqual(country("ESP").score, 7.745);
 assert.strictEqual(country("NZL").score, 13.4);
 assert.strictEqual(demo.scale.bands[4].color, "#e74c3c");
 assert.strictEqual(demo.scale.bands[0].color, "#1e8449");

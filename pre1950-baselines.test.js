@@ -36,13 +36,13 @@ function currentDisplay(c) {
 
 const expectedBefore = {
   DEU: { change: -3.13, band: "Declining" },
-  FRA: { change: -2.29, band: "Declining" },
-  ESP: { change: -7.69, band: "Strongly declining" },
+  FRA: { change: -2.35, band: "Declining" },
+  ESP: { change: -7.73, band: "Strongly declining" },
   GBR: { change: -13.2, band: "Strongly declining" },
   IRL: { change: -7.2, band: "Strongly declining" },
   NZL: { change: -16.5, band: "Very strongly declining" },
-  AUS: { change: -11.8, band: "Strongly declining" },
-  ITA: { change: -3.88, band: "Declining" }
+  AUS: { change: -11.81, band: "Strongly declining" },
+  ITA: { change: -3.91, band: "Declining" }
 };
 
 const expectedAfter = {
@@ -52,7 +52,7 @@ const expectedAfter = {
   GBR: { change: -17.5, band: "Very strongly declining", first_year: 1931, latest_year: 2021, first: 98.98, latest: 81.7 },
   IRL: { change: -12.2, band: "Strongly declining", first_year: 1936, latest_year: 2022, first: 99.49, latest: 87.4 },
   NZL: { change: -28.1, band: "Very strongly declining", first_year: 1936, latest_year: 2023, first: 94.33, latest: 67.8 },
-  ITA: { change: -4.5, band: "Declining", first_year: 1936, latest_year: 2020, first: 99.98, latest: 95.498 }
+  ITA: { change: -4.5, band: "Declining", first_year: 1936, latest_year: 2020, first: 99.98, latest: 95.467 }
 };
 
 const before = {};
@@ -84,14 +84,14 @@ assert.strictEqual(after.AUS.use, false);
 assert.strictEqual(after.AUS.reason, "no_comparable_official_latest_share");
 assert.strictEqual(after.AUS.indicator.year, 1911);
 assert.strictEqual(after.AUS.indicator.share, 98.83);
-assert.strictEqual(before.AUS.change, -11.8);
+assert.strictEqual(before.AUS.change, -11.81);
 assert.strictEqual(before.AUS.band, "Strongly declining");
 
 assert.strictEqual(after.ITA.use, true);
 assert.strictEqual(after.ITA.latest_source, "un_proxy");
 assert.strictEqual(after.ITA.change, -4.5);
 assert.strictEqual(bandName[after.ITA.band_id], "Declining");
-assert.strictEqual(before.ITA.change, -3.88);
+assert.strictEqual(before.ITA.change, -3.91);
 assert.strictEqual(before.ITA.band, "Declining");
 assert.strictEqual(before.ITA.latest_year, 2020);
 assert.strictEqual(before.ITA.latest, after.ITA.latest_share);
